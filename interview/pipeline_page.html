@@ -1059,7 +1059,7 @@
       s.disabled = !canWrite;
       s.addEventListener("change", function(){
         acts[f.id] = {status:s.value, owner:acts[f.id].owner};
-        saveAct(f.id); renderActs(); renderStats();
+        touchAct(f.id); saveAct(f.id); renderActs(); renderStats();
       });
       ctl.appendChild(s);
 
@@ -1069,6 +1069,7 @@
       own.setAttribute("aria-label", "Owner for this action");
       own.addEventListener("input", function(){
         acts[f.id] = {status:acts[f.id].status, owner:own.value};
+        touchAct(f.id);
         debounce("act:" + f.id, function(){ saveAct(f.id); });
       });
       ctl.appendChild(own);
@@ -1220,15 +1221,15 @@
     var form = el("div", "form");
     function slow(k){
       return function(e){
-        t[k] = e.target.value;
+        t[k] = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
         debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
-        markSaving();
       };
     }
     function now(k){
       return function(e){
-        t[k] = e.target.value; saveTrack(c.sl);
-        renderStats(); renderRefine(); renderActiveBar(); renderRows(); markSaving();
+        t[k] = e.target.value; touch(c.sl);
+        renderStats(); renderRefine(); renderActiveBar(); renderRows();
+        saveTrack(c.sl);
       };
     }
     form.appendChild(field("Profile shared on", inputEl("date", t.sharedOn, now("sharedOn"))));
@@ -1249,9 +1250,8 @@
     ta.value = t.remarks; ta.disabled = !canWrite;
     ta.placeholder = "Negotiation notes, relocation, references…";
     ta.addEventListener("input", function(e){
-      t.remarks = e.target.value;
+      t.remarks = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
       debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
-      markSaving();
     });
     form.appendChild(field("Remarks", ta, true));
 
@@ -1291,20 +1291,22 @@
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
-  var saveTimer = null;
-  function markSaving(){
-    var l = $("saveline"); if (!l || !canWrite) return;
-    l.classList.remove("err"); l.textContent = "Saving…";
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(function(){
-      var n = $("saveline");
-      if (n && !n.classList.contains("err")) n.textContent = dbLive ? "Saved for everyone" : "Not shared — offline";
-    }, 900);
-  }
-  function saveError(m){
+  /* Revision counters. localRev bumps on every keystroke or pick; savedRev
+     records the revision a completed write covered. While the two differ the
+     candidate has edits the server has not acknowledged, and an incoming
+     snapshot must not overwrite them. */
+  var localRev = {}, savedRev = {}, actRev = {}, actSaved = {};
+  function touch(sl){ localRev[sl] = (localRev[sl] || 0) + 1; }
+  function clean(sl){ return (localRev[sl] || 0) === (savedRev[sl] || 0); }
+  function touchAct(id){ actRev[id] = (actRev[id] || 0) + 1; }
+  function cleanAct(id){ return (actRev[id] || 0) === (actSaved[id] || 0); }
+
+  function setSave(msg, isErr){
     var l = $("saveline"); if (!l) return;
-    l.classList.add("err"); l.textContent = m;
+    l.classList.toggle("err", !!isErr);
+    l.textContent = msg;
   }
+  function saveError(m){ setSave(m, true); }
 
   /* ===================== persistence ===================== */
   var timers = {}, chains = {};
@@ -1325,16 +1327,27 @@
     }
   }
   function saveTrack(sl){
-    if (!db || !canWrite) return;
+    if (!db){ setSave("Not connected \u2014 nothing is being saved. Reload the page.", true); return; }
+    if (!canWrite){ setSave("Read-only in this view", true); return; }
+    var rev = localRev[sl] || 0;
     var t = track[sl], body = {};
     Object.keys(t).forEach(function(k){ body[k] = t[k]; });
-    queue("t" + sl, function(){ return db.doc("tracking/c" + sl).set(body).catch(handleWriteError); });
+    setSave("Saving\u2026", false);
+    queue("t" + sl, function(){
+      return db.doc("tracking/c" + sl).set(body).then(function(){
+        if (rev > (savedRev[sl] || 0)) savedRev[sl] = rev;
+        if (current === sl && clean(sl)) setSave("Saved for everyone", false);
+      }, handleWriteError);
+    });
   }
   function saveAct(id){
     if (!db || !canWrite) return;
-    var a = acts[id];
+    var rev = actRev[id] || 0;
+    var a = acts[id], body = {status:a.status, owner:a.owner};
     queue("a" + id, function(){
-      return db.doc("actions/" + id).set({status:a.status, owner:a.owner}).catch(handleWriteError);
+      return db.doc("actions/" + id).set(body).then(function(){
+        if (rev > (actSaved[id] || 0)) actSaved[id] = rev;
+      }, handleWriteError);
     });
   }
   function showNotice(text){
@@ -1348,10 +1361,14 @@
     Promise.resolve(cl.use("db")).then(function(store){
       if (!store){ offline(); return; }
       db = store; dbLive = true;
+      // Edits made while the store was still connecting are still pending.
+      Object.keys(localRev).forEach(function(sl){ if (!clean(sl)) saveTrack(+sl); });
+      Object.keys(actRev).forEach(function(id){ if (!cleanAct(id)) saveAct(id); });
       store.collection("tracking").onSnapshot(function(snap){
         snap.docs.forEach(function(d){
           var sl = +String(d.id).replace(/^c/, "");
           if (!BY_SL[sl]) return;
+          if (!clean(sl)) return;   // this viewer has edits the server has not confirmed
           var data = d.data() || {}, t = blankTrack();
           Object.keys(LEGACY).forEach(function(old){
             if (data[old] != null && data[LEGACY[old]] == null) data[LEGACY[old]] = data[old];
@@ -1360,12 +1377,11 @@
           track[sl] = t;
         });
         renderAll();
-        if (current && dtab !== "track") openDrawer(current);
-        else if (current && !$("dbody").contains(document.activeElement)) openDrawer(current);
+        if (current !== null && clean(current) && !$("dbody").contains(document.activeElement)) openDrawer(current);
       }, function(){});
       store.collection("actions").onSnapshot(function(snap){
         snap.docs.forEach(function(d){
-          if (!acts[d.id]) return;
+          if (!acts[d.id] || !cleanAct(d.id)) return;
           var data = d.data() || {};
           acts[d.id] = {status:data.status || "Open", owner:data.owner || ""};
         });
