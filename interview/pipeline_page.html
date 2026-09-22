@@ -1,0 +1,1054 @@
+<title>Coimbatore Hiring Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+  :root{
+    --paper:#F3F4F1; --surface:#FFFFFF; --surface-2:#FAFAF8; --sunk:#ECEEE9;
+    --ink:#14202E; --ink-2:#44525F; --ink-3:#6E7B87; --line:#DCDFD9; --line-2:#C8CCC4;
+    --accent:#1B5E8C; --accent-soft:#E4EEF5; --accent-ink:#134A6F;
+    --ok:#2E6F4E; --ok-soft:#E2EFE7;
+    --warn:#8A6210; --warn-soft:#F6EDDA;
+    --risk:#A3372B; --risk-soft:#F7E4E1;
+    --shadow:0 1px 2px rgba(20,32,46,.06), 0 8px 24px rgba(20,32,46,.07);
+    --r:9px;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#10151B; --surface:#172029; --surface-2:#1C262F; --sunk:#0B1015;
+      --ink:#E4E8EC; --ink-2:#A6B2BC; --ink-3:#7A8791; --line:#2A3641; --line-2:#3A4855;
+      --accent:#6FB2DA; --accent-soft:#1B2E3B; --accent-ink:#9FCDE8;
+      --ok:#6FBE90; --ok-soft:#17291F;
+      --warn:#D9A648; --warn-soft:#2B2416;
+      --risk:#E08579; --risk-soft:#2E1A18;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#10151B; --surface:#172029; --surface-2:#1C262F; --sunk:#0B1015;
+    --ink:#E4E8EC; --ink-2:#A6B2BC; --ink-3:#7A8791; --line:#2A3641; --line-2:#3A4855;
+    --accent:#6FB2DA; --accent-soft:#1B2E3B; --accent-ink:#9FCDE8;
+    --ok:#6FBE90; --ok-soft:#17291F;
+    --warn:#D9A648; --warn-soft:#2B2416;
+    --risk:#E08579; --risk-soft:#2E1A18;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:14px; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{margin:0; text-wrap:balance}
+  button,input,select,textarea{font:inherit; color:inherit}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:4px}
+  .num{font-family:var(--mono); font-variant-numeric:tabular-nums}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:30;
+    background:var(--surface); border-bottom:1px solid var(--line);
+  }
+  .wrap{max-width:1360px; margin:0 auto; padding-inline:16px}
+  .brandrow{display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap; padding-block:14px 12px}
+  .brand h1{
+    font-family:var(--serif); font-size:26px; font-weight:600; letter-spacing:-.01em; line-height:1.1;
+  }
+  .brand p{margin:3px 0 0; color:var(--ink-3); font-size:12.5px}
+  .asof{
+    margin-left:auto; text-align:right; font-size:11px; color:var(--ink-3);
+    text-transform:uppercase; letter-spacing:.09em;
+  }
+  .asof b{display:block; font-family:var(--mono); font-size:13px; letter-spacing:0;
+    text-transform:none; color:var(--ink); font-weight:500; margin-top:2px}
+
+  .stats{display:flex; gap:0; flex-wrap:wrap; border-top:1px solid var(--line)}
+  .stat{
+    flex:1 1 128px; padding:9px 14px 10px; border-right:1px solid var(--line);
+  }
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:0}
+  .stat .k{font-size:10.5px; text-transform:uppercase; letter-spacing:.085em; color:var(--ink-3)}
+  .stat .v{font-family:var(--mono); font-size:19px; font-weight:500; line-height:1.25; margin-top:1px}
+  .stat .v small{font-size:12px; color:var(--ink-3); font-weight:400}
+  .stat.is-risk .v{color:var(--risk)}
+  .stat.is-ok .v{color:var(--ok)}
+
+  .tabs{display:flex; gap:2px; border-top:1px solid var(--line); background:var(--surface-2)}
+  .tab{
+    appearance:none; background:none; border:0; border-bottom:2px solid transparent;
+    padding:9px 14px; font-size:13px; font-weight:500; color:var(--ink-3); cursor:pointer;
+  }
+  .tab:first-child{padding-left:0}
+  .tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+  .tab:hover{color:var(--ink)}
+
+  /* ---------- notices ---------- */
+  .notice{
+    display:flex; gap:9px; align-items:flex-start; margin:12px 0 0;
+    padding:9px 12px; border-radius:var(--r); font-size:12.5px; line-height:1.45;
+    background:var(--warn-soft); color:var(--warn); border:1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+  }
+  .notice b{font-weight:600}
+
+  /* ---------- toolbar ---------- */
+  main{padding-block:14px 40px}
+  .toolbar{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:12px}
+  .search{
+    flex:1 1 210px; min-width:0; max-width:320px; padding:7px 11px;
+    background:var(--surface); border:1px solid var(--line-2); border-radius:var(--r);
+  }
+  .search::placeholder{color:var(--ink-3)}
+  .chips{display:flex; gap:5px; flex-wrap:wrap}
+  .chip{
+    appearance:none; cursor:pointer; padding:6px 11px; font-size:12.5px; font-weight:500;
+    background:var(--surface); color:var(--ink-2);
+    border:1px solid var(--line-2); border-radius:100px;
+  }
+  .chip[aria-pressed="true"]{background:var(--accent); border-color:var(--accent); color:var(--surface)}
+  .chip:hover{border-color:var(--accent)}
+  .sortsel{
+    padding:7px 9px; background:var(--surface); border:1px solid var(--line-2);
+    border-radius:var(--r); font-size:12.5px; margin-left:auto;
+  }
+
+  /* ---------- rows ---------- */
+  .colhead, .row{
+    display:grid; align-items:center; gap:10px;
+    grid-template-columns:3px 30px minmax(150px,1.5fr) 132px 60px 124px 108px 116px 104px;
+  }
+  .colhead{
+    padding:0 12px 6px 0; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:.085em; color:var(--ink-3);
+  }
+  .colhead span:nth-child(6),.colhead span:nth-child(5){text-align:right}
+  .list{display:flex; flex-direction:column; gap:5px}
+  .row{
+    width:100%; text-align:left; cursor:pointer; padding:9px 12px 9px 0;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+    overflow:hidden; font:inherit; color:inherit;
+  }
+  .row:hover{border-color:var(--line-2); box-shadow:var(--shadow)}
+  .row[aria-current="true"]{border-color:var(--accent); box-shadow:0 0 0 1px var(--accent)}
+  .rail{align-self:stretch; background:transparent; border-radius:2px 0 0 2px; margin:-9px 0}
+  .rail.high{background:var(--risk)} .rail.med{background:var(--warn)} .rail.low{background:var(--line-2)}
+  .sl{font-family:var(--mono); font-size:12px; color:var(--ink-3); text-align:center}
+  .who strong{
+    display:block; font-family:var(--serif); font-size:16.5px; font-weight:500;
+    line-height:1.2; letter-spacing:-.005em;
+  }
+  .who span{display:block; font-size:11.5px; color:var(--ink-3); margin-top:1px;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .role{font-size:11.5px; color:var(--ink-2); line-height:1.25}
+  .exp{font-family:var(--mono); font-size:12.5px; text-align:right; color:var(--ink-2)}
+  .pay{text-align:right; font-family:var(--mono); font-size:12.5px; line-height:1.3}
+  .pay b{font-weight:500}
+  .pay i{font-style:normal; display:block; font-size:11px; color:var(--ink-3)}
+  .pay i.hot{color:var(--warn)}
+
+  .pill{
+    display:inline-block; padding:2.5px 8px; border-radius:100px; font-size:11px;
+    font-weight:600; letter-spacing:.01em; white-space:nowrap;
+    border:1px solid transparent;
+  }
+  .pill.ok{background:var(--ok-soft); color:var(--ok); border-color:color-mix(in srgb,var(--ok) 26%,transparent)}
+  .pill.warn{background:var(--warn-soft); color:var(--warn); border-color:color-mix(in srgb,var(--warn) 26%,transparent)}
+  .pill.risk{background:var(--risk-soft); color:var(--risk); border-color:color-mix(in srgb,var(--risk) 26%,transparent)}
+  .pill.mute{background:var(--sunk); color:var(--ink-3); border-color:var(--line)}
+  .pill.accent{background:var(--accent-soft); color:var(--accent-ink); border-color:color-mix(in srgb,var(--accent) 26%,transparent)}
+
+  .stages{display:flex; gap:4px; align-items:center}
+  .dot{
+    width:9px; height:9px; border-radius:50%; border:1.5px solid var(--line-2); background:transparent;
+  }
+  .dot.done{background:var(--ok); border-color:var(--ok)}
+  .dot.fail{background:var(--risk); border-color:var(--risk)}
+  .dot.live{background:var(--accent); border-color:var(--accent)}
+  .dot.hold{background:var(--warn); border-color:var(--warn)}
+  .stages em{font-style:normal; font-size:10.5px; color:var(--ink-3); margin-left:3px}
+
+  .empty{padding:40px 16px; text-align:center; color:var(--ink-3); font-size:13px}
+
+  @media (max-width:1040px){
+    .colhead{display:none}
+    .row{
+      grid-template-columns:3px 30px minmax(130px,1fr) 112px 108px;
+      grid-template-areas:
+        "rail sl who pay avail"
+        "rail sl role stages status";
+      row-gap:7px; align-items:start;
+    }
+    .rail{grid-area:rail} .sl{grid-area:sl; padding-top:3px} .who{grid-area:who}
+    .role{grid-area:role} .exp{display:none} .pay{grid-area:pay}
+    .avail{grid-area:avail; text-align:right} .stages{grid-area:stages} .status{grid-area:status; text-align:right}
+  }
+  @media (max-width:560px){
+    .row{
+      grid-template-columns:3px 28px 1fr auto;
+      grid-template-areas:
+        "rail sl who who"
+        "rail sl role pay"
+        "rail sl stages avail"
+        "rail sl status status";
+    }
+    .status{text-align:left}
+    .avail{text-align:right}
+  }
+
+  /* ---------- action log ---------- */
+  .acts{display:flex; flex-direction:column; gap:6px}
+  .act{
+    display:grid; gap:4px 12px; padding:11px 13px; background:var(--surface);
+    border:1px solid var(--line); border-radius:var(--r);
+    grid-template-columns:auto minmax(0,1fr) 150px;
+    grid-template-areas:"sev head ctl" ". body ctl";
+  }
+  .act .sev{grid-area:sev} .act .head{grid-area:head} .act .body{grid-area:body} .act .ctl{grid-area:ctl}
+  .act .head{font-weight:600; font-size:13px}
+  .act .head span{font-weight:400; color:var(--ink-3); font-family:var(--mono); font-size:11.5px}
+  .act .body{font-size:12.5px; color:var(--ink-2); line-height:1.5}
+  .act .body em{font-style:normal; color:var(--ink); font-weight:500}
+  .act .ctl{display:flex; flex-direction:column; gap:5px}
+  .act.done{opacity:.55}
+  @media (max-width:700px){
+    .act{grid-template-columns:auto 1fr; grid-template-areas:"sev head" ". body" "ctl ctl"}
+    .act .ctl{flex-direction:row}
+  }
+
+  /* ---------- drawer ---------- */
+  .scrim{
+    position:fixed; inset:0; background:rgba(12,20,28,.44); z-index:40;
+    opacity:0; pointer-events:none; transition:opacity .18s ease;
+  }
+  .scrim.open{opacity:1; pointer-events:auto}
+  .drawer{
+    position:fixed; z-index:50; top:0; right:0; bottom:0; width:min(460px,100%);
+    background:var(--surface); border-left:1px solid var(--line);
+    display:flex; flex-direction:column; transform:translateX(102%);
+    transition:transform .2s ease; box-shadow:var(--shadow);
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  .drawer.open{transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .drawer,.scrim{transition:none}
+  }
+  @media (max-width:560px){ .drawer{width:100%; border-left:0} }
+  .dhead{
+    padding:14px 16px 12px; border-bottom:1px solid var(--line); display:flex; gap:12px; align-items:flex-start;
+  }
+  .dhead h2{font-family:var(--serif); font-size:21px; font-weight:600; line-height:1.15}
+  .dhead p{margin:3px 0 0; font-size:12px; color:var(--ink-3)}
+  .x{
+    margin-left:auto; appearance:none; background:var(--sunk); border:1px solid var(--line);
+    width:28px; height:28px; border-radius:7px; cursor:pointer; color:var(--ink-2);
+    font-size:15px; line-height:1; flex:none;
+  }
+  .x:hover{color:var(--ink); border-color:var(--line-2)}
+  .dbody{overflow-y:auto; padding:0 16px 28px; flex:1}
+  .sec{padding-top:16px}
+  .sec > h3{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:.09em; color:var(--ink-3);
+    padding-bottom:7px; border-bottom:1px solid var(--line); margin-bottom:9px;
+  }
+  .kv{display:grid; grid-template-columns:104px 1fr; gap:5px 12px; font-size:12.5px}
+  .kv dt{color:var(--ink-3)}
+  .kv dd{margin:0; word-break:break-word}
+  .kv dd.num{font-family:var(--mono)}
+  .verdict{
+    padding:10px 12px; border-radius:var(--r); font-size:12.5px; line-height:1.55;
+    border:1px solid transparent;
+  }
+  .verdict b{display:block; margin-bottom:3px; font-size:11px; text-transform:uppercase; letter-spacing:.08em}
+  .verdict.match{background:var(--ok-soft); color:var(--ok); border-color:color-mix(in srgb,var(--ok) 24%,transparent)}
+  .verdict.caution{background:var(--warn-soft); color:var(--warn); border-color:color-mix(in srgb,var(--warn) 24%,transparent)}
+  .verdict.risk{background:var(--risk-soft); color:var(--risk); border-color:color-mix(in srgb,var(--risk) 24%,transparent)}
+  .verdict p{margin:0; color:var(--ink-2)}
+  .verdict.match p{color:var(--ink-2)}
+  .flaglist{display:flex; flex-direction:column; gap:7px}
+  .flag{display:flex; gap:8px; font-size:12.5px; line-height:1.5; align-items:flex-start}
+  .flag .t{flex:1}
+  .flag .t em{font-style:normal; display:block; color:var(--ink-3); margin-top:2px}
+
+  .form{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+  .form .full{grid-column:1/-1}
+  .fld{display:flex; flex-direction:column; gap:3px; min-width:0}
+  .fld label{font-size:10.5px; text-transform:uppercase; letter-spacing:.075em; color:var(--ink-3)}
+  .fld input,.fld select,.fld textarea{
+    width:100%; padding:6px 8px; background:var(--surface-2); color:var(--ink);
+    border:1px solid var(--line-2); border-radius:7px; font-size:12.5px;
+  }
+  .fld textarea{resize:vertical; min-height:58px; line-height:1.5}
+  .fld input:disabled,.fld select:disabled,.fld textarea:disabled{opacity:.55; cursor:not-allowed}
+  .subhead{
+    grid-column:1/-1; font-size:11px; font-weight:600; color:var(--ink-2);
+    margin-top:4px; display:flex; align-items:center; gap:8px;
+  }
+  .subhead::after{content:""; flex:1; height:1px; background:var(--line)}
+  .saveline{
+    grid-column:1/-1; font-size:11.5px; color:var(--ink-3); min-height:16px;
+    font-family:var(--mono);
+  }
+  .saveline.err{color:var(--risk)}
+</style>
+
+<div class="masthead">
+  <div class="wrap brandrow">
+    <div class="brand">
+      <h1>Coimbatore Hiring Pipeline</h1>
+      <p>IKrux Engineering &middot; 17 candidates submitted 21 Sep 2026</p>
+    </div>
+    <div class="asof">As on<b id="asof">&mdash;</b></div>
+  </div>
+  <div class="wrap">
+    <div class="stats" id="stats"></div>
+  </div>
+  <div class="wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab" id="tab-pipeline" role="tab" aria-selected="true" aria-controls="view-pipeline">Pipeline</button>
+      <button class="tab" id="tab-actions" role="tab" aria-selected="false" aria-controls="view-actions">Action log</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="notice" hidden></div>
+
+  <section id="view-pipeline" role="tabpanel" aria-labelledby="tab-pipeline">
+    <div class="toolbar">
+      <input class="search" id="q" type="search" placeholder="Search name, company, skill&hellip;" aria-label="Search candidates">
+      <div class="chips" id="rolechips"></div>
+      <button class="chip" id="flagonly" aria-pressed="false">Flagged only</button>
+      <select class="sortsel" id="sort" aria-label="Sort candidates">
+        <option value="sl">Submission order</option>
+        <option value="avail">Soonest available</option>
+        <option value="ectc">Highest expectation</option>
+        <option value="hike">Largest hike</option>
+        <option value="name">Name</option>
+      </select>
+    </div>
+    <div class="colhead" aria-hidden="true">
+      <span></span><span>#</span><span>Candidate</span><span>Role</span><span>Exp</span>
+      <span>CTC &rarr; ECTC</span><span>Availability</span><span>Stages</span><span>Status</span>
+    </div>
+    <div class="list" id="rows"></div>
+  </section>
+
+  <section id="view-actions" role="tabpanel" aria-labelledby="tab-actions" hidden>
+    <div class="toolbar">
+      <div class="chips" id="sevchips"></div>
+      <button class="chip" id="hidedone" aria-pressed="false">Hide closed</button>
+    </div>
+    <div class="acts" id="acts"></div>
+  </section>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dname" tabindex="-1">
+  <div class="dhead">
+    <div>
+      <h2 id="dname">&mdash;</h2>
+      <p id="drole"></p>
+    </div>
+    <button class="x" id="dclose" aria-label="Close panel">&times;</button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+</aside>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============================================================
+     Source data — the vendor submission of 21 Sep 2026, verbatim.
+     CTC / ECTC are INR lakhs per annum. Tracking state is NOT here:
+     it lives in the shared database so the whole team sees it.
+     ============================================================ */
+  var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer"];
+
+  var C = [
+    [1,0,"Jeganagan Murugesan","9940641190","jeganagan@gmail.com","L&T Infotech","14 Years",
+     ".Net 14 Years | React 3 Years | Cloud 3 Years | Lead 4 Years | AI 2 Years | Client Interaction 10 Years",
+     "Coimbatore","LWD: 15 Oct 2026","2026-10-15",30,36,"No",false],
+    [2,0,"Dayakar G","9629921391","dayakargm@gmail.com","IBM India Pvt. Limited","15 Years",
+     ".Net 15 Years | React 3 Years | Azure 5 Years | Lead 4 Years | AI 2 Years | Client Interaction 4 Years",
+     "Coimbatore","LWD: 4 Sep 2026","2026-09-04",18.3,24,"No",true],
+    [3,0,"Amre Binnaz. M","9715748143","amrebinnaz@gmail.com","OMS Software Solutions Pvt Ltd","15 Years",
+     ".Net 12 Years | React 3 Years | Azure 2 Years | Lead 5 Years | AI 0.6 Months | Client Interaction 5 Years",
+     "Coimbatore","LWD: 31 Aug 2026","2026-08-31",11.7,18,"No",true],
+    [4,0,"Adarsh Swaminathan","9980345147","adarshswaminathan@gmail.com","Rackspace","10.3 Years",
+     ".Net 10.3 Years | Angular 5 Years | Azure/AWS 4 Years",
+     "Chamrajnagar","LWD: 6 Aug 2026","2026-08-06",17.5,30,"Offer : 28 L",false],
+    [5,0,"Sivakumar Varatharaj","9600473436","sivamailmsg@gmail.com","HCLTech","14 Years",
+     ".Net 14 Years | Angular 5 Years | React 3 Years | Azure 5 Years",
+     "Chennai","LWD: 5 Oct 2026","2026-10-05",27.4,36,"35 L : TCS",false],
+    [6,0,"Sathya K S","9976168127","sathya.ks03@gmail.com","cSoft Technologies","12 Years",
+     "Java 8 Years | React 8 Years | AWS 8 Years | Lead 3 Years | AI 1 Year | Client Interaction 4 Years",
+     "Coimbatore","LWD: 30 Sep 2026","2026-09-30",20,28,"No",false],
+    [7,0,"Navin Kumar","9486169060","nawinnawi6@gmail.com","Nagarro","9 Years",
+     ".Net 6 Years | Node js 2 Years | React 8 Years | Cloud 2.5 Years | Lead 1.5 Years | AI 2 Years | Client Interaction 6 Years",
+     "Coimbatore","LWD: 30 Oct 2026 (negotiable)","2026-10-30",32.8,33,"No",false],
+    [8,0,"Boopathi Molakgounder","9688849985","info2boopathi@gmail.com","Capgemini","13.5 Years",
+     ".Net 13.5 Years | Angular 4 Years | Azure 2-3 Years",
+     "Erode","LWD: 11 Jun 2026","2026-06-11",24,30,"",true],
+    [9,1,"Ravikumar Gopal","8667317072","ravikumargopal93@gmail.com","Bosch Global Software Technologies","10.3 Years",
+     "Java 10 Years | Python 5 Years | Angular 6 Years | Azure 3.5 Years | Lead 3.5 Years | Architect 2 Years",
+     "Coimbatore","LWD: 9 Oct 2026","2026-10-09",22,35,"34 L (30 L fixed)",false],
+    [10,1,"Vaisakh P","9497380591","ysakhpr@gmail.com","Equifax India","10 Years",
+     "Java 10 Years | Angular 4 Years | Spring Boot 7 Years | Microservices 7 Years | GCP 4 Years | Kafka 2 Years | Lead 6 Years",
+     "Coimbatore","LWD: 31 Aug 2026","2026-08-31",25,30,"",false],
+    [11,1,"Sandhosh Kumar","9787574827","sandhosh.javascript@gmail.com","Wipro","12 Years",
+     "Python 3 Years | React 5 Years | Node 8 Years | Cloud 4+ Years | Lead 5 Years",
+     "Coimbatore","LWD: 29 Aug 2026","2026-08-29",24,30,"No",false],
+    [12,1,"Karthy","9092879950","karthyperiyasamy@gmail.com","Tartlabs","12 Years",
+     ".Net 9 Years | React 7 Years | Cloud 4 Years | Lead 5+ Years",
+     "Coimbatore","LWD: 5 Oct 2026","2026-10-05",17,25,"No",true],
+    [13,2,"Adhithyan C","8939173477","adhithyancheralathan@gmail.com","CE Products","5 Years",
+     "5 Years","Chennai","LWD: 24 Sep 2026","2026-09-24",7.5,15,"",false],
+    [14,2,"Manoj","7810090328","connectmanoj.in@gmail.com","Tata Consultancy Services","5.2 Years",
+     "5.2 Years","Bangalore / Coimbatore","LWD: 9 Sep 2026","2026-09-09",8.5,14,"",false],
+    [15,2,"Sankar Ponnusamy","9994256491","sankarmailing@gmail.com","Tata Consultancy Services","11.2 Years",
+     "6.3 Years relevant","Erode","LWD: 14 Aug 2026","2026-08-14",7.12,14,"",true],
+    [16,2,"Shanmuga raja","9600029567","shanmugarajamanikam@gmail.com","CE Products","5.3 Years",
+     "5 Years","Chennai","LWD: 28 Sep 2026","2026-09-28",6.1,10,"No",false],
+    [17,2,"Srinidhi Ravi","9962308335","srini3998@gmail.com","LTIMindtree","5.6 Years",
+     "5 Years","Chennai","LWD: 10 Oct 2026","2026-10-10",14,18,"No",false]
+  ].map(function(r){
+    return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
+            totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
+            ctc:r[11], ectc:r[12], offers:r[13], resume:r[14]};
+  });
+
+  /* Resume checks — only for the five candidates whose CVs were supplied. */
+  var VERDICT = {
+    2:{k:"match", h:"Matches the submission",
+       t:"Experience, employer, location and the .Net / React / Azure / AI split all line up with his CV. Two things to probe: 10.7 of the 15 years were at Pricol as an Application Engineer rather than services or product delivery, and his CV shows IBM as current with no notice stated while the row records an LWD of 4 Sep 2026."},
+    3:{k:"caution", h:"Matches, with gaps to close",
+       t:"Experience, employer, location and the Aug 2026 exit all agree. Roughly Jun-Oct 2020 is unaccounted for between LAKEBA and his return to OMS, the CV carries no education section, and his AI exposure is AI-assisted coding with Claude and ChatGPT rather than AI engineering."},
+    8:{k:"caution", h:"Skills match, location does not",
+       t:"The 13.5 years, Capgemini, .Net, Angular 8-15 and Azure all agree. The row records Erode but his CV header says Bangalore. His Capgemini tenure ended Jun 2026, so he has been out around three months — confirm status and the reason for the break."},
+    12:{k:"risk", h:"Material mismatch — confirm before a .Net panel",
+       t:"The row credits 9 years of .Net. His CV contains no .NET or C# at all: the backend is Node.js and Express with PHP and Laravel, and the cloud is AWS, not Azure. React at 7 years and Lead at 5+ are both supported. He reads as a Node and React technical lead."},
+    15:{k:"risk", h:"Numbers match, role fit does not",
+       t:"The 11.2 / 6.3 year split, TCS and the 14 Aug 2026 exit all agree. But the profile is Java application and production support for BFSI payments — Spring Boot, REST API and AWS appear only under ‘Technical Exposure’. The row says Erode; his CV says Bangalore."}
+  };
+
+  /* Open actions raised from the resume comparison and arithmetic checks. */
+  var FLAGS = [
+    {id:"a1", sl:12, sev:"High", issue:"Credited with 9 years of .Net; the CV shows none — Node.js, Express, React, PHP/Laravel.", act:"Reconfirm the skill mapping with IKrux before allocating a panel."},
+    {id:"a2", sl:12, sev:"Medium", issue:"Cloud recorded generically at 4 years; the CV shows AWS, not Azure.", act:"Restate as AWS and confirm whether the role needs Azure."},
+    {id:"a3", sl:15, sev:"High", issue:"Profile is Java application and production support, not development.", act:"Confirm whether the opening is a build or a support role before scheduling."},
+    {id:"a4", sl:8, sev:"High", issue:"Last working day of 11 Jun 2026 has already passed.", act:"Confirm employment status, the reason for the break, and whether 30 L still holds."},
+    {id:"a5", sl:null, sev:"High", issue:"Eight of the 17 recorded last working days fall in the past.", act:"Re-verify availability for every candidate marked available now."},
+    {id:"a6", sl:null, sev:"High", issue:"Resumes are on file for only 5 of 17; the rest are vendor-declared and unverified.", act:"Request the remaining CVs from IKrux before the screening calls."},
+    {id:"a7", sl:15, sev:"Medium", issue:"Location recorded as Erode; the CV says Bangalore.", act:"Confirm with the candidate."},
+    {id:"a8", sl:8, sev:"Medium", issue:"Location recorded as Erode; the CV says Bangalore.", act:"Confirm with the candidate."},
+    {id:"a9", sl:3, sev:"Medium", issue:"Employment gap of roughly Jun-Oct 2020 between LAKEBA and OMS.", act:"Ask the candidate to account for the gap."},
+    {id:"a10", sl:2, sev:"Medium", issue:"CV shows IBM as current with no notice; the row records LWD 4 Sep 2026.", act:"Establish which is current and record the real notice position."},
+    {id:"a11", sl:2, sev:"Medium", issue:"10.7 of 15 years were in-house manufacturing IT at Pricol.", act:"Probe depth of enterprise .NET delivery in the technical round."},
+    {id:"a12", sl:7, sev:"Medium", issue:"33 L expected against 32.8 L current — a 0.6% hike, out of line with the rest.", act:"Verify both figures; one is likely mis-keyed."},
+    {id:"a13", sl:null, sev:"Medium", issue:"Offers field blank for SL 8, 10, 13, 14 and 15.", act:"Collect a yes-with-value or a no before any offer discussion."},
+    {id:"a14", sl:4, sev:"Medium", issue:"Based in Chamrajnagar, and already holds a 28 L offer against a 30 L expectation.", act:"Confirm relocation and the closing timeline against the competing offer."},
+    {id:"a15", sl:null, sev:"Medium", issue:"Hikes of 100%, 97%, 65% and 64% at Senior Software Engineer level.", act:"Check each against the approved band before the profiles reach a panel."},
+    {id:"a16", sl:3, sev:"Low", issue:"‘AI : 0.6 Months’ is ambiguous and describes AI-assisted coding, not AI engineering.", act:"Restate the AI entry in the units the rest of the sheet uses."},
+    {id:"a17", sl:3, sev:"Low", issue:"The CV carries no education section.", act:"Collect the qualification."},
+    {id:"a18", sl:14, sev:"Low", issue:"Location recorded as ‘Bangalore / Coimbatore’.", act:"Record a single current location."},
+    {id:"a19", sl:16, sev:"Low", issue:"E-mail address was supplied with a leading space.", act:"Corrected here; fix at source so mail merges do not fail."}
+  ];
+
+  /* ---------------- derived ---------------- */
+  var DAY = 864e5;
+  var today = new Date(); today.setHours(0,0,0,0);
+  var MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+  function parseISO(s){ var p = s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function fmtDate(d){ return d.getDate() + " " + MON[d.getMonth()] + " " + d.getFullYear(); }
+  function fmtShort(d){ return d.getDate() + " " + MON[d.getMonth()] + " " + String(d.getFullYear()).slice(2); }
+  function lakh(n){ return (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0) + " L"; }
+
+  C.forEach(function(c){
+    c.lwdDate = parseISO(c.lwd);
+    c.days = Math.round((c.lwdDate - today) / DAY);
+    c.hike = (c.ectc - c.ctc) / c.ctc;
+    c.avail = c.days <= 0 ? "Available now" : (c.days <= 30 ? "In " + c.days + " days" : "In " + c.days + " days");
+    c.availKind = c.days <= 0 ? "ok" : (c.days <= 30 ? "accent" : "mute");
+    c.offerInHand = !!(c.offers && c.offers !== "No");
+    c.verdict = VERDICT[c.sl] || null;
+    c.flags = FLAGS.filter(function(f){ return f.sl === c.sl; });
+    c.worst = c.flags.reduce(function(a,f){
+      var r = {High:3, Medium:2, Low:1}[f.sev];
+      return r > a ? r : a;
+    }, 0);
+  });
+  var BY_SL = {}; C.forEach(function(c){ BY_SL[c.sl] = c; });
+
+  /* ---------------- shared state ---------------- */
+  var RESULTS = ["", "Scheduled", "Selected", "Rejected", "On Hold", "No Show", "Rescheduled"];
+  var SCREEN  = ["", "Shortlisted", "On Hold", "Rejected"];
+  var FINAL   = ["", "In Process", "Selected", "Rejected", "On Hold", "Offer Declined", "Joined", "Dropped Out"];
+  var ACTSTAT = ["Open", "In Progress", "Closed", "Not Applicable"];
+
+  function blankTrack(){
+    return {sharedOn:"", screening:"", l1d:"", l1p:"", l1r:"", l2d:"", l2p:"", l2r:"",
+            hrd:"", hrr:"", final:"", offer:"", offerCtc:"", doj:"", remarks:""};
+  }
+  var track = {};   // sl -> tracking object
+  var acts  = {};   // flag id -> {status, owner}
+  C.forEach(function(c){ track[c.sl] = blankTrack(); });
+  FLAGS.forEach(function(f){ acts[f.id] = {status:"Open", owner:""}; });
+
+  var db = null, canWrite = true, dbLive = false;
+
+  /* ---------------- rendering ---------------- */
+  var $ = function(id){ return document.getElementById(id); };
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function stageState(t){
+    // returns [screening, l1, l2, hr] each of "", "live", "done", "fail", "hold"
+    function m(v){
+      if (!v) return "";
+      if (v === "Selected" || v === "Shortlisted") return "done";
+      if (v === "Rejected") return "fail";
+      if (v === "On Hold") return "hold";
+      return "live";
+    }
+    return [m(t.screening), m(t.l1r), m(t.l2r), m(t.hrr)];
+  }
+
+  function statusOf(c, t){
+    if (t.final) return t.final;
+    var s = stageState(t);
+    if (s.indexOf("fail") > -1) return "Rejected";
+    if (s.indexOf("hold") > -1) return "On Hold";
+    if (s.some(function(x){ return x; })) return "In Process";
+    return "Not started";
+  }
+  function statusKind(s){
+    if (s === "Rejected" || s === "Dropped Out" || s === "Offer Declined") return "risk";
+    if (s === "Selected" || s === "Joined") return "ok";
+    if (s === "On Hold") return "warn";
+    if (s === "Not started") return "mute";
+    return "accent";
+  }
+
+  /* ---- stats strip ---- */
+  function renderStats(){
+    var host = $("stats"); host.textContent = "";
+    var availNow = C.filter(function(c){ return c.days <= 0; }).length;
+    var offers = C.filter(function(c){ return c.offerInHand; }).length;
+    var inProc = C.filter(function(c){ return statusOf(c, track[c.sl]) === "In Process"; }).length;
+    var sel = C.filter(function(c){ var s = statusOf(c, track[c.sl]); return s === "Selected" || s === "Joined"; }).length;
+    var rej = C.filter(function(c){ return statusOf(c, track[c.sl]) === "Rejected"; }).length;
+    var openHigh = FLAGS.filter(function(f){ return f.sev === "High" && acts[f.id].status !== "Closed" && acts[f.id].status !== "Not Applicable"; }).length;
+    var resumes = C.filter(function(c){ return c.resume; }).length;
+
+    [["Candidates", C.length, ""],
+     ["Resumes on file", resumes, "of " + C.length, resumes < C.length ? "is-risk" : ""],
+     ["Available now", availNow, "of " + C.length],
+     ["Holding an offer", offers, ""],
+     ["In process", inProc, ""],
+     ["Selected", sel, "", sel ? "is-ok" : ""],
+     ["Rejected", rej, ""],
+     ["High flags open", openHigh, "", openHigh ? "is-risk" : ""]
+    ].forEach(function(s){
+      var d = el("div", "stat" + (s[3] ? " " + s[3] : ""));
+      d.appendChild(el("div", "k", s[0]));
+      var v = el("div", "v"); v.appendChild(document.createTextNode(String(s[1])));
+      if (s[2]) { var sm = el("small", null, " " + s[2]); v.appendChild(sm); }
+      d.appendChild(v);
+      host.appendChild(d);
+    });
+  }
+
+  /* ---- filters ---- */
+  var filters = {q:"", role:"", flagged:false, sort:"sl"};
+  var actFilters = {sev:"", hideDone:false};
+
+  function visible(){
+    var out = C.filter(function(c){
+      if (filters.role && c.role !== filters.role) return false;
+      if (filters.flagged && !c.flags.length) return false;
+      if (filters.q){
+        var hay = (c.name + " " + c.company + " " + c.relExp + " " + c.curLoc + " " + c.role).toLowerCase();
+        if (hay.indexOf(filters.q) === -1) return false;
+      }
+      return true;
+    });
+    var s = filters.sort;
+    out.sort(function(a, b){
+      if (s === "name") return a.name.localeCompare(b.name);
+      if (s === "ectc") return b.ectc - a.ectc;
+      if (s === "hike") return b.hike - a.hike;
+      if (s === "avail") return a.days - b.days;
+      return a.sl - b.sl;
+    });
+    return out;
+  }
+
+  function renderRows(){
+    var host = $("rows"); host.textContent = "";
+    var list = visible();
+    if (!list.length){
+      host.appendChild(el("div", "empty", "No candidate matches these filters."));
+      return;
+    }
+    list.forEach(function(c){
+      var t = track[c.sl];
+      var row = el("button", "row");
+      row.type = "button";
+      row.setAttribute("aria-current", current === c.sl ? "true" : "false");
+      row.addEventListener("click", function(){ openDrawer(c.sl); });
+
+      var railCls = c.worst === 3 ? "rail high" : c.worst === 2 ? "rail med" : c.worst === 1 ? "rail low" : "rail";
+      row.appendChild(el("div", railCls));
+      row.appendChild(el("div", "sl", String(c.sl)));
+
+      var who = el("div", "who");
+      who.appendChild(el("strong", null, c.name));
+      who.appendChild(el("span", null, c.company + " · " + c.curLoc));
+      row.appendChild(who);
+
+      row.appendChild(el("div", "role", c.role));
+      row.appendChild(el("div", "exp", c.totalExp.replace(" Years", "y")));
+
+      var pay = el("div", "pay");
+      var b = el("b", null, lakh(c.ctc) + " → " + lakh(c.ectc));
+      pay.appendChild(b);
+      var pct = Math.round(c.hike * 100);
+      var i = el("i", pct >= 60 ? "hot" : null, "+" + pct + "%" + (c.offerInHand ? " · offer" : ""));
+      pay.appendChild(i);
+      row.appendChild(pay);
+
+      var av = el("div", "avail");
+      av.appendChild(el("span", "pill " + c.availKind, c.avail));
+      row.appendChild(av);
+
+      var st = el("div", "stages");
+      stageState(t).forEach(function(k){ st.appendChild(el("i", "dot" + (k ? " " + k : ""))); });
+      st.appendChild(el("em", null, ["Scr","L1","L2","HR"].filter(function(_, ix){
+        return stageState(t)[ix];
+      }).slice(-1)[0] || ""));
+      row.appendChild(st);
+
+      var s = statusOf(c, t);
+      var stw = el("div", "status");
+      stw.appendChild(el("span", "pill " + statusKind(s), s));
+      row.appendChild(stw);
+
+      host.appendChild(row);
+    });
+  }
+
+  /* ---- action log ---- */
+  function renderActs(){
+    var host = $("acts"); host.textContent = "";
+    var list = FLAGS.filter(function(f){
+      if (actFilters.sev && f.sev !== actFilters.sev) return false;
+      if (actFilters.hideDone && (acts[f.id].status === "Closed" || acts[f.id].status === "Not Applicable")) return false;
+      return true;
+    });
+    if (!list.length){
+      host.appendChild(el("div", "empty", "Nothing open under these filters."));
+      return;
+    }
+    list.forEach(function(f){
+      var a = acts[f.id];
+      var closed = a.status === "Closed" || a.status === "Not Applicable";
+      var card = el("div", "act" + (closed ? " done" : ""));
+
+      var sev = el("div", "sev");
+      sev.appendChild(el("span", "pill " + (f.sev === "High" ? "risk" : f.sev === "Medium" ? "warn" : "mute"), f.sev));
+      card.appendChild(sev);
+
+      var head = el("div", "head");
+      head.appendChild(document.createTextNode(f.sl ? BY_SL[f.sl].name : "Pipeline-wide"));
+      if (f.sl) head.appendChild(el("span", null, "  SL " + f.sl));
+      card.appendChild(head);
+
+      var body = el("div", "body");
+      body.appendChild(document.createTextNode(f.issue + " "));
+      body.appendChild(el("em", null, f.act));
+      card.appendChild(body);
+
+      var ctl = el("div", "ctl");
+      var sel = document.createElement("select");
+      sel.className = "chip";
+      sel.setAttribute("aria-label", "Status");
+      ACTSTAT.forEach(function(v){
+        var o = document.createElement("option"); o.value = v; o.textContent = v;
+        if (a.status === v) o.selected = true;
+        sel.appendChild(o);
+      });
+      sel.disabled = !canWrite;
+      sel.addEventListener("change", function(){
+        acts[f.id] = {status:sel.value, owner:a.owner};
+        saveAct(f.id); renderActs(); renderStats();
+      });
+      ctl.appendChild(sel);
+
+      var own = document.createElement("input");
+      own.className = "chip"; own.type = "text"; own.placeholder = "Owner";
+      own.value = a.owner; own.disabled = !canWrite;
+      own.setAttribute("aria-label", "Owner");
+      own.addEventListener("input", function(){
+        acts[f.id] = {status:acts[f.id].status, owner:own.value};
+        debounce("act:" + f.id, function(){ saveAct(f.id); });
+      });
+      ctl.appendChild(own);
+      card.appendChild(ctl);
+
+      host.appendChild(card);
+    });
+  }
+
+  /* ---- drawer ---- */
+  var current = null, lastFocus = null;
+
+  function field(label, node, full){
+    var w = el("div", "fld" + (full ? " full" : ""));
+    var id = "f_" + Math.random().toString(36).slice(2, 9);
+    var l = el("label", null, label); l.setAttribute("for", id);
+    node.id = id;
+    w.appendChild(l); w.appendChild(node);
+    return w;
+  }
+  function input(type, val, on){
+    var n = document.createElement("input");
+    n.type = type; n.value = val || ""; n.disabled = !canWrite;
+    n.addEventListener("input", on);
+    return n;
+  }
+  function select(opts, val, on){
+    var n = document.createElement("select");
+    opts.forEach(function(o){
+      var x = document.createElement("option");
+      x.value = o; x.textContent = o || "—";
+      if (o === val) x.selected = true;
+      n.appendChild(x);
+    });
+    n.disabled = !canWrite;
+    n.addEventListener("change", on);
+    return n;
+  }
+
+  function openDrawer(sl){
+    current = sl;
+    lastFocus = document.activeElement;
+    var c = BY_SL[sl], t = track[sl];
+
+    $("dname").textContent = c.name;
+    $("drole").textContent = c.role + "  ·  " + c.company;
+
+    var body = $("dbody"); body.textContent = "";
+
+    /* submitted details */
+    var s1 = el("section", "sec");
+    s1.appendChild(el("h3", null, "Submitted by the vendor"));
+    var dl = el("dl", "kv");
+    [["Mobile", c.mobile, true], ["E-mail", c.email], ["Company", c.company],
+     ["Total exp.", c.totalExp], ["Relevant", c.relExp], ["Current", c.curLoc],
+     ["Work location", "Coimbatore"], ["Notice", c.notice],
+     ["Last working", fmtDate(c.lwdDate) + (c.days <= 0 ? "  (passed)" : "  (in " + c.days + " days)"), true],
+     ["CTC", lakh(c.ctc), true], ["Expected", lakh(c.ectc) + "   (+" + Math.round(c.hike * 100) + "%)", true],
+     ["Other offers", c.offers || "not captured"]
+    ].forEach(function(p){
+      dl.appendChild(el("dt", null, p[0]));
+      dl.appendChild(el("dd", p[2] ? "num" : null, p[1]));
+    });
+    s1.appendChild(dl);
+    body.appendChild(s1);
+
+    /* resume check */
+    var s2 = el("section", "sec");
+    s2.appendChild(el("h3", null, "Resume check"));
+    if (c.verdict){
+      var v = el("div", "verdict " + c.verdict.k);
+      v.appendChild(el("b", null, c.verdict.h));
+      v.appendChild(el("p", null, c.verdict.t));
+      s2.appendChild(v);
+    } else {
+      var nv = el("div", "verdict caution");
+      nv.appendChild(el("b", null, "No resume on file"));
+      nv.appendChild(el("p", null, "This row is vendor-declared and has not been checked against a CV. Request it from IKrux before the screening call."));
+      s2.appendChild(nv);
+    }
+    body.appendChild(s2);
+
+    /* flags */
+    if (c.flags.length){
+      var s3 = el("section", "sec");
+      s3.appendChild(el("h3", null, "Open actions · " + c.flags.length));
+      var fl = el("div", "flaglist");
+      c.flags.forEach(function(f){
+        var r = el("div", "flag");
+        r.appendChild(el("span", "pill " + (f.sev === "High" ? "risk" : f.sev === "Medium" ? "warn" : "mute"), f.sev));
+        var tx = el("div", "t");
+        tx.appendChild(document.createTextNode(f.issue));
+        tx.appendChild(el("em", null, f.act));
+        r.appendChild(tx);
+        fl.appendChild(r);
+      });
+      s3.appendChild(fl);
+      body.appendChild(s3);
+    }
+
+    /* tracking form */
+    var s4 = el("section", "sec");
+    s4.appendChild(el("h3", null, "Interview tracking"));
+    var form = el("div", "form");
+    function set(k){
+      return function(e){
+        t[k] = e.target.value;
+        debounce("trk:" + sl, function(){ saveTrack(sl); });
+        renderRows(); renderStats(); markSaving();
+      };
+    }
+    function setNow(k){
+      return function(e){ t[k] = e.target.value; saveTrack(sl); renderRows(); renderStats(); markSaving(); };
+    }
+
+    form.appendChild(field("Profile shared on", input("date", t.sharedOn, setNow("sharedOn"))));
+    form.appendChild(field("Screening", select(SCREEN, t.screening, setNow("screening"))));
+
+    form.appendChild(el("div", "subhead", "Round 1"));
+    form.appendChild(field("Date", input("date", t.l1d, setNow("l1d"))));
+    form.appendChild(field("Result", select(RESULTS, t.l1r, setNow("l1r"))));
+    form.appendChild(field("Panel", input("text", t.l1p, set("l1p")), true));
+
+    form.appendChild(el("div", "subhead", "Round 2"));
+    form.appendChild(field("Date", input("date", t.l2d, setNow("l2d"))));
+    form.appendChild(field("Result", select(RESULTS, t.l2r, setNow("l2r"))));
+    form.appendChild(field("Panel", input("text", t.l2p, set("l2p")), true));
+
+    form.appendChild(el("div", "subhead", "HR round"));
+    form.appendChild(field("Date", input("date", t.hrd, setNow("hrd"))));
+    form.appendChild(field("Result", select(RESULTS, t.hrr, setNow("hrr"))));
+
+    form.appendChild(el("div", "subhead", "Outcome"));
+    form.appendChild(field("Final status", select(FINAL, t.final, setNow("final"))));
+    form.appendChild(field("Offer released", select(["", "Yes", "No"], t.offer, setNow("offer"))));
+    form.appendChild(field("Offered CTC (L)", input("number", t.offerCtc, set("offerCtc"))));
+    form.appendChild(field("Date of joining", input("date", t.doj, setNow("doj"))));
+
+    var ta = document.createElement("textarea");
+    ta.value = t.remarks; ta.disabled = !canWrite;
+    ta.placeholder = "Negotiation notes, relocation, references…";
+    ta.addEventListener("input", function(e){
+      t.remarks = e.target.value;
+      debounce("trk:" + sl, function(){ saveTrack(sl); });
+      markSaving();
+    });
+    form.appendChild(field("Remarks", ta, true));
+
+    var line = el("div", "saveline"); line.id = "saveline";
+    line.textContent = canWrite ? (dbLive ? "Saved for everyone" : "Connecting…") : "Read-only in this view";
+    form.appendChild(line);
+
+    s4.appendChild(form);
+    body.appendChild(s4);
+
+    $("drawer").classList.add("open");
+    $("scrim").classList.add("open");
+    $("drawer").focus();
+    renderRows();
+  }
+
+  function closeDrawer(){
+    current = null;
+    $("drawer").classList.remove("open");
+    $("scrim").classList.remove("open");
+    renderRows();
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  var saveTimer = null;
+  function markSaving(){
+    var l = $("saveline"); if (!l || !canWrite) return;
+    l.classList.remove("err"); l.textContent = "Saving…";
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function(){
+      var n = $("saveline");
+      if (n && !n.classList.contains("err")) n.textContent = dbLive ? "Saved for everyone" : "Saved locally — not shared";
+    }, 900);
+  }
+  function saveError(msg){
+    var l = $("saveline"); if (!l) return;
+    l.classList.add("err"); l.textContent = msg;
+  }
+
+  /* ---------------- persistence ---------------- */
+  var timers = {};
+  function debounce(key, fn){
+    clearTimeout(timers[key]);
+    timers[key] = setTimeout(fn, 550);
+  }
+
+  var chains = {};
+  function queue(key, fn){
+    chains[key] = (chains[key] || Promise.resolve()).then(fn, fn);
+    return chains[key];
+  }
+
+  function handleWriteError(e){
+    var code = e && e.code;
+    if (code === "invalid_argument" || code === "not_granted"){
+      canWrite = false;
+      showNotice("You can view this pipeline but not change it. Ask the owner for edit access to record interview outcomes.", true);
+      if (current) openDrawer(current);
+      renderActs();
+    } else if (code === "quota_exceeded" || code === "resource_exhausted"){
+      saveError("Not saved — the store is busy. Try again shortly.");
+    } else {
+      saveError("Not saved — connection problem.");
+    }
+  }
+
+  function saveTrack(sl){
+    if (!db || !canWrite) return;
+    var body = {};
+    var t = track[sl];
+    Object.keys(t).forEach(function(k){ body[k] = t[k]; });
+    queue("t" + sl, function(){
+      return db.doc("tracking/c" + sl).set(body).catch(handleWriteError);
+    });
+  }
+  function saveAct(id){
+    if (!db || !canWrite) return;
+    var a = acts[id];
+    queue("a" + id, function(){
+      return db.doc("actions/" + id).set({status:a.status, owner:a.owner}).catch(handleWriteError);
+    });
+  }
+
+  function showNotice(text, warn){
+    var n = $("notice");
+    n.hidden = false;
+    n.className = "notice";
+    n.textContent = "";
+    var b = el("b", null, warn ? "Read-only. " : "Heads up. ");
+    n.appendChild(b);
+    n.appendChild(document.createTextNode(text));
+  }
+
+  async function connect(){
+    var c = window.claude;
+    if (!c || !c.use) { offline(); return; }
+    var store = null;
+    try { store = await c.use("db"); } catch (e) { store = null; }
+    if (!store) { offline(); return; }
+    db = store; dbLive = true;
+
+    store.collection("tracking").onSnapshot(function(snap){
+      snap.docs.forEach(function(d){
+        var sl = +String(d.id).replace(/^c/, "");
+        if (!BY_SL[sl]) return;
+        var data = d.data() || {};
+        var t = blankTrack();
+        Object.keys(t).forEach(function(k){ if (data[k] != null) t[k] = data[k]; });
+        track[sl] = t;
+      });
+      renderRows(); renderStats();
+      if (current) refreshOpenForm();
+    }, function(){ /* subscription ended; page keeps working */ });
+
+    store.collection("actions").onSnapshot(function(snap){
+      snap.docs.forEach(function(d){
+        if (!acts[d.id]) return;
+        var data = d.data() || {};
+        acts[d.id] = {status:data.status || "Open", owner:data.owner || ""};
+      });
+      renderActs(); renderStats();
+    }, function(){});
+  }
+
+  function refreshOpenForm(){
+    // Re-render the drawer only when it is not being typed into.
+    var a = document.activeElement;
+    if (a && $("dbody").contains(a)) return;
+    openDrawer(current);
+  }
+
+  function offline(){
+    dbLive = false; canWrite = false;
+    showNotice("Shared saving is not available in this view, so interview outcomes cannot be recorded here. Everything else on the page is live.", true);
+    renderActs();
+    if (current) openDrawer(current);
+  }
+
+  /* ---------------- wiring ---------------- */
+  $("asof").textContent = fmtDate(today);
+
+  var rc = $("rolechips");
+  [["", "All roles"]].concat(ROLES.map(function(r){ return [r, r]; })).forEach(function(p){
+    var b = el("button", "chip", p[1]);
+    b.type = "button";
+    b.setAttribute("aria-pressed", filters.role === p[0] ? "true" : "false");
+    b.addEventListener("click", function(){
+      filters.role = p[0];
+      Array.prototype.forEach.call(rc.children, function(x){ x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      renderRows();
+    });
+    rc.appendChild(b);
+  });
+
+  var sc = $("sevchips");
+  [["", "All"], ["High", "High"], ["Medium", "Medium"], ["Low", "Low"]].forEach(function(p){
+    var b = el("button", "chip", p[1]);
+    b.type = "button";
+    b.setAttribute("aria-pressed", actFilters.sev === p[0] ? "true" : "false");
+    b.addEventListener("click", function(){
+      actFilters.sev = p[0];
+      Array.prototype.forEach.call(sc.children, function(x){ x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      renderActs();
+    });
+    sc.appendChild(b);
+  });
+
+  $("q").addEventListener("input", function(e){
+    filters.q = e.target.value.trim().toLowerCase(); renderRows();
+  });
+  $("sort").addEventListener("change", function(e){ filters.sort = e.target.value; renderRows(); });
+  $("flagonly").addEventListener("click", function(){
+    filters.flagged = !filters.flagged;
+    this.setAttribute("aria-pressed", filters.flagged ? "true" : "false");
+    renderRows();
+  });
+  $("hidedone").addEventListener("click", function(){
+    actFilters.hideDone = !actFilters.hideDone;
+    this.setAttribute("aria-pressed", actFilters.hideDone ? "true" : "false");
+    renderActs();
+  });
+
+  function selectTab(which){
+    var pipe = which === "pipeline";
+    $("tab-pipeline").setAttribute("aria-selected", pipe ? "true" : "false");
+    $("tab-actions").setAttribute("aria-selected", pipe ? "false" : "true");
+    $("view-pipeline").hidden = !pipe;
+    $("view-actions").hidden = pipe;
+  }
+  $("tab-pipeline").addEventListener("click", function(){ selectTab("pipeline"); });
+  $("tab-actions").addEventListener("click", function(){ selectTab("actions"); });
+
+  $("dclose").addEventListener("click", closeDrawer);
+  $("scrim").addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape" && current !== null) closeDrawer();
+  });
+
+  renderStats();
+  renderRows();
+  renderActs();
+  connect();
+})();
+</script>
