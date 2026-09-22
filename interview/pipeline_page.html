@@ -1,4 +1,4 @@
-<title>Coimbatore Hiring Portal</title>
+<title>Certainti Hiring Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap">
@@ -192,6 +192,51 @@
   .facet .chip{padding:4px 10px; font-size:11.5px}
   .facet .chip[disabled]{opacity:.38; cursor:default}
 
+  .seg{display:inline-flex; border:1px solid var(--line-2); border-radius:100px; overflow:hidden}
+  .segbtn{
+    appearance:none; cursor:pointer; background:var(--surface); border:0; color:var(--ink-3);
+    padding:6px 12px; font-size:12px;
+  }
+  .segbtn + .segbtn{border-left:1px solid var(--line-2)}
+  .segbtn[aria-pressed="true"]{background:var(--tint-2); color:var(--on-tint); font-weight:500}
+
+  .export{
+    margin-top:10px; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--r); padding:14px;
+  }
+  .export h4{font-size:10px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-3); margin:0}
+  .export .grp{margin-bottom:12px}
+  .export .grphead{display:flex; align-items:baseline; gap:10px; margin-bottom:7px}
+  .export .opts{display:flex; flex-wrap:wrap; gap:5px}
+  .export .chip{padding:4px 10px; font-size:11.5px}
+  .exfoot{
+    display:flex; flex-wrap:wrap; gap:9px; align-items:center;
+    border-top:1px solid var(--line); padding-top:12px;
+  }
+  .exfoot .sum{font-size:12px; color:var(--ink-3); margin-right:auto}
+  .exfoot .sum b{color:var(--ink); font-weight:500}
+  .btn{
+    appearance:none; cursor:pointer; padding:7px 15px; border-radius:100px; font-size:12.5px;
+    font-weight:500; background:var(--tint-2); color:var(--on-tint); border:1px solid var(--deep);
+  }
+  .btn.ghost{background:var(--surface); color:var(--ink-2); border-color:var(--line-2); font-weight:400}
+  .btn:disabled{opacity:.45; cursor:not-allowed}
+  .exmsg{font-size:11.5px; color:var(--ink-3); width:100%}
+  .exmsg.err{color:var(--risk)}
+  .exmsg.ok{color:var(--ok)}
+
+  .more{
+    grid-column:1/-1; margin-top:7px; padding-top:7px; border-top:1px dashed var(--line);
+    font-size:11px; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:4px 16px;
+  }
+  .more b{color:var(--ink-2); font-weight:400}
+  .list.compact .who span,
+  .list.compact .pay i,
+  .list.compact .stages em,
+  .list.compact .more{display:none}
+  .list.compact .row{padding-block:6px}
+  .list.compact .role .rec{display:inline; margin-top:0; margin-left:6px}
+
   .activebar{display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-top:11px}
   .count{font-size:12px; color:var(--ink-3)}
   .count b{color:var(--ink); font-weight:500}
@@ -264,20 +309,20 @@
     .colhead{display:none}
     .row{
       grid-template-columns:4px 28px minmax(130px,1fr) 108px 104px;
-      grid-template-areas:"rail sl who pay avail" "rail sl role stages status";
+      grid-template-areas:"rail sl who pay avail" "rail sl role stages status" "rail sl more more more";
       row-gap:7px; align-items:start;
     }
     .rail{grid-area:rail} .sl{grid-area:sl; padding-top:2px} .who{grid-area:who}
     .role{grid-area:role} .exp{display:none} .pay{grid-area:pay}
     .avail{grid-area:avail; text-align:right} .stages{grid-area:stages}
-    .status{grid-area:status; text-align:right}
+    .status{grid-area:status; text-align:right} .more{grid-area:more}
   }
   @media (max-width:560px){
     .row{
       grid-template-columns:4px 26px 1fr auto;
-      grid-template-areas:"rail sl who who" "rail sl role pay" "rail sl stages avail" "rail sl status status";
+      grid-template-areas:"rail sl who who" "rail sl role pay" "rail sl stages avail" "rail sl status status" "rail sl more more";
     }
-    .status{text-align:left} .avail{text-align:right}
+    .status{text-align:left} .avail{text-align:right} .more{grid-area:more}
   }
 
   /* ---------------- action log ---------------- */
@@ -410,9 +455,9 @@
 
 <div class="masthead">
   <div class="wrap brandrow">
-    <div class="mark" aria-hidden="true">IK</div>
+    <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
-      <h1>Coimbatore Hiring Portal</h1>
+      <h1>Certainti Hiring Portal</h1>
       <p>IKrux Engineering &middot; 17 candidates submitted 21 Sep 2026</p>
     </div>
     <div class="mtools">
@@ -444,6 +489,11 @@
       <button class="chip" id="refinebtn" aria-pressed="false" aria-expanded="false" aria-controls="refine">Refine</button>
       <button class="chip" id="cvonly" aria-pressed="false">Resume on file</button>
       <button class="chip" id="flagonly" aria-pressed="false">Flagged</button>
+      <button class="chip" id="exportbtn" aria-pressed="false" aria-expanded="false" aria-controls="exportpanel">Export</button>
+      <div class="seg" role="group" aria-label="List density">
+        <button class="segbtn" id="v-compact" aria-pressed="false">Compact</button>
+        <button class="segbtn" id="v-detail"  aria-pressed="true">Detailed</button>
+      </div>
       <select class="sortsel" id="sort" aria-label="Sort candidates">
         <option value="sl">Submission order</option>
         <option value="avail">Soonest available</option>
@@ -454,6 +504,7 @@
       </select>
     </div>
     <div class="refine" id="refine" hidden></div>
+    <div class="export" id="exportpanel" hidden></div>
     <div class="activebar" id="activebar"></div>
     <div class="colhead" aria-hidden="true">
       <span></span><span>#</span><span>Candidate</span><span>Role</span><span>Exp</span>
@@ -755,6 +806,60 @@
     return "seed";
   }
 
+  /* Every field the export can carry. `g` groups them in the picker. */
+  function rnd(n){ return Math.round(n * 100) / 100; }
+  var COLS = [
+    {g:"Submitted", k:"sl",       h:"SL. No",             v:function(c){ return c.sl; }},
+    {g:"Submitted", k:"vendor",   h:"Vendor",             v:function(){ return "IKrux Engineering"; }},
+    {g:"Submitted", k:"date",     h:"Date",               v:function(){ return "21-Sep-2026"; }},
+    {g:"Submitted", k:"role",     h:"Skill Name (applied)", v:function(c){ return c.role; }},
+    {g:"Submitted", k:"name",     h:"Candidate Name",     v:function(c){ return c.name; }},
+    {g:"Submitted", k:"mobile",   h:"Mobile Number",      v:function(c){ return c.mobile; }},
+    {g:"Submitted", k:"email",    h:"Email ID",           v:function(c){ return c.email; }},
+    {g:"Submitted", k:"company",  h:"Current Company",    v:function(c){ return c.company; }},
+    {g:"Submitted", k:"totalExp", h:"Total Experience",   v:function(c){ return c.totalExp; }},
+    {g:"Submitted", k:"relExp",   h:"Relevant Experience",v:function(c){ return c.relExp; }},
+    {g:"Submitted", k:"curLoc",   h:"Current Location",   v:function(c){ return c.curLoc; }},
+    {g:"Submitted", k:"workLoc",  h:"Work Location",      v:function(){ return "Coimbatore"; }},
+    {g:"Submitted", k:"notice",   h:"Notice Period",      v:function(c){ return c.notice; }},
+    {g:"Submitted", k:"ctc",      h:"CTC (L)",            v:function(c){ return c.ctc; }},
+    {g:"Submitted", k:"ectc",     h:"ECTC (L)",           v:function(c){ return c.ectc; }},
+    {g:"Submitted", k:"offers",   h:"Offers",             v:function(c){ return c.offers; }},
+
+    {g:"Derived",   k:"hike",     h:"Hike %",             v:function(c){ return rnd(c.hike * 100); }},
+    {g:"Derived",   k:"lwd",      h:"Last working day",   v:function(c){ return fmtDate(c.lwdDate); }},
+    {g:"Derived",   k:"days",     h:"Days to LWD",        v:function(c){ return c.days; }},
+    {g:"Derived",   k:"avail",    h:"Availability",       v:function(c){ return c.fAvail; }},
+
+    {g:"Resume review", k:"verdict",  h:"Resume verdict", v:function(c){ return c.verdict ? c.verdict.h : ""; }},
+    {g:"Resume review", k:"vdetail",  h:"Verdict detail", v:function(c){ return c.verdict ? c.verdict.t : ""; }},
+    {g:"Resume review", k:"nflags",   h:"Open actions",   v:function(c){ return c.flags.length; }},
+    {g:"Resume review", k:"worstFlag",h:"Highest flag",   v:function(c){ return c.fFlag; }},
+
+    {g:"Tracking", k:"recRole",  h:"Recommended role",  v:function(c){ return recRoleOf(c); }},
+    {g:"Tracking", k:"fit",      h:"Recommendation",    v:function(c){ return roleFit(c); }},
+    {g:"Tracking", k:"sharedOn", h:"Profile shared on", v:function(c){ return track[c.sl].sharedOn; }},
+    {g:"Tracking", k:"screening",h:"Screening",         v:function(c){ return track[c.sl].screening; }},
+    {g:"Tracking", k:"round",    h:"Currently at",      v:function(c){ return currentRound(track[c.sl]); }},
+    {g:"Tracking", k:"status",   h:"Overall stage",     v:function(c){ return statusOf(c); }}
+  ];
+  ROUNDS.forEach(function(r){
+    COLS.push({g:"Tracking", k:r.key+"d", h:r.label+" date",   v:function(c){ return track[c.sl][r.key+"d"]; }});
+    COLS.push({g:"Tracking", k:r.key+"p", h:r.label+" panel",  v:function(c){ return track[c.sl][r.key+"p"]; }});
+    COLS.push({g:"Tracking", k:r.key+"r", h:r.label+" result", v:function(c){ return track[c.sl][r.key+"r"]; }});
+  });
+  [["final","Final status"],["offer","Offer released"],["offerCtc","Offered CTC (L)"],
+   ["doj","Date of joining"],["remarks","Remarks"]].forEach(function(f){
+    COLS.push({g:"Tracking", k:f[0], h:f[1], v:function(c){ return track[c.sl][f[0]]; }});
+  });
+
+  var DEFAULT_COLS = ["sl","name","role","recRole","fit","mobile","email","company",
+                      "totalExp","curLoc","notice","ctc","ectc","offers","round","status"];
+  var pickedCols = {};
+  COLS.forEach(function(c){ pickedCols[c.k] = DEFAULT_COLS.indexOf(c.k) > -1; });
+  var COL_GROUPS = COLS.map(function(c){ return c.g; })
+                       .filter(function(g, i, a){ return a.indexOf(g) === i; });
+
   /* ===================== dom helpers ===================== */
   function $(id){ return document.getElementById(id); }
   function el(tag, cls, text){
@@ -858,6 +963,9 @@
     return {key:r.key + "r", label:r.label + " result", opts:RESULT_OPTS,
             get:function(c){ return track[c.sl][r.key + "r"] || "Not scheduled"; }};
   }));
+  var density = "detail";
+  try { var dsv = localStorage.getItem("ikrux.density"); if (dsv) density = dsv; } catch (e) {}
+
   var sel = {};   // facet key -> array of chosen values
   FACETS.forEach(function(f){ sel[f.key] = []; });
   var q = "", sortBy = "sl";
@@ -956,6 +1064,130 @@
     }
   }
 
+  /* ===================== export ===================== */
+  var dl = null;              // downloads capability, resolved at startup
+
+  function csvCell(v){
+    var t = (v == null) ? "" : String(v);
+    return /[",\n\r]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t;
+  }
+  function buildCsv(){
+    var cols = COLS.filter(function(c){ return pickedCols[c.k]; });
+    var rows = visible();
+    var out = [cols.map(function(c){ return csvCell(c.h); }).join(",")];
+    rows.forEach(function(c){
+      out.push(cols.map(function(col){ return csvCell(col.v(c)); }).join(","));
+    });
+    // A leading BOM so Excel opens UTF-8 names and the rupee figures cleanly.
+    return {text:"\ufeff" + out.join("\r\n") + "\r\n", rows:rows.length, cols:cols.length};
+  }
+  function exFilename(){
+    var d = new Date(), pad = function(n){ return (n < 10 ? "0" : "") + n; };
+    return "certainti-pipeline-" + d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()) + ".csv";
+  }
+  function exMsg(text, kind){
+    var m = $("exmsg"); if (!m) return;
+    m.className = "exmsg" + (kind ? " " + kind : "");
+    m.textContent = text;
+  }
+
+  function setAllCols(on){
+    COLS.forEach(function(c){ pickedCols[c.k] = on; });
+    renderExport();
+  }
+  function renderExport(){
+    var host = $("exportpanel"); host.textContent = "";
+
+    var top = el("div", "grphead");
+    top.appendChild(el("h4", null, "Columns to include"));
+    [["All", function(){ setAllCols(true); }],
+     ["None", function(){ setAllCols(false); }],
+     ["Reset to default", function(){
+        COLS.forEach(function(c){ pickedCols[c.k] = DEFAULT_COLS.indexOf(c.k) > -1; });
+        renderExport();
+     }]].forEach(function(a){
+      var b = el("button", "linkbtn", a[0]);
+      b.type = "button"; b.addEventListener("click", a[1]);
+      top.appendChild(b);
+    });
+    host.appendChild(top);
+
+    COL_GROUPS.forEach(function(g){
+      var inGroup = COLS.filter(function(c){ return c.g === g; });
+      var box = el("div", "grp");
+      var head = el("div", "grphead");
+      head.appendChild(el("h4", null, g));
+      var allOn = inGroup.every(function(c){ return pickedCols[c.k]; });
+      var tog = el("button", "linkbtn", allOn ? "Clear group" : "Select group");
+      tog.type = "button";
+      tog.addEventListener("click", function(){
+        inGroup.forEach(function(c){ pickedCols[c.k] = !allOn; });
+        renderExport();
+      });
+      head.appendChild(tog);
+      box.appendChild(head);
+      var opts = el("div", "opts");
+      inGroup.forEach(function(c){
+        opts.appendChild(chipBtn(c.h, !!pickedCols[c.k], function(){
+          pickedCols[c.k] = !pickedCols[c.k]; renderExport();
+        }));
+      });
+      box.appendChild(opts);
+      host.appendChild(box);
+    });
+
+    var built = buildCsv();
+    var foot = el("div", "exfoot");
+    var sum = el("div", "sum");
+    sum.appendChild(el("b", null, String(built.rows)));
+    sum.appendChild(document.createTextNode(" record" + (built.rows === 1 ? "" : "s") + " matching the current filters, "));
+    sum.appendChild(el("b", null, String(built.cols)));
+    sum.appendChild(document.createTextNode(" column" + (built.cols === 1 ? "" : "s")));
+    foot.appendChild(sum);
+
+    var save = el("button", "btn", "Download CSV");
+    save.type = "button";
+    save.disabled = !built.cols || !built.rows;
+    save.addEventListener("click", function(){ doDownload(); });
+    if (!dl){ save.hidden = true; }
+    foot.appendChild(save);
+
+    var copy = el("button", "btn ghost", "Copy to clipboard");
+    copy.type = "button";
+    copy.disabled = !built.cols || !built.rows;
+    copy.addEventListener("click", function(){ doCopy(); });
+    foot.appendChild(copy);
+
+    var msg = el("div", "exmsg"); msg.id = "exmsg";
+    if (!dl) msg.textContent = "Saving a file is not available in this view — copy to the clipboard and paste into a spreadsheet instead.";
+    foot.appendChild(msg);
+    host.appendChild(foot);
+  }
+
+  function doDownload(){
+    var built = buildCsv();
+    exMsg("Waiting for you to confirm the download\u2026");
+    dl.save({filename:exFilename(), data:built.text}).then(function(){
+      exMsg("Saved " + built.rows + " records.", "ok");
+    }, function(e){
+      var code = e && e.code;
+      if (code === "declined") exMsg("Download cancelled.");
+      else if (code === "rate_limited") exMsg("A download prompt is already open. Finish it, then try again.", "err");
+      else if (code === "too_large") exMsg("That export is too large. Choose fewer columns or narrow the filters.", "err");
+      else exMsg("Could not save the file. Copy to the clipboard instead.", "err");
+    });
+  }
+  function doCopy(){
+    var built = buildCsv();
+    var done = function(){ exMsg("Copied " + built.rows + " records. Paste into a spreadsheet.", "ok"); };
+    var fail = function(){ exMsg("Could not reach the clipboard in this view.", "err"); };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(built.text).then(done, fail);
+      } else { fail(); }
+    } catch (e) { fail(); }
+  }
+
   /* ===================== stats & rows ===================== */
   function renderStats(){
     var host = $("stats"); host.textContent = "";
@@ -991,6 +1223,7 @@
 
   function renderRows(){
     var host = $("rows"); host.textContent = "";
+    host.className = "list" + (density === "compact" ? " compact" : "");
     var list = visible();
     if (!list.length){
       host.appendChild(el("div", "empty", "No candidate matches these filters. Clear one to widen the search."));
@@ -1042,12 +1275,23 @@
       stw.appendChild(el("span", "pill " + statusKind(s), s));
       row.appendChild(stw);
 
+      if (density === "detail"){
+        var more = el("div", "more");
+        [[c.relExp, ""], [c.email, ""], [c.mobile, ""], [c.notice, ""],
+         [c.verdict ? c.verdict.h : "Resume not reviewed", ""]
+        ].forEach(function(pair){
+          if (pair[0]) more.appendChild(el("span", null, pair[0]));
+        });
+        row.appendChild(more);
+      }
+
       host.appendChild(row);
     });
   }
 
   function renderAll(){
     renderStats(); renderRefine(); renderActiveBar(); renderRows();
+    if (!$("exportpanel").hidden) renderExport();
   }
 
   /* ===================== action log ===================== */
@@ -1402,6 +1646,10 @@
   function connect(){
     var cl = window.claude;
     if (!cl || !cl.use){ offline(); return; }
+    Promise.resolve(cl.use("downloads")).then(function(d){
+      dl = d || null;
+      if (!$("exportpanel").hidden) renderExport();
+    }, function(){ dl = null; });
     Promise.resolve(cl.use("db")).then(function(store){
       if (!store){ offline(); return; }
       db = store; dbLive = true;
@@ -1474,6 +1722,25 @@
     $("q").value = ""; q = ""; this.hidden = true; renderAll(); $("q").focus();
   });
   $("sort").addEventListener("change", function(e){ sortBy = e.target.value; renderRows(); });
+  function setDensity(d){
+    density = d;
+    $("v-compact").setAttribute("aria-pressed", d === "compact" ? "true" : "false");
+    $("v-detail").setAttribute("aria-pressed", d === "detail" ? "true" : "false");
+    try { localStorage.setItem("ikrux.density", d); } catch (e) {}
+    renderRows();
+  }
+  $("v-compact").addEventListener("click", function(){ setDensity("compact"); });
+  $("v-detail").addEventListener("click", function(){ setDensity("detail"); });
+  setDensity(density);
+
+  $("exportbtn").addEventListener("click", function(){
+    var open = $("exportpanel").hidden;
+    if (open) renderExport();
+    $("exportpanel").hidden = !open;
+    this.setAttribute("aria-pressed", open ? "true" : "false");
+    this.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
   $("refinebtn").addEventListener("click", function(){
     var open = $("refine").hidden;
     $("refine").hidden = !open;
