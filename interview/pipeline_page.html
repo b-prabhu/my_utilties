@@ -235,6 +235,8 @@
     margin-right:5px; vertical-align:middle;
   }
   .role{font-size:11px; color:var(--ink-2)}
+  .role .rec{display:block; margin-top:2px; color:var(--warn); font-weight:500; line-height:1.25}
+  .role .rec.ok{color:var(--ok); font-weight:400}
   .exp{font-size:12px; text-align:right; color:var(--ink-2)}
   .pay{text-align:right; font-size:12px; line-height:1.35}
   .pay i{font-style:normal; display:block; font-size:10.5px; color:var(--ink-3)}
@@ -469,6 +471,7 @@
   </section>
 </main>
 
+<datalist id="rolesuggest"></datalist>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dname" tabindex="-1">
   <div class="dhead">
@@ -690,7 +693,7 @@
                 hrd:"fnd", hrr:"fnr"};
 
   function blankTrack(){
-    var t = {sharedOn:"", screening:"", final:"", offer:"", offerCtc:"", doj:"", remarks:""};
+    var t = {recRole:"", sharedOn:"", screening:"", final:"", offer:"", offerCtc:"", doj:"", remarks:""};
     ROUNDS.forEach(function(r){ t[r.key + "d"] = ""; t[r.key + "p"] = ""; t[r.key + "r"] = ""; });
     return t;
   }
@@ -719,6 +722,21 @@
     return t.screening ? "Screening" : "Not started";
   }
   var ROUND_OPTS = ["Not started","Screening"].concat(ROUNDS.map(function(r){ return r.label; }));
+
+  /* Roles a panel might recommend instead of the one the vendor applied the
+     candidate against. The field is free text; these are only suggestions. */
+  var ROLE_SUGGEST = ROLES.concat([
+    "Technical Architect","Full Stack Developer","Software Engineer",
+    "Production Support Engineer","Application Support Engineer",
+    "Not suitable for any open role"
+  ]).filter(function(v, i, a){ return a.indexOf(v) === i; });
+
+  function recRoleOf(c){ return (track[c.sl].recRole || "").trim(); }
+  function roleFit(c){
+    var r = recRoleOf(c);
+    if (!r) return "Not assigned";
+    return r === c.role ? "Confirmed as applied" : "Different role recommended";
+  }
   var RESULT_OPTS = ["Not scheduled"].concat(RESULTS.slice(1));
   function statusOf(c){
     var t = track[c.sl];
@@ -827,7 +845,15 @@
     {key:"status", label:"Overall stage",    get:function(c){ return statusOf(c); },
       opts:["Not started","In Process","Selected","Rejected","On Hold","Joined","Offer Declined","Dropped Out"]},
     {key:"round",  label:"Currently at",      get:function(c){ return currentRound(track[c.sl]); },
-      opts:ROUND_OPTS, always:true}
+      opts:ROUND_OPTS, always:true},
+    {key:"fit",    label:"Recommendation",    get:roleFit, always:true,
+      opts:["Not assigned","Confirmed as applied","Different role recommended"]},
+    {key:"rec",    label:"Recommended role",  get:function(c){ return recRoleOf(c) || "Not assigned"; },
+      opts:function(){
+        var seen = {};
+        C.forEach(function(c){ var r = recRoleOf(c); if (r) seen[r] = 1; });
+        return Object.keys(seen).sort();
+      }}
   ].concat(ROUNDS.map(function(r){
     return {key:r.key + "r", label:r.label + " result", opts:RESULT_OPTS,
             get:function(c){ return track[c.sl][r.key + "r"] || "Not scheduled"; }};
@@ -871,7 +897,7 @@
       var box = el("div", "facet");
       box.appendChild(el("h4", null, f.label));
       var opts = el("div", "opts");
-      f.opts.forEach(function(v){
+      (typeof f.opts === "function" ? f.opts() : f.opts).forEach(function(v){
         var n = pool.filter(function(c){ return f.get(c) === v; }).length;
         var on = sel[f.key].indexOf(v) > -1;
         if (!n && !on && !f.always) return;
@@ -950,6 +976,7 @@
      ["In process", inProc, "", ""],
      ["Selected", selc, "", selc ? "g" : ""],
      ["Rejected", rej, "", ""],
+     ["Role change flagged", C.filter(function(c){ return roleFit(c) === "Different role recommended"; }).length, "", ""],
      ["High flags open", openHigh, "", openHigh ? "r" : ""]
     ].forEach(function(s){
       var d = el("div", "stat" + (s[3] ? " " + s[3] : ""));
@@ -984,7 +1011,12 @@
       who.appendChild(el("span", null, c.company + " · " + c.curLoc));
       row.appendChild(who);
 
-      row.appendChild(el("div", "role", c.role));
+      var roleCell = el("div", "role");
+      roleCell.appendChild(el("span", null, c.role));
+      var rec = recRoleOf(c);
+      if (rec && rec !== c.role) roleCell.appendChild(el("span", "rec", "\u2192 " + rec));
+      else if (rec) roleCell.appendChild(el("span", "rec ok", "\u2713 confirmed"));
+      row.appendChild(roleCell);
       row.appendChild(el("div", "exp tnum", c.totalExp.replace(" Years", "y")));
 
       var pay = el("div", "pay tnum");
@@ -1232,6 +1264,16 @@
         saveTrack(c.sl);
       };
     }
+    var recIn = document.createElement("input");
+    recIn.type = "text"; recIn.value = t.recRole || ""; recIn.disabled = !canWrite;
+    recIn.setAttribute("list", "rolesuggest");
+    recIn.placeholder = "Same as applied, or the role that fits better";
+    recIn.addEventListener("input", function(e){
+      t.recRole = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
+      renderStats(); renderRefine(); renderActiveBar(); renderRows();
+      debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
+    });
+    form.appendChild(field("Recommended role  \u00b7  applied as " + c.role, recIn, true));
     form.appendChild(field("Profile shared on", inputEl("date", t.sharedOn, now("sharedOn"))));
     form.appendChild(field("Screening", selectEl(SCREEN, t.screening, now("screening"))));
     ROUNDS.forEach(function(r){
@@ -1269,7 +1311,9 @@
     if (document.activeElement && !$("drawer").contains(document.activeElement)) lastFocus = document.activeElement;
     var c = BY_SL[sl];
     $("dname").textContent = c.name;
-    $("dsub").textContent = c.role + "  ·  " + c.company + "  ·  " + c.curLoc;
+    var recNow = recRoleOf(c);
+    $("dsub").textContent = c.role + (recNow && recNow !== c.role ? "  →  " + recNow : "") +
+                            "  ·  " + c.company + "  ·  " + c.curLoc;
     ["profile","resume","track"].forEach(function(k){
       $("dt-" + k).setAttribute("aria-selected", dtab === k ? "true" : "false");
     });
@@ -1397,6 +1441,12 @@
   }
 
   /* ===================== wiring ===================== */
+  (function(){
+    var dl = document.getElementById("rolesuggest");
+    ROLE_SUGGEST.forEach(function(r){
+      var o = document.createElement("option"); o.value = r; dl.appendChild(o);
+    });
+  })();
   applyTheme();
   buildThemeSheet();
   $("asof").textContent = fmtDate(today);
