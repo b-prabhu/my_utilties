@@ -212,7 +212,7 @@
   /* ---------------- rows ---------------- */
   .colhead,.row{
     display:grid; align-items:center; gap:10px;
-    grid-template-columns:4px 28px minmax(150px,1.5fr) 128px 56px 120px 112px 104px 100px;
+    grid-template-columns:4px 28px minmax(150px,1.5fr) 124px 52px 118px 108px 112px 100px;
   }
   .colhead{padding:14px 14px 6px 0; font-size:10px; letter-spacing:.07em;
     text-transform:uppercase; color:var(--ink-3)}
@@ -248,7 +248,9 @@
   .pill.risk{background:var(--risk-bg); color:var(--risk); border-color:color-mix(in srgb,var(--risk) 24%,transparent)}
   .pill.mute{background:var(--sunk); color:var(--ink-3); border-color:var(--line)}
   .pill.seed{background:var(--tint); color:var(--deep); border-color:var(--line-2)}
-  .stages{display:flex; gap:4px; align-items:center}
+  .stages{display:flex; flex-direction:column; gap:3px; align-items:flex-start}
+  .dotrow{display:flex; gap:4px; align-items:center}
+  .stages em{font-style:normal; font-size:10px; color:var(--ink-3); line-height:1.2}
   .dot{width:8px; height:8px; border-radius:50%; border:1.5px solid var(--line-2)}
   .dot.done{background:var(--ok); border-color:var(--ok)}
   .dot.fail{background:var(--risk); border-color:var(--risk)}
@@ -676,9 +678,21 @@
   var FINAL   = ["","In Process","Selected","Rejected","On Hold","Offer Declined","Joined","Dropped Out"];
   var ACTSTAT = ["Open","In Progress","Closed","Not Applicable"];
 
+  var ROUNDS = [
+    {key:"r1", label:"Round 1",     short:"R1"},
+    {key:"r2", label:"Round 2",     short:"R2"},
+    {key:"r3", label:"Round 3",     short:"R3"},
+    {key:"fn", label:"Final round", short:"Final"}
+  ];
+  /* Field names the earlier three-stage model used, so nothing already
+     recorded against L1 / L2 / HR is lost when a document is read back. */
+  var LEGACY = {l1d:"r1d", l1p:"r1p", l1r:"r1r", l2d:"r2d", l2p:"r2p", l2r:"r2r",
+                hrd:"fnd", hrr:"fnr"};
+
   function blankTrack(){
-    return {sharedOn:"",screening:"",l1d:"",l1p:"",l1r:"",l2d:"",l2p:"",l2r:"",
-            hrd:"",hrr:"",final:"",offer:"",offerCtc:"",doj:"",remarks:""};
+    var t = {sharedOn:"", screening:"", final:"", offer:"", offerCtc:"", doj:"", remarks:""};
+    ROUNDS.forEach(function(r){ t[r.key + "d"] = ""; t[r.key + "p"] = ""; t[r.key + "r"] = ""; });
+    return t;
   }
   var track = {}, acts = {};
   C.forEach(function(c){ track[c.sl] = blankTrack(); });
@@ -693,8 +707,19 @@
       if (v === "On Hold") return "hold";
       return "live";
     }
-    return [m(t.screening), m(t.l1r), m(t.l2r), m(t.hrr)];
+    return [m(t.screening)].concat(ROUNDS.map(function(r){ return m(t[r.key + "r"]); }));
   }
+
+  /* Where the candidate has got to: the furthest round with a date or a
+     result against it, or the screening step before any round is booked. */
+  function currentRound(t){
+    var last = null;
+    ROUNDS.forEach(function(r){ if (t[r.key + "d"] || t[r.key + "r"]) last = r; });
+    if (last) return last.label;
+    return t.screening ? "Screening" : "Not started";
+  }
+  var ROUND_OPTS = ["Not started","Screening"].concat(ROUNDS.map(function(r){ return r.label; }));
+  var RESULT_OPTS = ["Not scheduled"].concat(RESULTS.slice(1));
   function statusOf(c){
     var t = track[c.sl];
     if (t.final) return t.final;
@@ -799,9 +824,14 @@
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},
-    {key:"status", label:"Stage",            get:function(c){ return statusOf(c); },
-      opts:["Not started","In Process","Selected","Rejected","On Hold","Joined","Offer Declined","Dropped Out"]}
-  ];
+    {key:"status", label:"Overall stage",    get:function(c){ return statusOf(c); },
+      opts:["Not started","In Process","Selected","Rejected","On Hold","Joined","Offer Declined","Dropped Out"]},
+    {key:"round",  label:"Currently at",      get:function(c){ return currentRound(track[c.sl]); },
+      opts:ROUND_OPTS, always:true}
+  ].concat(ROUNDS.map(function(r){
+    return {key:r.key + "r", label:r.label + " result", opts:RESULT_OPTS,
+            get:function(c){ return track[c.sl][r.key + "r"] || "Not scheduled"; }};
+  }));
   var sel = {};   // facet key -> array of chosen values
   FACETS.forEach(function(f){ sel[f.key] = []; });
   var q = "", sortBy = "sl";
@@ -844,10 +874,10 @@
       f.opts.forEach(function(v){
         var n = pool.filter(function(c){ return f.get(c) === v; }).length;
         var on = sel[f.key].indexOf(v) > -1;
-        if (!n && !on) return;
-        opts.appendChild(chipBtn(v, on, function(){ toggleFacet(f.key, v); }, n, false));
+        if (!n && !on && !f.always) return;
+        opts.appendChild(chipBtn(v, on, function(){ toggleFacet(f.key, v); }, n, !n && !on));
       });
-      if (opts.children.length < 2 && !sel[f.key].length) return;
+      if (!f.always && opts.children.length < 2 && !sel[f.key].length) return;
       box.appendChild(opts);
       host.appendChild(box);
     });
@@ -969,7 +999,10 @@
       row.appendChild(av);
 
       var st = el("div", "stages");
-      stageState(t).forEach(function(k){ st.appendChild(el("i", "dot" + (k ? " " + k : ""))); });
+      var dots = el("div", "dotrow");
+      stageState(t).forEach(function(k){ dots.appendChild(el("i", "dot" + (k ? " " + k : ""))); });
+      st.appendChild(dots);
+      st.appendChild(el("em", null, currentRound(t)));
       row.appendChild(st);
 
       var s = statusOf(c);
@@ -1200,17 +1233,12 @@
     }
     form.appendChild(field("Profile shared on", inputEl("date", t.sharedOn, now("sharedOn"))));
     form.appendChild(field("Screening", selectEl(SCREEN, t.screening, now("screening"))));
-    form.appendChild(el("div", "subhead", "Round 1"));
-    form.appendChild(field("Date", inputEl("date", t.l1d, now("l1d"))));
-    form.appendChild(field("Result", selectEl(RESULTS, t.l1r, now("l1r"))));
-    form.appendChild(field("Panel", inputEl("text", t.l1p, slow("l1p")), true));
-    form.appendChild(el("div", "subhead", "Round 2"));
-    form.appendChild(field("Date", inputEl("date", t.l2d, now("l2d"))));
-    form.appendChild(field("Result", selectEl(RESULTS, t.l2r, now("l2r"))));
-    form.appendChild(field("Panel", inputEl("text", t.l2p, slow("l2p")), true));
-    form.appendChild(el("div", "subhead", "HR round"));
-    form.appendChild(field("Date", inputEl("date", t.hrd, now("hrd"))));
-    form.appendChild(field("Result", selectEl(RESULTS, t.hrr, now("hrr"))));
+    ROUNDS.forEach(function(r){
+      form.appendChild(el("div", "subhead", r.label));
+      form.appendChild(field("Date", inputEl("date", t[r.key + "d"], now(r.key + "d"))));
+      form.appendChild(field("Result", selectEl(RESULTS, t[r.key + "r"], now(r.key + "r"))));
+      form.appendChild(field("Panel", inputEl("text", t[r.key + "p"], slow(r.key + "p")), true));
+    });
     form.appendChild(el("div", "subhead", "Outcome"));
     form.appendChild(field("Final status", selectEl(FINAL, t.final, now("final"))));
     form.appendChild(field("Offer released", selectEl(["","Yes","No"], t.offer, now("offer"))));
@@ -1325,6 +1353,9 @@
           var sl = +String(d.id).replace(/^c/, "");
           if (!BY_SL[sl]) return;
           var data = d.data() || {}, t = blankTrack();
+          Object.keys(LEGACY).forEach(function(old){
+            if (data[old] != null && data[LEGACY[old]] == null) data[LEGACY[old]] = data[old];
+          });
           Object.keys(t).forEach(function(k){ if (data[k] != null) t[k] = data[k]; });
           track[sl] = t;
         });
