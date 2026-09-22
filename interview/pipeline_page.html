@@ -548,6 +548,30 @@
   });
 
   var VERDICT = {
+    1:{k:"caution", h:"Deeper than recorded, with a gap to explain",
+       t:"L&T Infotech appears under its post-merger name LTIMindtree, and the .Net depth is real \u2014 .NET 8 Azure Functions, Service Bus, Cosmos DB. Two things: his CV lists employment from Jul 2007, about 18 years of history, yet states 14+ years, and the difference is an unexplained gap between Cognizant (to Oct 2013) and TCS (from Dec 2014). His AI entry rests on \u2018Claude prompt Eng\u2019 in a skills list, against the 2 years recorded."},
+    4:{k:"caution", h:"Mostly matches; the .Net span is overstated",
+       t:"Rackspace, Angular, Azure and AWS all agree, and he holds an AWS Developer Associate certification. But his CV states 9.5 years against the 10.3 recorded, and the row credits 10.3 years of .Net when his first Infosys projects \u2014 Customer Account Opening and Multi-Channel Printing for NatWest \u2014 were Java, Struts and Spring Boot. .NET is nearer 7 to 8 years."},
+    5:{k:"caution", h:"Matches well, but he is visa-mobile",
+       t:"Fourteen years from Sep 2012, HCLTech, and the .Net / Angular / React / Azure split all agree, and he adds Python, FastAPI and Azure OpenAI work the row does not record. The flag is his own closing line: \u2018Open to international opportunities (H1B Visa Holder)\u2019 \u2014 worth weighing against a Coimbatore posting and a 36 L expectation."},
+    6:{k:"caution", h:"Twelve years, but four of them were teaching",
+       t:"His industry software experience starts Nov 2018 at cSoft \u2014 about 8 years, which is exactly what the Java, React and AWS 8-year entries reflect. The remaining 4+ years were as an Assistant Professor of Computer Science at Nandha Engineering College (Aug 2014 \u2013 Nov 2018). His AI credentials are stronger than the 1 year recorded. His CV gives his location only as Tamil Nadu, and his employer as Bengaluru (remote)."},
+    7:{k:"risk", h:"The .Net figure does not hold up",
+       t:"React at 8 years is well supported and the front-end depth is genuine. But the row credits 6 years of .Net, and his CV shows C# only at Lycatech (2017\u20132020) and again on the current Nagarro project from Jul 2025 \u2014 the four years between are React, Node and Next.js. .NET is nearer 3 to 4 years. His address reads Tamil Nadu 638701, which is Erode, not Coimbatore, and the Nagarro role is remote."},
+    9:{k:"caution", h:"Strong AI profile; the Java span is overstated",
+       t:"Bosch, Angular and the lead experience all agree, and his GenAI work \u2014 AccentBridge, LangChain, LangGraph, Whisper, LoRA, Ollama, plus an AI hackathon win \u2014 is a real asset the row does not record at all. But Java and Spring Boot start at Datamatics in Jun 2018, about 8 years, not 10: Nov 2016 to May 2018 at MAK Controls was Android and IoT work. His CV says 9+ years against the 10.3 recorded."},
+    10:{k:"risk", h:"He is in Kerala, not Coimbatore",
+       t:"His CV header reads Thiruvananthapuram \u2014 the row says Coimbatore, and that is a relocation across states, not a commute. Java, Spring Boot, microservices and GCP are all well evidenced. Two recorded figures are thin: Angular at 4 years appears once on a personal side project, and Lead at 6 years against a Lead Software Engineer title held only since Aug 2022. Two employment gaps sit in his history."},
+    11:{k:"caution", h:"Lead time and tenure both need probing",
+       t:"The Python, React, RAG and LangGraph depth is real and current. But Lead at 5 years does not hold: he has been Tech Lead at Wipro since Apr 2024, about 2.4 years, with Senior Software Engineer and Senior PHP Developer titles before that. He has had four employers between Apr 2021 and Apr 2024, one of them a six-month stint, with gaps before Wipro and before Equator. His earlier career was PHP and LAMP, which the row does not mention."},
+    13:{k:"risk", h:"Production support, not development",
+       t:"His CV is explicit: Production Support Engineer, L2 application support for MidFirst Bank\u2019s core banking platform \u2014 Unix, SQL/PL-SQL, ITIL incident and change management, Autosys batch monitoring, Splunk and Dynatrace. The Java and Spring Boot exposure is support-side, not build-side. Against a Senior Software Engineer opening this is a fit question, not a detail."},
+    14:{k:"risk", h:"Application support, and he says so himself",
+       t:"His CV opens \u2018Application Support Engineer with 5.1 years\u2019 and his skills line reads \u2018Core Java basics, stack trace debugging\u2019. The work is L1/L2 production support for Evercore and Liberty Mutual \u2014 Oracle SQL, Autosys, ServiceNow, Splunk, ITIL. He is marked an immediate joiner, which fits the elapsed LWD, but this is not a developer profile."},
+    16:{k:"risk", h:"Production support, and a templated CV",
+       t:"L1 & L2 production support across banking, retail and automotive \u2014 Unix, SQL, ITIL, Autosys, Splunk, Dynatrace. Genuine breadth and two awards, but again support rather than development. Separately: he and Adhithyan C (SL 13) share an employer and a near-identical CV structure \u2014 same Ops Console maker-checker language, same Detect-Decide-Switch-Verify-Recover wording, same skills taxonomy \u2014 differing mainly in the client. Verify the two independently."},
+    17:{k:"caution", h:"Half developer, half support, and a thin stack",
+       t:"Five years at LTIMindtree on the Citi BFS-AML project, split between Java development and L3 production support with Actimize, ActOne and AIS. His entire tech skills list is Java 8, Unix shell, SQL, HTML/CSS, Actimize and AIS \u2014 no framework, no cloud, no modern front end. Against an 18 L expectation for a Senior Software Engineer, probe what he has actually built."},
     2:{k:"match", h:"Matches the submission",
        t:"Experience, employer, location and the .Net / React / Azure / AI split all line up with his CV. Two things to probe: 10.7 of the 15 years were at Pricol as an Application Engineer rather than services or product delivery, and his CV shows IBM as current with no notice stated while the row records an LWD of 4 Sep 2026."},
     3:{k:"caution", h:"Matches, with gaps to close",
@@ -561,12 +585,29 @@
   };
 
   var FLAGS = [
+    {id:"a20", sl:null, sev:"High", issue:"All five Senior Software Engineer candidates (SL 13, 14, 15, 16, 17) are production-support or support-weighted profiles. None is a mainstream application developer.", act:"Re-brief IKrux on the Senior Software Engineer requirement before scheduling \u2014 the whole slate for that role looks mis-targeted."},
+    {id:"a21", sl:14, sev:"High", issue:"CV opens \u2018Application Support Engineer\u2019; skills list reads \u2018Core Java basics, stack trace debugging\u2019.", act:"Confirm the opening is a build role before scheduling a development panel."},
+    {id:"a22", sl:16, sev:"High", issue:"L1 & L2 production support profile across banking, retail and automotive \u2014 not development.", act:"Confirm the opening is a build role before scheduling a development panel."},
+    {id:"a23", sl:10, sev:"High", issue:"CV header says Thiruvananthapuram; the row records Coimbatore. That is an interstate relocation, not a commute.", act:"Confirm his relocation intent and family situation before progressing."},
+    {id:"a24", sl:7, sev:"Medium", issue:"Credited with 6 years of .Net; the CV shows C# only 2017\u20132020 and again from Jul 2025 \u2014 roughly 3 to 4 years.", act:"Restate the .Net span and decide whether a React/Node lead fits the role."},
+    {id:"a25", sl:4, sev:"Medium", issue:"Credited with 10.3 years of .Net, but his first Infosys projects (CAO, MCP for NatWest) were Java and Struts. CV states 9.5 years total against 10.3 recorded.", act:"Restate .Net at roughly 7 to 8 years and correct the total."},
+    {id:"a26", sl:9, sev:"Medium", issue:"Credited with 10 years of Java; Java and Spring Boot start Jun 2018 \u2014 about 8 years. The 2016\u20132018 role was Android and IoT.", act:"Restate the Java span, and record the GenAI depth the row currently omits."},
+    {id:"a27", sl:6, sev:"Medium", issue:"Of the 12 years recorded, 4+ were as an Assistant Professor of Computer Science, not industry software engineering.", act:"Record industry experience as roughly 8 years and confirm the panel is comfortable with the academic period."},
+    {id:"a28", sl:11, sev:"Medium", issue:"Credited with 5 years as Lead; Tech Lead title held only since Apr 2024, about 2.4 years. Four employers between Apr 2021 and Apr 2024, one a six-month stint.", act:"Restate the lead span and probe the tenure pattern for retention risk."},
+    {id:"a29", sl:10, sev:"Medium", issue:"Angular at 4 years appears only on a personal side project, and Lead at 6 years against a title held since Aug 2022.", act:"Verify both figures with the candidate."},
+    {id:"a30", sl:5, sev:"Medium", issue:"CV states \u2018Open to international opportunities (H1B Visa Holder)\u2019 \u2014 a flight risk against a Coimbatore posting at 36 L.", act:"Ask directly about his US plans before an offer is built."},
+    {id:"a31", sl:1, sev:"Medium", issue:"CV lists employment from Jul 2007 (about 18 years of history) but states 14+ years; a gap sits between Cognizant (to Oct 2013) and TCS (from Dec 2014).", act:"Ask him to account for the gap and confirm the true total."},
+    {id:"a32", sl:16, sev:"Medium", issue:"His CV and Adhithyan C\u2019s (SL 13) share an employer and a near-identical structure, wording and skills taxonomy, differing mainly in the client name.", act:"Assess the two independently; do not let one interview colour the other."},
+    {id:"a33", sl:17, sev:"Medium", issue:"Entire tech skills list is Java 8, Unix shell, SQL, HTML/CSS, Actimize and AIS \u2014 no framework, no cloud, no modern front end, against an 18 L expectation.", act:"Probe what he has actually built, as distinct from supported."},
+    {id:"a34", sl:7, sev:"Low", issue:"Address reads Tamil Nadu 638701, which is Erode, not Coimbatore; the Nagarro role is remote.", act:"Confirm his base and his willingness to work onsite."},
+    {id:"a35", sl:10, sev:"Low", issue:"Two employment gaps: Mar to Aug 2017, and Dec 2019 to Jul 2020.", act:"Ask him to account for both."},
+    {id:"a36", sl:11, sev:"Low", issue:"Early career was PHP and LAMP, which the recorded skill split does not mention.", act:"Add it for completeness."},
     {id:"a1", sl:12, sev:"High", issue:"Credited with 9 years of .Net; the CV shows none — Node.js, Express, React, PHP/Laravel.", act:"Reconfirm the skill mapping with IKrux before allocating a panel."},
     {id:"a2", sl:12, sev:"Medium", issue:"Cloud recorded generically at 4 years; the CV shows AWS, not Azure.", act:"Restate as AWS and confirm whether the role needs Azure."},
     {id:"a3", sl:15, sev:"High", issue:"Profile is Java application and production support, not development.", act:"Confirm whether the opening is a build or a support role before scheduling."},
     {id:"a4", sl:8, sev:"High", issue:"Last working day of 11 Jun 2026 has already passed.", act:"Confirm employment status, the reason for the break, and whether 30 L still holds."},
     {id:"a5", sl:null, sev:"High", issue:"Eight of the 17 recorded last working days fall in the past.", act:"Re-verify availability for every candidate marked available now."},
-    {id:"a6", sl:null, sev:"High", issue:"Resumes are on file for only 5 of 17; the rest are vendor-declared and unverified.", act:"Request the remaining CVs from IKrux before the screening calls."},
+    {id:"a6", sl:null, sev:"Low", issue:"All 17 resumes have now been received and checked against the submitted row.", act:"Closed. Twelve of the 17 rows needed a correction or carry a question \u2014 see the items below."},
     {id:"a7", sl:15, sev:"Medium", issue:"Location recorded as Erode; the CV says Bangalore.", act:"Confirm with the candidate."},
     {id:"a8", sl:8, sev:"Medium", issue:"Location recorded as Erode; the CV says Bangalore.", act:"Confirm with the candidate."},
     {id:"a9", sl:3, sev:"Medium", issue:"Employment gap of roughly Jun–Oct 2020 between LAKEBA and OMS.", act:"Ask the candidate to account for the gap."},
@@ -806,7 +847,7 @@
         if (!n && !on) return;
         opts.appendChild(chipBtn(v, on, function(){ toggleFacet(f.key, v); }, n, false));
       });
-      if (!opts.children.length) return;
+      if (opts.children.length < 2 && !sel[f.key].length) return;
       box.appendChild(opts);
       host.appendChild(box);
     });
@@ -909,14 +950,7 @@
       row.appendChild(el("div", "sl tnum", String(c.sl)));
 
       var who = el("div", "who");
-      var nm = el("strong");
-      if (c.resume){
-        var dot = el("i", "cvdot");
-        dot.title = "Resume on file";
-        nm.appendChild(dot);
-      }
-      nm.appendChild(document.createTextNode(c.name));
-      who.appendChild(nm);
+      who.appendChild(el("strong", null, c.name));
       who.appendChild(el("span", null, c.company + " · " + c.curLoc));
       row.appendChild(who);
 
@@ -1349,6 +1383,7 @@
     this.setAttribute("aria-pressed", open ? "true" : "false");
     this.setAttribute("aria-expanded", open ? "true" : "false");
   });
+  if (C.every(function(c){ return c.resume; })) $("cvonly").hidden = true;
   $("cvonly").addEventListener("click", function(){
     var on = sel.fCv.indexOf("On file") > -1;
     sel.fCv = on ? [] : ["On file"];
