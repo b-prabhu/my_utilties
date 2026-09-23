@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Migration Schema Review</title>
+<style>
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --surface-2: #f0f2f5; --border: #dde1e7;
+  --text: #1b1f24; --muted: #5d6673; --accent: #2f5bd3;
+  --ok: #1f7a4a; --ok-bg: #e3f4ea; --warn: #8a5a00; --warn-bg: #fdf1d8;
+  --err: #b42318; --err-bg: #fde7e5; --info: #3b4a9c; --info-bg: #e8ebfb;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1216; --surface: #171b21; --surface-2: #1f242c; --border: #2c333d;
+    --text: #e6e9ee; --muted: #9aa4b1; --accent: #7c9cff;
+    --ok: #5ccf8e; --ok-bg: #16311f; --warn: #f0bf5a; --warn-bg: #352a10;
+    --err: #ff8a80; --err-bg: #3a1714; --info: #a9b6ff; --info-bg: #1e2446;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1216; --surface: #171b21; --surface-2: #1f242c; --border: #2c333d;
+  --text: #e6e9ee; --muted: #9aa4b1; --accent: #7c9cff;
+  --ok: #5ccf8e; --ok-bg: #16311f; --warn: #f0bf5a; --warn-bg: #352a10;
+  --err: #ff8a80; --err-bg: #3a1714; --info: #a9b6ff; --info-bg: #1e2446;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 32px 0 12px; }
+.sub { color: var(--muted); margin: 0 0 20px; }
+.mono { font-family: var(--mono); font-size: 12.5px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; min-width: 0; }
+.card h3 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.kv { display: grid; grid-template-columns: 110px 1fr; gap: 4px 12px; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; overflow-wrap: anywhere; }
+.errbox { margin-top: 10px; padding: 10px; border-radius: 8px; background: var(--err-bg); color: var(--err); overflow-wrap: anywhere; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; cursor: pointer; text-align: left; color: inherit; font: inherit; }
+.stat[aria-pressed="true"] { outline: 2px solid var(--accent); outline-offset: -1px; }
+.stat .n { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat .l { color: var(--muted); font-size: 12.5px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0 10px; }
+input[type=search] { flex: 1 1 240px; min-width: 0; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; }
+button.link { background: none; border: 0; color: var(--accent); cursor: pointer; font: inherit; padding: 4px; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+.b-ok { background: var(--ok-bg); color: var(--ok); } .b-warn { background: var(--warn-bg); color: var(--warn); }
+.b-err { background: var(--err-bg); color: var(--err); } .b-info { background: var(--info-bg); color: var(--info); }
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-size: 12px; color: var(--muted); font-weight: 600; background: var(--surface-2); position: sticky; top: 0; }
+tr.pair { cursor: pointer; } tr.pair:hover td { background: var(--surface-2); }
+tr.pair td:first-child::before { content: "▸"; display: inline-block; width: 14px; color: var(--muted); }
+tr.pair.open td:first-child::before { content: "▾"; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.delta-neg { color: var(--err); } .delta-pos { color: var(--warn); }
+tr.detail > td { background: var(--bg); padding: 12px; }
+.detail-inner table { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+.detail-inner th { position: static; }
+.notes { color: var(--muted); font-size: 12.5px; }
+.pk { font-size: 11px; font-weight: 600; color: var(--accent); margin-left: 4px; }
+.meta { display: flex; flex-wrap: wrap; gap: 16px; margin: 0 0 10px; color: var(--muted); font-size: 12.5px; }
+.empty { padding: 24px; text-align: center; color: var(--muted); }
+details.schemas summary { cursor: pointer; color: var(--muted); margin-top: 10px; }
+footer { margin-top: 40px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Migration schema review</h1>
+  <p class="sub" id="subtitle"></p>
+
+  <section class="grid2" id="conns"></section>
+
+  <h2>Summary</h2>
+  <div class="stats" id="stats"></div>
+
+  <h2>Tables</h2>
+  <div class="toolbar">
+    <input type="search" id="q" placeholder="Filter by schema, table or column…" aria-label="Filter tables">
+    <button class="link" id="expand">Expand all</button>
+    <button class="link" id="collapse">Collapse all</button>
+  </div>
+  <div class="tbl-wrap">
+    <table id="pairs">
+      <thead><tr>
+        <th>Source table</th><th>Target table</th><th>Status</th>
+        <th class="num">Cols (src / tgt)</th><th class="num">Rows (src)</th><th class="num">Rows (tgt)</th><th class="num">Δ rows</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <footer id="foot"></footer>
+</main>
+<script id="report-data" type="application/json">__REPORT_DATA__</script>
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById("report-data").textContent);
+  const { source, target, comparison } = data;
+  const $ = (s) => document.querySelector(s);
+  const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = (n) => (n === null || n === undefined ? "—" : Number(n).toLocaleString());
+  const qual = (s, t) => (t ? (s ? `${s}.${t}` : t) : "—");
+
+  const STATUS = {
+    matched:       { label: "Matched",           cls: "b-ok" },
+    matched_warn:  { label: "Matched, warnings", cls: "b-warn" },
+    matched_error: { label: "Matched, blocking", cls: "b-err" },
+    source_only:   { label: "Missing in target", cls: "b-err" },
+    target_only:   { label: "Only in target",    cls: "b-info" },
+  };
+  const COL_STATUS = {
+    ok: ["OK", "b-ok"], warn: ["Warning", "b-warn"], error: ["Blocking", "b-err"],
+    missing: ["Missing in target", "b-err"], extra: ["Only in target", "b-info"],
+  };
+
+  $("#subtitle").textContent = `${source.label} (${source.dialect || "?"}) → ${target.label} (${target.dialect || "?"})`;
+
+  function connCard(s) {
+    const tables = s.schemas.reduce((a, x) => a + x.tables.length, 0);
+    const views = s.schemas.reduce((a, x) => a + x.views.length, 0);
+    const rows = s.schemas.reduce((a, x) => a + x.tables.reduce((b, t) => b + (t.row_count || 0), 0), 0);
+    const schemaList = s.schemas.map((x) => `<li><span class="mono">${esc(x.name)}</span> — ${x.tables.length} tables, ${x.views.length} views</li>`).join("");
+    return `<div class="card">
+      <h3>${esc(s.label)}</h3>
+      <dl class="kv">
+        <dt>Connection</dt><dd class="mono">${esc(s.url)}</dd>
+        <dt>Engine</dt><dd>${esc(s.dialect || "—")}${s.server_version ? " " + esc(s.server_version) : ""}</dd>
+        <dt>Default schema</dt><dd class="mono">${esc(s.default_schema || "—")}</dd>
+        <dt>Schemas</dt><dd>${s.schemas.length}</dd>
+        <dt>Tables / views</dt><dd>${tables} / ${views}</dd>
+        <dt>Total rows</dt><dd>${fmt(rows)}</dd>
+        <dt>Captured</dt><dd>${esc(s.captured_at)}</dd>
+      </dl>
+      ${s.error ? `<div class="errbox"><strong>Could not inspect:</strong> ${esc(s.error)}</div>` : ""}
+      ${s.schemas.length ? `<details class="schemas"><summary>Schemas</summary><ul>${schemaList}</ul></details>` : ""}
+    </div>`;
+  }
+  $("#conns").innerHTML = connCard(source) + connCard(target);
+
+  let filter = null;
+  const order = ["matched", "matched_warn", "matched_error", "source_only", "target_only"];
+  const statsEl = $("#stats");
+  const total = comparison.pairs.length;
+  statsEl.innerHTML = `<button class="stat" data-f="" aria-pressed="true"><div class="n">${total}</div><div class="l">All tables</div></button>` +
+    order.map((k) => `<button class="stat" data-f="${k}" aria-pressed="false"><div class="n">${comparison.counts[k] || 0}</div><div class="l"><span class="badge ${STATUS[k].cls}">${STATUS[k].label}</span></div></button>`).join("");
+  statsEl.addEventListener("click", (e) => {
+    const b = e.target.closest(".stat"); if (!b) return;
+    filter = b.dataset.f || null;
+    statsEl.querySelectorAll(".stat").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    render();
+  });
+
+  function colCell(c) {
+    if (!c) return `<td class="notes">—</td><td></td>`;
+    return `<td class="mono">${esc(c.type)}${c.pk ? '<span class="pk">PK</span>' : ""}</td><td>${c.nullable ? "NULL" : "NOT NULL"}</td>`;
+  }
+
+  function detail(p) {
+    const t = p.source || p.target;
+    const side = (x, name) => x ? `<div class="meta">
+        <span><strong>${name}</strong> PK: <span class="mono">${esc((x.primary_key || []).join(", ") || "none")}</span></span>
+        <span>FKs: ${x.foreign_keys.length ? x.foreign_keys.map((f) => `<span class="mono">${esc(f.columns.join(","))} → ${esc(qual(f.ref_schema, f.ref_table))}</span>`).join("; ") : "none"}</span>
+        <span>Indexes: ${x.indexes.length ? x.indexes.map((i) => `<span class="mono">${esc(i.name)}${i.unique ? " (unique)" : ""}</span>`).join(", ") : "none"}</span>
+      </div>` : "";
+    let rows;
+    if (p.columns.length) {
+      rows = p.columns.map((c) => {
+        const [lbl, cls] = COL_STATUS[c.status];
+        return `<tr><td class="mono">${esc(c.name)}</td>${colCell(c.source)}${colCell(c.target)}
+          <td><span class="badge ${cls}">${lbl}</span></td><td class="notes">${esc((c.notes || []).join("; "))}</td></tr>`;
+      }).join("");
+    } else {
+      const isSrc = !!p.source;
+      rows = t.columns.map((c) => `<tr><td class="mono">${esc(c.name)}</td>${isSrc ? colCell(c) + colCell(null) : colCell(null) + colCell(c)}<td></td><td></td></tr>`).join("");
+    }
+    return `<div class="detail-inner">${side(p.source, "Source")}${side(p.target, "Target")}
+      <div class="tbl-wrap"><table><thead><tr><th>Column</th><th>Source type</th><th>Null</th><th>Target type</th><th>Null</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>${rows}</tbody></table></div></div>`;
+  }
+
+  const open = new Set();
+  function matches(p, q) {
+    if (!q) return true;
+    const hay = [p.source_schema, p.source_table, p.target_schema, p.target_table,
+      ...((p.source || p.target).columns.map((c) => c.name))].join(" ").toLowerCase();
+    return hay.includes(q);
+  }
+
+  function render() {
+    const q = $("#q").value.trim().toLowerCase();
+    const tbody = $("#pairs tbody");
+    const list = comparison.pairs.map((p, i) => [p, i]).filter(([p]) => (!filter || p.status === filter) && matches(p, q));
+    if (!list.length) { tbody.innerHTML = `<tr><td colspan="7" class="empty">No tables match.</td></tr>`; return; }
+    tbody.innerHTML = list.map(([p, i]) => {
+      const s = STATUS[p.status];
+      const sc = p.source ? p.source.row_count : null, tc = p.target ? p.target.row_count : null;
+      const d = p.row_diff;
+      const dcls = d < 0 ? "delta-neg" : d > 0 ? "delta-pos" : "";
+      const main = `<tr class="pair${open.has(i) ? " open" : ""}" data-i="${i}">
+        <td class="mono">${esc(qual(p.source_schema, p.source_table))}</td>
+        <td class="mono">${esc(qual(p.target_schema, p.target_table))}</td>
+        <td><span class="badge ${s.cls}">${s.label}</span></td>
+        <td class="num">${p.source ? p.source.columns.length : "—"} / ${p.target ? p.target.columns.length : "—"}</td>
+        <td class="num">${fmt(sc)}</td><td class="num">${fmt(tc)}</td>
+        <td class="num ${dcls}">${d === null || d === undefined ? "—" : (d > 0 ? "+" : "") + fmt(d)}</td></tr>`;
+      return main + (open.has(i) ? `<tr class="detail"><td colspan="7">${detail(p)}</td></tr>` : "");
+    }).join("");
+  }
+
+  $("#pairs tbody").addEventListener("click", (e) => {
+    const tr = e.target.closest("tr.pair"); if (!tr) return;
+    const i = Number(tr.dataset.i);
+    open.has(i) ? open.delete(i) : open.add(i);
+    render();
+  });
+  $("#q").addEventListener("input", render);
+  $("#expand").addEventListener("click", () => { comparison.pairs.forEach((_, i) => open.add(i)); render(); });
+  $("#collapse").addEventListener("click", () => { open.clear(); render(); });
+  $("#foot").textContent = `Generated ${data.generated_at}. Passwords are masked; row counts are exact COUNT(*) at capture time.`;
+  render();
+})();
+</script>
+</body>
+</html>

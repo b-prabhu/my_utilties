@@ -1,0 +1,4 @@
+SQLAlchemy>=2.0
+pymssql>=2.2        # SQL Server / Azure SQL
+psycopg2-binary>=2.9  # PostgreSQL / Azure Database for PostgreSQL
+pytest>=7
