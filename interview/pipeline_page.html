@@ -435,6 +435,47 @@
   .cvkv dt{font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3)}
   .cvkv dd{margin:1px 0 0; color:var(--ink-2)}
 
+  /* round 1 sheet */
+  .r1head{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    background:var(--tint); border:1px solid var(--line-2); border-radius:var(--r);
+    padding:11px 13px; margin-top:15px;
+  }
+  .r1head .st{font-size:12px; color:var(--deep); font-weight:500}
+  .r1head .sc{margin-left:auto; font-size:12px; color:var(--ink-2)}
+  .r1head .sc b{font-size:16px; font-weight:500; color:var(--ink)}
+  .iconsm{
+    appearance:none; cursor:pointer; padding:4px 10px; border-radius:100px; font-size:11.5px;
+    background:var(--surface); border:1px solid var(--line-2); color:var(--ink-2);
+  }
+  .iconsm:hover{border-color:var(--deep); color:var(--ink)}
+  .iconsm:disabled{opacity:.45; cursor:not-allowed}
+  .qcard{
+    border:1px solid var(--line); border-radius:var(--r); padding:12px 13px; margin-top:9px;
+    background:var(--surface-2);
+  }
+  .qtop{display:flex; align-items:center; gap:8px; margin-bottom:7px}
+  .qtop .pill{font-size:10px}
+  .qtop .iconsm{margin-left:auto}
+  .qtext{font-size:13px; line-height:1.5; margin-bottom:9px}
+  .scorerow{display:flex; align-items:center; gap:5px; flex-wrap:wrap; margin-bottom:8px}
+  .scorerow .lbl{font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); margin-right:3px}
+  .sbtn{
+    appearance:none; cursor:pointer; width:28px; height:26px; border-radius:7px; font-size:12px;
+    background:var(--surface); border:1px solid var(--line-2); color:var(--ink-2);
+  }
+  .sbtn[aria-pressed="true"]{background:var(--deep); border-color:var(--deep); color:var(--surface); font-weight:500}
+  .sbtn:disabled{opacity:.45; cursor:not-allowed}
+  .qcard textarea{
+    width:100%; padding:7px 10px; background:var(--surface); color:var(--ink);
+    border:1px solid var(--line-2); border-radius:var(--r-sm); font-size:12.5px;
+    resize:vertical; min-height:52px;
+  }
+  .qcard details{margin-top:8px; font-size:12.5px}
+  .qcard summary{cursor:pointer; color:var(--deep); font-size:11.5px; font-weight:500}
+  .qcard details p{margin-top:6px; color:var(--ink-2); line-height:1.55}
+  .qcard details p.fu{color:var(--ink-3); border-top:1px dashed var(--line); padding-top:6px; margin-top:7px}
+
   /* tracking form */
   .form{display:grid; grid-template-columns:1fr 1fr; gap:10px}
   .form .full{grid-column:1/-1}
@@ -536,6 +577,7 @@
     <div class="dtabs" role="tablist">
       <button class="dtab" id="dt-profile" role="tab" aria-selected="true">Profile</button>
       <button class="dtab" id="dt-resume"  role="tab" aria-selected="false">Resume</button>
+      <button class="dtab" id="dt-round1"  role="tab" aria-selected="false">Round 1</button>
       <button class="dtab" id="dt-track"   role="tab" aria-selected="false">Tracking</button>
     </div>
   </div>
@@ -543,6 +585,7 @@
 </aside>
 
 <script src="resumes.js"></script>
+<script src="questions.js"></script>
 <script>
 (function(){
   "use strict";
@@ -753,6 +796,43 @@
   FLAGS.forEach(function(f){ acts[f.id] = {status:"Open", owner:""}; });
   var db = null, canWrite = true, dbLive = false;
 
+  /* Round 1 theory sheet. off = recycle offset per topic; sc and nt are keyed
+     by question id, so recycling never orphans a score already given. */
+  var QT = (typeof QTOPICS !== "undefined") ? QTOPICS : [];
+  var QB = (typeof QBANK !== "undefined") ? QBANK : [];
+  var QS = (typeof QSTREAM !== "undefined") ? QSTREAM : {};
+  var STREAM_LABEL = {dotnet:".NET", java:"Java", node:"Node / JavaScript", support:"Production support"};
+
+  function blankR1(){ return {off:{}, sc:{}, nt:{}, note:""}; }
+  var r1 = {};
+  C.forEach(function(c){ r1[c.sl] = blankR1(); });
+
+  function qPool(sl, topic){
+    var st = QS[sl] || {s:"all", l:"any"};
+    return QB.filter(function(q){
+      return q.k === topic && (q.s === "all" || q.s === st.s) && (q.l === "any" || q.l === st.l);
+    });
+  }
+  function qFor(sl, topic){
+    var pool = qPool(sl, topic);
+    if (!pool.length) return null;
+    var off = (r1[sl].off && r1[sl].off[topic]) || 0;
+    return pool[((off % pool.length) + pool.length) % pool.length];
+  }
+  function r1Scores(sl){
+    var vals = [];
+    QT.forEach(function(t){
+      var q = qFor(sl, t.k);
+      if (q && r1[sl].sc[q.id]) vals.push(r1[sl].sc[q.id]);
+    });
+    return vals;
+  }
+  function r1Avg(sl){
+    var v = r1Scores(sl);
+    if (!v.length) return null;
+    return Math.round((v.reduce(function(a, b){ return a + b; }, 0) / v.length) * 10) / 10;
+  }
+
   function stageState(t){
     function m(v){
       if (!v) return "";
@@ -851,6 +931,18 @@
   [["final","Final status"],["offer","Offer released"],["offerCtc","Offered CTC (L)"],
    ["doj","Date of joining"],["remarks","Remarks"]].forEach(function(f){
     COLS.push({g:"Tracking", k:f[0], h:f[1], v:function(c){ return track[c.sl][f[0]]; }});
+  });
+
+  COLS.push({g:"Round 1", k:"r1avg",  h:"Round 1 average score", v:function(c){ var a = r1Avg(c.sl); return a == null ? "" : a; }});
+  COLS.push({g:"Round 1", k:"r1n",     h:"Round 1 questions scored", v:function(c){ return r1Scores(c.sl).length; }});
+  COLS.push({g:"Round 1", k:"r1note",  h:"Round 1 interview notes", v:function(c){ return r1[c.sl].note || ""; }});
+  QTOPICS.forEach(function(t){
+    COLS.push({g:"Round 1", k:"r1s_" + t.k, h:"R1 " + t.h + " score",
+      v:function(c){ var q = qFor(c.sl, t.k); return (q && r1[c.sl].sc[q.id]) || ""; }});
+    COLS.push({g:"Round 1", k:"r1q_" + t.k, h:"R1 " + t.h + " question",
+      v:function(c){ var q = qFor(c.sl, t.k); return q ? q.q : ""; }});
+    COLS.push({g:"Round 1", k:"r1n_" + t.k, h:"R1 " + t.h + " notes",
+      v:function(c){ var q = qFor(c.sl, t.k); return (q && r1[c.sl].nt[q.id]) || ""; }});
   });
 
   var DEFAULT_COLS = ["sl","name","role","recRole","fit","mobile","email","company",
@@ -1490,6 +1582,108 @@
     });
   }
 
+  function paneRound1(c, body){
+    var sl = c.sl, st = QS[sl] || {s:"all", l:"any"};
+    var d = r1[sl];
+
+    var head = el("div", "r1head");
+    head.appendChild(el("span", "st", (STREAM_LABEL[st.s] || "General") +
+      "  \u00b7  " + (st.l === "mid" ? "mid-level" : "senior") + " theory set"));
+    var rall = el("button", "iconsm", "\u21bb  Recycle all");
+    rall.type = "button"; rall.disabled = !canWrite;
+    rall.addEventListener("click", function(){
+      QT.forEach(function(t){ d.off[t.k] = ((d.off[t.k] || 0) + 1); });
+      touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
+    });
+    head.appendChild(rall);
+    var avg = r1Avg(sl), n = r1Scores(sl).length;
+    var scw = el("div", "sc");
+    if (avg == null) scw.appendChild(document.createTextNode("Not scored"));
+    else {
+      scw.appendChild(el("b", null, String(avg)));
+      scw.appendChild(document.createTextNode(" / 5 across " + n + " question" + (n === 1 ? "" : "s")));
+    }
+    head.appendChild(scw);
+    body.appendChild(head);
+
+    var sec0 = el("section", "sec");
+    sec0.appendChild(el("h3", null, "Interview notes for this candidate"));
+    var ta0 = document.createElement("textarea");
+    ta0.value = d.note || ""; ta0.disabled = !canWrite;
+    ta0.style.minHeight = "72px";
+    ta0.placeholder = "Overall impression of the round \u2014 depth, communication, gaps to probe next time\u2026";
+    ta0.addEventListener("input", function(e){
+      d.note = e.target.value; touchR1(sl); setSave("Saving\u2026", false);
+      debounce("r1:" + sl, function(){ saveR1(sl); });
+    });
+    var w0 = el("div", "fld full"); w0.appendChild(ta0);
+    sec0.appendChild(w0);
+    body.appendChild(sec0);
+
+    var sec = el("section", "sec");
+    sec.appendChild(el("h3", null, "Round 1 \u00b7 theory \u00b7 " + QT.length + " questions"));
+    QT.forEach(function(t){
+      var q = qFor(sl, t.k);
+      var card = el("div", "qcard");
+      var top = el("div", "qtop");
+      top.appendChild(el("span", "pill seed", t.h));
+      var pool = qPool(sl, t.k);
+      var rc = el("button", "iconsm", "\u21bb");
+      rc.type = "button"; rc.disabled = !canWrite || pool.length < 2;
+      rc.title = pool.length < 2 ? "No alternative question for this topic"
+                                 : "Swap for another " + t.h.toLowerCase() + " question (" + pool.length + " in the pool)";
+      rc.setAttribute("aria-label", "Recycle the " + t.h + " question");
+      rc.addEventListener("click", function(){
+        d.off[t.k] = ((d.off[t.k] || 0) + 1);
+        touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
+      });
+      top.appendChild(rc);
+      card.appendChild(top);
+
+      if (!q){
+        card.appendChild(el("div", "qtext", "No question available for this topic."));
+        sec.appendChild(card);
+        return;
+      }
+      card.appendChild(el("div", "qtext", q.q));
+
+      var row = el("div", "scorerow");
+      row.appendChild(el("span", "lbl", "Score"));
+      [1,2,3,4,5].forEach(function(v){
+        var b = el("button", "sbtn", String(v));
+        b.type = "button"; b.disabled = !canWrite;
+        b.setAttribute("aria-pressed", d.sc[q.id] === v ? "true" : "false");
+        b.setAttribute("aria-label", "Score " + v + " out of 5");
+        b.addEventListener("click", function(){
+          if (d.sc[q.id] === v) delete d.sc[q.id]; else d.sc[q.id] = v;
+          touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
+        });
+        row.appendChild(b);
+      });
+      card.appendChild(row);
+
+      var ta = document.createElement("textarea");
+      ta.value = d.nt[q.id] || ""; ta.disabled = !canWrite;
+      ta.placeholder = "What they actually said\u2026";
+      ta.addEventListener("input", function(e){
+        d.nt[q.id] = e.target.value; touchR1(sl); setSave("Saving\u2026", false);
+        debounce("r1:" + sl, function(){ saveR1(sl); });
+      });
+      card.appendChild(ta);
+
+      var det = document.createElement("details");
+      var sum = document.createElement("summary");
+      sum.textContent = "Model answer";
+      det.appendChild(sum);
+      det.appendChild(el("p", null, q.a));
+      if (q.f) det.appendChild(el("p", "fu", "Follow up: " + q.f));
+      card.appendChild(det);
+
+      sec.appendChild(card);
+    });
+    body.appendChild(sec);
+  }
+
   function paneTrack(c, body){
     var t = track[c.sl];
     var s = el("section", "sec");
@@ -1558,12 +1752,13 @@
     var recNow = recRoleOf(c);
     $("dsub").textContent = c.role + (recNow && recNow !== c.role ? "  →  " + recNow : "") +
                             "  ·  " + c.company + "  ·  " + c.curLoc;
-    ["profile","resume","track"].forEach(function(k){
+    ["profile","resume","round1","track"].forEach(function(k){
       $("dt-" + k).setAttribute("aria-selected", dtab === k ? "true" : "false");
     });
     var body = $("dbody"); body.textContent = ""; body.scrollTop = 0;
     if (dtab === "profile") paneProfile(c, body);
     else if (dtab === "resume") paneResume(c, body);
+    else if (dtab === "round1") paneRound1(c, body);
     else paneTrack(c, body);
 
     $("drawer").classList.add("open");
@@ -1583,7 +1778,9 @@
      records the revision a completed write covered. While the two differ the
      candidate has edits the server has not acknowledged, and an incoming
      snapshot must not overwrite them. */
-  var localRev = {}, savedRev = {}, actRev = {}, actSaved = {};
+  var localRev = {}, savedRev = {}, actRev = {}, actSaved = {}, r1Rev = {}, r1Saved = {};
+  function touchR1(sl){ r1Rev[sl] = (r1Rev[sl] || 0) + 1; }
+  function cleanR1(sl){ return (r1Rev[sl] || 0) === (r1Saved[sl] || 0); }
   function touch(sl){ localRev[sl] = (localRev[sl] || 0) + 1; }
   function clean(sl){ return (localRev[sl] || 0) === (savedRev[sl] || 0); }
   function touchAct(id){ actRev[id] = (actRev[id] || 0) + 1; }
@@ -1628,6 +1825,22 @@
       }, handleWriteError);
     });
   }
+  function saveR1(sl){
+    if (!db){ setSave("Not connected \u2014 nothing is being saved. Reload the page.", true); return; }
+    if (!canWrite){ setSave("Read-only in this view", true); return; }
+    var rev = r1Rev[sl] || 0, d = r1[sl];
+    var body = {off:JSON.parse(JSON.stringify(d.off || {})),
+                sc:JSON.parse(JSON.stringify(d.sc || {})),
+                nt:JSON.parse(JSON.stringify(d.nt || {})),
+                note:d.note || ""};
+    setSave("Saving\u2026", false);
+    queue("r" + sl, function(){
+      return db.doc("r1/c" + sl).set(body).then(function(){
+        if (rev > (r1Saved[sl] || 0)) r1Saved[sl] = rev;
+        if (current === sl && cleanR1(sl)) setSave("Saved for everyone", false);
+      }, handleWriteError);
+    });
+  }
   function saveAct(id){
     if (!db || !canWrite) return;
     var rev = actRev[id] || 0;
@@ -1656,6 +1869,7 @@
       // Edits made while the store was still connecting are still pending.
       Object.keys(localRev).forEach(function(sl){ if (!clean(sl)) saveTrack(+sl); });
       Object.keys(actRev).forEach(function(id){ if (!cleanAct(id)) saveAct(id); });
+      Object.keys(r1Rev).forEach(function(sl){ if (!cleanR1(sl)) saveR1(+sl); });
       store.collection("tracking").onSnapshot(function(snap){
         snap.docs.forEach(function(d){
           var sl = +String(d.id).replace(/^c/, "");
@@ -1669,7 +1883,18 @@
           track[sl] = t;
         });
         renderAll();
-        if (current !== null && clean(current) && !$("dbody").contains(document.activeElement)) openDrawer(current);
+        if (current !== null && dtab !== "round1" && clean(current) &&
+            !$("dbody").contains(document.activeElement)) openDrawer(current);
+      }, function(){});
+      store.collection("r1").onSnapshot(function(snap){
+        snap.docs.forEach(function(d){
+          var sl = +String(d.id).replace(/^c/, "");
+          if (!BY_SL[sl] || !cleanR1(sl)) return;
+          var data = d.data() || {};
+          r1[sl] = {off:data.off || {}, sc:data.sc || {}, nt:data.nt || {}, note:data.note || ""};
+        });
+        if (current !== null && dtab === "round1" && cleanR1(current) &&
+            !$("dbody").contains(document.activeElement)) openDrawer(current, "round1");
       }, function(){});
       store.collection("actions").onSnapshot(function(snap){
         snap.docs.forEach(function(d){
@@ -1787,7 +2012,7 @@
   $("tab-pipeline").addEventListener("click", function(){ selectTab("pipeline"); });
   $("tab-actions").addEventListener("click", function(){ selectTab("actions"); });
 
-  ["profile","resume","track"].forEach(function(k){
+  ["profile","resume","round1","track"].forEach(function(k){
     $("dt-" + k).addEventListener("click", function(){ if (current !== null) openDrawer(current, k); });
   });
   $("dclose").addEventListener("click", closeDrawer);
