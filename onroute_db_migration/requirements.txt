@@ -1,0 +1,5 @@
+psycopg[binary]>=3.1
+pyodbc>=5.0
+# tests and schema analysis only
+pytest>=7
+openpyxl>=3.1

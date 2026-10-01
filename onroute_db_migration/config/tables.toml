@@ -1,0 +1,194 @@
+# ONroute migration: table definitions (SQL Server dbo -> PostgreSQL master)
+#
+# Column mapping is resolved against the live target table at run time:
+#   1. an explicit entry in [table.columns] (source = "target")
+#   2. a target column with exactly the source name (the Vena tables keep "Region" etc.)
+#   3. a target column equal to snake_case(source name)
+#   4. the global [rename] table below
+# A source column that resolves to nothing is an error unless it is listed in `ignore`,
+# so nothing is dropped silently. Type conversions (flags -> boolean, text -> uuid,
+# float -> numeric, datetime -> date/text, length limits, NOT NULL) are derived from
+# the source and target column types.
+#
+# strategy:
+#   full              one chunk; the target table is cleared and reloaded in one transaction
+#   date_range        one chunk per day/week/month of `chunk_column` (+ one chunk for NULLs)
+#   int_range         one chunk per `chunk_size` values of an integer `chunk_column`
+#   per_source_table  one chunk per source table matching `source_like`
+#                     (e.g. one Vena budget table per year)
+
+[defaults]
+batch_size = 20000           # rows per COPY batch
+max_reject_rows = 1000       # a chunk with more rejected rows than this fails...
+max_reject_pct = 0.5         # ...or more than this percentage of its rows
+string_overflow = "reject"   # reject | truncate  (value longer than the target column)
+true_values = ["Y", "YES", "T", "TRUE", "1"]
+false_values = ["N", "NO", "F", "FALSE", "0"]
+empty_flag_is_null = true    # '' or whitespace in a flag column loads as NULL
+
+[rename]                     # source column -> target column, for every table
+Endday = "end_day"
+EndDay = "end_day"
+SubTotal = "subtotal"
+Discountamount = "discount_amount"
+AcquitsionDate = "acquisition_date"
+PriceBackUP = "price_backup"
+"Day of_Week" = "day_of_week"
+
+# ---------------------------------------------------------------- POS (97% of rows)
+
+[[table]]
+key = "pos_order_details"
+source = "dbo.POS_ORDERDETAILS"
+target = "master.pos_order_details"
+strategy = "date_range"
+chunk_column = "Endday"
+granularity = "month"
+checksum_column = "Price"
+priority = 10
+
+[[table]]
+key = "pos_orders"
+source = "dbo.POS_ORDERS"
+target = "master.pos_orders"
+strategy = "date_range"
+chunk_column = "Endday"
+granularity = "month"
+checksum_column = "GrandTotal"
+priority = 20
+
+[[table]]
+key = "pos_order_payments"
+source = "dbo.POS_ORDERPAYMENTS"
+target = "master.pos_order_payments"
+strategy = "date_range"
+chunk_column = "Endday"
+granularity = "month"
+checksum_column = "PaymentAmount"
+priority = 30
+
+[[table]]
+key = "pos_order_paid_outs"
+source = "dbo.POS_ORDERPAIDOUTS"
+target = "master.pos_order_paid_outs"
+strategy = "full"
+checksum_column = "PaymentAmount"
+priority = 40
+
+# ---------------------------------------------------------------- labour and COGS
+
+[[table]]
+key = "weekly_cogs"
+source = "dbo.WeeklyCogs"
+target = "master.weekly_cogs"
+strategy = "int_range"
+chunk_column = "WeeklyCogs_ID"
+chunk_size = 1000000
+reset_sequence = "id"
+priority = 50
+[table.columns]
+WeeklyCogs_ID = "id"
+createdate = "created_at"          # decision pending: keep the original create date
+[table.null_defaults]
+created_at = "@now"                # target is NOT NULL
+
+[[table]]
+key = "employee_pay_summary"
+source = "dbo.EmployeePaySummaryV2"
+target = "master.employee_pay_summary"
+strategy = "date_range"
+chunk_column = "PayDate"
+granularity = "month"
+datetime_text_format = "%Y-%m-%d %H:%M:%S"   # pay_date / retrieve_date are varchar in the target
+ignore = ["AuthorizedManager", "AuthorizedEmployee"]   # no target column (confirm)
+priority = 60
+
+[[table]]
+key = "temp_dlh"
+source = "dbo.Temp_DLH"
+target = "master.temp_dlh"
+strategy = "full"
+priority = 70
+
+[[table]]
+key = "weekly_cogs_prod_num"
+source = "dbo.WeeklyCogsProdNum"
+target = "master.weekly_cogs_prod_num"
+strategy = "full"
+ignore = ["WeeklyCogsProdNum_ID"]   # product_num is the target primary key
+dedupe_on = ["product_num"]         # later duplicates are rejected, not loaded
+priority = 80
+[table.null_defaults]
+category = ""
+sub_category = ""
+inv_unit = ""
+
+# ---------------------------------------------------------------- reference data
+
+[[table]]
+key = "netsuite_location_mapping"
+source = "dbo.NetSuiteLocation_Mapping"
+target = "master.netsuite_location_mapping"
+strategy = "full"
+priority = 90
+
+[[table]]
+key = "district_directors"
+source = "dbo.District_Directors"
+target = "master.district_directors"
+strategy = "full"
+priority = 91
+
+[[table]]
+key = "date_table"
+source = "dbo.date_table"
+target = "master.date_table"
+strategy = "full"
+priority = 92
+
+# ---------------------------------------------------------------- Vena budgets (one source table per year)
+
+[[table]]
+key = "vena_sales"
+source_like = "dbo.Sales_20%_UnPivot_New"
+source_regex = "Sales_(?P<year>\\d{4})_UnPivot_New"
+target = "master.vena_sales"
+strategy = "per_source_table"
+chunk_target_column = "budget_year"
+checksum_column = "value"
+priority = 100
+[table.constants]
+budget_year = "{year}"
+
+[[table]]
+key = "vena_gross_margin"
+source_like = "dbo.GM_20%_UnPivot_New"
+source_regex = "GM_(?P<year>\\d{4})_UnPivot_New"
+target = "master.vena_gross_margin"
+strategy = "per_source_table"
+chunk_target_column = "budget_year"
+priority = 101
+[table.constants]
+budget_year = "{year}"
+
+[[table]]
+key = "vena_transactions"
+source_like = "dbo.Transactions_20%_UnPivot_v2"
+source_regex = "Transactions_(?P<year>\\d{4})_UnPivot_v2"
+target = "master.vena_transactions"
+strategy = "per_source_table"
+chunk_target_column = "budget_year"
+priority = 102
+[table.constants]
+budget_year = "{year}"
+
+[[table]]
+key = "vena_labour_hours"
+source_like = "dbo.DLH_20%_UnPivot_New"
+source_regex = "DLH_(?P<year>\\d{4})_UnPivot_New"
+target = "master.vena_labour_hours"
+strategy = "per_source_table"
+chunk_target_column = "budget_year"
+priority = 103
+[table.constants]
+budget_year = "{year}"

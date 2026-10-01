@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ONroute Migration Monitor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an operations console — live summary band, table progress list, running work beside throughput, then history views behind tabs. */
+:root {
+  --bg: #f4f5f7; --surface: #ffffff; --fg: #18202b; --muted: #5a6474; --faint: #8a93a1; --line: #dde1e7; --accent: #1f5fa8;
+  --st-done: #0ca30c; --st-running: #2a78d6; --st-failed: #d03b3b; --st-stale: #fab219; --st-pending: #cfd4dc;
+  --bar: #2a78d6; --track: #e7eaef; --crit-bg: #fbe4e2; --warn-bg: #fdf1d8; --ok-bg: #e2f3e2;
+  --font-ui: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-code: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111419; --surface: #191d24; --fg: #e4e8ee; --muted: #9ba4b2; --faint: #6f7886; --line: #2a313b; --accent: #78aeee;
+  --st-done: #0ca30c; --st-running: #3987e5; --st-failed: #e66767; --st-stale: #fab219; --st-pending: #3b424d;
+  --bar: #3987e5; --track: #262c35; --crit-bg: #3f201e; --warn-bg: #3a2d10; --ok-bg: #16301a;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111419; --surface: #191d24; --fg: #e4e8ee; --muted: #9ba4b2; --faint: #6f7886; --line: #2a313b; --accent: #78aeee;
+  --st-done: #0ca30c; --st-running: #3987e5; --st-failed: #e66767; --st-stale: #fab219; --st-pending: #3b424d;
+  --bar: #3987e5; --track: #262c35; --crit-bg: #3f201e; --warn-bg: #3a2d10; --ok-bg: #16301a;
+  color-scheme: dark; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--font-ui); }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 20px; padding-block: 0 48px; }
+h1, h2, h3 { margin: 0; line-height: 1.25; text-wrap: balance; }
+h1 { font-size: 1.15rem; font-weight: 700; }
+h2 { font-size: 1rem; font-weight: 650; }
+h3 { font-size: 0.9rem; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 2px; }
+code, .mono { font-family: var(--font-code); font-size: 0.85em; }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+button { font: inherit; }
+
+/* Top bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding-block: 12px; }
+.brand { display: flex; align-items: baseline; gap: 10px; }
+.brand .sub { font-size: 0.8rem; color: var(--muted); }
+nav { display: flex; gap: 4px; }
+nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.85rem; padding: 6px 10px; border-radius: 4px; }
+nav a[aria-current="page"] { color: var(--fg); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+nav a:focus-visible, .btn:focus-visible, a:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.live { margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--muted); }
+.pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--st-done); }
+.pulse.off { background: var(--faint); }
+.pulse.err { background: var(--st-failed); }
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 4px; padding: 4px 10px; cursor: pointer; font-size: 0.8rem; }
+.btn:hover { border-color: var(--accent); }
+.demo-note { background: var(--warn-bg); border-bottom: 1px solid var(--line); font-size: 0.82rem; }
+.demo-note .wrap { padding-block: 8px; }
+
+main { display: grid; gap: 28px; padding-top: 22px; }
+section { display: grid; gap: 12px; min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
+.panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.panel-head .aside { margin-left: auto; font-size: 0.8rem; color: var(--muted); }
+.panel-body { padding: 14px 16px; }
+.grid2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
+
+/* Summary band */
+.summary { display: grid; gap: 14px; }
+.runline { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: 0.9rem; }
+.overall { display: grid; gap: 6px; }
+.overall .figures { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.overall .pct { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.meter { height: 10px; background: var(--track); border-radius: 3px; overflow: hidden; display: flex; }
+.meter span { display: block; height: 100%; }
+.meter .m-done { background: var(--bar); }
+.meter .m-flight { background: var(--bar); opacity: 0.45; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.kpi { background: var(--surface); padding: 10px 14px; display: grid; gap: 2px; }
+.kpi .v { font-size: 1.15rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 0.75rem; color: var(--muted); }
+.kpi.alert .v { color: var(--st-failed); }
+
+/* Status */
+.st { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; white-space: nowrap; }
+.st::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--c, var(--st-pending)); flex: none; }
+.st-done { --c: var(--st-done); } .st-running { --c: var(--st-running); } .st-failed { --c: var(--st-failed); }
+.st-stale { --c: var(--st-stale); } .st-pending { --c: var(--st-pending); } .st-skipped { --c: var(--faint); }
+.st-succeeded { --c: var(--st-done); } .st-completed_with_errors { --c: var(--st-stale); } .st-interrupted { --c: var(--st-stale); }
+.st-abandoned { --c: var(--faint); }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.78rem; color: var(--muted); }
+.legend .st { font-weight: 500; color: var(--muted); }
+
+/* Tables list */
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+th, td { text-align: left; padding: 8px 12px; border-top: 1px solid var(--line); vertical-align: middle; }
+thead th { border-top: 0; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; background: var(--surface); }
+td.r, th.r { text-align: right; }
+tbody tr.click { cursor: pointer; }
+tbody tr.click:hover { background: var(--bg); }
+.tname { display: grid; gap: 1px; }
+.tname a { font-family: var(--font-code); font-size: 0.85rem; text-decoration: none; color: var(--fg); font-weight: 500; }
+.tname a:hover { color: var(--accent); text-decoration: underline; }
+.tname .s { font-size: 0.75rem; color: var(--muted); }
+.prog { display: grid; gap: 4px; min-width: 160px; }
+.prog .meter { height: 6px; }
+.prog .lbl { font-size: 0.75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.strip { display: flex; flex-wrap: wrap; gap: 2px; min-width: 120px; max-width: 360px; }
+.strip i { width: 8px; height: 14px; border-radius: 1px; background: var(--c, var(--st-pending)); display: block; }
+.strip i.st-done { --c: var(--st-done); } .strip i.st-running { --c: var(--st-running); } .strip i.st-failed { --c: var(--st-failed); }
+.strip i.st-stale { --c: var(--st-stale); } .strip i.st-pending { --c: var(--st-pending); }
+.badge { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 1px 7px; border-radius: 999px; white-space: nowrap; }
+.b-crit { background: var(--crit-bg); color: var(--fg); }
+.b-warn { background: var(--warn-bg); color: var(--fg); }
+.b-ok { background: var(--ok-bg); color: var(--fg); }
+.b-crit::before { content: "✕ "; color: var(--st-failed); } .b-warn::before { content: "! "; } .b-ok::before { content: "✓ "; color: var(--st-done); }
+
+/* Running and feed */
+.empty { padding: 22px 16px; color: var(--muted); font-size: 0.85rem; }
+.feed { max-height: 360px; overflow: auto; }
+.feed ol { list-style: none; margin: 0; padding: 0; }
+.feed li { display: grid; grid-template-columns: 92px 70px minmax(0, 1fr); gap: 10px; padding: 7px 16px; border-top: 1px solid var(--line); font-size: 0.82rem; align-items: baseline; }
+.feed li:first-child { border-top: 0; }
+.feed .t { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.76rem; white-space: nowrap; }
+td.mono, td .mono { white-space: nowrap; }
+.feed .msg { overflow-wrap: anywhere; }
+.feed .msg .mono { color: var(--muted); }
+.lvl { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.lvl-error { color: var(--st-failed); } .lvl-warning { color: var(--fg); } .lvl-warning::before { content: "! "; color: var(--st-stale); } .lvl-info { color: var(--muted); }
+.err { color: var(--fg); font-size: 0.8rem; overflow-wrap: anywhere; }
+
+/* Chart */
+.chart { position: relative; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.chart .axis text { fill: var(--muted); font-size: 11px; font-family: var(--font-ui); font-variant-numeric: tabular-nums; }
+.chart rect.bar { fill: var(--bar); }
+.chart rect.hit { fill: transparent; cursor: crosshair; }
+.chart rect.hit:hover + rect.bar, .chart rect.bar.hl { fill: var(--accent); }
+.tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--bg); font-size: 0.75rem; padding: 6px 8px; border-radius: 4px; white-space: nowrap; transform: translate(-50%, -110%); font-variant-numeric: tabular-nums; }
+.tip[hidden] { display: none; }
+
+/* Detail views */
+.crumbs { font-size: 0.85rem; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.headline { display: grid; gap: 6px; }
+.headline h2 { font-size: 1.35rem; font-weight: 700; }
+.facts { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 0.85rem; color: var(--muted); }
+.facts b { color: var(--fg); font-weight: 600; }
+.cells { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 4px; }
+.cell { border: 1px solid var(--line); border-left: 4px solid var(--c, var(--st-pending)); border-radius: 3px; padding: 4px 6px; font-size: 0.72rem; background: var(--surface); cursor: pointer; text-align: left; color: var(--fg); display: grid; gap: 1px; }
+.cell .k { font-family: var(--font-code); font-size: 0.72rem; }
+.cell .n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.cell:hover, .cell.sel { border-color: var(--accent); }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.filters select { font: inherit; font-size: 0.82rem; padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--fg); }
+details summary { cursor: pointer; font-weight: 600; font-size: 0.85rem; }
+pre.json { font-family: var(--font-code); font-size: 0.75rem; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px; overflow: auto; max-height: 220px; margin: 6px 0 0; }
+.kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 14px; font-size: 0.82rem; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; overflow-wrap: anywhere; }
+.banner { border: 1px solid var(--line); border-left: 4px solid var(--st-failed); background: var(--surface); padding: 12px 16px; border-radius: 4px; }
+@media (max-width: 640px) {
+  .feed li { grid-template-columns: 56px minmax(0, 1fr); }
+  .feed li .lvl { display: none; }
+  .live .label { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) { .meter span { transition: width .4s ease; } }
+</style>
+</head>
+<body>
+<div class="demo-note" id="demo-note" hidden><div class="wrap">Sample data: this preview is not connected to a migration. Run <code>python -m onroute_migration dashboard</code> to monitor the real one.</div></div>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><h1>ONroute Migration</h1><span class="sub">SQL Server → PostgreSQL</span></div>
+    <nav aria-label="Views">
+      <a href="#overview" data-view="overview">Overview</a>
+      <a href="#runs" data-view="runs">Run history</a>
+    </nav>
+    <div class="live" aria-live="polite">
+      <span class="pulse" id="pulse"></span><span class="label" id="updated">Connecting…</span>
+      <button class="btn" id="pause" type="button" aria-pressed="false">Pause</button>
+    </div>
+  </div>
+</header>
+<div class="wrap"><main id="app"></main></div>
+
+<script>
+"use strict";
+const DEMO = !!window.ONROUTE_DEMO;
+const REFRESH_MS = 5000;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nf = new Intl.NumberFormat("en-US");
+const n = v => v == null ? "—" : nf.format(Math.round(Number(v)));
+const compact = v => {
+  v = Number(v || 0);
+  if (v >= 1e9) return (v / 1e9).toFixed(2) + "B";
+  if (v >= 1e6) return (v / 1e6).toFixed(v >= 1e8 ? 0 : 1) + "M";
+  if (v >= 1e4) return (v / 1e3).toFixed(0) + "k";
+  return nf.format(Math.round(v));
+};
+const pct = (a, b) => b ? Math.min(100, (100 * a) / b) : 0;
+const dur = s => {
+  if (s == null) return "—";
+  s = Math.max(0, Math.round(Number(s)));
+  if (s < 60) return s + "s";
+  if (s < 3600) return Math.floor(s / 60) + "m " + String(s % 60).padStart(2, "0") + "s";
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+  return h < 48 ? `${h}h ${String(m).padStart(2, "0")}m` : `${Math.floor(h / 24)}d ${h % 24}h`;
+};
+const ts = v => v ? new Date(v) : null;
+const clock = v => v ? ts(v).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "—";
+const when = v => {
+  if (!v) return "—";
+  const d = ts(v), today = new Date();
+  const same = d.toDateString() === today.toDateString();
+  return same ? clock(v) : d.toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+};
+const ago = v => v ? dur((Date.now() - ts(v).getTime()) / 1000) + " ago" : "—";
+const STATUS_LABEL = { done: "Done", running: "Loading", failed: "Failed", stale: "Needs reload", pending: "Waiting", skipped: "Skipped",
+  succeeded: "Succeeded", completed_with_errors: "Finished with errors", interrupted: "Interrupted", abandoned: "Abandoned" };
+const st = s => `<span class="st st-${esc(s)}">${esc(STATUS_LABEL[s] || s)}</span>`;
+const STRATEGY = { full: "full reload", date_range: "by date", int_range: "by ID range", per_source_table: "per source table" };
+
+// ------------------------------------------------------------------ data access
+async function api(path) {
+  if (DEMO) return demoApi(path);
+  const r = await fetch(path, { cache: "no-store" });
+  const body = await r.json();
+  if (!r.ok) throw new Error(body.error || r.statusText);
+  return body;
+}
+
+// ------------------------------------------------------------------ routing and refresh
+const state = { paused: false, timer: null, view: "overview", arg: null, chunkFilter: "", eventFilter: "", selectedChunk: null, lastOk: null };
+
+function route() {
+  const h = location.hash.replace(/^#/, "") || "overview";
+  const [view, arg] = h.split("-", 2).length && h.startsWith("table-") ? ["table", h.slice(6)] :
+                      h.startsWith("run-") ? ["run", h.slice(4)] : [h, null];
+  state.view = ["overview", "runs", "table", "run"].includes(view) ? view : "overview";
+  state.arg = arg;
+  state.selectedChunk = null;
+  document.querySelectorAll("nav a").forEach(a => {
+    const active = a.dataset.view === state.view || (a.dataset.view === "runs" && state.view === "run") || (a.dataset.view === "overview" && state.view === "table");
+    a.toggleAttribute("aria-current", false);
+    if (active) a.setAttribute("aria-current", "page");
+  });
+  refresh(true);
+}
+
+async function refresh(first) {
+  clearTimeout(state.timer);
+  try {
+    if (state.view === "overview") renderOverview(await api("/api/overview"));
+    else if (state.view === "runs") renderRuns(await api("/api/runs?limit=200"));
+    else if (state.view === "run") renderRun(await api(`/api/runs/${encodeURIComponent(state.arg)}`));
+    else if (state.view === "table") renderTable(await api(`/api/tables/${encodeURIComponent(state.arg)}`), await api("/api/overview"));
+    state.lastOk = Date.now();
+    setLive("ok");
+  } catch (e) {
+    setLive("err", e);
+    if (first) $("#app").innerHTML = `<div class="banner"><h3>Can't reach the migration database</h3><p class="muted">${esc(e.message)}. The page retries every ${REFRESH_MS / 1000} seconds.</p></div>`;
+  }
+  if (!state.paused) state.timer = setTimeout(refresh, REFRESH_MS);
+}
+
+function setLive(kind, err) {
+  const p = $("#pulse"), u = $("#updated");
+  p.className = "pulse" + (state.paused ? " off" : kind === "err" ? " err" : "");
+  if (kind === "err") u.textContent = "Connection lost: " + (err?.message || "");
+  else u.textContent = state.paused ? "Paused" : DEMO ? "Sample data" : "Updated " + clock(new Date());
+}
+
+$("#pause").addEventListener("click", e => {
+  state.paused = !state.paused;
+  e.currentTarget.textContent = state.paused ? "Resume" : "Pause";
+  e.currentTarget.setAttribute("aria-pressed", String(state.paused));
+  if (!state.paused) refresh(); else { clearTimeout(state.timer); setLive("ok"); }
+});
+window.addEventListener("hashchange", route);
+
+// ------------------------------------------------------------------ overview
+function renderOverview(d) {
+  const app = $("#app");
+  if (!d.ready) {
+    app.innerHTML = `<div class="banner" style="border-left-color:var(--st-running)"><h3>No migration has run against this database yet</h3>
+      <p class="muted">Start with <code>python -m onroute_migration check</code>, then <code>run</code>. This page fills in as soon as chunks are planned.</p></div>`;
+    return;
+  }
+  const t = d.totals;
+  const run = d.active_runs[0];
+  const donePct = pct(t.rows_read, t.source_rows), flightPct = pct(t.rows_in_flight, t.source_rows);
+  const runLine = run
+    ? `${st("running")} <b>Run ${run.run_id}</b> <span class="muted">${esc(run.command)} · ${run.workers} workers · started ${when(run.started_at)} · heartbeat ${dur(run.heartbeat_age_s)} ago</span>
+       ${run.heartbeat_age_s > 120 ? `<span class="badge b-warn">no heartbeat for ${dur(run.heartbeat_age_s)}: the process may have stopped</span>` : ""}`
+    : `<span class="st st-pending">Idle</span> <span class="muted">No run in progress. Re-run <code>run</code> to resume; finished chunks are skipped.</span>`;
+  app.innerHTML = `
+  <section class="summary" aria-label="Summary">
+    <div class="runline">${runLine}</div>
+    <div class="overall">
+      <div class="figures"><span class="pct num">${donePct.toFixed(1)}%</span>
+        <span class="muted num">${n(t.rows_read)} of ${n(t.source_rows)} source rows read${t.rows_in_flight ? ` · ${n(t.rows_in_flight)} loading now` : ""}</span></div>
+      <div class="meter" role="img" aria-label="${donePct.toFixed(1)} percent of source rows read"><span class="m-done" style="width:${donePct}%"></span><span class="m-flight" style="width:${flightPct}%"></span></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span class="v">${compact(t.rows_loaded)}</span><span class="l">rows loaded</span></div>
+      <div class="kpi"><span class="v">${t.done} / ${t.chunks}</span><span class="l">chunks done</span></div>
+      <div class="kpi ${t.failed ? "alert" : ""}"><span class="v">${t.failed}</span><span class="l">chunks failing</span></div>
+      <div class="kpi ${t.rows_rejected ? "alert" : ""}"><span class="v">${n(t.rows_rejected)}</span><span class="l">rows rejected</span></div>
+      <div class="kpi"><span class="v">${t.rows_per_sec_15m ? compact(t.rows_per_sec_15m) + "/s" : "—"}</span><span class="l">throughput, last 15 min</span></div>
+      <div class="kpi"><span class="v">${t.eta_s ? dur(t.eta_s) : (t.remaining_rows ? "—" : "complete")}</span><span class="l">estimated time left</span></div>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-tables">
+    <div class="panel-head"><h2 id="h-tables">Tables</h2>
+      <div class="legend aside">${["done", "running", "failed", "stale", "pending"].map(st).join("")}</div></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Table</th><th>Rows read</th><th>Chunks</th><th class="r">Loaded</th><th class="r">Rejected</th><th>Checks</th></tr></thead>
+      <tbody>${d.tables.map(tableRow).join("")}</tbody></table></div>
+  </section>
+
+  <div class="grid2">
+    <section class="panel" aria-labelledby="h-running">
+      <div class="panel-head"><h2 id="h-running">Loading now</h2><span class="aside">${d.running_chunks.length} chunk${d.running_chunks.length === 1 ? "" : "s"}</span></div>
+      ${d.running_chunks.length ? `<div class="scroll"><table><thead><tr><th>Chunk</th><th>Worker</th><th class="r">Rows read</th><th class="r">Elapsed</th><th class="r">Heartbeat</th></tr></thead><tbody>
+        ${d.running_chunks.map(c => `<tr><td><a class="mono" href="#table-${esc(c.table_key)}">${esc(c.table_key)}</a> <span class="mono muted">${esc(c.chunk_key)}</span>${c.attempts > 1 ? ` <span class="badge b-warn">attempt ${c.attempts}</span>` : ""}</td>
+          <td class="mono">${esc(c.worker)}</td><td class="r num">${n(c.rows_read)}</td><td class="r num">${dur(c.elapsed_s)}</td>
+          <td class="r num">${c.heartbeat_age_s > 60 ? `<span class="badge b-warn">${dur(c.heartbeat_age_s)}</span>` : dur(c.heartbeat_age_s)}</td></tr>`).join("")}
+        </tbody></table></div>` : `<p class="empty">Nothing is loading right now.</p>`}
+    </section>
+    <section class="panel" aria-labelledby="h-thr">
+      <div class="panel-head"><h2 id="h-thr">Rows loaded per minute</h2><span class="aside">last 60 minutes</span></div>
+      <div class="panel-body">${throughputChart(d.throughput, d.now)}</div>
+    </section>
+  </div>
+
+  <div class="grid2">
+    <section class="panel" aria-labelledby="h-fail">
+      <div class="panel-head"><h2 id="h-fail">Recent failures</h2><span class="aside">retried automatically, up to the attempt limit</span></div>
+      ${d.recent_failures.length ? `<div class="feed"><ol>${d.recent_failures.map(f => `<li><span class="t">${when(f.finished_at)}</span>
+        <span>${st(f.current_status)}</span><span class="msg"><a class="mono" href="#table-${esc(f.table_key)}">${esc(f.table_key)}</a> <span class="mono">${esc(f.chunk_key)}</span> · run ${f.run_id}<br><span class="err">${esc(f.error)}</span></span></li>`).join("")}</ol></div>`
+        : `<p class="empty">No failed chunks.</p>`}
+    </section>
+    <section class="panel" aria-labelledby="h-events">
+      <div class="panel-head"><h2 id="h-events">Activity</h2><span class="aside">latest 60 events</span></div>
+      <div class="feed">${eventList(d.events, true)}</div>
+    </section>
+  </div>`;
+  bindChart();
+}
+
+function tableRow(t) {
+  const read = Number(t.rows_read_done || 0), src = Number(t.source_rows || 0);
+  const p = pct(read, src), f = pct(t.rows_in_flight, src);
+  const vals = t.validations || [];
+  const badVal = vals.filter(v => !v.passed);
+  const checks = [];
+  if (t.failed) checks.push(`<span class="badge b-crit">${t.failed} failing</span>`);
+  if (t.stale) checks.push(`<span class="badge b-warn">${t.stale} need reload</span>`);
+  if (badVal.length) checks.push(`<span class="badge b-crit" title="${esc(badVal.map(v => v.check_name).join(", "))}">${badVal.length} check${badVal.length > 1 ? "s" : ""} failed</span>`);
+  else if (vals.length && t.done === t.chunks) checks.push(`<span class="badge b-ok">counts match</span>`);
+  if (t.warnings) checks.push(`<span class="badge b-warn">${t.warnings} warning${t.warnings > 1 ? "s" : ""}</span>`);
+  const cells = (t.strip || []);
+  const shown = cells.length > 120 ? cells.slice(-120) : cells;
+  return `<tr class="click" data-href="#table-${esc(t.table_key)}">
+    <td><div class="tname"><a href="#table-${esc(t.table_key)}">${esc(t.table_key)}</a><span class="s">${esc(STRATEGY[t.strategy] || t.strategy || "")} · ${esc(t.source_table || "")}</span></div></td>
+    <td><div class="prog"><div class="meter"><span class="m-done" style="width:${p}%"></span><span class="m-flight" style="width:${f}%"></span></div>
+      <span class="lbl">${compact(read)} / ${compact(src)}${src ? ` · ${p.toFixed(p >= 99.95 || p === 0 ? 0 : 1)}%` : ""}</span></div></td>
+    <td><div class="strip" role="img" aria-label="${t.done} of ${t.chunks} chunks done">${cells.length > 120 ? `<span class="muted" style="font-size:.7rem;width:100%">last 120 of ${cells.length}</span>` : ""}${shown.map(c => `<i class="st-${esc(c[1])}" title="${esc(c[0])}: ${esc(STATUS_LABEL[c[1]] || c[1])}${c[2] != null ? " · " + n(c[2]) + " rows" : ""}"></i>`).join("")}</div>
+      <span class="lbl muted num" style="font-size:.75rem">${t.done}/${t.chunks} done${t.running ? ` · ${t.running} loading` : ""}</span></td>
+    <td class="r num">${n(t.rows_loaded)}</td>
+    <td class="r num">${t.rows_rejected ? n(t.rows_rejected) : `<span class="muted">0</span>`}</td>
+    <td>${checks.join(" ") || `<span class="muted">—</span>`}</td></tr>`;
+}
+
+function eventList(events, withTable) {
+  const list = events.filter(e => !state.eventFilter || e.level === state.eventFilter);
+  if (!list.length) return `<p class="empty">No events.</p>`;
+  return `<ol>${list.map(e => `<li><span class="t">${when(e.ts)}</span><span class="lvl lvl-${esc(e.level)}">${esc(e.level)}</span>
+    <span class="msg">${withTable && e.table_key ? `<a class="mono" href="#table-${esc(e.table_key)}">${esc(e.table_key)}</a> ` : ""}${e.chunk_key ? `<span class="mono">${esc(e.chunk_key)}</span> ` : ""}${e.run_id && withTable ? `<a class="mono" href="#run-${e.run_id}">run ${e.run_id}</a> ` : ""}${esc(e.message)}</span></li>`).join("")}</ol>`;
+}
+
+// ------------------------------------------------------------------ throughput chart (one series: no legend; title names it)
+function niceMax(v) {
+  if (v <= 0) return 1;
+  const p = Math.pow(10, Math.floor(Math.log10(v))), m = v / p;
+  return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * p;
+}
+let chartData = [];
+function throughputChart(rows, nowIso) {
+  const now = nowIso ? new Date(nowIso) : new Date();
+  const end = new Date(now); end.setSeconds(0, 0);
+  const by = new Map(rows.map(r => [new Date(r.minute).getTime(), r]));
+  chartData = [];
+  for (let i = 59; i >= 0; i--) {
+    const t = end.getTime() - i * 60000;
+    const r = by.get(t);
+    chartData.push({ t, rows: r ? Number(r.rows) : 0, chunks: r ? Number(r.chunks) : 0 });
+  }
+  const total = chartData.reduce((a, b) => a + b.rows, 0);
+  if (!total) return `<p class="empty" style="padding:8px 0">No chunks finished in the last hour.</p>`;
+  const W = 600, H = 190, L = 44, R = 8, T = 10, B = 24;
+  const max = niceMax(Math.max(...chartData.map(d => d.rows)));
+  const bw = (W - L - R) / chartData.length;
+  const y = v => T + (H - T - B) * (1 - v / max);
+  const ticks = [0, max / 2, max];
+  let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Rows loaded per minute over the last hour, ${n(total)} rows in total">`;
+  svg += `<g class="grid">${ticks.map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/>`).join("")}</g>`;
+  svg += `<g class="axis">${ticks.map(v => `<text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${compact(v)}</text>`).join("")}`;
+  chartData.forEach((d, i) => { if (i % 15 === 0 || i === chartData.length - 1) svg += `<text x="${L + i * bw + bw / 2}" y="${H - 6}" text-anchor="middle">${new Date(d.t).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</text>`; });
+  svg += `</g>`;
+  chartData.forEach((d, i) => {
+    const x = L + i * bw + 1, w = Math.max(bw - 2, 1), h = (H - T - B) - (y(d.rows) - T);
+    svg += `<rect class="hit" data-i="${i}" x="${L + i * bw}" y="${T}" width="${bw}" height="${H - T - B}"/>`;
+    svg += d.rows ? `<rect class="bar" x="${x}" y="${y(d.rows)}" width="${w}" height="${Math.max(h, 1)}" rx="1.5"/>` : `<rect class="bar" x="${x}" y="${H - B}" width="0" height="0"/>`;
+  });
+  svg += `</svg>`;
+  return `<div class="chart" id="thr">${svg}<div class="tip" id="tip" hidden></div></div>
+    <p class="muted num" style="font-size:.78rem;margin-top:6px">${n(total)} rows in ${chartData.filter(d => d.rows).length} active minutes</p>`;
+}
+function bindChart() {
+  const el = $("#thr"); if (!el) return;
+  const tip = $("#tip", el);
+  el.addEventListener("mousemove", e => {
+    const hit = e.target.closest("rect.hit");
+    if (!hit) { tip.hidden = true; return; }
+    const d = chartData[+hit.dataset.i];
+    const box = el.getBoundingClientRect();
+    tip.innerHTML = `<b>${new Date(d.t).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</b> · ${n(d.rows)} rows · ${d.chunks} chunk${d.chunks === 1 ? "" : "s"}`;
+    tip.style.left = Math.min(Math.max(e.clientX - box.left, 90), box.width - 90) + "px";
+    tip.style.top = (e.clientY - box.top) + "px";
+    tip.hidden = false;
+  });
+  el.addEventListener("mouseleave", () => { tip.hidden = true; });
+}
+
+// ------------------------------------------------------------------ run history
+function optionsText(o) {
+  if (!o) return "";
+  const parts = [];
+  if (o.dry_run) parts.push("dry run");
+  if (o.force) parts.push("force reload");
+  if (o.refresh) parts.push(`refresh (${o.reopen_days} days)`);
+  if (o.date_from || o.date_to) parts.push(`dates ${o.date_from || "…"} to ${o.date_to || "…"}`);
+  if (o.chunk_keys) parts.push(`chunks ${o.chunk_keys.join(", ")}`);
+  if (o.sample_pct) parts.push(`${o.sample_pct}% sample`);
+  if (o.truncate_target) parts.push("truncated target");
+  if (o.retry_failed === false) parts.push("no retries");
+  return parts.join(" · ");
+}
+function renderRuns(d) {
+  const app = $("#app");
+  if (!d.ready || !d.runs.length) { app.innerHTML = `<p class="empty">No runs recorded yet.</p>`; return; }
+  app.innerHTML = `<section class="panel" aria-labelledby="h-runs">
+    <div class="panel-head"><h2 id="h-runs">Run history</h2><span class="aside">${d.runs.length} most recent runs · select a run for its log</span></div>
+    <div class="scroll"><table><thead><tr><th>Run</th><th>Command</th><th>Status</th><th>Started</th><th class="r">Duration</th><th>Tables</th>
+      <th class="r">Chunks loaded</th><th class="r">Failures</th><th class="r">Rows loaded</th><th class="r">Rejected</th><th>Options</th></tr></thead>
+    <tbody>${d.runs.map(r => `<tr class="click" data-href="#run-${r.run_id}">
+      <td><a class="mono" href="#run-${r.run_id}">${r.run_id}</a></td><td>${esc(r.command)}</td><td>${st(r.status)}</td>
+      <td class="num">${when(r.started_at)}</td><td class="r num">${dur(r.duration_s)}</td>
+      <td>${(r.tables || []).length === 15 ? "all" : esc((r.tables || []).join(", "))}</td>
+      <td class="r num">${n(r.chunks_done)}</td><td class="r num">${r.chunk_failures ? `<span class="badge b-crit">${n(r.chunk_failures)}</span>` : "0"}</td>
+      <td class="r num">${n(r.rows_loaded)}</td><td class="r num">${n(r.rows_rejected)}</td>
+      <td class="muted" style="font-size:.78rem">${esc(optionsText(r.options))}${r.error ? `<div class="err">${esc(r.error)}</div>` : ""}</td></tr>`).join("")}</tbody></table></div></section>`;
+}
+
+function renderRun(d) {
+  const app = $("#app");
+  if (d.error) { app.innerHTML = `<p class="empty">${esc(d.error)}</p>`; return; }
+  const r = d.run;
+  const failedVals = d.validations.filter(v => !v.passed);
+  app.innerHTML = `
+  <div class="crumbs"><a href="#runs">Run history</a><span>›</span><span>Run ${r.run_id}</span></div>
+  <section class="headline">
+    <h2>Run ${r.run_id} · ${esc(r.command)}</h2>
+    <div class="facts">${st(r.status)}<span>started <b>${when(r.started_at)}</b></span><span>duration <b>${dur(r.duration_s)}</b></span>
+      <span>workers <b>${r.workers ?? "—"}</b></span><span>host <b>${esc(r.host)}</b> as <b>${esc(r.os_user)}</b></span>
+      ${optionsText(r.options) ? `<span>${esc(optionsText(r.options))}</span>` : ""}</div>
+    ${r.error ? `<div class="banner"><span class="err">${esc(r.error)}</span></div>` : ""}
+  </section>
+  <section class="panel"><div class="panel-head"><h2>By table</h2></div>
+    ${d.per_table.length ? `<div class="scroll"><table><thead><tr><th>Table</th><th class="r">Chunks loaded</th><th class="r">Failures</th><th class="r">Rows loaded</th><th class="r">Rejected</th><th class="r">Worker time</th></tr></thead>
+    <tbody>${d.per_table.map(t => `<tr class="click" data-href="#table-${esc(t.table_key)}"><td><a class="mono" href="#table-${esc(t.table_key)}">${esc(t.table_key)}</a></td>
+      <td class="r num">${n(t.done)}</td><td class="r num">${t.failed ? `<span class="badge b-crit">${t.failed}</span>` : 0}</td>
+      <td class="r num">${n(t.rows_loaded)}</td><td class="r num">${n(t.rows_rejected)}</td><td class="r num">${dur(t.busy_s)}</td></tr>`).join("")}</tbody></table></div>`
+      : `<p class="empty">This run did not load any chunks.</p>`}
+  </section>
+  ${d.validations.length ? `<section class="panel"><div class="panel-head"><h2>Checks</h2><span class="aside">${failedVals.length} failed of ${d.validations.length}</span></div>
+    <div class="scroll"><table><thead><tr><th>Table</th><th>Check</th><th class="r">Source</th><th class="r">Target</th><th>Result</th></tr></thead><tbody>
+    ${d.validations.map(v => `<tr><td class="mono">${esc(v.table_key)} ${v.chunk_key ? `<span class="muted">${esc(v.chunk_key)}</span>` : ""}</td><td>${esc(v.check_name.replaceAll("_", " "))}</td>
+      <td class="r num">${esc(v.source_value)}</td><td class="r num">${esc(v.target_value)}</td>
+      <td>${v.passed ? `<span class="badge b-ok">match</span>` : `<span class="badge b-crit">mismatch</span> <span class="muted">${esc(v.detail)}</span>`}</td></tr>`).join("")}</tbody></table></div></section>` : ""}
+  <section class="panel"><div class="panel-head"><h2>Log</h2>
+    <div class="filters aside"><label for="lvl">Show</label><select id="lvl"><option value="">all events</option><option value="error">errors</option><option value="warning">warnings</option><option value="info">info</option></select></div></div>
+    <div class="feed" style="max-height:520px" id="runlog">${eventList(d.events, false)}</div></section>`;
+  const sel = $("#lvl"); sel.value = state.eventFilter;
+  sel.addEventListener("change", () => { state.eventFilter = sel.value; $("#runlog").innerHTML = eventList(d.events, false); });
+}
+
+// ------------------------------------------------------------------ table detail
+function renderTable(d, ov) {
+  const app = $("#app");
+  const s = d.state || {};
+  const summary = (ov.tables || []).find(t => t.table_key === state.arg) || {};
+  const chunks = d.chunks.filter(c => c.status !== "skipped");
+  const list = chunks.filter(c => !state.chunkFilter || c.status === state.chunkFilter);
+  const counts = {}; chunks.forEach(c => counts[c.status] = (counts[c.status] || 0) + 1);
+  const flagged = d.profile.filter(p => p.flagged);
+  app.innerHTML = `
+  <div class="crumbs"><a href="#overview">Overview</a><span>›</span><span class="mono">${esc(state.arg)}</span></div>
+  <section class="headline">
+    <h2 class="mono" style="font-family:var(--font-code)">${esc(state.arg)}</h2>
+    <div class="facts"><span><b>${esc(s.source_table || "")}</b> → <b>${esc(s.target_table || "")}</b></span><span>${esc(STRATEGY[s.strategy] || s.strategy || "")}</span>
+      <span>source rows <b>${n(s.source_rows)}</b> <span class="muted">(${when(s.source_rows_at)})</span></span>
+      <span>loaded <b>${n(summary.rows_loaded)}</b></span><span>rejected <b>${n(summary.rows_rejected)}</b></span>
+      ${s.target_rows != null ? `<span>target count <b>${n(s.target_rows)}</b> <span class="muted">(${when(s.target_rows_at)})</span></span>` : ""}</div>
+    ${(s.warnings || []).map(w => `<div class="banner" style="border-left-color:var(--st-stale)"><span class="err">${esc(w)}</span></div>`).join("")}
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><h2>Chunks</h2>
+      <div class="filters aside">${Object.entries(counts).map(([k, v]) => `${st(k)} <span class="num">${v}</span>`).join(" &nbsp; ")}
+        <label for="cf" style="margin-left:10px">Show</label>
+        <select id="cf"><option value="">all</option>${["done", "running", "failed", "stale", "pending"].map(k => `<option value="${k}">${STATUS_LABEL[k]}</option>`).join("")}</select></div></div>
+    <div class="panel-body"><div class="cells">${list.map(c => `<button type="button" class="cell st-${esc(c.status)}" data-chunk="${c.chunk_id}" style="--c:var(--st-${esc(c.status)})"
+        title="${esc(STATUS_LABEL[c.status] || c.status)}"><span class="k">${esc(c.chunk_key.replace(/^[a-z]:/, ""))}</span><span class="n">${c.rows_loaded != null ? compact(c.rows_loaded) : (c.status === "running" ? compact(c.rows_read) + "…" : "—")}</span></button>`).join("") || `<p class="empty">No chunks match.</p>`}</div>
+      <div id="chunk-detail"></div></div>
+  </section>
+
+  <div class="grid2">
+    <section class="panel"><div class="panel-head"><h2>Rejected rows</h2><span class="aside">rows not loaded, by reason</span></div>
+      ${d.reject_reasons.length ? `<div class="scroll"><table><thead><tr><th>Reason</th><th>Column</th><th class="r">Rows</th><th>Example value</th></tr></thead><tbody>
+        ${d.reject_reasons.map(r => `<tr><td>${esc(r.reason.replaceAll("_", " "))}</td><td class="mono">${esc(r.column_name)}</td><td class="r num">${n(r.rows)}</td><td class="mono" style="max-width:260px;overflow-wrap:anywhere">${esc(String(r.example ?? "NULL").slice(0, 80))}</td></tr>`).join("")}
+        </tbody></table></div>
+        <details class="panel-body"><summary>First ${d.reject_samples.length} rejected rows</summary>${d.reject_samples.map(r => `<pre class="json">${esc(r.chunk_key)} · ${esc(r.reason)} on ${esc(r.column_name)}: ${esc(r.detail || "")}\n${esc(JSON.stringify(r.row_data, null, 1))}</pre>`).join("")}</details>`
+        : `<p class="empty">No rejected rows.</p>`}
+    </section>
+    <section class="panel"><div class="panel-head"><h2>Source profile</h2><span class="aside">${d.profile.length ? `${flagged.length} of ${d.profile.length} checks flagged` : "run <code>profile</code> to scan the source"}</span></div>
+      ${d.profile.length ? `<div class="scroll"><table><thead><tr><th>Column</th><th>Check</th><th>Finding</th></tr></thead><tbody>
+        ${d.profile.sort((a, b) => b.flagged - a.flagged).map(p => `<tr><td class="mono">${esc(p.column_name)} <span class="muted">→ ${esc(p.target_column)}</span></td><td>${esc(p.check_name.replaceAll("_", " "))}</td>
+          <td>${p.flagged ? `<span class="badge b-crit">flagged</span> ` : `<span class="badge b-ok">ok</span> `}<span class="muted num">${esc(profileText(p))}</span></td></tr>`).join("")}</tbody></table></div>` : `<p class="empty">No profile yet.</p>`}
+    </section>
+  </div>
+
+  <section class="panel"><div class="panel-head"><h2>Column mapping</h2><span class="aside">${mapCounts(s.mapping)}</span></div>
+    <div class="scroll"><table><thead><tr><th>Source</th><th>Target</th><th>Conversion</th></tr></thead><tbody>
+    ${(s.mapping || []).filter(m => m.conversion !== "as is").map(mapRow).join("") || `<tr><td colspan="3" class="muted">Every column loads as is.</td></tr>`}</tbody></table></div>
+    ${(s.mapping || []).some(m => m.conversion === "as is") ? `<details class="panel-body"><summary>${(s.mapping || []).filter(m => m.conversion === "as is").length} columns that load as is</summary>
+      <div class="scroll"><table><tbody>${(s.mapping || []).filter(m => m.conversion === "as is").map(mapRow).join("")}</tbody></table></div></details>` : ""}</section>
+
+  <section class="panel"><div class="panel-head"><h2>Load history</h2><span class="aside">latest 200 attempts</span></div>
+    <div class="scroll"><table><thead><tr><th>Finished</th><th>Run</th><th>Chunk</th><th>Result</th><th class="r">Rows</th><th class="r">Rejected</th><th class="r">Time</th><th>Error</th></tr></thead><tbody>
+    ${d.history.map(h => `<tr><td class="num">${when(h.finished_at)}</td><td><a class="mono" href="#run-${h.run_id}">${h.run_id}</a></td><td class="mono">${esc(h.chunk_key)}</td>
+      <td>${st(h.status)}</td><td class="r num">${n(h.rows_loaded)}</td><td class="r num">${n(h.rows_rejected)}</td><td class="r num">${dur(h.duration_s)}</td><td class="err">${esc(h.error || "")}</td></tr>`).join("")}</tbody></table></div></section>`;
+  const cf = $("#cf"); cf.value = state.chunkFilter;
+  cf.addEventListener("change", () => { state.chunkFilter = cf.value; renderTable(d, ov); });
+  app.querySelectorAll(".cell").forEach(b => b.addEventListener("click", () => { state.selectedChunk = +b.dataset.chunk; showChunk(d); }));
+  if (state.selectedChunk) showChunk(d);
+}
+
+function mapRow(m) { return `<tr><td class="mono">${esc(m.source)}</td><td class="mono">${esc(m.target)}</td><td class="muted">${esc(m.conversion)}</td></tr>`; }
+function mapCounts(list) { list = list || []; const c = list.filter(m => m.conversion !== "as is").length; return `${c} of ${list.length} columns converted or checked`; }
+function profileText(p) {
+  const r = p.result || {};
+  if (p.check_name === "distinct") return r.unmapped && r.unmapped.length ? "values with no mapping: " + r.unmapped.map(v => `${v[0]} (${n(v[1])})`).join(", ") : `${n(r.distinct)} distinct values, all mapped`;
+  if (p.check_name === "too_long") return `${n(r.count)} too long; longest ${n(r.max)}`;
+  if (p.check_name === "numeric_overflow") return `${n(r.count)} too large; largest ${n(r.max)}`;
+  return `${n(r.count)} of ${n(r.rows)} rows`;
+}
+
+function showChunk(d) {
+  const c = d.chunks.find(x => x.chunk_id === state.selectedChunk);
+  document.querySelectorAll(".cell").forEach(b => b.classList.toggle("sel", +b.dataset.chunk === state.selectedChunk));
+  if (!c) return;
+  const stats = c.stats ? Object.entries(c.stats).filter(([, v]) => v).map(([k, v]) => `${k.replace(":", " ")}: ${n(v)}`).join(", ") : "";
+  $("#chunk-detail").innerHTML = `<div class="panel" style="margin-top:12px"><div class="panel-head"><h3 class="mono">${esc(c.chunk_key)}</h3><span>${st(c.status)}</span><span class="aside">${esc(c.lo && c.hi ? `${c.lo} to ${c.hi}` : c.source_table || "")}</span></div>
+    <div class="panel-body"><dl class="kv">
+      <dt>Rows</dt><dd class="num">${n(c.rows_read)} read · ${n(c.rows_loaded)} loaded · ${n(c.rows_rejected)} rejected</dd>
+      <dt>Attempts</dt><dd>${c.attempts}${c.worker ? ` · last by ${esc(c.worker)} in run <a href="#run-${c.run_id}">${c.run_id}</a>` : ""}</dd>
+      <dt>Last load</dt><dd>${when(c.loaded_at)}${c.duration_s != null ? ` · took ${dur(c.duration_s)}` : ""}</dd>
+      <dt>Verified</dt><dd>${c.verified_at ? `${when(c.verified_at)} · ${esc(c.verify_result)}` : "not yet"}</dd>
+      ${stats ? `<dt>Conversions</dt><dd class="muted">${esc(stats)}</dd>` : ""}
+      ${c.error ? `<dt>Error</dt><dd class="err">${esc(c.error)}</dd>` : ""}
+      <dt>Reload it</dt><dd><code>python -m onroute_migration run -t ${esc(state.arg)} --chunk ${esc(c.chunk_key)} --force</code></dd>
+    </dl></div></div>`;
+}
+
+document.addEventListener("click", e => {
+  const tr = e.target.closest("tr.click");
+  if (tr && !e.target.closest("a")) location.hash = tr.dataset.href;
+});
+
+// ------------------------------------------------------------------ sample data for the preview (window.ONROUTE_DEMO)
+function demoApi(path) {
+  const D = window.__demo || (window.__demo = buildDemo());
+  if (path.startsWith("/api/overview")) return D.overview;
+  if (path.startsWith("/api/runs/")) return D.run(+path.split("/").pop());
+  if (path.startsWith("/api/runs")) return { ready: true, runs: D.runs };
+  if (path.startsWith("/api/tables/")) return D.table(decodeURIComponent(path.split("/").pop()));
+  return {};
+}
+function buildDemo() {
+  const now = Date.now(), iso = ms => new Date(ms).toISOString();
+  const months = [];
+  for (let y = 2018; y <= 2026; y++) for (let m = 1; m <= 12; m++) { if (y === 2026 && m > 9) break; months.push(`${y}-${String(m).padStart(2, "0")}`); }
+  const defs = [
+    ["pos_order_details", "dbo.POS_ORDERDETAILS", "date_range", 441893194, months.length, 0.62],
+    ["pos_orders", "dbo.POS_ORDERS", "date_range", 113669820, months.length, 1],
+    ["pos_order_payments", "dbo.POS_ORDERPAYMENTS", "date_range", 115088151, months.length, 1],
+    ["pos_order_paid_outs", "dbo.POS_ORDERPAIDOUTS", "full", 118908, 1, 1],
+    ["weekly_cogs", "dbo.WeeklyCogs", "int_range", 8884726, 9, 1],
+    ["employee_pay_summary", "dbo.EmployeePaySummaryV2", "date_range", 8790224, 60, 1],
+    ["temp_dlh", "dbo.Temp_DLH", "full", 64547, 1, 1], ["weekly_cogs_prod_num", "dbo.WeeklyCogsProdNum", "full", 8591, 1, 1],
+    ["netsuite_location_mapping", "dbo.NetSuiteLocation_Mapping", "full", 255, 1, 1], ["district_directors", "dbo.District_Directors", "full", 23, 1, 1],
+    ["date_table", "dbo.date_table", "full", 2922, 1, 1], ["vena_sales", "dbo.Sales_2026_UnPivot_New", "per_source_table", 36540, 1, 1],
+    ["vena_gross_margin", "dbo.GM_2026_UnPivot_New", "per_source_table", 36540, 1, 1], ["vena_transactions", "dbo.Transactions_2026_UnPivot_v2", "per_source_table", 36540, 1, 1],
+    ["vena_labour_hours", "dbo.DLH_2026_UnPivot_New", "per_source_table", 735607, 1, 1]];
+  const chunksBy = {}, tables = [];
+  defs.forEach(([key, src, strat, rows, nchunks, frac], ti) => {
+    const per = rows / nchunks, cks = [];
+    for (let i = 0; i < nchunks; i++) {
+      let status = i < Math.floor(nchunks * frac) ? "done" : "pending";
+      if (key === "pos_order_details" && i >= Math.floor(nchunks * frac) && i < Math.floor(nchunks * frac) + 4) status = "running";
+      if (key === "pos_order_details" && i === 23) status = "failed";
+      if (key === "pos_orders" && i === 61) status = "stale";
+      const ck = strat === "date_range" ? (key === "employee_pay_summary" ? `m:${months[months.length - 60 + i]}` : `m:${months[i]}`) : strat === "int_range" ? `i:${String(i * 1e6).padStart(15, "0")}` : strat === "full" ? "all" : "src:2026";
+      const rej = key === "pos_orders" && i % 17 === 3 ? 2 : key === "employee_pay_summary" && i === 40 ? 1 : 0;
+      const rl = nchunks === 1 ? rows : Math.round(per * (0.9 + 0.2 * ((i * 37) % 10) / 10));
+      cks.push({ chunk_id: ti * 1000 + i, chunk_key: ck, kind: strat, lo: ck.startsWith("m:") ? ck.slice(2) + "-01" : null, hi: null, source_table: src, status,
+        attempts: status === "failed" ? 3 : status === "running" ? 1 : 1, worker: `w${(i % 6) + 1}`, run_id: 14, rows_read: status === "running" ? Math.round(rl * 0.55) : rl,
+        rows_loaded: status === "done" || status === "stale" ? rl - rej : null, rows_rejected: status === "done" || status === "stale" ? rej : null,
+        duration_s: rl / 52000, loaded_at: status === "done" ? iso(now - (nchunks - i) * 41000) : null, verified_at: null, verify_result: status === "stale" ? "rows: source 1,398,402 - rejected 0 = 1,398,402, target 1,398,317" : null,
+        error: status === "failed" ? "ChunkFailed: more than 1000 rejected rows (last: bad_flag_value on has_mods: 'Maybe'); fix the data or raise max_reject_rows" : null,
+        stats: status === "done" ? { "rounded:price": 0 } : null, finished_at: null, started_at: iso(now - 70000) });
+    }
+    chunksBy[key] = cks;
+    const done = cks.filter(c => c.status === "done" || c.status === "stale");
+    tables.push({ table_key: key, target_table: "master." + key, source_table: src, strategy: strat, priority: ti * 10, source_rows: rows, source_rows_at: iso(now - 4 * 3600e3),
+      chunks: nchunks, done: cks.filter(c => c.status === "done").length, running: cks.filter(c => c.status === "running").length,
+      failed: cks.filter(c => c.status === "failed").length, pending: cks.filter(c => c.status === "pending").length, stale: cks.filter(c => c.status === "stale").length,
+      rows_loaded: done.reduce((a, c) => a + c.rows_loaded, 0), rows_read_done: done.reduce((a, c) => a + c.rows_read, 0),
+      rows_rejected: done.reduce((a, c) => a + c.rows_rejected, 0), rows_in_flight: cks.filter(c => c.status === "running").reduce((a, c) => a + c.rows_read, 0),
+      warnings: key === "employee_pay_summary" ? 1 : 0, last_loaded_at: iso(now - 60000),
+      validations: frac === 1 && key !== "pos_orders" ? [{ check_name: "target_rows_equal_loaded", passed: true }, { check_name: "source_rows_equal_read", passed: true }] : [],
+      strip: cks.map(c => [c.chunk_key, c.status, c.rows_loaded]) });
+  });
+  const thr = [];
+  for (let i = 0; i < 60; i++) { const m = Math.floor((now - (59 - i) * 60000) / 60000) * 60000; thr.push({ minute: iso(m), rows: Math.round(2.7e6 + 0.5e6 * Math.sin(i / 5) + (i % 7) * 1.1e5), chunks: 2 + (i % 3) }); }
+  const totals = tables.reduce((a, t) => ({ source_rows: a.source_rows + t.source_rows, rows_read: a.rows_read + t.rows_read_done, rows_loaded: a.rows_loaded + t.rows_loaded,
+    rows_rejected: a.rows_rejected + t.rows_rejected, rows_in_flight: a.rows_in_flight + t.rows_in_flight, chunks: a.chunks + t.chunks, done: a.done + t.done, failed: a.failed + t.failed,
+    running: a.running + t.running, pending: a.pending + t.pending + t.stale }), { source_rows: 0, rows_read: 0, rows_loaded: 0, rows_rejected: 0, rows_in_flight: 0, chunks: 0, done: 0, failed: 0, running: 0, pending: 0 });
+  totals.rows_per_sec_15m = 49800; totals.remaining_rows = totals.source_rows - totals.rows_read - totals.rows_in_flight; totals.eta_s = totals.remaining_rows / totals.rows_per_sec_15m;
+  const running = chunksBy.pos_order_details.filter(c => c.status === "running").map((c, i) => ({ table_key: "pos_order_details", chunk_key: c.chunk_key, worker: `w${i + 1}`, run_id: 14,
+    attempts: 1, rows_read: c.rows_read, elapsed_s: 40 + i * 11, heartbeat_age_s: 3 + i * 2, started_at: iso(now - (40 + i * 11) * 1000) }));
+  const ev = [
+    ["info", "pos_order_details", running[0]?.chunk_key, "loaded 1,412,880 rows in 27.1s"],
+    ["warning", "pos_orders", "m:2024-03", "loaded 1,186,004 rows, rejected 2 in 22.4s (bad_uuid:guid: 1, not_in_enum:order_type_name: 1)"],
+    ["error", "pos_order_details", "m:2019-12", "chunk failed: ChunkFailed: more than 1000 rejected rows (last: bad_flag_value on has_mods: 'Maybe')"],
+    ["info", "pos_order_details", "m:2023-08", "loaded 1,398,551 rows in 26.9s"],
+    ["warning", "pos_orders", "m:2023-02", "verify mismatch, queued for reload: rows: source 1,398,402 - rejected 0 = 1,398,402, target 1,398,317"],
+    ["info", null, null, "chunks before run: done 412, failed 1, pending 158"],
+    ["warning", "employee_pay_summary", null, "target has no index on pay_date: reloading or validating a chunk scans all of master.employee_pay_summary."]];
+  const events = ev.map((e, i) => ({ event_id: 900 - i, run_id: 14, ts: iso(now - i * 47000), level: e[0], table_key: e[1], chunk_key: e[2], message: e[3] }));
+  const overview = { ready: true, now: iso(now), tables, active_runs: [{ run_id: 14, command: "run", status: "running", started_at: iso(now - 3.2 * 3600e3), heartbeat_age_s: 4, workers: 6, options: { refresh: false } }],
+    running_chunks: running, throughput: thr, totals, events,
+    recent_failures: [{ table_key: "pos_order_details", chunk_key: "m:2019-12", run_id: 14, worker: "w3", finished_at: iso(now - 95000), current_status: "failed", attempts: 3,
+      error: "ChunkFailed: more than 1000 rejected rows (last: bad_flag_value on has_mods: 'Maybe'); fix the data or raise max_reject_rows" },
+      { table_key: "pos_order_details", chunk_key: "m:2021-04", run_id: 14, worker: "w5", finished_at: iso(now - 2.1 * 3600e3), current_status: "done", attempts: 2,
+      error: "OperationalError: consuming input failed: server closed the connection unexpectedly" }] };
+  const runs = [
+    { run_id: 14, command: "run", status: "running", started_at: iso(now - 3.2 * 3600e3), duration_s: 3.2 * 3600, tables: defs.map(d => d[0]), workers: 6, chunks_done: 412, chunk_failures: 4, rows_loaded: 512e6, rows_rejected: 76, options: {} },
+    { run_id: 13, command: "verify", status: "completed_with_errors", started_at: iso(now - 5 * 3600e3), duration_s: 1460, tables: ["pos_orders"], workers: 1, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: { limit: null } },
+    { run_id: 12, command: "run", status: "interrupted", started_at: iso(now - 26 * 3600e3), duration_s: 5.4 * 3600, tables: defs.map(d => d[0]), workers: 6, chunks_done: 230, chunk_failures: 1, rows_loaded: 2.9e8, rows_rejected: 40, options: {} },
+    { run_id: 11, command: "dry-run", status: "succeeded", started_at: iso(now - 30 * 3600e3), duration_s: 610, tables: defs.map(d => d[0]), workers: 0, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: { dry_run: true, sample: 2 } },
+    { run_id: 10, command: "profile", status: "succeeded", started_at: iso(now - 31 * 3600e3), duration_s: 2210, tables: defs.map(d => d[0]), workers: 1, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: { sample_pct: 5 } },
+    { run_id: 9, command: "run", status: "failed", started_at: iso(now - 33 * 3600e3), duration_s: 12, tables: ["employee_pay_summary"], workers: 6, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: {}, error: "3 mapping problems; run `check` for details" }];
+  return {
+    overview, runs,
+    run: id => ({ run: { ...(runs.find(r => r.run_id === id) || runs[0]), host: "migr-01", os_user: "svc_migration" },
+      per_table: tables.filter(t => t.done).slice(0, 8).map(t => ({ table_key: t.table_key, done: t.done, failed: t.failed, rows_loaded: t.rows_loaded, rows_rejected: t.rows_rejected, busy_s: t.rows_loaded / 52000 })),
+      attempts: [], events, validations: [{ table_key: "pos_orders", chunk_key: "m:2023-02", check_name: "chunk_matches_source", source_value: "1398402", target_value: "1398317", passed: false, detail: "rows: source 1,398,402 - rejected 0 = 1,398,402, target 1,398,317" }] }),
+    table: key => ({ state: { ...tables.find(t => t.table_key === key), mapping: [{ source: "IsRefund", target: "is_refund", conversion: "text flag -> boolean" }, { source: "GUID", target: "guid", conversion: "text -> uuid (validated); NOT NULL check" }, { source: "OrderTypeName", target: "order_type_name", conversion: "text -> enum (5 values)" }],
+        warnings: key === "employee_pay_summary" ? ["target has no index on pay_date: reloading or validating a chunk scans all of master.employee_pay_summary."] : [] },
+      chunks: chunksBy[key] || [], reject_reasons: key === "pos_orders" ? [{ reason: "bad_uuid", column_name: "guid", rows: 41, example: "{9F2C-not-a-guid}" }, { reason: "not_in_enum", column_name: "order_type_name", rows: 35, example: "Pickup" }] : [],
+      reject_samples: [], profile: key === "pos_orders" ? [{ column_name: "OrderTypeName", target_column: "order_type_name", check_name: "distinct", flagged: true, result: { distinct: 6, unmapped: [["Pickup", 35]] } }, { column_name: "GUID", target_column: "guid", check_name: "bad_uuid", flagged: true, result: { count: 41, rows: 113669820 } }, { column_name: "StoreId", target_column: "store_id", check_name: "nulls", flagged: false, result: { count: 0, rows: 113669820 } }] : [],
+      history: [] }) };
+}
+
+if (DEMO) $("#demo-note").hidden = false;
+route();
+</script>
+</body>
+</html>

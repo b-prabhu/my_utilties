@@ -1,0 +1,28 @@
+# Copy to config.toml and fill in. ${VAR} is replaced from the environment,
+# so passwords never need to be written into this file.
+
+[source]   # SQL Server (read only)
+dsn = "DRIVER={ODBC Driver 18 for SQL Server};SERVER=onroute-sql.example.local;DATABASE=ONroute;UID=migration_reader;PWD=${MSSQL_PASSWORD};TrustServerCertificate=yes"
+# READ COMMITTED reads committed data without blocking writers for long.
+# SNAPSHOT gives each chunk a consistent view (needs ALLOW_SNAPSHOT_ISOLATION ON).
+isolation = "READ COMMITTED"
+fetch_size = 20000
+timezone = "America/Toronto"   # how naive SQL Server datetimes are read when a target column has a time zone
+
+[target]   # PostgreSQL
+dsn = "postgresql://migrator:${PG_PASSWORD}@onroute-pg.example.local:5432/onroute"
+control_schema = "migration"   # run history, checkpoints, rejected rows
+synchronous_commit = "off"     # faster bulk commits; a crash can only lose chunks not yet marked done
+statement_timeout = "0"
+
+[run]
+workers = 4                    # parallel chunk loaders (processes)
+max_attempts = 3               # per chunk, per run, before it is left as failed
+retry_backoff_seconds = 30     # wait before retrying a failed chunk (x attempt number)
+lease_minutes = 20             # a running chunk with no heartbeat for this long is taken over
+
+[dashboard]
+host = "127.0.0.1"
+port = 8765
+# Optional separate read-only login for the dashboard; defaults to target.dsn
+# dsn = "postgresql://migration_viewer:${PG_VIEWER_PASSWORD}@onroute-pg.example.local:5432/onroute"
