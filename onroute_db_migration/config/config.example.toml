@@ -22,7 +22,10 @@ retry_backoff_seconds = 30     # wait before retrying a failed chunk (x attempt 
 lease_minutes = 20             # a running chunk with no heartbeat for this long is taken over
 
 [dashboard]
-host = "127.0.0.1"
+host = "127.0.0.1"             # localhost only; use 0.0.0.0 to share it on the network (then set admin_token)
 port = 8765
+allow_actions = true           # start / stop / resume / rerun buttons; false makes the dashboard view-only
+# admin_token = "${MIGRATION_ADMIN_TOKEN}"   # required for the buttons when host is not localhost
+# log_dir = "logs"             # output of commands started from the dashboard (default: logs/ next to config/)
 # Optional separate read-only login for the dashboard; defaults to target.dsn
 # dsn = "postgresql://migration_viewer:${PG_VIEWER_PASSWORD}@onroute-pg.example.local:5432/onroute"

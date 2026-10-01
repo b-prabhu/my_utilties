@@ -164,3 +164,42 @@ def test_sqlserver_predicates():
     where, params = chunk_predicate(Chunk("t", "m:2024-01", "date", "2024-01-01", "2024-02-01"), "Endday")
     assert where == "[Endday] >= ? AND [Endday] < ?" and params[0] == datetime(2024, 1, 1)
     assert chunk_predicate(Chunk("t", "null", "null"), "Endday")[0] == "[Endday] IS NULL"
+
+
+# ---------------------------------------------------------------- dashboard actions
+
+from onroute_migration.dashboard.actions import ActionError, build_args
+
+KNOWN = ["pos_orders", "date_table"]
+
+
+def test_build_args_run_modes():
+    assert build_args({"action": "run"}, KNOWN) == ("run", [])
+    assert build_args({"action": "run", "mode": "only_failed", "tables": ["pos_orders"], "workers": 4}, KNOWN) == \
+        ("run", ["-t", "pos_orders", "--only-failed", "-w", "4"])
+    assert build_args({"action": "run", "mode": "refresh", "reopen_days": 3}, KNOWN) == ("run", ["--refresh", "--reopen-days", "3"])
+    assert build_args({"action": "run", "mode": "force", "tables": ["pos_orders"], "chunks": ["m:2024-03"]}, KNOWN) == \
+        ("run", ["-t", "pos_orders", "--force", "--chunk", "m:2024-03"])
+    assert build_args({"action": "run", "dry_run": True, "sample": 2}, KNOWN) == ("run", ["--dry-run", "--sample", "2"])
+    assert build_args({"action": "verify", "date_from": "2024-01", "date_to": "2024-07-01"}, KNOWN) == \
+        ("verify", ["--from", "2024-01", "--to", "2024-07-01"])
+    assert build_args({"action": "profile", "sample_pct": "5"}, KNOWN) == ("profile", ["--sample-pct", "5"])
+
+
+@pytest.mark.parametrize("bad", [
+    {"action": "run", "tables": ["nope"]},
+    {"action": "run", "mode": "drop_everything"},
+    {"action": "run", "chunks": ["m:2024-03; rm -rf /"]},
+    {"action": "run", "date_from": "last tuesday"},
+    {"action": "run", "workers": 999},
+    {"action": "run", "mode": "force"},                       # every table needs explicit confirmation
+    {"action": "reset"},
+    {"action": "profile", "sample_pct": 0},
+])
+def test_build_args_rejects_bad_input(bad):
+    with pytest.raises(ActionError):
+        build_args(bad, KNOWN)
+
+
+def test_force_everything_with_confirmation():
+    assert build_args({"action": "run", "mode": "force", "confirm_all": True}, KNOWN) == ("run", ["--force"])

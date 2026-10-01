@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import functools
 import importlib
 import multiprocessing as mp
 import os
@@ -51,8 +52,32 @@ class Context:
         return load_factory(self.source_factory)(self.settings)
 
     def control(self) -> Control:
-        return Control(tgt.connect(self.settings.target, autocommit=True, application_name="onroute-migration-control"),
-                       self.settings.control_schema)
+        c = Control(tgt.connect(self.settings.target, autocommit=True, application_name="onroute-migration-control"),
+                    self.settings.control_schema)
+        self.__dict__.setdefault("_opened", []).append(c.conn)
+        return c
+
+    def close(self, keep: int = 0):
+        """Close control connections opened after the first `keep` (this also releases the writer lock)."""
+        opened = self.__dict__.setdefault("_opened", [])
+        for conn in opened[keep:]:
+            try:
+                conn.close()
+            except Exception:
+                pass
+        del opened[keep:]
+
+
+def command(fn):
+    """Commands release their connections, and so the writer lock, when they return."""
+    @functools.wraps(fn)
+    def wrapper(ctx, *a, **kw):
+        keep = len(ctx.__dict__.setdefault("_opened", []))
+        try:
+            return fn(ctx, *a, **kw)
+        finally:
+            ctx.close(keep)
+    return wrapper
 
 
 # ------------------------------------------------------------------ preflight
@@ -115,6 +140,7 @@ def prepare(settings: Settings, source, conn, specs: list[TableSpec], with_chunk
 
 # ------------------------------------------------------------------ check / plan
 
+@command
 def cmd_check(ctx: Context, tables: list[str] | None) -> int:
     s = ctx.settings
     source = ctx.source()
@@ -162,10 +188,13 @@ def plan_tables(control: Control, conn, run_id: int, preps: list[TablePrep]) -> 
     return out
 
 
+@command
 def cmd_plan(ctx: Context, tables: list[str] | None) -> int:
     s = ctx.settings
     control = ctx.control()
     control.ensure_schema()
+    if not control.acquire_writer_lock():
+        return _busy(control)
     run_id = control.start_run("plan", [t.key for t in s.select(tables)], {}, 0)
     conn = tgt.connect(s.target, autocommit=True)
     preps, problems = prepare(s, ctx.source(), conn, s.select(tables))
@@ -196,6 +225,10 @@ def worker_loop(ctx: Context, run_id: int, scope: Scope, name: str, stop_after: 
     done = failed = 0
     try:
         while stop_after is None or done + failed < stop_after:
+            stop = control.stop_mode(run_id)
+            if stop:
+                log(f"stop requested ({stop}); not starting more chunks", name)
+                break
             row = control.claim(scope, run_id, name, max_attempts, lease)
             if row is None:
                 if control.has_waiting(scope, max_attempts):
@@ -209,6 +242,9 @@ def worker_loop(ctx: Context, run_id: int, scope: Scope, name: str, stop_after: 
                 done += 1
                 log(f"done  {label}: {res['rows_loaded']:,} rows" + (f", {res['rows_rejected']:,} rejected" if res['rows_rejected'] else "")
                     + f", {res['duration']:.1f}s", name)
+            elif res["status"] == "stopped":
+                log(f"stopped {label}: rolled back, back in the queue", name)
+                break
             else:
                 failed += 1
                 log(f"FAIL  {label}: {res['error']}", name)
@@ -244,19 +280,22 @@ def requeue_for_refresh(control: Control, scope: Scope, reopen_days: int) -> int
         reason=f"refresh: reloading chunks that can still change (last {reopen_days} days)", params={"cutoff": cutoff})
 
 
+@command
 def cmd_run(ctx: Context, tables: list[str] | None, *, date_from: date | None = None, date_to: date | None = None,
             chunk_keys: list[str] | None = None, force: bool = False, refresh: bool = False, reopen_days: int = 7,
             workers: int | None = None, retry_failed: bool = True, dry_run: bool = False, sample: int | None = None,
-            skip_table_counts: bool = False) -> int:
+            skip_table_counts: bool = False, only_failed: bool = False) -> int:
     s = ctx.settings
     specs = s.select(tables)
     workers = int(workers or s.run["workers"])
     control = ctx.control()
     control.ensure_schema()
     abandoned = control.abandon_dead_runs(int(s.run["lease_minutes"]))
+    if not dry_run and not control.acquire_writer_lock():
+        return _busy(control)
     options = {"date_from": date_from and date_from.isoformat(), "date_to": date_to and date_to.isoformat(),
                "chunk_keys": chunk_keys, "force": force, "refresh": refresh, "reopen_days": reopen_days,
-               "retry_failed": retry_failed, "dry_run": dry_run, "sample": sample}
+               "retry_failed": retry_failed, "dry_run": dry_run, "sample": sample, "only_failed": only_failed}
     run_id = control.start_run("dry-run" if dry_run else "run", [t.key for t in specs], options, 0 if dry_run else workers)
     log(f"run {run_id} started for {len(specs)} tables with {workers} workers" + (" (DRY RUN: every chunk is rolled back)" if dry_run else ""))
     if abandoned:
@@ -274,7 +313,7 @@ def cmd_run(ctx: Context, tables: list[str] | None, *, date_from: date | None = 
             return 2
         plan_tables(control, conn, run_id, preps)
 
-        scope = Scope([t.key for t in specs], date_from, date_to, chunk_keys)
+        scope = Scope([t.key for t in specs], date_from, date_to, chunk_keys, ["failed"] if only_failed else None)
         if force:
             n = control.requeue(scope, reason="forced reload")
             control.event(run_id, "info", f"--force: {n} chunks queued for reload")
@@ -301,8 +340,15 @@ def cmd_run(ctx: Context, tables: list[str] | None, *, date_from: date | None = 
                 p.start()
                 procs.append(p)
             last = 0.0
+            stop_seen_at = None
             while any(p.is_alive() for p in procs):
                 time.sleep(2)
+                if control.stop_mode(run_id) == "now":
+                    stop_seen_at = stop_seen_at or time.monotonic()
+                    if time.monotonic() - stop_seen_at > 60:   # workers stop within a heartbeat; this is the backstop
+                        for p in procs:
+                            if p.is_alive():
+                                p.terminate()
                 if time.monotonic() - last > 30:
                     control.heartbeat_run(run_id)
                     counts = control.scope_counts(scope)
@@ -313,15 +359,24 @@ def cmd_run(ctx: Context, tables: list[str] | None, *, date_from: date | None = 
                 control.event(run_id, "error", f"{len(crashed)} worker process(es) exited with an error")
                 control.release_running(run_id)
 
-        post_load(ctx, control, conn, run_id, specs, skip_table_counts)
+        stop = control.stop_mode(run_id)
+        if stop:
+            control.release_running(run_id)
+        else:
+            post_load(ctx, control, conn, run_id, specs, skip_table_counts)
         counts = control.scope_counts(scope)
         failed = counts.get("failed", 0)
-        status = "succeeded" if not failed and not counts.get("running") else "completed_with_errors"
+        if stop:
+            status = "stopped"
+            left = counts.get("pending", 0) + counts.get("stale", 0) + failed
+            control.event(run_id, "warning", f"stopped on request; {left} chunks left. Resume to continue.")
+        else:
+            status = "succeeded" if not failed and not counts.get("running") else "completed_with_errors"
         summary = {"chunks": counts, **_run_totals(control, run_id)}
         control.finish_run(run_id, status, summary=summary,
                            error=f"{failed} chunks failed; see the dashboard or `status`" if failed else None)
         log(f"run {run_id} {status}: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items())))
-        return 0 if status == "succeeded" else 1
+        return 0 if status == "succeeded" else (4 if status == "stopped" else 1)
     except KeyboardInterrupt:
         for p in procs:
             if p.is_alive():
@@ -342,6 +397,26 @@ def cmd_run(ctx: Context, tables: list[str] | None, *, date_from: date | None = 
         control.finish_run(run_id, "failed", error=f"{type(e).__name__}: {e}")
         log(traceback.format_exc())
         return 1
+
+
+def _busy(control: Control) -> int:
+    active = control.active_runs()
+    who = ", ".join(f"run {r['run_id']} ({r['command']} on {r['host']}, pid {r['pid']})" for r in active) or "another process"
+    log(f"another migration command is already running: {who}. Wait for it, or stop it with `stop`.")
+    return 3
+
+
+@command
+def cmd_stop(ctx: Context, run_id: int | None, now: bool, by: str = "command line") -> int:
+    control = ctx.control()
+    control.ensure_schema()
+    ids = control.request_stop(run_id, "now" if now else "graceful", by)
+    if not ids:
+        log("no matching run is in progress")
+        return 1
+    log(f"stop requested for run {', '.join(map(str, ids))}: " + ("in-flight chunks roll back within seconds" if now
+                                                                  else "workers finish their current chunks, then stop"))
+    return 0
 
 
 def _run_totals(control: Control, run_id: int) -> dict:
@@ -435,11 +510,14 @@ def _sequence_for(conn, qualified: str, column: str) -> str | None:
 
 # ------------------------------------------------------------------ verify
 
+@command
 def cmd_verify(ctx: Context, tables: list[str] | None, *, date_from=None, date_to=None, chunk_keys=None, limit: int | None = None) -> int:
     s = ctx.settings
     specs = s.select(tables)
     control = ctx.control()
     control.ensure_schema()
+    if not control.acquire_writer_lock():
+        return _busy(control)
     run_id = control.start_run("verify", [t.key for t in specs], {"limit": limit}, 1)
     source = ctx.source()
     conn = tgt.connect(s.target, autocommit=True)
@@ -451,6 +529,10 @@ def cmd_verify(ctx: Context, tables: list[str] | None, *, date_from=None, date_t
     ok = bad = 0
     try:
         for r in rows:
+            if control.stop_mode(run_id):
+                control.finish_run(run_id, "stopped", summary={"verified": ok, "mismatched": bad})
+                log(f"verify stopped on request after {ok + bad} chunks")
+                return 4
             spec = s.table(r["table_key"])
             chunk = chunk_from_row(r)
             plan = planner.plan(spec, chunk.source_table or spec.source, chunk.context_dict)
@@ -514,6 +596,7 @@ def _flag(check: dict, res: dict, spec: TableSpec) -> bool:
     return bool(res.get("count"))
 
 
+@command
 def cmd_profile(ctx: Context, tables: list[str] | None, sample_pct: float | None = None) -> int:
     s = ctx.settings
     specs = s.select(tables)
@@ -525,6 +608,9 @@ def cmd_profile(ctx: Context, tables: list[str] | None, sample_pct: float | None
     preps, problems = prepare(s, source, conn, specs, with_chunks=False)
     flagged = 0
     for p in preps:
+        if control.stop_mode(run_id):
+            control.finish_run(run_id, "stopped", summary={"flagged_checks": flagged})
+            return 4
         for st, plan in p.plans.items():
             checks = profile_checks(plan)
             if not checks:
@@ -550,6 +636,7 @@ def cmd_profile(ctx: Context, tables: list[str] | None, sample_pct: float | None
 
 # ------------------------------------------------------------------ status / reset
 
+@command
 def cmd_status(ctx: Context, tables: list[str] | None) -> int:
     s = ctx.settings
     control = ctx.control()
@@ -580,6 +667,7 @@ def cmd_status(ctx: Context, tables: list[str] | None) -> int:
     return 0
 
 
+@command
 def cmd_reset(ctx: Context, tables: list[str], truncate_target: bool, yes: bool) -> int:
     if not tables:
         print("reset needs --tables (it never resets everything implicitly)")
@@ -592,6 +680,8 @@ def cmd_reset(ctx: Context, tables: list[str], truncate_target: bool, yes: bool)
         return 2
     control = ctx.control()
     control.ensure_schema()
+    if not control.acquire_writer_lock():
+        return _busy(control)
     run_id = control.start_run("reset", [t.key for t in specs], {"truncate_target": truncate_target}, 0)
     conn = tgt.connect(s.target, autocommit=True)
     for spec in specs:

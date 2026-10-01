@@ -29,6 +29,7 @@
   color-scheme: dark; }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; }
 body { background: var(--bg); color: var(--fg); font: 14px/1.5 var(--font-ui); }
 .wrap { max-width: 1320px; margin: 0 auto; padding-inline: 20px; padding-block: 0 48px; }
@@ -93,7 +94,7 @@ section { display: grid; gap: 12px; min-width: 0; }
 .st-done { --c: var(--st-done); } .st-running { --c: var(--st-running); } .st-failed { --c: var(--st-failed); }
 .st-stale { --c: var(--st-stale); } .st-pending { --c: var(--st-pending); } .st-skipped { --c: var(--faint); }
 .st-succeeded { --c: var(--st-done); } .st-completed_with_errors { --c: var(--st-stale); } .st-interrupted { --c: var(--st-stale); }
-.st-abandoned { --c: var(--faint); }
+.st-abandoned { --c: var(--faint); } .st-stopped { --c: var(--st-stale); }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.78rem; color: var(--muted); }
 .legend .st { font-weight: 500; color: var(--muted); }
 
@@ -165,6 +166,37 @@ pre.json { font-family: var(--font-code); font-size: 0.75rem; background: var(--
 .kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 4px 14px; font-size: 0.82rem; }
 .kv dt { color: var(--muted); } .kv dd { margin: 0; overflow-wrap: anywhere; }
 .banner { border: 1px solid var(--line); border-left: 4px solid var(--st-failed); background: var(--surface); padding: 12px 16px; border-radius: 4px; }
+/* Controls */
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); font-weight: 600; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.danger { border-color: var(--st-failed); color: var(--st-failed); font-weight: 600; }
+.btn.confirming { background: var(--st-failed); border-color: var(--st-failed); color: #fff; font-weight: 600; }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+.btn.lg { padding: 7px 14px; font-size: 0.85rem; }
+.actions .why { font-size: 0.78rem; color: var(--muted); }
+.toasts { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 8px; z-index: 20; max-width: min(460px, calc(100vw - 32px)); }
+.toast { background: var(--fg); color: var(--bg); padding: 10px 14px; border-radius: 6px; font-size: 0.82rem; box-shadow: 0 6px 20px rgba(0,0,0,.18); overflow-wrap: anywhere; }
+.toast.err { border-left: 4px solid var(--st-failed); }
+.toast.ok { border-left: 4px solid var(--st-done); }
+form.runform { display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field > label, .field > .lbl, fieldset legend { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 6px; min-width: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 14px; }
+.row > .field { flex: 1 1 160px; }
+.choice { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; }
+.choice label { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; align-items: start; align-content: start; border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px; cursor: pointer; background: var(--surface); }
+.choice label:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.choice label b { font-size: 0.85rem; }
+.choice label span { grid-column: 2; font-size: 0.76rem; color: var(--muted); }
+.checks { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 4px 12px; font-family: var(--font-code); font-size: 0.8rem; }
+.checks label { display: flex; gap: 6px; align-items: center; cursor: pointer; }
+input[type="text"], input[type="number"], input[type="password"], input[type="month"] { font: inherit; font-size: 0.85rem; padding: 6px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--fg); min-width: 0; width: 100%; }
+input:focus-visible, .choice label:has(input:focus-visible), .checks input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cmd { font-family: var(--font-code); font-size: 0.8rem; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; overflow-x: auto; white-space: pre; }
+pre.log { font-family: var(--font-code); font-size: 0.75rem; line-height: 1.45; background: var(--bg); border-top: 1px solid var(--line); margin: 0; padding: 10px 16px; max-height: 420px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.stopping { font-size: 0.8rem; color: var(--fg); background: var(--warn-bg); padding: 2px 8px; border-radius: 4px; }
 @media (max-width: 640px) {
   .feed li { grid-template-columns: 56px minmax(0, 1fr); }
   .feed li .lvl { display: none; }
@@ -181,6 +213,7 @@ pre.json { font-family: var(--font-code); font-size: 0.75rem; background: var(--
     <nav aria-label="Views">
       <a href="#overview" data-view="overview">Overview</a>
       <a href="#runs" data-view="runs">Run history</a>
+      <a href="#control" data-view="control">Control</a>
     </nav>
     <div class="live" aria-live="polite">
       <span class="pulse" id="pulse"></span><span class="label" id="updated">Connecting…</span>
@@ -189,6 +222,7 @@ pre.json { font-family: var(--font-code); font-size: 0.75rem; background: var(--
   </div>
 </header>
 <div class="wrap"><main id="app"></main></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
 
 <script>
 "use strict";
@@ -224,7 +258,7 @@ const when = v => {
 };
 const ago = v => v ? dur((Date.now() - ts(v).getTime()) / 1000) + " ago" : "—";
 const STATUS_LABEL = { done: "Done", running: "Loading", failed: "Failed", stale: "Needs reload", pending: "Waiting", skipped: "Skipped",
-  succeeded: "Succeeded", completed_with_errors: "Finished with errors", interrupted: "Interrupted", abandoned: "Abandoned" };
+  succeeded: "Succeeded", completed_with_errors: "Finished with errors", interrupted: "Interrupted", abandoned: "Abandoned", stopped: "Stopped" };
 const st = s => `<span class="st st-${esc(s)}">${esc(STATUS_LABEL[s] || s)}</span>`;
 const STRATEGY = { full: "full reload", date_range: "by date", int_range: "by ID range", per_source_table: "per source table" };
 
@@ -244,7 +278,8 @@ function route() {
   const h = location.hash.replace(/^#/, "") || "overview";
   const [view, arg] = h.split("-", 2).length && h.startsWith("table-") ? ["table", h.slice(6)] :
                       h.startsWith("run-") ? ["run", h.slice(4)] : [h, null];
-  state.view = ["overview", "runs", "table", "run"].includes(view) ? view : "overview";
+  state.view = ["overview", "runs", "table", "run", "control"].includes(view) ? view : "overview";
+  state.formBuilt = false;
   state.arg = arg;
   state.selectedChunk = null;
   document.querySelectorAll("nav a").forEach(a => {
@@ -258,7 +293,9 @@ function route() {
 async function refresh(first) {
   clearTimeout(state.timer);
   try {
+    if (!ui.config) ui.config = await api("/api/config");
     if (state.view === "overview") renderOverview(await api("/api/overview"));
+    else if (state.view === "control") await renderControl();
     else if (state.view === "runs") renderRuns(await api("/api/runs?limit=200"));
     else if (state.view === "run") renderRun(await api(`/api/runs/${encodeURIComponent(state.arg)}`));
     else if (state.view === "table") renderTable(await api(`/api/tables/${encodeURIComponent(state.arg)}`), await api("/api/overview"));
@@ -300,10 +337,11 @@ function renderOverview(d) {
   const runLine = run
     ? `${st("running")} <b>Run ${run.run_id}</b> <span class="muted">${esc(run.command)} · ${run.workers} workers · started ${when(run.started_at)} · heartbeat ${dur(run.heartbeat_age_s)} ago</span>
        ${run.heartbeat_age_s > 120 ? `<span class="badge b-warn">no heartbeat for ${dur(run.heartbeat_age_s)}: the process may have stopped</span>` : ""}`
-    : `<span class="st st-pending">Idle</span> <span class="muted">No run in progress. Re-run <code>run</code> to resume; finished chunks are skipped.</span>`;
+    : `<span class="st st-pending">Idle</span> <span class="muted">No run in progress. Resuming skips finished chunks, so it is always safe.</span>`;
   app.innerHTML = `
   <section class="summary" aria-label="Summary">
     <div class="runline">${runLine}</div>
+    ${overviewActions(d)}
     <div class="overall">
       <div class="figures"><span class="pct num">${donePct.toFixed(1)}%</span>
         <span class="muted num">${n(t.rows_read)} of ${n(t.source_rows)} source rows read${t.rows_in_flight ? ` · ${n(t.rows_in_flight)} loading now` : ""}</span></div>
@@ -454,6 +492,7 @@ function optionsText(o) {
   if (o.sample_pct) parts.push(`${o.sample_pct}% sample`);
   if (o.truncate_target) parts.push("truncated target");
   if (o.retry_failed === false) parts.push("no retries");
+  if (o.only_failed) parts.push("only failed chunks");
   return parts.join(" · ");
 }
 function renderRuns(d) {
@@ -482,9 +521,10 @@ function renderRun(d) {
   <section class="headline">
     <h2>Run ${r.run_id} · ${esc(r.command)}</h2>
     <div class="facts">${st(r.status)}<span>started <b>${when(r.started_at)}</b></span><span>duration <b>${dur(r.duration_s)}</b></span>
-      <span>workers <b>${r.workers ?? "—"}</b></span><span>host <b>${esc(r.host)}</b> as <b>${esc(r.os_user)}</b></span>
+      <span>workers <b>${r.workers ?? "—"}</b></span><span>host <b>${esc(r.host)}</b> as <b>${esc(r.os_user)}</b></span><span>from <b>${esc(r.launched_by || "command line")}</b></span>
       ${optionsText(r.options) ? `<span>${esc(optionsText(r.options))}</span>` : ""}</div>
     ${r.error ? `<div class="banner"><span class="err">${esc(r.error)}</span></div>` : ""}
+    ${runActions(r)}
   </section>
   <section class="panel"><div class="panel-head"><h2>By table</h2></div>
     ${d.per_table.length ? `<div class="scroll"><table><thead><tr><th>Table</th><th class="r">Chunks loaded</th><th class="r">Failures</th><th class="r">Rows loaded</th><th class="r">Rejected</th><th class="r">Worker time</th></tr></thead>
@@ -523,6 +563,7 @@ function renderTable(d, ov) {
       <span>loaded <b>${n(summary.rows_loaded)}</b></span><span>rejected <b>${n(summary.rows_rejected)}</b></span>
       ${s.target_rows != null ? `<span>target count <b>${n(s.target_rows)}</b> <span class="muted">(${when(s.target_rows_at)})</span></span>` : ""}</div>
     ${(s.warnings || []).map(w => `<div class="banner" style="border-left-color:var(--st-stale)"><span class="err">${esc(w)}</span></div>`).join("")}
+    ${tableActions(state.arg, counts, chunks.length)}
   </section>
 
   <section class="panel">
@@ -589,8 +630,12 @@ function showChunk(d) {
       <dt>Verified</dt><dd>${c.verified_at ? `${when(c.verified_at)} · ${esc(c.verify_result)}` : "not yet"}</dd>
       ${stats ? `<dt>Conversions</dt><dd class="muted">${esc(stats)}</dd>` : ""}
       ${c.error ? `<dt>Error</dt><dd class="err">${esc(c.error)}</dd>` : ""}
-      <dt>Reload it</dt><dd><code>python -m onroute_migration run -t ${esc(state.arg)} --chunk ${esc(c.chunk_key)} --force</code></dd>
-    </dl></div></div>`;
+    </dl>
+    <div class="actions" style="margin-top:12px">
+      ${actBtn(`reload-${c.chunk_id}`, "Reload this chunk", { action: "run", mode: "force", tables: [state.arg], chunks: [c.chunk_key] }, { confirm: `Confirm: replace ${c.chunk_key}`, primary: true })}
+      ${c.status === "done" ? actBtn(`verify-${c.chunk_id}`, "Verify against source", { action: "verify", tables: [state.arg], chunks: [c.chunk_key] }) : ""}
+      <code class="why">python -m onroute_migration run -t ${esc(state.arg)} --chunk ${esc(c.chunk_key)} --force</code>
+    </div></div></div>`;
 }
 
 document.addEventListener("click", e => {
@@ -598,10 +643,268 @@ document.addEventListener("click", e => {
   if (tr && !e.target.closest("a")) location.hash = tr.dataset.href;
 });
 
+// ------------------------------------------------------------------ controls: start, stop, resume, re-run
+const ui = { config: null };
+function token() { try { return sessionStorage.getItem("onroute-admin-token") || ""; } catch { return ""; } }
+
+async function post(path, body) {
+  if (DEMO) return { message: `Preview only, nothing was started. The real dashboard runs: ${body.action === "stop" ? "python -m onroute_migration stop" + (body.mode === "now" ? " --now" : "") : cliPreview(body)}` };
+  const headers = { "Content-Type": "application/json", "X-Requested-By": "onroute-dashboard" };
+  if (token()) headers["X-Admin-Token"] = token();
+  const r = await fetch(path, { method: "POST", headers, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+
+function toast(msg, kind = "ok") {
+  const el = document.createElement("div");
+  el.className = `toast ${kind}`;
+  el.textContent = msg;
+  $("#toasts").appendChild(el);
+  setTimeout(() => el.remove(), kind === "err" ? 12000 : 7000);
+}
+
+function actionsOff() { return ui.config && !ui.config.actions_enabled ? ui.config.actions_reason || "Controls are turned off." : ""; }
+
+// A button that performs an action. Destructive ones ask for a second click (the label changes) before doing anything.
+function actBtn(key, label, body, opts = {}) {
+  const off = actionsOff() || opts.disabled;
+  const confirming = state.confirming === key;
+  const cls = ["btn", "lg", opts.primary ? "primary" : "", opts.danger ? "danger" : "", confirming ? "confirming" : ""].join(" ");
+  return `<button type="button" class="${cls}" data-key="${esc(key)}" data-body="${esc(JSON.stringify(body))}" ${opts.confirm ? `data-confirm="${esc(opts.confirm)}"` : ""}
+    ${off ? `disabled title="${esc(typeof off === "string" ? off : "")}"` : ""}>${esc(confirming ? opts.confirm : label)}</button>
+    ${confirming ? `<button type="button" class="btn lg" data-cancel="1">Cancel</button>` : ""}`;
+}
+
+document.addEventListener("click", async e => {
+  if (e.target.closest("[data-cancel]")) { state.confirming = null; refresh(); return; }
+  const b = e.target.closest("button[data-body]");
+  if (!b || b.disabled) return;
+  if (b.dataset.confirm && state.confirming !== b.dataset.key) {
+    state.confirming = b.dataset.key;
+    const key = b.dataset.key;
+    setTimeout(() => { if (state.confirming === key) { state.confirming = null; refresh(); } }, 8000);
+    refresh();
+    return;
+  }
+  state.confirming = null;
+  b.disabled = true;
+  try {
+    const body = JSON.parse(b.dataset.body);
+    const res = await post(body.action === "stop" ? "/api/stop" : "/api/actions", body);
+    toast(res.message || "Done");
+    if (res.job && state.view === "control") state.logJob = res.job.job_id;
+  } catch (err) {
+    toast(err.message, "err");
+  }
+  setTimeout(refresh, 600);
+});
+
+function stopButtons(run) {
+  if (run.stop_requested) return `<span class="stopping">Stopping${run.stop_requested === "now" ? " now: rolling back in-flight chunks" : " after the current chunks finish"}…</span>
+    ${run.stop_requested === "graceful" ? actBtn("stop-now", "Stop now instead", { action: "stop", mode: "now", run_id: run.run_id }, { danger: true, confirm: "Confirm: roll back in-flight chunks" }) : ""}`;
+  return actBtn("stop-graceful", "Stop after current chunks", { action: "stop", mode: "graceful", run_id: run.run_id }) +
+         actBtn("stop-now", "Stop now", { action: "stop", mode: "now", run_id: run.run_id }, { danger: true, confirm: "Confirm: roll back in-flight chunks" });
+}
+
+function overviewActions(d) {
+  const t = d.totals, run = d.active_runs[0];
+  const off = actionsOff();
+  if (run) return `<div class="actions">${stopButtons(run)}${off ? `<span class="why">${esc(off)}</span>` : ""}</div>`;
+  const left = t.pending + t.failed;
+  const last = d.last_load_run;
+  const lastNote = last ? `Last load run ${last.run_id} ${STATUS_LABEL[last.status]?.toLowerCase() || last.status} ${ago(last.finished_at || last.started_at)}.` : "No load has run yet.";
+  return `<div class="actions">
+    ${left ? actBtn("resume", t.done ? `Resume (${left} chunk${left === 1 ? "" : "s"} left)` : `Start loading (${left} chunks)`, { action: "resume" }, { primary: true })
+           : actBtn("start", last ? "Load anything new" : "Start loading", { action: "run", mode: "resume" }, { primary: true })}
+    ${t.failed ? actBtn("retry", `Retry ${t.failed} failed chunk${t.failed === 1 ? "" : "s"}`, { action: "run", mode: "only_failed" }) : ""}
+    ${actBtn("refresh", "Catch up recent data", { action: "run", mode: "refresh", reopen_days: 7 })}
+    ${t.done ? actBtn("verify-all", "Verify against source", { action: "verify" }) : ""}
+    <a class="btn lg" href="#control" style="text-decoration:none">More options…</a>
+    <span class="why">${esc(off || lastNote)}</span></div>`;
+}
+
+function tableActions(key, counts, total) {
+  const failed = counts.failed || 0, left = (counts.pending || 0) + (counts.stale || 0) + failed;
+  return `<div class="actions">
+    ${left ? actBtn(`t-resume-${key}`, `Load ${left} remaining chunk${left === 1 ? "" : "s"}`, { action: "run", mode: "resume", tables: [key] }, { primary: true }) : ""}
+    ${failed ? actBtn(`t-retry-${key}`, `Retry ${failed} failed`, { action: "run", mode: "only_failed", tables: [key] }) : ""}
+    ${actBtn(`t-reload-${key}`, "Reload whole table", { action: "run", mode: "force", tables: [key] }, { confirm: `Confirm: reload all ${total} chunks of ${key}` })}
+    ${counts.done ? actBtn(`t-verify-${key}`, "Verify against source", { action: "verify", tables: [key] }) : ""}
+    ${actBtn(`t-profile-${key}`, "Profile source", { action: "profile", tables: [key] })}
+  </div>`;
+}
+
+function runActions(r) {
+  if (r.status === "running") return ["run", "dry-run", "verify", "profile"].includes(r.command) ? `<div class="actions">${stopButtons(r)}</div>` : "";
+  if (r.command === "run" && ["stopped", "interrupted", "abandoned", "failed", "completed_with_errors"].includes(r.status))
+    return `<div class="actions">${actBtn(`resume-${r.run_id}`, `Resume run ${r.run_id}`, { action: "resume", run_id: r.run_id }, { primary: true })}
+      <span class="why">Loads whatever this run did not finish, with the same tables and filters. Finished chunks are skipped.</span></div>`;
+  return "";
+}
+
+function cliPreview(b) {
+  if (b.action === "resume") return "python -m onroute_migration run   # same scope as the last run; finished chunks are skipped";
+  const a = ["python -m onroute_migration", b.action];
+  if (b.tables && b.tables.length) a.push("-t " + b.tables.join(","));
+  if (b.action === "run") {
+    if (b.mode === "force") a.push("--force");
+    if (b.mode === "refresh") a.push("--refresh" + (b.reopen_days ? ` --reopen-days ${b.reopen_days}` : ""));
+    if (b.mode === "only_failed") a.push("--only-failed");
+    if (b.dry_run) a.push("--dry-run" + (b.sample ? ` --sample ${b.sample}` : ""));
+    if (b.workers) a.push(`-w ${b.workers}`);
+  }
+  if (b.date_from) a.push(`--from ${b.date_from}`);
+  if (b.date_to) a.push(`--to ${b.date_to}`);
+  (b.chunks || []).forEach(c => a.push(`--chunk ${c}`));
+  if (b.action === "verify" && b.limit) a.push(`--limit ${b.limit}`);
+  if (b.action === "profile" && b.sample_pct) a.push(`--sample-pct ${b.sample_pct}`);
+  return a.join(" ");
+}
+
+const ACTIONS = [
+  ["run", "Load data", "Copy chunks into PostgreSQL."],
+  ["dry", "Dry run", "Load inside transactions that are rolled back. Changes nothing."],
+  ["verify", "Verify", "Re-count loaded chunks against the source; mismatches are queued for reload."],
+  ["profile", "Profile source", "Scan the source for values that would be rejected."],
+  ["check", "Check mapping", "Resolve every column against both databases. Writes nothing."]];
+const MODES = [
+  ["resume", "Resume", "Load chunks not done yet; retry failed ones. Safe to repeat."],
+  ["refresh", "Catch up", "Also reload chunks that can still change: full tables, Vena years, recent dates."],
+  ["only_failed", "Only failed chunks", "Retry just the chunks that failed."],
+  ["force", "Reload everything in scope", "Replace every selected chunk, even finished ones."]];
+
+function formBody() {
+  const f = $("#runform");
+  const act = f.act.value;
+  const tables = [...f.querySelectorAll("input[name=tbl]:checked")].map(i => i.value);
+  const all = tables.length === ui.config.tables.length;
+  const body = { action: act === "dry" ? "run" : act, tables: all ? [] : tables };
+  if (act === "run" || act === "dry") {
+    body.mode = f.mode.value;
+    if (act === "dry") { body.dry_run = true; body.sample = f.sample.value || null; }
+    body.workers = f.workers.value || null;
+    if (body.mode === "refresh") body.reopen_days = f.reopen.value || 7;
+  }
+  if (act !== "profile" && act !== "check") { body.date_from = f.dfrom.value || null; body.date_to = f.dto.value || null; }
+  if (act === "profile") body.sample_pct = f.pct.value || null;
+  if (body.mode === "force" && all && !body.date_from && !body.date_to) body.confirm_all = true;
+  return body;
+}
+
+function syncForm() {
+  const f = $("#runform"); if (!f) return;
+  const act = f.act.value;
+  f.querySelector("#g-mode").hidden = !(act === "run" || act === "dry");
+  f.querySelector("#g-dates").hidden = act === "profile" || act === "check";
+  f.querySelector("#g-workers").hidden = !(act === "run" || act === "dry");
+  f.querySelector("#g-reopen").hidden = !((act === "run" || act === "dry") && f.mode.value === "refresh");
+  f.querySelector("#g-sample").hidden = act !== "dry";
+  f.querySelector("#g-pct").hidden = act !== "profile";
+  const body = formBody();
+  $("#cmd").textContent = cliPreview(body);
+  const n = [...f.querySelectorAll("input[name=tbl]:checked")].length;
+  const go = $("#go");
+  go.disabled = !n || !!actionsOff();
+  const destructive = body.mode === "force" && body.action === "run" && !body.dry_run;
+  go.textContent = state.confirming === "form" ? `Confirm: reload ${n === ui.config.tables.length ? "every table" : n + " table" + (n > 1 ? "s" : "")}` :
+    { run: "Start loading", dry: "Start dry run", verify: "Start verify", profile: "Start profiling", check: "Check mapping" }[act];
+  go.className = "btn lg " + (state.confirming === "form" ? "confirming" : destructive ? "danger" : "primary");
+  go.dataset.destructive = destructive ? "1" : "";
+}
+
+async function renderControl() {
+  const app = $("#app");
+  if (!state.formBuilt) {
+    const c = ui.config;
+    app.innerHTML = `
+    <section class="headline"><h2>Run control</h2>
+      <p class="muted">Start, stop, resume or re-run migration commands. Each one runs as its own process and keeps going if you close this page. Every run is in <a href="#runs">Run history</a>.</p>
+      ${actionsOff() ? `<div class="banner" style="border-left-color:var(--st-stale)"><span class="err">${esc(actionsOff())}</span></div>` : ""}
+    </section>
+    <div id="active-run"></div>
+    <section class="panel"><div class="panel-head"><h2>Start a command</h2></div>
+      <form class="panel-body runform" id="runform" autocomplete="off">
+        <fieldset><legend>What to do</legend><div class="choice">${ACTIONS.map(([v, l, d], i) => `<label><input type="radio" name="act" value="${v}" ${i ? "" : "checked"}><b>${l}</b><span>${d}</span></label>`).join("")}</div></fieldset>
+        <fieldset id="g-mode"><legend>Which chunks</legend><div class="choice">${MODES.map(([v, l, d], i) => `<label><input type="radio" name="mode" value="${v}" ${i ? "" : "checked"}><b>${l}</b><span>${d}</span></label>`).join("")}</div></fieldset>
+        <fieldset><legend>Tables <button type="button" class="btn" id="t-all">All</button> <button type="button" class="btn" id="t-none">None</button> <button type="button" class="btn" id="t-pos">POS only</button></legend>
+          <div class="checks">${c.tables.map(t => `<label><input type="checkbox" name="tbl" value="${esc(t.key)}" checked>${esc(t.key)}</label>`).join("")}</div></fieldset>
+        <div class="row">
+          <div class="field" id="g-dates" style="flex:2 1 320px"><span class="lbl">Date range (date-chunked tables only; leave empty for all dates)</span>
+            <div class="row"><div class="field"><label for="dfrom">From</label><input type="text" id="dfrom" name="dfrom" placeholder="2024-01 or 2024-01-15"></div>
+            <div class="field"><label for="dto">Up to (not including)</label><input type="text" id="dto" name="dto" placeholder="2024-07"></div></div></div>
+          <div class="field" id="g-workers"><label for="workers">Parallel workers</label><input type="number" id="workers" name="workers" min="1" max="64" value="${c.default_workers}"></div>
+          <div class="field" id="g-reopen"><label for="reopen">Reload date chunks ending within (days)</label><input type="number" id="reopen" name="reopen" min="0" max="3650" value="7"></div>
+          <div class="field" id="g-sample"><label for="sample">Chunks per table (empty = all)</label><input type="number" id="sample" name="sample" min="1" max="1000" value="2"></div>
+          <div class="field" id="g-pct"><label for="pct">Sample percent (empty = every row)</label><input type="number" id="pct" name="pct" min="0.01" max="100" step="0.01" value="5"></div>
+        </div>
+        ${c.token_required ? `<div class="field" style="max-width:340px"><label for="tok">Admin token</label><input type="password" id="tok" value="${esc(token())}" placeholder="from [dashboard] admin_token"></div>` : ""}
+        <div class="field"><span class="lbl">Equivalent command</span><div class="cmd" id="cmd"></div></div>
+        <div class="actions"><button type="submit" class="btn lg primary" id="go">Start</button><span class="why" id="formwhy"></span></div>
+      </form></section>
+    <section class="panel"><div class="panel-head"><h2>Commands started here</h2><span class="aside">most recent first</span></div><div id="jobs"></div></section>`;
+    state.formBuilt = true;
+    const f = $("#runform");
+    f.addEventListener("input", syncForm);
+    f.addEventListener("change", e => { if (e.target.id === "tok") { try { sessionStorage.setItem("onroute-admin-token", e.target.value); } catch {} } state.confirming = null; syncForm(); });
+    const setT = pred => { f.querySelectorAll("input[name=tbl]").forEach(i => i.checked = pred(i.value)); state.confirming = null; syncForm(); };
+    $("#t-all").addEventListener("click", () => setT(() => true));
+    $("#t-none").addEventListener("click", () => setT(() => false));
+    $("#t-pos").addEventListener("click", () => setT(v => v.startsWith("pos_")));
+    f.addEventListener("submit", async e => {
+      e.preventDefault();
+      const go = $("#go");
+      if (go.dataset.destructive && state.confirming !== "form") { state.confirming = "form"; syncForm(); setTimeout(() => { if (state.confirming === "form") { state.confirming = null; syncForm(); } }, 8000); return; }
+      state.confirming = null;
+      go.disabled = true;
+      try { const res = await post("/api/actions", formBody()); toast(res.message || "Started"); if (res.job) state.logJob = res.job.job_id; }
+      catch (err) { toast(err.message, "err"); }
+      syncForm(); setTimeout(refresh, 600);
+    });
+    syncForm();
+  }
+  const [ov, jobs] = await Promise.all([api("/api/overview"), api("/api/jobs")]);
+  const run = ov.ready ? ov.active_runs[0] : null;
+  $("#active-run").innerHTML = run ? `<section class="panel"><div class="panel-head"><h2>In progress</h2></div><div class="panel-body" style="display:grid;gap:10px">
+      <div class="runline">${st("running")} <b><a href="#run-${run.run_id}">Run ${run.run_id}</a></b> <span class="muted">${esc(run.command)} · ${run.workers ?? "—"} workers · started ${when(run.started_at)} by ${esc(run.launched_by || "command line")}</span></div>
+      <div class="actions">${stopButtons(run)}</div>
+      <p class="muted" style="font-size:.8rem">A new load can start once this run has finished or stopped. Stop requests reach runs started anywhere, including from a terminal.</p></div></section>` : "";
+  renderJobs(jobs.jobs || []);
+}
+
+function renderJobs(jobs) {
+  const el = $("#jobs"); if (!el) return;
+  if (!jobs.length) { el.innerHTML = `<p class="empty">Nothing started from this dashboard yet.</p>`; return; }
+  const open = state.logJob;
+  el.innerHTML = `<div class="scroll"><table><thead><tr><th>#</th><th>Command</th><th>Started</th><th>Status</th><th></th></tr></thead><tbody>
+    ${jobs.map(j => `<tr><td class="mono">${j.job_id}</td><td class="mono" style="white-space:normal;overflow-wrap:anywhere">${esc(j.display)}</td><td class="num">${when(j.started_at)}</td>
+      <td>${j.status === "running" ? st("running") : j.exit_code === 0 ? st("succeeded") : j.exit_code == null ? `<span class="muted">${esc(j.note || "ended")}</span>` : `<span class="st st-${j.exit_code === 4 ? "stopped" : "completed_with_errors"}">${esc(j.note || "exit " + j.exit_code)}</span>`}</td>
+      <td><button type="button" class="btn" data-log="${j.job_id}">${open === j.job_id ? "Hide log" : "Log"}</button></td></tr>`).join("")}</tbody></table></div>
+    ${open ? `<pre class="log" id="joblog">Loading log…</pre>` : ""}`;
+  if (open) {
+    api(`/api/jobs/${open}/log`).then(r => {
+      const pre = $("#joblog"); if (!pre) return;
+      const atEnd = pre.scrollTop + pre.clientHeight >= pre.scrollHeight - 20;
+      pre.textContent = (r.truncated ? "… (earlier output trimmed)\n" : "") + (r.log || "(no output yet)");
+      if (atEnd || pre.dataset.first !== "0") { pre.scrollTop = pre.scrollHeight; pre.dataset.first = "0"; }
+    }).catch(err => { const pre = $("#joblog"); if (pre) pre.textContent = err.message; });
+  }
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button[data-log]"); if (!b) return;
+  const id = +b.dataset.log;
+  state.logJob = state.logJob === id ? null : id;
+  refresh();
+});
+
 // ------------------------------------------------------------------ sample data for the preview (window.ONROUTE_DEMO)
 function demoApi(path) {
   const D = window.__demo || (window.__demo = buildDemo());
   if (path.startsWith("/api/overview")) return D.overview;
+  if (path.startsWith("/api/config")) return { actions_enabled: true, token_required: false, default_workers: 6, tables: D.overview.tables.map(t => ({ key: t.table_key, strategy: t.strategy })) };
+  if (path.startsWith("/api/jobs/")) return { job: D.jobs[0], log: D.joblog, truncated: false };
+  if (path.startsWith("/api/jobs")) return { jobs: D.jobs };
   if (path.startsWith("/api/runs/")) return D.run(+path.split("/").pop());
   if (path.startsWith("/api/runs")) return { ready: true, runs: D.runs };
   if (path.startsWith("/api/tables/")) return D.table(decodeURIComponent(path.split("/").pop()));
@@ -669,7 +972,8 @@ function buildDemo() {
     ["info", null, null, "chunks before run: done 412, failed 1, pending 158"],
     ["warning", "employee_pay_summary", null, "target has no index on pay_date: reloading or validating a chunk scans all of master.employee_pay_summary."]];
   const events = ev.map((e, i) => ({ event_id: 900 - i, run_id: 14, ts: iso(now - i * 47000), level: e[0], table_key: e[1], chunk_key: e[2], message: e[3] }));
-  const overview = { ready: true, now: iso(now), tables, active_runs: [{ run_id: 14, command: "run", status: "running", started_at: iso(now - 3.2 * 3600e3), heartbeat_age_s: 4, workers: 6, options: { refresh: false } }],
+  const overview = { ready: true, now: iso(now), tables, active_runs: [{ run_id: 14, command: "run", status: "running", started_at: iso(now - 3.2 * 3600e3), heartbeat_age_s: 4, workers: 6, options: { refresh: false }, launched_by: "dashboard (10.0.4.21)" }],
+    last_load_run: { run_id: 14, status: "running", started_at: iso(now - 3.2 * 3600e3) },
     running_chunks: running, throughput: thr, totals, events,
     recent_failures: [{ table_key: "pos_order_details", chunk_key: "m:2019-12", run_id: 14, worker: "w3", finished_at: iso(now - 95000), current_status: "failed", attempts: 3,
       error: "ChunkFailed: more than 1000 rejected rows (last: bad_flag_value on has_mods: 'Maybe'); fix the data or raise max_reject_rows" },
@@ -682,8 +986,16 @@ function buildDemo() {
     { run_id: 11, command: "dry-run", status: "succeeded", started_at: iso(now - 30 * 3600e3), duration_s: 610, tables: defs.map(d => d[0]), workers: 0, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: { dry_run: true, sample: 2 } },
     { run_id: 10, command: "profile", status: "succeeded", started_at: iso(now - 31 * 3600e3), duration_s: 2210, tables: defs.map(d => d[0]), workers: 1, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: { sample_pct: 5 } },
     { run_id: 9, command: "run", status: "failed", started_at: iso(now - 33 * 3600e3), duration_s: 12, tables: ["employee_pay_summary"], workers: 6, chunks_done: 0, chunk_failures: 0, rows_loaded: 0, rows_rejected: 0, options: {}, error: "3 mapping problems; run `check` for details" }];
+  const jobs = [
+    { job_id: 3, display: "python -m onroute_migration run -w 6", status: "running", started_at: iso(now - 3.2 * 3600e3), exit_code: null },
+    { job_id: 2, display: "python -m onroute_migration verify -t pos_orders", status: "ended", started_at: iso(now - 5 * 3600e3), exit_code: 1, note: "finished with errors" },
+    { job_id: 1, display: "python -m onroute_migration run --dry-run --sample 2", status: "ended", started_at: iso(now - 30 * 3600e3), exit_code: 0, note: "finished" }];
+  const joblog = ["$ python -m onroute_migration run -w 6", "[main] run 14 started for 15 tables with 6 workers",
+    ...running.map(r => `[${r.worker}] start pos_order_details ${r.chunk_key} (attempt 1)`),
+    "[w3] FAIL  pos_order_details m:2019-12 (attempt 3): ChunkFailed: more than 1000 rejected rows",
+    "[main] progress: done 352, failed 1, pending 37, running 4"].join("\n");
   return {
-    overview, runs,
+    overview, runs, jobs, joblog,
     run: id => ({ run: { ...(runs.find(r => r.run_id === id) || runs[0]), host: "migr-01", os_user: "svc_migration" },
       per_table: tables.filter(t => t.done).slice(0, 8).map(t => ({ table_key: t.table_key, done: t.done, failed: t.failed, rows_loaded: t.rows_loaded, rows_rejected: t.rows_rejected, busy_s: t.rows_loaded / 52000 })),
       attempts: [], events, validations: [{ table_key: "pos_orders", chunk_key: "m:2023-02", check_name: "chunk_matches_source", source_value: "1398402", target_value: "1398317", passed: false, detail: "rows: source 1,398,402 - rejected 0 = 1,398,402, target 1,398,317" }] }),

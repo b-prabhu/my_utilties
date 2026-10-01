@@ -6,6 +6,7 @@ Commands
   plan       work out chunks and record them, without loading
   run        load everything not yet loaded; safe to re-run at any time (resumes)
   verify     re-count loaded chunks against the source; mismatches are queued for reload
+  stop       ask a running command to stop (finish current chunks, or --now to roll them back)
   status     print progress per table
   reset      forget checkpoints for tables (optionally truncate their targets)
   dashboard  serve the monitoring dashboard
@@ -50,6 +51,7 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--chunk", action="append", dest="chunks", help="only this chunk key (repeatable), e.g. m:2024-03")
     mode = sp.add_mutually_exclusive_group()
     mode.add_argument("--force", action="store_true", help="reload every chunk in scope, even ones already done")
+    mode.add_argument("--only-failed", action="store_true", help="only retry chunks that failed")
     mode.add_argument("--refresh", action="store_true", help="also reload chunks that can still change: full tables, "
                                                               "Vena years, NULL chunks, recent date chunks, the last ID range")
     sp.add_argument("--reopen-days", type=int, default=7, help="with --refresh: reload date chunks ending within this many days (default 7)")
@@ -66,6 +68,9 @@ def build_parser() -> argparse.ArgumentParser:
     sp.add_argument("--limit", type=int, help="only the most recent N done chunks")
 
     with_tables(sub.add_parser("status", help="progress per table"))
+    sp = sub.add_parser("stop", help="stop a running command")
+    sp.add_argument("--now", action="store_true", help="roll back chunks in flight instead of letting them finish")
+    sp.add_argument("--run-id", type=int, help="only this run (default: every running command)")
     sp = with_tables(sub.add_parser("reset", help="forget checkpoints"), required=True)
     sp.add_argument("--truncate-target", action="store_true", help="also TRUNCATE the target tables")
     sp.add_argument("--yes", action="store_true", help="confirm")
@@ -93,9 +98,11 @@ def main(argv=None) -> int:
         return runner.cmd_run(ctx, tables, date_from=args.date_from, date_to=args.date_to, chunk_keys=args.chunks,
                               force=args.force, refresh=args.refresh, reopen_days=args.reopen_days, workers=args.workers,
                               retry_failed=not args.no_retry_failed, dry_run=args.dry_run, sample=args.sample,
-                              skip_table_counts=args.skip_table_counts)
+                              skip_table_counts=args.skip_table_counts, only_failed=args.only_failed)
     if c == "verify":
         return runner.cmd_verify(ctx, tables, date_from=args.date_from, date_to=args.date_to, chunk_keys=args.chunks, limit=args.limit)
+    if c == "stop":
+        return runner.cmd_stop(ctx, args.run_id, args.now)
     if c == "status":
         return runner.cmd_status(ctx, tables)
     if c == "reset":

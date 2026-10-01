@@ -2,12 +2,15 @@
 
     python -m onroute_migration -c config/config.toml dashboard [--host 0.0.0.0] [--port 8765]
 
-Uses only the standard library HTTP server. Every request opens a short read-only
+Besides monitoring, the dashboard can start, stop, resume and re-run commands
+(see actions.py). Controls are on when it listens on localhost, or on any address
+when [dashboard] admin_token is set. Uses only the standard library HTTP server. Every request opens a short read-only
 transaction, so the dashboard can run next to a migration without blocking it.
 """
 
 from __future__ import annotations
 
+import hmac
 import json
 import re
 import threading
@@ -19,6 +22,8 @@ from urllib.parse import parse_qs, urlparse
 
 import psycopg
 from psycopg.rows import dict_row
+
+from .actions import ActionError, JobManager, build_args
 
 INDEX = Path(__file__).with_name("index.html")
 
@@ -94,7 +99,7 @@ class Api:
         for t in tables:
             t["validations"] = by_table.get(t["table_key"], [])
             t["strip"] = strip_by.get(t["table_key"], [])
-        runs = self.q("""SELECT run_id, command, status, started_at, heartbeat_at, workers, tables, options,
+        runs = self.q("""SELECT run_id, command, status, started_at, heartbeat_at, workers, tables, options, stop_requested, launched_by,
                                 extract(epoch FROM now() - heartbeat_at) AS heartbeat_age_s
                          FROM {s}.run WHERE status = 'running' ORDER BY run_id DESC""")
         running = self.q("""SELECT table_key, chunk_key, kind, lo, hi, source_table, worker, run_id, attempts, rows_read, started_at,
@@ -111,6 +116,8 @@ class Api:
                           FROM {s}.chunk_attempt a JOIN {s}.chunk c USING (chunk_id)
                           WHERE a.status = 'failed' ORDER BY a.finished_at DESC LIMIT 15""")
         events = self.q("SELECT event_id, run_id, ts, level, table_key, chunk_key, message FROM {s}.event ORDER BY event_id DESC LIMIT 60")
+        last = self.q("""SELECT run_id, status, started_at, finished_at, tables, options, workers, error
+                         FROM {s}.run WHERE command = 'run' ORDER BY run_id DESC LIMIT 1""")
         now = self.q("SELECT now() AS now")[0]["now"]
         total_src = sum(int(t["source_rows"] or 0) for t in tables)
         total_read = sum(int(t["rows_read_done"] or 0) for t in tables)
@@ -118,6 +125,7 @@ class Api:
         remaining = max(total_src - total_read - sum(int(t["rows_in_flight"] or 0) for t in tables), 0)
         return {
             "ready": True, "now": now, "tables": tables, "active_runs": runs, "running_chunks": running,
+            "last_load_run": last[0] if last else None,
             "throughput": thr, "recent_failures": fails, "events": events,
             "totals": {
                 "source_rows": total_src, "rows_read": total_read,
@@ -136,7 +144,7 @@ class Api:
     def runs(self, limit: int = 100) -> dict:
         if not self.ready():
             return {"ready": False, "runs": []}
-        rows = self.q("""SELECT r.run_id, r.command, r.status, r.started_at, r.finished_at, r.host, r.os_user, r.workers, r.tables,
+        rows = self.q("""SELECT r.run_id, r.command, r.status, r.started_at, r.finished_at, r.host, r.os_user, r.workers, r.tables, r.launched_by,
                                 r.options, r.summary, r.error,
                                 extract(epoch FROM COALESCE(r.finished_at, now()) - r.started_at) AS duration_s,
                                 (SELECT count(*) FROM {s}.chunk_attempt a WHERE a.run_id = r.run_id AND a.status = 'done') AS chunks_done,
@@ -183,8 +191,77 @@ class Api:
                 "reject_samples": samples, "profile": profile, "history": history}
 
 
+class Controls:
+    """The write side of the dashboard: launching commands and stop requests."""
+
+    def __init__(self, ctx, api: Api, enabled: bool, reason: str, token: str | None):
+        self.ctx = ctx
+        self.api = api
+        self.enabled = enabled
+        self.reason = reason
+        self.token = token
+        self.known = [t.key for t in ctx.settings.select(None)]
+        base = Path(ctx.config_path).resolve().parent.parent
+        log_dir = Path(ctx.settings.dashboard.get("log_dir") or "logs")
+        self.jobs = JobManager(ctx, log_dir if log_dir.is_absolute() else base / log_dir)
+        self._control = None
+
+    def control(self):
+        if self._control is None or self._control.conn.closed:
+            self._control = self.ctx.control()
+            self._control.ensure_schema()
+        return self._control
+
+    def config(self) -> dict:
+        s = self.ctx.settings
+        return {"actions_enabled": self.enabled, "actions_reason": self.reason, "token_required": bool(self.token),
+                "default_workers": int(s.run["workers"]),
+                "tables": [{"key": t.key, "strategy": t.strategy, "priority": t.priority} for t in s.select(None)]}
+
+    def start(self, body: dict, by: str) -> dict:
+        if body.get("action") == "resume":
+            body = self.resume_action(body)
+        if body.get("action") in ("run", "verify") and not body.get("dry_run"):
+            active = self.api.q("SELECT run_id, command FROM {s}.run WHERE status = 'running' AND command IN ('run', 'verify', 'reset', 'plan') "
+                                "AND heartbeat_at > now() - interval '5 minutes' ORDER BY run_id DESC LIMIT 1") if self.api.ready() else []
+            if active:
+                raise ActionError(f"run {active[0]['run_id']} ({active[0]['command']}) is still in progress; stop it or wait for it to finish")
+        command, args = build_args(body, self.known)
+        job = self.jobs.launch(command, args, by)
+        return {"job": job, "message": f"Started: {job['display']}"}
+
+    def resume_action(self, body: dict) -> dict:
+        """Repeat the scope of the most recent load run, without --force (finished chunks are skipped)."""
+        if not self.api.ready():
+            raise ActionError("nothing to resume yet")
+        rid = body.get("run_id")
+        rows = self.api.q("SELECT run_id, tables, options, workers FROM {s}.run WHERE command = 'run' AND (%s::bigint IS NULL OR run_id = %s) "
+                          "ORDER BY run_id DESC LIMIT 1", (rid, rid))
+        if not rows:
+            raise ActionError("no earlier run to resume")
+        r = rows[0]
+        o = r["options"] or {}
+        tables = r["tables"] or []
+        return {"action": "run", "mode": "only_failed" if o.get("only_failed") else "resume",
+                "tables": [] if set(tables) >= set(self.known) else [t for t in tables if t in self.known],
+                "date_from": o.get("date_from"), "date_to": o.get("date_to"), "chunks": o.get("chunk_keys") or [],
+                "workers": body.get("workers") or r["workers"]}
+
+    def stop(self, body: dict, by: str) -> dict:
+        mode = body.get("mode", "graceful")
+        run_id = body.get("run_id")
+        if run_id is not None:
+            run_id = int(run_id)
+        ids = self.control().request_stop(run_id, mode, by)
+        if not ids:
+            raise ActionError("no run is in progress")
+        what = "in-flight chunks roll back within a few seconds" if mode == "now" else "workers finish their current chunks first"
+        return {"stopped": ids, "message": f"Stop requested for run {', '.join(map(str, ids))}: {what}."}
+
+
 class Handler(BaseHTTPRequestHandler):
-    api: Api = None  # set by serve()
+    api: Api = None        # set by serve()
+    controls: Controls = None
 
     def log_message(self, fmt, *args):
         pass
@@ -193,6 +270,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(code)
         self.send_header("Content-Type", ctype)
         self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -216,19 +294,80 @@ class Handler(BaseHTTPRequestHandler):
             m = re.fullmatch(r"/api/tables/([A-Za-z0-9_]+)", url.path)
             if m:
                 return self._json(self.api.table(m.group(1)))
+            if url.path == "/api/config":
+                return self._json(self.controls.config())
+            if url.path == "/api/jobs":
+                return self._json({"jobs": self.controls.jobs.list()})
+            m = re.fullmatch(r"/api/jobs/(\d+)/log", url.path)
+            if m:
+                return self._json(self.controls.jobs.log_tail(int(m.group(1))))
             return self._json({"error": "not found"}, 404)
+        except ActionError as e:
+            return self._json({"error": str(e)}, 404)
         except Exception as e:
             return self._json({"error": f"{type(e).__name__}: {e}"}, 500)
+
+    def _authorised(self) -> str | None:
+        """Returns an error message, or None when the request may change things."""
+        c = self.controls
+        if not c.enabled:
+            return c.reason
+        if self.headers.get("X-Requested-By") != "onroute-dashboard":
+            return "missing X-Requested-By header"
+        if (self.headers.get("Content-Type") or "").split(";")[0].strip() != "application/json":
+            return "requests must be JSON"
+        origin = self.headers.get("Origin")
+        if origin and urlparse(origin).netloc != self.headers.get("Host"):
+            return "cross-origin request refused"
+        if c.token and not hmac.compare_digest(self.headers.get("X-Admin-Token", ""), c.token):
+            return "admin token missing or wrong"
+        return None
+
+    def do_POST(self):
+        url = urlparse(self.path)
+        problem = self._authorised()
+        if problem:
+            return self._json({"error": problem}, 403)
+        try:
+            length = int(self.headers.get("Content-Length") or 0)
+            if length > 100_000:
+                return self._json({"error": "request too large"}, 413)
+            body = json.loads(self.rfile.read(length) or b"{}")
+            if not isinstance(body, dict):
+                raise ActionError("request body must be a JSON object")
+            by = f"{self.client_address[0]}"
+            if url.path == "/api/actions":
+                return self._json(self.controls.start(body, by))
+            if url.path == "/api/stop":
+                return self._json(self.controls.stop(body, by))
+            return self._json({"error": "not found"}, 404)
+        except (ActionError, ValueError) as e:
+            return self._json({"error": str(e)}, 400)
+        except Exception as e:
+            return self._json({"error": f"{type(e).__name__}: {e}"}, 500)
+
+
+LOOPBACK = {"127.0.0.1", "localhost", "::1"}
 
 
 def serve(ctx, host: str | None = None, port: int | None = None) -> int:
     s = ctx.settings
     dsn = s.dashboard.get("dsn") or s.target["dsn"]
-    Handler.api = Api(dsn, s.control_schema)
+    api = Api(dsn, s.control_schema)
     host = host or s.dashboard.get("host", "127.0.0.1")
     port = int(port or s.dashboard.get("port", 8765))
+    token = s.dashboard.get("admin_token") or None
+    enabled, reason = bool(s.dashboard.get("allow_actions", True)), ""
+    if not enabled:
+        reason = "controls are turned off in the config ([dashboard] allow_actions = false)"
+    elif host not in LOOPBACK and not token:
+        enabled, reason = False, "controls are off: the dashboard listens on a network address without [dashboard] admin_token set"
+    Handler.api = api
+    Handler.controls = Controls(ctx, api, enabled, reason, token)
     httpd = ThreadingHTTPServer((host, port), Handler)
-    print(f"Migration dashboard on http://{host}:{port}  (Ctrl-C to stop)", flush=True)
+    print(f"Migration dashboard on http://{host}:{port}  (Ctrl-C to stop; runs started here keep going)", flush=True)
+    if not enabled:
+        print(f"  {reason}", flush=True)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

@@ -26,7 +26,8 @@ from psycopg.types.json import Jsonb
 
 from .chunks import Chunk
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+WRITER_LOCK = "hashtext('onroute-migration-writer')"
 
 DDL = """
 CREATE SCHEMA IF NOT EXISTS {s};
@@ -36,7 +37,7 @@ CREATE TABLE IF NOT EXISTS {s}.schema_version (version int PRIMARY KEY, applied_
 CREATE TABLE IF NOT EXISTS {s}.run (
     run_id        bigserial PRIMARY KEY,
     command       text NOT NULL,
-    status        text NOT NULL,          -- running | succeeded | completed_with_errors | failed | interrupted | abandoned
+    status        text NOT NULL,          -- running | succeeded | completed_with_errors | failed | stopped | interrupted | abandoned
     started_at    timestamptz NOT NULL DEFAULT now(),
     finished_at   timestamptz,
     heartbeat_at  timestamptz NOT NULL DEFAULT now(),
@@ -49,6 +50,11 @@ CREATE TABLE IF NOT EXISTS {s}.run (
     summary       jsonb,
     error         text
 );
+
+ALTER TABLE {s}.run ADD COLUMN IF NOT EXISTS stop_requested text;      -- graceful | now
+ALTER TABLE {s}.run ADD COLUMN IF NOT EXISTS stop_requested_at timestamptz;
+ALTER TABLE {s}.run ADD COLUMN IF NOT EXISTS stop_requested_by text;
+ALTER TABLE {s}.run ADD COLUMN IF NOT EXISTS launched_by text;
 
 CREATE TABLE IF NOT EXISTS {s}.chunk (
     chunk_id          bigserial PRIMARY KEY,
@@ -188,6 +194,7 @@ class Scope:
     date_from: date | None = None   # date chunks overlapping [date_from, date_to) only
     date_to: date | None = None
     chunk_keys: list[str] | None = None
+    statuses: list[str] | None = None   # e.g. ["failed"] to retry only failed chunks
 
     def sql(self, alias: str = "c") -> tuple[str, dict]:
         parts = [f"{alias}.table_key = ANY(%(scope_tables)s)"]
@@ -203,16 +210,19 @@ class Scope:
         if self.chunk_keys:
             parts.append(f"{alias}.chunk_key = ANY(%(scope_chunks)s)")
             params["scope_chunks"] = list(self.chunk_keys)
+        if self.statuses:
+            parts.append(f"({alias}.status = ANY(%(scope_statuses)s) OR {alias}.status = 'running')")
+            params["scope_statuses"] = list(self.statuses)
         return " AND ".join(parts), params
 
     def as_dict(self) -> dict:
         return {"tables": self.tables, "date_from": self.date_from and self.date_from.isoformat(),
-                "date_to": self.date_to and self.date_to.isoformat(), "chunk_keys": self.chunk_keys}
+                "date_to": self.date_to and self.date_to.isoformat(), "chunk_keys": self.chunk_keys, "statuses": self.statuses}
 
     @classmethod
     def from_dict(cls, d: dict) -> "Scope":
         return cls(d["tables"], d.get("date_from") and date.fromisoformat(d["date_from"]),
-                   d.get("date_to") and date.fromisoformat(d["date_to"]), d.get("chunk_keys"))
+                   d.get("date_to") and date.fromisoformat(d["date_to"]), d.get("chunk_keys"), d.get("statuses"))
 
 
 class Control:
@@ -241,10 +251,35 @@ class Control:
 
     # ------------------------------------------------------------ runs
     def start_run(self, command: str, tables: list[str], options: dict, workers: int) -> int:
-        row = self.x("""INSERT INTO {s}.run (command, status, host, os_user, pid, workers, tables, options)
-                        VALUES (%s, 'running', %s, %s, %s, %s, %s, %s) RETURNING run_id""",
-                     (command, socket.gethostname(), _user(), os.getpid(), workers, tables, Jsonb(options))).fetchone()
+        row = self.x("""INSERT INTO {s}.run (command, status, host, os_user, pid, workers, tables, options, launched_by)
+                        VALUES (%s, 'running', %s, %s, %s, %s, %s, %s, %s) RETURNING run_id""",
+                     (command, socket.gethostname(), _user(), os.getpid(), workers, tables, Jsonb(options),
+                      os.environ.get("ONROUTE_LAUNCHED_BY", "command line"))).fetchone()
         return row[0]
+
+    # ------------------------------------------------------------ one writer at a time
+    def acquire_writer_lock(self) -> bool:
+        """Session-level lock held for the life of this process: only one run/verify/reset at a time."""
+        return self.x(f"SELECT pg_try_advisory_lock({WRITER_LOCK})").fetchone()[0]
+
+    def active_runs(self) -> list[dict]:
+        return self.rows("""SELECT run_id, command, host, pid, started_at, heartbeat_at, stop_requested
+                             FROM {s}.run WHERE status = 'running' ORDER BY run_id DESC""")
+
+    def request_stop(self, run_id: int | None, mode: str, by: str) -> list[int]:
+        if mode not in ("graceful", "now"):
+            raise ValueError("mode must be graceful or now")
+        rows = self.x("""UPDATE {s}.run SET stop_requested = %s, stop_requested_at = now(), stop_requested_by = %s
+                          WHERE status = 'running' AND (%s::bigint IS NULL OR run_id = %s)
+                            AND command IN ('run', 'dry-run', 'verify', 'profile')
+                          RETURNING run_id""", (mode, by, run_id, run_id)).fetchall()
+        for r in rows:
+            self.event(r[0], "warning", f"stop requested ({'finish current chunks' if mode == 'graceful' else 'now: roll back in-flight chunks'}) by {by}")
+        return [r[0] for r in rows]
+
+    def stop_mode(self, run_id: int) -> str | None:
+        row = self.x("SELECT stop_requested FROM {s}.run WHERE run_id = %s", (run_id,)).fetchone()
+        return row[0] if row else None
 
     def heartbeat_run(self, run_id: int):
         self.x("UPDATE {s}.run SET heartbeat_at = now() WHERE run_id = %s", (run_id,))
@@ -345,9 +380,17 @@ class Control:
                           AND ((c.status = 'failed' AND c.attempts < %(max_attempts)s) OR c.status = 'running'))""",
                       {**s_params, "max_attempts": max_attempts}).fetchone()[0]
 
-    def heartbeat_chunk(self, chunk_id: int, token, rows_read: int):
-        self.x("UPDATE {s}.chunk SET heartbeat_at = now(), rows_read = %s WHERE chunk_id = %s AND lease_token = %s",
-               (rows_read, chunk_id, token))
+    def heartbeat_chunk(self, chunk_id: int, token, rows_read: int, run_id: int | None = None) -> str | None:
+        """Record progress; returns the run's stop request, if any."""
+        row = self.x("""WITH u AS (UPDATE {s}.chunk SET heartbeat_at = now(), rows_read = %s WHERE chunk_id = %s AND lease_token = %s)
+                         SELECT stop_requested FROM {s}.run WHERE run_id = %s""", (rows_read, chunk_id, token, run_id)).fetchone()
+        return row[0] if row else None
+
+    def release_chunk(self, chunk: dict, reason: str):
+        """Give a claimed chunk back to the queue without counting a failed attempt."""
+        self.x("""UPDATE {s}.chunk SET status = CASE WHEN loaded_at IS NULL THEN 'pending' ELSE 'stale' END,
+                         lease_token = NULL, attempts = GREATEST(attempts - 1, 0), error = %s
+                  WHERE chunk_id = %s AND lease_token = %s""", (reason, chunk["chunk_id"], chunk["lease_token"]))
 
     def fail_chunk(self, chunk: dict, error: str, rows_read: int, duration: float, backoff_seconds: int, stats: dict | None = None):
         cur = self.x("""UPDATE {s}.chunk SET status = 'failed', error = %s, finished_at = now(), rows_read = %s,

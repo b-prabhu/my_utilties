@@ -25,12 +25,19 @@ from .control import Control
 from .mapping import TEXT_TGT, Reject, TablePlan, build_plan
 
 
+HEARTBEAT_SECONDS = 5   # progress + stop-request check while a chunk is loading
+
+
 class ChunkFailed(Exception):
     pass
 
 
 class LeaseLost(ChunkFailed):
     pass
+
+
+class StopRequested(Exception):
+    """The run was asked to stop now; the chunk's transaction is rolled back and the chunk re-queued."""
 
 
 def chunk_from_row(row: dict) -> Chunk:
@@ -142,6 +149,13 @@ class Loader:
             plan = self.planner.plan(spec, chunk.source_table or spec.source, chunk.context_dict)
             result = self._load(spec, plan, chunk, row, progress, started)
             return result
+        except StopRequested:
+            if not self.conn.closed and self.conn.info.transaction_status != psycopg.pq.TransactionStatus.IDLE:
+                self.conn.rollback()
+            self.control.release_chunk(row, "stopped by request; will load on the next run")
+            self.control.event(row["run_id"], "warning", "stopped mid-chunk; rolled back and returned to the queue",
+                               spec.key, chunk.chunk_key)
+            return {"status": "stopped", "rows_read": progress["rows_read"]}
         except Exception as e:  # any failure leaves the chunk retryable
             if not self.conn.closed and self.conn.info.transaction_status != psycopg.pq.TransactionStatus.IDLE:
                 self.conn.rollback()
@@ -218,8 +232,9 @@ class Loader:
                             if v is not None:
                                 loaded_sum += Decimal(repr(v)) if isinstance(v, float) else Decimal(v)
                     now = time.monotonic()
-                    if now - last_beat > 15 and not self.dry_run:
-                        self.control.heartbeat_chunk(row["chunk_id"], token, progress["rows_read"])
+                    if now - last_beat >= HEARTBEAT_SECONDS and not self.dry_run:
+                        if self.control.heartbeat_chunk(row["chunk_id"], token, progress["rows_read"], row["run_id"]) == "now":
+                            raise StopRequested()
                         last_beat = now
 
             read = progress["rows_read"]

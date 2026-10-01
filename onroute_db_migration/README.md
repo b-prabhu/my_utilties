@@ -114,9 +114,11 @@ All commands take `-c config/config.toml` and `-t table1,table2` (default: all t
 |---|---|
 | `check` | Resolves every column mapping against the live source and target and prints each conversion. Writes nothing. |
 | `profile [--sample-pct 5]` | Scans the source for values that would be rejected: too long, NULL into NOT NULL, unmapped flag/enum values, bad GUIDs, numeric overflow, dropped time of day, duplicate keys. Results appear in the dashboard. |
+| `run --only-failed` | Retries only the chunks that failed. |
 | `run --dry-run [--sample 2]` | Loads chunks inside transactions that are always rolled back, so the real constraints are tested without changing anything. |
 | `run` | Loads every chunk that isn't done yet. **Always safe to re-run**: finished chunks are skipped and failed ones are retried. |
 | `verify` | Re-counts done chunks in both databases (rows and checksum column). Mismatches are marked *needs reload*, and the next `run` reloads only those chunks. |
+| `stop [--now] [--run-id N]` | Asks a running command to stop. By default workers finish the chunk they're on, then stop. With `--now`, in-flight chunks are rolled back within a few seconds. This works on runs started anywhere: a terminal, the dashboard or another machine. |
 | `status` | Progress per table, plus failed chunks with their errors. |
 | `dashboard` | Serves the monitoring dashboard on http://127.0.0.1:8765. |
 | `reset -t X --yes [--truncate-target]` | Forgets the checkpoints for a table (optionally truncating its target) so it starts from scratch. |
@@ -126,7 +128,8 @@ All commands take `-c config/config.toml` and `-t table1,table2` (default: all t
 | Situation | What to do | What happens |
 |---|---|---|
 | First load | `run -w 8` | Plans chunks, then loads them in parallel. |
-| Ctrl-C, reboot, network drop, killed process | `run` again | In-flight chunk transactions were rolled back. Ctrl-C returns those chunks to the queue immediately; after a hard kill they're taken over once their lease expires (`lease_minutes`). Done chunks are skipped. |
+| Need to pause (end of a maintenance window) | Dashboard **Stop after current chunks**, or `stop` | The run ends as *stopped* once in-flight chunks finish. **Resume** carries on later. |
+| Ctrl-C, reboot, network drop, killed process | `run` again, or **Resume** in the dashboard | In-flight chunk transactions were rolled back. Ctrl-C returns those chunks to the queue immediately; after a hard kill they're taken over once their lease expires (`lease_minutes`). Done chunks are skipped. |
 | One chunk keeps failing | Read the error in the dashboard or `status`, fix the cause, then `run` | A failure is retried up to `max_attempts` times, with backoff. The next run resets the attempt count and tries again. |
 | Rows rejected | Look up the reason on the table's dashboard page, then fix the source data or the config, then `run -t X --chunk m:2024-03 --force` | That chunk's slice and its rejected-row list are replaced. |
 | The source still receives data (before cutover) | `run --refresh --reopen-days 7` | Reloads full tables, Vena years, NULL chunks, the last ID range, and date chunks ending in the last 7 days. |
@@ -153,24 +156,57 @@ All commands take `-c config/config.toml` and `-t table1,table2` (default: all t
    SQL Server is never modified, so rolling back means pointing reports at it again.
 6. After the load, run `ANALYZE` on the `master` tables.
 
-## Monitoring
+## Dashboard: monitor and control
 
 `python -m onroute_migration dashboard` serves a page that refreshes every 5 seconds.
-It shows:
+
+**Controls.** Everything the command line can do is also available from buttons:
+
+* **Overview:**
+  * *Resume* (loads what isn't done) or *Start loading*
+  * *Retry N failed chunks*
+  * *Catch up recent data* (`--refresh`)
+  * *Verify against source*
+  * *Stop after current chunks* or *Stop now* while a run is going
+* **Control tab:** a form for any command (load, dry run, verify, profile, check
+  mapping). You choose which chunks (resume, catch up, only failed, or reload
+  everything), the tables, the date range, workers, sample size and so on. It shows the
+  equivalent command line before you start. A list of commands started from the
+  dashboard follows, each with its live log.
+* **Table page:** *Load remaining chunks*, *Retry failed*, *Reload whole table*,
+  *Verify*, *Profile source*. Select any chunk to *Reload this chunk* or *Verify* it.
+* **Run page:** *Resume run N* for a stopped, interrupted or failed run (same tables and
+  filters, finished chunks skipped), or stop buttons if it is still going.
+
+Destructive actions (stop now, reloading a whole table or every table) need a second
+click to confirm. Each command runs as its own process with its own log, so it keeps
+going if the dashboard is closed or restarted.
+
+**Safety:**
+* Only one writing command (run, verify, reset, plan) can run at a time, enforced by a
+  database lock, so a second start is refused instead of colliding.
+* Buttons are enabled when the dashboard listens on localhost. On a network address
+  they need `[dashboard] admin_token`. Set `allow_actions = false` for a view-only
+  dashboard.
+* Every request must carry a dashboard-only header and be same-origin, so other
+  websites can't trigger actions.
+
+**Monitoring.** The page shows:
 
 * overall progress, throughput and estimated time left
 * every table: rows read against source rows, a strip of its chunks coloured by
   status, rejects, and failed checks
 * chunks loading right now, with each worker's heartbeat (a stuck worker stands out)
 * rows loaded per minute over the last hour, recent failures, and a live activity feed
-* **Run history:** every `run`, `verify`, `profile`, `dry-run` and `reset`, with its
-  options, duration, results, full log and validation results
+* **Run history:** every `run`, `verify`, `profile`, `dry-run` and `reset`, with
+  who started it and from where, its options, duration, results, full log and
+  validation results
 * **Table pages:** every chunk (select one for its details and the command to reload
   it), rejected rows by reason with samples, source profile findings, the resolved
   column mapping, and load history
 
-The dashboard only reads data. To keep it from writing, give it a read-only login
-via `[dashboard] dsn`. History is ordinary tables in the `migration` schema (`run`,
+Monitoring queries use `[dashboard] dsn` (a read-only login is enough). Stop requests
+and launched commands use the normal migration login. History is ordinary tables in the `migration` schema (`run`,
 `chunk`, `chunk_attempt`, `rejected_row`, `event`, `validation`, `profile`,
 `table_state`), so it can also be queried directly.
 
@@ -208,6 +244,11 @@ SQL Server stand-in seeded with deliberately bad rows. They cover:
 * pre-existing target rows
 * parallel workers, reset and profile
 * the dashboard API
+* stopping after current chunks, then resuming
+* stopping now, which rolls back the chunk in flight
+* refusing a second writer while one is running
+* retrying only failed chunks
+* starting runs from the dashboard (with its access checks)
 
 **Use a throwaway database for these tests.** They drop and recreate the `master`
 schema.
