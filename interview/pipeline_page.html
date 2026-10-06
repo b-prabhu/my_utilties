@@ -286,6 +286,7 @@
   .pay{text-align:right; font-size:12px; line-height:1.35}
   .pay i{font-style:normal; display:block; font-size:10.5px; color:var(--ink-3)}
   .pay i.hot{color:var(--warn)}
+  .pay .na{color:var(--ink-3); font-size:11px}
   .pill{
     display:inline-block; padding:2.5px 9px; border-radius:100px; font-size:10.5px;
     font-weight:500; white-space:nowrap; border:1px solid transparent;
@@ -499,7 +500,7 @@
     <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
       <h1>Certainti Hiring Portal</h1>
-      <p>IKrux Engineering &middot; 17 candidates submitted 21 Sep 2026</p>
+      <p>17 from IKrux Engineering &middot; 5 direct &middot; 22 candidates</p>
     </div>
     <div class="mtools">
       <div class="asof">As on<b id="asof">&mdash;</b></div>
@@ -639,14 +640,45 @@
     [16,2,"Shanmuga raja","9600029567","shanmugarajamanikam@gmail.com","CE Products","5.3 Years",
      "5 Years","Chennai","LWD: 28 Sep 2026","2026-09-28",6.1,10,"No"],
     [17,2,"Srinidhi Ravi","9962308335","srini3998@gmail.com","LTIMindtree","5.6 Years",
-     "5 Years","Chennai","LWD: 10 Oct 2026","2026-10-10",14,18,"No"]
+     "5 Years","Chennai","LWD: 10 Oct 2026","2026-10-10",14,18,"No"],
+
+    /* Added 6 Oct 2026 from resumes only \u2014 no vendor row, so notice period
+       and the commercials are not yet captured. They read as "Not captured"
+       rather than being guessed. */
+    [18,1,"Prince Kumar P","9952293271","princekumar27.cse@gmail.com","Virtusa Consulting Services","16 Years",
+     "Java 5 Years | Node js 7 Years | Angular 9 Years | React 5 Years | AWS | Kafka | Lead 6 Years",
+     "Chennai","Not captured",null,null,null,""],
+    [19,1,"Gangasri Paramasivam","9965554784","p.gangasri@gmail.com","Tech Mahindra","11.3 Years",
+     "Java 11 Years | Spring Boot | Apache Camel | React | Node | Kafka | Lead 6 Years",
+     "Coimbatore","Not captured",null,null,null,""],
+    [20,1,"Gunavadhi A S","9942254283","gunavadhir@gmail.com","Tech Mahindra","11 Years",
+     "Java 11 Years | Spring Boot | React 4 Years | Angular 4-7 | Kafka | Docker/K8s | Lead 4 Years",
+     "Coimbatore","Not captured",null,null,null,""],
+    [21,2,"Dhachanamoorthy N","7639619985","dhachanamoorthy3@gmail.com","Zoho Corporation","5 Years",
+     "Java 5 Years | React/TypeScript 5 Years | Node js 4 Years | Kafka | WebSockets | AWS",
+     "Not stated","Not captured",null,null,null,""],
+    [22,1,"Krishnan K","9843279454","krishnan12koo@gmail.com","Wipro Technologies","12 Years",
+     "Java 12 Years | Spring Boot | Microservices | Kafka | Docker/K8s | GCP/AWS | Lead 4 Years",
+     "Madurai","Not captured",null,null,null,""]
   ].map(function(r){
     return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
             totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
-            ctc:r[11], ectc:r[12], offers:r[13]};
+            ctc:r[11], ectc:r[12], offers:r[13],
+            src:(r[0] <= 17 ? "IKrux Engineering" : "Direct"),
+            subDate:(r[0] <= 17 ? "21-Sep-2026" : "6-Oct-2026")};
   });
 
   var VERDICT = {
+    18:{k:"caution", h:"Strong breadth, but the Java depth is thinner than the title suggests",
+       t:"Sixteen years and a genuine lead record at Virtusa on British Telecom work — microservices, Kafka, Docker and Kubernetes, AWS, and real observability with Prometheus, Grafana and Loki. The caveat is his own: the CV puts Java at about 5 years against Node at 7 and Angular at 9, so for a Java lead role the hands-on Java is shallower than 16 years implies. One date inconsistency: the Discern project runs Jan 2016 to Dec 2020 while he lists Treselle ending Jan 2020 and Virtusa starting the same month."},
+    19:{k:"match", h:"Clean, consistent Java lead profile",
+       t:"Eleven-plus years with no gaps, all of it Java and full stack, progressing from trainee to technical lead at Skava, Infosys and now Tech Mahindra. Current work leads a team on Telefonica Germany's ePOS system, and previously Intel's Architect GUI. Solid on Spring Boot, Apache Camel, Kafka, RabbitMQ, Redis, Docker and Kubernetes, with monolith-to-microservice migration and performance tuning both named as her own work. M.E. from PSG College of Technology, and workplace awards through Oct 2025."},
+    20:{k:"caution", h:"Solid Java lead, already out of her last role",
+       t:"Eleven years of Java and Spring Boot microservices with React and Angular, most recently leading offshore delivery for Cisco at Tech Mahindra — monolith-to-microservices, Berkeley DB to PostgreSQL, Docker, Kubernetes, Jenkins, and Scrum Master duties. Two things to note: the Tech Mahindra engagement is listed as ending August 2026, so she has been out roughly two months, and the MCA is recorded as coursework completed rather than awarded, with a B.Sc. as the completed degree."},
+    21:{k:"match", h:"Unusually strong for five years — but it is five years",
+       t:"Real distributed-systems substance at Zoho: a browser-to-device P2P file transfer platform at 1M+ users with 95% peer completion, WebSocket infrastructure, a JSON to Protocol Buffers migration, a Kafka event pipeline, and ownership of a 30,000-line React/TypeScript migration on a product serving 10M+ monthly actives. Also build-pipeline work across a 70-engineer organisation. The honest caveat is tenure: five years total, so architecture and multi-tenancy theory will be thinner than the engineering. No location anywhere on the CV."},
+    22:{k:"caution", h:"Broad Java delivery record, several things to confirm",
+       t:"Twelve years of Java and J2EE across Wipro, HCL and smaller firms, with named enterprise clients — United HealthCare, MasterCard — on Spring Boot microservices, Kafka, Kubernetes, Docker, GCP and AWS. Three things to check: the Wipro engagement ended 25 June 2026 so he has been out around three months; his address is Madurai while the Wipro posting was Coimbatore, so his base needs confirming; and the degree is a BE in Electrical and Electronics rather than computer science. The CV is also list-heavy — long technology inventories with thin description of what he personally built."},
     1:{k:"caution", h:"Deeper than recorded, with a gap to explain",
        t:"L&T Infotech appears under its post-merger name LTIMindtree, and the .Net depth is real \u2014 .NET 8 Azure Functions, Service Bus, Cosmos DB. Two things: his CV lists employment from Jul 2007, about 18 years of history, yet states 14+ years, and the difference is an unexplained gap between Cognizant (to Oct 2013) and TCS (from Dec 2014). His AI entry rests on \u2018Claude prompt Eng\u2019 in a skills list, against the 2 years recorded."},
     4:{k:"caution", h:"Mostly matches; the .Net span is overstated",
@@ -701,12 +733,22 @@
     {id:"a34", sl:7, sev:"Low", issue:"Address reads Tamil Nadu 638701, which is Erode, not Coimbatore; the Nagarro role is remote.", act:"Confirm his base and his willingness to work onsite."},
     {id:"a35", sl:10, sev:"Low", issue:"Two employment gaps: Mar to Aug 2017, and Dec 2019 to Jul 2020.", act:"Ask him to account for both."},
     {id:"a36", sl:11, sev:"Low", issue:"Early career was PHP and LAMP, which the recorded skill split does not mention.", act:"Add it for completeness."},
+    {id:"a37", sl:null, sev:"High", issue:"The five candidates added on 6 Oct 2026 came as resumes only — no notice period, CTC, expected CTC or competing offers were supplied.", act:"Collect the commercials and availability for SL 18–22 before any of them reaches a panel."},
+    {id:"a38", sl:22, sev:"Medium", issue:"Wipro engagement ended 25 June 2026, so he has been out of employment around three months.", act:"Confirm current status and the reason for the break."},
+    {id:"a39", sl:20, sev:"Medium", issue:"Tech Mahindra engagement is listed as ending August 2026, so she has been out around two months.", act:"Confirm current status and availability."},
+    {id:"a40", sl:18, sev:"Medium", issue:"Sixteen years total, but his own CV puts Java at about 5 years against Node at 7 and Angular at 9.", act:"Decide whether the opening needs Java depth or accepts a polyglot lead, and brief the panel accordingly."},
+    {id:"a41", sl:22, sev:"Medium", issue:"Address is Madurai while the Wipro posting was Coimbatore; his current base is unclear.", act:"Confirm location and willingness to be in Coimbatore."},
+    {id:"a42", sl:21, sev:"Medium", issue:"Five years total experience against an architecture-heavy Round 1 — a strong engineer, but the theory set will stretch him.", act:"Decide whether to score him against the mid-level bar or treat the gaps as expected."},
+    {id:"a43", sl:18, sev:"Low", issue:"Project dates overlap: Discern runs Jan 2016 to Dec 2020 while Treselle ends Jan 2020 and Virtusa starts the same month.", act:"Ask him to clarify the overlap."},
+    {id:"a44", sl:20, sev:"Low", issue:"MCA is recorded as coursework completed rather than awarded; the completed degree is a B.Sc.", act:"Confirm the highest qualification actually held."},
+    {id:"a45", sl:21, sev:"Low", issue:"No current location stated anywhere on the CV.", act:"Capture it."},
+    {id:"a46", sl:22, sev:"Low", issue:"Degree is BE Electrical and Electronics rather than computer science, and the CV is list-heavy with thin description of personal contribution.", act:"Probe for what he personally designed and built in the technical round."},
     {id:"a1", sl:12, sev:"High", issue:"Credited with 9 years of .Net; the CV shows none — Node.js, Express, React, PHP/Laravel.", act:"Reconfirm the skill mapping with IKrux before allocating a panel."},
     {id:"a2", sl:12, sev:"Medium", issue:"Cloud recorded generically at 4 years; the CV shows AWS, not Azure.", act:"Restate as AWS and confirm whether the role needs Azure."},
     {id:"a3", sl:15, sev:"High", issue:"Profile is Java application and production support, not development.", act:"Confirm whether the opening is a build or a support role before scheduling."},
     {id:"a4", sl:8, sev:"High", issue:"Last working day of 11 Jun 2026 has already passed.", act:"Confirm employment status, the reason for the break, and whether 30 L still holds."},
-    {id:"a5", sl:null, sev:"High", issue:"Eight of the 17 recorded last working days fall in the past.", act:"Re-verify availability for every candidate marked available now."},
-    {id:"a6", sl:null, sev:"Low", issue:"All 17 resumes have now been received and checked against the submitted row.", act:"Closed. Twelve of the 17 rows needed a correction or carry a question \u2014 see the items below."},
+    {id:"a5", sl:null, sev:"High", issue:"Most of the recorded last working days have now passed \u2014 the Availability column recalculates daily, so that count keeps growing.", act:"Re-verify employment status for every candidate the list marks available now before approaching them."},
+    {id:"a6", sl:null, sev:"Low", issue:"All 22 resumes are on file and checked \u2014 17 against their submitted row, and 5 that arrived as resumes only.", act:"Closed. Seventeen of the 22 carry a correction or an open question \u2014 see the items below."},
     {id:"a7", sl:15, sev:"Medium", issue:"Location recorded as Erode; the CV says Bangalore.", act:"Confirm with the candidate."},
     {id:"a8", sl:8, sev:"Medium", issue:"Location recorded as Erode; the CV says Bangalore.", act:"Confirm with the candidate."},
     {id:"a9", sl:3, sev:"Medium", issue:"Employment gap of roughly Jun–Oct 2020 between LAKEBA and OMS.", act:"Ask the candidate to account for the gap."},
@@ -726,7 +768,10 @@
   var DAY = 864e5, MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var today = new Date(); today.setHours(0,0,0,0);
   function fmtDate(d){ return d.getDate() + " " + MON[d.getMonth()] + " " + d.getFullYear(); }
-  function lakh(n){ return (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0) + " L"; }
+  function lakh(n){
+    if (n == null) return "Not captured";
+    return (Math.round(n*100)/100).toFixed(n % 1 ? 2 : 0) + " L";
+  }
 
   function resumeText(sl){
     var r = R[sl]; if (!r) return "";
@@ -744,28 +789,34 @@
   }
 
   C.forEach(function(c){
-    var p = c.lwd.split("-");
-    c.lwdDate = new Date(+p[0], +p[1]-1, +p[2]);
-    c.days = Math.round((c.lwdDate - today) / DAY);
-    c.hike = (c.ectc - c.ctc) / c.ctc;
+    if (c.lwd){
+      var p = c.lwd.split("-");
+      c.lwdDate = new Date(+p[0], +p[1]-1, +p[2]);
+      c.days = Math.round((c.lwdDate - today) / DAY);
+    } else { c.lwdDate = null; c.days = null; }
+    c.hike = (c.ctc && c.ectc) ? (c.ectc - c.ctc) / c.ctc : null;
     c.expNum = parseFloat(c.totalExp);
     c.resume = !!R[c.sl];
     c.verdict = VERDICT[c.sl] || null;
     c.flags = FLAGS.filter(function(f){ return f.sl === c.sl; });
     c.worst = c.flags.reduce(function(a,f){ var r = {High:3,Medium:2,Low:1}[f.sev]; return r > a ? r : a; }, 0);
 
-    c.fAvail = c.days <= 0 ? "Available now" : (c.days <= 30 ? "Within 30 days" : "Beyond 30 days");
+    c.fAvail = c.days == null ? "Not captured"
+             : c.days <= 0 ? "Available now" : (c.days <= 30 ? "Within 30 days" : "Beyond 30 days");
     c.fExp   = c.expNum < 6 ? "Under 6 years" : (c.expNum <= 12 ? "6 – 12 years" : "Over 12 years");
-    c.fEctc  = c.ectc <= 15 ? "Up to 15 L" : (c.ectc <= 25 ? "15 – 25 L" : "Over 25 L");
-    c.fLoc   = /Coimbatore/i.test(c.curLoc) ? "Coimbatore"
+    c.fEctc  = c.ectc == null ? "Not captured"
+             : c.ectc <= 15 ? "Up to 15 L" : (c.ectc <= 25 ? "15 – 25 L" : "Over 25 L");
+    c.fLoc   = /Not stated/i.test(c.curLoc) ? "Elsewhere"
+             : /Coimbatore/i.test(c.curLoc) ? "Coimbatore"
              : /Chennai/i.test(c.curLoc) ? "Chennai"
              : /Erode/i.test(c.curLoc) ? "Erode" : "Elsewhere";
     c.fCv    = c.resume ? "On file" : "Awaited";
     c.fFlag  = ["None","Low","Medium","High"][c.worst];
-    c.fOffer = c.offers === "" ? "Not captured" : (c.offers === "No" ? "None recorded" : "Holding an offer");
+    c.fOffer = !c.offers ? "Not captured" : (c.offers === "No" ? "None recorded" : "Holding an offer");
     c.offerInHand = c.fOffer === "Holding an offer";
     c.blob = (c.name + " " + c.company + " " + c.role + " " + c.relExp + " " + c.curLoc + " " +
-              c.notice + " " + c.offers + " " + c.email + " " + c.mobile + " " + resumeText(c.sl)).toLowerCase();
+              c.notice + " " + (c.offers || "") + " " + c.src + " " + c.email + " " + c.mobile + " " +
+              resumeText(c.sl)).toLowerCase();
   });
   var BY_SL = {}; C.forEach(function(c){ BY_SL[c.sl] = c; });
 
@@ -890,8 +941,8 @@
   function rnd(n){ return Math.round(n * 100) / 100; }
   var COLS = [
     {g:"Submitted", k:"sl",       h:"SL. No",             v:function(c){ return c.sl; }},
-    {g:"Submitted", k:"vendor",   h:"Vendor",             v:function(){ return "IKrux Engineering"; }},
-    {g:"Submitted", k:"date",     h:"Date",               v:function(){ return "21-Sep-2026"; }},
+    {g:"Submitted", k:"vendor",   h:"Vendor",             v:function(c){ return c.src; }},
+    {g:"Submitted", k:"date",     h:"Date",               v:function(c){ return c.subDate; }},
     {g:"Submitted", k:"role",     h:"Skill Name (applied)", v:function(c){ return c.role; }},
     {g:"Submitted", k:"name",     h:"Candidate Name",     v:function(c){ return c.name; }},
     {g:"Submitted", k:"mobile",   h:"Mobile Number",      v:function(c){ return c.mobile; }},
@@ -902,13 +953,13 @@
     {g:"Submitted", k:"curLoc",   h:"Current Location",   v:function(c){ return c.curLoc; }},
     {g:"Submitted", k:"workLoc",  h:"Work Location",      v:function(){ return "Coimbatore"; }},
     {g:"Submitted", k:"notice",   h:"Notice Period",      v:function(c){ return c.notice; }},
-    {g:"Submitted", k:"ctc",      h:"CTC (L)",            v:function(c){ return c.ctc; }},
-    {g:"Submitted", k:"ectc",     h:"ECTC (L)",           v:function(c){ return c.ectc; }},
+    {g:"Submitted", k:"ctc",      h:"CTC (L)",            v:function(c){ return c.ctc == null ? "" : c.ctc; }},
+    {g:"Submitted", k:"ectc",     h:"ECTC (L)",           v:function(c){ return c.ectc == null ? "" : c.ectc; }},
     {g:"Submitted", k:"offers",   h:"Offers",             v:function(c){ return c.offers; }},
 
-    {g:"Derived",   k:"hike",     h:"Hike %",             v:function(c){ return rnd(c.hike * 100); }},
-    {g:"Derived",   k:"lwd",      h:"Last working day",   v:function(c){ return fmtDate(c.lwdDate); }},
-    {g:"Derived",   k:"days",     h:"Days to LWD",        v:function(c){ return c.days; }},
+    {g:"Derived",   k:"hike",     h:"Hike %",             v:function(c){ return c.hike == null ? "" : rnd(c.hike * 100); }},
+    {g:"Derived",   k:"lwd",      h:"Last working day",   v:function(c){ return c.lwdDate ? fmtDate(c.lwdDate) : ""; }},
+    {g:"Derived",   k:"days",     h:"Days to LWD",        v:function(c){ return c.days == null ? "" : c.days; }},
     {g:"Derived",   k:"avail",    h:"Availability",       v:function(c){ return c.fAvail; }},
 
     {g:"Resume review", k:"verdict",  h:"Resume verdict", v:function(c){ return c.verdict ? c.verdict.h : ""; }},
@@ -1032,10 +1083,11 @@
   /* ===================== filtering ===================== */
   var FACETS = [
     {key:"role",   label:"Role",             get:function(c){ return c.role; },   opts:ROLES},
-    {key:"fAvail", label:"Availability",     get:function(c){ return c.fAvail; }, opts:["Available now","Within 30 days","Beyond 30 days"]},
+    {key:"fAvail", label:"Availability",     get:function(c){ return c.fAvail; }, opts:["Available now","Within 30 days","Beyond 30 days","Not captured"]},
     {key:"fExp",   label:"Total experience", get:function(c){ return c.fExp; },   opts:["Under 6 years","6 – 12 years","Over 12 years"]},
-    {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L"]},
+    {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L","Not captured"]},
     {key:"fLoc",   label:"Current location", get:function(c){ return c.fLoc; },   opts:["Coimbatore","Chennai","Erode","Elsewhere"]},
+    {key:"src",    label:"Source",           get:function(c){ return c.src; },    opts:["IKrux Engineering","Direct"]},
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},
@@ -1076,10 +1128,11 @@
     var out = C.filter(function(c){ return passes(c, null); });
     out.sort(function(a, b){
       if (sortBy === "name") return a.name.localeCompare(b.name);
-      if (sortBy === "ectc") return b.ectc - a.ectc;
-      if (sortBy === "hike") return b.hike - a.hike;
-      if (sortBy === "exp")  return b.expNum - a.expNum;
-      if (sortBy === "avail") return a.days - b.days;
+      var NA = function(v){ return v == null ? -Infinity : v; };
+      if (sortBy === "ectc") return NA(b.ectc) - NA(a.ectc);
+      if (sortBy === "hike") return NA(b.hike) - NA(a.hike);
+      if (sortBy === "exp")  return NA(b.expNum) - NA(a.expNum);
+      if (sortBy === "avail") return (a.days == null ? Infinity : a.days) - (b.days == null ? Infinity : b.days);
       return a.sl - b.sl;
     });
     return out;
@@ -1283,7 +1336,7 @@
   /* ===================== stats & rows ===================== */
   function renderStats(){
     var host = $("stats"); host.textContent = "";
-    var availNow = C.filter(function(c){ return c.days <= 0; }).length;
+    var availNow = C.filter(function(c){ return c.days != null && c.days <= 0; }).length;
     var offers = C.filter(function(c){ return c.offerInHand; }).length;
     var inProc = C.filter(function(c){ return statusOf(c) === "In Process"; }).length;
     var selc = C.filter(function(c){ var s = statusOf(c); return s === "Selected" || s === "Joined"; }).length;
@@ -1345,14 +1398,20 @@
       row.appendChild(el("div", "exp tnum", c.totalExp.replace(" Years", "y")));
 
       var pay = el("div", "pay tnum");
-      pay.appendChild(el("span", "med", lakh(c.ctc) + " → " + lakh(c.ectc)));
-      var pct = Math.round(c.hike * 100);
-      pay.appendChild(el("i", pct >= 60 ? "hot" : null, "+" + pct + "%" + (c.offerInHand ? " · offer" : "")));
+      if (c.ctc == null){
+        pay.appendChild(el("span", "na", "Not captured"));
+      } else {
+        pay.appendChild(el("span", "med", lakh(c.ctc) + " → " + lakh(c.ectc)));
+        var pct = Math.round(c.hike * 100);
+        pay.appendChild(el("i", pct >= 60 ? "hot" : null, "+" + pct + "%" + (c.offerInHand ? " · offer" : "")));
+      }
       row.appendChild(pay);
 
       var av = el("div", "avail");
-      av.appendChild(el("span", "pill " + (c.days <= 0 ? "ok" : c.days <= 30 ? "seed" : "mute"),
-        c.days <= 0 ? "Available now" : "In " + c.days + " days"));
+      av.appendChild(c.days == null
+        ? el("span", "pill mute", "Not captured")
+        : el("span", "pill " + (c.days <= 0 ? "ok" : c.days <= 30 ? "seed" : "mute"),
+             c.days <= 0 ? "Available now" : "In " + c.days + " days"));
       row.appendChild(av);
 
       var st = el("div", "stages");
@@ -1483,9 +1542,13 @@
     [["Mobile", c.mobile], ["E-mail", c.email], ["Company", c.company],
      ["Total exp.", c.totalExp], ["Relevant", c.relExp], ["Current", c.curLoc],
      ["Work location", "Coimbatore"], ["Notice", c.notice],
-     ["Last working", fmtDate(c.lwdDate) + (c.days <= 0 ? "  (passed)" : "  (in " + c.days + " days)")],
-     ["CTC", lakh(c.ctc)], ["Expected", lakh(c.ectc) + "   (+" + Math.round(c.hike * 100) + "%)"],
-     ["Other offers", c.offers || "not captured"]
+     ["Last working", c.lwdDate ? fmtDate(c.lwdDate) + (c.days <= 0 ? "  (passed)" : "  (in " + c.days + " days)")
+                                : "Not captured"],
+     ["CTC", lakh(c.ctc)],
+     ["Expected", c.ectc == null ? "Not captured"
+                                 : lakh(c.ectc) + "   (+" + Math.round(c.hike * 100) + "%)"],
+     ["Other offers", c.offers || "Not captured"],
+     ["Source", c.src + "  ·  " + c.subDate]
     ].forEach(function(p){
       dl.appendChild(el("dt", null, p[0]));
       dl.appendChild(el("dd", null, p[1]));

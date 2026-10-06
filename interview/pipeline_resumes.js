@@ -767,5 +767,213 @@ var RESUMES = {
   ]]]},
   {h:"Certifications", b:[["p","Microsoft Technology Associate \u2014 HTML5 Application Development Fundamentals."]]},
   {h:"Education", b:[["p","Bachelor of Engineering, Computer Science \u2014 Anna University, 2016\u20132020. Languages: English (fluent), Tamil (fluent), Hindi (basics)."]]}
+]},
+
+18: {file:"Prince_Kumar_P.docx", title:"Senior Lead Software Engineer | Full Stack & Cloud",
+  contact:"+91 9952293271 \u00b7 princekumar27.cse@gmail.com \u00b7 Chennai, India \u00b7 linkedin.com/in/prince-kumar-7567b850",
+  sections:[
+  {h:"Professional summary", b:[["p","Senior Lead Software Engineer with 16 years of experience designing, architecting and delivering scalable enterprise applications, full-stack solutions and cloud-native microservices. Strong full stack expertise in Java, Spring Boot, Node.js, Express.js, Angular, React and AWS, with a record of building high-performance, resilient systems and leading engineering teams through the full delivery lifecycle from requirements and architecture through development, deployment and production support."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Backend","Java (~5 yrs), Spring Boot, Node.js (~7 yrs), Express.js"],
+    ["Frontend","Angular (~9 yrs), React (~5 yrs), HTML5, CSS3"],
+    ["Messaging","Kafka"],
+    ["Databases","Oracle, MySQL, PostgreSQL"],
+    ["Cloud & AWS","EC2, ECS, EKS, S3, Lambda, RDS, API Gateway, CloudFront, IAM, Route 53"],
+    ["DevOps & CI/CD","Docker, Kubernetes, Jenkins"],
+    ["Microservice components","Service discovery, API gateway, load balancing, resilience, circuit breaker, retry and rate limiting, config management, monitoring, metrics, logging"],
+    ["Observability","Prometheus, Grafana, Loki; memory management and performance analysis"],
+    ["Other","Salesforce migration (Bulk and REST API); Apache, Nginx, Tomcat; Git, GitHub, Bitbucket, AWS CodeCommit"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Senior Lead Software Engineer","Virtusa Consulting Services, Chennai","Jan 2020 \u2013 Present (6+ years)",[]],
+    ["job","Senior Application Developer","Treselle Systems, Chennai","May 2013 \u2013 Jan 2020 (6 years 9 months)",[]],
+    ["job","Senior Developer","Congruent Solutions, Chennai","Oct 2012 \u2013 Apr 2013 (7 months)",[]],
+    ["job","Developer","AEL Data, Chennai","Nov 2010 \u2013 Sep 2012 (1 year 10 months)",[]]
+  ]},
+  {h:"Projects \u2014 Virtusa", b:[
+    ["job","Visual API Orchestration & Transformation Platform","British Telecom \u00b7 Mar 2024 \u2013 Present","Java, Spring Boot, Node.js, Angular, PostgreSQL, AWS, Kafka, Docker, Kubernetes, JointJS.",[
+      "Designed and led development of a platform letting users visually design, configure and execute API workflows.",
+      "Architected microservices-based pipeline orchestration, with transformation blocks for string and array operations and Kafka-based event-driven communication between blocks.",
+      "Implemented service discovery, API gateway, load balancing, resilience, circuit breaker, retry and rate limiting, config management, monitoring, metrics and logging, improving platform uptime to 99.9%.",
+      "Built production-grade observability with Prometheus, Grafana and Loki covering JVM memory and GC metrics, application performance and centralised logs.",
+      "Built the visual pipeline designer in Angular with JointJS, supporting drag-and-drop API blocks with sequential, parallel, conditional and wait-based workflows.",
+      "Containerised the microservices with Docker and deployed on Kubernetes for horizontal scaling at peak load."]],
+    ["job","Custom ETL Tool and Migration Dashboard","British Telecom \u00b7 Mar 2020 \u2013 Mar 2024","Java, Spring Boot, Node.js, Angular, PostgreSQL, AWS, Kafka, Docker, Kubernetes, JointJS.",[
+      "Designed a microservices-based ETL and data migration platform with an integrated monitoring dashboard, migrating legacy systems across relational databases, files and S3.",
+      "Built Java and Spring Boot microservices for block-level migration across 200+ database tables, files and S3 objects.",
+      "Implemented Kafka-based event-driven communication for asynchronous processing, execution-status updates and completion events, achieving zero data loss across all migrations.",
+      "Built Angular migration monitoring dashboards with charts, data grids, progress indicators and error visibility."]]
+  ]},
+  {h:"Projects \u2014 Treselle Systems", b:[
+    ["job","Discern \u2014 financial and stock market analytics","Jan 2016 \u2013 Dec 2020","React, Node.js, MySQL, Highcharts, D3.js.",[
+      "Built an analytics platform covering publicly traded companies across retail, energy and real estate, tracking 1,000+ tickers in real time.",
+      "Set up the React application architecture and built ticker watchlists and interactive charts, cutting dashboard load time by around 40%.",
+      "Designed REST APIs and backend services for real-time market data, supporting up to 5,000 concurrent users."]],
+    ["job","Rehlte.com \u2014 flight and hotel booking platform","May 2013 \u2013 Jan 2016","React, Node.js, MySQL.",[
+      "Developed a Saudi-based booking platform on a microservices architecture serving 10,000+ monthly active users.",
+      "Integrated Amadeus APIs for flight search and ticketing across 500+ airlines, plus secure payment gateways.",
+      "Built reusable React components for search, seat selection, reservation, booking and payment, reducing average booking completion time by around 25%."]]
+  ]},
+  {h:"Awards and education", b:[["p","Technology Excellence Award (H1 FY23), Virtusa \u2014 British Telecom client. B.E. Computer Science, Anna University, Coimbatore, 2004\u20132008."]]}
+]},
+
+19: {file:"Gangasri_Paramasivam.pdf", title:"Java Full Stack Development Lead",
+  contact:"+91 9965554784 \u00b7 p.gangasri@gmail.com \u00b7 Coimbatore, India \u00b7 linkedin.com/in/gangasri",
+  sections:[
+  {h:"Summary", b:[["ul",[
+    "Full stack development lead with coding skills in Java, JavaScript, Apache Camel, microservices and Spring Boot.",
+    "Able to understand the business environment and translate business requirements into technical solutions.",
+    "Proven ability in performance-oriented design, development, troubleshooting and coding for optimised functioning, and in leading a platform development team.",
+    "Has leveraged AI and generative AI tools to streamline code generation, refactoring, design reviews, testing and documentation."
+  ]]]},
+  {h:"Skill set", b:[["kv",[
+    ["Languages & frameworks","Java, JavaScript, TypeScript, HTML5, CSS3, AJAX, jQuery, Kotlin, SQL, NoSQL, JSP, Servlets, Thymeleaf, Handlebars.js, React.js, Node.js, XML, JSON, Spring Boot, Spring MVC, Spring Data, Spring Security, Spring Batch, Hibernate/JPA, Apache Camel, Bootstrap, J2EE, JUnit"],
+    ["Architecture & design","Microservices, service-oriented architecture, RESTful API design, reactive programming, design patterns, asynchronous messaging, monolith-to-microservices migration"],
+    ["Messaging & integration","Kafka, RabbitMQ, ActiveMQ, Apache ZooKeeper"],
+    ["Databases & caching","MySQL, MongoDB, Redis, Memcached"],
+    ["Tooling","IntelliJ IDEA, GitHub Copilot, Eclipse, NetBeans, Elasticsearch, STS, WireMock, BlazeMeter, JMeter, Postman, Ubuntu/Linux, Ant, Maven, Fiddler, SonarQube, Splunk, ELK, GitLab"],
+    ["Collaboration & deployment","Git, GitLab, Jira, Confluence, Docker, Kubernetes, Jenkins, CI/CD pipeline automation"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Technical Lead","Tech Mahindra, Coimbatore","Dec 2021 \u2013 Present",[]],
+    ["job","Dev Lead","Infosys Limited","Aug 2020 \u2013 Nov 2021",[]],
+    ["job","Dev Lead","Skava (an Infosys company), Coimbatore","Oct 2019 \u2013 Jul 2020",[]],
+    ["job","Senior Software Engineer","Skava, Coimbatore","Jan 2018 \u2013 Sep 2019",[]],
+    ["job","Software Engineer","Skava, Coimbatore","Jan 2016 \u2013 Dec 2017",[]],
+    ["job","Software Engineer Trainee","Skava, Coimbatore","Jun 2015 \u2013 Dec 2015",[]],
+    ["job","Software Developer Intern","Skava, Coimbatore","Dec 2014 \u2013 May 2015",[]]
+  ]},
+  {h:"Industry project work", b:[
+    ["job","Telefonica Germany \u2014 ePOS (current)","Leading a full stack development team","The ePOS system streamlines telecom service operations, enabling real-time creation, tracking and management of service requests across customer touchpoints.",[
+      "Responsible for service request functionality: requirement analysis, modular design, API development, performance tuning and secure data integrations."]],
+    ["job","Intel Architect GUI","Leading full stack development and GUI testing","A specialised modelling tool used by Intel's architecture team to plan and visualise future processor designs.",[
+      "Developed React.js front ends, integrated backend services, built test automation and ensured usability for processor design workflows."]],
+    ["job","Adspot and MCAdmin (Skava products)","Full stack developer","Adspot lets retailers add and manage ads on mobile sites; MCAdmin is a media content administration platform for non-technical users.",[
+      "Requirement gathering, feasibility POCs, admin console development, third-party API integration, unit and functional testing, and client-specific cross-browser support.",
+      "Built search admin with term relevance and synonym mapping, user management and segmentation, and a PIM admin offering APIs for categories, product listings and store configuration."]],
+    ["job","Microservice performance tuning","Led a team","Improved API responsiveness and system efficiency under high concurrency.",[
+      "Analysed logs, identified delays, refactored code and optimised database indexing for APIs with high response times under load."]],
+    ["job","Admin / storefront orchestration and catalog microservices","Full stack developer, then backend lead","Orchestration layer transforming and aggregating remote API calls from microservices, with admin UIs built on those responses.",[
+      "Built pricing admin for pricelists, price facets and SKU-price mappings, and a subscription and customer admin for Young Living US.",
+      "Led backend work implementing an attributes entity for configurable dynamic account properties.",
+      "Contributed to migrating legacy JSPs and Servlets to Spring MVC controllers as part of a monolith-to-microservices effort."]]
+  ]},
+  {h:"Awards and education", b:[["ul",[
+    "Pat on the Back (Oct 2025 and Mar 2024) for the Telefonica Germany project; Ace Award (Nov 2024) for consistent highest performance rating.",
+    "Best Team Award (Aug 2022) and Pat on the Back (Mar 2022) for the Intel GUI project; Performer Awards 2016\u20132018.",
+    "M.E. Computer Science \u2014 PSG College of Technology, Coimbatore, 2013\u20132015.",
+    "B.E. Computer Science \u2014 Avinashilingam University, Coimbatore, 2009\u20132013."
+  ]]]}
+]},
+
+20: {file:"Gunavadhi_AS.docx", title:"Full Stack Java Developer | React.js | Tech Lead",
+  contact:"+91 9942254283 \u00b7 gunavadhir@gmail.com \u00b7 Coimbatore, Tamil Nadu 638314 \u00b7 linkedin.com/in/gunavadhi-a-s-484167ba",
+  sections:[
+  {h:"Professional summary", b:[["p","Java developer and Tech Lead with 10+ years of experience building Spring Boot microservices, with Angular.js, Backbone.js, Marionette and React.js front ends. Most recently led offshore delivery for Cisco at Tech Mahindra, including monolith-to-microservices migration, Docker and Kubernetes deployment, Jenkins CI/CD and PostgreSQL modernisation."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Backend","Java, J2EE, Spring Boot, Hibernate, REST APIs, microservices"],
+    ["Frontend","React.js, Angular 4\u20137, JavaScript, HTML5, CSS, Bootstrap, jQuery"],
+    ["Integration & messaging","Apache Kafka, Apache ZooKeeper, Netflix Eureka, Zuul API gateway"],
+    ["Databases","PostgreSQL, Oracle, MS SQL Server, MySQL, Berkeley DB (legacy)"],
+    ["DevOps & tools","Docker, Kubernetes, Git, Jenkins, CI/CD, JIRA, Apache Tomcat, Perforce, TeamCity"],
+    ["Practices","Agile/Scrum, JUnit, code review, requirements gathering, client demos"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Tech Lead","Tech Mahindra, Coimbatore","Aug 2022 \u2013 Aug 2026. Led full stack development in a distributed microservices environment including Docker and Kubernetes deployments; acted as Scrum Master for release cycles and mentored 5 junior developers.",[
+      "Prime Cable Provisioning for Cisco (Jul 2023 \u2013 Aug 2026): worked on migration from a large monolith to microservices, decomposing domains and aligning APIs across services.",
+      "Implemented Apache Kafka for coordination and message passing between microservices.",
+      "Supported database modernisation from Berkeley DB to PostgreSQL, working through schema and service-level data changes.",
+      "Built React UI modules and Java integrations for large-scale customer-premises equipment provisioning.",
+      "Configured Jenkins jobs for CI/CD; delivered features across 50+ sprint releases and provided production support for 4 major releases.",
+      "Central Data Repository for Ingram Micro (Aug 2022 \u2013 Jun 2023): React screens and Java business logic for complex vendor and subscription hierarchies."]],
+    ["job","Senior Engineer","Larsen & Toubro Technology Services, Coimbatore","May 2020 \u2013 Jun 2022",[
+      "Cape Pack for Esko (Sep 2020 \u2013 May 2022): Marionette UI and Java backend features for pallet and case optimisation in packaging logistics software; owned Perforce build configuration.",
+      "Landshark (May 2020 \u2013 Sep 2020): Angular 7 screens for clinicians to create, update and manage documents with approval workflows and role-based access."]],
+    ["job","Software Engineer","KGISL, Coimbatore","Sep 2015 \u2013 Mar 2020",[
+      "Core Back Office System for Motilal Oswal (Apr 2018 \u2013 Mar 2020): Angular UIs and Spring Boot services for daily trading operations \u2014 account opening, e-sign, equity, depository, pay-in/pay-out, RMS, settlement, reporting and deactivation. Handled the funds module single-handedly from UAT to production at the client site.",
+      "Investment Management System (Feb 2016 \u2013 Mar 2018): backend logic for equity, derivatives, depository, currencies, MCX and NCDEX segments, with JUnit tests for critical trade and master-data flows.",
+      "Risk Management System (Sep 2015 \u2013 Feb 2016): SEBI rule-based risk checks with automated breach notifications."]]
+  ]},
+  {h:"Education and certifications", b:[["ul",[
+    "B.Sc. \u2014 Bharathiar University, Coimbatore, 2011.",
+    "Master of Computer Applications \u2014 coursework completed, Bharathiar University, Coimbatore.",
+    "Oracle Certified Professional, Java SE 8 Programmer.",
+    "Women Leaders Program \u2014 completed. BEC, Cambridge University."
+  ]]]}
+]},
+
+21: {file:"Dhachanamoorthy_N.pdf", title:"Software Engineer | Java \u00b7 React \u00b7 TypeScript \u00b7 Node.js \u00b7 Distributed Systems",
+  contact:"+91 7639619985 \u00b7 dhachanamoorthy3@gmail.com",
+  sections:[
+  {h:"Professional summary", b:[["p","Software Engineer with 5 years of experience building full-stack, real-time and distributed systems at scale. At Zoho, owns the Diagnostic Tools suite in Zoho Assist and led the migration of a 30,000-line enterprise module to React and TypeScript for a platform serving 10M+ monthly active users. Built a peer-to-peer file-transfer platform serving 1M+ users with 95% peer-to-peer completion and roughly three times faster transfers than server relay."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages","Java, TypeScript, JavaScript (ES6+)"],
+    ["Frontend","React.js, hooks, context API, Redux, HTML5, CSS3, SCSS, Webpack, Vite"],
+    ["Backend","Java, Node.js, NestJS, REST APIs, WebSockets, Apache Kafka"],
+    ["Databases","MySQL, PostgreSQL"],
+    ["Architecture","System design, distributed systems, event-driven architecture, Protocol Buffers"],
+    ["Cloud & messaging","AWS EC2, SQS, SNS, Firebase"],
+    ["Tools","Cursor, Copilot, Git, Jira, IntelliJ IDEA, VS Code, DBeaver"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Member of Technical Staff","Zoho Corporation Pvt. Ltd.","Sep 2022 \u2013 Present",[
+      "Diagnostic Tools suite: designed and built the suite for Zoho Assist's unattended remote access product, letting technicians use Command Prompt, Task Manager, Device Manager, Registry Editor, hardware and user tools without starting a full session; expanded from Windows to Linux and added organisation-level consent controls, increasing weekly sessions from 30K to 45K.",
+      "P2P file transfer: built a browser-to-device platform with automatic server-relay fallback, scaled to 1M+ users with 95% peer-to-peer completion and transfers around three times faster than relay, reducing server-side bandwidth.",
+      "Real-time communication: designed low-latency WebSocket infrastructure supporting 500 concurrent connections per server, and migrated client-server serialization from JSON to Protocol Buffers.",
+      "Event-driven architecture: built a Kafka pipeline for real-time device status and configuration updates, decoupling producers and consumers so downstream services scale independently.",
+      "Enterprise module migration: owned architecture and end-to-end migration of a 30,000-line core module from legacy code to React and TypeScript on a platform serving 10M+ monthly actives.",
+      "CDN downloader: engineered a reusable Webpack-based executable downloader, reducing download time by 90% and server memory usage by 70%.",
+      "Build optimisation: parallelised Ant build tasks across a 70-engineer organisation, halving pipeline time while supporting a weekly release cadence.",
+      "Testing: established automated frontend testing with Jest and React Testing Library, taking coverage from 0% to 70%. Mentored 2 junior developers through the React/TypeScript migration."]],
+    ["job","Application Developer","Kiranum Inc.","Jul 2021 \u2013 Aug 2022",[
+      "Developed RESTful APIs using NestJS with MySQL and PostgreSQL, keeping business logic and data access separated.",
+      "Built authentication and authorisation microservices using NestJS and Firebase with role-based access control.",
+      "Integrated AWS SNS and SQS for asynchronous communication between distributed services.",
+      "Implemented unit and integration tests with Jest and Supertest; monitored application health and performance across AWS EC2."]]
+  ]},
+  {h:"Education", b:[["p","B.Tech Information Technology \u2014 Sri Shakthi Institute of Engineering and Technology, 2017\u20132021."]]}
+]},
+
+22: {file:"Krishnan_K.docx", title:"Java / J2EE Full Stack Developer and Team Lead",
+  contact:"+91 98432 79454 \u00b7 krishnan12koo@gmail.com \u00b7 Madurai, Tamil Nadu",
+  sections:[
+  {h:"Professional summary", b:[["ul",[
+    "11+ years of experience in Java and J2EE web and standalone applications.",
+    "Working knowledge of Core Java, Spring Boot, microservices, Kubernetes, Docker, Kafka, JMS, GCP, AWS, DevOps, Spring, Struts, Servlets, Apache Camel and Liferay.",
+    "UI layer development with J2EE, React, Angular, AngularJS, JSP, JavaScript and TypeScript.",
+    "RESTful web services (JAX-RS) and Jersey; databases across Amazon Aurora, MongoDB, MySQL, Oracle and Jasper Reports.",
+    "Has worked in a team leader role from application development through to delivery as a full stack developer.",
+    "Involved in JUnit testing, manual, integration testing and Jacoco code coverage; BDD, TDD and Agile."
+  ]]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages","Java, J2EE"],
+    ["Java & J2EE","Spring Boot, microservices, Kubernetes, Docker, Kafka, GCP, AWS, DevOps, Spring, Hibernate, Struts, Servlets, RESTful, JMS, JPA, Camel, Liferay"],
+    ["Web","Angular, React, JSP, Servlets, HTML, CSS, JavaScript, jQuery, Ajax"],
+    ["Databases","MongoDB, AWS DB cluster, Amazon Aurora, MySQL, Oracle, Liquibase"],
+    ["Tools","STS, IntelliJ IDEA, Eclipse, Control-M, GitLab, Grafana, Splunk, Postman, Swagger, Rally, JIRA, AWS S3, Vault, GitHub Copilot"],
+    ["Servers & build","Apache, Tomcat, Jenkins, UNIX, Linux; Gradle, Maven, Ant"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Associate Consultant","Wipro Technologies Ltd, Coimbatore","6 Jan 2022 \u2013 25 Jun 2026",[]],
+    ["job","Senior Software Engineer","HCL Technologies Ltd, Madurai","23 Aug 2018 \u2013 31 Dec 2021",[]],
+    ["job","Java Programmer","Temple City Technologies Pvt Ltd, Madurai","16 Dec 2015 \u2013 1 May 2018",[]],
+    ["job","Java Developer","Mindpro Technologies Pvt Ltd, Karur","19 Sep 2014 \u2013 19 Oct 2015",[]]
+  ]},
+  {h:"Projects", b:[
+    ["job","TrackIt","United HealthCare Services, Inc. \u00b7 role: technical lead","Spring Boot, microservices, Kubernetes, Docker, Kafka, ReactJS, RESTful, Cron, JUnit, Groovy; MongoDB; GCP and AWS S3.",[
+      "Sprint retrospectives, sprint planning and backlog grooming; client meetings and requirements discussion.",
+      "Vulnerability scanning and remediation coding, SaaS migration and AWS migration.",
+      "Coding with JUnit and Groovy testing, integration testing and change requests; deployment across dev, test, stage and production pipelines, with production support."]],
+    ["job","Finicity","MasterCard International Inc. \u00b7 role: senior consultant, tech and implementation","Spring Boot, microservices, Kubernetes, Docker, Angular, RESTful, JMS, JUnit; AWS DB cluster and Amazon Aurora.",[
+      "Sprint ceremonies and client requirement discussions; coding, JUnit and integration testing, change requests and troubleshooting.",
+      "Deployment across dev, stage and production pipeline servers."]],
+    ["job","Laundro Smart","Assembly Software Ltd, Israel \u00b7 role: team leader and senior Java developer","Spring Boot, microservices, RESTful, JPA, JMS, JUnit, Jacoco; MySQL and Liquibase on GCP.",[
+      "Client requirement meetings, coding and testing, change requests and troubleshooting; deployment to the client server."]],
+    ["job","Trustar","Trustar, USA \u00b7 role: team leader and Java developer","Java, Spring Data, AngularJS, RESTful; MongoDB; Tomcat and AWS S3.",[]]
+  ]},
+  {h:"Education", b:[["ul",[
+    "B.E. Electrical and Electronics Engineering \u2014 Srinivasa Institute of Engineering and Technology, Anna University, Chennai, 2009.",
+    "Diploma in Computer Technology \u2014 Arulmigu Kalasalingam, Krishnankoil, 2006."
+  ]]]}
 ]}
 };

@@ -27,7 +27,10 @@ var QSTREAM = {
   7:{s:"node",   l:"senior"},  8:{s:"dotnet", l:"senior"},  9:{s:"java",   l:"senior"},
   10:{s:"java",  l:"senior"}, 11:{s:"node",   l:"senior"}, 12:{s:"node",   l:"senior"},
   13:{s:"support", l:"mid"},  14:{s:"support", l:"mid"},   15:{s:"support", l:"mid"},
-  16:{s:"support", l:"mid"},  17:{s:"java",   l:"mid"}
+  16:{s:"support", l:"mid"},  17:{s:"java",   l:"mid"},
+  /* Added 6 Oct 2026 */
+  18:{s:"java",  l:"senior"}, 19:{s:"java",   l:"senior"}, 20:{s:"java", l:"senior"},
+  21:{s:"node",  l:"mid"},    22:{s:"java",   l:"senior"}
 };
 
 var QBANK = [
