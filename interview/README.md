@@ -18,15 +18,15 @@ locally except shared saving, which only exists inside the artifact.
 
 ## The workbook
 
-`Interview_Inventory_22_Candidates.xlsx` — seven sheets: Read Me, Interview Inventory,
+`Interview_Inventory.xlsx` — seven sheets: Read Me, Interview Inventory,
 Resume Validation, Action Log, Round 1 Question Bank, Round 1 by Candidate, Summary.
 
 It is **generated**, not hand-maintained:
 
 ```
 node dump_portal_data.mjs     # portal data -> data.json
-python3 -I build_inventory_22.py
-python3 -I cache_values_22.py # inject formula results; LibreOffice can't run in the container
+python3 -I build_inventory.py
+python3 -I cache_values.py # inject formula results; LibreOffice can't run in the container
 ```
 
 Regenerate it after any change to the portal's data, or the two will drift.
@@ -36,14 +36,14 @@ Regenerate it after any change to the portal's data, or the two will drift.
 - CTC, ECTC and Offered CTC are **INR lakhs per annum**; dates are `DD-MMM-YY`.
 - `Days to LWD` is negative once the last working day has passed, measured against the
   as-on date in `Summary!B4` — the single input cell.
-- **SL 18–22 arrived as resumes only.** Notice period and the commercials are genuinely
-  unknown and read "Not captured" rather than being guessed. They are excluded from
-  averages.
+- Commercials are captured for all 23. Where a candidate gives a **notice period but no
+  exit date**, availability reads "Notice period only" and shows the notice rather than
+  pretending a date is known.
 
 ## Where the pipeline stands
 
-22 candidates — 17 from IKrux Engineering (21-Sep-2026), 5 direct (6-Oct-2026). All 22
-have a CV on file and a verdict against it. 46 open actions: 9 High, 25 Medium, 12 Low.
+23 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026 and 17 on 21-Sep-2026.
+All 23 have a CV on file and a verdict against it. 54 open actions: 10 High, 29 Medium, 15 Low.
 
 Headline findings:
 
@@ -53,5 +53,8 @@ Headline findings:
 - **Vaisakh (10)** is in Thiruvananthapuram, not Coimbatore as recorded.
 - Recorded spans are overstated for **Navin (7)**, **Adarsh (4)**, **Ravikumar (9)** and
   **Sandhosh (11)**; four of **Sathya (6)**'s twelve years were as a lecturer.
-- Of the new five, **Gangasri (19)** is the cleanest profile in the pipeline and
-  **Dhachanamoorthy (21)** is unusually strong for five years.
+- **Gangasri (19)** has the cleanest CV in the pipeline, but her submitted row claims
+  AWS at 11 years and AWS appears nowhere on it. She also holds a **38 L offer** against a
+  40 L expectation, so the window is short.
+- **Dhachanamoorthy (21)** is unusually strong for five years; **Monish (23)** is a coherent
+  mid-level Java and Azure profile at the lowest cost in the pipeline.

@@ -11,7 +11,7 @@ from openpyxl import load_workbook
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
-SRC = "/home/user/my_utilties/interview/Interview_Inventory_22_Candidates.xlsx"
+SRC = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
 ASON = dt.date(2026, 10, 8)
 NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 ET.register_namespace("", NS)
@@ -25,7 +25,9 @@ for c in C:
     else:
         c["days"] = None
     c["hike"] = ((c["ectc"] - c["ctc"]) / c["ctc"]) if (c.get("ctc") and c.get("ectc")) else None
-    c["avail"] = ("Not captured" if c["days"] is None else "Available now" if c["days"] <= 0
+    notice_only = c["days"] is None and c.get("notice") and c["notice"] != "Not captured"
+    c["avail"] = (("Notice period only" if notice_only else "Not captured") if c["days"] is None
+                  else "Available now" if c["days"] <= 0
                   else "Within 30 days" if c["days"] <= 30 else "Beyond 30 days")
     worst = 0
     for f in D["FLAGS"]:
@@ -54,9 +56,10 @@ MEASURE = {
     "Last working day already passed": {2: sum(c["avail"] == "Available now" for c in C)},
     "Within 30 days":                  {2: sum(c["avail"] == "Within 30 days" for c in C)},
     "Beyond 30 days":                  {2: sum(c["avail"] == "Beyond 30 days" for c in C)},
+    "Notice period stated, no exit date": {2: sum(c["avail"] == "Notice period only" for c in C)},
     "Notice not captured":             {2: sum(c["avail"] == "Not captured" for c in C)},
-    "From IKrux Engineering":      {2: sum(c["src"] == "IKrux Engineering" for c in C)},
-    "Direct submissions":          {2: sum(c["src"] == "Direct" for c in C)},
+    "Submitted 5 Sep 2026":        {2: sum(c["subDate"] == "5-Sep-2026" for c in C)},
+    "Submitted 21 Sep 2026":       {2: sum(c["subDate"] == "21-Sep-2026" for c in C)},
     "CTC and ECTC captured":       {2: len(num("ctc", C))},
     "Commercials not yet captured": {2: N - len(num("ctc", C))},
     "Holding a competing offer":   {2: sum(bool(c["offers"]) and c["offers"] != "No" for c in C)},
@@ -87,8 +90,8 @@ for row in sm.iter_rows(min_col=1, max_col=6):
             want[cell.coordinate] = val
     # the percentage column beside an availability bucket
     pct = sm.cell(row=row[0].row, column=3)
-    if label.strip() in ("Last working day already passed", "Within 30 days",
-                         "Beyond 30 days", "Notice not captured") \
+    if label.strip() in ("Last working day already passed", "Within 30 days", "Beyond 30 days",
+                         "Notice period stated, no exit date", "Notice not captured") \
             and isinstance(pct.value, str) and pct.value.startswith("="):
         want[pct.coordinate] = spec[2] / N
 

@@ -13,7 +13,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
-OUT = "/home/user/my_utilties/interview/Interview_Inventory_22_Candidates.xlsx"
+OUT = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
 ASON = dt.date(2026, 10, 8)
 
 F = "Arial"
@@ -69,7 +69,8 @@ for c in D["C"]:
     c["lwdDate"] = parse(c["lwd"]) if c.get("lwd") else None
     c["days"] = (c["lwdDate"] - ASON).days if c["lwdDate"] else None
     c["hike"] = ((c["ectc"] - c["ctc"]) / c["ctc"]) if (c.get("ctc") and c.get("ectc")) else None
-    c["avail"] = ("Not captured" if c["days"] is None
+    notice_only = c["days"] is None and c.get("notice") and c["notice"] != "Not captured"
+    c["avail"] = (("Notice period only" if notice_only else "Not captured") if c["days"] is None
                   else "Available now" if c["days"] <= 0
                   else "Within 30 days" if c["days"] <= 30 else "Beyond 30 days")
     c["nflags"] = len([f for f in D["FLAGS"] if f.get("sl") == c["sl"]])
@@ -373,6 +374,7 @@ for i, (lbl, f) in enumerate([
         ("Last working day already passed", '=COUNTIF(%s,"Available now")' % RNG("T")),
         ("Within 30 days", '=COUNTIF(%s,"Within 30 days")' % RNG("T")),
         ("Beyond 30 days", '=COUNTIF(%s,"Beyond 30 days")' % RNG("T")),
+        ("Notice period stated, no exit date", '=COUNTIF(%s,"Notice period only")' % RNG("T")),
         ("Notice not captured", '=COUNTIF(%s,"Not captured")' % RNG("T"))]):
     rr = r + 2 + i
     style(sm.cell(row=rr, column=1, value=lbl))
@@ -380,10 +382,10 @@ for i, (lbl, f) in enumerate([
     style(sm.cell(row=rr, column=3, value="=IFERROR(B%d/$B$5,\"\")" % rr), fmt="0.0%", halign="center")
 
 r = rr + 2
-style(sm.cell(row=r, column=1, value="Source, commercials, offers and flags"), bold=True, size=11, color=NAVY, border=False)
+style(sm.cell(row=r, column=1, value="Batch, commercials, offers and flags"), bold=True, size=11, color=NAVY, border=False)
 header(sm, r + 1, ["Measure", "Count"])
-meas = [("From IKrux Engineering", '=COUNTIF(%s,"IKrux Engineering")' % RNG("B")),
-        ("Direct submissions", '=COUNTIF(%s,"Direct")' % RNG("B")),
+meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("C")),
+        ("Submitted 21 Sep 2026", '=COUNTIF(%s,"21-Sep-2026")' % RNG("C")),
         ("CTC and ECTC captured", '=COUNT(%s)' % RNG("N")),
         ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("N")),
         ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("P"), RNG("P"))),

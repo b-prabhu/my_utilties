@@ -30,7 +30,9 @@ var QSTREAM = {
   16:{s:"support", l:"mid"},  17:{s:"java",   l:"mid"},
   /* Added 6 Oct 2026 */
   18:{s:"java",  l:"senior"}, 19:{s:"java",   l:"senior"}, 20:{s:"java", l:"senior"},
-  21:{s:"node",  l:"mid"},    22:{s:"java",   l:"senior"}
+  21:{s:"node",  l:"mid"},    22:{s:"java",   l:"senior"},
+  /* Added 8 Oct 2026 */
+  23:{s:"java",  l:"mid"}
 };
 
 var QBANK = [

@@ -975,5 +975,52 @@ var RESUMES = {
     "B.E. Electrical and Electronics Engineering \u2014 Srinivasa Institute of Engineering and Technology, Anna University, Chennai, 2009.",
     "Diploma in Computer Technology \u2014 Arulmigu Kalasalingam, Krishnankoil, 2006."
   ]]]}
+]},
+
+23: {file:"Monish_Kanna_Bommuraj.pdf",
+  title:"Senior Java Developer | Spring Boot & Quarkus Microservices | Azure Cloud",
+  contact:"+91 9500751330 \u00b7 monishkanna.bommuraj@gmail.com \u00b7 Coimbatore, Tamil Nadu, India \u00b7 linkedin.com/in/monish-kanna768aa3159",
+  sections:[
+  {h:"Professional summary", b:[["p","Senior Java Developer with 5+ years building and scaling enterprise-grade, cloud-native systems for global clients, including a Fortune 100 healthcare firm. Specialises in Spring Boot and Quarkus microservices, event-driven integration with Kafka, distributed caching, and resilient, high-throughput data pipelines deployed on Microsoft Azure. Led design and delivery of a modular monolith central repository (KPDC) processing pharmacy, insurance and pricing data for 400+ US store locations, alongside high-volume ETL utilities feeding it from an FDB-sourced drug database. Track record of cutting process time by up to 45%, managing systems with 1M+ records, and exceeding delivery timelines in Agile/Scrum teams."]]},
+  {h:"Core technical skills", b:[["kv",[
+    ["Languages & core Java","Java 8\u201321, OOP, multithreading and concurrency (Executors, ForkJoin, CompletableFuture), collections, exception handling"],
+    ["Frameworks & APIs","Spring Boot, Spring MVC, Quarkus (reactive), Hibernate/JPA, REST APIs, Swagger/OpenAPI, SOAP (Apache CXF), Apache Camel"],
+    ["Microservices & resilience","Microservices architecture, config server, API gateway, service discovery, Resilience4j, circuit breaker pattern"],
+    ["Messaging & event streaming","Apache Kafka producers and consumers, event-driven integration, async messaging patterns"],
+    ["Caching & data","Redis, PostgreSQL, MySQL, Azure Cosmos DB, SQLite"],
+    ["Cloud (Azure)","Azure Functions, Azure Data Factory, Azure Blob Storage, Azure Cosmos DB, cloud-native application design"],
+    ["DevOps & containers","Jenkins CI/CD, GitHub Actions, Docker, Kubernetes, Git, Maven"],
+    ["Testing & quality","JUnit 5, Mockito, TDD, JMeter load and performance testing, SonarQube, code reviews"],
+    ["Observability","Splunk, Dynatrace, Logback, production support"],
+    ["Other","Python, TensorFlow, NumPy, Pandas, OpenCV, Postman"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Senior Custom Software Analyst (Senior Java Developer)","Accenture Solutions Pvt Ltd, Coimbatore","2025 \u2013 Present",[
+      "Owns and extends the FDB-sourced drug data pipeline: every new drug entering the FDB datasource flows through a business-rules utility that filters and extracts the highest-priority drugs for downstream distribution.",
+      "Designed file-cut, batch file-cut and field-cut extraction modes, letting business teams pull a single drug record, bulk records, or one field on demand.",
+      "Delivers extracted, encrypted drug, insurance, drug TP and pricing data via SFTP to a central repository (KPDC) serving 400+ pharmacy stores across the US.",
+      "Contributes to KPDC, a modular monolith spanning drug, insurance, drug TP and pricing modules, which decrypts incoming files and is the system of record for store-facing applications.",
+      "Introduced Kafka-based event integration between the store-info microservice and KPDC, removing a direct synchronous API dependency between the services.",
+      "Built JBeret batch jobs to ingest encrypted files and invoke stored procedures, keeping large-volume drug and pricing updates inside tight SLA windows.",
+      "Mentors junior developers on Java and Quarkus practice, and takes part in architecture and design reviews."]],
+    ["job","Custom Software Analyst (Java Developer)","Accenture Solutions Pvt Ltd, Coimbatore","Jun 2023 \u2013 2025",[
+      "Led development of a data management system for a Fortune 100 healthcare client, streamlining operations across 450+ pharmacies nationwide.",
+      "Architected a centralised pharmacy application using React, Quarkus, Java and PostgreSQL, cutting manual processing effort by 30%.",
+      "Migrated legacy on-premises infrastructure to Microsoft Azure, managing 1M+ drug, pricing and insurance records for 15M+ members.",
+      "Designed and maintained Spring Boot REST APIs, upgrading core services from Java 8 to Java 11 with zero production downtime.",
+      "Delivered 60+ data workflows to Azure using the factory design pattern, and built Quarkus applications integrated with Quartz Scheduler and Azure Blob Storage.",
+      "Implemented an audit logging interceptor that reduced redundant database calls and improved API response time by 10%."]],
+    ["job","Custom Software Associate (Java Developer)","Accenture Solutions Pvt Ltd, Chennai","Aug 2021 \u2013 May 2023",[
+      "Migrated a legacy SOAP-based Java application to Quarkus supporting both REST and SOAP, improving efficiency by 20% and validating results with JMeter load testing.",
+      "Implemented REST clients and Apache CXF SOAP endpoints to integrate with 3+ external enterprise applications.",
+      "Applied circuit breakers, fallback handlers, externalised cloud configuration and Redis caching, cutting latency by 200ms.",
+      "Developed proof-of-concepts with Apache Camel producer/consumer patterns for asynchronous message routing, and integrated Logback with Splunk for centralised logging."]]
+  ]},
+  {h:"Education, certifications and awards", b:[["ul",[
+    "B.E. Mechatronics \u2014 Bannari Amman Institute of Technology, Erode, CGPA 8.97, Aug 2017 \u2013 May 2021.",
+    "Microsoft Certified: Azure Fundamentals (AZ-900); Neural Network and Deep Learning certificate.",
+    "Accenture Excellence Award (ACE) FY24 Q2, plus multiple Accenture achievement recognitions.",
+    "Pinnacle Award \u2014 recognised for Best People, Integrity and Client Value Creation; client-recognised for delivering ahead of timeline."
+  ]]]}
 ]}
 };

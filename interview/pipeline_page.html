@@ -500,7 +500,7 @@
     <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
       <h1>Certainti Hiring Portal</h1>
-      <p>17 from IKrux Engineering &middot; 5 direct &middot; 22 candidates</p>
+      <p>IKrux Engineering &middot; 23 candidates submitted 5 and 21 Sep 2026</p>
     </div>
     <div class="mtools">
       <div class="asof">As on<b id="asof">&mdash;</b></div>
@@ -642,43 +642,48 @@
     [17,2,"Srinidhi Ravi","9962308335","srini3998@gmail.com","LTIMindtree","5.6 Years",
      "5 Years","Chennai","LWD: 10 Oct 2026","2026-10-10",14,18,"No"],
 
-    /* Added 6 Oct 2026 from resumes only \u2014 no vendor row, so notice period
-       and the commercials are not yet captured. They read as "Not captured"
-       rather than being guessed. */
-    [18,1,"Prince Kumar P","9952293271","princekumar27.cse@gmail.com","Virtusa Consulting Services","16 Years",
-     "Java 5 Years | Node js 7 Years | Angular 9 Years | React 5 Years | AWS | Kafka | Lead 6 Years",
-     "Chennai","Not captured",null,null,null,""],
-    [19,1,"Gangasri Paramasivam","9965554784","p.gangasri@gmail.com","Tech Mahindra","11.3 Years",
-     "Java 11 Years | Spring Boot | Apache Camel | React | Node | Kafka | Lead 6 Years",
-     "Coimbatore","Not captured",null,null,null,""],
-    [20,1,"Gunavadhi A S","9942254283","gunavadhir@gmail.com","Tech Mahindra","11 Years",
-     "Java 11 Years | Spring Boot | React 4 Years | Angular 4-7 | Kafka | Docker/K8s | Lead 4 Years",
-     "Coimbatore","Not captured",null,null,null,""],
-    [21,2,"Dhachanamoorthy N","7639619985","dhachanamoorthy3@gmail.com","Zoho Corporation","5 Years",
-     "Java 5 Years | React/TypeScript 5 Years | Node js 4 Years | Kafka | WebSockets | AWS",
-     "Not stated","Not captured",null,null,null,""],
-    [22,1,"Krishnan K","9843279454","krishnan12koo@gmail.com","Wipro Technologies","12 Years",
-     "Java 12 Years | Spring Boot | Microservices | Kafka | Docker/K8s | GCP/AWS | Lead 4 Years",
-     "Madurai","Not captured",null,null,null,""]
+    /* IKrux submission of 5 Sep 2026 \u2014 an earlier batch than the 21 Sep one.
+       Resumes for these arrived first; the vendor row followed, which is where
+       the commercials and notice periods come from. */
+    [22,0,"Krishnan K","9843279454","krishnan12koo@gmail.com","Wipro","11 Years",
+     "Java: 11 Years | Spring Boot & Microservices: 7 Years | React: 3 Years | GCP: 6 Years | Docker & Kubernetes: 6 Years | Client Engagement: 6 Years",
+     "Coimbatore","LWD : 5-Jun-26","2026-06-05",24,30,""],
+    [20,1,"Gunavadhi A S","9942254283","gunavadhir@gmail.com","Tech Mahindra","10.5 Years",
+     "Java: 10 Years | Spring Boot & Microservices: 7 Years | React: 4 Years | Docker & Kubernetes: 4 Years",
+     "Coimbatore","LWD : 6-Aug-26","2026-08-06",18.9,25,""],
+    [18,1,"Prince Kumar P","9952293271","princekumar27.cse@gmail.com","Virtusa","16 Years",
+     "Java: 6+ Years | Spring Boot: 6+ Years | React/Angular: 12+ Years | Microservices: 12 Years | AWS: 12 Years | Kafka: 6 Years | Lead",
+     "Coimbatore","LWD : 7-Aug-26","2026-08-07",26,35,""],
+    [19,1,"Gangasri Paramasivam","9965554784","gangasri.p@gmail.com","Tech Mahindra","11 Years",
+     "Java: 11 Years | Spring Boot: 11 Years | Bootstrap.js: 11 Years | React: 4 Years | Node.js: 11 Years | Kafka: 11 Years | AWS: 11 Years | Technical Lead: 4 Years",
+     "Coimbatore","LWD : 15-Sep-26","2026-09-15",27,40,"38 L"],
+    [21,2,"Dhachanamoorthy N","7639619985","dhachanamoorthy3@gmail.com","Zoho","5 Years",
+     "Java: 5 Years | React: 5 Years | Node.js: 5 Years | Kafka: 4+ Years | PostgreSQL: 3+ Years | REST APIs: 5 Years | AWS: 4+ Years | Production Support: 3+ Years | System Design: 4+ Years",
+     "Coimbatore","15 Days",null,17,25,""],
+    [23,2,"Monish Kanna Bommuraj","9500751330","monishkanna.bommuraj@gmail.com","Accenture","5 Years",
+     "Java: 5+ Years | Spring Boot: 3+ Years | Microservices: 3+ Years | React: 2+ Years | Kafka: 2+ Years | PostgreSQL: 3+ Years | Azure: 3+ Years | Docker & Kubernetes: 3+ Years | CI/CD: 3+ Years | REST APIs: 4+ Years | Production Support: 2+ Years | Troubleshooting: 4+ Years",
+     "Coimbatore","LWD : 30-Sep-26","2026-09-30",9,15,""]
   ].map(function(r){
     return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
             totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
             ctc:r[11], ectc:r[12], offers:r[13],
-            src:(r[0] <= 17 ? "IKrux Engineering" : "Direct"),
-            subDate:(r[0] <= 17 ? "21-Sep-2026" : "6-Oct-2026")};
-  });
+            src:"IKrux Engineering",
+            subDate:(r[0] <= 17 ? "21-Sep-2026" : "5-Sep-2026")};
+  }).sort(function(a, b){ return a.sl - b.sl; });
 
   var VERDICT = {
+    23:{k:"match", h:"Coherent mid-level Java and Azure profile",
+       t:"Five years at Accenture, progressing associate to senior analyst, all of it Java on a Fortune 100 healthcare account. Real substance for the level: Spring Boot and Quarkus microservices, Kafka event integration replacing a synchronous dependency between services, JBeret batch jobs, Redis caching, an on-premises to Azure migration handling 1M+ drug, pricing and insurance records, and a drug data pipeline feeding 400+ US pharmacy stores. Azure Fundamentals certified. Two caveats: one employer throughout, so no exposure to a different engineering culture, and the degree is Mechatronics rather than computer science. His 9 L current salary is the lowest in the pipeline and the 15 L expectation is a 67% ask."},
     18:{k:"caution", h:"Strong breadth, but the Java depth is thinner than the title suggests",
-       t:"Sixteen years and a genuine lead record at Virtusa on British Telecom work — microservices, Kafka, Docker and Kubernetes, AWS, and real observability with Prometheus, Grafana and Loki. The caveat is his own: the CV puts Java at about 5 years against Node at 7 and Angular at 9, so for a Java lead role the hands-on Java is shallower than 16 years implies. One date inconsistency: the Discern project runs Jan 2016 to Dec 2020 while he lists Treselle ending Jan 2020 and Virtusa starting the same month."},
-    19:{k:"match", h:"Clean, consistent Java lead profile",
-       t:"Eleven-plus years with no gaps, all of it Java and full stack, progressing from trainee to technical lead at Skava, Infosys and now Tech Mahindra. Current work leads a team on Telefonica Germany's ePOS system, and previously Intel's Architect GUI. Solid on Spring Boot, Apache Camel, Kafka, RabbitMQ, Redis, Docker and Kubernetes, with monolith-to-microservice migration and performance tuning both named as her own work. M.E. from PSG College of Technology, and workplace awards through Oct 2025."},
+       t:"Sixteen years and a genuine lead record at Virtusa on British Telecom work — microservices, Kafka, Docker and Kubernetes, AWS, and real observability with Prometheus, Grafana and Loki. Three gaps between the row and the CV: the row claims AWS and Microservices at 12 years each, but his AWS work starts at Virtusa in Jan 2020, about six years; the row says Coimbatore while the CV header says Chennai; and the row gives an LWD of 7 Aug 2026 while the CV still shows Virtusa as current. His own CV puts Java at about 5 years against Node at 7 and Angular at 9, so for a Java lead the hands-on Java is shallower than 16 years implies."},
+    19:{k:"risk", h:"Clean CV, but the submitted skill claims do not match it",
+       t:"The CV itself is the cleanest in the pipeline: eleven-plus years with no gaps, trainee to technical lead at Skava, Infosys and now Tech Mahindra, currently leading Telefonica Germany's ePOS and previously Intel's Architect GUI, with an M.E. from PSG. But the submitted row credits her with AWS: 11 Years, and AWS appears nowhere on her CV \u2014 her cloud and DevOps line is Docker, Kubernetes and Jenkins. Node.js and Kafka at 11 years each, and Bootstrap.js at 11 years, are also asserted well beyond what the CV evidences. Two further things: the row gives gangasri.p@gmail.com while the CV says p.gangasri@gmail.com, and she holds a 38 L offer against a 40 L expectation, so the window to move is short."},
     20:{k:"caution", h:"Solid Java lead, already out of her last role",
        t:"Eleven years of Java and Spring Boot microservices with React and Angular, most recently leading offshore delivery for Cisco at Tech Mahindra — monolith-to-microservices, Berkeley DB to PostgreSQL, Docker, Kubernetes, Jenkins, and Scrum Master duties. Two things to note: the Tech Mahindra engagement is listed as ending August 2026, so she has been out roughly two months, and the MCA is recorded as coursework completed rather than awarded, with a B.Sc. as the completed degree."},
     21:{k:"match", h:"Unusually strong for five years — but it is five years",
        t:"Real distributed-systems substance at Zoho: a browser-to-device P2P file transfer platform at 1M+ users with 95% peer completion, WebSocket infrastructure, a JSON to Protocol Buffers migration, a Kafka event pipeline, and ownership of a 30,000-line React/TypeScript migration on a product serving 10M+ monthly actives. Also build-pipeline work across a 70-engineer organisation. The honest caveat is tenure: five years total, so architecture and multi-tenancy theory will be thinner than the engineering. No location anywhere on the CV."},
     22:{k:"caution", h:"Broad Java delivery record, several things to confirm",
-       t:"Twelve years of Java and J2EE across Wipro, HCL and smaller firms, with named enterprise clients — United HealthCare, MasterCard — on Spring Boot microservices, Kafka, Kubernetes, Docker, GCP and AWS. Three things to check: the Wipro engagement ended 25 June 2026 so he has been out around three months; his address is Madurai while the Wipro posting was Coimbatore, so his base needs confirming; and the degree is a BE in Electrical and Electronics rather than computer science. The CV is also list-heavy — long technology inventories with thin description of what he personally built."},
+       t:"Eleven years of Java and J2EE across Wipro, HCL and smaller firms, with named enterprise clients — United HealthCare, MasterCard — on Spring Boot microservices, Kafka, Kubernetes, Docker, GCP and AWS. Submitted as a Technical Consultant. Three things to check: the row gives an LWD of 5 June 2026 while the CV says the Wipro engagement ran to 25 June 2026, so the exit date needs pinning down and either way he has been out about four months; the row says Coimbatore while his CV address is Madurai; and the degree is a BE in Electrical and Electronics rather than computer science. The CV is also list-heavy — long technology inventories with thin description of what he personally built."},
     1:{k:"caution", h:"Deeper than recorded, with a gap to explain",
        t:"L&T Infotech appears under its post-merger name LTIMindtree, and the .Net depth is real \u2014 .NET 8 Azure Functions, Service Bus, Cosmos DB. Two things: his CV lists employment from Jul 2007, about 18 years of history, yet states 14+ years, and the difference is an unexplained gap between Cognizant (to Oct 2013) and TCS (from Dec 2014). His AI entry rests on \u2018Claude prompt Eng\u2019 in a skills list, against the 2 years recorded."},
     4:{k:"caution", h:"Mostly matches; the .Net span is overstated",
@@ -733,16 +738,24 @@
     {id:"a34", sl:7, sev:"Low", issue:"Address reads Tamil Nadu 638701, which is Erode, not Coimbatore; the Nagarro role is remote.", act:"Confirm his base and his willingness to work onsite."},
     {id:"a35", sl:10, sev:"Low", issue:"Two employment gaps: Mar to Aug 2017, and Dec 2019 to Jul 2020.", act:"Ask him to account for both."},
     {id:"a36", sl:11, sev:"Low", issue:"Early career was PHP and LAMP, which the recorded skill split does not mention.", act:"Add it for completeness."},
-    {id:"a37", sl:null, sev:"High", issue:"The five candidates added on 6 Oct 2026 came as resumes only — no notice period, CTC, expected CTC or competing offers were supplied.", act:"Collect the commercials and availability for SL 18–22 before any of them reaches a panel."},
-    {id:"a38", sl:22, sev:"Medium", issue:"Wipro engagement ended 25 June 2026, so he has been out of employment around three months.", act:"Confirm current status and the reason for the break."},
+    {id:"a37", sl:null, sev:"Low", issue:"The commercials missing for SL 18–22 have now arrived with the IKrux row of 5 Sep 2026, which also added Monish Kanna Bommuraj.", act:"Closed. Note the 5 Sep batch predates the 21 Sep one, so those six were submitted first."},
+    {id:"a38", sl:22, sev:"Medium", issue:"Out of employment around four months, and the dates disagree: the vendor row says LWD 5 June 2026, the CV says the Wipro engagement ran to 25 June 2026.", act:"Pin down the actual exit date and the reason for the break."},
     {id:"a39", sl:20, sev:"Medium", issue:"Tech Mahindra engagement is listed as ending August 2026, so she has been out around two months.", act:"Confirm current status and availability."},
     {id:"a40", sl:18, sev:"Medium", issue:"Sixteen years total, but his own CV puts Java at about 5 years against Node at 7 and Angular at 9.", act:"Decide whether the opening needs Java depth or accepts a polyglot lead, and brief the panel accordingly."},
-    {id:"a41", sl:22, sev:"Medium", issue:"Address is Madurai while the Wipro posting was Coimbatore; his current base is unclear.", act:"Confirm location and willingness to be in Coimbatore."},
+    {id:"a41", sl:22, sev:"Medium", issue:"The vendor row says Coimbatore; his CV address is Madurai.", act:"Confirm where he is actually based and his willingness to be in Coimbatore."},
     {id:"a42", sl:21, sev:"Medium", issue:"Five years total experience against an architecture-heavy Round 1 — a strong engineer, but the theory set will stretch him.", act:"Decide whether to score him against the mid-level bar or treat the gaps as expected."},
     {id:"a43", sl:18, sev:"Low", issue:"Project dates overlap: Discern runs Jan 2016 to Dec 2020 while Treselle ends Jan 2020 and Virtusa starts the same month.", act:"Ask him to clarify the overlap."},
     {id:"a44", sl:20, sev:"Low", issue:"MCA is recorded as coursework completed rather than awarded; the completed degree is a B.Sc.", act:"Confirm the highest qualification actually held."},
-    {id:"a45", sl:21, sev:"Low", issue:"No current location stated anywhere on the CV.", act:"Capture it."},
+    {id:"a45", sl:21, sev:"Low", issue:"The CV states no location; the vendor row gives Coimbatore.", act:"Closed by the 5 Sep row — confirm verbally at screening."},
     {id:"a46", sl:22, sev:"Low", issue:"Degree is BE Electrical and Electronics rather than computer science, and the CV is list-heavy with thin description of personal contribution.", act:"Probe for what he personally designed and built in the technical round."},
+    {id:"a47", sl:19, sev:"High", issue:"The row credits AWS: 11 Years, but AWS appears nowhere on her CV — her cloud and DevOps line is Docker, Kubernetes and Jenkins. Node.js, Kafka and Bootstrap.js at 11 years each are also asserted well beyond what the CV evidences.", act:"Challenge the skill claims with IKrux before scheduling, and test AWS directly if the role needs it."},
+    {id:"a48", sl:19, sev:"High", issue:"Holds a 38 L offer against a 40 L expectation — the strongest CV in the pipeline with a live competing offer.", act:"If she is wanted, compress the process and decide the number now; a normal cycle will lose her."},
+    {id:"a49", sl:18, sev:"Medium", issue:"The row claims AWS and Microservices at 12 years each; his AWS work starts at Virtusa in Jan 2020, about six years.", act:"Restate both spans and brief the panel on the real depth."},
+    {id:"a50", sl:18, sev:"Medium", issue:"The row says Coimbatore and an LWD of 7 Aug 2026; the CV header says Chennai and still shows Virtusa as current.", act:"Confirm both his location and whether he has actually left."},
+    {id:"a51", sl:19, sev:"Medium", issue:"E-mail differs between sources: the row gives gangasri.p@gmail.com, the CV says p.gangasri@gmail.com.", act:"Confirm which address reaches her before sending anything."},
+    {id:"a52", sl:23, sev:"Medium", issue:"LWD of 30 Sep 2026 has passed, so he is already out.", act:"Confirm current status and availability."},
+    {id:"a53", sl:23, sev:"Low", issue:"The row credits React: 2+ Years; the CV mentions React once, on a single pharmacy application.", act:"Verify the React depth if the role needs front-end work."},
+    {id:"a54", sl:23, sev:"Low", issue:"Accenture is his only employer across all five years, and the degree is B.E. Mechatronics rather than computer science.", act:"Probe adaptability outside a single engineering culture; the CGPA of 8.97 and the Azure certification offset the degree."},
     {id:"a1", sl:12, sev:"High", issue:"Credited with 9 years of .Net; the CV shows none — Node.js, Express, React, PHP/Laravel.", act:"Reconfirm the skill mapping with IKrux before allocating a panel."},
     {id:"a2", sl:12, sev:"Medium", issue:"Cloud recorded generically at 4 years; the CV shows AWS, not Azure.", act:"Restate as AWS and confirm whether the role needs Azure."},
     {id:"a3", sl:15, sev:"High", issue:"Profile is Java application and production support, not development.", act:"Confirm whether the opening is a build or a support role before scheduling."},
@@ -801,7 +814,8 @@
     c.flags = FLAGS.filter(function(f){ return f.sl === c.sl; });
     c.worst = c.flags.reduce(function(a,f){ var r = {High:3,Medium:2,Low:1}[f.sev]; return r > a ? r : a; }, 0);
 
-    c.fAvail = c.days == null ? "Not captured"
+    c.noticeOnly = c.days == null && c.notice && c.notice !== "Not captured";
+    c.fAvail = c.days == null ? (c.noticeOnly ? "Notice period only" : "Not captured")
              : c.days <= 0 ? "Available now" : (c.days <= 30 ? "Within 30 days" : "Beyond 30 days");
     c.fExp   = c.expNum < 6 ? "Under 6 years" : (c.expNum <= 12 ? "6 – 12 years" : "Over 12 years");
     c.fEctc  = c.ectc == null ? "Not captured"
@@ -1085,11 +1099,11 @@
   /* ===================== filtering ===================== */
   var FACETS = [
     {key:"role",   label:"Role",             get:function(c){ return c.role; },   opts:ROLES},
-    {key:"fAvail", label:"Availability",     get:function(c){ return c.fAvail; }, opts:["Available now","Within 30 days","Beyond 30 days","Not captured"]},
+    {key:"fAvail", label:"Availability",     get:function(c){ return c.fAvail; }, opts:["Available now","Within 30 days","Beyond 30 days","Notice period only","Not captured"]},
     {key:"fExp",   label:"Total experience", get:function(c){ return c.fExp; },   opts:["Under 6 years","6 – 12 years","Over 12 years"]},
     {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L","Not captured"]},
     {key:"fLoc",   label:"Current location", get:function(c){ return c.fLoc; },   opts:["Coimbatore","Chennai","Erode","Elsewhere"]},
-    {key:"src",    label:"Source",           get:function(c){ return c.src; },    opts:["IKrux Engineering","Direct"]},
+    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026"]},
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},
@@ -1414,7 +1428,8 @@
 
       var av = el("div", "avail");
       av.appendChild(c.days == null
-        ? el("span", "pill mute", "Not captured")
+        ? el("span", "pill " + (c.noticeOnly ? "seed" : "mute"),
+             c.noticeOnly ? c.notice : "Not captured")
         : el("span", "pill " + (c.days <= 0 ? "ok" : c.days <= 30 ? "seed" : "mute"),
              c.days <= 0 ? "Available now" : "In " + c.days + " days"));
       row.appendChild(av);
