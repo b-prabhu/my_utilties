@@ -992,6 +992,8 @@
       v:function(c){ var q = qFor(c.sl, t.k); return (q && r1[c.sl].sc[q.id]) || ""; }});
     COLS.push({g:"Round 1", k:"r1q_" + t.k, h:"R1 " + t.h + " question",
       v:function(c){ var q = qFor(c.sl, t.k); return q ? q.q : ""; }});
+    COLS.push({g:"Round 1", k:"r1a_" + t.k, h:"R1 " + t.h + " expected answer",
+      v:function(c){ var q = qFor(c.sl, t.k); return q ? q.a : ""; }});
     COLS.push({g:"Round 1", k:"r1n_" + t.k, h:"R1 " + t.h + " notes",
       v:function(c){ var q = qFor(c.sl, t.k); return (q && r1[c.sl].nt[q.id]) || ""; }});
   });
@@ -1107,6 +1109,9 @@
     return {key:r.key + "r", label:r.label + " result", opts:RESULT_OPTS,
             get:function(c){ return track[c.sl][r.key + "r"] || "Not scheduled"; }};
   }));
+  var showAnswers = true;
+  try { var sav = localStorage.getItem("ikrux.answers"); if (sav !== null) showAnswers = sav === "1"; } catch (e) {}
+
   var density = "detail";
   try { var dsv = localStorage.getItem("ikrux.density"); if (dsv) density = dsv; } catch (e) {}
 
@@ -1658,6 +1663,15 @@
       QT.forEach(function(t){ d.off[t.k] = ((d.off[t.k] || 0) + 1); });
       touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
     });
+    var tog = el("button", "iconsm", showAnswers ? "Hide answers" : "Show answers");
+    tog.type = "button";
+    tog.setAttribute("aria-pressed", showAnswers ? "true" : "false");
+    tog.addEventListener("click", function(){
+      showAnswers = !showAnswers;
+      try { localStorage.setItem("ikrux.answers", showAnswers ? "1" : "0"); } catch (e) {}
+      openDrawer(sl, "round1");
+    });
+    head.appendChild(tog);
     head.appendChild(rall);
     var avg = r1Avg(sl), n = r1Scores(sl).length;
     var scw = el("div", "sc");
@@ -1735,8 +1749,9 @@
       card.appendChild(ta);
 
       var det = document.createElement("details");
+      det.open = showAnswers;
       var sum = document.createElement("summary");
-      sum.textContent = "Model answer";
+      sum.textContent = "Expected answer";
       det.appendChild(sum);
       det.appendChild(el("p", null, q.a));
       if (q.f) det.appendChild(el("p", "fu", "Follow up: " + q.f));

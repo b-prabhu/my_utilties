@@ -1,39 +1,57 @@
-# Interview inventory — IKrux Engineering, submission of 21-Sep-2026
+# Certainti hiring — interview inventory and portal
 
-`Interview_Inventory_IKrux_21Sep2026.xlsx` is a single-file inventory of the 17 candidates
-submitted by IKrux Engineering on 21-Sep-2026, set up to run the interview process end to end.
+Two deliverables that share one source of truth.
 
-## Sheets
+## The portal
 
-| Sheet | Contents |
+**https://claude.ai/artifact/XHu8mNqca4MAvq4SsMY9qR** — the working surface. Source lives here:
+
+| File | What it is |
 |---|---|
-| **Read Me** | What each sheet is for, the colour key, which cells to edit, and one example of a filled tracking row. |
-| **Interview Inventory** | Columns A–P are the submitted fields, transcribed verbatim. Q–T are derived (Hike %, LWD date, Days to LWD, Availability). U–AJ are the grey tracking block: screening, L1 / L2 / HR rounds, final status, offer and DOJ. Result fields are dropdowns. |
-| **Resume Validation** | The five candidates whose CVs were attached (SL 2, 3, 8, 12, 15) — what the resume says, and how it compares with the inventory row. |
-| **Summary** | Role mix, cost, availability, offer position and the interview funnel. All formulas, so it stays live as the tracking columns are filled in. |
-| **Action Log** | 19 open items ranked High / Medium / Low, with the action each one needs and an owner/status column. |
+| `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
+| `pipeline_resumes.js` | All 22 resumes, transcribed into structured sections |
+| `pipeline_questions.js` | 62 Round 1 theory questions with expected answers, plus the per-candidate stream map |
+
+To run it outside Claude, keep the three together and rename the data files to
+`resumes.js` and `questions.js` — the page loads them by those names. Everything works
+locally except shared saving, which only exists inside the artifact.
+
+## The workbook
+
+`Interview_Inventory_22_Candidates.xlsx` — seven sheets: Read Me, Interview Inventory,
+Resume Validation, Action Log, Round 1 Question Bank, Round 1 by Candidate, Summary.
+
+It is **generated**, not hand-maintained:
+
+```
+node dump_portal_data.mjs     # portal data -> data.json
+python3 -I build_inventory_22.py
+python3 -I cache_values_22.py # inject formula results; LibreOffice can't run in the container
+```
+
+Regenerate it after any change to the portal's data, or the two will drift.
 
 ## Conventions
 
-- CTC, ECTC and Offered CTC are numbers in **INR lakhs per annum**.
-- Dates are `DD-MMM-YY`; mobile numbers are stored as text.
-- `Days to LWD` is negative when the last working day has already passed, measured against the
-  as-on date in `Summary!B4` — the single input cell (blue text on yellow).
+- CTC, ECTC and Offered CTC are **INR lakhs per annum**; dates are `DD-MMM-YY`.
+- `Days to LWD` is negative once the last working day has passed, measured against the
+  as-on date in `Summary!B4` — the single input cell.
+- **SL 18–22 arrived as resumes only.** Notice period and the commercials are genuinely
+  unknown and read "Not captured" rather than being guessed. They are excluded from
+  averages.
 
-## Source and caveats
+## Where the pipeline stands
 
-- Columns A–P are the submitted list, unaltered except for trimming a stray leading space in one
-  e-mail address (SL 16, Shanmuga raja).
-- Resume-derived content comes only from the five attached CVs. The other 12 rows are
-  vendor-declared and have **not** been validated against a resume.
+22 candidates — 17 from IKrux Engineering (21-Sep-2026), 5 direct (6-Oct-2026). All 22
+have a CV on file and a verdict against it. 46 open actions: 9 High, 25 Medium, 12 Low.
 
-## Headline findings
+Headline findings:
 
-- **SL 12, Karthy** — the inventory credits `.Net : 9 Years`; the resume shows no .NET or C# at all
-  (Node.js / Express, PHP / Laravel, React, AWS). Reconfirm before allocating a .Net panel.
-- **SL 15, Sankar Ponnusamy** — the profile is Java application / production support in BFSI
-  payments, not hands-on development. Spring Boot and REST API appear only as "Technical Exposure".
-- **SL 8, Boopathi Molakgounder** — LWD of 11-Jun-2026 has already passed; confirm current status.
-  Location recorded as Erode, resume says Bangalore (same mismatch on SL 15).
-- **8 of 17** recorded last working days fall before 22-Sep-2026, so availability needs re-verifying
-  across the pipeline.
+- **All five original Senior Software Engineer candidates** (SL 13–17) are production-support
+  or support-weighted profiles, not application developers. That slate looks mis-targeted.
+- **Karthy (12)** was submitted as a .Net Technology Lead; his CV contains no .NET at all.
+- **Vaisakh (10)** is in Thiruvananthapuram, not Coimbatore as recorded.
+- Recorded spans are overstated for **Navin (7)**, **Adarsh (4)**, **Ravikumar (9)** and
+  **Sandhosh (11)**; four of **Sathya (6)**'s twelve years were as a lecturer.
+- Of the new five, **Gangasri (19)** is the cleanest profile in the pipeline and
+  **Dhachanamoorthy (21)** is unusually strong for five years.
