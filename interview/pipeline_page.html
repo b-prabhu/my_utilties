@@ -1675,7 +1675,7 @@
     var rall = el("button", "iconsm", "\u21bb  Recycle all");
     rall.type = "button"; rall.disabled = !canWrite;
     rall.addEventListener("click", function(){
-      QT.forEach(function(t){ d.off[t.k] = ((d.off[t.k] || 0) + 1); });
+      QT.forEach(function(t){ r1[sl].off[t.k] = ((r1[sl].off[t.k] || 0) + 1); });
       touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
     });
     var tog = el("button", "iconsm", showAnswers ? "Hide answers" : "Show answers");
@@ -1705,7 +1705,7 @@
     ta0.style.minHeight = "72px";
     ta0.placeholder = "Overall impression of the round \u2014 depth, communication, gaps to probe next time\u2026";
     ta0.addEventListener("input", function(e){
-      d.note = e.target.value; touchR1(sl); setSave("Saving\u2026", false);
+      r1[sl].note = e.target.value; touchR1(sl); setSave("Saving\u2026", false);
       debounce("r1:" + sl, function(){ saveR1(sl); });
     });
     var w0 = el("div", "fld full"); w0.appendChild(ta0);
@@ -1726,7 +1726,7 @@
                                  : "Swap for another " + t.h.toLowerCase() + " question (" + pool.length + " in the pool)";
       rc.setAttribute("aria-label", "Recycle the " + t.h + " question");
       rc.addEventListener("click", function(){
-        d.off[t.k] = ((d.off[t.k] || 0) + 1);
+        r1[sl].off[t.k] = ((r1[sl].off[t.k] || 0) + 1);
         touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
       });
       top.appendChild(rc);
@@ -1747,7 +1747,7 @@
         b.setAttribute("aria-pressed", d.sc[q.id] === v ? "true" : "false");
         b.setAttribute("aria-label", "Score " + v + " out of 5");
         b.addEventListener("click", function(){
-          if (d.sc[q.id] === v) delete d.sc[q.id]; else d.sc[q.id] = v;
+          if (r1[sl].sc[q.id] === v) delete r1[sl].sc[q.id]; else r1[sl].sc[q.id] = v;
           touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
         });
         row.appendChild(b);
@@ -1758,7 +1758,7 @@
       ta.value = d.nt[q.id] || ""; ta.disabled = !canWrite;
       ta.placeholder = "What they actually said\u2026";
       ta.addEventListener("input", function(e){
-        d.nt[q.id] = e.target.value; touchR1(sl); setSave("Saving\u2026", false);
+        r1[sl].nt[q.id] = e.target.value; touchR1(sl); setSave("Saving\u2026", false);
         debounce("r1:" + sl, function(){ saveR1(sl); });
       });
       card.appendChild(ta);
@@ -1782,15 +1782,17 @@
     var s = el("section", "sec");
     s.appendChild(el("h3", null, "Interview tracking"));
     var form = el("div", "form");
+    /* Always write through track[c.sl] rather than a reference captured when the
+       pane rendered, so an edit lands on the live record however it was replaced. */
     function slow(k){
       return function(e){
-        t[k] = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
+        track[c.sl][k] = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
         debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
       };
     }
     function now(k){
       return function(e){
-        t[k] = e.target.value; touch(c.sl);
+        track[c.sl][k] = e.target.value; touch(c.sl);
         renderStats(); renderRefine(); renderActiveBar(); renderRows();
         saveTrack(c.sl);
       };
@@ -1800,7 +1802,7 @@
     recIn.setAttribute("list", "rolesuggest");
     recIn.placeholder = "Same as applied, or the role that fits better";
     recIn.addEventListener("input", function(e){
-      t.recRole = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
+      track[c.sl].recRole = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
       renderStats(); renderRefine(); renderActiveBar(); renderRows();
       debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
     });
@@ -1823,7 +1825,7 @@
     ta.value = t.remarks; ta.disabled = !canWrite;
     ta.placeholder = "Negotiation notes, relocation, references…";
     ta.addEventListener("input", function(e){
-      t.remarks = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
+      track[c.sl].remarks = e.target.value; touch(c.sl); setSave("Saving\u2026", false);
       debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
     });
     form.appendChild(field("Remarks", ta, true));
@@ -1968,12 +1970,17 @@
           var sl = +String(d.id).replace(/^c/, "");
           if (!BY_SL[sl]) return;
           if (!clean(sl)) return;   // this viewer has edits the server has not confirmed
-          var data = d.data() || {}, t = blankTrack();
+          var data = d.data() || {}, fresh = blankTrack();
           Object.keys(LEGACY).forEach(function(old){
             if (data[old] != null && data[LEGACY[old]] == null) data[LEGACY[old]] = data[old];
           });
-          Object.keys(t).forEach(function(k){ if (data[k] != null) t[k] = data[k]; });
-          track[sl] = t;
+          /* Update in place. An open tracking form closes over this object, so
+             replacing it would leave the form writing into an orphan and every
+             edit after the first would be dropped on the next save. */
+          var cur = track[sl];
+          Object.keys(fresh).forEach(function(k){
+            cur[k] = (data[k] != null) ? data[k] : fresh[k];
+          });
         });
         renderAll();
         if (current !== null && dtab !== "round1" && clean(current) &&
@@ -1984,7 +1991,11 @@
           var sl = +String(d.id).replace(/^c/, "");
           if (!BY_SL[sl] || !cleanR1(sl)) return;
           var data = d.data() || {};
-          r1[sl] = {off:data.off || {}, sc:data.sc || {}, nt:data.nt || {}, note:data.note || ""};
+          var cr = r1[sl];                       // in place, same reason as tracking
+          cr.off = data.off || {};
+          cr.sc = data.sc || {};
+          cr.nt = data.nt || {};
+          cr.note = data.note || "";
         });
         if (current !== null && dtab === "round1" && cleanR1(current) &&
             !$("dbody").contains(document.activeElement)) openDrawer(current, "round1");
