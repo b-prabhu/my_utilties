@@ -500,7 +500,7 @@
     <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
       <h1>Certainti Hiring Portal</h1>
-      <p>IKrux Engineering &middot; 23 candidates submitted 5 and 21 Sep 2026</p>
+      <p>IKrux Engineering &middot; 25 candidates &middot; submitted 5 Sep, 21 Sep and 8 Oct 2026</p>
     </div>
     <div class="mtools">
       <div class="asof">As on<b id="asof">&mdash;</b></div>
@@ -593,7 +593,7 @@
   var R = (typeof RESUMES !== "undefined") ? RESUMES : {};
 
   /* ===================== source data ===================== */
-  var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer"];
+  var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer","Technical Project Manager"];
   var C = [
     [1,0,"Jeganagan Murugesan","9940641190","jeganagan@gmail.com","L&T Infotech","14 Years",
      ".Net 14 Years | React 3 Years | Cloud 3 Years | Lead 4 Years | AI 2 Years | Client Interaction 10 Years",
@@ -662,16 +662,28 @@
      "Coimbatore","15 Days",null,17,25,""],
     [23,2,"Monish Kanna Bommuraj","9500751330","monishkanna.bommuraj@gmail.com","Accenture","5 Years",
      "Java: 5+ Years | Spring Boot: 3+ Years | Microservices: 3+ Years | React: 2+ Years | Kafka: 2+ Years | PostgreSQL: 3+ Years | Azure: 3+ Years | Docker & Kubernetes: 3+ Years | CI/CD: 3+ Years | REST APIs: 4+ Years | Production Support: 2+ Years | Troubleshooting: 4+ Years",
-     "Coimbatore","LWD : 30-Sep-26","2026-09-30",9,15,""]
+     "Coimbatore","LWD : 30-Sep-26","2026-09-30",9,15,""],
+
+    /* IKrux submission of 8 Oct 2026 \u2014 the first Technical Project Manager roles. */
+    [24,3,"Saravana Kumar B","9043215204","hashvana@gmail.com","InFynd","16 Years",
+     "Technical Project Manager: 6 Years | Backend Node.js: 5 Years",
+     "Coimbatore","LWD : 15-Jun-26","2026-06-15",12.5,18.5,"No"],
+    [25,3,"Veena Kuppusamy","9894188254","veenakcbe@gmail.com","G2 TechSoft","18 Years",
+     "Technical Project Manager: 10 Years | Backend .Net: 10 Years",
+     "Coimbatore","LWD : 30-Mar-26","2026-03-30",16,22,"No"]
   ].map(function(r){
     return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
             totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
             ctc:r[11], ectc:r[12], offers:r[13],
             src:"IKrux Engineering",
-            subDate:(r[0] <= 17 ? "21-Sep-2026" : "5-Sep-2026")};
+            subDate:(r[0] <= 17 ? "21-Sep-2026" : r[0] <= 23 ? "5-Sep-2026" : "8-Oct-2026")};
   }).sort(function(a, b){ return a.sl - b.sl; });
 
   var VERDICT = {
+    24:{k:"caution", h:"Real delivery record, but four employers in under three years",
+       t:"Genuine technical project management: 20+ member cross-functional teams, \u20b95M+ budgets, 95% on-time milestones, stakeholders across three continents, and current AI/LLM delivery work evaluating OpenAI, Gemini and GPT-OSS against cost and latency. PMP and a GCP certification. The concern is tenure, not capability: since Dec 2022 he has had four employers \u2014 InFynd 11 months, Bluekode 7, Mobitech 7 on contract, CG-VAK 15 \u2014 with two of those explicitly consultant or contract engagements, against a 9-year run at Ugam before that. He also left InFynd in June 2026. Separately, the row credits Backend Node.js at 5 years; his CV lists Node only in a skills line, and his hands-on development was Python, Java and Selenium at Ugam up to 2020."},
+    25:{k:"risk", h:"Long experience, but a dated stack and a 15-month gap",
+       t:"Eighteen-plus years, 15\u201320 member teams, full RFP-to-sign-off ownership and a Microsoft Partnership Award on a food-bank project. Three things weigh against her. Her stack is C#, VB.NET, ASP.NET MVC, jQuery and MS SQL Server \u2014 no .NET Core or .NET 5+, no cloud of any kind, no containers or microservices, which is unusual against the rest of this pipeline and makes \u2018Backend .Net 10 Years\u2019 mean something different from what it suggests. There is an unexplained 15-month gap between Alligatortek ending Dec 2020 and Inno Valley starting Mar 2022. And the row credits 10 years as Technical Project Manager, but her PM and TPM titles run from Mar 2022, about four years; the preceding eight were as a Technical Lead. She left G2 TechSoft in March 2026, so she has been out roughly six months."},
     23:{k:"match", h:"Coherent mid-level Java and Azure profile",
        t:"Five years at Accenture, progressing associate to senior analyst, all of it Java on a Fortune 100 healthcare account. Real substance for the level: Spring Boot and Quarkus microservices, Kafka event integration replacing a synchronous dependency between services, JBeret batch jobs, Redis caching, an on-premises to Azure migration handling 1M+ drug, pricing and insurance records, and a drug data pipeline feeding 400+ US pharmacy stores. Azure Fundamentals certified. Two caveats: one employer throughout, so no exposure to a different engineering culture, and the degree is Mechatronics rather than computer science. His 9 L current salary is the lowest in the pipeline and the 15 L expectation is a 67% ask."},
     18:{k:"caution", h:"Strong breadth, but the Java depth is thinner than the title suggests",
@@ -756,6 +768,15 @@
     {id:"a52", sl:23, sev:"Medium", issue:"LWD of 30 Sep 2026 has passed, so he is already out.", act:"Confirm current status and availability."},
     {id:"a53", sl:23, sev:"Low", issue:"The row credits React: 2+ Years; the CV mentions React once, on a single pharmacy application.", act:"Verify the React depth if the role needs front-end work."},
     {id:"a54", sl:23, sev:"Low", issue:"Accenture is his only employer across all five years, and the degree is B.E. Mechatronics rather than computer science.", act:"Probe adaptability outside a single engineering culture; the CGPA of 8.97 and the Azure certification offset the degree."},
+    {id:"a55", sl:24, sev:"High", issue:"Four employers since Dec 2022 \u2014 InFynd 11 months, Bluekode 7, Mobitech 7 on contract, CG-VAK 15 \u2014 two of them explicitly consultant or contract engagements.", act:"Probe the reason for each move and what would make him stay; a permanent delivery role needs that answered."},
+    {id:"a56", sl:25, sev:"High", issue:"Unexplained 15-month gap between Alligatortek ending Dec 2020 and Inno Valley starting Mar 2022.", act:"Ask her to account for it."},
+    {id:"a57", sl:25, sev:"High", issue:"Out of employment around six months \u2014 G2 TechSoft ended 30 Mar 2026.", act:"Confirm current status and what she has been doing since."},
+    {id:"a58", sl:25, sev:"High", issue:"Stack is C#, VB.NET, ASP.NET MVC, jQuery and MS SQL Server, with no .NET Core, no cloud, no containers and no microservices anywhere on the CV.", act:"Decide whether a PM who has not worked on a modern stack can lead this team, and test it directly if she proceeds."},
+    {id:"a59", sl:25, sev:"Medium", issue:"The row credits 10 years as Technical Project Manager; her PM and TPM titles start Mar 2022, about four years, with the preceding eight as Technical Lead.", act:"Restate the management span."},
+    {id:"a60", sl:24, sev:"Medium", issue:"Out of employment around four months \u2014 InFynd ended June 2026.", act:"Confirm current status and the reason for the break."},
+    {id:"a61", sl:24, sev:"Medium", issue:"The row credits Backend Node.js at 5 years; the CV lists Node only in a skills line, and his hands-on work was Python, Java and Selenium up to 2020.", act:"Restate the Node claim, and decide whether this role needs hands-on backend depth at all."},
+    {id:"a62", sl:null, sev:"Medium", issue:"The Round 1 theory set was written for engineers and leads. The two Technical Project Manager candidates will be scored against architecture depth they are not hired for.", act:"Either calibrate the expected bar for SL 24 and 25, or ask for a delivery-management question set for that role."},
+    {id:"a63", sl:25, sev:"Low", issue:"Her CV opens with personal details including religion and marital status.", act:"Brief the panel to disregard protected characteristics; assess on the professional record only."},
     {id:"a1", sl:12, sev:"High", issue:"Credited with 9 years of .Net; the CV shows none — Node.js, Express, React, PHP/Laravel.", act:"Reconfirm the skill mapping with IKrux before allocating a panel."},
     {id:"a2", sl:12, sev:"Medium", issue:"Cloud recorded generically at 4 years; the CV shows AWS, not Azure.", act:"Restate as AWS and confirm whether the role needs Azure."},
     {id:"a3", sl:15, sev:"High", issue:"Profile is Java application and production support, not development.", act:"Confirm whether the opening is a build or a support role before scheduling."},
@@ -1103,7 +1124,7 @@
     {key:"fExp",   label:"Total experience", get:function(c){ return c.fExp; },   opts:["Under 6 years","6 – 12 years","Over 12 years"]},
     {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L","Not captured"]},
     {key:"fLoc",   label:"Current location", get:function(c){ return c.fLoc; },   opts:["Coimbatore","Chennai","Erode","Elsewhere"]},
-    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026"]},
+    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026"]},
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},

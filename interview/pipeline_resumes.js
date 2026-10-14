@@ -1022,5 +1022,97 @@ var RESUMES = {
     "Accenture Excellence Award (ACE) FY24 Q2, plus multiple Accenture achievement recognitions.",
     "Pinnacle Award \u2014 recognised for Best People, Integrity and Client Value Creation; client-recognised for delivering ahead of timeline."
   ]]]}
+]},
+
+24: {file:"Saravana_Kumar_B.pdf",
+  title:"Technical Project Manager | IT Delivery Leader | PMP | 16+ years IT | AI/ML | Cloud",
+  contact:"+91 90432 15204 \u00b7 hashvana@gmail.com \u00b7 Coimbatore, Tamil Nadu \u00b7 linkedin.com/in/saravana-kumar-b-0a43989b",
+  sections:[
+  {h:"Professional summary", b:[["p","Technical Project Manager with 16+ years of IT experience, including 5+ years leading end-to-end technology and software delivery across AI, SaaS, BFSI, ERP and digital transformation programmes. Experienced in managing cross-functional engineering teams, Agile delivery, client and stakeholder management, SDLC, cloud optimisation, risk and dependency management, and production releases. Delivered projects with budgets up to \u20b95M+, teams of up to 20+, and 95% on-time milestone achievement."]]},
+  {h:"Key achievements", b:[["ul",[
+    "Led 20+ member cross-functional teams across engineering, product, QA, DevOps, business and customer-facing functions.",
+    "Reduced AWS infrastructure costs by 25% through cloud optimisation, resource right-sizing and efficiency improvements.",
+    "Improved customer onboarding efficiency by 30% through process optimisation and resource planning.",
+    "Achieved 95% on-time milestone delivery across complex technology projects.",
+    "Managed project budgets exceeding \u20b95M including resource allocation, cost control and delivery governance.",
+    "Managed global stakeholders across three continents."
+  ]]]},
+  {h:"Technical skills", b:[["kv",[
+    ["AI & LLM","OpenAI, Gemini, Claude, Ollama, GPT-OSS 20B, vLLM, RAG, prompt engineering"],
+    ["Cloud & infrastructure","AWS, Azure, Google Cloud Platform, cloud cost optimisation"],
+    ["Software & APIs","Python, Node.js, React, Angular, Flutter, REST APIs"],
+    ["Databases & data","MySQL, PostgreSQL, MongoDB, Elasticsearch, ETL data migration"],
+    ["Tools","Jira, Confluence, Azure DevOps, Git, SharePoint, Zoho Projects, Postman, Figma"],
+    ["Security & compliance","GDPR, VAPT, security governance and risk management"],
+    ["Domains","AI, SaaS, BFSI, ERP, supply chain, ecommerce, travel"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Technical Project Manager","InFynd","Jul 2025 \u2013 Jun 2026",[
+      "Led end-to-end delivery of an AI-powered B2B lead-generation SaaS platform serving customers across the UK, Africa and Australia.",
+      "Reduced cloud expenditure by 25% through AWS resource optimisation, performance tuning and cost governance.",
+      "Evaluated and implemented LLM solutions including OpenAI, Gemini and GPT-OSS 20B/vLLM, balancing cost, latency, scalability and operational requirements.",
+      "Oversaw governance, risk management, GDPR compliance and security initiatives; managed third-party integration and vendor coordination.",
+      "Conducted code reviews and managed cross-functional engineering, QA and UI/UX teams; ran sprint planning and status tracking.",
+      "Delivered for stakeholders across three continents at 95% on-time milestone completion."]],
+    ["job","Technical Project Manager (consultant)","Bluekode Solutions","Dec 2024 \u2013 Jun 2025",[
+      "Led end-to-end ERP and supply chain product delivery, driving requirements analysis, execution, stakeholder engagement and launch.",
+      "Created BRDs and FRDs, translating business requirements into technical solutions.",
+      "Improved onboarding efficiency by 30%; managed budgets exceeding \u20b95M and mitigated delivery risks."]],
+    ["job","Technical Project Manager (contract)","Mobitech Wireless Solutions","Apr 2024 \u2013 Oct 2024",[
+      "Developed and led Dcon Ag, an IoT controller for irrigation and fertigation systems on farms, launched at AGRI INTEX 2024.",
+      "Automated call routing through ML-based intent classification and caller profiling, and implemented conversational AI dialogue flows."]],
+    ["job","Technical Project Manager","CG-VAK Software & Exports","Dec 2022 \u2013 Mar 2024",[
+      "Led end-to-end delivery of anti-money-laundering solutions for US BFSI clients, aligned to regulatory and compliance standards.",
+      "Led a team of 10+ developers, QA engineers and business analysts across the full SDLC.",
+      "Coordinated design, development, testing, UAT, deployment and post-production support."]],
+    ["job","Project Manager","Aggregate Intelligence","Dec 2020 \u2013 Dec 2022",[
+      "Led delivery of global travel data and market intelligence projects covering hotel pricing, reviews, competitive benchmarking and analytics.",
+      "Established project governance frameworks tracking KPIs, SLAs, risks, budgets, resource utilisation and customer satisfaction."]],
+    ["job","Team Lead / Software Engineer / Consultant","Ugam Solutions","Apr 2011 \u2013 Nov 2020",[
+      "Led remote teams of 20+ members across ecommerce and retail projects; performed code reviews and established development standards.",
+      "Developed web scraping and data extraction solutions using Python, Java and Selenium, with Beautiful Soup, XPath and CSS selectors."]]
+  ]},
+  {h:"Certificates and education", b:[["p","Google Cloud Platform certification, Aug 2019. PMP completion. M.A. Information Technology \u2014 Shri Nehru Maha Vidyalaya College, Coimbatore, Apr 2009."]]}
+]},
+
+25: {file:"Veena.pdf", title:"Project Manager | Agile delivery | .NET background",
+  contact:"+91 9894188254 \u00b7 veenakcbe@gmail.com \u00b7 Coimbatore",
+  sections:[
+  {h:"Professional summary", b:[["ul",[
+    "Project Manager with 18+ years of experience in Agile environments, leading cross-functional teams to deliver scalable software solutions.",
+    "Proven ability to manage end-to-end project lifecycles, optimise processes and drive on-time delivery within budget.",
+    "Skilled in Agile and Waterfall methodologies, stakeholder management and risk mitigation.",
+    "Expertise in sprint planning, backlog management and continuous improvement.",
+    "Working knowledge of Jira, Azure DevOps (TFS), Git and MS Project."
+  ]]]},
+  {h:"Skills acquired", b:[["kv",[
+    ["Programming languages","C, C# and VB.NET"],
+    ["Web technologies","ASP.NET, MVC, HTML, CSS, JavaScript and jQuery"],
+    ["Databases","MS SQL Server and MS Access"]
+  ]]]},
+  {h:"Career history", b:[
+    ["job","Project Manager","G2 TechSoft, Coimbatore","Oct 2022 \u2013 Mar 2026",[
+      "Managed the end-to-end project lifecycle: RFP, estimation, SOW, delivery and client sign-off.",
+      "Coordinated with clients and stakeholders to define scope and requirements, estimate effort and prepare delivery timelines.",
+      "Facilitated sprint planning, daily standups, reviews and retrospectives; identified risks and handled escalation with proactive mitigation.",
+      "Coached and mentored developers and contributed to their performance reviews.",
+      "Key projects: a healthcare appointment booking and care management portal; a case, crime incident and evidence management system for a US public safety department, including mobile access for officers; and a legal firm and case management tool with full legal accounting, including a NuGet authentication provider package."]],
+    ["job","Technical Project Manager","Inno Valley Works, Coimbatore","Mar 2022 \u2013 Oct 2022",[]],
+    ["job","Technical Lead","Alligatortek (also known as HealthChampion), Coimbatore","Oct 2012 \u2013 Dec 2020",[
+      "Understood project requirements and estimated effort; allocated tasks and supported the team to finish on time.",
+      "Took part in resource planning, project status meetings, client interaction and the change control board.",
+      "Key projects: a web system in MVC streamlining transactions between food banks and food donors for one of the largest non-profits feeding America, which won a Microsoft Partnership Award; a digital coupon tracking system for a tyre manufacturer; a certification and renewal application for an American steel institute; and multiple systems for a Chicago botanical garden managing plant inventories, production orders and the plant database."]],
+    ["job","Programmer","Alligatortek, Coimbatore","Jul 2007 \u2013 Oct 2012",[
+      "Programming, unit testing and bug fixing; prepared data and set up applications for client demos and supported the sales team.",
+      "Key projects: a web application tracking book purchases, search, list and profile maintenance, order processing and reports for a large US book-selling service; and a case database and fee audit application for an attorney service auditing company in Chicago."]]
+  ]},
+  {h:"Achievements", b:[["ul",[
+    "Awarded for long tenure and best performance multiple times.",
+    "Part of the core team making decisions on branding and recruitment.",
+    "Built a knowledge base for projects and technologies with team support.",
+    "Managed cross-functional teams of 15\u201320 members through end-to-end implementation and post-launch stability.",
+    "Played a key role in securing repeat business through consistent project delivery."
+  ]]]},
+  {h:"Education", b:[["p","M.Sc. Computer Technology \u2014 Coimbatore Institute of Technology, 2007, 70%."]]}
 ]}
 };

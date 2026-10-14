@@ -42,8 +42,10 @@ Regenerate it after any change to the portal's data, or the two will drift.
 
 ## Where the pipeline stands
 
-23 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026 and 17 on 21-Sep-2026.
-All 23 have a CV on file and a verdict against it. 54 open actions: 10 High, 29 Medium, 15 Low.
+25 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026 and 2 on
+8-Oct-2026. Four roles: Technical Consultant, Technology Lead, Senior Software Engineer and
+Technical Project Manager. All 25 have a CV on file and a verdict against it. 63 open actions:
+14 High, 33 Medium, 16 Low.
 
 Headline findings:
 
@@ -58,3 +60,6 @@ Headline findings:
   40 L expectation, so the window is short.
 - **Dhachanamoorthy (21)** is unusually strong for five years; **Monish (23)** is a coherent
   mid-level Java and Azure profile at the lowest cost in the pipeline.
+- Of the two Technical Project Managers, **Saravana (24)** has a real delivery record but four
+  employers since Dec 2022, and **Veena (25)** has 18 years on a stack with no .NET Core, no
+  cloud and no containers, plus an unexplained 15-month gap.

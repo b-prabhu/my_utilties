@@ -14,7 +14,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
 OUT = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
-ASON = dt.date(2026, 10, 8)
+ASON = dt.date(2026, 10, 14)
 
 F = "Arial"
 NAVY, BAND2, BAND3, BAND4 = "1F3864", "2E75B6", "548235", "7030A0"
@@ -386,6 +386,7 @@ style(sm.cell(row=r, column=1, value="Batch, commercials, offers and flags"), bo
 header(sm, r + 1, ["Measure", "Count"])
 meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("C")),
         ("Submitted 21 Sep 2026", '=COUNTIF(%s,"21-Sep-2026")' % RNG("C")),
+        ("Submitted 8 Oct 2026", '=COUNTIF(%s,"8-Oct-2026")' % RNG("C")),
         ("CTC and ECTC captured", '=COUNT(%s)' % RNG("N")),
         ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("N")),
         ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("P"), RNG("P"))),

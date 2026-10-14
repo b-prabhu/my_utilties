@@ -32,7 +32,9 @@ var QSTREAM = {
   18:{s:"java",  l:"senior"}, 19:{s:"java",   l:"senior"}, 20:{s:"java", l:"senior"},
   21:{s:"node",  l:"mid"},    22:{s:"java",   l:"senior"},
   /* Added 8 Oct 2026 */
-  23:{s:"java",  l:"mid"}
+  23:{s:"java",  l:"mid"},
+  /* Technical Project Managers, added 14 Oct 2026 — streamed on their backend background */
+  24:{s:"node",  l:"senior"}, 25:{s:"dotnet", l:"senior"}
 };
 
 var QBANK = [
