@@ -9,7 +9,7 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | All 22 resumes, transcribed into structured sections |
+| `pipeline_resumes.js` | All 25 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 62 Round 1 theory questions with expected answers, plus the per-candidate stream map |
 
 To run it outside Claude, keep the three together and rename the data files to
@@ -30,6 +30,23 @@ python3 -I cache_values.py # inject formula results; LibreOffice can't run in th
 ```
 
 Regenerate it after any change to the portal's data, or the two will drift.
+
+## Candidate documents
+
+Print-ready PDFs for a candidate going to a later round, built from the portal's own
+data files so they cannot drift from the pipeline:
+
+```
+node build_prince_kumar_brief.mjs    # CEO brief: facts, profile summary, career, then the CV
+node build_prince_kumar_resume.mjs   # the CV on its own
+```
+
+Both need `playwright` and render through the container's preinstalled Chromium.
+`resume_pdf_common.mjs` holds the shared loader, the section renderer and the page
+styling. The brief's prose is written about Prince specifically — it is one
+candidate's generator, not a template. Neither document carries compensation or
+interview feedback: they are written to be sent to an interviewer who should form
+their own view.
 
 ## Conventions
 
