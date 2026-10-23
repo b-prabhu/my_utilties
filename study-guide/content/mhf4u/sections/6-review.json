@@ -1,0 +1,1624 @@
+{
+  "id": "6-review",
+  "number": "Review",
+  "title": "Chapter 6 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "Pull the whole chapter together: exponential functions and their inverses, logarithms, transformations, the power law and change of base, and logarithmic scales. Work through the summary, then use the review questions — taken from the chapter review and practice test and rewritten as full written and problem-solving questions — to check you are ready.",
+  "objectives": [
+    "Connect exponential and logarithmic functions as inverses and compare their key features.",
+    "Evaluate, estimate and convert logarithms.",
+    "Graph and analyse transformed logarithmic functions.",
+    "Solve exponential equations with the power law and change of base formula.",
+    "Solve problems involving logarithmic scales and exponential models."
+  ],
+  "lessons": [
+    {
+      "id": "big-picture",
+      "title": "Chapter 6 at a glance",
+      "body": "Everything in this chapter grows from one idea: **the logarithm is the inverse of the exponential.**\n\n| Section | Big idea | Key tool |\n|---|---|---|\n| 6.1 | $y = b^x$ grows by a constant factor; its rate of change is proportional to itself | finite differences, secant slopes, reflection in $y = x$ |\n| 6.2 | $\\log_b x$ is the exponent that turns $b$ into $x$ | $\\log_b x = y \\iff b^y = x$ |\n| 6.3 | Logarithmic graphs transform like any other function | $f(x) = a\\log[k(x - d)] + c$, anchor points $(1, 0)$, $(10, 1)$ |\n| 6.4 | Exponents can be brought down to solve for them | $\\log_b x^n = n\\log_b x$, $\\log_b m = \\frac{\\log m}{\\log b}$ |\n| 6.5 | Huge ranges are measured with log scales | pH, decibels, Richter, stellar magnitude |\n\n```plot\ntitle: The central picture of the chapter\nf: 2^x | label=y = 2^x\nf: logb(2, x) | label=y = log₂ x\nf: x | dashed\ndomain: -4, 8\nrange: -4, 8\npoints: (0,1), (1,0), (1,2), (2,1)\n```"
+    },
+    {
+      "id": "feature-swap",
+      "title": "Exponential vs logarithmic: the feature swap",
+      "body": "Because the graphs are reflections in $y = x$, every feature swaps roles:\n\n| Feature | $y = b^x$ | $y = \\log_b x$ |\n|---|---|---|\n| Domain | all reals | $x > 0$ |\n| Range | $y > 0$ | all reals |\n| Intercept | $y$-intercept 1 | $x$-intercept 1 |\n| Asymptote | horizontal $y = 0$ | vertical $x = 0$ |\n| Point with input 1 | $(1, b)$ | $(b, 1)$ |\n| Rate of change | grows without bound ($b > 1$) | shrinks toward 0 ($b > 1$) |\n\nIf you remember one graph, you can always reconstruct the other."
+    },
+    {
+      "id": "strategies",
+      "title": "Choosing a strategy",
+      "body": "**\"Evaluate\"** — rewrite the argument as a power of the base ($\\log_2 \\frac18 = -3$); use $\\log_b b^k = k$; otherwise use change of base.\n\n**\"Solve for an exponent\"** — isolate the power, take common logs, use the power law: $b^x = m \\Rightarrow x = \\frac{\\log m}{\\log b}$.\n\n**\"Solve a log equation\"** — isolate the log and rewrite in exponential form: $\\log_3 x = 4 \\Rightarrow x = 81$.\n\n**\"Graph / key features\"** — put in the form $a\\log[k(x - d)] + c$, track $(1, 0)$, $(10, 1)$ and the asymptote $x = d$; domain from argument $> 0$.\n\n**\"Compare on a log scale\"** — subtract the scale values, then rewrite as a power of 10 (taking account of any coefficient, e.g. 10 for decibels).\n\n**Always check reasonableness:** $\\log_5 17$ should lie between 1 and 2 because $5 < 17 < 25$."
+    },
+    {
+      "id": "applications",
+      "title": "Applications recap",
+      "body": "| Situation | Model | Typical question |\n|---|---|---|\n| Investment at rate $i$ per year | $A = P(1 + i)^t$ | doubling time $t = \\frac{\\log 2}{\\log(1 + i)}$ |\n| Depreciation, decay | $V = V_0(1 - r)^t$ | when is it worth half? |\n| Light through glass or water | $I = I_0(0.8)^x$, $I = 100(0.39)^d$ | thickness/depth for a given intensity |\n| Acidity | pH $= -\\log[\\text{H}^+]$ | pH ↔ concentration |\n| Sound | $\\beta_2 - \\beta_1 = 10\\log\\frac{I_2}{I_1}$ | how many times as intense? |\n| Earthquakes | $M = \\log\\frac{I}{I_0}$ | compare two quakes: $10^{M_2 - M_1}$ |"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "exponential function",
+      "definition": "$y = b^x$, $b > 0$, $b \\neq 1$."
+    },
+    {
+      "term": "logarithmic function",
+      "definition": "$y = \\log_b x$, the inverse of $y = b^x$; defined for $x > 0$."
+    },
+    {
+      "term": "common logarithm",
+      "definition": "$\\log x = \\log_{10} x$."
+    },
+    {
+      "term": "power law of logarithms",
+      "definition": "$\\log_b x^n = n\\log_b x$."
+    },
+    {
+      "term": "change of base formula",
+      "definition": "$\\log_b m = \\frac{\\log m}{\\log b}$."
+    },
+    {
+      "term": "logarithmic scale",
+      "definition": "A scale in which each unit represents multiplication by a constant factor."
+    },
+    {
+      "term": "anchor points",
+      "definition": "$(1, 0)$ and $(10, 1)$ on $y = \\log x$, used to sketch transformations."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Definition of a logarithm",
+      "latex": "\\log_b x = y \\iff b^y = x",
+      "meaning": "$b > 0$, $b \\neq 1$, $x > 0$"
+    },
+    {
+      "name": "Special values",
+      "latex": "\\log_b 1 = 0,\\ \\log_b b = 1,\\ \\log_b b^k = k",
+      "meaning": ""
+    },
+    {
+      "name": "Transformed logarithmic function",
+      "latex": "f(x) = a\\log[k(x - d)] + c",
+      "meaning": "Asymptote $x = d$."
+    },
+    {
+      "name": "Power law",
+      "latex": "\\log_b x^n = n\\log_b x",
+      "meaning": ""
+    },
+    {
+      "name": "Change of base",
+      "latex": "\\log_b m = \\frac{\\log m}{\\log b}",
+      "meaning": ""
+    },
+    {
+      "name": "pH",
+      "latex": "\\text{pH} = -\\log[\\text{H}^+]",
+      "meaning": ""
+    },
+    {
+      "name": "Decibels",
+      "latex": "\\beta_2 - \\beta_1 = 10\\log\\frac{I_2}{I_1}",
+      "meaning": ""
+    },
+    {
+      "name": "Richter scale",
+      "latex": "M = \\log\\frac{I}{I_0}",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Transformations and the inverse",
+      "problem": "For $g(x) = 2\\log(-x - 3) + 6$, describe the transformations, state the domain, range and asymptote, and identify the type of the inverse function.",
+      "steps": [
+        "Factor: $-x - 3 = -(x + 3)$, so $g(x) = 2\\log[-(x + 3)] + 6$: vertical stretch by 2, reflection in the $y$-axis, translation 3 left and 6 up.",
+        "Argument $> 0$: $-(x + 3) > 0 \\Rightarrow x < -3$. Domain $x < -3$, range all reals, asymptote $x = -3$.",
+        "Anchor points: $(1, 0) \\to (-4, 6)$ and $(10, 1) \\to (-13, 8)$.\n```plot\nf: 2*log(-x-3) + 6\ndomain: -16, -2\nrange: -4, 10\npoints: (-4,6), (-13,8)\nasymptote x: -3\n```",
+        "The inverse of a logarithmic function is an **exponential** function: $x = 2\\log[-(y + 3)] + 6 \\Rightarrow y = -10^{(x - 6)/2} - 3$."
+      ],
+      "answer": "Domain $x < -3$, asymptote $x = -3$; the inverse is exponential."
+    },
+    {
+      "title": "Doubling time",
+      "problem": "250 dollars is put in an account paying 6.5% compounded annually. How long until it doubles?",
+      "steps": [
+        "$500 = 250(1.065)^t \\Rightarrow 2 = 1.065^t$.",
+        "$t = \\frac{\\log 2}{\\log 1.065} \\approx 11.0$ years."
+      ],
+      "answer": "About 11 years."
+    },
+    {
+      "title": "Sunlight under water",
+      "problem": "The intensity of sunlight at depth $d$ metres is $I(d) = 100(0.39)^d$. Find the intensity at 3 m and the depth where it is 1 unit.",
+      "steps": [
+        "$I(3) = 100(0.39)^3 \\approx 5.9$ units.",
+        "$1 = 100(0.39)^d \\Rightarrow 0.01 = 0.39^d \\Rightarrow d = \\frac{\\log 0.01}{\\log 0.39} \\approx 4.9$ m."
+      ],
+      "answer": "About 5.9 units at 3 m; 1 unit at about 4.9 m."
+    },
+    {
+      "title": "Comparing pH values",
+      "problem": "Chemical A has pH 6 and chemical B has pH 8. Compare their hydronium ion concentrations.",
+      "steps": [
+        "$[\\text{H}^+]_A = 10^{-6}$, $[\\text{H}^+]_B = 10^{-8}$.",
+        "Ratio $\\frac{10^{-6}}{10^{-8}} = 10^2 = 100$."
+      ],
+      "answer": "Chemical A has 100 times the hydronium concentration of B."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The inverse of $y = b^x$ is $y = \\frac{1}{b^x}$.",
+      "fact": "The inverse is $y = \\log_b x$ (reflection in $y = x$); $\\frac{1}{b^x} = b^{-x}$ is a reflection in the $y$-axis."
+    },
+    {
+      "myth": "$\\log(x - 3)$ shifts the graph left 3.",
+      "fact": "It shifts right 3; the asymptote is $x = 3$."
+    },
+    {
+      "myth": "$(\\log x)^2 = 2\\log x$.",
+      "fact": "Only $\\log x^2 = 2\\log x$."
+    },
+    {
+      "myth": "Magnitude 8 is twice magnitude 4.",
+      "fact": "It is $10^4 = 10\\,000$ times as intense."
+    },
+    {
+      "myth": "Logarithms cannot be negative.",
+      "fact": "$\\log 0.01 = -2$; only the argument must be positive."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Space travel",
+      "body": "The chapter problem: radiation shielding ($P = 100(0.2)^x$), braking near a space station ($t = \\log_{0.5}\\frac{d}{1000}$) and star brightness all rely on exponentials and logarithms."
+    },
+    {
+      "title": "Nuclear decay",
+      "body": "Stars are powered by nuclear reactions, and radioactive amounts follow $N(t) = N_0\\left(\\frac12\\right)^{t/h}$ where $h$ is the half-life; logarithms find $t$ or $h$."
+    },
+    {
+      "title": "Finance",
+      "body": "Banks, car dealers and investors use doubling times and depreciation times every day."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Evaluate $\\log_5 \\frac{1}{125}$.",
+      "hint": "$125 = 5^3$.",
+      "solution": "$-3$."
+    },
+    {
+      "question": "Solve $4^x = 15$ to two decimals.",
+      "hint": "Take logs.",
+      "solution": "$x = \\frac{\\log 15}{\\log 4} \\approx 1.95$."
+    },
+    {
+      "question": "State the domain, range and asymptote of $y = 3\\log(-x)$.",
+      "hint": "Reflection in the $y$-axis.",
+      "solution": "Domain $x < 0$, range all reals, asymptote $x = 0$."
+    },
+    {
+      "question": "Estimate $\\log_2 50$ without a calculator.",
+      "hint": "$2^5 = 32$, $2^6 = 64$.",
+      "solution": "Between 5 and 6, about 5.6 ($2^{5.64} \\approx 50$)."
+    },
+    {
+      "question": "How many times as intense is a 118 dB power saw as 85 dB traffic?",
+      "hint": "$10^{(118-85)/10}$.",
+      "solution": "$10^{3.3} \\approx 2000$ times."
+    },
+    {
+      "question": "Evaluate $\\log 1000^{-2}$.",
+      "hint": "Power law.",
+      "solution": "$-2\\log 1000 = -6$."
+    }
+  ],
+  "summary": [
+    "The logarithmic function $y = \\log_b x$ is the inverse of $y = b^x$; their key features swap.",
+    "Convert between forms with $\\log_b x = y \\iff b^y = x$; evaluate by writing arguments as powers.",
+    "Transform $y = \\log x$ to $a\\log[k(x - d)] + c$ using anchor points and the asymptote $x = d$.",
+    "Solve for unknown exponents with the power law; use change of base for any base.",
+    "Logarithmic scales (pH, dB, Richter) turn ratios into differences: each unit is a constant factor."
+  ],
+  "questions": [
+    {
+      "id": "6-rev-q01",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Consider $f(x) = {{b}}^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the key features of $f$."
+        },
+        {
+          "label": "b",
+          "text": "Describe how to graph $f^{-1}$ and give three points on it."
+        },
+        {
+          "label": "c",
+          "text": "Identify the key features of $f^{-1}$."
+        }
+      ],
+      "modelAnswer": "(a) $f$: domain all reals; range $y > 0$; no $x$-intercept; $y$-intercept 1; positive for all $x$; increasing for all $x$; horizontal asymptote $y = 0$. Points $(-1, \\tfrac{1}{ {{b}} })$, $(0, 1)$, $(1, {{b}})$.\n\n(b) The inverse $f^{-1}(x) = \\log_{ {{b}} } x$ is the reflection in $y = x$, through $(\\tfrac{1}{ {{b}} }, -1)$, $(1, 0)$, $({{b}}, 1)$.\n\n(c) $f^{-1}$: domain $x > 0$; range all reals; $x$-intercept 1; no $y$-intercept; negative for $0 < x < 1$, positive for $x > 1$; increasing; vertical asymptote $x = 0$.",
+      "rubric": [
+        {
+          "point": "Correct key features of f",
+          "marks": 2
+        },
+        {
+          "point": "Describes the inverse as the reflection in y = x with points",
+          "marks": 1
+        },
+        {
+          "point": "Correct key features of the inverse",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q02",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "The graph of $y = \\left(\\frac{1}{ {{b}} }\\right)^x$ passes through $(-1, {{b}})$, $(0, 1)$ and $(1, \\tfrac{1}{ {{b}} })$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give three points on the inverse and write its equation."
+        },
+        {
+          "label": "b",
+          "text": "Describe the shape and key features of the inverse."
+        },
+        {
+          "label": "c",
+          "text": "Show that the inverse can be written as $y = -\\log_{ {{b}} } x$ and explain how this accounts for its shape."
+        }
+      ],
+      "modelAnswer": "(a) Swap the coordinates: $({{b}}, -1)$, $(1, 0)$, $(\\tfrac{1}{ {{b}} }, 1)$. The inverse is $y = \\log_{1/{{b}}} x$ (or $x = \\left(\\frac{1}{ {{b}} }\\right)^y$).\n\n(b) The inverse is decreasing, has domain $x > 0$, range all reals, $x$-intercept 1 and vertical asymptote $x = 0$. It is positive for $0 < x < 1$ and negative for $x > 1$.\n\n(c) Using change of base, $\\log_{1/{{b}}} x = \\frac{\\log x}{\\log(1/{{b}})} = -\\frac{\\log x}{\\log {{b}}} = -\\log_{ {{b}} } x$, so the inverse is the reflection of $y = \\log_{ {{b}} } x$ in the $x$-axis — which is why it decreases.",
+      "rubric": [
+        {
+          "point": "Correct points on the inverse",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation of the inverse",
+          "marks": 1
+        },
+        {
+          "point": "Correct key features including decreasing",
+          "marks": 1
+        },
+        {
+          "point": "Shows the inverse equals −log_b x using change of base",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "min": 11,
+          "max": 80,
+          "step": 3
+        }
+      },
+      "text": "Rewrite each equation in logarithmic form. Where an unknown appears in an exponent, solve for it.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$4^3 = 64$"
+        },
+        {
+          "label": "b",
+          "text": "${{n}} = 3^x$",
+          "answer": {
+            "expr": "log(n)/log(3)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "c",
+          "text": "$6^3 = y$"
+        },
+        {
+          "label": "d",
+          "text": "$512 = 2^9$"
+        }
+      ],
+      "modelAnswer": "(a) $4^3 = 64 \\Rightarrow \\log_4 64 = 3$.\n\n(b) ${{n}} = 3^x \\Rightarrow x = \\log_3 {{n}} = \\frac{\\log {{n}}}{\\log 3} \\approx {{log(n)/log(3):4}}$.\n\n(c) $6^3 = y \\Rightarrow \\log_6 y = 3$ (and $y = 216$).\n\n(d) $512 = 2^9 \\Rightarrow \\log_2 512 = 9$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct log form",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct value of x",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 5,
+          "max": 9,
+          "step": 1
+        },
+        "j": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 5,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "Rewrite each equation in exponential form and solve for the unknown.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{k}} = \\log_2 x$",
+          "answer": {
+            "expr": "2^k",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "$x = \\log_b 1$",
+          "answer": {
+            "expr": "0",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "${{j}} = \\log_3 x$",
+          "answer": {
+            "expr": "3^j",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "$2 = \\log_b {{c^2}}$",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{k}} = \\log_2 x \\Rightarrow x = 2^{ {{k}} } = {{2^k}}$.\n\n(b) $x = \\log_b 1 \\Rightarrow b^x = 1 \\Rightarrow x = 0$ (for any valid base).\n\n(c) ${{j}} = \\log_3 x \\Rightarrow x = 3^{ {{j}} } = {{3^j}}$.\n\n(d) $2 = \\log_b {{c^2}} \\Rightarrow b^2 = {{c^2}} \\Rightarrow b = {{c}}$ (base must be positive).",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct with reason",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct and rejects the negative base",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q05",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            12,
+            20,
+            25,
+            50,
+            70,
+            100
+          ]
+        }
+      },
+      "text": "Estimate the value of $\\log_2 {{n}}$ without using a calculator. Justify your estimate with mathematical reasoning, then check it.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give your estimate to one decimal place.",
+          "answer": {
+            "expr": "logb(2,n)",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.04
+          }
+        }
+      ],
+      "modelAnswer": "$2^{ {{floor(logb(2,n))}} } = {{2^floor(logb(2,n))}}$ and $2^{ {{floor(logb(2,n))+1}} } = {{2^(floor(logb(2,n))+1)}}$. Since ${{2^floor(logb(2,n))}} < {{n}} < {{2^(floor(logb(2,n))+1)}}$, the logarithm is between {{floor(logb(2,n))}} and {{floor(logb(2,n))+1}}.\n\nBecause exponential growth speeds up, ${{n}}$ being about {{(n - 2^floor(logb(2,n)))/2^floor(logb(2,n)):2}} of the way through the doubling suggests an exponent a little beyond a linear estimate. A reasonable estimate is about {{logb(2,n):2}}.\n\nCheck with the change of base formula: $\\log_2 {{n}} = \\frac{\\log {{n}}}{\\log 2} \\approx {{logb(2,n):4}}$.",
+      "rubric": [
+        {
+          "point": "Brackets the value between consecutive powers of 2",
+          "marks": 2
+        },
+        {
+          "point": "Gives a reasonable estimate with justification",
+          "marks": 2
+        },
+        {
+          "point": "Checks with change of base or exponential form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q06",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            5,
+            6
+          ]
+        }
+      },
+      "text": "Evaluate each logarithm without a calculator.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_{ {{b}} } \\frac{1}{ {{b^3}} }$",
+          "answer": {
+            "expr": "-3",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_{ {{b}} } \\sqrt{ {{b}} }$",
+          "answer": {
+            "expr": "0.5",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log 0.000\\,001$",
+          "answer": {
+            "expr": "-6",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log_4(-64)$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log_{ {{b}} } \\frac{1}{ {{b^3}} } = \\log_{ {{b}} } {{b}}^{-3} = -3$.\n\n(b) $\\log_{ {{b}} } \\sqrt{ {{b}} } = \\log_{ {{b}} } {{b}}^{1/2} = \\frac12$.\n\n(c) $\\log 0.000\\,001 = \\log 10^{-6} = -6$.\n\n(d) $\\log_4 (-64)$ is **undefined**: $4^y > 0$ for every $y$, so no exponent produces $-64$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) recognises undefined with reason",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $y = -\\log(x - {{d}}) + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe how to graph the function using transformations."
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and asymptote."
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "10^c + d",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) Reflect $y = \\log x$ in the $x$-axis, translate {{d}} right and {{c}} up. Anchor points: $(1, 0) \\to ({{1+d}}, {{c}})$ and $(10, 1) \\to ({{10+d}}, {{c-1}})$.\n\n(b) Domain $\\{x > {{d}}\\}$; range all reals; asymptote $x = {{d}}$.\n\n(c) $x$-intercept: $\\log(x - {{d}}) = {{c}} \\Rightarrow x = 10^{ {{c}} } + {{d}} = {{10^c + d}}$.",
+      "rubric": [
+        {
+          "point": "Correct transformations and anchor points",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain, range and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "Consider $y = {{a}}\\log(-x)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations and give the images of the anchor points."
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and asymptote."
+        },
+        {
+          "label": "c",
+          "text": "Find the intercepts and the value of $y$ when $x = -100$.",
+          "answer": {
+            "expr": "2*a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Reflect $y = \\log x$ in the $y$-axis and stretch vertically by {{a}}: $(1, 0) \\to (-1, 0)$, $(10, 1) \\to (-10, {{a}})$.\n\n(b) Domain $x < 0$; range all reals; asymptote $x = 0$.\n\n(c) The $x$-intercept is $-1$ (from $-x = 1$); there is no $y$-intercept since $\\log 0$ is undefined. At $x = -100$: $y = {{a}}\\log 100 = {{2*a}}$.",
+      "rubric": [
+        {
+          "point": "Correct transformations",
+          "marks": 1
+        },
+        {
+          "point": "Correct anchor points",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, range and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct intercepts and value at x = −100",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q09",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create a logarithmic function that is the result of applying **all** of these transformations to $y = \\log x$: a horizontal stretch, a translation to the left, a vertical translation and a reflection. Then analyse your function.",
+      "modelAnswer": "Sample: $y = \\log\\left[-\\frac13(x + 2)\\right] - 4$.\n\n* $k = -\\frac13$: horizontal stretch by 3 and reflection in the $y$-axis\n* $d = -2$: translation 2 left; $c = -4$: translation 4 down\n\nAnchor points: $(1, 0) \\to (-3 - 2, -4) = (-5, -4)$; $(10, 1) \\to (-30 - 2, -3) = (-32, -3)$.\n\nDomain: $-\\frac13(x + 2) > 0 \\Rightarrow x < -2$; range all reals; asymptote $x = -2$.\n\n(Any correct function with $|k| < 1$, $d < 0$, $c \\neq 0$ and a reflection, with consistent features, earns full marks.)",
+      "rubric": [
+        {
+          "point": "Includes a horizontal stretch",
+          "marks": 1
+        },
+        {
+          "point": "Includes a left translation and a vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Includes a reflection",
+          "marks": 1
+        },
+        {
+          "point": "Correct anchor points",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, range and asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q10",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "n": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Evaluate each expression using the power law of logarithms.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_2 ({{2^k}})^{ {{n}} }$",
+          "answer": {
+            "expr": "n*k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log 1000^{-{{m}} }$",
+          "answer": {
+            "expr": "-3*m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log 0.001^{-1}$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_2 ({{2^k}})^{ {{n}} } = {{n}}\\log_2 {{2^k}} = {{n}}({{k}}) = {{n*k}}$.\n\n(b) $\\log 1000^{-{{m}} } = -{{m}}\\log 1000 = -{{m}}(3) = {{-3*m}}$.\n\n(c) $\\log 0.001^{-1} = -1 \\cdot \\log 10^{-3} = -1(-3) = 3$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 20,
+          "max": 200,
+          "step": 9
+        },
+        "z": {
+          "min": 15,
+          "max": 85,
+          "step": 10
+        },
+        "b": {
+          "choices": [
+            4,
+            5,
+            7
+          ]
+        },
+        "m": {
+          "min": 10,
+          "max": 90,
+          "step": 5
+        },
+        "f": {
+          "min": 40,
+          "max": 90,
+          "step": 10
+        },
+        "r": {
+          "choices": [
+            0.9,
+            0.8,
+            0.75
+          ]
+        }
+      },
+      "text": "Solve for $x$, correct to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x = \\log_3 {{n}}$",
+          "answer": {
+            "expr": "log(n)/log(3)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_2 0.{{z}} = x$",
+          "answer": {
+            "expr": "log(z/100)/log(2)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "c",
+          "text": "${{b}}^x = {{m}}$",
+          "answer": {
+            "expr": "log(m)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "d",
+          "text": "${{f}} = 100({{r}})^x$",
+          "answer": {
+            "expr": "log(f/100)/log(r)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        }
+      ],
+      "modelAnswer": "(a) $x = \\log_3 {{n}} = \\frac{\\log {{n}}}{\\log 3} \\approx {{log(n)/log(3):4}}$.\n\n(b) $x = \\log_2 0.{{z}} = \\frac{\\log 0.{{z}}}{\\log 2} \\approx {{log(z/100)/log(2):4}}$ (negative because $0.{{z}} < 1$).\n\n(c) ${{b}}^x = {{m}} \\Rightarrow x = \\frac{\\log {{m}}}{\\log {{b}}} \\approx {{log(m)/log(b):4}}$.\n\n(d) ${{f}} = 100({{r}})^x \\Rightarrow {{f/100}} = {{r}}^x \\Rightarrow x = \\frac{\\log {{f/100}}}{\\log {{r}}} \\approx {{log(f/100)/log(r):4}}$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct and negative",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) isolates the power first",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "choices": [
+            0.8,
+            0.85,
+            0.9
+          ]
+        },
+        "blk": {
+          "choices": [
+            25,
+            40,
+            50
+          ]
+        }
+      },
+      "text": "The intensity of light, in lumens, passing through glass $x$ millimetres thick is $I(x) = I_0({{r}})^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How thick should the glass be to block {{blk}}% of the light?",
+          "answer": {
+            "expr": "log((100-blk)/100)/log(r)",
+            "unit": "mm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain how the intensity changes as the glass gets thicker."
+        }
+      ],
+      "modelAnswer": "(a) Blocking {{blk}}% leaves {{100 - blk}}%: ${{(100-blk)/100}} = {{r}}^x \\Rightarrow x = \\frac{\\log {{(100-blk)/100}}}{\\log {{r}}} \\approx {{log((100-blk)/100)/log(r):3}}$ mm.\n\n(b) Each millimetre multiplies the intensity by {{r}}, i.e. blocks {{100 - 100*r}}% of the light that reaches it. After $x$ mm the fraction transmitted is ${{r}}^x$, which decreases exponentially.",
+      "rubric": [
+        {
+          "point": "Correct equation using the fraction transmitted",
+          "marks": 1
+        },
+        {
+          "point": "Correct thickness",
+          "marks": 2
+        },
+        {
+          "point": "Explains the exponential decrease per millimetre",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q13",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Explain how to sketch $y = \\log_{ {{b}} } x$ without using technology, and how you could check your sketch with a graphing calculator.",
+      "modelAnswer": "Graph $y = {{b}}^x$ using points $(-1, \\tfrac{1}{ {{b}} })$, $(0, 1)$, $(1, {{b}})$, $(2, {{b^2}})$ and its asymptote $y = 0$. Reflect in $y = x$ by swapping coordinates: $(\\tfrac{1}{ {{b}} }, -1)$, $(1, 0)$, $({{b}}, 1)$, $({{b^2}}, 2)$, with asymptote $x = 0$. Join with a smooth increasing curve that hugs $x = 0$ as $y$ becomes very negative.\n\nTo check, use the change of base formula and enter $y = \\frac{\\log x}{\\log {{b}}}$ into the calculator.",
+      "rubric": [
+        {
+          "point": "Uses the inverse exponential graph",
+          "marks": 1
+        },
+        {
+          "point": "Correct swapped points",
+          "marks": 2
+        },
+        {
+          "point": "Correct asymptote and shape",
+          "marks": 1
+        },
+        {
+          "point": "Describes a valid technology check (change of base)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q14",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "pa": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        },
+        "pb": {
+          "min": 8,
+          "max": 11,
+          "step": 1
+        }
+      },
+      "text": "Chemical A has a pH of {{pa}}, while chemical B has a pH of {{pb}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the hydronium ion concentration of each."
+        },
+        {
+          "label": "b",
+          "text": "How many times as great is the concentration in A as in B?",
+          "answer": {
+            "expr": "10^(pb - pa)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Classify each chemical."
+        }
+      ],
+      "modelAnswer": "(a) $[\\text{H}^+]_A = 10^{-{{pa}} }$ and $[\\text{H}^+]_B = 10^{-{{pb}} }$.\n\n(b) $\\frac{[\\text{H}^+]_A}{[\\text{H}^+]_B} = 10^{ {{pb}} - {{pa}} } = 10^{ {{pb - pa}} } = {{10^(pb - pa)}}$. Chemical A has {{10^(pb - pa)}} times the hydronium ion concentration of chemical B.\n\n(c) A is acidic (pH < 7); B is alkaline (pH > 7).",
+      "rubric": [
+        {
+          "point": "Correct concentrations",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio from the pH difference",
+          "marks": 2
+        },
+        {
+          "point": "Correct classifications",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m1": {
+          "min": 6.0,
+          "max": 8.5,
+          "step": 0.5
+        },
+        "m2": {
+          "min": 3.0,
+          "max": 5.0,
+          "step": 0.5
+        }
+      },
+      "text": "A magnitude {{m1}} earthquake and a magnitude {{m2}} earthquake are compared using $M = \\log\\left(\\dfrac{I}{I_0}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many times as intense is the larger earthquake?",
+          "answer": {
+            "expr": "10^(m1 - m2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\frac{I_1}{I_2} = 10^{ {{m1}} - {{m2}} } = 10^{ {{m1 - m2:2}} } \\approx {{10^(m1 - m2):3}}$.\n\nThe magnitude {{m1}} earthquake is about {{10^(m1 - m2):3}} times as intense — far more than the ratio of the magnitudes, ${{m1/m2:3}}$, because each unit on the Richter scale represents a factor of 10.",
+      "rubric": [
+        {
+          "point": "Subtracts magnitudes",
+          "marks": 1
+        },
+        {
+          "point": "Correct intensity ratio",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the magnitude ratio is misleading",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q16",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "q": {
+          "choices": [
+            1000,
+            5000,
+            10000,
+            50000
+          ]
+        }
+      },
+      "text": "Welders use the shade number $n = 1 - \\dfrac{7\\log T}{3}$, where $T$ is the fraction of visible light the glass transmits.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What shade number transmits $\\frac{1}{ {{q}} }$ of the light?",
+          "answer": {
+            "expr": "1 + 7*log(q)/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How does the shade number change when the transmitted fraction is divided by 10?",
+          "answer": {
+            "expr": "7/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range of this function in context."
+        }
+      ],
+      "modelAnswer": "(a) $T = \\frac{1}{ {{q}} }$: $n = 1 - \\frac{7\\log(1/{{q}})}{3} = 1 + \\frac{7\\log {{q}}}{3} \\approx {{1 + 7*log(q)/3:3}}$.\n\n(b) If $T$ is divided by 10, $\\log T$ decreases by 1, so $n$ increases by $\\frac{7}{3} \\approx 2.33$. Each increase of about 2.3 in shade number means the glass lets through one tenth as much light.\n\n(c) Domain: $0 < T \\le 1$ (a fraction of the light). Range: $n \\ge 1$ (when $T = 1$, $n = 1$; as $T \\to 0$, $n$ increases without bound).",
+      "rubric": [
+        {
+          "point": "Correct shade number",
+          "marks": 2
+        },
+        {
+          "point": "Explains the effect of dividing T by 10",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and range with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q17",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe the graph of the inverse of $y = \\left(\\frac12\\right)^x$, without drawing it.",
+      "modelAnswer": "$y = (\\frac12)^x$ passes through $(-2, 4)$, $(-1, 2)$, $(0, 1)$, $(1, \\tfrac12)$ and has asymptote $y = 0$; it is decreasing.\n\nIts inverse, $y = \\log_{1/2} x$, passes through $(4, -2)$, $(2, -1)$, $(1, 0)$, $(\\tfrac12, 1)$. It has domain $x > 0$, range all reals, vertical asymptote $x = 0$ and is **decreasing**: it starts high near the positive $y$-axis, crosses the $x$-axis at 1, and falls slowly to the right.",
+      "rubric": [
+        {
+          "point": "Correct points on the original",
+          "marks": 1
+        },
+        {
+          "point": "Correct swapped points",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, range and asymptote of the inverse",
+          "marks": 2
+        },
+        {
+          "point": "States the inverse is decreasing with correct description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Describe the graph of $y = \\log(x + {{h}}) - {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "10^c - h",
+            "unit": "",
+            "sig": 5
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the $y$-intercept.",
+          "answer": {
+            "expr": "log(h) - c",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Translate $y = \\log x$ {{h}} units left and {{c}} units down.\n\n* Anchor points: $(1, 0) \\to ({{1 - h}}, -{{c}})$, $(10, 1) \\to ({{10 - h}}, {{1 - c}})$\n* Asymptote $x = -{{h}}$; domain $x > -{{h}}$; range all reals\n* $x$-intercept: $\\log(x + {{h}}) = {{c}} \\Rightarrow x = 10^{ {{c}} } - {{h}} = {{10^c - h}}$\n* $y$-intercept: $y = \\log {{h}} - {{c}} \\approx {{log(h) - c:3}}$",
+      "rubric": [
+        {
+          "point": "Correct translations and anchor points",
+          "marks": 1
+        },
+        {
+          "point": "Correct asymptote and domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q19",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 10,
+          "max": 200,
+          "step": 7
+        },
+        "n": {
+          "min": 5,
+          "max": 140,
+          "step": 9
+        }
+      },
+      "text": "Evaluate, correct to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_6 {{m}}$",
+          "answer": {
+            "expr": "log(m)/log(6)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_{12} {{n}}$",
+          "answer": {
+            "expr": "log(n)/log(12)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_6 {{m}} = \\frac{\\log {{m}}}{\\log 6} \\approx {{log(m)/log(6):4}}$.\n\n(b) $\\log_{12} {{n}} = \\frac{\\log {{n}}}{\\log 12} \\approx {{log(n)/log(12):4}}$.\n\nBoth are reasonable: e.g. $6^{ {{floor(log(m)/log(6))}} } < {{m}} < 6^{ {{floor(log(m)/log(6)) + 1}} }$.",
+      "rubric": [
+        {
+          "point": "(a) correct using change of base",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "Reasonableness check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q20",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 3,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Consider $g(x) = 2\\log(-x - {{h}}) + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations that map $f(x) = \\log x$ onto $g$."
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and asymptote."
+        },
+        {
+          "label": "c",
+          "text": "Find an equation for $g^{-1}$. What type of function is it?"
+        },
+        {
+          "label": "d",
+          "text": "Evaluate $g^{-1}({{c}})$.",
+          "answer": {
+            "expr": "-1 - h",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Factor: $-x - {{h}} = -(x + {{h}})$, so $g(x) = 2\\log[-(x + {{h}})] + {{c}}$: vertical stretch by 2, reflection in the $y$-axis, translation {{h}} left and {{c}} up.\n\n(b) $-(x + {{h}}) > 0 \\Rightarrow x < -{{h}}$. Domain $x < -{{h}}$; range all reals; asymptote $x = -{{h}}$. Anchor points: $(1, 0) \\to ({{-1 - h}}, {{c}})$, $(10, 1) \\to ({{-10 - h}}, {{2 + c}})$.\n\n(c) Inverse: $x = 2\\log[-(y + {{h}})] + {{c}} \\Rightarrow \\frac{x - {{c}}}{2} = \\log[-(y + {{h}})] \\Rightarrow -(y + {{h}}) = 10^{(x - {{c}})/2} \\Rightarrow y = -10^{(x - {{c}})/2} - {{h}}$. The inverse is an exponential function (reflected in the $x$-axis and shifted).\n\n(d) $g^{-1}({{c}}) = -10^0 - {{h}} = {{-1 - h}}$. Check: $g({{-1 - h}}) = 2\\log 1 + {{c}} = {{c}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Correct factoring and transformations",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, asymptote and anchor points",
+          "marks": 1
+        },
+        {
+          "point": "Correct inverse equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct value of the inverse",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q21",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 200,
+          "max": 800,
+          "step": 50
+        },
+        "r": {
+          "choices": [
+            4.5,
+            5.5,
+            6.5,
+            7.5
+          ]
+        }
+      },
+      "derived": {
+        "g": "1 + r/100"
+      },
+      "text": "{{p}} dollars is put into an account paying {{r}}% interest, compounded annually.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long will it take for the amount to double?",
+          "answer": {
+            "expr": "log(2)/log(g)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$A = {{p}}({{g}})^t$. Double: ${{2*p}} = {{p}}({{g}})^t \\Rightarrow 2 = {{g}}^t$.\n\n$t = \\frac{\\log 2}{\\log {{g}}} \\approx {{log(2)/log(g):3}}$ years.\n\nThe principal cancels, so the doubling time does not depend on the {{p}} dollars invested.",
+      "rubric": [
+        {
+          "point": "Correct model",
+          "marks": 1
+        },
+        {
+          "point": "Isolates the power and takes logs",
+          "marks": 1
+        },
+        {
+          "point": "Correct doubling time",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q22",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 2.0,
+          "max": 4.0,
+          "step": 0.5
+        },
+        "k": {
+          "choices": [
+            20,
+            50,
+            200,
+            500
+          ]
+        }
+      },
+      "text": "A solution has a pH of {{p}}. It is diluted so that its hydronium ion concentration is divided by {{k}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the original hydronium ion concentration.",
+          "answer": {
+            "expr": "10^(-p)",
+            "unit": "mol/L",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the new pH.",
+          "answer": {
+            "expr": "p + log(k)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the pH did not increase by the same factor."
+        }
+      ],
+      "modelAnswer": "(a) Original $[\\text{H}^+] = 10^{-{{p}} } \\approx {{10^(-p):3}}$ mol/L.\n\n(b) New concentration $= \\frac{10^{-{{p}} }}{ {{k}} }$. New pH $= -\\log\\left(\\frac{10^{-{{p}} }}{ {{k}} }\\right) = {{p}} + \\log {{k}} \\approx {{p + log(k):3}}$.\n\n(c) Dividing the concentration by {{k}} increases the pH by $\\log {{k}} \\approx {{log(k):3}}$, not by {{k}}: the pH scale is logarithmic. The solution becomes less acidic.",
+      "rubric": [
+        {
+          "point": "Correct original concentration",
+          "marks": 1
+        },
+        {
+          "point": "Correct new pH",
+          "marks": 2
+        },
+        {
+          "point": "Explains the pH change as log k",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q23",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d1": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "q": {
+          "choices": [
+            1,
+            5,
+            10,
+            20
+          ]
+        }
+      },
+      "text": "The intensity of sunlight decreases with depth $d$, in metres, below the surface of the ocean according to $I(d) = 100(0.39)^d$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the intensity at a depth of {{d1}} m?",
+          "answer": {
+            "expr": "100*0.39^d1",
+            "unit": "units",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "At what depth is the intensity {{q}} units?",
+          "answer": {
+            "expr": "log(q/100)/log(0.39)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain what the base 0.39 tells you about the light."
+        }
+      ],
+      "modelAnswer": "(a) $I({{d1}}) = 100(0.39)^{ {{d1}} } \\approx {{100*0.39^d1:3}}$ units.\n\n(b) ${{q}} = 100(0.39)^d \\Rightarrow {{q/100}} = 0.39^d \\Rightarrow d = \\frac{\\log {{q/100}}}{\\log 0.39} \\approx {{log(q/100)/log(0.39):3}}$ m.\n\n(c) Every metre of depth multiplies the intensity by 0.39, so 61% of the remaining light is lost per metre; the intensity approaches 0 but never reaches it.",
+      "rubric": [
+        {
+          "point": "Correct intensity at the given depth",
+          "marks": 1
+        },
+        {
+          "point": "Isolates the power and solves with logs",
+          "marks": 1
+        },
+        {
+          "point": "Correct depth",
+          "marks": 2
+        },
+        {
+          "point": "Interprets the decay factor",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q24",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "m": {
+          "min": 2,
+          "max": 8,
+          "step": 2
+        }
+      },
+      "text": "Consider $y = \\log({{k}}x - {{m}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the domain, range, intercepts and asymptote.",
+          "answer": {
+            "expr": "(m+1)/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How would the graph of $y = -\\log({{k}}x - {{m}})$ differ?"
+        }
+      ],
+      "modelAnswer": "(a) Factor: $y = \\log[{{k}}(x - {{m/k:3}})]$: horizontal compression by $\\frac{1}{ {{k}} }$ and translation {{m/k:3}} right.\n\nDomain $x > {{m/k:3}}$; range all reals; asymptote $x = {{m/k:3}}$; $x$-intercept: ${{k}}x - {{m}} = 1 \\Rightarrow x = {{(m+1)/k:3}}$; no $y$-intercept (argument negative at $x = 0$).\n\n(b) $y = -\\log({{k}}x - {{m}})$ is the reflection of this graph in the $x$-axis: same domain, asymptote and $x$-intercept, but it is decreasing instead of increasing (and positive for ${{m/k:3}} < x < {{(m+1)/k:3}}$).",
+      "rubric": [
+        {
+          "point": "Correct factored form and transformations",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, range and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct intercepts",
+          "marks": 1
+        },
+        {
+          "point": "Correct comparison with the reflected graph",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q25",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Design a method, using graphing technology, to demonstrate that the power law of logarithms, $\\log x^n = n\\log x$, holds. Use examples of your choice.",
+      "modelAnswer": "Sample method:\n\n1. Choose $n = 3$. Graph $Y_1 = \\log(x^3)$ and $Y_2 = 3\\log(x)$ on the same axes.\n2. Observe that for $x > 0$ the graphs coincide (one lies exactly on top of the other).\n3. Use the table feature: at $x = 2$, $Y_1 = \\log 8 \\approx 0.903$ and $Y_2 = 3\\log 2 \\approx 0.903$; at $x = 50$, both are about 5.097.\n4. Repeat with other exponents, including a fraction ($n = \\frac12$) and a negative number ($n = -2$).\n5. Note the limitation: for $n = 2$, $\\log(x^2)$ is also defined for $x < 0$ while $2\\log x$ is not, so the graphs agree only for $x > 0$, which is the restriction in the power law.",
+      "rubric": [
+        {
+          "point": "Describes graphing both sides as separate functions",
+          "marks": 2
+        },
+        {
+          "point": "Uses numerical checks (table/trace)",
+          "marks": 1
+        },
+        {
+          "point": "Tests several values of n",
+          "marks": 1
+        },
+        {
+          "point": "Notes the domain restriction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-rev-q26",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The slopes of tangents to $y = 2^x$ and $y = \\log_2 x$ are compared at corresponding points.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the slope of the tangent to $y = 2^x$ at $x = {{a}}$.",
+          "answer": {
+            "expr": "(2^(a+0.001) - 2^a)/0.001",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.04
+          }
+        },
+        {
+          "label": "b",
+          "text": "Estimate the slope of the tangent to $y = \\log_2 x$ at the corresponding point.",
+          "answer": {
+            "expr": "(logb(2, 2^a + 0.001) - a)/0.001",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.04
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the relationship between the two slopes? Explain why."
+        }
+      ],
+      "modelAnswer": "(a) At $x = {{a}}$ on $y = 2^x$ (point $({{a}}, {{2^a}})$): slope $\\approx \\frac{2^{ {{a}}.001} - 2^{ {{a}} }}{0.001} \\approx {{(2^(a+0.001) - 2^a)/0.001:3}}$.\n\n(b) The corresponding point on $y = \\log_2 x$ is $({{2^a}}, {{a}})$. Slope $\\approx \\frac{\\log_2({{2^a}} + 0.001) - {{a}}}{0.001} \\approx {{(logb(2, 2^a + 0.001) - a)/0.001:3}}$.\n\n(c) The product of the slopes is about {{(2^(a+0.001) - 2^a)/0.001 * (logb(2, 2^a + 0.001) - a)/0.001:3}} ≈ 1: the slopes are reciprocals. Reflecting a line in $y = x$ swaps rise and run, so a tangent with slope $m$ becomes a tangent with slope $\\frac1m$. This explains why the exponential's rate of change grows while the logarithm's shrinks.",
+      "rubric": [
+        {
+          "point": "Correct slope estimate for the exponential",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the corresponding point on the log graph",
+          "marks": 1
+        },
+        {
+          "point": "Correct slope estimate for the log function",
+          "marks": 1
+        },
+        {
+          "point": "Explains the reciprocal relationship using reflection in y = x",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}
