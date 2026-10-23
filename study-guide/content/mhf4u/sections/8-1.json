@@ -207,7 +207,7 @@
     {
       "question": "A hotdog vendor has fixed costs of \\$120 per day, variable costs of \\$1 per hotdog, sells hotdogs for \\$2.50 and can sell at most 250 a day. Find the break-even point and the maximum daily profit.",
       "hint": "$P(h) = 2.5h - (120 + h)$.",
-      "solution": "$P(h) = 1.5h - 120$. Break-even: $h = 80$ hotdogs (\\$200). Maximum profit at $h = 250$: $1.5(250) - 120 = \\$255$."
+      "solution": "$P(h) = 1.5h - 120$. Break-even: $h = 80$ hotdogs (\\$200). Maximum profit at $h = 250$: $1.5(250) - 120 = \\text{\\textdollar}255$."
     },
     {
       "question": "What are the minimum, maximum and average values of $V(t) = 6\\sin t + 9$?",
@@ -555,7 +555,7 @@
           }
         }
       ],
-      "modelAnswer": "$C(h) = {{F}} + {{v}}h$, $R(h) = {{p}}h$.\n\n**(a)** Break-even: ${{p}}h = {{F}} + {{v}}h \\Rightarrow h = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):3}}$. Cost and revenue are both about \\${{p*F/(p-v):3}} there.\n\n**(b)** $P(h) = R(h) - C(h) = {{p-v}}h - {{F}}$.\n\n**(c)** Practical domain: $\\{h \\in \\mathbb{W}, 0 \\le h \\le {{M}}\\}$.\n$C$: from \\${{F}} to \\${{F+v*M}}; $R$: from \\$0 to \\${{p*M}}; $P$: from −\\${{F}} to \\${{(p-v)*M-F}}.\n\n**(d)** $P$ is increasing, so the maximum profit is at $h = {{M}}$: $P({{M}}) = {{p-v}}({{M}}) - {{F}} = \\${{(p-v)*M-F}}$.",
+      "modelAnswer": "$C(h) = {{F}} + {{v}}h$, $R(h) = {{p}}h$.\n\n**(a)** Break-even: ${{p}}h = {{F}} + {{v}}h \\Rightarrow h = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):3}}$. Cost and revenue are both about \\${{p*F/(p-v):3}} there.\n\n**(b)** $P(h) = R(h) - C(h) = {{p-v}}h - {{F}}$.\n\n**(c)** Practical domain: $\\{h \\in \\mathbb{W}, 0 \\le h \\le {{M}}\\}$.\n$C$: from \\${{F}} to \\${{F+v*M}}; $R$: from \\$0 to \\${{p*M}}; $P$: from −\\${{F}} to \\${{(p-v)*M-F}}.\n\n**(d)** $P$ is increasing, so the maximum profit is at $h = {{M}}$: $P({{M}}) = {{p-v}}({{M}}) - {{F}} = \\text{\\textdollar}{{(p-v)*M-F}}$.",
       "rubric": [
         {
           "point": "Correct break-even quantity with working",
@@ -1152,7 +1152,7 @@
           }
         }
       ],
-      "modelAnswer": "**(a)** Wages $W(h) = {{w}}h$; tips $T(h) = {{t}}h$. Both are lines through the origin (slopes {{w}} and {{t}}).\n\n**(b)** Total $E(h) = W(h) + T(h) = {{w+t}}h$ – by superposition the slopes add.\n\n**(c)** $E({{H}}) = {{w+t}}({{H}}) = \\${{(w+t)*H}}$.",
+      "modelAnswer": "**(a)** Wages $W(h) = {{w}}h$; tips $T(h) = {{t}}h$. Both are lines through the origin (slopes {{w}} and {{t}}).\n\n**(b)** Total $E(h) = W(h) + T(h) = {{w+t}}h$ – by superposition the slopes add.\n\n**(c)** $E({{H}}) = {{w+t}}({{H}}) = \\text{\\textdollar}{{(w+t)*H}}$.",
       "rubric": [
         {
           "point": "Correct wage and tip functions",
