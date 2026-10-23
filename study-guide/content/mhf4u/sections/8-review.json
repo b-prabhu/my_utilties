@@ -1,0 +1,1336 @@
+{
+  "id": "8-review",
+  "number": "Review",
+  "title": "Chapter 8 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "Bring together everything from Chapter 8: sums, differences, products, quotients and compositions of functions, inequalities of combined functions, and modelling. Use the summary and checklist, then work through the review problems – they follow the chapter review and practice test, rewritten so that every question asks you to show your working and explain your reasoning.",
+  "objectives": [
+    "Choose and apply the correct operation to combine functions.",
+    "Determine domains, ranges, holes, asymptotes and symmetry of combined functions.",
+    "Solve inequalities of combined functions algebraically and graphically.",
+    "Build and interpret combined-function models of real situations."
+  ],
+  "lessons": [
+    {
+      "id": "big-picture",
+      "title": "Chapter 8 at a Glance",
+      "body": "\n| Operation | Notation | How to find it | Domain |\n|---|---|---|---|\n| Sum | $(f + g)(x) = f(x) + g(x)$ | add expressions; graph by adding y-values (superposition) | common domain |\n| Difference | $(f - g)(x) = f(x) - g(x)$ | subtract **every** term of $g$ | common domain |\n| Product | $(fg)(x) = f(x)g(x)$ | multiply; factor to sketch | common domain |\n| Quotient | $\\left(\\frac fg\\right)(x) = \\frac{f(x)}{g(x)}$ | divide; simplify; find holes and asymptotes | common domain, $g(x) \\ne 0$ |\n| Composition | $(f \\circ g)(x) = f(g(x))$ | substitute $g(x)$ into $f$ | $x$ in domain of $g$ with $g(x)$ in domain of $f$ |\n\n**Which operations are commutative?** Addition and multiplication: yes. Subtraction, division and composition: no.\n\n**Symmetry:** even ± even = even, odd ± odd = odd; even·even = even, odd·odd = even, even·odd = odd (same for quotients).\n\n**Inverses:** $f(f^{-1}(x)) = f^{-1}(f(x)) = x$.\n\n**Inequalities:** $f > g$ where $f$'s graph is above $g$'s, where $f - g > 0$, or where $\\frac fg > 1$ (only if $g > 0$).\n\n**Modelling:** sum for \"trend + oscillation\", product for \"oscillation with changing amplitude\".\n"
+    },
+    {
+      "id": "strategy",
+      "title": "A Problem-Solving Checklist",
+      "body": "\n1. **Name the operation.** Is the problem adding, subtracting, multiplying, dividing or composing functions? Words help: *total* → sum, *profit* → difference, *revenue* → product, *per person / probability* → quotient, *depends on* → composition.\n2. **Write the combined function** algebraically and simplify carefully (brackets!).\n3. **Find the domain** from the original component functions, then restrict it by the context (e.g. whole numbers, time $\\ge 0$).\n4. **Find key features**: zeros, holes, asymptotes, maximum/minimum, intersections, period, amplitude.\n5. **Use technology** when algebra is not enough (e.g. $\\sin x > \\log x$), and state answers with sensible rounding.\n6. **Interpret** every number in the context of the problem: what does the break-even point, the crisis point or the maximum mean?\n"
+    },
+    {
+      "id": "graphs",
+      "title": "Reading Combined Graphs",
+      "body": "\n* A **sum** with a constant shifts a graph vertically; a sum with a non-constant function is a *variable* vertical translation.\n* A **difference** $g - f$ is the reflection in the x-axis of $f - g$.\n* A **product** is zero wherever either factor is zero; an exponential factor acts as an **envelope**.\n* A **quotient** has vertical asymptotes at zeros of the denominator that do not cancel, and holes where they do.\n* A **composition** with a linear inner function $k(x - d)$ stretches and shifts horizontally.\n\n```plot\ntitle: Sum vs product of y = x and y = sin x\nf: x + sin(x) | label=x + sin x\nf: x*sin(x) | dashed; label=x·sin x\ndomain: -10, 10\nrange: -10, 10\nticks: 2, 2\n```\n"
+    },
+    {
+      "id": "careers",
+      "title": "Where Combined Functions Are Used",
+      "body": "\n* **Business and marketing:** profit $= R - C$; revenue $=$ price × quantity; optimum prices from combined functions.\n* **Engineering and physics:** damped vibrations, AC–DC signals, wave interference, hanging cables.\n* **Environmental science:** predator–prey cycles, pollution as a function of population over time.\n* **Actuarial science:** probabilities and risk are combined functions of many variables.\n* **Music and sound engineering:** chords as sums of sine waves.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "superposition principle",
+      "definition": "The sum (or difference) of functions is found by adding (or subtracting) y-values at each x-value."
+    },
+    {
+      "term": "composite function",
+      "definition": "$f(g(x))$: $g$ is applied first and its output becomes the input of $f$."
+    },
+    {
+      "term": "break-even point",
+      "definition": "Where revenue equals cost."
+    },
+    {
+      "term": "damped harmonic motion",
+      "definition": "Oscillation with decreasing amplitude; sinusoid × exponential decay."
+    },
+    {
+      "term": "hole",
+      "definition": "A missing point in a graph where a common factor cancels from a quotient."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Combined functions",
+      "latex": "(f\\pm g)(x) = f(x) \\pm g(x),\\ (fg)(x) = f(x)g(x),\\ \\left(\\tfrac fg\\right)(x) = \\tfrac{f(x)}{g(x)}",
+      "meaning": "Domain: common domain (minus zeros of $g$ for quotients)."
+    },
+    {
+      "name": "Composition",
+      "latex": "(f\\circ g)(x) = f(g(x))",
+      "meaning": "Generally $f(g(x)) \\ne g(f(x))$."
+    },
+    {
+      "name": "Inverse identity",
+      "latex": "f(f^{-1}(x)) = x",
+      "meaning": "Maps every number onto itself."
+    },
+    {
+      "name": "Damped oscillation",
+      "latex": "y = A\\cos(kt)\\,b^t",
+      "meaning": "Period $2\\pi/k$; half-amplitude time $\\log 0.5/\\log b$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Combine and analyse",
+      "problem": "Let $f(x) = (x - 3)^2$ and $g(x) = x + 4$. Find $f + g$, $f - g$, $f(g(x))$ and $g^{-1}(g(x))$ with domains and ranges.",
+      "steps": [
+        "$f + g = x^2 - 6x + 9 + x + 4 = x^2 - 5x + 13$. Vertex $x = 2.5$: $6.25 - 12.5 + 13 = 6.75$. Range $y \\ge 6.75$.",
+        "$f - g = x^2 - 6x + 9 - x - 4 = x^2 - 7x + 5$. Vertex $x = 3.5$: $12.25 - 24.5 + 5 = -7.25$. Range $y \\ge -7.25$.",
+        "$f(g(x)) = (x + 4 - 3)^2 = (x + 1)^2$. Range $y \\ge 0$.",
+        "$g^{-1}(x) = x - 4$, so $g^{-1}(g(x)) = x$; domain and range $\\mathbb{R}$.",
+        "All have domain $\\mathbb{R}$."
+      ],
+      "answer": "$x^2 - 5x + 13$; $x^2 - 7x + 5$; $(x+1)^2$; $x$."
+    },
+    {
+      "title": "Supply and demand",
+      "problem": "Supply $S(p) = p + 3$ and demand $D(p) = -0.1(p + 8)(p - 12)$ (thousands of bears, price $p$ in dollars). Where is $D > S$?",
+      "steps": [
+        "Set $D = S$: $-0.1(p^2 - 4p - 96) = p + 3 \\Rightarrow -0.1p^2 + 0.4p + 9.6 = p + 3$.",
+        "$0.1p^2 + 0.6p - 6.6 = 0 \\Rightarrow p^2 + 6p - 66 = 0$.",
+        "$p = -3 + \\sqrt{75} \\approx 5.66$ (the negative root is not meaningful).",
+        "$D > S$ for $0 \\le p < 5.66$: demand exceeds supply → shortage. $D < S$ for $5.66 < p \\le 12$ → surplus.",
+        "Equilibrium: $(5.66, 8.66)$ – at \\$5.66 about 8660 bears are supplied and demanded."
+      ],
+      "answer": "Shortage below \\$5.66, surplus above."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$f(g(x)) = f(x)g(x)$.",
+      "fact": "Composition substitutes; a product multiplies outputs."
+    },
+    {
+      "myth": "The domain of a quotient comes from its simplified form.",
+      "fact": "Use the unsimplified form – cancelled factors leave holes."
+    },
+    {
+      "myth": "Dividing to compare functions always works.",
+      "fact": "$\\frac fg > 1 \\iff f > g$ only where $g > 0$."
+    },
+    {
+      "myth": "Damping means adding an exponential.",
+      "fact": "Damping multiplies the sinusoid by a decaying exponential."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Markets",
+      "body": "Where supply and demand curves cross is the equilibrium price; inequalities of the two functions show shortages and surpluses."
+    },
+    {
+      "title": "Beaches and business",
+      "body": "An ice-cream vendor's sales depend on the number of swimmers, which depends on temperature – a combined function with a best temperature for profit."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Let $f(x) = x - 2$, $g(x) = x^2 + 3x - 3$, $h(x) = 2^x$. Find $f + g + h$ and evaluate it at $x = 2$.",
+      "hint": "Collect like terms.",
+      "solution": "$x^2 + 4x - 5 + 2^x$; at 2: $4 + 8 - 5 + 4 = 11$."
+    },
+    {
+      "question": "Let $f(x) = \\sin x$, $g(x) = \\cos x$. Identify $\\frac{f(x)}{g(x)}$ and its domain.",
+      "hint": "Quotient identity.",
+      "solution": "$\\tan x$, domain $x \\ne \\frac{\\pi}{2} + n\\pi$, range $\\mathbb{R}$."
+    },
+    {
+      "question": "Express the volume of a sphere as a function of its circumference $C$.",
+      "hint": "$r = \\frac{C}{2\\pi}$.",
+      "solution": "$V = \\frac43\\pi\\left(\\frac{C}{2\\pi}\\right)^3 = \\frac{C^3}{6\\pi^2}$."
+    },
+    {
+      "question": "Is the difference of two odd functions odd or even?",
+      "hint": "$h(-x) = f(-x) - g(-x)$.",
+      "solution": "$h(-x) = -f(x) + g(x) = -h(x)$: odd."
+    }
+  ],
+  "summary": [
+    "Five ways to combine functions: $+, -, \\times, \\div$ and composition; know the domain rule for each.",
+    "Superposition for sums/differences; factoring for products/quotients; substitution for composition.",
+    "Inequalities of combined functions are solved with intersections and interval testing, algebraically or with technology.",
+    "Combined functions model profit, revenue, probability, populations, waves, music and damped motion."
+  ],
+  "questions": [
+    {
+      "id": "8-rv-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": -3,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": -3,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": -3,
+          "max": 5,
+          "step": 1
+        },
+        "d": {
+          "min": -3,
+          "max": 5,
+          "step": 1
+        },
+        "e": {
+          "min": -3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The table shows values of two functions.\n\n| $x$ | −2 | −1 | 0 | 1 | 2 |\n|---|---|---|---|---|---|\n| $f(x)$ | {{a}} | {{b}} | {{c}} | {{d}} | {{e}} |\n| $g(x)$ | 3 | −1 | 2 | 0 | −4 |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Use the superposition principle to find $f + g$, $f - g$ and $g - f$ at each $x$. What is $(f+g)(2)$?",
+          "answer": {
+            "expr": "e-4",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain how the rows for $f - g$ and $g - f$ are related, and why $f + g$ and $f - g$ agree at $x = 1$."
+        }
+      ],
+      "modelAnswer": "Superposition: add (or subtract) the y-values at each $x$.\n\n| $x$ | −2 | −1 | 0 | 1 | 2 |\n|---|---|---|---|---|---|\n| $f + g$ | {{a+3}} | {{b-1}} | {{c+2}} | {{d}} | {{e-4}} |\n| $f - g$ | {{a-3}} | {{b+1}} | {{c-2}} | {{d}} | {{e+4}} |\n| $g - f$ | {{3-a}} | {{-1-b}} | {{2-c}} | {{-d}} | {{-4-e}} |\n\nThe row for $g - f$ is the negative of the row for $f - g$ – the graphs are reflections in the x-axis. At $x = 1$, $g = 0$, so $f + g$ and $f - g$ both equal $f(1)$.",
+      "rubric": [
+        {
+          "point": "Correct f + g values",
+          "marks": 1
+        },
+        {
+          "point": "Correct f − g values",
+          "marks": 1
+        },
+        {
+          "point": "Correct g − f values",
+          "marks": 1
+        },
+        {
+          "point": "Explains the reflection relationship and the point where g = 0",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x - {{a}}$, $g(x) = x^2 + 3x - 3$ and $h(x) = 2^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(x) + g(x)$ and its domain and range.",
+          "answer": {
+            "expr": "-a-7",
+            "unit": "(minimum)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = f(x) + g(x) + h(x)$ and evaluate it at $x = {{k}}$.",
+          "answer": {
+            "expr": "k*k+4*k-a-3+2^k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine $y = f(x) - h(x)$ and describe its graph."
+        }
+      ],
+      "modelAnswer": "**(a)** $y = f(x) + g(x) = x^2 + 4x - {{a+3}}$. Vertex $x = -2$: $4 - 8 - {{a+3}} = {{-4-a-3}}$. Domain $\\mathbb{R}$; range $y \\ge {{-a-7}}$.\n\n**(b)** $y = f + g + h = x^2 + 4x - {{a+3}} + 2^x$. Domain $\\mathbb{R}$. At $x = {{k}}$: ${{k*k}} + {{4*k}} - {{a+3}} + {{2^k}} = {{k*k+4*k-a-3+2^k}}$.\n\n**(c)** $y = f(x) - h(x) = x - {{a}} - 2^x$. Domain $\\mathbb{R}$. For large $x$ the $-2^x$ term dominates ($y \\to -\\infty$); for large negative $x$, $2^x \\to 0$ and the graph approaches the line $y = x - {{a}}$ (an oblique asymptote). Its maximum, found by graphing, is negative, so the range is $y \\le$ that maximum.",
+      "rubric": [
+        {
+          "point": "Correct f + g with range",
+          "marks": 2
+        },
+        {
+          "point": "Correct f + g + h and value",
+          "marks": 2
+        },
+        {
+          "point": "Correct f − h with description of end behaviour",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "w": {
+          "min": 6,
+          "max": 12,
+          "step": 1
+        },
+        "t": {
+          "min": 5,
+          "max": 11,
+          "step": 1
+        },
+        "H": {
+          "min": 30,
+          "max": 52,
+          "step": 2
+        }
+      },
+      "text": "Max earns \\${{w}}/h as a waiter plus about \\${{t}}/h in tips.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Model his earnings from wages and from tips as functions of hours worked."
+        },
+        {
+          "label": "b",
+          "text": "Develop an algebraic model for his total earnings."
+        },
+        {
+          "label": "c",
+          "text": "How much can he earn in a {{H}}-hour week?",
+          "answer": {
+            "expr": "(w+t)*H",
+            "unit": "$",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $W(h) = {{w}}h$ – a line through the origin, slope {{w}}.\n**(b)** $T(h) = {{t}}h$ – a line through the origin, slope {{t}}.\n**(c)** $E(h) = W(h) + T(h) = {{w+t}}h$ – by superposition the y-values (and slopes) add.\n**(d)** $E({{H}}) = {{w+t}}({{H}}) = \\text{\\textdollar}{{(w+t)*H}}$.",
+      "rubric": [
+        {
+          "point": "Correct wage and tip models",
+          "marks": 1
+        },
+        {
+          "point": "Correct total earnings model",
+          "marks": 1
+        },
+        {
+          "point": "Correct earnings for H hours",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q04",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Let $u(x) = x^2$ and $v(x) = \\cos x$ (radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Predict the symmetry of $y = u(x)v(x)$. Explain your reasoning."
+        },
+        {
+          "label": "b",
+          "text": "Prove your prediction algebraically."
+        },
+        {
+          "label": "c",
+          "text": "Describe the graph and evaluate $y$ at $x = \\pi$.",
+          "answer": {
+            "expr": "-pi^2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Both $x^2$ and $\\cos x$ are even, so $y = x^2\\cos x$ should be even (even × even): symmetric about the y-axis.\n\n**(b)** Proof: $y(-x) = (-x)^2\\cos(-x) = x^2\\cos x = y(x)$. ✓\n\n**(c)** The graph oscillates between the curves $y = x^2$ and $y = -x^2$, with zeros at $x = 0$ and $x = \\frac{\\pi}{2} + n\\pi$; the amplitude grows as $|x|$ grows. $y(\\pi) = \\pi^2\\cos\\pi = -\\pi^2 \\approx -9.87$.",
+      "rubric": [
+        {
+          "point": "Correct prediction of symmetry with reason",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebraic proof",
+          "marks": 2
+        },
+        {
+          "point": "Correct description of the graph and value",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Let $f(x) = \\sin x$ and $g(x) = \\cos x$ (radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the combined function $y = \\dfrac{f(x)}{g(x)}$."
+        },
+        {
+          "label": "b",
+          "text": "State its domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Identify $y = \\dfrac{g(x)}{f(x)}$ and its domain and range."
+        },
+        {
+          "label": "d",
+          "text": "How are the two quotients related in terms of transformations?"
+        },
+        {
+          "label": "e",
+          "text": "Evaluate both at $x = \\frac{\\pi}{3}$.",
+          "answer": {
+            "expr": "sqrt(3)",
+            "unit": "(f/g)",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $y = \\dfrac{f(x)}{g(x)} = \\dfrac{\\sin x}{\\cos x} = \\tan x$ (quotient identity).\n\n**(b)** Undefined where $\\cos x = 0$: domain $\\{x \\in \\mathbb{R}, x \\ne \\frac{\\pi}{2} + n\\pi, n \\in \\mathbb{Z}\\}$, with vertical asymptotes there. Range $\\mathbb{R}$.\n\n**(c)** $y = \\dfrac{g(x)}{f(x)} = \\cot x$: domain $x \\ne n\\pi$, range $\\mathbb{R}$.\n\n**(d)** $\\cot x = \\dfrac{1}{\\tan x}$ is the reciprocal; also $\\cot x = -\\tan\\left(x - \\frac{\\pi}{2}\\right)$, so the graph of $\\cot x$ is the graph of $\\tan x$ translated $\\frac{\\pi}{2}$ right and reflected in the x-axis.\n\n**(e)** $\\tan\\frac{\\pi}{3} = \\sqrt3 \\approx 1.73$ and $\\cot\\frac{\\pi}{3} = \\frac{1}{\\sqrt3} \\approx 0.577$.",
+      "rubric": [
+        {
+          "point": "Identifies the quotient as tan x",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, asymptotes and range of tan x",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain and range of cot x",
+          "marks": 1
+        },
+        {
+          "point": "Describes the transformation relationship",
+          "marks": 1
+        },
+        {
+          "point": "Correct values",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2 + {{a}}x$ and $g(x) = {{b}}x - {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(g(x))$."
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = g(f(x))$."
+        },
+        {
+          "label": "c",
+          "text": "Determine $y = g(g(x))$."
+        },
+        {
+          "label": "d",
+          "text": "Determine $y = g^{-1}(g(x))$."
+        },
+        {
+          "label": "e",
+          "text": "Evaluate $f(g({{k}}))$ and $g(f({{k}}))$.",
+          "answer": {
+            "expr": "(b*k-c)^2+a*(b*k-c)",
+            "unit": "(f(g(k)))",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $f(g(x)) = ({{b}}x - {{c}})^2 + {{a}}({{b}}x - {{c}}) = {{b*b}}x^2 - {{2*b*c}}x + {{c*c}} + {{a*b}}x - {{a*c}} = {{b*b}}x^2 + ({{a*b-2*b*c}})x + ({{c*c-a*c}})$.\n\n**(b)** $g(f(x)) = {{b}}(x^2 + {{a}}x) - {{c}} = {{b}}x^2 + {{a*b}}x - {{c}}$.\n\n**(c)** $g(g(x)) = {{b}}({{b}}x - {{c}}) - {{c}} = {{b*b}}x - {{b*c+c}}$.\n\n**(d)** $g^{-1}(x) = \\dfrac{x + {{c}}}{ {{b}} }$ and $g^{-1}(g(x)) = x$.\n\n**(e)** $f(g({{k}})) = ({{b*k-c}})^2 + {{a}}({{b*k-c}}) = {{(b*k-c)^2+a*(b*k-c)}}$; $g(f({{k}})) = {{b*(k*k+a*k)-c}}$.",
+      "rubric": [
+        {
+          "point": "Correct f(g(x)) fully simplified",
+          "marks": 2
+        },
+        {
+          "point": "Correct g(f(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct g⁻¹ and g⁻¹(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct evaluations showing they differ",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Let $f(x) = 1.2^x$ and $g(x) = 0.92^x + 5$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the regions where (i) $f(x) > g(x)$ (ii) $g(x) > f(x)$.",
+          "answer": {
+            "expr": "9.31",
+            "unit": "(boundary)",
+            "sig": 3,
+            "tol": 0.01
+          }
+        },
+        {
+          "label": "b",
+          "text": "Illustrate the inequality graphically in two different ways."
+        },
+        {
+          "label": "c",
+          "text": "Write a real-world scenario these functions could model, then pose and solve two problems about it."
+        }
+      ],
+      "modelAnswer": "**(a)** Using technology, the curves intersect at $x \\approx 9.31$.\n(i) $f(x) > g(x)$ on $(9.31, \\infty)$. (ii) $g(x) > f(x)$ on $(-\\infty, 9.31)$.\n\n**(b)** Method 1: graph both and shade where $f$ is above $g$. Method 2: graph $y = f(x) - g(x)$ and shade where it is above the x-axis.\n\n**(c)** Scenario: an investment of \\$1000 growing 20% a year ($f$, thousands) compared with savings of \\$5000 plus a depreciating item worth \\$1000 losing 8% a year ($g$). Problems: (1) When does the investment overtake? About 9.3 years. (2) What is the investment worth after 12 years? $1.2^{12} \\approx 8.92$ thousand.",
+      "rubric": [
+        {
+          "point": "Correct intersection and regions",
+          "marks": 2
+        },
+        {
+          "point": "Illustrates the inequality in two ways",
+          "marks": 2
+        },
+        {
+          "point": "Writes a sensible scenario",
+          "marks": 1
+        },
+        {
+          "point": "Poses and solves two consistent problems",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q08",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "The cost, $C$, and revenue, $R$, for a store selling televisions are shown. Both are linear; the cost line starts above zero and is steeper than the revenue line.\n\n```plot\nf: 2000 + 450*x | label=C\nf: 400*x | label=R\ndomain: 0, 60\nrange: 0, 30000\nticks: 10, 5000\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the regions where (i) $C > R$ (ii) $R > C$."
+        },
+        {
+          "label": "b",
+          "text": "What can you conclude about this business venture?"
+        },
+        {
+          "label": "c",
+          "text": "What would you suggest to the owner to improve the situation? Explain mathematically."
+        }
+      ],
+      "modelAnswer": "**(a)** (i) $C > R$ for every number of televisions shown – the cost line is always above the revenue line. (ii) $R > C$ nowhere: the lines never meet for $n \\ge 0$ because cost starts higher **and** grows faster (slope 450 vs 400).\n\n**(b)** The venture always loses money, and the loss grows with every TV sold ($P = R - C = -2000 - 50n$).\n\n**(c)** Suggestions: raise the selling price (steeper $R$) above the variable cost per TV; reduce the variable cost (cheaper supplier) so $C$ is less steep than $R$; reduce fixed costs. Only once the revenue slope exceeds the cost slope can there be a break-even point.",
+      "rubric": [
+        {
+          "point": "Correctly identifies regions with reference to the graph",
+          "marks": 2
+        },
+        {
+          "point": "Concludes that the venture always loses money, with reason (slopes)",
+          "marks": 2
+        },
+        {
+          "point": "Gives sensible suggestions linked to slopes/intercepts",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "A pure note is modelled by $I(t) = \\sin(2\\pi f t)$. The notes of a D-minor chord are D (294 Hz), F (349 Hz), A (440 Hz) and high D.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the frequency of high D.",
+          "answer": {
+            "expr": "588",
+            "unit": "Hz",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the combined function for the chord."
+        },
+        {
+          "label": "c",
+          "text": "Describe the waveform and explain why the chord sounds good."
+        },
+        {
+          "label": "d",
+          "text": "Give an example of two notes that would sound discordant and explain why."
+        }
+      ],
+      "modelAnswer": "**(a)** High D $= 2 \\times 294 = 588$ Hz.\n\n**(b)** $I(t) = \\sin(588\\pi t) + \\sin(698\\pi t) + \\sin(880\\pi t) + \\sin(1176\\pi t)$.\n\n**(c)** The waveform is complicated, but it repeats regularly because the frequency ratios are close to simple whole-number ratios (A : D ≈ 3 : 2, high D : D = 2 : 1). So the chord sounds pleasant; minor chords tend to sound sad.\n\n**(d)** C and F# (262, 370 Hz): ratio ≈ 1.41, no simple ratio, so their sum does not repeat regularly – discordant.",
+      "rubric": [
+        {
+          "point": "Correct high D frequency",
+          "marks": 1
+        },
+        {
+          "point": "Correct combined function",
+          "marks": 2
+        },
+        {
+          "point": "Explains the regular waveform using ratios",
+          "marks": 2
+        },
+        {
+          "point": "Gives a correct discordant example with reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q10",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "The number of stuffed bears a company can supply, in thousands, is $S(p) = p + 3$, where $p$ is the price in dollars. The demand is $D(p) = -0.1(p + 8)(p - 12)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the point of intersection of the two functions and explain what its coordinates mean.",
+          "answer": {
+            "expr": "-3+sqrt(75)",
+            "unit": "$",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "For what intervals is $D(p) > S(p)$ and $D(p) < S(p)$? What does each imply about availability?"
+        },
+        {
+          "label": "c",
+          "text": "Determine $y = S(p) - D(p)$ and explain what it shows."
+        }
+      ],
+      "modelAnswer": "**(a)** $D(p) = S(p)$: $-0.1(p^2 - 4p - 96) = p + 3 \\Rightarrow 0.1p^2 + 0.6p - 6.6 = 0 \\Rightarrow p^2 + 6p - 66 = 0$.\n$p = -3 \\pm \\sqrt{75}$; the meaningful root is $p \\approx 5.66$. Intersection $(5.66, 8.66)$: at \\$5.66, about 8660 bears are both supplied and demanded (equilibrium).\n\n**(b)** $D(p) > S(p)$ on $[0, 5.66)$: demand exceeds supply → bears are scarce (shortage).\n$D(p) < S(p)$ on $(5.66, 12]$: supply exceeds demand → bears pile up (surplus). ($D \\ge 0$ only for $p \\le 12$.)\n\n**(c)** $y = S(p) - D(p) = 0.1p^2 + 0.6p - 6.6$ is the surplus (positive) or shortage (negative) in thousands of bears; its zero is the equilibrium price.",
+      "rubric": [
+        {
+          "point": "Sets up and solves D = S correctly",
+          "marks": 2
+        },
+        {
+          "point": "Interprets the intersection point",
+          "marks": 1
+        },
+        {
+          "point": "Correct intervals for shortage and surplus with interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Correct difference function and interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q11",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A student says that for $f(x) = x + 2$ and $g(x) = x^2$, the composite function $f(g(x))$ is $x^2 + 4x + 4$.",
+      "modelAnswer": "The student computed $g(f(x)) = (x + 2)^2 = x^2 + 4x + 4$ – the composition in the wrong order.\n\nCorrect: $f(g(x)) = g(x) + 2 = x^2 + 2$. Check at $x = 1$: $g(1) = 1$, $f(1) = 3$, so $f(g(1)) = 3$; the student's expression gives 9.\n\nIn $f(g(x))$ the inner function $g$ is applied first, and composition is not commutative.",
+      "rubric": [
+        {
+          "point": "Identifies the error (wrong order)",
+          "marks": 2
+        },
+        {
+          "point": "Gives the correct composite",
+          "marks": 2
+        },
+        {
+          "point": "Verifies with a value or explains order",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q12",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $u(x) = x - {{a}}$ and $v(x) = x^2 - {{a*a}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "For which values of $x$ is $y = \\dfrac{u(x)}{v(x)}$ undefined? Explain."
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph, including holes and asymptotes. Give the y-coordinate of the hole.",
+          "answer": {
+            "expr": "1/(2*a)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $\\dfrac{u(x)}{v(x)}$ is undefined where $v(x) = 0$: $x = \\pm{{a}}$.\n\n**(b)** $\\dfrac{x - {{a}}}{(x - {{a}})(x + {{a}})} = \\dfrac{1}{x + {{a}}}$, $x \\ne \\pm{{a}}$: hole at $\\left({{a}}, \\frac{1}{ {{2*a}} }\\right)$, vertical asymptote $x = -{{a}}$, horizontal asymptote $y = 0$.",
+      "rubric": [
+        {
+          "point": "Identifies both excluded values with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Correct simplification",
+          "marks": 1
+        },
+        {
+          "point": "Correct hole and asymptotes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q13",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = (x - {{a}})^2$ and $g(x) = -x + {{b}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(x) + g(x)$ in simplified form and verify it at a value of $x$. What is its y-intercept?",
+          "answer": {
+            "expr": "a*a+b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f(x) + g(x) = x^2 - {{2*a}}x + {{a*a}} - x + {{b}} = x^2 - {{2*a+1}}x + {{a*a+b}}$.\n\nA student who writes $x^2 - {{2*a}}x + {{a*a}} + x + {{b}}$ has dropped the negative sign of $-x$.\n\nCheck at $x = 0$: $f(0) + g(0) = {{a*a}} + {{b}} = {{a*a+b}}$ ✓. At $x = 1$: $({{1-a}})^2 + {{b-1}} = {{(1-a)^2+b-1}}$, and $1 - {{2*a+1}} + {{a*a+b}} = {{1-2*a-1+a*a+b}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Expands (x − a)² correctly",
+          "marks": 1
+        },
+        {
+          "point": "Combines like terms correctly",
+          "marks": 1
+        },
+        {
+          "point": "Verifies the result at a value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "r": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "derived": {
+        "q": "p+r"
+      },
+      "text": "Let $f(x) = {{p}}$ and $g(x) = x^2 + {{q}}$, where ${{p}} < {{q}}$.\n\n```plot\nf: {{p}} | label=f(x)\nf: x^2 + {{q}} | label=g(x)\ndomain: -4, 4\nrange: 0, 20\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Compare $f$ and $g$ using the graphs."
+        },
+        {
+          "label": "b",
+          "text": "Compare them using the difference function $g(x) - f(x)$."
+        },
+        {
+          "label": "c",
+          "text": "Compare them using the quotient $\\dfrac{f(x)}{g(x)}$. What is its maximum value?",
+          "answer": {
+            "expr": "p/q",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Visual: the parabola $g$ is always above the line $y = {{p}}$ (its minimum ${{q}}$ exceeds {{p}}), so $f(x) < g(x)$ for all $x$.\n\n**(b)** Difference: $g(x) - f(x) = x^2 + {{q-p}} > 0$ for all $x$, since $x^2 \\ge 0$. So $g - f > 0$ everywhere.\n\n**(c)** Quotient: $g(x) > 0$ everywhere, so we may use $\\dfrac{f(x)}{g(x)} = \\dfrac{ {{p}} }{x^2 + {{q}}}$. Its maximum is $\\dfrac{ {{p}} }{ {{q}} } \\approx {{p/q:3}} < 1$ at $x = 0$, so $\\frac fg < 1$ and $f < g$ everywhere.\n\nAll three methods agree: $f(x) < g(x)$ for all real $x$.",
+      "rubric": [
+        {
+          "point": "Correct visual comparison",
+          "marks": 1
+        },
+        {
+          "point": "Correct difference argument",
+          "marks": 2
+        },
+        {
+          "point": "Correct quotient argument including the condition g > 0",
+          "marks": 2
+        },
+        {
+          "point": "States the consistent conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = (x - {{a}})^2$ and $g(x) = x + {{b}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(x) + g(x)$ and its domain and range.",
+          "answer": {
+            "expr": "a*a+b-(2*a-1)^2/4",
+            "unit": "(minimum)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = f(x) - g(x)$ and its domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Determine $y = f(g(x))$ and its domain and range."
+        },
+        {
+          "label": "d",
+          "text": "Determine $y = g^{-1}(g(x))$."
+        }
+      ],
+      "modelAnswer": "**(a)** $f + g = x^2 - {{2*a-1}}x + {{a*a+b}}$. Vertex $x = {{(2*a-1)/2}}$, minimum ${{a*a+b-(2*a-1)^2/4}}$. Domain $\\mathbb{R}$, range $y \\ge {{a*a+b-(2*a-1)^2/4}}$.\n\n**(b)** $f - g = x^2 - {{2*a+1}}x + {{a*a-b}}$. Vertex $x = {{(2*a+1)/2}}$, minimum ${{a*a-b-(2*a+1)^2/4}}$. Range $y \\ge {{a*a-b-(2*a+1)^2/4}}$.\n\n**(c)** $f(g(x)) = (x + {{b}} - {{a}})^2 = (x - ({{a-b}}))^2$: $y = x^2$ translated {{a-b}} units right (a negative value means left). Range $y \\ge 0$.\n\n**(d)** $g^{-1}(x) = x - {{b}}$, $g^{-1}(g(x)) = x$: domain and range $\\mathbb{R}$.",
+      "rubric": [
+        {
+          "point": "Correct f + g with range from the vertex",
+          "marks": 2
+        },
+        {
+          "point": "Correct f − g with range",
+          "marks": 2
+        },
+        {
+          "point": "Correct f(g(x)) and its range",
+          "marks": 1
+        },
+        {
+          "point": "Correct g⁻¹(g(x))",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x + {{a}}$ and $g(x) = x^2 + {{2*a+1}}x + {{a*(a+1)}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an algebraic model for $y = \\dfrac{f(x)}{g(x)}$, describe its graph and give its domain and range. Give the y-coordinate of the hole.",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Repeat for $y = \\dfrac{g(x)}{f(x)}$."
+        }
+      ],
+      "modelAnswer": "$g(x) = (x + {{a}})(x + {{a+1}})$.\n\n**(a)** $\\dfrac{f(x)}{g(x)} = \\dfrac{1}{x + {{a+1}}}$, $x \\ne -{{a}}, -{{a+1}}$. Hole at $(-{{a}}, 1)$ (since $\\frac{1}{-{{a}} + {{a+1}}} = 1$); VA $x = -{{a+1}}$; HA $y = 0$. Domain $\\{x \\ne -{{a}}, -{{a+1}}\\}$, range $\\{y \\ne 0, y \\ne 1\\}$.\n\n**(b)** $\\dfrac{g(x)}{f(x)} = x + {{a+1}}$, $x \\ne -{{a}}$: a line with a hole at $(-{{a}}, 1)$. Domain $\\{x \\ne -{{a}}\\}$, range $\\{y \\ne 1\\}$.",
+      "rubric": [
+        {
+          "point": "Factors g correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct f/g with hole and asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain and range of f/g",
+          "marks": 1
+        },
+        {
+          "point": "Correct g/f as a line with a hole, domain and range",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "min": 20,
+          "max": 60,
+          "step": 5
+        }
+      },
+      "text": "The volume of a sphere is $V = \\dfrac43\\pi r^3$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Express $V$ as a function of the circumference $C$."
+        },
+        {
+          "label": "b",
+          "text": "Express $V$ as a function of the surface area $S$."
+        },
+        {
+          "label": "c",
+          "text": "Find the volume of a sphere with circumference {{c}} cm.",
+          "answer": {
+            "expr": "c^3/(6*pi^2)",
+            "unit": "cm³",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $C = 2\\pi r \\Rightarrow r = \\dfrac{C}{2\\pi}$. $V(C) = \\dfrac43\\pi\\left(\\dfrac{C}{2\\pi}\\right)^3 = \\dfrac{C^3}{6\\pi^2}$.\n\n**(b)** $S = 4\\pi r^2 \\Rightarrow r = \\sqrt{\\dfrac{S}{4\\pi}}$. $V(S) = \\dfrac43\\pi\\left(\\dfrac{S}{4\\pi}\\right)^{3/2} = \\dfrac{S^{3/2}}{6\\sqrt{\\pi}}$.\n\n**(c)** $C = {{c}}$ cm: $V = \\dfrac{ {{c}}^3 }{6\\pi^2} \\approx {{c^3/(6*pi^2):3}}$ cm³.\n\nThese are compositions: $V(r(C))$ and $V(r(S))$.",
+      "rubric": [
+        {
+          "point": "Correct radius in terms of C and V(C)",
+          "marks": 2
+        },
+        {
+          "point": "Correct radius in terms of S and V(S)",
+          "marks": 2
+        },
+        {
+          "point": "Correct numerical volume",
+          "marks": 1
+        },
+        {
+          "point": "Recognizes the results as compositions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Is the difference of two odd functions odd, even or neither?",
+      "modelAnswer": "Let $f$ and $g$ be odd and $h(x) = f(x) - g(x)$. Then $h(-x) = f(-x) - g(-x) = -f(x) + g(x) = -[f(x) - g(x)] = -h(x)$, so $h$ is **odd**.\n\nExample 1: $x^3 - x$: $(-x)^3 - (-x) = -(x^3 - x)$ ✓.\nExample 2: $\\sin x - x^5$: $\\sin(-x) - (-x)^5 = -\\sin x + x^5 = -(\\sin x - x^5)$ ✓.",
+      "rubric": [
+        {
+          "point": "Correct conclusion",
+          "marks": 1
+        },
+        {
+          "point": "General algebraic proof",
+          "marks": 2
+        },
+        {
+          "point": "Two verified examples",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q19",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "A pendulum swings according to $x(t) = 10\\cos(2t) \\times 0.95^t$, where $x$ is the horizontal displacement from rest in centimetres and $t$ is the time in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What type of motion is this? Identify the domain and range in context."
+        },
+        {
+          "label": "b",
+          "text": "Which component causes (i) the periodic motion (ii) the decay? What is the period?",
+          "answer": {
+            "expr": "pi",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "At what distance from rest was the bob released?",
+          "answer": {
+            "expr": "10",
+            "unit": "cm",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Where is the magnitude of the rate of change greatest? When does this occur in the motion?"
+        },
+        {
+          "label": "e",
+          "text": "Where is the rate of change zero? When does this occur?"
+        },
+        {
+          "label": "f",
+          "text": "After what time has the amplitude diminished to 50% of its initial value?",
+          "answer": {
+            "expr": "log(0.5)/log(0.95)",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Damped harmonic motion. Domain $t \\ge 0$; range $-10 \\le x \\le 10$.\n\n**(b)** (i) $\\cos(2t)$ gives the periodic motion (period $\\pi \\approx 3.14$ s). (ii) $0.95^t$ gives the exponential decay of the amplitude.\n\n**(c)** $x(0) = 10$ cm.\n\n**(d)** The magnitude of the rate of change is greatest where the graph is steepest – as the bob passes through the rest position during the first swing.\n\n**(e)** The rate of change is zero at the crests and troughs – the ends of each swing, where the bob momentarily stops.\n\n**(f)** $0.95^t = 0.5 \\Rightarrow t = \\dfrac{\\log 0.5}{\\log 0.95} \\approx 13.5$ s.",
+      "rubric": [
+        {
+          "point": "Type of motion with domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Role of each component and period",
+          "marks": 1
+        },
+        {
+          "point": "Correct release distance",
+          "marks": 1
+        },
+        {
+          "point": "Greatest rate of change explained",
+          "marks": 1
+        },
+        {
+          "point": "Zero rate of change explained",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-amplitude time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q20",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "A catenary is the shape of a hanging chain. One is defined by $f(x) = \\dfrac{e^x + e^{-x}}{2}$ on $-5 \\le x \\le 5$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the graph of the catenary, including its symmetry and key values.",
+          "answer": {
+            "expr": "(e^5+e^(-5))/2",
+            "unit": "(f(5))",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Develop a quadratic function through the same lowest point and endpoints."
+        },
+        {
+          "label": "c",
+          "text": "Compare the two functions at $x = 3$ and describe where they diverge.",
+          "answer": {
+            "expr": "(e^3+e^(-3))/2",
+            "unit": "(catenary at 3)",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Even (symmetric about the y-axis), minimum $f(0) = 1$, rising steeply toward $x = \\pm 5$, where $f(5) \\approx 74.2$.\n\n**(b)** A quadratic through $(0, 1)$, $(5, 74.2)$ and $(-5, 74.2)$: $y = 1 + ax^2$, $a = \\dfrac{73.2}{25} \\approx 2.93$, so $y \\approx 2.93x^2 + 1$.\n\n**(c)** Common points: $(0, 1)$ and $(\\pm5, 74.2)$. In between, the catenary is much lower: at $x = 3$, $f(3) \\approx {{(e^3+e^(-3))/2:3}}$ but the parabola gives $\\approx {{1+9*73.21/25:3}}$. The catenary is flatter near the bottom and steeper near the ends, so it is not a parabola.",
+      "rubric": [
+        {
+          "point": "Correct sketch description with key values",
+          "marks": 2
+        },
+        {
+          "point": "Correct quadratic model through common points",
+          "marks": 2
+        },
+        {
+          "point": "Correct comparison showing where the functions diverge",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q21",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "T1": {
+          "min": 29,
+          "max": 33,
+          "step": 1
+        }
+      },
+      "text": "The number of swimmers at a beach, in hundreds, is $S(T) = -0.05(T - 28)(T - 34)$, where $T$ is the temperature in °C. The ice-cream vendor's sales are $I(T) = 0.5\\,S(T) \\times T$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the trends of $S(T)$ and $I(T)$."
+        },
+        {
+          "label": "b",
+          "text": "At what temperature does the beach attract the most swimmers, and how many?",
+          "answer": {
+            "expr": "31",
+            "unit": "°C",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Evaluate $I({{T1}})$.",
+          "answer": {
+            "expr": "0.5*(-0.05*(T1-28)*(T1-34))*T1",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Does the vendor's maximum occur at the same temperature as the maximum number of swimmers? Explain."
+        }
+      ],
+      "modelAnswer": "**(a)** $S$ is a downward parabola, positive only for $28 < T < 34$; zeros at 28 and 34. $I$ is a cubic, also zero at $T = 28$ and $T = 34$ and positive in between.\n\n**(b)** The vertex of $S$ is midway: $T = 31$ °C. $S(31) = -0.05(3)(-3) = 0.45$ hundred = 45 swimmers.\n\n**(c)** $I({{T1}}) = 0.5\\,S({{T1}})\\,({{T1}}) = 0.5({{-0.05*(T1-28)*(T1-34):3}})({{T1}}) \\approx {{0.5*(-0.05*(T1-28)*(T1-34))*T1:3}}$.\n\n**(d)** No. $I$ includes an extra factor of $T$, which grows with temperature, so the maximum of $I$ is shifted slightly **above** 31 °C (by graphing, about 31.1 °C): hotter weather means each swimmer is a little more likely to buy ice cream.",
+      "rubric": [
+        {
+          "point": "Describes both functions and their trends",
+          "marks": 1
+        },
+        {
+          "point": "Correct temperature and number of swimmers at the maximum",
+          "marks": 2
+        },
+        {
+          "point": "Correct value of I at the given temperature",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the maximum of I differs from that of S",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q22",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Determine two functions $f(x)$ and $g(x)$ for which $f(x) < g(x)$ on the interval $(-1, 1)$ and $f(x) > g(x)$ on $(-\\infty, -1) \\cup (1, \\infty)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine suitable functions and verify them."
+        },
+        {
+          "label": "b",
+          "text": "Illustrate graphically how your functions satisfy the conditions using three different methods. Explain each."
+        }
+      ],
+      "modelAnswer": "**(a)** Example: $f(x) = x^2$ and $g(x) = 1$. Then $f(x) - g(x) = x^2 - 1 = (x - 1)(x + 1)$, negative on $(-1, 1)$ and positive outside. ✓ (Another: $f(x) = 2x^2$, $g(x) = x^2 + 1$.)\n\n**(b)**\n* **Visual:** the parabola $y = x^2$ is below the line $y = 1$ between $-1$ and $1$, above it outside.\n* **Difference:** $y = x^2 - 1$ is below the x-axis on $(-1, 1)$ and above it outside.\n* **Quotient:** $g = 1 > 0$, so $\\dfrac{f}{g} = x^2$ is less than 1 on $(-1, 1)$ and greater than 1 outside.",
+      "rubric": [
+        {
+          "point": "Valid pair of functions",
+          "marks": 2
+        },
+        {
+          "point": "Verifies algebraically",
+          "marks": 1
+        },
+        {
+          "point": "Illustrates using all three methods correctly",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q23",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create a growing pattern of tiles whose total is the sum of a linear function, a quadratic function and an exponential function.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe several stages of your pattern."
+        },
+        {
+          "label": "b",
+          "text": "Develop an algebraic model for the total number of tiles in stage $n$ and verify it for stages 1 to 4."
+        },
+        {
+          "label": "c",
+          "text": "Describe the graph of each part and of the total."
+        }
+      ],
+      "modelAnswer": "**(a)** Example: stage $n$ has a row of $2n$ yellow tiles (linear), an $n \\times n$ square of green tiles (quadratic) and $2^n$ blue tiles (exponential).\n\n**(b)** $T(n) = 2n + n^2 + 2^n$. Stage 1: $2 + 1 + 2 = 5$; stage 2: $4 + 4 + 4 = 12$; stage 3: $6 + 9 + 8 = 23$; stage 4: $8 + 16 + 16 = 40$.\n\n**(c)** Graphs: a line, a parabola and an exponential curve; the total is their superposition. For large $n$, the total's graph approaches the exponential, which grows fastest.",
+      "rubric": [
+        {
+          "point": "Describes a valid pattern with three growth types",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebraic model and stage values",
+          "marks": 2
+        },
+        {
+          "point": "Describes the graphs and the dominant term",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-rv-q24",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "t1": {
+          "min": 5,
+          "max": 20,
+          "step": 5
+        }
+      },
+      "text": "A skier's height, in metres, is modelled by $h(t) = 80(0.9)^t - 0.5 + 0.6\\sin(3t)$, $t$ in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Interpret each part of the model."
+        },
+        {
+          "label": "b",
+          "text": "Assuming constant speed, at approximately what point does she encounter the moguls? Explain how you can tell."
+        },
+        {
+          "label": "c",
+          "text": "Find her height at $t = {{t1}}$ s.",
+          "answer": {
+            "expr": "80*0.9^t1-0.5+0.6*sin(3*t1)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "If she stops the first time her height reaches zero, describe how to find the domain and range."
+        }
+      ],
+      "modelAnswer": "**(a)** The exponential part $80(0.9)^t - 0.5$ models the descent (fast at first, then levelling off near −0.5 relative to the reference); the sinusoid $0.6\\sin(3t)$ models bumps (moguls) of amplitude 0.6 m and period $\\frac{2\\pi}{3} \\approx 2.1$ s.\n\n**(b)** Early on, the exponential part changes by several metres per second, hiding the bumps. When the slope flattens (roughly after 25–30 s, when $80(0.9)^t$ is only a few metres and changes by less than about half a metre per second), the 0.6 m oscillations become visible – that is when she appears to meet the moguls.\n\n**(c)** $h({{t1}}) \\approx {{80*0.9^t1-0.5+0.6*sin(3*t1):3}}$ m.\n\n**(d)** She stops the first time $h = 0$ (found by graphing, about $t \\approx 41.2$ s). Domain $0 \\le t \\le$ that time; range from 0 up to $h(0) = 79.5$ m.",
+      "rubric": [
+        {
+          "point": "Interprets each component",
+          "marks": 2
+        },
+        {
+          "point": "Explains when the moguls become visible",
+          "marks": 1
+        },
+        {
+          "point": "Correct height at the given time",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable domain and range found with technology",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

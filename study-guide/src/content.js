@@ -22,7 +22,7 @@ function renderMarkdown(src, { inline = false } = {}) {
     return `\n\n@@MATH${math.length - 1}@@\n\n`;
   });
   text = text.replace(/\$\$([\s\S]+?)\$\$|\$([^\n$]+?)\$/g, (m, display, inl) => {
-    const tex = display != null ? display : inl;
+    const tex = (display != null ? display : inl).replace(/@@DOLLAR@@/g, '\\$');
     let html;
     try {
       html = katex.renderToString(tex.trim(), { displayMode: display != null, throwOnError: false, output: 'html' });

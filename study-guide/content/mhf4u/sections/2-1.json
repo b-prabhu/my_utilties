@@ -400,7 +400,7 @@
           "step": 1
         },
         "k": {
-          "min": 1,
+          "min": 2,
           "max": 3,
           "step": 1
         }
@@ -464,8 +464,8 @@
       "difficulty": 2,
       "vars": {
         "a": {
-          "min": 2,
-          "max": 3,
+          "min": 5,
+          "max": 7,
           "step": 1
         },
         "c": {
@@ -474,9 +474,9 @@
           "step": 1
         },
         "k": {
-          "min": 2,
-          "max": 3,
-          "step": 1
+          "choices": [
+            3
+          ]
         }
       },
       "derived": {
@@ -557,7 +557,7 @@
           }
         }
       ],
-      "modelAnswer": "1. $6x^3 \\div 2x = 3x^2$; $3x^2(2x - 1) = 6x^3 - 3x^2$; subtract: ${{p2}}x^2 + 3x^2 = {{2*a}}x^2$. Bring down ${{p1}}x$.\n2. ${{2*a}}x^2 \\div 2x = {{a}}x$; ${{a}}x(2x - 1) = {{2*a}}x^2 - {{a}}x$; subtract: ${{p1}}x + {{a}}x = {{2*b}}x$. Bring down ${{p0}}$.\n3. ${{2*b}}x \\div 2x = {{b}}$; ${{b}}(2x - 1) = {{2*b}}x - {{b}}$; subtract: ${{p0}} + {{b}} = {{r}}$.\n\n$$\\frac{6x^3 + {{p2}}x^2 + {{p1}}x + {{p0}}}{2x - 1} = 3x^2 + {{a}}x + {{b}} + \\frac{ {{r}} }{2x - 1},\\quad x \\neq \\tfrac12$$\n\n**Verify:** the divisor is zero when $x = \\tfrac12$.\n$P\\left(\\tfrac12\\right) = 6\\left(\\tfrac18\\right) + {{p2}}\\left(\\tfrac14\\right) + {{p1}}\\left(\\tfrac12\\right) + {{p0}} = {{0.75 + p2/4 + p1/2 + p0:4}}$ ✓ equals the remainder.",
+      "modelAnswer": "1. $6x^3 \\div 2x = 3x^2$; $3x^2(2x - 1) = 6x^3 - 3x^2$; subtract: ${{p2}}x^2 + 3x^2 = {{2*a}}x^2$. Bring down ${{p1}}x$.\n2. ${{2*a}}x^2 \\div 2x = {{a}}x$; ${{a}}x(2x - 1) = {{2*a}}x^2 - {{a}}x$; subtract: ${{p1}}x + {{a}}x = {{2*b}}x$. Bring down ${{p0}}$.\n3. ${{2*b}}x \\div 2x = {{b}}$; ${{b}}(2x - 1) = {{2*b}}x - {{b}}$; subtract: ${{p0}} + {{b}} = {{r}}$.\n\n$$\\frac{6x^3 + {{p2}}x^2 + {{p1}}x + {{p0}}}{2x - 1} = 3x^2 + {{a}}x + {{b}} + \\frac{ {{r}} }{2x - 1},\\quad x \\neq \\tfrac12$$\n\n**Verify:** the divisor is zero when $x = \\tfrac12$.\n$P\\left(\\tfrac12\\right) = 6\\left(\\tfrac18\\right) + {{p2}}\\left(\\tfrac14\\right) + {{p1}}\\left(\\tfrac12\\right) + {{p0}} = {{0.75 + p2/4 + p1/2 + p0}}$ ✓ equals the remainder.",
       "rubric": [
         {
           "point": "Correct first step dividing by $2x$",
@@ -622,7 +622,7 @@
           }
         }
       ],
-      "modelAnswer": "By the remainder theorem, the remainder is $P({{m}})$.\n\n$P({{m}}) = ({{m}})^3 + k({{m}})^2 - {{a}}({{m}}) + {{c}} = {{m^3}} + {{m^2}}k - {{a*m}} + {{c}} = {{m^2}}k + {{m^3 - a*m + c}}$\n\nSet this equal to ${{R}}$:\n\n${{m^2}}k + {{m^3 - a*m + c}} = {{R}}$\n\n${{m^2}}k = {{R - (m^3 - a*m + c)}}$\n\n$k = {{k}}$\n\n**Check:** $P({{m}}) = {{m^3}} + ({{k}})({{m^2}}) - {{a*m}} + {{c}} = {{R}}$ ✓",
+      "modelAnswer": "By the remainder theorem, the remainder is $P({{m}})$.\n\n$P({{m}}) = ({{m}})^3 + k({{m}})^2 - {{a}}({{m}}) + {{c}} = {{m^3}} + {{m^2}}k - {{a*m}} + {{c}} = {{m^2}}k + ({{m^3 - a*m + c}})$\n\nSet this equal to ${{R}}$:\n\n${{m^2}}k + ({{m^3 - a*m + c}}) = {{R}}$\n\n${{m^2}}k = {{R - (m^3 - a*m + c)}}$\n\n$k = {{k}}$\n\n**Check:** $P({{m}}) = {{m^3}} + ({{k}})({{m^2}}) - {{a*m}} + {{c}} = {{R}}$ ✓",
       "rubric": [
         {
           "point": "Uses the remainder theorem to write $P(m)$ = remainder",
@@ -718,7 +718,7 @@
       "difficulty": 2,
       "vars": {
         "a": {
-          "min": 1,
+          "min": 2,
           "max": 5,
           "step": 1
         },
@@ -779,7 +779,7 @@
       "difficulty": 2,
       "vars": {
         "p": {
-          "min": 1,
+          "min": 2,
           "max": 3,
           "step": 1
         },
@@ -965,7 +965,7 @@
       "difficulty": 2,
       "vars": {
         "p": {
-          "min": 1,
+          "min": 2,
           "max": 4,
           "step": 1
         },
@@ -1144,7 +1144,7 @@
           "text": "Describe how you could verify your answer to part (b)."
         }
       ],
-      "modelAnswer": "(a) $f({{m}}) = {{m^4}} + {{m^3}}k - {{a*m}} - {{c}} = {{R1}}$\n\n${{m^3}}k = {{R1 - m^4 + a*m + c}}$, so $k = {{k}}$.\n\n(b) Remainder when divided by $x + {{m}}$ is $f(-{{m}})$:\n\n$f(-{{m}}) = {{m^4}} + ({{k}})(-{{m}})^3 - {{a}}(-{{m}}) - {{c}} = {{m^4}} + {{-k*m^3}} + {{a*m}} - {{c}} = {{R2}}$\n\n(c) You can verify by long division of $x^4 + {{k}}x^3 + 0x^2 - {{a}}x - {{c}}$ by $x + {{m}}$ (placeholder needed for $x^2$) or by graphing $y = f(x)$ and reading the $y$-value at $x = -{{m}}$, which should be ${{R2}}$.",
+      "modelAnswer": "(a) $f({{m}}) = {{m^4}} + {{m^3}}k - {{a*m}} - {{c}} = {{R1}}$\n\n${{m^3}}k = {{R1 - m^4 + a*m + c}}$, so $k = {{k}}$.\n\n(b) Remainder when divided by $x + {{m}}$ is $f(-{{m}})$:\n\n$f(-{{m}}) = {{m^4}} + ({{k}})(-{{m}})^3 - {{a}}(-{{m}}) - {{c}} = {{m^4}} + ({{-k*m^3}}) + {{a*m}} - {{c}} = {{R2}}$\n\n(c) You can verify by long division of $x^4 + ({{k}})x^3 + 0x^2 - {{a}}x - {{c}}$ by $x + {{m}}$ (placeholder needed for $x^2$) or by graphing $y = f(x)$ and reading the $y$-value at $x = -{{m}}$, which should be ${{R2}}$.",
       "rubric": [
         {
           "point": "Sets up $f(m) = R$",

@@ -7,6 +7,21 @@ const fs = require('fs');
 const path = require('path');
 const { buildScope, fill, evaluate } = require('../src/expr');
 const { renderPlot } = require('../src/plot');
+const { renderMarkdown } = require('../src/content');
+// Render every markdown field and report KaTeX/plot errors or leftovers.
+function renderCheck(obj, where, scope) {
+  const walk = (o, at) => {
+    if (typeof o === 'string') {
+      const h = renderMarkdown(scope ? fill(o, scope) : o);
+      const m = /.{0,50}(@@|katex-error|Graph error).{0,50}/.exec(h);
+      if (m) err(`${where}${at}`, `render problem: ${m[0].replace(/<[^>]+>/g, '')}`);
+    } else if (Array.isArray(o)) o.forEach((x, i) => walk(x, `${at}/${i}`));
+    else if (o && typeof o === 'object') {
+      for (const [k, v] of Object.entries(o)) if (!['vars', 'derived', 'answer', 'id', 'type', 'latex'].includes(k)) walk(v, `${at}/${k}`);
+    }
+  };
+  walk(obj, '');
+}
 const checkPlots = (txt) => { for (const m of String(txt || '').matchAll(/```plot\s*\n([\s\S]*?)```/g)) renderPlot(m[1]); };
 
 const root = path.resolve(process.argv[2] || path.join(__dirname, '..', 'content'));
@@ -41,8 +56,11 @@ for (const subjectId of fs.readdirSync(root)) {
       for (const k of ['number', 'title', 'overview']) if (!s[k]) err(where, `missing ${k}`);
       if (!Array.isArray(s.lessons) || !s.lessons.length) err(where, 'needs at least one lesson');
       try { for (const l of s.lessons || []) checkPlots(l.body); for (const e of s.workedExamples || []) { checkPlots(e.problem); (e.steps || []).forEach(checkPlots); } } catch (e) { err(where, `plot: ${e.message}`); }
+      const { questions: _q, ...guide } = s;
+      renderCheck(guide, where, null);
       for (const q of s.questions || []) {
         questionCount++;
+        try { renderCheck(q, `${where}#${q.id}`, buildScope(q, seeded(42))); } catch (e) { err(`${where}#${q.id}`, e.message); }
         const qw = `${where}#${q.id}`;
         if (!q.id || ids.has(q.id)) err(qw, 'missing or duplicate id');
         ids.add(q.id);
