@@ -1,0 +1,1613 @@
+{
+  "id": "4-1",
+  "number": "4.1",
+  "title": "Gravitational Force Near Earth",
+  "estimatedMinutes": 90,
+  "overview": "Why does a skydiver stop speeding up? Why do astronauts float even though gravity still pulls on them? In this section you will explore the forces on falling objects, learn what gravitational field strength means, separate the ideas of mass and weight, and discover why the normal force is not always equal to the force of gravity.",
+  "objectives": [
+    "Describe how air resistance depends on cross-sectional area and speed, and define free fall.",
+    "Explain, using FBDs, how a falling object reaches terminal speed and how a parachute changes it.",
+    "Define force field and gravitational field strength and use g = F_g/m.",
+    "Explain why g varies with altitude and latitude.",
+    "Distinguish between mass and weight and calculate weight in different locations.",
+    "Use Newton's second law to calculate the normal force in situations with extra vertical forces or vertical acceleration (such as elevators)."
+  ],
+  "lessons": [
+    {
+      "id": "free-fall",
+      "title": "Air Resistance and Free Fall",
+      "body": "\nWhen you drop something, two forces can act on it as it falls:\n\n* **Gravity** ($\\vec F_g$) – always pulls the object **down**, toward Earth's centre.\n* **Air resistance** ($\\vec F_{air}$) – friction caused by the air. It pushes **opposite to the direction of motion** (so upward on a falling object, if there is no wind).\n\n### Reading a multi-flash photograph\nA multi-flash (stroboscopic) photo captures an object at **equal time intervals**.\n\n| What the images look like | What it tells you |\n|---|---|\n| Spacing gets **larger and larger** | The object covers more distance each interval → it is **speeding up** (accelerating). |\n| Spacing is **constant** | Equal distance in equal time → **constant velocity**, so $\\vec F_{net} = 0$. |\n\nA small heavy ball dropped from rest shows increasing spacing – it accelerates. A maple key (light, with a large cross-sectional area) shows even spacing – it falls at constant velocity, so air resistance must be **balancing** gravity.\n\n### Free fall\n> **Free fall** is the motion of a falling object when the **only** force acting on it is gravity.\n\nIn free fall, every object accelerates at $9.8\\ \\text{m/s}^2$ [down] near Earth's surface, no matter its mass. In many problems in this chapter we will **ignore air resistance**, which means we treat falling objects as being in free fall.\n\n**Why does every object fall with the same acceleration?** Use Newton's second law. The only force is gravity, $F_g = mg$, so\n\n$$a = \\frac{F_{net}}{m} = \\frac{mg}{m} = g$$\n\nA heavier object is pulled harder, but it is also harder to accelerate (more inertia). The two effects cancel exactly.\n"
+    },
+    {
+      "id": "air-resistance-terminal-speed",
+      "title": "What Affects Air Resistance? Terminal Speed",
+      "body": "\nAir resistance on an object depends on several factors. In this course we focus on two:\n\n1. **Cross-sectional area** – the area you would see if you looked straight up at the falling object. Larger area → more air resistance.\n2. **Speed** – faster objects push through more air each second → more air resistance.\n\n**Try it:** hold a flat sheet of paper in one hand and an identical sheet crumpled into a ball in the other. Drop them together. They have the **same mass** and the **same force of gravity**, but the flat sheet has a much larger cross-sectional area, so it experiences much more air resistance and falls slowly.\n\n### The skydiver, step by step\nFollow the free-body diagrams (FBDs) – always compare the length of the $\\vec F_{air}$ arrow (up) with the $\\vec F_g$ arrow (down).\n\n| Stage | Speed | Forces | Net force | Motion |\n|---|---|---|---|---|\n| (a) Just leaves plane | ≈ 0 | $F_{air}$ tiny, $F_g$ large | large, down | accelerates down at ≈ 9.8 m/s² |\n| (b) Falling faster | increasing | $F_{air}$ growing | down but **decreasing** | still speeding up, but acceleration decreases |\n| (c) Terminal speed | constant (high) | $F_{air} = F_g$ | **zero** | constant velocity |\n| (d) Parachute opens | high | $F_{air} > F_g$ (huge area) | **up** | slows down while still moving down |\n| (e) Slowing | decreasing | $F_{air}$ shrinking | up but decreasing | slowing down less and less |\n| (f) New terminal speed | constant (low) | $F_{air} = F_g$ | zero | slow, safe constant velocity |\n\n> **Terminal speed** is the maximum constant speed reached by a falling object. It happens when air resistance grows until it equals the force of gravity.\n\n**Key idea:** a net force *upward* on a falling object does **not** make it move up – it makes it **slow down**. The direction of the net force tells you the direction of the **acceleration**, not the direction of motion.\n\nOpening the parachute increases the cross-sectional area enormously. Air resistance can now balance gravity at a much **lower** speed, so the terminal speed with an open parachute is much lower.\n"
+    },
+    {
+      "id": "gravitational-field",
+      "title": "Force Fields and Gravitational Field Strength",
+      "body": "\nGravity is an **action-at-a-distance** force: Earth pulls on objects without touching them. This happens because Earth is surrounded by a **gravitational force field**.\n\n> A **force field** is a region of space surrounding an object that can exert a force on other objects placed within that region that are able to interact with that force.\n\nWe draw the field as **lines of force pointing toward Earth's centre**. Any object with mass placed in this field is attracted toward Earth.\n\n### Gravitational field strength, $\\vec g$\n> **Gravitational field strength** is the force per unit mass acting on an object placed in a gravitational field.\n\n$$\\vec g = \\frac{\\vec F_g}{m} \\qquad \\text{or} \\qquad \\vec F_g = m\\vec g$$\n\n* Units: **newtons per kilogram (N/kg)**. Note $1\\ \\text{N/kg} = 1\\ \\text{m/s}^2$.\n* It is a **vector** – near Earth it points **down** (toward Earth's centre).\n* At Earth's surface, $\\vec g = 9.8\\ \\text{N/kg}$ [down] (to two significant digits).\n* Its magnitude equals the magnitude of the **acceleration due to gravity** at that location.\n\n**How to measure it:** hang an object of known mass from a spring scale or force sensor, read the force of gravity, and divide by the mass.\n\n### Why $g$ is not the same everywhere\n**1. Distance from Earth's surface.** $g$ gets weaker the farther you are from Earth.\n\n| Location | $g$ (N/kg) |\n|---|---|\n| Sea level (average) | 9.8 |\n| Top of Mount Everest (8848 m) | 9.7647 |\n| One Earth radius above the surface | 2.45 |\n\n**2. Latitude.** Earth is not a perfect sphere – it bulges at the equator because it rotates. At the poles, sea level is about 21 km closer to Earth's centre than at the equator, so $g$ is slightly larger at the poles.\n\n| Latitude | $g$ (N/kg) | Distance from Earth's centre (km) |\n|---|---|---|\n| 0° (equator) | 9.7805 | 6378 |\n| 30° | 9.7934 | 6373 |\n| 60° | 9.8192 | 6362 |\n| 90° (North Pole) | 9.8322 | 6357 |\n\n$g$ gradually **increases with latitude** as you travel from the equator toward either pole.\n"
+    },
+    {
+      "id": "mass-weight",
+      "title": "The Difference Between Mass and Weight",
+      "body": "\nIn everyday speech people say \"I weigh 60 kilograms\", but in physics **mass** and **weight** are different quantities.\n\n| | Mass | Weight |\n|---|---|---|\n| Definition | quantity of matter in an object | the force of gravity acting on an object |\n| Symbol | $m$ | $\\vec F_g$ |\n| SI unit | kilogram (kg) | newton (N) |\n| Scalar or vector? | scalar | vector (has direction – down) |\n| Measured with | a balance | a spring scale or force sensor (object at rest or moving at constant velocity) |\n| Changes with location? | **No** – only changes if matter is added or removed | **Yes** – depends on $g$ at that location |\n\n**Connecting them:** $F_g = mg$.\n\n**On the Moon**, $g$ is about one-sixth of Earth's. Your **mass is the same** (you contain the same matter) but your **weight is about one-sixth** as large.\n\n### \"Weightlessness\" is really free fall\nAstronauts on the International Space Station (ISS) appear to float. People call this \"weightlessness\" or \"microgravity\", but those words are **misleading**: gravity is still acting on the astronauts (at the ISS's height, $g$ is still roughly 8.6 N/kg!). Gravity is what keeps the ISS in orbit – without it, the station would travel off in a straight line at constant velocity. The astronauts and the station are **falling together** – they are in **free fall** – so nothing pushes up on the astronauts and they float relative to the station.\n"
+    },
+    {
+      "id": "normal-force",
+      "title": "The Normal Force Is Not Always Equal to Gravity",
+      "body": "\nThe **normal force** ($\\vec F_N$) is the force a surface exerts on an object, acting **perpendicular** to the surface. A very common mistake is to assume $F_N = mg$ every time. That is only true in special cases (horizontal surface, no other vertical forces, no vertical acceleration).\n\n### Case 1 – A cart on an incline\nGravity points straight **down**. The normal force is **perpendicular to the ramp**, so it is tilted. The two forces are **not** opposite each other.\n\n### Case 2 – Extra vertical forces\nIf a friend pushes **down** on you while you stand on a scale, the scale must push up harder to keep you at rest:\n$$F_N = F_g + F_{push}$$\nIf someone pulls **up** on you, the scale pushes up less:\n$$F_N = F_g - F_{pull}$$\n\n### Case 3 – Vertical acceleration (the elevator)\nUse $\\vec F_{net} = m\\vec a$ with **up as positive**:\n$$F_N + (-mg) = ma \\quad\\Rightarrow\\quad F_N = m(g + a)$$\n\n| Elevator motion | Acceleration | Scale reading ($F_N$) | How you feel |\n|---|---|---|---|\n| At rest or constant velocity (up **or** down) | 0 | $= mg$ | normal |\n| Speeding up going up / slowing down going down | up (+) | $> mg$ | heavier |\n| Speeding up going down / slowing down going up | down (−) | $< mg$ | lighter |\n| Cable snaps (free fall) | $-9.8$ m/s² | 0 | \"weightless\" |\n\n> A bathroom scale reads the **normal force**, not your weight. That is why it is called your **apparent weight**.\n\n### Problem-solving strategy\n1. Choose a positive direction (usually up).\n2. Calculate $F_g = mg$.\n3. Draw an FBD showing **every** force.\n4. Write $\\vec F_{net} = m\\vec a$ (use $a = 0$ if at rest or constant velocity).\n5. Solve for the unknown, then state the answer with a direction.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "free fall",
+      "definition": "The motion of a falling object where the only force acting on the object is gravity."
+    },
+    {
+      "term": "air resistance",
+      "definition": "Friction caused by the air; acts opposite to the direction of motion (when there is no wind) and increases with cross-sectional area and speed."
+    },
+    {
+      "term": "cross-sectional area",
+      "definition": "The area you see if you look directly up at (or down on) a falling object."
+    },
+    {
+      "term": "terminal speed",
+      "definition": "The maximum constant speed of a falling object, reached when air resistance equals the force of gravity."
+    },
+    {
+      "term": "force field",
+      "definition": "A region of space surrounding an object that can exert a force on other objects placed within that region and able to interact with that force."
+    },
+    {
+      "term": "gravitational field strength",
+      "definition": "The force per unit mass acting on an object when placed in a gravitational field; 9.8 N/kg [down] at Earth's surface."
+    },
+    {
+      "term": "mass",
+      "definition": "The quantity of matter in an object, measured in kilograms with a balance; does not change with location."
+    },
+    {
+      "term": "weight",
+      "definition": "The force of gravity acting on an object, measured in newtons with a spring scale or force sensor; depends on location."
+    },
+    {
+      "term": "normal force",
+      "definition": "The force exerted by a surface on an object, perpendicular to the surface."
+    },
+    {
+      "term": "apparent weight",
+      "definition": "The reading on a scale (the normal force), which differs from true weight when the object accelerates vertically or other vertical forces act."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Force of gravity (weight)",
+      "latex": "\\vec F_g = m\\vec g",
+      "meaning": "Weight in newtons equals mass in kilograms times gravitational field strength (9.8 N/kg [down] at Earth's surface)."
+    },
+    {
+      "name": "Gravitational field strength",
+      "latex": "\\vec g = \\frac{\\vec F_g}{m}",
+      "meaning": "Force of gravity per kilogram. Measure F_g with a spring scale and divide by the mass."
+    },
+    {
+      "name": "Newton's second law",
+      "latex": "\\vec F_{net} = m\\vec a",
+      "meaning": "Add all forces as vectors (choose a positive direction) and set equal to mass times acceleration."
+    },
+    {
+      "name": "Normal force with vertical acceleration",
+      "latex": "F_N = m(g + a)",
+      "meaning": "Up positive: a > 0 when accelerating upward (scale reads more), a < 0 when accelerating downward (scale reads less)."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Weight on Earth and on the Moon",
+      "problem": "A 68 kg student travels to the Moon, where $g = 1.6$ N/kg. Find the student's mass and weight on each.",
+      "steps": [
+        "**Given:** $m = 68$ kg; $g_{Earth} = 9.8$ N/kg; $g_{Moon} = 1.6$ N/kg",
+        "**Required:** $m$ and $F_g$ at each location",
+        "**Analysis:** Mass never changes with location. Weight: $F_g = mg$.",
+        "**Solution:** Earth: $F_g = (68\\ \\text{kg})(9.8\\ \\text{N/kg}) = 670\\ \\text{N}$. Moon: $F_g = (68\\ \\text{kg})(1.6\\ \\text{N/kg}) = 110\\ \\text{N}$.",
+        "**Statement:** The mass is 68 kg in both places. The weight is 670 N [down] on Earth and 110 N [down] on the Moon – about one-sixth as much."
+      ],
+      "answer": "Mass 68 kg (both); weight 670 N on Earth, 110 N on the Moon."
+    },
+    {
+      "title": "Measuring gravitational field strength",
+      "problem": "On another planet, a 2.50 kg rock hung from a spring scale reads 9.25 N. What is the gravitational field strength there?",
+      "steps": [
+        "**Given:** $m = 2.50$ kg; $F_g = 9.25$ N",
+        "**Required:** $g$",
+        "**Analysis:** $g = \\dfrac{F_g}{m}$",
+        "**Solution:** $g = \\dfrac{9.25\\ \\text{N}}{2.50\\ \\text{kg}} = 3.70\\ \\text{N/kg}$",
+        "**Statement:** The gravitational field strength is 3.70 N/kg [down] (toward the planet's centre)."
+      ],
+      "answer": "3.70 N/kg [down]"
+    },
+    {
+      "title": "Elevator accelerating up (textbook Sample Problem 2)",
+      "problem": "A 50 kg person stands on a scale (in newtons) in an elevator accelerating up at 2.2 m/s². What does the scale read?",
+      "steps": [
+        "**Given:** $m = 50$ kg; $a = +2.2$ m/s² (up positive)",
+        "**Required:** $F_N$ (the scale reading)",
+        "**Analysis:** FBD: $\\vec F_N$ up, $\\vec F_g$ down. $F_N + F_g = ma$.",
+        "**Solution:** $F_g = -(50\\ \\text{kg})(9.8\\ \\text{N/kg}) = -490$ N. $F_N - 490\\ \\text{N} = (50\\ \\text{kg})(2.2\\ \\text{m/s}^2)$, so $F_N = 490 + 110 = 600$ N.",
+        "**Statement:** The scale reads 600 N – more than the person's weight, so they feel heavier."
+      ],
+      "answer": "600 N"
+    },
+    {
+      "title": "A friend pushes down (textbook Sample Problem 3)",
+      "problem": "A 60.0 kg person stands on a scale. A friend pushes down on them with 72.0 N. What is the reading?",
+      "steps": [
+        "**Given:** $m = 60.0$ kg; $F_a = 72.0$ N [down]",
+        "**Required:** $F_N$",
+        "**Analysis:** At rest, so $\\vec F_{net} = 0$: $F_N + F_g + F_a = 0$ (up positive).",
+        "**Solution:** $F_g = -(60.0)(9.8) = -588$ N. $F_N - 588 - 72.0 = 0 \\Rightarrow F_N = 660$ N.",
+        "**Statement:** The scale reads 660 N, even though the person's weight is only 588 N."
+      ],
+      "answer": "660 N"
+    },
+    {
+      "title": "Jumping off a scale",
+      "problem": "A 72 kg person jumps up off a bathroom scale. At one instant the scale reads 840 N. What is the person's acceleration?",
+      "steps": [
+        "**Given:** $m = 72$ kg; $F_N = 840$ N [up]",
+        "**Required:** $\\vec a$",
+        "**Analysis:** $F_N + F_g = ma$, up positive.",
+        "**Solution:** $F_g = -(72)(9.8) = -705.6$ N. $840 - 705.6 = 72a \\Rightarrow a = 1.9$ m/s².",
+        "**Statement:** The person accelerates at 1.9 m/s² [up]."
+      ],
+      "answer": "1.9 m/s² [up]"
+    },
+    {
+      "title": "Holding a chandelier against the ceiling",
+      "problem": "An electrician holds a 3.2 kg chandelier against a ceiling with a force of 53 N [up]. Find the normal force from the ceiling.",
+      "steps": [
+        "**Given:** $m = 3.2$ kg; $F_a = 53$ N [up]",
+        "**Required:** $\\vec F_N$ (from the ceiling – it pushes **down** on the chandelier)",
+        "**Analysis:** At rest: $F_a + F_g + F_N = 0$, up positive.",
+        "**Solution:** $F_g = -(3.2)(9.8) = -31.36$ N. $53 - 31.36 + F_N = 0 \\Rightarrow F_N = -21.6$ N.",
+        "**Statement:** The ceiling exerts a normal force of 22 N [down] on the chandelier."
+      ],
+      "answer": "22 N [down]"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Heavier objects always fall faster.",
+      "fact": "Without air resistance all objects fall with the same acceleration, 9.8 m/s². In air, objects with a large cross-sectional area compared with their weight (like a sheet of paper) fall more slowly because air resistance is larger relative to gravity."
+    },
+    {
+      "myth": "Mass and weight are the same thing.",
+      "fact": "Mass is the amount of matter (kg) and never changes with location. Weight is the force of gravity (N) and changes with g."
+    },
+    {
+      "myth": "Astronauts on the ISS are weightless because there is no gravity in space.",
+      "fact": "Gravity at the ISS is still about 8.6 N/kg. The astronauts float because they and the station are in free fall together."
+    },
+    {
+      "myth": "The normal force always equals mg.",
+      "fact": "Only on a horizontal surface with no other vertical forces and no vertical acceleration. Pushes, pulls, inclines and accelerating elevators all change F_N."
+    },
+    {
+      "myth": "When a parachute opens, the skydiver shoots upward.",
+      "fact": "The net force becomes upward, so the skydiver slows down – but keeps moving downward. Net force tells you the acceleration direction, not the motion direction."
+    },
+    {
+      "myth": "A bathroom scale measures your mass.",
+      "fact": "A scale measures the normal force (in newtons). It only equals your weight when you are at rest or moving at constant velocity with no other vertical forces."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Skydiving and parachute design",
+      "body": "Skydivers change body position to change their cross-sectional area. Spreading out ('belly to Earth') increases air resistance and lowers terminal speed; diving head-first decreases it. The parachute is a giant cross-sectional area that makes a safe landing speed possible."
+    },
+    {
+      "title": "Elevators and amusement park rides",
+      "body": "That 'stomach drop' when an elevator starts down or a ride falls is the normal force from the seat or floor becoming smaller than your weight. Ride designers use F_N = m(g + a) to keep forces on riders within safe, thrilling limits."
+    },
+    {
+      "title": "Weighing goods around the world",
+      "body": "Because g is about 0.5 % larger at the poles than at the equator, a spring scale would show a slightly larger weight for the same bag of rice near the North Pole. A balance compares masses directly, so it gives the same result anywhere."
+    },
+    {
+      "title": "Astronaut training",
+      "body": "Astronauts train for the 'weightless' feeling in aircraft that fly curved paths so that everyone on board is briefly in free fall – the same reason astronauts float on the ISS."
+    }
+  ],
+  "practice": [
+    {
+      "question": "A crumpled paper ball and a flat sheet of paper have the same mass. Explain, using forces, why the crumpled ball reaches the floor first.",
+      "hint": "Compare the forces of gravity and then compare cross-sectional areas.",
+      "solution": "Both have the same mass so the same force of gravity. The flat sheet has a much larger cross-sectional area, so air resistance on it is much larger. Its net downward force is smaller, so its acceleration is smaller and it quickly reaches a low terminal speed. The crumpled ball experiences little air resistance and falls almost in free fall."
+    },
+    {
+      "question": "What is the weight of a 15 kg dog on Earth?",
+      "hint": "$F_g = mg$",
+      "solution": "$F_g = (15\\ \\text{kg})(9.8\\ \\text{N/kg}) = 150$ N [down] (147 N to three digits)."
+    },
+    {
+      "question": "A 12 kg box sits on top of a 38 kg box on the floor. (a) Find the normal force on the 12 kg box. (b) Find the normal force on the 38 kg box from the floor.",
+      "hint": "The floor must support both boxes.",
+      "solution": "(a) The bottom box supports only the top box: $F_N = (12)(9.8) = 120$ N [up] (117.6 N). (b) The floor supports both: $F_N = (50)(9.8) = 490$ N [up]."
+    },
+    {
+      "question": "A 36 kg child is on a ride moving up at a constant 12 m/s. What is the normal force from the seat?",
+      "hint": "Constant velocity means zero acceleration.",
+      "solution": "$a = 0$, so $F_N = mg = (36)(9.8) = 350$ N [up]. It is the same when moving down at constant velocity."
+    },
+    {
+      "question": "The same 36 kg child accelerates down at 1.8 m/s². Find the normal force.",
+      "hint": "Up positive: $a = -1.8$ m/s².",
+      "solution": "$F_N = m(g + a) = 36(9.8 - 1.8) = 288 \\approx 290$ N [up]. The child feels lighter."
+    },
+    {
+      "question": "A 20.000 kg object is moved from the equator (9.7805 N/kg) to the North Pole (9.8322 N/kg). By how much does its weight change?",
+      "hint": "Find each weight, then subtract.",
+      "solution": "Equator: 195.61 N; pole: 196.644 N. Difference = 1.034 N (an increase). Its mass stays 20.000 kg."
+    },
+    {
+      "question": "A 74 kg astronaut is on the ISS where g = 8.6 N/kg. What is the astronaut's weight there, and why do they appear weightless?",
+      "hint": "Weight is not zero!",
+      "solution": "$F_g = (74)(8.6) = 640$ N [down]. They appear weightless because they and the station are both in free fall, so nothing pushes up on them relative to the station."
+    },
+    {
+      "question": "Describe the velocity and acceleration of a skydiver at terminal speed.",
+      "hint": "What is the net force?",
+      "solution": "Air resistance equals gravity, so the net force is zero. The acceleration is zero and the velocity is constant (downward)."
+    }
+  ],
+  "summary": [
+    "Air resistance increases with the cross-sectional area and the speed of an object, and acts opposite to the object's velocity.",
+    "Free fall means gravity is the only force acting; all objects in free fall accelerate at 9.8 m/s² [down] near Earth.",
+    "A falling object reaches terminal speed when air resistance grows to equal the force of gravity; a parachute lowers terminal speed.",
+    "Force fields cause action-at-a-distance forces. Gravitational field strength g = F_g/m is 9.8 N/kg [down] at Earth's surface.",
+    "g decreases with distance from Earth's surface and is greater at the poles than at the equator because Earth is not a perfect sphere.",
+    "Mass (kg, balance) does not change with location; weight (N, spring scale) does.",
+    "The normal force is not always equal to the force of gravity – use F_net = ma with every force on the FBD."
+  ],
+  "questions": [
+    {
+      "id": "4-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 45,
+          "max": 90,
+          "step": 1
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "Fm": "m*1.6"
+      },
+      "text": "A student has a mass of {{m}} kg.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the student's weight on Earth's surface.",
+          "answer": {
+            "expr": "Fg",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "The student travels to the Moon, where g = 1.6 N/kg. Determine the student's mass and weight on the Moon.",
+          "answer": {
+            "expr": "Fm",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why one quantity changed and the other did not."
+        }
+      ],
+      "modelAnswer": "(a) $F_g = mg = ({{m}}\\ \\text{kg})(9.8\\ \\text{N/kg}) = {{Fg:3}}\\ \\text{N}$, so the weight is {{Fg:2}} N [down].\n\n(b) Mass does not depend on location, so on the Moon the mass is still **{{m}} kg**. Weight on the Moon: $F_g = ({{m}}\\ \\text{kg})(1.6\\ \\text{N/kg}) = {{Fm:2}}\\ \\text{N}$ [down].\n\n(c) Mass measures the quantity of matter, which has not changed. Weight is the force of gravity, which depends on the gravitational field strength – the Moon's is about one-sixth of Earth's, so the weight is about one-sixth as large.",
+      "rubric": [
+        {
+          "point": "Uses F_g = mg with g = 9.8 N/kg and gets the Earth weight with unit and direction",
+          "marks": 2
+        },
+        {
+          "point": "States mass is unchanged on the Moon",
+          "marks": 1
+        },
+        {
+          "point": "Calculates Moon weight correctly",
+          "marks": 1
+        },
+        {
+          "point": "Explains the difference using the definitions of mass and weight",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 1.5,
+          "max": 4.5,
+          "step": 0.5
+        },
+        "gp": {
+          "choices": [
+            3.7,
+            8.9,
+            11.2,
+            24.8,
+            10.4
+          ]
+        }
+      },
+      "derived": {
+        "Fg": "m*gp",
+        "FE": "m*9.8"
+      },
+      "text": "A geologist on another planet hangs a {{m}} kg rock sample from a spring scale. The scale reads {{Fg:3}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the gravitational field strength on this planet.",
+          "answer": {
+            "expr": "gp",
+            "unit": "N/kg",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What would the rock's weight be on Earth? Explain whether a balance would give a different reading on the two planets.",
+          "answer": {
+            "expr": "FE",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $g = \\dfrac{F_g}{m} = \\dfrac{ {{Fg:3}}\\ \\text{N} }{ {{m}}\\ \\text{kg} } = {{gp:2}}\\ \\text{N/kg}$ [toward the planet's centre].\n\n(b) The rock's weight on Earth would be $F_g = ({{m}})(9.8) = {{FE:2}}$ N. A balance compares masses, so it reads {{m}} kg on both planets – the mass does not change.",
+      "rubric": [
+        {
+          "point": "Uses g = F_g / m",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of g with units N/kg",
+          "marks": 2
+        },
+        {
+          "point": "Calculates the Earth weight",
+          "marks": 1
+        },
+        {
+          "point": "Explains that a balance gives the same mass reading because mass does not depend on location",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 60,
+          "max": 90,
+          "step": 1
+        },
+        "gs": {
+          "choices": [
+            8.5,
+            8.6,
+            8.7
+          ]
+        }
+      },
+      "derived": {
+        "FE": "m*9.8",
+        "FS": "m*gs",
+        "d": "m*9.8-m*gs"
+      },
+      "text": "An astronaut with a mass of {{m}} kg goes up to the International Space Station. During the stay, the gravitational field strength at the station is {{gs}} N/kg.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the mass of the astronaut on the station?",
+          "answer": {
+            "expr": "m",
+            "unit": "kg",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the difference between the astronaut's weight on Earth's surface and on the station?",
+          "answer": {
+            "expr": "d",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Why does the weight change but not the mass?"
+        },
+        {
+          "label": "d",
+          "text": "Why does the astronaut appear weightless on the station?"
+        }
+      ],
+      "modelAnswer": "(a) The mass is still **{{m}} kg** – the astronaut contains the same amount of matter.\n\n(b) Weight on Earth: $({{m}})(9.8) = {{FE:3}}$ N. Weight on the station: $({{m}})({{gs}}) = {{FS:3}}$ N. Difference $= {{FE:3}} - {{FS:3}} = {{d:2}}$ N.\n\n(c) Weight is the force of gravity and depends on gravitational field strength, which is weaker farther from Earth's surface. Mass is the quantity of matter and does not depend on location.\n\n(d) The astronaut and the station are both in free fall toward Earth's centre (gravity is what keeps them in orbit). Because they fall together, the station's floor does not push up on the astronaut, so the astronaut appears to float even though gravity still acts.",
+      "rubric": [
+        {
+          "point": "States mass is unchanged",
+          "marks": 1
+        },
+        {
+          "point": "Calculates both weights correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct difference",
+          "marks": 1
+        },
+        {
+          "point": "Explains weight depends on g but mass does not",
+          "marks": 1
+        },
+        {
+          "point": "Explains apparent weightlessness as free fall (gravity still acts)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "choices": [
+            10,
+            15,
+            20,
+            25,
+            30
+          ]
+        }
+      },
+      "derived": {
+        "We": "m*9.7805",
+        "Wp": "m*9.8322",
+        "d": "m*(9.8322-9.7805)"
+      },
+      "text": "An object of mass {{m}}.000 kg is weighed with a very precise spring scale at the equator (g = 9.7805 N/kg) and then at the North Pole (g = 9.8322 N/kg).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the weight of the object at each location.",
+          "answer": {
+            "expr": "Wp",
+            "unit": "N",
+            "sig": 5
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the difference in weight between the equator and the North Pole?",
+          "answer": {
+            "expr": "d",
+            "unit": "N",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the weight changes with latitude."
+        }
+      ],
+      "modelAnswer": "(a) Equator: $F_g = ({{m}}.000)(9.7805) = {{We:6}}$ N. North Pole: $F_g = ({{m}}.000)(9.8322) = {{Wp:6}}$ N.\n\n(b) Difference $= {{Wp:6}} - {{We:6}} = {{d:4}}$ N (heavier at the pole).\n\n(c) Earth is not a perfect sphere: its rotation makes it bulge at the equator. At the poles, sea level is about 21 km closer to Earth's centre than at the equator. Gravitational field strength is greater closer to Earth's centre, so g (and the weight) increases with latitude from the equator to the poles. The mass is unchanged.",
+      "rubric": [
+        {
+          "point": "Correct weight at the equator",
+          "marks": 1
+        },
+        {
+          "point": "Correct weight at the pole",
+          "marks": 1
+        },
+        {
+          "point": "Correct difference",
+          "marks": 1
+        },
+        {
+          "point": "Explains Earth's bulge / poles closer to centre",
+          "marks": 2
+        },
+        {
+          "point": "Links smaller distance to larger g and notes mass unchanged",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 20,
+          "max": 45,
+          "step": 1
+        }
+      },
+      "derived": {
+        "Wm": "m*1.627",
+        "WE": "m*9.8",
+        "gm": "1.627"
+      },
+      "text": "A cargo box on a rocket has a mass of {{m}}.00 kg. The rocket travels from Earth to the Moon. On the Moon, the box's weight is measured to be {{Wm:4}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What happens to the mass of the box during the mission? Explain.",
+          "answer": {
+            "expr": "m",
+            "unit": "kg",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the weight of the box at the surface of Earth.",
+          "answer": {
+            "expr": "WE",
+            "unit": "N",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the gravitational field strength at the surface of the Moon.",
+          "answer": {
+            "expr": "gm",
+            "unit": "N/kg",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) The mass stays **{{m}}.00 kg**. Mass is the quantity of matter; no matter is added or removed during the trip, and mass does not depend on location.\n\n(b) $F_g = mg = ({{m}}.00\\ \\text{kg})(9.8\\ \\text{N/kg}) = {{WE:3}}$ N [down].\n\n(c) $g = \\dfrac{F_g}{m} = \\dfrac{ {{Wm:4}}\\ \\text{N} }{ {{m}}.00\\ \\text{kg} } = {{gm:3}}$ N/kg [down]. This is about one-sixth of Earth's value.",
+      "rubric": [
+        {
+          "point": "Mass unchanged with correct reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Correct Earth weight",
+          "marks": 1
+        },
+        {
+          "point": "Uses g = F_g/m",
+          "marks": 1
+        },
+        {
+          "point": "Correct lunar g with units",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 40,
+          "max": 70,
+          "step": 1
+        }
+      },
+      "derived": {
+        "Wme": "m*3.3",
+        "Wv": "m*8.1",
+        "gme": "3.3",
+        "gv": "8.1",
+        "Wj": "m*26"
+      },
+      "text": "A {{m}} kg object is taken to three planets. On Mercury it weighs {{Wme:3}} N, on Venus it weighs {{Wv:3}} N, and on Jupiter the gravitational field strength is 26 N/kg.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the gravitational field strength on Mercury and on Venus.",
+          "answer": {
+            "expr": "gv",
+            "unit": "N/kg",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the weight of the object on Jupiter.",
+          "answer": {
+            "expr": "Wj",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the object's mass on each planet? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Mercury: $g = \\dfrac{ {{Wme:3}} }{ {{m}} } = {{gme:2}}$ N/kg. Venus: $g = \\dfrac{ {{Wv:3}} }{ {{m}} } = {{gv:2}}$ N/kg.\n\n(b) Jupiter: $F_g = mg = ({{m}})(26) = {{Wj:2}}$ N.\n\n(c) The mass is {{m}} kg on every planet. Mass is a property of the object (amount of matter); only the force of gravity, and therefore weight, changes from planet to planet.",
+      "rubric": [
+        {
+          "point": "Correct g for Mercury",
+          "marks": 1
+        },
+        {
+          "point": "Correct g for Venus",
+          "marks": 1
+        },
+        {
+          "point": "Correct weight on Jupiter",
+          "marks": 1
+        },
+        {
+          "point": "States and explains that mass is unchanged",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q07",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 15,
+          "max": 35,
+          "step": 1
+        },
+        "P": {
+          "min": 30,
+          "max": 70,
+          "step": 2
+        },
+        "U": {
+          "min": 40,
+          "max": 90,
+          "step": 2
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "Rb": "m*9.8+P",
+        "Rc": "m*9.8-U"
+      },
+      "text": "A {{m}} kg object sits on top of a scale calibrated in newtons.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the reading on the scale if the object is at rest and no one is pushing on it.",
+          "answer": {
+            "expr": "Fg",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the reading if someone pushes down on the object with a force of {{P}} N [down].",
+          "answer": {
+            "expr": "Rb",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the reading if someone pulls up on the object with a force of {{U}} N [up].",
+          "answer": {
+            "expr": "Rc",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Choose up as positive. $F_g = -({{m}})(9.8) = -{{Fg:3}}$ N. The object is at rest, so $F_{net} = 0$ in each case and the scale reads $F_N$.\n\n(a) $F_N - {{Fg:3}} = 0 \\Rightarrow F_N = {{Fg:3}}$ N, about {{Fg:2}} N.\n\n(b) $F_N - {{Fg:3}} - {{P}} = 0 \\Rightarrow F_N = {{Rb:3}}$ N.\n\n(c) $F_N - {{Fg:3}} + {{U}} = 0 \\Rightarrow F_N = {{Rc:3}}$ N.\n\nPushing down makes the scale push up harder; pulling up means the scale needs to push up less.",
+      "rubric": [
+        {
+          "point": "Calculates F_g and uses F_net = 0 for an object at rest",
+          "marks": 1
+        },
+        {
+          "point": "Correct reading in (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct reading in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct reading in (c)",
+          "marks": 1
+        },
+        {
+          "point": "FBD or clear sign convention shown",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 45,
+          "max": 85,
+          "step": 1
+        },
+        "a": {
+          "min": 1.0,
+          "max": 3.0,
+          "step": 0.2
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "FN": "m*(9.8+a)"
+      },
+      "text": "A {{m}} kg person stands on a bathroom scale (calibrated in newtons) inside an elevator. The elevator is accelerating upward at {{a}} m/s².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the reading on the scale?",
+          "answer": {
+            "expr": "FN",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Compare the reading with the person's weight and explain the difference."
+        }
+      ],
+      "modelAnswer": "Up is positive. FBD: $\\vec F_N$ [up] from the scale, $\\vec F_g$ [down].\n\n$F_g = -({{m}})(9.8) = -{{Fg:3}}$ N\n\n$F_N + F_g = ma \\Rightarrow F_N = {{Fg:3}} + ({{m}})({{a}}) = {{FN:3}}$ N\n\n(a) The scale reads about **{{FN:2}} N**.\n\n(b) The reading is greater than the person's weight. The floor must push up hard enough both to support the person **and** to provide the upward net force that accelerates them, so they feel heavier.",
+      "rubric": [
+        {
+          "point": "Draws or describes FBD with F_N up and F_g down",
+          "marks": 1
+        },
+        {
+          "point": "Uses F_net = ma with consistent signs",
+          "marks": 2
+        },
+        {
+          "point": "Correct scale reading",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the person feels heavier",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 45,
+          "max": 80,
+          "step": 1
+        },
+        "a": {
+          "min": 1.2,
+          "max": 3.0,
+          "step": 0.2
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "FN": "m*(9.8-a)"
+      },
+      "text": "A {{m}} kg student rides an elevator while standing on a scale. Starting from the top floor, the elevator speeds up going down at {{a}} m/s², then travels down at a constant velocity of 3.0 m/s.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What does the scale read while the elevator is speeding up?",
+          "answer": {
+            "expr": "FN",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What does the scale read while the elevator moves at constant velocity?",
+          "answer": {
+            "expr": "Fg",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe how the student feels during each stage and why."
+        }
+      ],
+      "modelAnswer": "Up positive, $F_g = -{{Fg:3}}$ N.\n\n(a) Speeding up while moving down means the acceleration is **down**: $a = -{{a}}$ m/s².\n$F_N = m(g + a) = {{m}}(9.8 - {{a}}) = {{FN:3}}$ N ≈ **{{FN:2}} N**.\n\n(b) At constant velocity, $a = 0$, so $F_N = mg = {{Fg:3}}$ N ≈ **{{Fg:2}} N**. Speed and direction of motion do not matter – only acceleration does.\n\n(c) During (a) the student feels lighter because the normal force is less than their weight; during (b) they feel normal.",
+      "rubric": [
+        {
+          "point": "Identifies the acceleration as downward (negative) in (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct reading in (a)",
+          "marks": 2
+        },
+        {
+          "point": "Correct reading in (b) with reasoning that a = 0",
+          "marks": 1
+        },
+        {
+          "point": "Explains feeling lighter / normal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 50,
+          "max": 85,
+          "step": 1
+        },
+        "aa": {
+          "min": 1.0,
+          "max": 3.0,
+          "step": 0.5
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "R": "m*(9.8-aa)",
+        "a": "-aa"
+      },
+      "text": "A {{m}} kg person stands on a scale in an elevator. At one moment the scale reads {{R:3}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the elevator's acceleration (magnitude and direction).",
+          "answer": {
+            "expr": "aa",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe two different ways the elevator could be moving to produce this reading. Explain."
+        }
+      ],
+      "modelAnswer": "Up positive. $F_g = -({{m}})(9.8) = -{{Fg:3}}$ N.\n\n(a) $F_N + F_g = ma \\Rightarrow a = \\dfrac{F_N - mg}{m} = \\dfrac{ {{R:3}} - {{Fg:3}} }{ {{m}} } = {{a:2}}$ m/s².\n\nThe value is negative, so the acceleration is **{{aa:2}} m/s² [down]**.\n\n(b) The elevator could be (i) moving **down and speeding up**, or (ii) moving **up and slowing down**. Both have a downward acceleration. The scale cannot tell which, because it responds only to acceleration, not to the direction of motion.",
+      "rubric": [
+        {
+          "point": "Applies F_net = ma with signs",
+          "marks": 2
+        },
+        {
+          "point": "Correct magnitude of acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct direction (down)",
+          "marks": 1
+        },
+        {
+          "point": "Gives both possible motions with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 55,
+          "max": 85,
+          "step": 1
+        },
+        "R": {
+          "min": 850,
+          "max": 1150,
+          "step": 10
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "a": "(R-m*9.8)/m"
+      },
+      "text": "A {{m}} kg person jumps up off a bathroom scale. At one instant during the push-off, the scale reads {{R}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the acceleration of the person at that instant.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Up positive: $F_N + F_g = ma$.\n\n$F_g = -({{m}})(9.8) = -{{Fg:3}}$ N\n\n$a = \\dfrac{ {{R}} - {{Fg:3}} }{ {{m}} } = {{a:2}}$ m/s²\n\nThe person accelerates at **{{a:2}} m/s² [up]**. The scale reads more than the person's weight because the person pushes down hard on the scale (Newton's third law: the scale pushes back up with an equal force), and the excess upward force accelerates them upward.",
+      "rubric": [
+        {
+          "point": "FBD / sign convention",
+          "marks": 1
+        },
+        {
+          "point": "Correct F_g",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration with direction",
+          "marks": 2
+        },
+        {
+          "point": "Explains reading larger than weight",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 2.0,
+          "max": 5.0,
+          "step": 0.2
+        },
+        "F": {
+          "min": 55,
+          "max": 80,
+          "step": 1
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "N": "F-m*9.8"
+      },
+      "text": "An electrician holds a {{m}} kg light fixture against a ceiling by pushing up on it with a force of {{F}} N [up].",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Draw an FBD for the fixture and determine the normal force exerted by the ceiling.",
+          "answer": {
+            "expr": "N",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "FBD of the fixture: $\\vec F_a$ = {{F}} N [up] from the electrician, $\\vec F_g$ [down], and $\\vec F_N$ [down] from the ceiling (a ceiling can only push down on the fixture).\n\nAt rest: $F_a + F_g + F_N = 0$ (up positive)\n\n${{F}} - {{Fg:3}} + F_N = 0 \\Rightarrow F_N = -{{N:3}}$ N\n\nThe ceiling exerts a normal force of **{{N:2}} N [down]**. This shows the normal force does not have to point up – it is always perpendicular to and away from the surface.",
+      "rubric": [
+        {
+          "point": "FBD with three forces and the normal force directed down",
+          "marks": 2
+        },
+        {
+          "point": "Uses net force zero",
+          "marks": 1
+        },
+        {
+          "point": "Correct magnitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct direction with explanation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q13",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m1": {
+          "min": 8,
+          "max": 20,
+          "step": 1
+        },
+        "m2": {
+          "min": 25,
+          "max": 45,
+          "step": 1
+        }
+      },
+      "derived": {
+        "mt": "m1+m2",
+        "N1": "m1*9.8",
+        "N2": "(m1+m2)*9.8"
+      },
+      "text": "A {{m1}} kg box sits on top of a {{m2}} kg box, which rests on the floor.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Draw an FBD for each box."
+        },
+        {
+          "label": "b",
+          "text": "Calculate the normal force acting on the top box.",
+          "answer": {
+            "expr": "N1",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the normal force acting on the bottom box due to the floor.",
+          "answer": {
+            "expr": "N2",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Top box: $\\vec F_N$ [up] from the bottom box and $\\vec F_g$ [down]. Bottom box: $\\vec F_N$ [up] from the floor, $\\vec F_g$ [down] and the push of the top box [down] (equal to the top box's weight).\n\n(b) Top box at rest: $F_N = m_1 g = ({{m1}})(9.8) = {{N1:3}}$ N ≈ **{{N1:2}} N [up]**.\n\n(c) Floor supports both boxes: $F_N = (m_1 + m_2)g = ({{mt}})(9.8) = {{N2:3}}$ N ≈ **{{N2:2}} N [up]**.\n\nThe normal force on the bottom box is larger than its own weight.",
+      "rubric": [
+        {
+          "point": "Correct FBD for each box",
+          "marks": 2
+        },
+        {
+          "point": "Normal force on top box",
+          "marks": 1
+        },
+        {
+          "point": "Normal force on bottom box from floor including both masses",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 25,
+          "max": 45,
+          "step": 1
+        },
+        "a": {
+          "min": 1.0,
+          "max": 3.0,
+          "step": 0.2
+        }
+      },
+      "derived": {
+        "W": "m*9.8",
+        "Nc": "m*(9.8-a)"
+      },
+      "text": "A child with a mass of {{m}} kg sits on an amusement park ride that moves the seat up and down.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the normal force when the child moves up at a constant velocity of 12 m/s.",
+          "answer": {
+            "expr": "W",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the normal force when the child moves down at a constant velocity of 14 m/s.",
+          "answer": {
+            "expr": "W",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the normal force when the child accelerates down at {{a}} m/s².",
+          "answer": {
+            "expr": "Nc",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Up positive, $F_N = m(g + a)$.\n\n(a) Constant velocity up: $a = 0$, $F_N = ({{m}})(9.8) = {{W:2}}$ N [up].\n\n(b) Constant velocity down: $a = 0$, $F_N = {{W:2}}$ N [up] – exactly the same.\n\n(c) Accelerating down at {{a}} m/s²: $F_N = {{m}}(9.8 - {{a}}) = {{Nc:2}}$ N [up].\n\nThe normal force depends only on the acceleration, not on the speed or direction of motion.",
+      "rubric": [
+        {
+          "point": "Recognises a = 0 for constant velocity",
+          "marks": 1
+        },
+        {
+          "point": "Correct (a) and (b)",
+          "marks": 2
+        },
+        {
+          "point": "Correct (c) with negative acceleration",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 45,
+          "max": 80,
+          "step": 1
+        },
+        "F": {
+          "min": 40,
+          "max": 120,
+          "step": 5
+        }
+      },
+      "derived": {
+        "Fg": "m*9.8",
+        "N": "m*9.8+F"
+      },
+      "text": "A {{m}} kg person stands on a scale calibrated in newtons. A friend pushes down on the person's shoulders with a force of {{F}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the reading on the scale?",
+          "answer": {
+            "expr": "N",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Has the person's weight changed? Explain."
+        }
+      ],
+      "modelAnswer": "Up positive. $F_g = -({{m}})(9.8) = -{{Fg:3}}$ N. The person is at rest: $F_N + F_g + F_a = 0$.\n\n$F_N - {{Fg:3}} - {{F}} = 0 \\Rightarrow F_N = {{N:3}}$ N\n\n(a) The scale reads **{{N:2}} N**.\n\n(b) No. The person's weight is still {{Fg:2}} N because weight is the force of gravity ($mg$), which has not changed. The scale reads the normal force, which is larger because the scale must also balance the friend's push.",
+      "rubric": [
+        {
+          "point": "FBD with three vertical forces",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation with net force zero",
+          "marks": 1
+        },
+        {
+          "point": "Correct reading",
+          "marks": 1
+        },
+        {
+          "point": "Explains that weight is unchanged and the scale shows the normal force",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Use Newton's second law and the force of gravity to explain why all objects fall with the same acceleration in the absence of air resistance. Support your answer with an example comparing two objects of different mass.",
+      "modelAnswer": "With no air resistance, the only force on a falling object is gravity, $F_g = mg$, so $F_{net} = mg$. Newton's second law gives $a = \\dfrac{F_{net}}{m} = \\dfrac{mg}{m} = g$. The mass cancels, so every object accelerates at $g = 9.8$ m/s² [down].\n\nExample: a 1 kg ball has $F_g = 9.8$ N and accelerates at $9.8/1 = 9.8$ m/s². A 10 kg ball has ten times the force, $98$ N, but also ten times the mass (inertia), so $98/10 = 9.8$ m/s². The larger pull is exactly offset by the larger resistance to acceleration.",
+      "rubric": [
+        {
+          "point": "States gravity is the only force (free fall)",
+          "marks": 1
+        },
+        {
+          "point": "Writes a = F_net/m = mg/m = g",
+          "marks": 2
+        },
+        {
+          "point": "Explains that larger mass means larger force but also more inertia",
+          "marks": 1
+        },
+        {
+          "point": "Gives a correct numerical or worked example",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q17",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain why a skydiver with an open parachute has a much lower terminal speed than a skydiver with a closed parachute. Refer to the factors that affect air resistance.",
+      "modelAnswer": "Terminal speed is reached when air resistance equals the force of gravity. Air resistance increases with cross-sectional area and with speed. An open parachute gives a very large cross-sectional area, so air resistance becomes equal to gravity at a much lower speed. With a closed parachute the area is small, so the skydiver must fall much faster before air resistance grows large enough to balance gravity. The force of gravity is the same in both cases.",
+      "rubric": [
+        {
+          "point": "Defines terminal speed as F_air = F_g",
+          "marks": 1
+        },
+        {
+          "point": "Identifies cross-sectional area and speed as factors",
+          "marks": 1
+        },
+        {
+          "point": "Explains balance is reached at a lower speed with larger area",
+          "marks": 2
+        },
+        {
+          "point": "Notes gravity is unchanged",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q18",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A feather and a steel bolt are dropped at the same time from the same height in a classroom. (a) Explain why the bolt lands first. (b) Predict what would happen if the experiment were done in a container with all the air removed, and explain.",
+      "modelAnswer": "(a) Both experience gravity, but the feather has a large cross-sectional area compared with its very small weight. Air resistance quickly becomes nearly equal to its weight, so its net force and acceleration are small and it reaches a low terminal speed. The bolt is heavy with a small cross-sectional area, so air resistance is tiny compared with its weight; it falls almost in free fall.\n\n(b) With no air there is no air resistance. Both objects are in free fall, with gravity as the only force, so both accelerate at 9.8 m/s² and land at the same time.",
+      "rubric": [
+        {
+          "point": "Compares air resistance relative to weight for each object",
+          "marks": 2
+        },
+        {
+          "point": "Links to net force / acceleration or terminal speed",
+          "marks": 1
+        },
+        {
+          "point": "Predicts they land together in a vacuum",
+          "marks": 1
+        },
+        {
+          "point": "Explains using free fall / a = g",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q19",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "In an action movie, a plane releases a heavy box while in flight. The box is attached to a parachute that opens as soon as it leaves the plane. Partway down, the parachute malfunctions and the box breaks free. Describe the forces acting on the box throughout its fall and use them to describe its velocity and acceleration. Include FBDs (described in words or sketched) for at least three stages.",
+      "modelAnswer": "**Stage 1 – parachute opens (just after release):** vertical speed is small, but the large parachute area quickly increases air resistance. While $F_{air} < F_g$ the box speeds up downward with decreasing acceleration; soon $F_{air} = F_g$. FBD: $\\vec F_g$ down, $\\vec F_{air}$ up, growing to equal length.\n\n**Stage 2 – low terminal speed with parachute:** $F_{air} = F_g$, net force zero, acceleration zero, constant (slow) downward velocity. FBD: equal arrows.\n\n**Stage 3 – box breaks free:** the cross-sectional area drops suddenly, so air resistance drops far below gravity. Net force is large and downward; the box accelerates downward (close to 9.8 m/s² at first). FBD: long $\\vec F_g$, short $\\vec F_{air}$.\n\n**Stage 4 – speeding up:** as speed increases, air resistance increases, so the net force and acceleration decrease while the velocity keeps increasing.\n\n**Stage 5 – new terminal speed:** air resistance again equals gravity, but at a much higher speed because the area is small. Velocity constant and large; acceleration zero.",
+      "rubric": [
+        {
+          "point": "Correct forces (gravity and air resistance) identified with directions",
+          "marks": 1
+        },
+        {
+          "point": "Describes parachute stage reaching low terminal speed",
+          "marks": 2
+        },
+        {
+          "point": "Describes break-free stage: area decreases, net force down, acceleration",
+          "marks": 2
+        },
+        {
+          "point": "Describes air resistance increasing with speed until new, higher terminal speed",
+          "marks": 2
+        },
+        {
+          "point": "At least three FBDs consistent with the description",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q20",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Summarize the differences between mass and weight. For each quantity give its definition, symbol, SI unit, method of measuring, and whether it varies with location.",
+      "modelAnswer": "| | Mass | Weight |\n|---|---|---|\n| Definition | quantity of matter in an object | force of gravity acting on an object |\n| Symbol | $m$ | $\\vec F_g$ |\n| SI unit | kilogram (kg) | newton (N) |\n| Measured with | balance | spring scale or force sensor (object at rest or constant velocity) |\n| Varies with location? | no | yes – depends on g |\n\nThey are related by $F_g = mg$. Weight is a vector; mass is a scalar.",
+      "rubric": [
+        {
+          "point": "Correct definitions",
+          "marks": 2
+        },
+        {
+          "point": "Correct symbols and units",
+          "marks": 1
+        },
+        {
+          "point": "Correct measuring instruments",
+          "marks": 1
+        },
+        {
+          "point": "Correct variation with location",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q21",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Astronauts aboard the International Space Station are often described as \"weightless\". Explain why this description is misleading, and explain what is really happening to the astronauts and the station.",
+      "modelAnswer": "The term is misleading because gravity still acts on the astronauts – at the station's height the gravitational field strength is still about 8.6 N/kg, so their weight is far from zero. Gravity is in fact the force that keeps the station and astronauts in orbit; without it the ISS would move off in a straight line at constant velocity. The astronauts and the station are both in **free fall**, falling together toward Earth's centre with the same acceleration. Since the floor is falling just as fast as they are, it does not push up on them (no normal force), so they float relative to the station. This is the same feeling you would have in an elevator in free fall.",
+      "rubric": [
+        {
+          "point": "States gravity still acts (non-zero weight)",
+          "marks": 2
+        },
+        {
+          "point": "Explains gravity keeps the ISS in orbit",
+          "marks": 1
+        },
+        {
+          "point": "Identifies free fall of both astronauts and station",
+          "marks": 1
+        },
+        {
+          "point": "Explains absence of normal force / apparent floating",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q22",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain why the gravitational field strength at sea level is slightly greater at the poles than at the equator, and why it is smaller at the top of Mount Everest than at sea level. Use the values 9.8322 N/kg (North Pole), 9.7805 N/kg (equator) and 9.7647 N/kg (Everest) in your answer.",
+      "modelAnswer": "Gravitational field strength decreases as distance from Earth's centre increases.\n\n* **Poles vs equator:** Earth's rotation makes it bulge at the equator, so it is not a perfect sphere. Sea level at the poles is about 21 km closer to Earth's centre than sea level at the equator, so g is larger at the poles (9.8322 N/kg) than at the equator (9.7805 N/kg). g increases gradually with latitude.\n* **Mount Everest:** the summit is 8848 m above sea level, farther from Earth's centre, so g is smaller (9.7647 N/kg).\n\nThese differences are small, which is why we use the average value 9.8 N/kg [down] to two significant digits.",
+      "rubric": [
+        {
+          "point": "States g decreases with distance from Earth's centre / surface",
+          "marks": 1
+        },
+        {
+          "point": "Explains equatorial bulge and closer poles",
+          "marks": 2
+        },
+        {
+          "point": "Explains Everest is farther away so g is smaller",
+          "marks": 1
+        },
+        {
+          "point": "Uses the given values correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q23",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Design an investigation to measure the gravitational field strength at your location using a spring scale (or force sensor) and a set of masses. Describe your procedure, the data you would record, how you would analyse it with a graph, and two ways to improve accuracy.",
+      "modelAnswer": "**Procedure:** Hang a known mass (e.g. 100 g) from a calibrated spring scale. Wait until it is completely at rest, then record the force of gravity in newtons. Repeat with 200 g, 300 g, … 1000 g. Repeat each reading three times.\n\n**Data:** a table of mass (kg) and force of gravity (N), with averages.\n\n**Analysis:** Plot $F_g$ (vertical) against $m$ (horizontal). Since $F_g = mg$, the graph should be a straight line through the origin; its **slope** is $g$ in N/kg. Using a slope from many points is more reliable than a single calculation $g = F_g/m$.\n\n**Improving accuracy:** zero/calibrate the scale before use; make sure the object is at rest (not bouncing) when reading; read the scale at eye level; use a force sensor for more precision; check masses on a balance; average repeated trials.",
+      "rubric": [
+        {
+          "point": "Clear procedure using known masses and measured F_g at rest",
+          "marks": 2
+        },
+        {
+          "point": "Appropriate data table / repeated trials",
+          "marks": 1
+        },
+        {
+          "point": "Graph of F_g vs m and slope = g",
+          "marks": 2
+        },
+        {
+          "point": "Two valid ways to improve accuracy",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q24",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Two multi-flash photographs are taken with the flash going on and off at equal time intervals. In photo A, a small heavy ball falls and the gaps between successive images get larger. In photo B, a maple key falls and the gaps are all equal. (a) What can you conclude about the motion of each object? (b) Draw FBDs for each and compare the forces. (c) Which object is closer to free fall? Explain.",
+      "modelAnswer": "(a) **A:** the distance covered in each equal time interval increases, so the ball is speeding up – it is accelerating downward. **B:** equal distances in equal times mean constant velocity, so its acceleration is zero.\n\n(b) **A:** $\\vec F_g$ (long, down) and a small $\\vec F_{air}$ (up); net force down. **B:** $\\vec F_g$ (down) and $\\vec F_{air}$ (up) of **equal** length; net force zero. The maple key is at terminal speed – its large cross-sectional area makes air resistance balance gravity.\n\n(c) The ball, because air resistance on it is very small compared with gravity, so gravity is nearly the only force acting.",
+      "rubric": [
+        {
+          "point": "Correct interpretation of photo A (accelerating)",
+          "marks": 1
+        },
+        {
+          "point": "Correct interpretation of photo B (constant velocity)",
+          "marks": 1
+        },
+        {
+          "point": "Correct FBDs with relative arrow sizes",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the ball as closer to free fall with reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q25",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "A cart rolls down a smooth (frictionless) ramp. Describe its FBD and explain why the normal force and the force of gravity on the cart do not act in opposite directions. What does this tell you about assuming F_N = mg?",
+      "modelAnswer": "Two forces act on the cart: $\\vec F_g$, pointing straight down toward Earth's centre, and $\\vec F_N$, pointing perpendicular to the surface of the ramp. Because the ramp is tilted, its perpendicular is tilted too, so $\\vec F_N$ is not straight up and the two forces are not opposite. They do not cancel, which is why the cart accelerates down the ramp. This shows we cannot assume $F_N = mg$; the normal force always acts perpendicular to the surface and its size depends on the situation.",
+      "rubric": [
+        {
+          "point": "Identifies the two forces with correct directions",
+          "marks": 2
+        },
+        {
+          "point": "Explains F_N is perpendicular to the tilted surface",
+          "marks": 1
+        },
+        {
+          "point": "Concludes F_N is not always equal/opposite to F_g",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-1-q26",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 200,
+          "max": 900,
+          "step": 50
+        }
+      },
+      "derived": {
+        "W1": "m*9.8",
+        "W2": "m*2.45",
+        "r": "2.45/9.8"
+      },
+      "text": "If an object is raised to a height of one Earth radius above sea level, the gravitational field strength is only 2.45 N/kg. A {{m}} kg satellite is lifted from Earth's surface to this height.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the satellite's weight at Earth's surface and at this height.",
+          "answer": {
+            "expr": "W2",
+            "unit": "N",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "What fraction of its surface weight does the satellite have at this height?",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain what happens to the satellite's mass and why its weight changes."
+        }
+      ],
+      "modelAnswer": "(a) Surface: $F_g = ({{m}})(9.8) = {{W1:3}}$ N. At one Earth radius: $F_g = ({{m}})(2.45) = {{W2:3}}$ N.\n\n(b) $\\dfrac{ {{W2:3}} }{ {{W1:3}} } = {{r:2}}$, so the weight is one-quarter of its surface value.\n\n(c) The mass stays {{m}} kg. g decreases as the distance from Earth increases, so the force of gravity on the same mass is smaller, but the amount of matter is unchanged.",
+      "rubric": [
+        {
+          "point": "Correct surface weight",
+          "marks": 1
+        },
+        {
+          "point": "Correct weight at altitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio",
+          "marks": 1
+        },
+        {
+          "point": "Explains mass constant and g decreases with distance",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-1-q27",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 50,
+          "max": 75,
+          "step": 1
+        },
+        "a1": {
+          "min": 1.0,
+          "max": 2.5,
+          "step": 0.5
+        },
+        "a3": {
+          "min": 1.0,
+          "max": 2.5,
+          "step": 0.5
+        }
+      },
+      "derived": {
+        "W": "m*9.8",
+        "R1": "m*(9.8+a1)",
+        "R2": "m*9.8",
+        "R3": "m*(9.8-a3)"
+      },
+      "text": "A {{m}} kg student stands on a scale in an elevator and records three readings: {{R1:3}} N while the elevator starts moving up, {{R2:3}} N while it moves up steadily, and {{R3:3}} N as it comes to a stop at the top floor.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the acceleration while the elevator starts moving up.",
+          "answer": {
+            "expr": "a1",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the acceleration while it moves up steadily? Explain."
+        },
+        {
+          "label": "c",
+          "text": "Determine the acceleration while it comes to a stop.",
+          "answer": {
+            "expr": "a3",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe how the student feels in each stage."
+        }
+      ],
+      "modelAnswer": "Up positive; $a = \\dfrac{F_N - mg}{m}$ with $mg = {{W:3}}$ N.\n\n(a) Starting: $a = \\dfrac{ {{R1:3}} - {{W:3}} }{ {{m}} } = {{a1:2}}$ m/s² [up].\n\n(b) Steady motion: the reading equals the weight, so $a = 0$ (constant velocity).\n\n(c) Stopping: $a = \\dfrac{ {{R3:3}} - {{W:3}} }{ {{m}} } = -{{a3:2}}$ m/s², i.e. {{a3:2}} m/s² [down]. The elevator is moving up but slowing down, so its acceleration is opposite to its motion.\n\n(d) Feels heavier while starting, normal while moving steadily, and lighter while stopping.",
+      "rubric": [
+        {
+          "point": "Uses F_net = ma consistently",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration while starting",
+          "marks": 2
+        },
+        {
+          "point": "Identifies zero acceleration during steady motion",
+          "marks": 1
+        },
+        {
+          "point": "Correct magnitude and direction while stopping",
+          "marks": 2
+        },
+        {
+          "point": "Describes sensations correctly",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

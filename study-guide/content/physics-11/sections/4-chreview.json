@@ -1,0 +1,2200 @@
+{
+ "id": "4-chreview",
+ "number": "Review",
+ "title": "Chapter 4 Review Problems",
+ "estimatedMinutes": 120,
+ "overview": "This unit gathers the Chapter 4 Review questions – covering gravity near Earth, friction, solving friction problems, automotive technology and sports applications – and turns them all into written-answer and problem-solving questions. Use it to check that you can explain every key idea in your own words and solve multi-step problems with confidence before a unit test.",
+ "objectives": [
+  "Explain free fall, air resistance and terminal speed, including interpreting a skydiver's motion and graphs.",
+  "Calculate gravitational field strength, weight at different locations and apparent weight in accelerating elevators and rides.",
+  "Distinguish static and kinetic friction and calculate coefficients and friction forces, including from Table 1.",
+  "Solve multi-step friction problems: pushing, stacked objects, sleds, and acceleration limited by static friction.",
+  "Explain how tires, brakes, ABS, traction control, ESC, crumple zones and airbags apply forces and friction.",
+  "Evaluate applications of forces in sports, bearings and new materials, and the role of experiment in finding μ."
+ ],
+ "lessons": [
+  {
+   "id": "how-to-review",
+   "title": "How to Use the Chapter Review",
+   "body": "The Chapter 4 Review pulls together everything from Sections 4.1 to 4.5. In this app every review question is **written-answer or problem-solving** – you explain, justify, calculate and correct, rather than pick an option. That is harder, but it is exactly what tests and exams reward.\n\n### Where each kind of question comes from\n\n| Review questions about… | Go back to |\n|---|---|\n| free fall, air resistance, terminal speed, skydivers | 4.1 |\n| gravitational field strength, mass vs. weight, apparent weight in elevators and on scales | 4.1 |\n| static vs. kinetic friction, coefficients of friction, Table 1 values | 4.2 |\n| pushing/pulling problems, stacked or connected objects, starting to run, sliding to a stop | 4.3 |\n| tires, hydroplaning, brakes, ABS, traction control, ESC, crumple zones, airbags | 4.4 |\n| golf clubs, footwear, skates, bearings, prostheses, near-frictionless carbon | 4.5 |\n| designing and evaluating friction experiments | 4.2, Investigations |\n\n### A three-pass study plan\n\n1. **Pass 1 – Explain it.** For each \"Knowledge\" idea, say the answer out loud *and the reason*. If you can't give the \"because\", reread that section.\n2. **Pass 2 – Solve it.** Do the calculation questions with a full GRASS solution and an FBD every time.\n3. **Pass 3 – Apply it.** Tackle the analysis/evaluation questions. Use physics vocabulary (normal force, net force, coefficient, cross-sectional area) and an example.\n\n### Turning a \"pick the answer\" question into a written one\nIf a question looks like it could be multiple choice, answer it the way a teacher would want to see it marked:\n* state the answer,\n* give the physics reason (a law, a definition or an equation),\n* where possible, back it with a number or an example.\n"
+  },
+  {
+   "id": "strategy",
+   "title": "Problem-Solving Strategy: FBD + GRASS",
+   "body": "Almost every calculation in Chapter 4 can be solved with the same five moves.\n\n1. **Draw the FBD.** One dot per object, every force as an arrow starting at the dot: $\\vec F_g$ (down), $\\vec F_N$ (perpendicular to the surface), $\\vec F_a$, $\\vec F_T$, $\\vec F_S$ or $\\vec F_K$ (opposite to motion or attempted motion), $\\vec F_{air}$.\n2. **Choose a sign convention.** E.g. up and right are positive. Write it down.\n3. **Vertical first.** Usually $a_y = 0$, so $F_N = mg$ on a level surface – **unless** something pushes down or pulls up, or the object (elevator) accelerates vertically: $F_N + F_g + F_{other} = ma_y$.\n4. **Friction next.** Moving? $F_K = \\mu_K F_N$. At rest? Static friction equals whatever is needed to keep it at rest, up to $F_{S\\,max} = \\mu_S F_N$.\n5. **Horizontal: Newton's second law.** $F_{net} = ma$. Then, if needed, use kinematics:\n$$v_2 = v_1 + a\\Delta t \\qquad \\Delta d = v_1\\Delta t + \\tfrac12 a\\Delta t^2 \\qquad v_2^2 = v_1^2 + 2a\\Delta d$$\n\n### Checklist before you hand it in\n* Did you use **mass** (kg) where mass is needed and **weight** (N) where force is needed? A \"620 N couch\" is already a weight: $F_N = 620$ N.\n* Is $\\mu$ a plain number with no units?\n* Did friction point **opposite** the motion?\n* For connected objects, did you treat them as **one system** for $a$, then use **one object's FBD** for tension or contact force?\n* Is your answer sensible? A scale in an elevator accelerating **up** must read **more** than $mg$.\n"
+  },
+  {
+   "id": "big-ideas",
+   "title": "Big Ideas Recap",
+   "body": "| Big idea | Key equation / fact | Classic trap |\n|---|---|---|\n| Free fall: only gravity acts | $a = g = 9.8$ m/s² [down] for every mass | thinking heavy things fall faster in a vacuum |\n| Air resistance grows with speed and cross-sectional area | terminal speed when $F_{air} = F_g$ | thinking a skydiver goes *up* when the parachute opens – she slows down while still falling |\n| Gravitational field strength | $\\vec g = \\vec F_g / m$; 9.8 N/kg [down] on average; larger at poles, smaller at equator and at altitude | units: N/kg and m/s² are equivalent |\n| Mass vs. weight | mass (kg, balance) never changes with location; weight $F_g = mg$ (N, spring scale) does | \"weightless\" astronauts are actually in free fall |\n| Normal force is not always $mg$ | elevators, pushing down, pulling up: use $F_{net} = ma$ vertically | assuming $F_N = mg$ automatically |\n| Static vs. kinetic friction | $F_S \\le \\mu_S F_N$; $F_K = \\mu_K F_N$; usually $\\mu_S > \\mu_K$ | using $F_{S\\,max}$ when the push is smaller than it |\n| Friction can cause motion | static friction pushes runners and cars forward: $a_{max} = \\mu_S g$ | \"friction always opposes motion\" |\n| Friction can *increase* net force | pushing against a sliding box: $\\vec F_a$ and $\\vec F_K$ in the same direction | \"friction always reduces the net force\" |\n| Technology | tires, ABS, ESC, crumple zones, airbags, bearings, footwear | thinking safety technology replaces careful driving |\n"
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "free fall",
+   "definition": "Motion of a falling object where the only force acting is gravity."
+  },
+  {
+   "term": "terminal speed",
+   "definition": "The maximum constant speed of a falling object, reached when air resistance equals the force of gravity."
+  },
+  {
+   "term": "force field",
+   "definition": "A region of space around an object that can exert a force on other objects placed in it that can interact with that force."
+  },
+  {
+   "term": "gravitational field strength",
+   "definition": "The force per unit mass on an object in a gravitational field; 9.8 N/kg [down] on average at Earth's surface."
+  },
+  {
+   "term": "static friction",
+   "definition": "Friction that prevents two surfaces in contact from sliding relative to one another."
+  },
+  {
+   "term": "kinetic friction",
+   "definition": "Friction exerted on a moving object by a surface, opposite to the direction of motion."
+  },
+  {
+   "term": "coefficient of friction",
+   "definition": "The ratio of the magnitude of the force of friction to the magnitude of the normal force; it has no units."
+  },
+  {
+   "term": "apparent weight",
+   "definition": "The reading on a scale (the normal force), which differs from mg when the person accelerates vertically or is pushed or pulled."
+  }
+ ],
+ "formulas": [
+  {
+   "name": "Force of gravity (weight)",
+   "latex": "\\vec F_g = m\\vec g",
+   "meaning": "g = 9.8 N/kg [down] near Earth's surface."
+  },
+  {
+   "name": "Gravitational field strength",
+   "latex": "\\vec g = \\frac{\\vec F_g}{m}",
+   "meaning": "Force per kilogram."
+  },
+  {
+   "name": "Newton's second law",
+   "latex": "\\vec F_{net} = m\\vec a",
+   "meaning": "Apply separately to the vertical and horizontal directions."
+  },
+  {
+   "name": "Normal force in an accelerating elevator",
+   "latex": "F_N = m(g + a)",
+   "meaning": "a positive for acceleration up, negative for acceleration down."
+  },
+  {
+   "name": "Static friction",
+   "latex": "F_S \\le F_{S\\,max} = \\mu_S F_N",
+   "meaning": "Static friction only grows as large as needed."
+  },
+  {
+   "name": "Kinetic friction",
+   "latex": "F_K = \\mu_K F_N",
+   "meaning": "Acts opposite to the motion."
+  },
+  {
+   "name": "Maximum acceleration from static friction",
+   "latex": "a_{max} = \\mu_S g",
+   "meaning": "Runner or car on a level surface; mass cancels."
+  },
+  {
+   "name": "Kinematics",
+   "latex": "v_2^2 = v_1^2 + 2a\\Delta d",
+   "meaning": "Also v₂ = v₁ + aΔt and Δd = v₁Δt + ½aΔt²."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Scale reading in an elevator accelerating down",
+   "problem": "A 60.0 kg person stands on a bathroom scale (calibrated in newtons) in an elevator accelerating downward at 1.6 m/s². What does the scale read?",
+   "steps": [
+    "**Given:** $m$ = 60.0 kg; $\\vec a$ = 1.6 m/s² [down]. Choose up as positive, so $a = -1.6$ m/s².",
+    "**Required:** $F_N$ (the scale reading)",
+    "**Analysis:** FBD: $\\vec F_N$ up, $\\vec F_g$ down. $F_N + F_g = ma$.",
+    "**Solution:** $F_g = -(60.0)(9.8) = -588$ N. $F_N - 588 = (60.0)(-1.6)$, so $F_N = 588 - 96 = 492$ N.",
+    "**Statement:** The scale reads about 490 N – less than the person's true weight, so they feel lighter."
+   ],
+   "answer": "≈ 490 N"
+  },
+  {
+   "title": "Two stacked books",
+   "problem": "Two 6.5 kg books are stacked on a table. A horizontal force is applied to the **top** book. μ_S between the bottom book and the table is 0.15. What is the smallest μ_S between the books that lets you move both books together?",
+   "steps": [
+    "**Analysis:** The top book drags the bottom book using static friction between the books. To move the bottom book, that friction must be able to overcome the maximum static friction from the table on the bottom book.",
+    "Friction from table on bottom book (it supports both books): $F_{S\\,max,table} = \\mu_{table}(m_1 + m_2)g = (0.15)(13.0)(9.8) = 19.1$ N",
+    "Maximum friction the top book can exert on the bottom book: $F_{S\\,max,books} = \\mu_{books}\\, m_{top}\\, g = \\mu_{books}(6.5)(9.8)$",
+    "Require $\\mu_{books}(6.5)(9.8) \\ge 19.1$ N, so $\\mu_{books} \\ge \\dfrac{19.1}{63.7} = 0.30$",
+    "**Statement:** μ_S between the books must be at least 0.30; otherwise the top book slides off the bottom one."
+   ],
+   "answer": "μS ≥ 0.30"
+  },
+  {
+   "title": "Finding the mass of a pushed block",
+   "problem": "A 150 N horizontal force pushes a block across a surface with μ_K = 0.15, and the block accelerates at 2.53 m/s². Find the mass. On a new surface the same force gives constant speed – find the new μ_K.",
+   "steps": [
+    "**Analysis:** $F_{net} = F_a - \\mu_K mg = ma$, so $F_a = m(a + \\mu_K g)$.",
+    "**Solution:** $m = \\dfrac{F_a}{a + \\mu_K g} = \\dfrac{150}{2.53 + (0.15)(9.8)} = \\dfrac{150}{4.00} = 37.5$ kg",
+    "New surface, constant speed: $F_K = F_a = 150$ N, $F_N = mg = (37.5)(9.8) = 367.5$ N",
+    "$\\mu_K = \\dfrac{150}{367.5} = 0.41$",
+    "**Statement:** The block has a mass of about 38 kg; the new surface has μ_K ≈ 0.41."
+   ],
+   "answer": "m ≈ 38 kg; μK ≈ 0.41"
+  },
+  {
+   "title": "Which sled team starts faster?",
+   "problem": "Steel runners on ice: μ_S = 0.1, μ_K = 0.01. Team 1 pulls a 170 kg sled with 230 N; team 2 pulls a 195 kg sled with 250 N. Which sled has the greater acceleration once it is moving?",
+   "steps": [
+    "**Check they move:** $F_{S\\,max,1} = (0.1)(170)(9.8) = 167$ N < 230 N ✓; $F_{S\\,max,2} = (0.1)(195)(9.8) = 191$ N < 250 N ✓",
+    "**Team 1:** $F_K = (0.01)(170)(9.8) = 16.7$ N; $a_1 = \\dfrac{230 - 16.7}{170} = 1.25$ m/s²",
+    "**Team 2:** $F_K = (0.01)(195)(9.8) = 19.1$ N; $a_2 = \\dfrac{250 - 19.1}{195} = 1.18$ m/s²",
+    "**Statement:** Team 1 has a slightly quicker start. Even though team 2 pulls harder, its sled has proportionally more mass."
+   ],
+   "answer": "Team 1: 1.25 m/s² vs Team 2: 1.18 m/s²"
+  }
+ ],
+ "misconceptions": [
+  {
+   "myth": "9.8 is the acceleration due to gravity, so you can write it as 9.8 N.",
+   "fact": "Units matter: g = 9.8 m/s² (or 9.8 N/kg). Newtons measure force, not acceleration."
+  },
+  {
+   "myth": "If two objects have the same mass they must hit the ground at the same time in air.",
+   "fact": "In air, the object with the larger cross-sectional area (a feather) feels more air resistance and lands later. Only in a vacuum do all objects fall together."
+  },
+  {
+   "myth": "The ratio F_f/F_N tells you whether an object is moving.",
+   "fact": "Static friction can take any value up to F_S max, so a ratio alone cannot tell you if the object is at rest or sliding – you need to know μ_S and μ_K or observe the motion."
+  },
+  {
+   "myth": "A 620 N couch has a mass of 620 kg.",
+   "fact": "620 N is its weight. On a level floor F_N = 620 N; its mass is 620/9.8 ≈ 63 kg."
+  },
+  {
+   "myth": "Cars with ABS and airbags can be driven less carefully.",
+   "fact": "Safety systems reduce harm but cannot overcome physics. Driving too fast for conditions still leads to crashes."
+  }
+ ],
+ "realWorld": [
+  {
+   "title": "Amusement park rides",
+   "body": "Drop towers and roller coasters create rapid changes in your apparent weight: accelerating up feels heavy, accelerating down feels light – the same physics as the elevator questions."
+  },
+  {
+   "title": "Moving furniture",
+   "body": "Movers use felt sliders (lower μ) and push in one steady motion: once the couch is sliding, the smaller kinetic friction makes it easier to keep going."
+  },
+  {
+   "title": "Broomball and curling",
+   "body": "On ice, the small μ_S of shoes limits how fast players can accelerate (a_max = μ_S g) – which is why curlers use a grippy sole on one shoe and a slider on the other."
+  }
+ ],
+ "practice": [
+  {
+   "question": "A 25 kg ball falls at terminal speed. What is the magnitude of air resistance on it?",
+   "hint": "Terminal speed means zero acceleration.",
+   "solution": "F_net = 0, so F_air = F_g = mg = (25)(9.8) = 245 N ≈ 2.5 × 10² N [up]."
+  },
+  {
+   "question": "An object experiences 6.6 N of friction and a normal force of 30.0 N. Find μ and say whether you can tell if it is moving.",
+   "hint": "μ = F_f/F_N.",
+   "solution": "μ = 6.6/30.0 = 0.22. You cannot tell: it could be at rest with static friction smaller than its maximum, or sliding with μ_K = 0.22."
+  },
+  {
+   "question": "A 2.7 kg brick needs 18 N to start moving on a board. What is μ_S?",
+   "hint": "F_S max = 18 N; F_N = mg.",
+   "solution": "μ_S = 18/(2.7 × 9.8) = 18/26.5 = 0.68."
+  },
+  {
+   "question": "A 75 kg broomball player has μ_S = 0.05 on ice. What is the maximum acceleration?",
+   "hint": "Static friction is the net force.",
+   "solution": "a = μ_S g = (0.05)(9.8) = 0.49 m/s². The mass cancels."
+  },
+  {
+   "question": "Explain why you feel heavier when an elevator starts moving up.",
+   "hint": "What must the floor do to accelerate you upward?",
+   "solution": "To accelerate you upward, the net force must be upward, so the normal force from the floor must be greater than your weight: F_N = m(g + a). You feel the larger normal force as extra 'weight'."
+  },
+  {
+   "question": "A 15 N steel block rests on dry steel (μ_S = 0.78, μ_K = 0.42). What force starts it moving and what force keeps it moving at constant speed?",
+   "hint": "15 N is already F_N.",
+   "solution": "Start: F_S max = 0.78 × 15 = 11.7 N ≈ 12 N. Keep moving: F_K = 0.42 × 15 = 6.3 N."
+  }
+ ],
+ "summary": [
+  "Free fall: only gravity acts; all objects accelerate at 9.8 m/s² without air resistance.",
+  "Air resistance increases with speed and cross-sectional area; terminal speed occurs when F_air = F_g.",
+  "g = F_g/m; it varies with latitude and altitude. Mass is constant; weight changes with location.",
+  "The normal force equals mg only when there is no vertical acceleration and no other vertical force.",
+  "F_S ≤ μ_S F_N and F_K = μ_K F_N; usually μ_S > μ_K.",
+  "Static friction can cause motion (running, a_max = μ_S g); kinetic friction can increase the net force (pushing against a sliding box).",
+  "Treat connected objects as one system for acceleration, then use a single object's FBD for internal forces.",
+  "Automotive and sports technologies manage friction and forces, but cannot replace safe, skilful behaviour."
+ ],
+ "questions": [
+  {
+   "id": "4-cr-q01",
+   "type": "explain",
+   "difficulty": 1,
+   "text": "A classmate writes in their notes: \"Near Earth's surface the acceleration due to gravity is 9.8 N. When a skydiver is speeding up she is in free fall, and when she reaches a constant speed she is at her final speed.\"",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Identify and correct each error in these notes."
+    },
+    {
+     "label": "b",
+     "text": "Explain why the units N/kg and m/s² describe the same quantity."
+    },
+    {
+     "label": "c",
+     "text": "Define free fall precisely and explain why a real skydiver is only approximately in free fall."
+    }
+   ],
+   "modelAnswer": "(a) • The acceleration due to gravity is **9.8 m/s²** [down], not 9.8 N (newtons are units of force). • A skydiver who is speeding up is *not* strictly in free fall, because air resistance also acts on her. • The constant speed she reaches is called **terminal speed**, the maximum constant speed of a falling object.\n\n(b) Since $1\\ \\text{N} = 1\\ \\text{kg·m/s}^2$, $1\\ \\text{N/kg} = 1\\ \\dfrac{\\text{kg·m/s}^2}{\\text{kg}} = 1\\ \\text{m/s}^2$. The gravitational field strength (force per kilogram) has the same magnitude as the acceleration due to gravity.\n\n(c) Free fall is motion where the **only** force acting on the object is gravity. A skydiver also experiences air resistance, which grows with speed; at first it is small (approximately free fall), but it soon becomes significant and eventually balances gravity.",
+   "rubric": [
+    {
+     "point": "Corrects 9.8 N to 9.8 m/s² (or N/kg)",
+     "marks": 1
+    },
+    {
+     "point": "Corrects free-fall statement (air resistance also acts)",
+     "marks": 1
+    },
+    {
+     "point": "Names terminal speed correctly",
+     "marks": 1
+    },
+    {
+     "point": "Shows N/kg = m/s² using 1 N = 1 kg·m/s²",
+     "marks": 2
+    },
+    {
+     "point": "Precise definition of free fall and why skydiver is approximate",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q02",
+   "type": "explain",
+   "difficulty": 1,
+   "text": "Answer each question with a full explanation.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "A multi-flash photograph of a falling ball shows the images getting farther and farther apart. What does this show about the ball's motion, and why?"
+    },
+    {
+     "label": "b",
+     "text": "A coin and a feather of equal mass are dropped at the same time in air. Which lands first? Explain using forces."
+    },
+    {
+     "label": "c",
+     "text": "How would your answer to (b) change if they were dropped in a vacuum? Explain."
+    }
+   ],
+   "modelAnswer": "(a) The flashes occur at equal time intervals, so increasing spacing means the ball travels farther in each interval – it is speeding up (accelerating). Gravity is much larger than air resistance on a small heavy ball, so there is a net downward force.\n\n(b) The coin lands first. Both have the same mass and so the same force of gravity, but the feather has a much larger cross-sectional area, so it experiences much more air resistance. Its net downward force (and acceleration) is smaller and it quickly reaches a low terminal speed.\n\n(c) In a vacuum there is no air resistance, so gravity is the only force on each. Both are in free fall with $a = g = 9.8$ m/s² and they land at the same time.",
+   "rubric": [
+    {
+     "point": "Equal time intervals + increasing spacing → accelerating",
+     "marks": 2
+    },
+    {
+     "point": "Coin first, explained by cross-sectional area and air resistance",
+     "marks": 2
+    },
+    {
+     "point": "Same force of gravity identified (equal mass)",
+     "marks": 1
+    },
+    {
+     "point": "Vacuum: only gravity, same acceleration, land together",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q03",
+   "type": "conceptual",
+   "difficulty": 1,
+   "text": "Use Newton's laws and the ideas of Section 4.2 and 4.3 to explain each situation.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "The coefficient of friction is defined as a ratio. Ratio of which two forces, and why is it a pure number?"
+    },
+    {
+     "label": "b",
+     "text": "You push on a heavy crate and it does not move. Which force are you unable to overcome, and how large is that force right now?"
+    },
+    {
+     "label": "c",
+     "text": "A box is given a push, released, and slides along the floor. Describe what happens to its speed and explain why using an FBD."
+    }
+   ],
+   "modelAnswer": "(a) μ is the ratio of the magnitude of the force of friction to the magnitude of the **normal force**: $\\mu = F_f/F_N$. Both are forces measured in newtons, so the units cancel and μ has no units.\n\n(b) You cannot overcome the **maximum force of static friction**. While the crate stays at rest, the net force is zero, so the static friction is exactly equal in magnitude (and opposite in direction) to your push – it is only as big as it needs to be, up to $F_{S\\,max} = \\mu_S F_N$.\n\n(c) Its speed decreases until it stops. After release, the only horizontal force is kinetic friction, acting opposite to the motion (FBD: $\\vec F_g$ down, $\\vec F_N$ up, $\\vec F_K$ backward). The net force is backward, so the box accelerates opposite to its velocity, i.e. it slows down.",
+   "rubric": [
+    {
+     "point": "Friction / normal force; units cancel",
+     "marks": 2
+    },
+    {
+     "point": "Static friction not overcome",
+     "marks": 1
+    },
+    {
+     "point": "Static friction equals the applied push (net force zero)",
+     "marks": 2
+    },
+    {
+     "point": "Speed decreases; kinetic friction is the net force opposite motion, with FBD",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q04",
+   "type": "analysis",
+   "difficulty": 2,
+   "text": "A skydiver jumps from a plane, speeds up, falls at a constant speed, opens her parachute, slows down and then falls at a new constant speed until landing.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "For each of the five stages, compare the magnitude of gravity with the magnitude of air resistance (greater, less, equal, or air resistance ≈ 0)."
+    },
+    {
+     "label": "b",
+     "text": "Describe the FBD for each stage."
+    },
+    {
+     "label": "c",
+     "text": "Just after the parachute opens, the skydiver is still moving downward but her acceleration is upward. Explain how this is possible."
+    },
+    {
+     "label": "d",
+     "text": "How does the relationship between the forces change as she slows toward her new terminal speed?"
+    }
+   ],
+   "modelAnswer": "(a) 1. Jumps: speed ≈ 0, air resistance ≈ 0, gravity is (almost) the only force. 2. Speeds up: gravity > air resistance. 3. Constant speed: gravity = air resistance. 4. Parachute opens, slowing: gravity < air resistance. 5. New constant speed: gravity = air resistance again.\n\n(b) 1: long $\\vec F_g$ down, tiny/no $\\vec F_{air}$. 2: $\\vec F_g$ longer than $\\vec F_{air}$ (up). 3: equal arrows. 4: $\\vec F_{air}$ much longer than $\\vec F_g$. 5: equal arrows (both shorter $F_{air}$ than stage 4).\n\n(c) Acceleration is in the direction of the net force, not necessarily the velocity. With the parachute open, the large air resistance makes the net force upward, so she accelerates upward – which means her downward velocity is decreasing (she slows down while still falling).\n\n(d) As she slows, air resistance decreases (it depends on speed). The upward net force gets smaller, so her deceleration decreases, until air resistance again equals gravity and the net force is zero at the new, lower terminal speed.",
+   "rubric": [
+    {
+     "point": "Correct comparison for all five stages",
+     "marks": 3
+    },
+    {
+     "point": "Matching FBDs",
+     "marks": 2
+    },
+    {
+     "point": "Explains net force (not velocity) determines acceleration direction",
+     "marks": 2
+    },
+    {
+     "point": "Air resistance decreases with speed until it equals gravity",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q05",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Mass and weight are often used interchangeably in everyday speech, which is incorrect in physics.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Define a force field and explain how Earth's gravitational force field relates to weight."
+    },
+    {
+     "label": "b",
+     "text": "Define mass and weight, give their units and how each is measured. Which is a force? Which does not depend on gravity?"
+    },
+    {
+     "label": "c",
+     "text": "Describe how you could change an object's weight without changing its mass, and how you could change its mass."
+    },
+    {
+     "label": "d",
+     "text": "Describe a situation in which the numbers for an object's mass (in kg) and weight (in N) would be equal."
+    }
+   ],
+   "modelAnswer": "(a) A force field is a region of space around an object that can exert a force on other objects placed in it that can interact with that force. Earth's gravitational field exerts a force on every mass in it – that force is the object's weight, $F_g = mg$ (an action-at-a-distance force).\n\n(b) Mass: the quantity of matter in an object; kilograms; measured with a balance; does not depend on gravity or location. Weight: the force of gravity on an object; newtons; measured with a spring scale or force sensor (object at rest or constant velocity); it is the force and it depends on the local gravitational field strength.\n\n(c) Change weight only: move the object to a place with a different $g$ – e.g. from the equator to the North Pole, up a mountain, or to the Moon. Change mass: add or remove matter (e.g. cut a piece off, add material).\n\n(d) Weight = $mg$, so the numbers are equal where $g = 1$ N/kg – for example at a location far from Earth (or on a small body) where the gravitational field strength is 1 N/kg.",
+   "rubric": [
+    {
+     "point": "Correct force field definition linked to weight",
+     "marks": 2
+    },
+    {
+     "point": "Mass definition, unit, instrument, independent of gravity",
+     "marks": 2
+    },
+    {
+     "point": "Weight definition, unit, instrument, identified as force",
+     "marks": 2
+    },
+    {
+     "point": "Valid way to change weight but not mass, and to change mass",
+     "marks": 2
+    },
+    {
+     "point": "g = 1 N/kg condition",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q06",
+   "type": "conceptual",
+   "difficulty": 1,
+   "text": "Static and kinetic friction act in many everyday situations.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Define static friction and kinetic friction in your own words and describe how they differ."
+    },
+    {
+     "label": "b",
+     "text": "A force large enough to overcome static friction is applied to an object. Which force replaces static friction once it moves, and is it usually larger or smaller?"
+    },
+    {
+     "label": "c",
+     "text": "Give one example from your own life of static friction and one of kinetic friction, and explain whether each helps something move or stops it from moving."
+    }
+   ],
+   "modelAnswer": "(a) Static friction acts between surfaces that are not sliding relative to each other; it prevents an object from starting to move and adjusts its size up to a maximum. Kinetic friction acts on an object that is sliding over a surface; it acts opposite to the direction of motion and has a roughly constant size $\\mu_K F_N$.\n\n(b) Kinetic friction replaces static friction. It is usually smaller than the maximum static friction ($\\mu_K < \\mu_S$), which is why an object is easier to keep moving than to start.\n\n(c) Example answers: Static – the friction between your shoe and the sidewalk as you walk; it *helps* you move by pushing you forward when you push back on the ground. Kinetic – a book sliding across a table, or a bicycle brake pad rubbing on the rim; it *stops* the motion by acting opposite to the sliding.",
+   "rubric": [
+    {
+     "point": "Clear definition of static friction",
+     "marks": 1
+    },
+    {
+     "point": "Clear definition of kinetic friction",
+     "marks": 1
+    },
+    {
+     "point": "Kinetic friction replaces static; usually smaller",
+     "marks": 2
+    },
+    {
+     "point": "Valid static example with role explained",
+     "marks": 1
+    },
+    {
+     "point": "Valid kinetic example with role explained",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q07",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Many people assume friction always acts to reduce the net force on an object.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Describe how a car's braking system uses friction to *increase* the net force on a moving car as it stops."
+    },
+    {
+     "label": "b",
+     "text": "Draw (describe) an FBD for a sliding box that a person pushes against to stop it, and explain why friction increases the net force in this case."
+    },
+    {
+     "label": "c",
+     "text": "Name a situation where friction does reduce the net force."
+    }
+   ],
+   "modelAnswer": "(a) When the driver brakes, the pads press on the rotor, slowing the wheels; static friction from the road on the tires then acts backward (opposite the car's motion). This backward friction **is** the net force that decelerates the car – without it the car would keep moving. Braking harder increases that backward force, increasing the net force and the deceleration (up to the limit before the tires skid).\n\n(b) FBD: $\\vec F_g$ down, $\\vec F_N$ up, $\\vec F_K$ backward (opposite velocity), $\\vec F_a$ backward (person pushing against the motion). Both horizontal forces point the same way, so $F_{net} = F_a + F_K$ – larger than either alone. Friction adds to the stopping force.\n\n(c) When you push a box forward across the floor, kinetic friction acts backward, opposite to the applied force, so $F_{net} = F_a - F_K$ is smaller than the applied force.",
+   "rubric": [
+    {
+     "point": "Brakes: road friction on tires is the backward net force that stops the car",
+     "marks": 2
+    },
+    {
+     "point": "Explains harder braking increases net force",
+     "marks": 1
+    },
+    {
+     "point": "Correct FBD for box being stopped",
+     "marks": 2
+    },
+    {
+     "point": "Explains forces add → larger net force",
+     "marks": 1
+    },
+    {
+     "point": "Valid example where friction reduces net force",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q08",
+   "type": "analysis",
+   "difficulty": 2,
+   "text": "Automotive safety systems manage friction between the tires and the road.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "In a paragraph, describe the similarities and differences between an antilock braking system (ABS) and traction control."
+    },
+    {
+     "label": "b",
+     "text": "Explain how electronic stability control (ESC) uses both of these systems, including what understeering and oversteering are."
+    },
+    {
+     "label": "c",
+     "text": "Explain why a driver should not pump the brakes in a car with ABS."
+    }
+   ],
+   "modelAnswer": "(a) Both systems use wheel-speed sensors and a computer to stop tires from sliding on the road, because a rolling tire keeps static friction (which is larger than kinetic friction) and lets the driver steer. ABS works while **slowing down**: if a wheel suddenly slows too much (about to lock), the computer rapidly reduces the brake force and reapplies it. Traction control works while **speeding up**: if a wheel spins faster than the car is moving, the computer reduces fuel to the engine and may brake that wheel.\n\n(b) ESC uses a sensor near the car's centre to detect when the car is not turning as the driver intends. Understeering: the front wheels lack enough friction and the car keeps going straight while the driver tries to turn. Oversteering: the car turns more than intended as the rear wheels slide sideways, spinning the car. ESC brakes individual wheels (using ABS) and adjusts engine power (using traction control) to bring the car back on the intended path.\n\n(c) ABS already pulses the brakes many times per second faster and more precisely than a person can. Pumping (lifting off the pedal) reduces braking time and force, so the car travels farther before stopping. The chattering in the pedal is normal – keep firm pressure.",
+   "rubric": [
+    {
+     "point": "Similarity: sensors/computer prevent tire sliding to keep static friction & control",
+     "marks": 2
+    },
+    {
+     "point": "Difference: ABS when braking vs. traction control when accelerating, and how each acts",
+     "marks": 2
+    },
+    {
+     "point": "Defines understeer and oversteer",
+     "marks": 2
+    },
+    {
+     "point": "ESC uses ABS braking and traction control power adjustment",
+     "marks": 1
+    },
+    {
+     "point": "Explains why pumping increases stopping distance",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q09",
+   "type": "conceptual",
+   "difficulty": 2,
+   "text": "Two objects of different mass are dropped at the same time from the same height in air.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "If they hit the ground at the same time, which one must have the larger cross-sectional area? Explain."
+    },
+    {
+     "label": "b",
+     "text": "If they have the same cross-sectional area, which hits the ground first? Explain."
+    },
+    {
+     "label": "c",
+     "text": "Describe what would happen if they were dropped in a vacuum."
+    }
+   ],
+   "modelAnswer": "(a) The **heavier** object must have the larger cross-sectional area. It has a larger force of gravity; to have the same acceleration as the lighter object, it must also experience more air resistance, which a larger cross-sectional area provides.\n\n(b) The **heavier** object lands first. With the same area, both experience about the same air resistance at a given speed, but the heavier object has a larger force of gravity, so air resistance is a smaller fraction of its weight. Its net force per kilogram (acceleration) is larger and its terminal speed is higher.\n\n(c) With no air resistance, both are in free fall, accelerate at 9.8 m/s² and land at the same time, regardless of mass or shape.",
+   "rubric": [
+    {
+     "point": "Heavier object has larger area, with reasoning",
+     "marks": 2
+    },
+    {
+     "point": "Heavier object lands first, with reasoning about air resistance relative to weight",
+     "marks": 2
+    },
+    {
+     "point": "Vacuum: same acceleration g, land together",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q10",
+   "type": "problem",
+   "difficulty": 1,
+   "vars": {
+    "m": {
+     "min": 5,
+     "max": 40,
+     "step": 1
+    }
+   },
+   "derived": {
+    "Fg": "m*9.8"
+   },
+   "text": "A ball of mass {{m}} kg is dropped through the air.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "What two forces act on the ball while it falls?"
+    },
+    {
+     "label": "b",
+     "text": "Just after release, which force is larger? Explain."
+    },
+    {
+     "label": "c",
+     "text": "At terminal speed, what is the relationship between the two forces?"
+    },
+    {
+     "label": "d",
+     "text": "Calculate the magnitude of the air resistance (friction) on the ball at terminal speed.",
+     "answer": {
+      "expr": "Fg",
+      "unit": "N",
+      "sig": 2
+     }
+    }
+   ],
+   "modelAnswer": "(a) The force of gravity (down) and air resistance (up, opposite the motion).\n\n(b) Gravity. Just after release the ball's speed is nearly zero, and air resistance depends on speed, so it is very small.\n\n(c) They are equal in magnitude and opposite in direction, so the net force (and acceleration) is zero.\n\n(d) $F_{air} = F_g = mg = ({{m}}\\ \\text{kg})(9.8\\ \\text{N/kg}) = {{Fg:2}}$ N [up].",
+   "rubric": [
+    {
+     "point": "Names gravity and air resistance with directions",
+     "marks": 1
+    },
+    {
+     "point": "Gravity larger initially because speed (and air resistance) is small",
+     "marks": 1
+    },
+    {
+     "point": "Equal and opposite at terminal speed",
+     "marks": 1
+    },
+    {
+     "point": "Correct calculation F_air = mg with units",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q11",
+   "type": "analysis",
+   "difficulty": 3,
+   "text": "The graph of a skydiver's acceleration (positive = down) against time is divided into five intervals:\n\n* **A:** the acceleration starts at 9.8 m/s² and decreases steadily to zero.\n* **B:** the acceleration is zero.\n* **C:** the acceleration suddenly becomes large and negative (upward), then its magnitude begins to shrink.\n* **D:** the (upward) acceleration decreases in magnitude back to zero.\n* **E:** the acceleration is zero until landing.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "For each interval, describe the motion of the skydiver and compare the forces acting on her."
+    },
+    {
+     "label": "b",
+     "text": "At which point does she reach her maximum speed? Explain."
+    },
+    {
+     "label": "c",
+     "text": "At which point is the force of air resistance greatest? Explain."
+    },
+    {
+     "label": "d",
+     "text": "During which intervals is she at terminal speed?"
+    },
+    {
+     "label": "e",
+     "text": "Describe the shape of her velocity–time graph (assume she starts at zero speed)."
+    }
+   ],
+   "modelAnswer": "(a) A: speeding up, but less and less quickly; gravity > air resistance, and air resistance increases as she speeds up. B: constant (terminal) speed; gravity = air resistance. C: the parachute opens – she slows down rapidly; air resistance ≫ gravity. D: still slowing, but less rapidly; air resistance decreases toward gravity as her speed falls. E: constant, lower terminal speed; gravity = air resistance.\n\n(b) At the end of A / throughout B – she speeds up during all of A (acceleration downward) and stops speeding up when the acceleration reaches zero.\n\n(c) At the start of C, just as the parachute opens: her speed is still high and the cross-sectional area has suddenly increased, so air resistance is at its maximum (this is where the upward acceleration has its largest magnitude).\n\n(d) Intervals B and E.\n\n(e) The velocity rises from zero along a curve whose slope decreases (A), becomes a horizontal line (B), drops quickly then more gradually as a curve flattening out (C and D), and finishes as a lower horizontal line (E).",
+   "rubric": [
+    {
+     "point": "Correct motion and force comparison for all intervals A–E",
+     "marks": 4
+    },
+    {
+     "point": "Maximum speed at end of A / during B with reason",
+     "marks": 1
+    },
+    {
+     "point": "Greatest air resistance at start of C with reason",
+     "marks": 2
+    },
+    {
+     "point": "Terminal speed in B and E",
+     "marks": 1
+    },
+    {
+     "point": "Correct velocity–time graph description",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q12",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 1.0,
+     "max": 3.0,
+     "step": 0.25
+    },
+    "g": {
+     "choices": [
+      9.765,
+      9.77,
+      9.775,
+      9.778,
+      9.781
+     ]
+    }
+   },
+   "derived": {
+    "F": "round(m*g*1000)/1000",
+    "gg": "F/m"
+   },
+   "text": "Gravitational field strength can be measured in more than one way.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Describe two ways to measure the gravitational field strength at a location."
+    },
+    {
+     "label": "b",
+     "text": "The force of gravity on a {{m:3}} kg object is {{F}} N. Calculate the gravitational field strength at that location.",
+     "answer": {
+      "expr": "gg",
+      "unit": "N/kg",
+      "sig": 4,
+      "tol": 0.001
+     }
+    },
+    {
+     "label": "c",
+     "text": "Compare your answer with the average value at Earth's surface. Suggest, with reasons, where this measurement might have been taken."
+    },
+    {
+     "label": "d",
+     "text": "Compare the magnitudes of gravitational field strength and gravitational acceleration at Earth's surface."
+    }
+   ],
+   "modelAnswer": "(a) 1. Hang a known mass from a spring scale or force sensor (at rest), read $F_g$ and calculate $g = F_g/m$. 2. Measure the acceleration of a dense object in free fall (ticker tape or motion sensor); the acceleration has the same magnitude as the field strength.\n\n(b) $g = \\dfrac{F_g}{m} = \\dfrac{ {{F}}\\ \\text{N}}{ {{m:3}}\\ \\text{kg}} = {{gg:4}}$ N/kg [down]\n\n(c) This is less than the 9.8 N/kg average (and less than the 9.78 N/kg at sea level at the equator), so the measurement was probably taken at a high altitude – farther from Earth's centre – such as on a mountain, possibly near the equator, where the field is weaker. It is unlikely to be below sea level or near a pole, where $g$ is larger.\n\n(d) They are equal in magnitude: about 9.8 N/kg and 9.8 m/s². Field strength is force per unit mass; acceleration due to gravity is the acceleration that force produces, $a = F_g/m = g$.",
+   "rubric": [
+    {
+     "point": "Two valid measurement methods",
+     "marks": 2
+    },
+    {
+     "point": "Correct calculation of g with units",
+     "marks": 2
+    },
+    {
+     "point": "Compares with 9.8 and reasons about altitude/latitude",
+     "marks": 2
+    },
+    {
+     "point": "States magnitudes are equal with explanation",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q13",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 10.0,
+     "max": 15.0,
+     "step": 0.001
+    }
+   },
+   "derived": {
+    "Wp": "m*9.8322",
+    "We": "m*9.7805",
+    "Wv": "m*9.7647"
+   },
+   "text": "The weight of a {{m:5}} kg object is measured at three locations: the North Pole ($g$ = 9.8322 N/kg), the equator at sea level ($g$ = 9.7805 N/kg) and the peak of Mount Everest ($g$ = 9.7647 N/kg).",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the weight at the North Pole.",
+     "answer": {
+      "expr": "Wp",
+      "unit": "N",
+      "sig": 5,
+      "tol": 0.0005
+     }
+    },
+    {
+     "label": "b",
+     "text": "Calculate the weight at the equator.",
+     "answer": {
+      "expr": "We",
+      "unit": "N",
+      "sig": 5,
+      "tol": 0.0005
+     }
+    },
+    {
+     "label": "c",
+     "text": "Calculate the weight on the peak of Mount Everest.",
+     "answer": {
+      "expr": "Wv",
+      "unit": "N",
+      "sig": 5,
+      "tol": 0.0005
+     }
+    },
+    {
+     "label": "d",
+     "text": "Explain why the weight is greatest at the pole and least on Everest. Does the mass change?"
+    }
+   ],
+   "modelAnswer": "Using $F_g = mg$:\n\n| Location | $g$ (N/kg) | Weight (N) |\n|---|---|---|\n| North Pole | 9.8322 | {{Wp:5}} |\n| equator | 9.7805 | {{We:5}} |\n| Mount Everest | 9.7647 | {{Wv:5}} |\n\n(d) Earth bulges at the equator because it rotates, so an object at sea level at the pole is about 21 km closer to Earth's centre than at the equator – the field is stronger at the poles. On Everest the object is 8848 m higher still, even farther from the centre, so the field and weight are least there. The mass stays {{m:5}} kg everywhere: the amount of matter has not changed.",
+   "rubric": [
+    {
+     "point": "Correct weight at North Pole",
+     "marks": 1
+    },
+    {
+     "point": "Correct weight at equator",
+     "marks": 1
+    },
+    {
+     "point": "Correct weight on Everest",
+     "marks": 1
+    },
+    {
+     "point": "Explains distance from Earth's centre (bulge and altitude)",
+     "marks": 2
+    },
+    {
+     "point": "States mass is unchanged",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q14",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Astronauts aboard the International Space Station (ISS) appear to float, and the media often describe them as \"weightless\" or in \"microgravity\".",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Explain why these terms are misleading."
+    },
+    {
+     "label": "b",
+     "text": "What is the correct term for the astronauts' state, and why do they appear to float?"
+    },
+    {
+     "label": "c",
+     "text": "Newton imagined a cannonball fired horizontally from a very high mountain at faster and faster speeds. Explain how this shows that an orbiting object is in free fall, and which launch speed produces an orbit."
+    }
+   ],
+   "modelAnswer": "(a) Gravity still acts strongly on the astronauts – at the station's height the field strength is roughly 8.6–8.7 N/kg, close to its surface value. Their weight is far from zero; gravity is what keeps the ISS and the astronauts in orbit. Without it the station would move off in a straight line at constant velocity.\n\n(b) They are in **free fall**: the astronauts and the station are falling toward Earth together with the same acceleration, so the floor does not push on them (no normal force). With nothing supporting them relative to the station, they appear to float.\n\n(c) At low speeds the cannonball falls to the ground nearby; at higher speeds it lands farther away. Because Earth's surface curves, at a high enough speed the ball falls toward Earth just as fast as the surface curves away beneath it, so it never lands – it is in orbit. Throughout, gravity is the only force acting, so the ball is always in free fall. The fastest launch is the one that results in the orbit (the path going all the way around).",
+   "rubric": [
+    {
+     "point": "Gravity still acts; keeps ISS in orbit",
+     "marks": 2
+    },
+    {
+     "point": "Correct term free fall with explanation of apparent floating",
+     "marks": 2
+    },
+    {
+     "point": "Explains cannonball paths and Earth's curvature",
+     "marks": 2
+    },
+    {
+     "point": "Only gravity acts → free fall; fastest launch gives orbit",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q15",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 45.0,
+     "max": 80.0,
+     "step": 0.5
+    },
+    "a": {
+     "min": 0.8,
+     "max": 2.5,
+     "step": 0.1
+    }
+   },
+   "derived": {
+    "Fg": "m*9.8",
+    "FN": "m*(9.8-a)"
+   },
+   "text": "A {{m:3}} kg person stands on a bathroom scale calibrated in newtons inside an elevator.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Draw (describe) the FBD of the person."
+    },
+    {
+     "label": "b",
+     "text": "What is the reading on the scale when the elevator is accelerating downward at {{a:2}} m/s²?",
+     "answer": {
+      "expr": "FN",
+      "unit": "N",
+      "sig": 2,
+      "tol": 0.02
+     }
+    },
+    {
+     "label": "c",
+     "text": "Using your understanding of forces and acceleration, explain why you feel lighter when an elevator starts moving down and heavier when it starts moving up."
+    },
+    {
+     "label": "d",
+     "text": "Describe another everyday situation with similar changes in apparent weight."
+    }
+   ],
+   "modelAnswer": "(a) $\\vec F_N$ (scale pushing up) and $\\vec F_g$ (down). With downward acceleration, the $\\vec F_g$ arrow is longer.\n\n(b) Choose up as positive: $a = -{{a:2}}$ m/s². $F_g = -({{m:3}})(9.8) = -{{Fg:3}}$ N.\n$F_N + F_g = ma \\Rightarrow F_N = {{Fg:3}} + ({{m:3}})(-{{a:2}}) = {{FN:3}}$ N\nThe scale reads about {{FN:2}} N.\n\n(c) The scale reading is the normal force. To accelerate you downward, the net force must be downward, so the floor pushes up with less than your weight: $F_N = m(g - a)$ – you feel lighter. To accelerate you upward, the net force must be upward, so $F_N = m(g + a) > mg$ – you feel heavier. Your actual weight $mg$ does not change.\n\n(d) Examples: a drop tower or roller coaster cresting a hill (lighter) and at the bottom of a dip (heavier); a trampoline; jumping off a scale.",
+   "rubric": [
+    {
+     "point": "Correct FBD",
+     "marks": 1
+    },
+    {
+     "point": "Correct sign convention and Newton's second law",
+     "marks": 2
+    },
+    {
+     "point": "Correct scale reading",
+     "marks": 1
+    },
+    {
+     "point": "Explains apparent weight = normal force, with F_N = m(g ± a)",
+     "marks": 2
+    },
+    {
+     "point": "Valid similar situation",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q16",
+   "type": "problem",
+   "difficulty": 3,
+   "vars": {
+    "m": {
+     "min": 45,
+     "max": 75,
+     "step": 1
+    },
+    "v": {
+     "min": 4.0,
+     "max": 12.0,
+     "step": 0.5
+    },
+    "au": {
+     "min": 1.5,
+     "max": 3.5,
+     "step": 0.1
+    },
+    "ad": {
+     "min": 2.0,
+     "max": 4.5,
+     "step": 0.1
+    }
+   },
+   "derived": {
+    "ru": "m*(9.8+au)/9.8",
+    "rd": "m*(9.8-ad)/9.8"
+   },
+   "text": "To test the forces on a person during an amusement park ride, a student sits on a bathroom scale calibrated in **kilograms**. Before the ride moves, the scale reads {{m}} kg. (A scale calibrated in kilograms divides the normal force by 9.8 N/kg.)",
+   "parts": [
+    {
+     "label": "a",
+     "text": "What does the scale read when the student moves at a constant velocity of {{v:2}} m/s [down]? Explain.",
+     "answer": {
+      "expr": "m",
+      "unit": "kg",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "What does the scale read when the student accelerates at {{au:2}} m/s² [up]?",
+     "answer": {
+      "expr": "ru",
+      "unit": "kg",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "What does the scale read when the student accelerates at {{ad:2}} m/s² [down]?",
+     "answer": {
+      "expr": "rd",
+      "unit": "kg",
+      "sig": 2
+     }
+    },
+    {
+     "label": "d",
+     "text": "Has the student's mass actually changed? Explain what the scale is really measuring."
+    }
+   ],
+   "modelAnswer": "Up positive. Scale reading (kg) $= F_N / 9.8$.\n\n(a) Constant velocity means $a = 0$, so $F_N = mg$ and the reading is unchanged: **{{m}} kg**.\n\n(b) $F_N = m(g + a) = ({{m}})(9.8 + {{au:2}}) = {{m*(9.8+au):3}}$ N; reading $= {{m*(9.8+au):3}}/9.8 = {{ru:2}}$ kg.\n\n(c) $F_N = m(g - a) = ({{m}})(9.8 - {{ad:2}}) = {{m*(9.8-ad):3}}$ N; reading $= {{m*(9.8-ad):3}}/9.8 = {{rd:2}}$ kg.\n\n(d) No – the mass is always {{m}} kg. The scale measures the normal force (how hard it pushes up on the student) and converts it to kilograms assuming $g$ = 9.8 N/kg with no acceleration. When the student accelerates, the normal force changes, so the reading changes.",
+   "rubric": [
+    {
+     "point": "Constant velocity → no change, explained",
+     "marks": 1
+    },
+    {
+     "point": "Correct F_N and reading for upward acceleration",
+     "marks": 2
+    },
+    {
+     "point": "Correct F_N and reading for downward acceleration",
+     "marks": 2
+    },
+    {
+     "point": "Explains mass unchanged; scale measures normal force",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q17",
+   "type": "problem",
+   "difficulty": 1,
+   "vars": {
+    "m": {
+     "min": 4.0,
+     "max": 15.0,
+     "step": 0.5
+    }
+   },
+   "derived": {
+    "FN": "m*9.8"
+   },
+   "text": "A {{m:2}} kg box sits on a horizontal floor at sea level. A person pushes it horizontally, but the push is not able to move the box.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Name all the forces acting on the box."
+    },
+    {
+     "label": "b",
+     "text": "Draw (describe) a free-body diagram of the box, showing which forces balance."
+    },
+    {
+     "label": "c",
+     "text": "Calculate the magnitude of the normal force on the box.",
+     "answer": {
+      "expr": "FN",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "d",
+     "text": "What can you say about the size of the static friction compared with the push? Justify using Newton's first law."
+    }
+   ],
+   "modelAnswer": "(a) Force of gravity (down), normal force (up), applied force (horizontal push), static friction (horizontal, opposite to the push).\n\n(b) Four arrows from a dot: $\\vec F_N$ up and $\\vec F_g$ down, equal lengths; $\\vec F_a$ forward and $\\vec F_S$ backward, equal lengths.\n\n(c) Vertically $a = 0$ and no other vertical forces, so $F_N = mg = ({{m:2}})(9.8) = {{FN:2}}$ N [up].\n\n(d) The box remains at rest, so by Newton's first law the net force is zero. Static friction is therefore exactly equal in magnitude to the push (and less than or equal to its maximum, $\\mu_S F_N$).",
+   "rubric": [
+    {
+     "point": "All four forces named",
+     "marks": 1
+    },
+    {
+     "point": "Correct balanced FBD",
+     "marks": 2
+    },
+    {
+     "point": "Correct normal force",
+     "marks": 1
+    },
+    {
+     "point": "Static friction equals push because net force is zero",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q18",
+   "type": "conceptual",
+   "difficulty": 1,
+   "text": "An object is pushed along a horizontal surface by an applied force $\\vec F_a$. The only horizontal forces are $\\vec F_a$ and the friction force $\\vec F_f$.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Compare the magnitudes of $F_a$ and $F_f$ if the object is slowing down (while $\\vec F_a$ still points forward). Explain."
+    },
+    {
+     "label": "b",
+     "text": "Compare them if the object moves at constant velocity. Explain."
+    },
+    {
+     "label": "c",
+     "text": "Compare them if the object is speeding up. Explain."
+    },
+    {
+     "label": "d",
+     "text": "Sketch (describe) an FBD for case (c)."
+    }
+   ],
+   "modelAnswer": "(a) $F_a < F_f$. Slowing down means the acceleration is opposite the motion, so the net force is backward – friction must be larger than the forward push.\n\n(b) $F_a = F_f$. Constant velocity means zero acceleration, so by Newton's first law the net force is zero.\n\n(c) $F_a > F_f$. Speeding up means acceleration (and net force) in the direction of motion, so the push must exceed friction; $F_{net} = F_a - F_f = ma$.\n\n(d) $\\vec F_N$ up and $\\vec F_g$ down (equal); a long $\\vec F_a$ forward and a shorter $\\vec F_f$ backward.",
+   "rubric": [
+    {
+     "point": "Slowing: F_a < F_f with reason",
+     "marks": 2
+    },
+    {
+     "point": "Constant velocity: equal with Newton's first law",
+     "marks": 2
+    },
+    {
+     "point": "Speeding up: F_a > F_f with reason",
+     "marks": 2
+    },
+    {
+     "point": "Correct FBD for (c)",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q19",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "Ff": {
+     "min": 4.0,
+     "max": 12.0,
+     "step": 0.2
+    },
+    "FN": {
+     "min": 25.0,
+     "max": 45.0,
+     "step": 0.5
+    }
+   },
+   "derived": {
+    "mu": "Ff/FN"
+   },
+   "text": "An object experiences a friction force of {{Ff:2}} N and a normal force of {{FN:3}} N.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the coefficient of friction for this situation.",
+     "answer": {
+      "expr": "mu",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "Is the object moving? Explain why the information given is (or is not) enough to decide."
+    },
+    {
+     "label": "c",
+     "text": "What additional information or observation would let you decide? Explain how."
+    }
+   ],
+   "modelAnswer": "(a) $\\mu = \\dfrac{F_f}{F_N} = \\dfrac{ {{Ff:2}} }{ {{FN:3}} } = {{mu:2}}$\n\n(b) You cannot tell. If the object is sliding, this ratio is $\\mu_K$. But static friction can have any value up to its maximum, so the object could be at rest with a static friction of {{Ff:2}} N that is less than $F_{S\\,max}$. The ratio alone does not distinguish these cases.\n\n(c) Know the coefficients for the surfaces (e.g. from Table 1): if the ratio equals $\\mu_K$ and the object is observed to be moving, it is sliding; if the ratio is less than $\\mu_S$ and no motion is seen, it is at rest. Alternatively, observe its motion directly, or know the applied force – if $F_a = F_f$ and the object was at rest, it stays at rest.",
+   "rubric": [
+    {
+     "point": "Correct μ calculation, no units",
+     "marks": 1
+    },
+    {
+     "point": "States cannot tell",
+     "marks": 1
+    },
+    {
+     "point": "Explains static friction can be any value up to the maximum",
+     "marks": 2
+    },
+    {
+     "point": "Suggests valid additional information and explains its use",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q20",
+   "type": "problem",
+   "difficulty": 1,
+   "vars": {
+    "W": {
+     "min": 8,
+     "max": 40,
+     "step": 1
+    }
+   },
+   "derived": {
+    "Fs": "0.78*W",
+    "Fk": "0.42*W"
+   },
+   "text": "A block of steel weighing {{W}} N sits on a dry, horizontal steel surface. For dry steel on steel, $\\mu_S$ = 0.78 and $\\mu_K$ = 0.42 (Table 1, Section 4.2).",
+   "parts": [
+    {
+     "label": "a",
+     "text": "What horizontal force is needed to start the block sliding?",
+     "answer": {
+      "expr": "Fs",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "Once it has begun sliding, what horizontal force keeps it moving at constant speed?",
+     "answer": {
+      "expr": "Fk",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "If the surfaces were greasy, how would your answers change? Explain why the textbook gives a range for greasy steel."
+    }
+   ],
+   "modelAnswer": "On a level surface with horizontal forces, $F_N = F_g = {{W}}$ N.\n\n(a) $F_{S\\,max} = \\mu_S F_N = (0.78)({{W}}\\ \\text{N}) = {{Fs:2}}$ N. A force just greater than this starts the block sliding.\n\n(b) At constant speed, $F_{net} = 0$ so $F_a = F_K = \\mu_K F_N = (0.42)({{W}}\\ \\text{N}) = {{Fk:2}}$ N.\n\n(c) Both forces would be much smaller, because grease greatly reduces the coefficients (μ_S ≈ 0.05–0.11, μ_K ≈ 0.029–0.12). A range is given because coefficients are measured experimentally and depend on the condition of the surfaces – how much grease, how clean, its temperature – so different measurements give different values.",
+   "rubric": [
+    {
+     "point": "Uses F_N = weight (no extra multiplication by g)",
+     "marks": 1
+    },
+    {
+     "point": "Correct starting force",
+     "marks": 1
+    },
+    {
+     "point": "Correct constant-speed force with reasoning F_a = F_K",
+     "marks": 2
+    },
+    {
+     "point": "Greasy: smaller forces; range explained by experimental variability/surface condition",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q21",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 2.0,
+     "max": 12.0,
+     "step": 0.2
+    },
+    "a": {
+     "min": 0.5,
+     "max": 3.0,
+     "step": 0.1
+    },
+    "mu": {
+     "min": 0.15,
+     "max": 0.4,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "Fk": "mu*m*9.8",
+    "Fa": "m*a + mu*m*9.8"
+   },
+   "text": "A {{m:2}} kg object is pushed horizontally along a surface, causing it to accelerate at {{a:2}} m/s². The coefficient of kinetic friction is {{mu:2}}.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Draw (describe) the FBD."
+    },
+    {
+     "label": "b",
+     "text": "Calculate the magnitude of the horizontal applied force.",
+     "answer": {
+      "expr": "Fa",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "If the push stops, what is the object's acceleration while it is still sliding?",
+     "answer": {
+      "expr": "mu*9.8",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    }
+   ],
+   "modelAnswer": "(a) $\\vec F_N$ up, $\\vec F_g$ down (equal); $\\vec F_a$ forward, $\\vec F_K$ backward (shorter, since the object speeds up).\n\n(b) $F_K = \\mu_K mg = ({{mu:2}})({{m:2}})(9.8) = {{Fk:3}}$ N. Forward positive: $F_a - F_K = ma$, so $F_a = ma + F_K = ({{m:2}})({{a:2}}) + {{Fk:3}} = {{Fa:3}}$ N ≈ {{Fa:2}} N.\n\n(c) Only kinetic friction acts horizontally: $a = -F_K/m = -\\mu_K g = -({{mu:2}})(9.8) = -{{mu*9.8:2}}$ m/s², i.e. {{mu*9.8:2}} m/s² opposite to the motion (it slows down).",
+   "rubric": [
+    {
+     "point": "Correct FBD",
+     "marks": 1
+    },
+    {
+     "point": "Correct kinetic friction",
+     "marks": 1
+    },
+    {
+     "point": "Correct Newton's second law setup and F_a",
+     "marks": 2
+    },
+    {
+     "point": "Correct deceleration μ_K g with direction",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q22",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "W": {
+     "min": 400,
+     "max": 900,
+     "step": 10
+    },
+    "muS": {
+     "min": 0.25,
+     "max": 0.45,
+     "step": 0.01
+    },
+    "muK": {
+     "min": 0.15,
+     "max": 0.24,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "Fs": "muS*W",
+    "Fk": "muK*W",
+    "m": "W/9.8"
+   },
+   "text": "A couch weighing {{W}} N is to be pushed horizontally across a room. The coefficient of static friction between the couch and the floor is {{muS:2}} and the coefficient of kinetic friction is {{muK:2}}.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "What is the minimum force required to set the couch in motion?",
+     "answer": {
+      "expr": "Fs",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "What force keeps the couch moving at constant speed?",
+     "answer": {
+      "expr": "Fk",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "If you keep pushing with the force from (a) after the couch starts moving, what will its acceleration be?",
+     "answer": {
+      "expr": "(Fs-Fk)/m",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "d",
+     "text": "Use your answers to give practical advice to someone moving furniture."
+    }
+   ],
+   "modelAnswer": "The weight is already a force: $F_N = {{W}}$ N on a level floor (mass $= {{W}}/9.8 = {{m:3}}$ kg).\n\n(a) $F_{S\\,max} = \\mu_S F_N = ({{muS:2}})({{W}}) = {{Fs:3}}$ N – you must push slightly more than this.\n\n(b) $F_K = \\mu_K F_N = ({{muK:2}})({{W}}) = {{Fk:3}}$ N\n\n(c) $F_{net} = {{Fs:3}} - {{Fk:3}} = {{Fs-Fk:3}}$ N; $a = F_{net}/m = {{Fs-Fk:3}}/{{m:3}} = {{(Fs-Fk)/m:2}}$ m/s² forward.\n\n(d) Starting is the hardest part; once it slides, ease off to about {{Fk:2}} N or it will speed up. Keep it moving in one go rather than stopping and starting, and use sliders to reduce μ.",
+   "rubric": [
+    {
+     "point": "Recognises weight = normal force (no extra ×g)",
+     "marks": 1
+    },
+    {
+     "point": "Correct starting force",
+     "marks": 1
+    },
+    {
+     "point": "Correct constant-speed force",
+     "marks": 1
+    },
+    {
+     "point": "Correct acceleration with mass from W/g",
+     "marks": 2
+    },
+    {
+     "point": "Sensible advice linked to μ_S > μ_K",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q23",
+   "type": "problem",
+   "difficulty": 1,
+   "vars": {
+    "m": {
+     "min": 1.5,
+     "max": 4.0,
+     "step": 0.1
+    },
+    "F": {
+     "min": 10,
+     "max": 25,
+     "step": 1
+    }
+   },
+   "derived": {
+    "mu": "F/(m*9.8)"
+   },
+   "text": "At a construction site, one worker passes a brick to another by pushing it across a piece of wood. The brick has a mass of {{m:2}} kg and the force required to start it moving is {{F}} N.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the coefficient of static friction between the brick and the wood.",
+     "answer": {
+      "expr": "mu",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "Explain why this is described as the *maximum* coefficient of static friction situation, and why the force needed to keep it sliding will be smaller."
+    }
+   ],
+   "modelAnswer": "(a) The force needed to just start the brick equals $F_{S\\,max}$. $F_N = mg = ({{m:2}})(9.8) = {{m*9.8:3}}$ N. $\\mu_S = \\dfrac{F_{S\\,max}}{F_N} = \\dfrac{ {{F}} }{ {{m*9.8:3}} } = {{mu:2}}$\n\n(b) Static friction grows to match the applied push until it reaches its maximum value at the instant the brick starts to slide; the {{F}} N reading is that maximum, so it gives μ_S. Once sliding, kinetic friction acts, and since μ_K is usually less than μ_S, less force is needed to keep the brick moving.",
+   "rubric": [
+    {
+     "point": "Correct F_N",
+     "marks": 1
+    },
+    {
+     "point": "Correct μ_S",
+     "marks": 1
+    },
+    {
+     "point": "Explains starting force = maximum static friction",
+     "marks": 1
+    },
+    {
+     "point": "Explains kinetic friction smaller (μ_K < μ_S)",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q24",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Car tires and wet roads.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Rubber is an exception to a rule about friction that applies to most other materials. State the rule and explain the exception."
+    },
+    {
+     "label": "b",
+     "text": "How does this exception affect the design of race car tires? What is the trade-off?"
+    },
+    {
+     "label": "c",
+     "text": "Explain, in terms of the interaction among the tire, the water and the road, the difference between a car moving at a controllable speed on wet pavement and a car that is hydroplaning."
+    },
+    {
+     "label": "d",
+     "text": "Aside from tread depth, describe another factor that affects a tire's ability to avoid hydroplaning and how the risk could be reduced."
+    }
+   ],
+   "modelAnswer": "(a) For most materials, friction depends only on μ and the normal force, not on the contact area. For rubber, the static friction on a tire *does* depend on the area of tire in contact with the road.\n\n(b) Race car tires are very wide with no tread, to maximize contact area and static friction (and to dissipate heat), helping the car corner without slipping. The trade-off is that with no grooves they cannot channel water away, so they are dangerous in rain.\n\n(c) At a low, safe speed, water in front of the tire has time to flow through the tread grooves and be squeezed out behind, so rubber stays in contact with the road and friction from the road acts on the tire. As speed increases, water builds up in front of the tire faster than it can escape. When it becomes too high to pass through the grooves, the tire rides on a layer of water and loses direct contact with the road (hydroplaning). The materials in contact are now rubber and water, with very little friction, so the driver cannot steer or slow down – the car keeps moving at almost constant velocity.\n\n(d) Examples: **speed** – drive slower on wet roads; **tire pressure** – under- or over-inflated tires wear unevenly and change the contact patch, so keep correct pressure; **depth of water/puddles** – avoid standing water; **tread design** – wider/deeper grooves move water away faster.",
+   "rubric": [
+    {
+     "point": "States area-independence rule and rubber exception",
+     "marks": 2
+    },
+    {
+     "point": "Race tire design and trade-off",
+     "marks": 2
+    },
+    {
+     "point": "Normal case: water escapes through grooves, contact maintained",
+     "marks": 2
+    },
+    {
+     "point": "Hydroplaning: water too high, rubber on water, little friction, loss of control",
+     "marks": 2
+    },
+    {
+     "point": "Valid additional factor with way to reduce risk",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q25",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Car brakes and car body design.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Analyse a disc brake as a friction problem: which component attached to the wheel experiences the friction force, and which component exerts it? What role does the piston play?"
+    },
+    {
+     "label": "b",
+     "text": "Explain why braking harder slows the wheel faster, using the concepts of normal force and friction."
+    },
+    {
+     "label": "c",
+     "text": "Explain how crumple zones relate to the force and acceleration experienced by passengers during a collision."
+    },
+    {
+     "label": "d",
+     "text": "Explain how an airbag reduces the force on a person, and why a seat belt must still be worn."
+    }
+   ],
+   "modelAnswer": "(a) The friction force acts on the **rotor**, which is attached to the wheel. It is exerted by the **brake pads**, which are squeezed against the rotor by the **piston**.\n\n(b) Pressing the brake pedal harder makes the piston push the pads against the rotor with a larger normal force. Since $F_K = \\mu_K F_N$, the friction on the rotor increases, so the wheel slows faster.\n\n(c) Crumple zones crush during a collision, which increases the time it takes the car (and passengers) to stop. For the same change in velocity, a longer stopping time means a smaller acceleration, and by Newton's second law ($F = ma$) a smaller force on the passengers – so injuries are less likely.\n\n(d) The person moves into the airbag, which compresses and increases the time interval over which they stop, reducing their acceleration and the force on them; it also prevents them from hitting hard surfaces. A seat belt is still essential because it keeps the person in their seat and in the right position; airbags alone can injure people who are too close when they inflate at over 300 km/h.",
+   "rubric": [
+    {
+     "point": "Rotor receives friction from pads; piston supplies normal force",
+     "marks": 2
+    },
+    {
+     "point": "Harder braking → larger F_N → larger friction",
+     "marks": 2
+    },
+    {
+     "point": "Crumple zones increase stopping time → smaller acceleration and force",
+     "marks": 2
+    },
+    {
+     "point": "Airbag increases stopping time; seat belt still needed with reason",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q26",
+   "type": "analysis",
+   "difficulty": 2,
+   "text": "Forces in sports and machines (Section 4.5).",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Describe what could happen if the static friction between a golfer's hands and the club grip cannot provide the force needed during a powerful swing, and explain what manufacturers do to prevent it."
+    },
+    {
+     "label": "b",
+     "text": "Ice skates are designed to reduce friction along the length of the blade. Explain what would happen if friction were reduced as much as possible in *all* directions, including sideways."
+    },
+    {
+     "label": "c",
+     "text": "Compare plain, rolling element, fluid and magnetic bearings: how does each reduce friction, and what are the benefits and trade-offs of magnetic (maglev) bearings?"
+    },
+    {
+     "label": "d",
+     "text": "What new material combines a very low coefficient of friction with a hard, wear-resistant surface? Give its coefficient compared with Teflon and two proposed applications."
+    }
+   ],
+   "modelAnswer": "(a) The club could slip out of the golfer's hands – flying away dangerously and ruining the shot. Manufacturers make grips of leather or rubber, materials with a high coefficient of static friction, to increase the maximum static friction on the hands and improve control.\n\n(b) A skater pushes sideways against the ice with the edge of the blade to accelerate and turn – the curved blade digs in so the ice can push back. With very little friction sideways, the skater could not push off, turn or stop; their feet would slide out from under them in every direction.\n\n(c) Plain bearings: two surfaces slide with lubricant (oil/graphite). Rolling element bearings: balls or rollers roll between surfaces (rolling friction is small), usually lubricated. Fluid bearings: a thin film of air or oil separates the surfaces, like the slushy layer under a skate; cheap and quiet, but need a seal and pump and can fail suddenly. Magnetic bearings: magnetic fields keep the surfaces from touching (magnetic levitation) – benefits: almost no friction, no maintenance and no known speed limit; trade-offs: need electricity for the electromagnets (energy cost) and a backup bearing in case they fail.\n\n(d) Near-frictionless carbon: μ less than 0.001 compared with 0.04 for Teflon under the same conditions, very hard and wear resistant. Proposed applications: aircraft and space-program parts, bearings of all kinds, and in future automobiles and compressors such as air conditioners.",
+   "rubric": [
+    {
+     "point": "Club slips; grip materials increase static friction",
+     "marks": 2
+    },
+    {
+     "point": "Skates need sideways friction to push off/turn/stop",
+     "marks": 2
+    },
+    {
+     "point": "Describes how at least three bearing types reduce friction",
+     "marks": 2
+    },
+    {
+     "point": "Magnetic bearing benefits and trade-offs",
+     "marks": 2
+    },
+    {
+     "point": "Near-frictionless carbon: μ < 0.001 vs 0.04, two applications",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q27",
+   "type": "problem",
+   "difficulty": 3,
+   "vars": {
+    "mt": {
+     "min": 3.0,
+     "max": 8.0,
+     "step": 0.5
+    },
+    "mb": {
+     "min": 3.0,
+     "max": 8.0,
+     "step": 0.5
+    },
+    "mu": {
+     "min": 0.1,
+     "max": 0.25,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "Ftable": "mu*(mt+mb)*9.8",
+    "mub": "mu*(mt+mb)/mt"
+   },
+   "text": "Two large books are stacked on a table: a {{mt:2}} kg book on top of a {{mb:2}} kg book. The coefficient of static friction between the bottom book and the table is {{mu:2}}. You push horizontally on the **top** book and want both books to start moving together.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Draw (describe) FBDs for each book just before they start to move."
+    },
+    {
+     "label": "b",
+     "text": "Calculate the maximum static friction from the table on the bottom book.",
+     "answer": {
+      "expr": "Ftable",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "What is the lowest coefficient of static friction between the books that allows you to move both books?",
+     "answer": {
+      "expr": "mub",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "d",
+     "text": "What would happen if the coefficient between the books were smaller than your answer to (c)?"
+    }
+   ],
+   "modelAnswer": "(a) Top book: $\\vec F_g$ down, $\\vec F_N$ up (from bottom book), $\\vec F_a$ forward, static friction from the bottom book backward. Bottom book: $\\vec F_g$ down, normal force from top book down, $\\vec F_N$ from table up (supporting both), static friction from the top book **forward**, static friction from the table backward.\n\n(b) The table supports both books: $F_N = (m_t + m_b)g = ({{mt+mb:3}})(9.8) = {{(mt+mb)*9.8:3}}$ N. $F_{S\\,max,table} = ({{mu:2}})({{(mt+mb)*9.8:3}}) = {{Ftable:3}}$ N\n\n(c) The only forward force on the bottom book is static friction from the top book, whose maximum is $\\mu_{books}\\, m_t g$. To get the bottom book moving: $\\mu_{books} m_t g \\ge \\mu_{table}(m_t + m_b) g$\n$\\mu_{books} \\ge \\dfrac{\\mu_{table}(m_t + m_b)}{m_t} = \\dfrac{({{mu:2}})({{mt+mb:3}})}{ {{mt:2}} } = {{mub:2}}$\n\n(d) The top book would slide over the bottom book before the bottom book moved – you would push the top book off the stack while the bottom book stays at rest on the table.",
+   "rubric": [
+    {
+     "point": "Correct FBDs, including friction on bottom book from top book forward",
+     "marks": 2
+    },
+    {
+     "point": "Normal force on table includes both books",
+     "marks": 1
+    },
+    {
+     "point": "Correct table friction",
+     "marks": 1
+    },
+    {
+     "point": "Correct inequality setup comparing max friction between books with table friction",
+     "marks": 2
+    },
+    {
+     "point": "Correct minimum μ",
+     "marks": 1
+    },
+    {
+     "point": "Explains top book slides off",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q28",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Some people think that if a surface is polished until it looks perfectly smooth, it can be made virtually frictionless. A highly magnified photograph of a polished metal surface shows many tiny peaks and valleys.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "What does the photograph reveal about friction?"
+    },
+    {
+     "label": "b",
+     "text": "Explain why coefficients of friction must be measured experimentally and why measurements of the same pair of materials can differ."
+    },
+    {
+     "label": "c",
+     "text": "Guillaume Amontons stated that the friction force is proportional to the normal force and independent of the area of contact. Use evidence from this chapter to support his laws, and name the exception."
+    }
+   ],
+   "modelAnswer": "(a) Even surfaces that appear smooth are rough on a microscopic scale. When two surfaces touch, their tiny peaks catch on each other, so there is always some friction. Polishing reduces it but cannot remove it entirely.\n\n(b) Friction depends on the materials and the exact condition of the surfaces – cleanliness, wetness, microscopic roughness – which cannot be predicted from theory. Small differences in these conditions and in technique give different results, so values are often given as a range.\n\n(c) Evidence: $F_f = \\mu F_N$ – doubling the mass (normal force) of a block doubles the friction, giving a straight line through the origin on an $F_f$ vs $F_N$ graph (Investigations 4.2.1/4.2.2). Turning a wooden block onto a smaller face does not noticeably change the friction. Exception: rubber – the friction on a rubber tire depends on its contact area, which is why race cars use wide tires.",
+   "rubric": [
+    {
+     "point": "Microscopic roughness → friction always present",
+     "marks": 2
+    },
+    {
+     "point": "Experimental nature of μ and causes of variation",
+     "marks": 2
+    },
+    {
+     "point": "Evidence for proportionality to F_N",
+     "marks": 1
+    },
+    {
+     "point": "Evidence for independence of area",
+     "marks": 1
+    },
+    {
+     "point": "Rubber exception",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q29",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "Fa": {
+     "min": 100,
+     "max": 200,
+     "step": 5
+    },
+    "muK": {
+     "min": 0.1,
+     "max": 0.25,
+     "step": 0.01
+    },
+    "a": {
+     "min": 1.5,
+     "max": 3.5,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "m": "Fa/(a+muK*9.8)",
+    "mu2": "Fa/(Fa/(a+muK*9.8)*9.8)"
+   },
+   "text": "A block is pushed across a horizontal surface with a coefficient of kinetic friction of {{muK:2}} by a {{Fa}} N horizontal force.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "The block accelerates at {{a:3}} m/s². Find the mass of the block.",
+     "answer": {
+      "expr": "m",
+      "unit": "kg",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "The block then slides onto a new surface. With the same applied force, it now moves at constant speed. What is the coefficient of kinetic friction for the new surface?",
+     "answer": {
+      "expr": "mu2",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Explain what the constant speed tells you about the forces on the block."
+    }
+   ],
+   "modelAnswer": "(a) Forward positive: $F_a - \\mu_K mg = ma \\Rightarrow F_a = m(a + \\mu_K g)$.\n$m = \\dfrac{F_a}{a + \\mu_K g} = \\dfrac{ {{Fa}} }{ {{a:3}} + ({{muK:2}})(9.8)} = \\dfrac{ {{Fa}} }{ {{a+muK*9.8:3}} } = {{m:3}}$ kg\n\n(b) $F_K = F_a = {{Fa}}$ N (constant speed). $F_N = mg = ({{m:3}})(9.8) = {{m*9.8:3}}$ N. $\\mu_K = \\dfrac{ {{Fa}} }{ {{m*9.8:3}} } = {{mu2:2}}$\n\n(c) Constant speed (in a straight line) means zero acceleration, so by Newton's first law the net force is zero: the kinetic friction on the new surface exactly balances the {{Fa}} N push.",
+   "rubric": [
+    {
+     "point": "Correct Newton's second law equation with friction",
+     "marks": 2
+    },
+    {
+     "point": "Correct mass",
+     "marks": 1
+    },
+    {
+     "point": "Recognises F_K = F_a at constant speed",
+     "marks": 1
+    },
+    {
+     "point": "Correct new μ_K",
+     "marks": 1
+    },
+    {
+     "point": "Explains zero net force",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q30",
+   "type": "problem",
+   "difficulty": 3,
+   "vars": {
+    "m1": {
+     "min": 150,
+     "max": 185,
+     "step": 5
+    },
+    "m2": {
+     "min": 190,
+     "max": 220,
+     "step": 5
+    },
+    "F1": {
+     "min": 220,
+     "max": 260,
+     "step": 5
+    },
+    "F2": {
+     "min": 240,
+     "max": 290,
+     "step": 5
+    }
+   },
+   "derived": {
+    "a1": "(F1-0.01*m1*9.8)/m1",
+    "a2": "(F2-0.01*m2*9.8)/m2",
+    "ab": "(0.1-0.01)*9.8"
+   },
+   "text": "Two sled racing teams use identical sleds with steel runners on ice ($\\mu_S$ = 0.1, $\\mu_K$ = 0.01). Team 1 pulls a {{m1}} kg sled with {{F1}} N of force and team 2 pulls a {{m2}} kg sled with {{F2}} N of force.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Show that both teams can get their sleds moving."
+    },
+    {
+     "label": "b",
+     "text": "Calculate team 1's acceleration once moving.",
+     "answer": {
+      "expr": "a1",
+      "unit": "m/s²",
+      "sig": 2,
+      "tol": 0.03
+     }
+    },
+    {
+     "label": "c",
+     "text": "Calculate team 2's acceleration once moving, and state which team has the quicker start.",
+     "answer": {
+      "expr": "a2",
+      "unit": "m/s²",
+      "sig": 2,
+      "tol": 0.03
+     }
+    },
+    {
+     "label": "d",
+     "text": "Now suppose each team's dogs can only *just* overcome static friction, and they keep pulling with that same force after the sled starts. Show that both sleds have the same acceleration, and calculate it.",
+     "answer": {
+      "expr": "ab",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    }
+   ],
+   "modelAnswer": "(a) Team 1: $F_{S\\,max} = (0.1)({{m1}})(9.8) = {{0.1*m1*9.8:3}}$ N < {{F1}} N ✓. Team 2: $F_{S\\,max} = (0.1)({{m2}})(9.8) = {{0.1*m2*9.8:3}}$ N < {{F2}} N ✓. Both pulls exceed the maximum static friction.\n\n(b) $F_K = (0.01)({{m1}})(9.8) = {{0.01*m1*9.8:3}}$ N. $a_1 = \\dfrac{ {{F1}} - {{0.01*m1*9.8:3}} }{ {{m1}} } = {{a1:3}}$ m/s²\n\n(c) $F_K = (0.01)({{m2}})(9.8) = {{0.01*m2*9.8:3}}$ N. $a_2 = \\dfrac{ {{F2}} - {{0.01*m2*9.8:3}} }{ {{m2}} } = {{a2:3}}$ m/s². The team with the larger acceleration has the quicker start.\n\n(d) Each team pulls with $F = \\mu_S m g$. Once moving: $a = \\dfrac{\\mu_S m g - \\mu_K m g}{m} = (\\mu_S - \\mu_K)g = (0.1 - 0.01)(9.8) = {{ab:2}}$ m/s². The mass cancels, so both sleds accelerate equally.",
+   "rubric": [
+    {
+     "point": "Checks both forces exceed F_S max",
+     "marks": 2
+    },
+    {
+     "point": "Correct a₁",
+     "marks": 1
+    },
+    {
+     "point": "Correct a₂ and correct comparison",
+     "marks": 2
+    },
+    {
+     "point": "Derives a = (μ_S − μ_K)g with mass cancelling",
+     "marks": 2
+    },
+    {
+     "point": "Correct value",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q31",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 55,
+     "max": 95,
+     "step": 1
+    },
+    "mi": {
+     "choices": [
+      0.04,
+      0.05,
+      0.06
+     ]
+    },
+    "mc": {
+     "choices": [
+      0.75,
+      0.8,
+      0.85
+     ]
+    }
+   },
+   "derived": {
+    "ai": "mi*9.8",
+    "ac": "mc*9.8"
+   },
+   "text": "Running uses static friction to cause motion. Broomball is played on ice in shoes, which makes it hard to accelerate. A {{m}} kg broomball player wears shoes with a coefficient of static friction of {{mi:2}} on ice.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Explain how static friction, together with Newton's third law, pushes a runner forward."
+    },
+    {
+     "label": "b",
+     "text": "Calculate the maximum acceleration the player can achieve on the ice.",
+     "answer": {
+      "expr": "ai",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Calculate the maximum acceleration on concrete, where $\\mu_S$ = {{mc:2}}.",
+     "answer": {
+      "expr": "ac",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "d",
+     "text": "What would happen to these values for a player of greater mass on the same surfaces? Explain."
+    }
+   ],
+   "modelAnswer": "(a) The runner's foot pushes backward on the ground (action). By Newton's third law the ground pushes forward on the foot (reaction) – this forward force is static friction, because the foot does not slip relative to the ground. It is the net horizontal force that accelerates the runner.\n\n(b) $F_{net} = F_{S\\,max} = \\mu_S mg$, so $a = \\mu_S g = ({{mi:2}})(9.8) = {{ai:2}}$ m/s²\n\n(c) $a = \\mu_S g = ({{mc:2}})(9.8) = {{ac:2}}$ m/s²\n\n(d) No change. A heavier player has a larger normal force and therefore a larger maximum static friction, but also more mass to accelerate; in $a = \\mu_S mg/m$ the mass cancels.",
+   "rubric": [
+    {
+     "point": "Explains action/reaction and static friction as forward force",
+     "marks": 2
+    },
+    {
+     "point": "Correct acceleration on ice",
+     "marks": 1
+    },
+    {
+     "point": "Correct acceleration on concrete",
+     "marks": 1
+    },
+    {
+     "point": "Mass cancels – no change, explained",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q32",
+   "type": "analysis",
+   "difficulty": 3,
+   "text": "Life on the Moon. The Moon is the most accessible place for a future colony, but its gravitational field strength is only about one-sixth of Earth's.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Discuss advantages and disadvantages of building infrastructure (buildings, transportation, manufacturing) in this lower gravitational field."
+    },
+    {
+     "label": "b",
+     "text": "Discuss possible effects of the lower field on the human body."
+    },
+    {
+     "label": "c",
+     "text": "How might lower gravitational field strength affect sports? Include at least one effect related to friction."
+    }
+   ],
+   "modelAnswer": "(a) Advantages: objects weigh one-sixth as much, so lifting and moving materials is easier, structures support less weight, and launching rockets or cargo needs much less force. Disadvantages: the normal force on vehicles is one-sixth as large, so the maximum static friction on tires ($\\mu_S mg$) is much smaller – vehicles accelerate, brake and turn far less effectively; loose dust and materials stay suspended or travel far; designs and machines built for Earth would need re-engineering.\n\n(b) With smaller forces on the body, muscles and bones would not need to work as hard and could weaken over time; balance and walking would feel different (astronauts bound rather than walk); falls would be slower and gentler.\n\n(c) Balls and athletes would travel higher and farther (smaller downward acceleration), changing field sizes and rules. Because weight and therefore normal force are smaller, friction between shoes and the ground is reduced, so players could not accelerate, stop or change direction as quickly ($a_{max} = \\mu_S g$ is about six times smaller) – shoes would need very high-friction soles.",
+   "rubric": [
+    {
+     "point": "At least two infrastructure advantages",
+     "marks": 2
+    },
+    {
+     "point": "At least two disadvantages including reduced friction/traction",
+     "marks": 2
+    },
+    {
+     "point": "Plausible effects on the human body",
+     "marks": 2
+    },
+    {
+     "point": "Sports effects including friction reasoning",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q33",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Gravity from other bodies also affects us. The Moon's gravitational pull on Earth's oceans causes tides.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "If the Moon were closer to Earth, would the tidal shift be greater or smaller? Explain using how gravitational field strength changes with distance."
+    },
+    {
+     "label": "b",
+     "text": "If the Moon exerted a weaker gravitational pull, what would happen to Earth's tides?"
+    },
+    {
+     "label": "c",
+     "text": "Some planets have several moons. Describe how multiple moons might affect Earth's ocean tides."
+    }
+   ],
+   "modelAnswer": "(a) Greater. Gravitational field strength decreases as distance from an object increases (as with Earth's field becoming weaker above its surface). A closer Moon would exert a stronger pull on the oceans, raising larger tides.\n\n(b) The tides would be smaller, because a weaker pull would move less water.\n\n(c) Each moon would pull on the oceans. When moons lined up on the same side, their pulls would combine and produce very large tides; when they were on different sides they could partly cancel, giving smaller tides. The tide pattern would be more complicated and change as the moons moved.",
+   "rubric": [
+    {
+     "point": "Closer → greater tides, linked to field strength decreasing with distance",
+     "marks": 2
+    },
+    {
+     "point": "Weaker pull → smaller tides",
+     "marks": 1
+    },
+    {
+     "point": "Multiple moons combine or partly cancel; more complex pattern",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q34",
+   "type": "design",
+   "difficulty": 3,
+   "text": "Determining coefficients of friction experimentally.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Write a paragraph describing how coefficients of static and kinetic friction can be determined experimentally. Which forces must be measured?"
+    },
+    {
+     "label": "b",
+     "text": "Identify variables that can affect the results and how they could be controlled or documented."
+    },
+    {
+     "label": "c",
+     "text": "Table 1 lists μ_S = 0.05–0.11 and μ_K = 0.029–0.12 for greasy steel on steel. Explain the challenge this creates for an engineer designing two greasy steel parts that slide against each other, and how they might deal with the uncertainty."
+    },
+    {
+     "label": "d",
+     "text": "Golf club design involves similar uncertainty. List variables that change the forces experienced by a golf club during use."
+    }
+   ],
+   "modelAnswer": "(a) Measure the mass of an object and calculate the normal force ($F_N = mg$ on a level surface with horizontal pulls). Pull it with a spring scale or force sensor parallel to the surface, gradually increasing the force; the largest reading before it moves is $F_{S\\,max}$. Then pull it at a slow constant velocity; the average reading is $F_K$. Repeat each measurement several times and average. $\\mu_S = F_{S\\,max}/F_N$, $\\mu_K = F_K/F_N$. (Alternatively, use the slope of an $F_f$ vs $F_N$ graph.)\n\n(b) Surface cleanliness, wetness, roughness, temperature, angle of pull, speed of pulling, which face of the object is down. Control by cleaning and drying surfaces, using the same region, keeping the pull horizontal and slow, and recording the conditions (temperature, humidity) so results can be compared.\n\n(c) The friction could vary by a factor of 2 or more depending on the amount and condition of the grease, so the engineer cannot predict the exact force between the parts. They could test the actual parts under real operating conditions, design for the worst case (both the largest and smallest friction), build in a safety factor, or control the lubrication carefully (sealed, maintained grease).\n\n(d) Swing speed, where the ball hits the club face (sweet spot or not), the mass of the head, the stiffness and material of the shaft, shaft length, the grip material and whether the hands/grip are wet, and the player's technique.",
+   "rubric": [
+    {
+     "point": "Describes measuring F_N, F_S max (largest before motion) and F_K (constant velocity)",
+     "marks": 2
+    },
+    {
+     "point": "Repeat/average and correct formulas",
+     "marks": 1
+    },
+    {
+     "point": "Variables identified with control/documentation methods",
+     "marks": 2
+    },
+    {
+     "point": "Explains wide range → uncertain design forces",
+     "marks": 1
+    },
+    {
+     "point": "Strategies to manage uncertainty",
+     "marks": 1
+    },
+    {
+     "point": "At least three golf-club variables",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q35",
+   "type": "analysis",
+   "difficulty": 2,
+   "text": "Friction is often a force to overcome, yet we rely on it constantly.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Name one everyday action that would be impossible without friction and propose an alternative way to accomplish it without relying on friction."
+    },
+    {
+     "label": "b",
+     "text": "Friction converts energy into heat, reducing efficiency. Explain how this affects a common item (e.g. a car, a computer, a refrigerator)."
+    },
+    {
+     "label": "c",
+     "text": "Describe ways designers could reduce unwanted friction in their products, using technologies from this chapter."
+    }
+   ],
+   "modelAnswer": "(a) Example: walking – without static friction your foot would slip backward and you could not move forward. Alternative: push against something fixed (a rail or wall), or use a reaction force such as throwing an object backward (Newton's third law) or a jet of air. (Other valid examples: holding a pencil, tying a knot, a car braking.)\n\n(b) Example: in a car, friction in the engine, wheel bearings and moving parts turns some of the fuel's energy into heat instead of motion, so more fuel is needed to travel the same distance; in a computer, friction in a hard-drive or fan bearings wastes energy and causes wear and noise.\n\n(c) Lubricants (oil, graphite); rolling element bearings (balls/rollers); fluid bearings (thin film of air or oil, as in computer hard drives); magnetic bearings (no contact); low-friction coatings like Teflon or near-frictionless carbon; smoother surfaces; streamlined shapes to reduce air resistance.",
+   "rubric": [
+    {
+     "point": "Valid action requiring friction with explanation",
+     "marks": 1
+    },
+    {
+     "point": "Plausible alternative that does not rely on friction",
+     "marks": 1
+    },
+    {
+     "point": "Explains energy lost to heat lowers efficiency for a specific item",
+     "marks": 2
+    },
+    {
+     "point": "At least three ways to reduce friction drawn from chapter",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-cr-q36",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Reflect on your learning in Chapter 4.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Explain why the words *mass* and *weight* must not be used interchangeably in physics. Give an example where confusing them leads to a wrong answer."
+    },
+    {
+     "label": "b",
+     "text": "Describe one situation where air resistance is used to our advantage and one where technology is used to overcome air resistance in transportation."
+    },
+    {
+     "label": "c",
+     "text": "Section 4.4 describes many car safety features. Should knowing about these features allow you or your friends to drive with less care? Explain using physics."
+    }
+   ],
+   "modelAnswer": "(a) Mass is the amount of matter (kg, constant everywhere); weight is the force of gravity on that matter (N, depends on $g$). They have different units and behave differently – e.g. an astronaut's mass is the same on the Moon, but their weight is about one-sixth. Confusing them causes errors: if a problem gives a 620 N couch and you calculate $F_N = 620 \\times 9.8$, you get a normal force 9.8 times too large.\n\n(b) Advantage: parachutes increase cross-sectional area to raise air resistance and lower terminal speed for a safe landing. Overcoming it: cars, trains and planes are streamlined (smaller effective area and smooth shapes) to reduce air resistance and save fuel.\n\n(c) No. Safety features can only work within the limits of physics: ABS and ESC cannot create more friction than the tires and road can provide ($\\mu_S F_N$), and on wet or icy roads that limit is small – hydroplaning tires have almost no friction at all. Crumple zones and airbags reduce injury but do not prevent crashes. Driving more carefully than conditions require is still the best protection.",
+   "rubric": [
+    {
+     "point": "Distinguishes mass and weight with units and dependence on g",
+     "marks": 2
+    },
+    {
+     "point": "Concrete example of an error from confusing them",
+     "marks": 1
+    },
+    {
+     "point": "Valid example of using air resistance",
+     "marks": 1
+    },
+    {
+     "point": "Valid example of overcoming air resistance",
+     "marks": 1
+    },
+    {
+     "point": "Argues no, using friction limits/technology limitations",
+     "marks": 2
+    }
+   ]
+  }
+ ]
+}

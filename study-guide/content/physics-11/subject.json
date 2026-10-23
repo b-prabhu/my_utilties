@@ -1,0 +1,13 @@
+{
+  "id": "physics-11",
+  "name": "Physics 11",
+  "description": "Grade 11 University Physics: forces, gravity, friction and their applications.",
+  "chapters": [
+    {
+      "id": "ch04",
+      "number": 4,
+      "title": "Applications of Forces",
+      "sections": ["4-1", "4-2", "4-3", "4-4", "4-5", "4-6", "4-inv", "4-review", "4-chreview"]
+    }
+  ]
+}

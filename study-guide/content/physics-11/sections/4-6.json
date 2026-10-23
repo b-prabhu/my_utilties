@@ -1,0 +1,708 @@
+{
+  "id": "4-6",
+  "number": "4.6",
+  "title": "Explore an Issue: Mandatory Snow Tires in the Winter?",
+  "estimatedMinutes": 75,
+  "overview": "Should Ontario make snow tires mandatory in winter, as Quebec did in 2008? In this section you take the role of a task-force member. You will use the physics of friction you learned in 4.2–4.4, plus research and evidence, to analyze the issue, weigh alternatives and defend a recommendation to the government and the public.",
+  "objectives": [
+    "Define the issue of mandatory snow tires and identify the stakeholders involved.",
+    "Explain, using friction and normal force, why tire tread and rubber properties affect safety on snow and ice.",
+    "Use $a = \\mu g$ and $v_2^2 = v_1^2 + 2a\\Delta d$ to compare stopping distances on different road surfaces.",
+    "Separate scientific evidence from opinion, and evaluate a statistic such as the Quebec accident data.",
+    "Identify alternatives and compromises (e.g. all-wheel drive, traction control, partial replacement).",
+    "Make, defend and communicate an evidence-based decision to a non-expert audience."
+  ],
+  "lessons": [
+    {
+      "id": "the-issue",
+      "title": "The issue, your role and the skills menu",
+      "body": "**The situation.** On a snowy Ontario morning, before the plows arrive, cars commonly end up stuck at the side of the highway. Some of these accidents could be prevented by **slowing down and driving carefully**. Some drivers believe **snow tires** also drastically reduce accidents.\n\n**Two main tire types in Ontario**\n\n| All-season tires | Snow (winter) tires |\n|---|---|\n| Used year-round by many drivers | Used when it gets cold and snow/ice is likely |\n| One set of tires | Second set of tires (often plus a second set of rims to avoid re-mounting costs) |\n| Some say \"suitable for all conditions\" | Marked with a special symbol when they meet snow performance standards |\n\n**The issue:** The Ontario government is considering a law making snow tires **mandatory for all cars and trucks** (company and personal) during the winter months.\n\n**Your role:** a member of an Ontario task force. You research advantages and disadvantages, gather scientific evidence, and write a report with your reasoning and recommendations.\n\n**Audience:** the government and citizens of Ontario – mostly *consumers and officials, not engineers or scientists*.\n\n**Goal:** decide whether a law should be passed making snow tires mandatory.\n\n**Skills menu:** Defining the issue → Researching → Identifying alternatives → Analyzing → Defending a decision → Communicating → Evaluating."
+    },
+    {
+      "id": "tire-physics",
+      "title": "The physics behind the tires",
+      "body": "Everything about this issue comes back to **friction between the tire and the road** – the \"traction\".\n\n1. **Static friction does the work.** A rolling tire that is not skidding is momentarily at rest where it touches the road, so **static friction** speeds the car up, slows it down and turns it (4.3). If the tire slides, *kinetic* friction acts instead, which is usually smaller, and the driver loses steering control (4.4).\n2. **The coefficient depends on the materials in contact.** From Table 1 (4.2):\n\n| Surfaces | $\\mu_K$ |\n|---|---|\n| rubber on concrete (dry) | 0.6–0.85 |\n| rubber on concrete (wet) | 0.45–0.75 |\n| rubber on asphalt (dry) | 0.5–0.80 |\n| rubber on asphalt (wet) | 0.25–0.75 |\n| rubber on ice | 0.005 |\n\n   Ice and snow drastically lower $\\mu$. Anything that helps the tire keep *rubber-on-road* (or bite into the snow) contact increases the friction available.\n3. **Rubber is special.** For rubber tires, the static friction depends on the contact **surface area** too (4.4). Tread design and how soft/flexible the rubber stays in cold weather change how much rubber actually grips.\n4. **Treads and grooves.** Grooves give water and slush a path to escape from under the tire so the rubber can stay in contact with the road (remember hydroplaning, 4.4). Snow tires typically have deeper, more open treads than all-season tires (compare the tread photos in Figure 2).\n\n> **Analogy:** Running in winter boots vs smooth dress shoes on a snowy sidewalk. Same person, same normal force – but the boot's deep, soft treads give much more grip."
+    },
+    {
+      "id": "stopping-distance",
+      "title": "Using physics as evidence: stopping distance",
+      "body": "A strong report needs **numbers**, not just opinions. On a level road, if the brakes lock and the car skids, kinetic friction is the only horizontal force:\n\n$$F_{net} = F_K \\quad\\Rightarrow\\quad ma = \\mu_K m g \\quad\\Rightarrow\\quad a = \\mu_K g$$\n\nThe mass cancels – a heavy truck and a small car with the same $\\mu$ have the same deceleration. Then from Unit 1 kinematics with $v_2 = 0$:\n\n$$v_2^2 = v_1^2 + 2a\\Delta d \\quad\\Rightarrow\\quad \\Delta d = \\frac{v_1^2}{2\\mu g}$$\n\n**Key consequences**\n\n- Stopping distance is **inversely proportional to $\\mu$**: halve $\\mu$ → double the distance.\n- Stopping distance is **proportional to $v^2$**: double the speed → **four times** the distance. That is why slowing down matters so much.\n- Speeds are often given in km/h. Convert: divide by 3.6 (e.g. 72 km/h = 20 m/s).\n\n| Surface (example μ) | Δd from 20 m/s (72 km/h) |\n|---|---|\n| dry asphalt, μ = 0.7 | $\\frac{20^2}{2(0.7)(9.8)} = 29$ m |\n| wet asphalt, μ = 0.4 | 51 m |\n| packed snow, μ = 0.2 (sample value) | 102 m |\n\n*(This simple model ignores driver reaction time and assumes a constant μ – mention these limits when you evaluate your evidence.)*"
+    },
+    {
+      "id": "research-evidence",
+      "title": "Researching: evidence vs opinion",
+      "body": "**Opinions you will hear**\n\n- \"All-season tires are suitable for all weather and can be used year round.\"\n- \"The added expense is not worth it, and many people cannot afford it.\"\n- \"Snow tires are just a marketing tool or scare tactic to sell tires.\"\n- \"Snow tires make a drastic difference; the cost is outweighed by safety.\"\n- \"Snow tires should be mandatory in Ontario in winter.\"\n\n**A piece of evidence: Quebec.** Since 2008, from **November 15 to April 15**, Quebec drivers must use snow tires or risk an expensive fine (though police often have trouble spotting vehicles without them). The head of a Quebec road-safety task force claimed that, before the law, **about 10 % of drivers did not use snow tires but were involved in 38 % of winter accidents**.\n\n> **Think critically:** 10 % of drivers in 38 % of accidents means that group had a share of accidents almost **4 times** its share of drivers ($38/10 = 3.8$). But could other factors explain it (e.g. driving habits, vehicle age, where they drive)? A statistic is strong evidence only if other variables are considered.\n\n**Research questions from the textbook**\n\n- What range of temperature is each tire type most effective in?\n- How different are the treads?\n- How do stopping distances compare on ice or snow?\n- Are all-wheel drive or traction control alternatives?\n- Are all-season tires a viable year-round option?\n- What are the disadvantages of each tire type?\n- How much do snow tires cost, and should cost be a factor?\n\n| Ask about a source | Why |\n|---|---|\n| Who wrote it? Do they sell tires? | possible bias |\n| Is it measured data or a claim? | evidence vs opinion |\n| Were conditions controlled (same car, same road)? | fair test |\n| Is it recent and from Canada-like winters? | relevance |"
+    },
+    {
+      "id": "alternatives",
+      "title": "Identifying alternatives and compromises",
+      "body": "A task force rarely has only two choices. Consider:\n\n| Option | Physics / reasoning | Concerns |\n|---|---|---|\n| Mandatory snow tires (like Quebec) | more grip on snow/ice → shorter stopping distances, better control | cost of tires + rims; enforcement is difficult |\n| Keep current rules + education campaigns | driving slowly reduces $v^2$ and stopping distance the most | depends on driver behaviour |\n| Incentives (e.g. insurance discounts, rebates) | encourages snow tires without forcing | costs government/insurers |\n| All-wheel drive / traction control | traction control prevents wheel spin when **accelerating** (4.4); AWD spreads driving force over all wheels | neither increases $\\mu$ – they don't shorten stopping distance on ice |\n| Replacing only two tires | cheaper | front and back wheels then have different grip, which can cause the car to over- or understeer (4.4) |\n| Regional rules (e.g. northern Ontario only) | winters differ across the province | fairness, travellers between regions |\n\n> **Physics check:** ABS, traction control and ESC (4.4) help the driver *use* the available friction well and keep control – but the **maximum friction available** still depends on $\\mu$ between the rubber and the road. Better tires raise that maximum."
+    },
+    {
+      "id": "decide-communicate",
+      "title": "Making, defending and communicating a decision",
+      "body": "**Structure for your task-force report**\n\n1. **Define the issue** in one or two sentences.\n2. **Background physics** – friction, μ, tread, stopping distance (keep it simple for a public audience; use a diagram or table).\n3. **Evidence** – data (stopping distances, Quebec statistic), each with its source and limitations.\n4. **Alternatives** considered, with pros and cons.\n5. **Recommendation** – one clear statement.\n6. **Justification** – link each reason to evidence.\n7. **Evaluation** – limits of your evidence; what would change your mind.\n\n**Communicating to non-scientists**\n\n- Replace jargon: \"coefficient of friction\" → \"how grippy the tire is on the road (μ)\".\n- Use comparisons: \"On packed snow, a car going 72 km/h needs roughly the length of a football field to stop.\"\n- One idea per slide/paragraph; use visuals.\n\n**Plan for action.** Talk to your family. Write one or two paragraphs explaining what they should know to decide whether to buy snow tires – cost, safety, and driving habits.\n\n> **Remember:** whatever the tires, the best safety measure in bad weather is to **slow down and drive carefully**."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "all-season tire",
+      "definition": "A tire designed to be used in all weather conditions throughout the year."
+    },
+    {
+      "term": "snow (winter) tire",
+      "definition": "A tire designed for cold, snowy and icy conditions; approved tires carry a special symbol."
+    },
+    {
+      "term": "traction",
+      "definition": "The force of friction between a tire and the road surface that lets a car accelerate, brake and turn."
+    },
+    {
+      "term": "tread",
+      "definition": "The patterned rubber surface of a tire with grooves that let water and slush escape."
+    },
+    {
+      "term": "stopping distance (braking)",
+      "definition": "The distance a vehicle travels while decelerating to rest; on a level road with skidding, Δd = v²/(2μg)."
+    },
+    {
+      "term": "stakeholder",
+      "definition": "A person or group affected by a decision (drivers, government, police, insurance companies, tire retailers)."
+    },
+    {
+      "term": "evidence",
+      "definition": "Measured data or observations that support a claim, as opposed to an opinion."
+    },
+    {
+      "term": "compromise",
+      "definition": "A solution that partly meets the needs of different sides of an issue."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Kinetic friction",
+      "latex": "F_K = \\mu_K F_N",
+      "meaning": "Friction while skidding; F_N = mg on a level road."
+    },
+    {
+      "name": "Braking deceleration on a level road",
+      "latex": "a = \\mu g",
+      "meaning": "When friction is the only horizontal force, the mass cancels."
+    },
+    {
+      "name": "Kinematics (Unit 1)",
+      "latex": "v_2^2 = v_1^2 + 2a\\Delta d",
+      "meaning": "Used to find the stopping distance when time is not known."
+    },
+    {
+      "name": "Stopping distance",
+      "latex": "\\Delta d = \\frac{v_1^2}{2\\mu g}",
+      "meaning": "Distance to stop from speed v₁ on a level road with coefficient μ."
+    },
+    {
+      "name": "Speed conversion",
+      "latex": "v\\,(\\text{m/s}) = \\frac{v\\,(\\text{km/h})}{3.6}",
+      "meaning": "Convert before using the kinematics equations."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Comparing stopping distances with two types of tires",
+      "problem": "A car travels at 54 km/h on a packed-snow road. In a test, the coefficient of friction was 0.30 with snow tires and 0.20 with all-season tires (sample test data). Calculate each braking distance on a level road and the difference.",
+      "steps": [
+        "Convert speed: $v_1 = \\frac{54\\ \\text{km/h}}{3.6} = 15\\ \\text{m/s}$.",
+        "Friction is the only horizontal force, so $a = \\mu g$ (directed backward).",
+        "Snow tires: $a = (0.30)(9.8) = 2.94\\ \\text{m/s}^2$; $\\Delta d = \\frac{v_1^2}{2a} = \\frac{(15)^2}{2(2.94)} = 38\\ \\text{m}$.",
+        "All-season: $a = (0.20)(9.8) = 1.96\\ \\text{m/s}^2$; $\\Delta d = \\frac{(15)^2}{2(1.96)} = 57\\ \\text{m}$.",
+        "Difference: $57 - 38 = 19\\ \\text{m}$ – about four car lengths."
+      ],
+      "answer": "About 38 m with snow tires vs 57 m with all-season tires; the snow tires stop about 19 m shorter in this test."
+    },
+    {
+      "title": "Why speed matters even more than tires",
+      "problem": "Using the all-season tire value above (μ = 0.20), what speed gives the same stopping distance (38 m) as the snow tires at 54 km/h?",
+      "steps": [
+        "Rearrange $\\Delta d = \\frac{v_1^2}{2\\mu g}$: $v_1 = \\sqrt{2\\mu g\\Delta d}$.",
+        "$v_1 = \\sqrt{2(0.20)(9.8\\ \\text{m/s}^2)(38\\ \\text{m})} = 12\\ \\text{m/s}$.",
+        "Convert: $12\\ \\text{m/s} \\times 3.6 = 44\\ \\text{km/h}$."
+      ],
+      "answer": "Driving at about 44 km/h on all-season tires gives the same stopping distance as 54 km/h on snow tires – slowing down can make up for less grip."
+    },
+    {
+      "title": "Structuring a task-force recommendation",
+      "problem": "Outline a one-page recommendation using the evidence above and the Quebec statistic.",
+      "steps": [
+        "**Issue:** Should snow tires be mandatory in Ontario from November 15 to April 15?",
+        "**Physics:** Braking and steering depend on static friction between rubber and road; snow and ice lower μ; stopping distance ∝ 1/μ and ∝ v².",
+        "**Evidence:** sample test – 38 m vs 57 m from 54 km/h on packed snow; Quebec – 10 % of drivers without snow tires were in 38 % of winter accidents (≈3.8 times their share).",
+        "**Alternatives:** education campaign; insurance incentives; regional law; AWD/traction control (do not raise μ).",
+        "**Recommendation (example):** phase in a law for passenger and commercial vehicles with insurance discounts to offset cost.",
+        "**Evaluation:** test data from one road/car; the Quebec statistic may involve other factors; reaction time ignored."
+      ],
+      "answer": "A clear recommendation backed by each piece of evidence, with alternatives and limitations stated."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "All-wheel drive means I don't need good tires.",
+      "fact": "AWD and traction control help with accelerating, but stopping and turning still depend on the friction between the tire rubber and the road."
+    },
+    {
+      "myth": "A heavier vehicle stops in a shorter distance on snow.",
+      "fact": "In the simple model a = μg – mass cancels, so heavy and light vehicles with the same μ have the same braking distance."
+    },
+    {
+      "myth": "Doubling speed doubles stopping distance.",
+      "fact": "Stopping distance depends on v², so doubling speed makes it four times longer."
+    },
+    {
+      "myth": "A statistic like \"10 % of drivers caused 38 % of accidents\" proves snow tires prevent accidents.",
+      "fact": "It is strong evidence, but other factors (driving habits, vehicle age, location) might also explain it."
+    },
+    {
+      "myth": "ABS lets you stop safely no matter what tires you have.",
+      "fact": "ABS prevents skidding and helps you steer, but it cannot create more friction than the tire-road μ allows."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Quebec law (2008)",
+      "body": "All drivers in Quebec must use snow tires from November 15 to April 15 or risk fines."
+    },
+    {
+      "title": "The snow-tire symbol",
+      "body": "Tires that meet required snow performance standards carry a special symbol so consumers can recognize them in stores."
+    },
+    {
+      "title": "Spare rims",
+      "body": "Many families buy a second set of rims so tires can be swapped quickly each season without the cost of re-mounting."
+    }
+  ],
+  "practice": [
+    {
+      "question": "A car moving at 90 km/h skids to a stop on wet asphalt with μ = 0.40. How far does it travel?",
+      "hint": "Convert 90 km/h to m/s first, then use Δd = v²/(2μg).",
+      "solution": "$v = 90/3.6 = 25\\ \\text{m/s}$. $\\Delta d = \\frac{25^2}{2(0.40)(9.8)} = 80\\ \\text{m}$."
+    },
+    {
+      "question": "Give two stakeholders in the snow-tire issue and explain how each might view a mandatory law.",
+      "hint": "Who pays? Who enforces? Who benefits?",
+      "solution": "Drivers with low incomes may oppose it because of the cost of tires and rims. Police might find it hard to enforce. Insurance companies may support it if it reduces claims. Tire retailers would benefit from sales (possible bias)."
+    },
+    {
+      "question": "Explain why \"just drive slower\" is such powerful advice, using the stopping-distance equation.",
+      "hint": "Look at how Δd depends on v.",
+      "solution": "$\\Delta d = v^2/(2\\mu g)$, so distance depends on the square of speed. Reducing speed by 30 % cuts stopping distance by about half ($0.7^2 = 0.49$), a bigger effect than many tire improvements."
+    }
+  ],
+  "summary": [
+    "Ontario is considering making snow tires mandatory in winter; Quebec has required them from November 15 to April 15 since 2008.",
+    "Tire safety depends on friction between rubber and road; snow and ice drastically reduce μ, and tread design helps tires keep contact.",
+    "On a level road, braking deceleration is a = μg and stopping distance is Δd = v²/(2μg): halving μ doubles the distance, doubling speed quadruples it.",
+    "A good report separates scientific evidence from opinion and considers possible bias and other variables (e.g. in the Quebec statistic).",
+    "Alternatives include education, incentives, regional rules and technologies like AWD or traction control (which do not increase μ).",
+    "Decisions must be defended with evidence and communicated clearly to non-experts; slowing down remains the most effective safety habit."
+  ],
+  "questions": [
+    {
+      "id": "4-6-q01",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "kmh": {
+          "min": 40,
+          "max": 80,
+          "step": 5
+        },
+        "mus": {
+          "choices": [
+            0.3,
+            0.35,
+            0.4
+          ]
+        },
+        "mua": {
+          "choices": [
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      },
+      "derived": {
+        "v": "kmh/3.6",
+        "ds": "v^2/(2*mus*9.8)",
+        "da": "v^2/(2*mua*9.8)",
+        "diff": "v^2/(2*mua*9.8) - v^2/(2*mus*9.8)"
+      },
+      "text": "A tire test on a level packed-snow road gives μ = {{mus}} for snow tires and μ = {{mua}} for all-season tires. A car is travelling at {{kmh}} km/h when the driver brakes hard and the wheels skid.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the braking distance with snow tires.",
+          "answer": {
+            "expr": "ds",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the braking distance with all-season tires.",
+          "answer": {
+            "expr": "da",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "How much farther does the car with all-season tires travel? Explain what this difference could mean in a real situation.",
+          "answer": {
+            "expr": "diff",
+            "unit": "m",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Convert: $v_1 = \\frac{ {{kmh}}\\ \\text{km/h}}{3.6} = {{v:3}}\\ \\text{m/s}$. On a level road, friction is the only horizontal force, so $a = \\mu g$ and $\\Delta d = \\frac{v_1^2}{2\\mu g}$.\n\n(a) $\\Delta d = \\frac{({{v:3}})^2}{2({{mus}})(9.8)} = {{ds:2}}\\ \\text{m}$\n\n(b) $\\Delta d = \\frac{({{v:3}})^2}{2({{mua}})(9.8)} = {{da:2}}\\ \\text{m}$\n\n(c) Difference ≈ {{diff:2}} m. That extra distance could be the difference between stopping safely and hitting a car or pedestrian ahead (several car lengths).",
+      "rubric": [
+        {
+          "point": "Converts km/h to m/s",
+          "marks": 1
+        },
+        {
+          "point": "Uses a = μg from F_net = μmg (mass cancels)",
+          "marks": 1
+        },
+        {
+          "point": "Correct use of v2² = v1² + 2aΔd",
+          "marks": 1
+        },
+        {
+          "point": "Correct snow-tire distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct all-season distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct difference with a sensible real-world interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "kmh": {
+          "min": 50,
+          "max": 100,
+          "step": 10
+        }
+      },
+      "derived": {
+        "v": "kmh/3.6",
+        "d1": "v^2/(2*0.7*9.8)",
+        "d2": "v^2/(2*0.7*9.8)*4",
+        "v2": "kmh*2"
+      },
+      "text": "A car brakes and skids to a stop on dry asphalt (μ = 0.70).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the stopping distance from {{kmh}} km/h.",
+          "answer": {
+            "expr": "d1",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Without recalculating from scratch, predict the stopping distance from {{v2}} km/h and explain your reasoning.",
+          "answer": {
+            "expr": "d2",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use your answers to explain to a new driver why slowing down on winter roads is so important."
+        }
+      ],
+      "modelAnswer": "(a) $v_1 = {{kmh}}/3.6 = {{v:3}}\\ \\text{m/s}$; $\\Delta d = \\frac{v_1^2}{2\\mu g} = \\frac{({{v:3}})^2}{2(0.70)(9.8)} = {{d1:2}}\\ \\text{m}$\n\n(b) $\\Delta d \\propto v^2$. Doubling the speed multiplies the distance by $2^2 = 4$: about {{d2:2}} m.\n\n(c) Stopping distance grows with the square of speed, so a small increase in speed causes a big increase in distance. On snow or ice μ is also much smaller, making distances longer still. Slowing down is the most effective way to keep stopping distances short.",
+      "rubric": [
+        {
+          "point": "Correct stopping distance in (a)",
+          "marks": 2
+        },
+        {
+          "point": "Uses Δd ∝ v² to predict ×4",
+          "marks": 1
+        },
+        {
+          "point": "Correct value in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Clear explanation for a new driver linking v² and low μ in winter",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-6-q03",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Before Quebec's 2008 law, it was claimed that about 10 % of drivers did not use snow tires but were involved in 38 % of winter vehicle accidents.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate how many times larger this group's share of accidents was compared with their share of drivers.",
+          "answer": {
+            "expr": "38/10",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why this statistic supports a mandatory snow-tire law."
+        },
+        {
+          "label": "c",
+          "text": "Describe two other factors that could also explain the statistic, and explain how a researcher could test whether snow tires are really the cause."
+        }
+      ],
+      "modelAnswer": "(a) $\\frac{38\\ \\%}{10\\ \\%} = 3.8$ times.\n\n(b) Drivers without snow tires were involved in accidents far more often than expected for their numbers, which suggests less grip (lower μ on snow and ice) leads to longer stopping distances and loss of control.\n\n(c) Other factors: these drivers may drive faster or more carelessly; older vehicles without ABS/ESC; more driving in rural or snowy areas; less experience. A fair test would compare the same drivers/vehicles/roads with only the tire type changed, or compare accident rates before and after the law while accounting for weather and number of drivers.",
+      "rubric": [
+        {
+          "point": "Correct ratio 3.8",
+          "marks": 1
+        },
+        {
+          "point": "Explains support for the law with a physics link (grip/μ)",
+          "marks": 2
+        },
+        {
+          "point": "Two valid alternative factors",
+          "marks": 2
+        },
+        {
+          "point": "Describes a fair way to test cause (control variables / before–after)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q04",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Using the concepts of static friction, kinetic friction and the coefficient of friction, explain why the type of tire matters for (a) braking, (b) turning, and (c) starting from rest on a snowy road.",
+      "modelAnswer": "(a) **Braking:** a rolling (non-skidding) tire uses static friction to slow the car. The maximum braking force is $F_{S\\,max} = \\mu_S F_N$. A tire with a higher μ on snow allows a larger braking force and a shorter stopping distance. If the wheels lock, kinetic friction (usually smaller) acts and the driver cannot steer.\n\n(b) **Turning:** the sideways static friction from the road changes the car's direction. If it is not enough, the car keeps going straight (understeer) or the back slides out (oversteer).\n\n(c) **Starting:** static friction from the road pushes the car forward (the tire pushes back on the road, the road pushes forward – Newton's third law). Too little μ means the wheels spin and the car does not move or slides.\n\nIn all three, tires with treads and rubber designed for snow give a larger μ and therefore more friction is available.",
+      "rubric": [
+        {
+          "point": "Braking: static friction, F_Smax = μS F_N, larger μ → shorter stop",
+          "marks": 2
+        },
+        {
+          "point": "Notes locked wheels → kinetic friction, loss of steering",
+          "marks": 1
+        },
+        {
+          "point": "Turning: sideways friction needed; under/oversteer if insufficient",
+          "marks": 1
+        },
+        {
+          "point": "Starting: static friction pushes car forward (third law)",
+          "marks": 1
+        },
+        {
+          "point": "Links tire design to higher μ on snow",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Some people say all-wheel-drive (AWD) vehicles or traction control are an alternative to snow tires. Evaluate this claim using what you learned about traction control, ABS and friction in 4.4.",
+      "modelAnswer": "Traction control reduces engine power (or brakes a wheel) when wheels start to spin while **accelerating**, and AWD spreads the driving force among all four wheels, so these help a car get moving on snow. ABS prevents wheels locking when **braking**, helping the driver steer.\n\nHowever, none of these increase the coefficient of friction between the tire and the road. The maximum friction available for stopping and turning is still $\\mu F_N$, determined by the tire rubber and tread on snow or ice. So an AWD car on all-season tires may accelerate well but will not stop any shorter. The claim is only partly valid: these systems help the driver use the available friction but are not a replacement for tires with higher μ.",
+      "rubric": [
+        {
+          "point": "Describes traction control/AWD as helping when accelerating",
+          "marks": 1
+        },
+        {
+          "point": "Describes ABS role in braking/steering",
+          "marks": 1
+        },
+        {
+          "point": "Key point: they do not increase μ / maximum friction",
+          "marks": 2
+        },
+        {
+          "point": "Concludes with a justified evaluation (partly valid)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q06",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "A driver wants to save money by replacing only the two front all-season tires with snow tires. Using the ideas of understeering and oversteering from 4.4, explain the risk of this plan and suggest a better compromise.",
+      "modelAnswer": "With snow tires only on the front, the front wheels have more friction than the back. While turning or braking on snow, the back wheels may slide sideways first – the car turns more than intended and spins (**oversteering**). If only the back had snow tires, the front could lack friction and the car would go straight instead of turning (**understeering**). Unequal μ front-to-back makes the car's behaviour unpredictable. \n\nBetter compromises: install four snow tires (perhaps buying cheaper rims to save mounting costs), seek insurance discounts/rebates, or drive more slowly and reduce driving in storms if snow tires cannot be afforded.",
+      "rubric": [
+        {
+          "point": "Identifies unequal friction between front and rear",
+          "marks": 1
+        },
+        {
+          "point": "Correctly links rear sliding to oversteer (or front lacking grip to understeer)",
+          "marks": 2
+        },
+        {
+          "point": "Explains loss of control/risk",
+          "marks": 1
+        },
+        {
+          "point": "Suggests a sensible compromise",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Classify each of the following as scientific evidence or opinion, and explain your choice. Then explain why a task force must rely mainly on evidence.\n\n1. \"Snow tires are just a marketing tool.\"\n2. \"In a controlled test, a car with snow tires stopped 15 m shorter on packed snow.\"\n3. \"All-season tires are suitable for all weather.\"\n4. \"About 10 % of drivers without snow tires were involved in 38 % of winter accidents.\"",
+      "modelAnswer": "1. Opinion – a claim with no data; also possibly reflecting distrust of tire sellers.\n2. Evidence – measured data from a controlled test (same car/road, only tires changed).\n3. Opinion (unless supported by test data) – a general claim; it may be true in mild conditions but needs testing in snow and ice.\n4. Evidence (a statistic), but it needs checking for other variables and the source.\n\nA task force advises a law affecting millions of drivers and their safety and money. Decisions based on opinions could be biased (e.g. by sellers) or simply wrong; evidence can be checked, repeated and compared.",
+      "rubric": [
+        {
+          "point": "Correct classification with reasons for items 1–4",
+          "marks": 4
+        },
+        {
+          "point": "Explains why evidence is needed (bias, reliability, consequences)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-6-q08",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Design a fair investigation to compare how well snow tires and all-season tires stop a car on a snowy surface. Include the independent, dependent and controlled variables, a procedure, the measurements you would take, and how you would calculate the coefficient of friction from your data.",
+      "modelAnswer": "- **Independent variable:** tire type (snow vs all-season).\n- **Dependent variable:** stopping distance (and from it, μ).\n- **Controlled variables:** same car (mass), same driver, same starting speed, same road surface and temperature, same tire size and pressure, same braking method; multiple trials.\n- **Procedure:** drive at a fixed speed (e.g. 40 km/h measured with radar), brake fully at a marker, measure the distance to rest with a measuring tape. Repeat 5 times for each tire type, alternating to keep conditions similar.\n- **Analysis:** convert speed to m/s; $v_2^2 = v_1^2 + 2a\\Delta d \\Rightarrow a = \\frac{v_1^2}{2\\Delta d}$; then since $a = \\mu g$, $\\mu = \\frac{v_1^2}{2g\\Delta d}$. Average the trials.\n- **Safety:** closed test track, safety equipment, low speeds.",
+      "rubric": [
+        {
+          "point": "Correct independent and dependent variables",
+          "marks": 1
+        },
+        {
+          "point": "At least three relevant controlled variables",
+          "marks": 2
+        },
+        {
+          "point": "Clear, repeatable procedure with repeated trials",
+          "marks": 2
+        },
+        {
+          "point": "Correct method to calculate μ from speed and stopping distance",
+          "marks": 2
+        },
+        {
+          "point": "Safety consideration",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q09",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "You are on the Ontario task force. Write a recommendation (about 200–300 words) on whether snow tires should be mandatory for all cars and trucks in Ontario during the winter. Your answer must: define the issue, use at least two pieces of scientific evidence or physics reasoning, consider at least two alternatives or compromises, state a clear recommendation, and describe one limitation of your evidence.",
+      "modelAnswer": "A strong answer (any position accepted) might include:\n\n- **Issue:** Should Ontario require snow tires on all vehicles from mid-November to mid-April?\n- **Physics/evidence:** braking and steering rely on static friction $\\mu_S F_N$; snow and ice lower μ (rubber on ice ≈ 0.005); $\\Delta d = v^2/(2\\mu g)$, so lower μ means longer stopping distances; sample test showing shorter stopping distance with snow tires; Quebec statistic (10 % of drivers in 38 % of accidents).\n- **Alternatives:** education campaign about slowing down; insurance incentives; regional rules (northern Ontario); AWD/traction control (do not increase μ).\n- **Recommendation:** e.g. \"Phase in mandatory snow tires with financial incentives for low-income drivers.\"\n- **Limitation:** e.g. statistic may involve other factors; test data from one car/road; simple model ignores reaction time.",
+      "rubric": [
+        {
+          "point": "Defines the issue clearly",
+          "marks": 1
+        },
+        {
+          "point": "Uses at least two correct pieces of evidence/physics reasoning",
+          "marks": 3
+        },
+        {
+          "point": "Considers at least two alternatives/compromises",
+          "marks": 2
+        },
+        {
+          "point": "Clear recommendation logically linked to the evidence",
+          "marks": 2
+        },
+        {
+          "point": "Identifies a valid limitation",
+          "marks": 1
+        },
+        {
+          "point": "Communication suitable for a non-expert audience",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Your audience is mostly consumers and government officials, not scientists. Rewrite the following sentence so that a non-expert would understand it, and explain two other strategies you would use to communicate your findings effectively.\n\n\"Because $\\Delta d = v_1^2 / (2\\mu g)$, a reduction in the coefficient of kinetic friction between rubber and the road surface results in an inversely proportional increase in braking displacement.\"",
+      "modelAnswer": "Rewrite (example): \"When the road is less grippy – like on snow – a car needs more distance to stop. If the road is half as grippy, the car needs about twice as far to stop.\"\n\nOther strategies: use a visual (bar chart or diagram comparing stopping distances in car lengths); use everyday comparisons (e.g. \"about the length of a hockey rink\"); keep one main message per slide; avoid jargon or define it simply; include a short story or real example (the Quebec law).",
+      "rubric": [
+        {
+          "point": "Rewrite is accurate (less grip → longer distance; inverse relationship)",
+          "marks": 2
+        },
+        {
+          "point": "Rewrite avoids jargon and is understandable",
+          "marks": 1
+        },
+        {
+          "point": "Two effective communication strategies explained",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-6-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "kmh": {
+          "min": 50,
+          "max": 90,
+          "step": 10
+        },
+        "mua": {
+          "choices": [
+            0.15,
+            0.2,
+            0.25
+          ]
+        },
+        "mus": {
+          "choices": [
+            0.3,
+            0.35,
+            0.4
+          ]
+        }
+      },
+      "derived": {
+        "v": "kmh/3.6",
+        "d": "v^2/(2*mus*9.8)",
+        "vs": "sqrt(2*mua*9.8*v^2/(2*mus*9.8))",
+        "vkmh": "sqrt(2*mua*9.8*v^2/(2*mus*9.8))*3.6"
+      },
+      "text": "On a snowy road, a car with snow tires (μ = {{mus}}) brakes from {{kmh}} km/h. A second car has all-season tires (μ = {{mua}}).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the braking distance of the car with snow tires.",
+          "answer": {
+            "expr": "d",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "At what speed (in km/h) must the car with all-season tires travel to stop in the same distance?",
+          "answer": {
+            "expr": "vkmh",
+            "unit": "km/h",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain how this result could be used as an argument by people who oppose a mandatory snow-tire law."
+        }
+      ],
+      "modelAnswer": "(a) $v_1 = {{kmh}}/3.6 = {{v:3}}\\ \\text{m/s}$; $\\Delta d = \\frac{v_1^2}{2\\mu g} = \\frac{({{v:3}})^2}{2({{mus}})(9.8)} = {{d:2}}\\ \\text{m}$\n\n(b) For the all-season car, $v_1 = \\sqrt{2\\mu g \\Delta d} = \\sqrt{2({{mua}})(9.8)({{d:3}})} = {{vs:2}}\\ \\text{m/s} = {{vkmh:2}}\\ \\text{km/h}$.\n\n(c) Opponents could argue that drivers can achieve similar safety by slowing down to adjust for road conditions, so a law forcing everyone to buy a second set of tires (and rims) is unnecessary. (Supporters could reply that many drivers do not slow down enough, and steering control also matters.)",
+      "rubric": [
+        {
+          "point": "Correct snow-tire braking distance",
+          "marks": 2
+        },
+        {
+          "point": "Rearranges to v1 = √(2μgΔd)",
+          "marks": 1
+        },
+        {
+          "point": "Correct speed converted to km/h",
+          "marks": 1
+        },
+        {
+          "point": "Sensible argument for opponents (slowing down instead)",
+          "marks": 1
+        },
+        {
+          "point": "Acknowledges a counter-point or limitation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-6-q12",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Identify four stakeholders affected by a mandatory snow-tire law in Ontario. For each, describe one way they might be affected and whether they would likely support or oppose the law.",
+      "modelAnswer": "Examples:\n- **Drivers (especially low-income):** must pay for tires and possibly rims – may oppose, though they gain safety.\n- **Families of accident victims / public safety groups:** fewer accidents – likely support.\n- **Police:** must enforce the law but find it hard to spot vehicles without snow tires – mixed.\n- **Insurance companies:** fewer claims – likely support, may offer discounts.\n- **Tire retailers and garages:** more sales and tire-change business – support (possible bias in their claims).\n- **Trucking and delivery companies:** fleet costs rise but fewer delays/accidents – mixed.\n- **Government/taxpayers:** fewer accident costs (hospitals, road closures) but enforcement costs.",
+      "rubric": [
+        {
+          "point": "Four relevant stakeholders identified",
+          "marks": 2
+        },
+        {
+          "point": "Effect on each explained",
+          "marks": 2
+        },
+        {
+          "point": "Likely position stated and justified for each",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-6-q13",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Plan for action: Write one or two paragraphs that you would say to your family to help them decide whether to buy snow tires. Use at least one physics idea and at least one practical consideration.",
+      "modelAnswer": "Example: \"Our tires only grip the road through friction, and on snow and ice the road is much less grippy. Snow tires have deeper treads and rubber designed for cold weather, so they give more grip – which means we can stop in a shorter distance and steer more safely. Because stopping distance grows with the square of speed, we should also slow down in storms whatever tires we have.\n\nSnow tires cost money, and we may want a second set of rims so changing them each fall and spring is cheaper. But our all-season tires would last longer because we would only use them half the year, and some insurers give discounts. Since we drive on the highway every day in winter, I think the extra safety is worth it.\"",
+      "rubric": [
+        {
+          "point": "Uses a correct physics idea (friction, μ, stopping distance)",
+          "marks": 2
+        },
+        {
+          "point": "Includes a practical consideration (cost, rims, insurance, usage)",
+          "marks": 1
+        },
+        {
+          "point": "Clear recommendation suited to a family audience",
+          "marks": 1
+        },
+        {
+          "point": "Well organized, plain-language communication",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

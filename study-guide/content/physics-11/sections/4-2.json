@@ -1,0 +1,1423 @@
+{
+  "id": "4-2",
+  "number": "4.2",
+  "title": "Friction",
+  "estimatedMinutes": 90,
+  "overview": "Why is it harder to start pushing a heavy sofa than to keep it moving? Why do skiers wax their skis while runners want grippy shoes? In this section you will learn the difference between static and kinetic friction, define the coefficient of friction, and calculate friction forces for objects on horizontal surfaces.",
+  "objectives": [
+    "Give examples where friction is helpful and where it is a problem.",
+    "Distinguish between static friction, maximum static friction and kinetic friction.",
+    "Interpret a graph of friction versus applied force.",
+    "Define the coefficients of static and kinetic friction and explain why they have no units.",
+    "Calculate coefficients of friction and friction forces using μ = F_f / F_N.",
+    "Explain how changing the normal force or the materials in contact affects friction.",
+    "Describe how coefficients of friction are measured experimentally and why results vary."
+  ],
+  "lessons": [
+    {
+      "id": "friction-good-bad",
+      "title": "Friction: Problem or Necessity?",
+      "body": "\nFriction is a force that opposes the sliding (or attempted sliding) of two surfaces against each other. Sometimes we want **less** of it, and sometimes we could not live without it.\n\n| We try to **reduce** friction | We **need** friction |\n|---|---|\n| Waxing skis – the wax chosen depends on snow temperature | Walking and running – your shoes push back on the ground |\n| Synovial fluid in your joints lets cartilage-lined bones slide smoothly (too much friction makes joints painful) | A car starting to move, slowing down or turning a corner |\n| Oil in a car engine | Holding a pencil, turning a doorknob, tying a knot |\n\n**Think about it:** imagine trying to walk across perfectly frictionless ice. You could push backwards as hard as you like, but your foot would just slide – you would never move forward!\n"
+    },
+    {
+      "id": "static-vs-kinetic",
+      "title": "Static Friction vs Kinetic Friction",
+      "body": "\nPicture pulling a heavy box with a force sensor, starting with zero force and slowly pulling harder.\n\n1. **Nothing moves at first.** Static friction pushes back with a force **exactly equal and opposite** to your pull. Pull with 5 N → static friction is 5 N. Pull with 10 N → it is 10 N. Static friction \"matches\" you.\n2. **There is a limit.** Static friction can only grow up to a maximum, $F_{S\\,max}$. Once your pull is bigger than this, the box starts to move.\n3. **Once it slides, friction drops.** Now **kinetic friction** acts. It is usually smaller than $F_{S\\,max}$, and it stays roughly constant. If you then pull with a force equal to the kinetic friction, the box moves at **constant velocity**.\n\n> **Static friction** ($\\vec F_S$): the force exerted on a stationary object by a surface that prevents the object from starting to move.\n>\n> **Kinetic friction** ($\\vec F_K$): the force exerted on a moving object by a surface, acting opposite to the direction of motion.\n\n### The graph of friction vs applied force\n* While static: $F_f = F_a$ – a straight line from the origin with a **slope of 1**.\n* At $F_a = F_{S\\,max}$ the object starts to move and friction **drops suddenly** to $F_K$.\n* After that the graph is a **horizontal line** at $F_K$, no matter how hard you pull (the extra force goes into accelerating the object).\n\nThis is why it is harder to *start* pushing a heavy piece of furniture than to *keep it moving*.\n\n### Types of kinetic friction\n* **Sliding friction** – an object scraping or sliding across a surface (most problems in this chapter).\n* **Rolling friction** – a round object rolling across a surface.\n* **Fluid friction / air resistance (drag)** – a boat moving through water or a plane through air.\n"
+    },
+    {
+      "id": "coefficient",
+      "title": "The Coefficient of Friction",
+      "body": "\nWhat decides how big friction is? It can depend on the mass of the object, the materials of the object and the surface, and (for air resistance) speed and shape. In this section we look only at objects on **horizontal** surfaces with **horizontal** applied forces.\n\nExperiments show that for a given pair of surfaces, the ratio of friction to the normal force is constant. This ratio is the **coefficient of friction**, $\\mu$ (Greek letter \"mu\"):\n\n$$\\mu = \\frac{F_f}{F_N}$$\n\nBecause there are two kinds of friction, there are two coefficients:\n\n$$\\mu_S = \\frac{F_{S\\,max}}{F_N} \\qquad\\qquad \\mu_K = \\frac{F_K}{F_N}$$\n\n**Important facts about $\\mu$:**\n* It is **just a number** – no units and no direction (N divided by N).\n* It depends **only on the types of materials** in contact.\n* Usually $\\mu_S > \\mu_K$ because $F_{S\\,max}$ is usually a bit larger than $F_K$.\n* It can only be found **experimentally**, and results vary with the condition of the surface (clean or dirty, wet or dry, rough or smooth). That is why tables often give a **range**.\n\n### Rearranging is the key skill\n$$F_{S\\,max} = \\mu_S F_N \\qquad F_K = \\mu_K F_N$$\nOn a horizontal surface with no other vertical forces, $F_N = mg$, so $F_K = \\mu_K mg$.\n\n### Approximate coefficients of friction (Table 1)\n| Material | $\\mu_S$ | $\\mu_K$ |\n|---|---|---|\n| rubber on concrete (dry) | | 0.6–0.85 |\n| rubber on concrete (wet) | | 0.45–0.75 |\n| rubber on asphalt (dry) | | 0.5–0.80 |\n| rubber on asphalt (wet) | | 0.25–0.75 |\n| steel on steel (dry) | 0.78 | 0.42 |\n| steel on steel (greasy) | 0.05–0.11 | 0.029–0.12 |\n| leather on oak | 0.61 | 0.52 |\n| ice on ice | 0.1 | 0.03 |\n| steel on ice | 0.1 | 0.01 |\n| rubber on ice | | 0.005 |\n| wood on dry snow | 0.22 | 0.18 |\n| wood on wet snow | 0.14 | 0.10 |\n| Teflon on Teflon | 0.04 | 0.04 |\n| near-frictionless carbon | | 0.001 |\n| synovial joints in humans | 0.01 | 0.003 |\n\nNotice how tiny the values are for ice, Teflon, near-frictionless carbon and human joints, and how large they are for rubber on dry concrete.\n"
+    },
+    {
+      "id": "normal-force-and-friction",
+      "title": "Changing the Normal Force Changes Friction",
+      "body": "\nSince $F_f = \\mu F_N$, anything that changes the **normal force** changes friction – even though $\\mu$ stays the same (same materials).\n\n| Change | Effect on $F_N$ | Effect on friction | Effect on $\\mu$ |\n|---|---|---|---|\n| Put an object on top | increases ($F_N = m_{total}g$) | increases | none |\n| Push down on the object | increases ($F_N = mg + F_{down}$) | increases | none |\n| Pull up on the object | decreases ($F_N = mg - F_{up}$) | decreases | none |\n| Turn the block onto a different side (same material) | none | none | none (for most materials) |\n| Change the surface or add grease | none | changes | **changes** – different materials in contact |\n\n**Example – the brake on a bicycle:** squeezing the lever pushes the brake pads harder against the wheel rim. This increases the normal force between pad and rim, which increases friction and slows the wheel.\n\n**Example – a doorstop:** wedging it under a door pushes it down against the floor, creating a large normal force and therefore a large maximum static friction that keeps the door from moving.\n"
+    },
+    {
+      "id": "solving",
+      "title": "Solving Friction Problems Step by Step",
+      "body": "\nUse this checklist for every friction problem in this section:\n\n1. **Draw an FBD**: $\\vec F_g$ (down), $\\vec F_N$ (up), $\\vec F_a$ (applied), $\\vec F_f$ (friction, opposite to motion or attempted motion).\n2. **Find the normal force** from the vertical forces. Don't automatically use $mg$ – check for extra masses or vertical pushes/pulls.\n3. **Decide which friction applies:**\n   * Not moving and $F_a \\le F_{S\\,max}$ → static friction, and $F_S = F_a$ (balanced).\n   * Just starting to move → use $F_{S\\,max} = \\mu_S F_N$.\n   * Sliding → kinetic friction $F_K = \\mu_K F_N$.\n4. **Constant velocity or at rest** means $\\vec F_{net} = 0$, so the applied force equals the friction.\n5. Use **GRASS**: Given, Required, Analysis, Solution, Statement.\n\n> ⚠️ **Trap:** if a 6.8 N push acts on a block whose $F_{S\\,max}$ is 14.7 N, the friction is **6.8 N**, not 14.7 N. Static friction only grows as large as it needs to.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "static friction (F_S)",
+      "definition": "A force of friction that prevents the sliding of two surfaces relative to one another; it acts on a stationary object."
+    },
+    {
+      "term": "maximum static friction (F_S max)",
+      "definition": "The largest static friction force possible; the force that must be overcome to start a stationary object moving."
+    },
+    {
+      "term": "kinetic friction (F_K)",
+      "definition": "The force exerted on a moving object by a surface, opposite to the direction of motion of the object."
+    },
+    {
+      "term": "sliding friction",
+      "definition": "Kinetic friction when an object scrapes or slides across a surface."
+    },
+    {
+      "term": "rolling friction",
+      "definition": "Kinetic friction when a round object rolls across a surface."
+    },
+    {
+      "term": "fluid friction (drag)",
+      "definition": "Friction from a fluid such as water or air (air resistance) on a moving object."
+    },
+    {
+      "term": "coefficient of friction (μ)",
+      "definition": "The ratio of the force of friction to the normal force; a unitless number."
+    },
+    {
+      "term": "coefficient of static friction (μ_S)",
+      "definition": "The ratio of the maximum force of static friction to the normal force."
+    },
+    {
+      "term": "coefficient of kinetic friction (μ_K)",
+      "definition": "The ratio of kinetic friction to the normal force."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Coefficient of friction",
+      "latex": "\\mu = \\frac{F_f}{F_N}",
+      "meaning": "Friction divided by normal force; no units."
+    },
+    {
+      "name": "Coefficient of static friction",
+      "latex": "\\mu_S = \\frac{F_{S\\,max}}{F_N}",
+      "meaning": "Use the force needed to just start the object moving."
+    },
+    {
+      "name": "Coefficient of kinetic friction",
+      "latex": "\\mu_K = \\frac{F_K}{F_N}",
+      "meaning": "Use the force needed to keep the object moving at constant velocity."
+    },
+    {
+      "name": "Friction from the coefficient",
+      "latex": "F_{S\\,max} = \\mu_S F_N, \\quad F_K = \\mu_K F_N",
+      "meaning": "Rearranged forms used to calculate friction forces."
+    },
+    {
+      "name": "Normal force on a horizontal surface",
+      "latex": "F_N = mg",
+      "meaning": "Only when no other vertical forces act and there is no vertical acceleration."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Wooden block on a wooden floor (textbook Sample Problem 1a)",
+      "problem": "A 3.0 kg block on a horizontal wooden floor needs 14.7 N to start moving. Calculate $\\mu_S$.",
+      "steps": [
+        "**Given:** $m = 3.0$ kg; $F_{S\\,max} = 14.7$ N",
+        "**Required:** $\\mu_S$",
+        "**Analysis:** The block is not moving, so friction balances the applied force. $F_N = mg$. Use $\\mu_S = \\dfrac{F_{S\\,max}}{F_N}$.",
+        "**Solution:** $\\mu_S = \\dfrac{14.7\\ \\text{N}}{(3.0\\ \\text{kg})(9.8\\ \\text{m/s}^2)} = 0.50$ (1 kg·m/s² = 1 N, so units cancel)",
+        "**Statement:** The coefficient of static friction is 0.50."
+      ],
+      "answer": "μ_S = 0.50"
+    },
+    {
+      "title": "A push that is too small (Sample Problem 1b)",
+      "problem": "The same block has a horizontal force of 6.8 N [E] applied. What is the friction on it?",
+      "steps": [
+        "**Given:** $F_a = 6.8$ N [E]; $F_{S\\,max} = 14.7$ N",
+        "**Required:** $\\vec F_S$",
+        "**Analysis:** $6.8\\ \\text{N} < 14.7\\ \\text{N}$, so the block stays at rest and $\\vec F_{net} = 0$.",
+        "**Solution:** Static friction must cancel the applied force: $F_S = 6.8$ N.",
+        "**Statement:** The static friction is 6.8 N [W]."
+      ],
+      "answer": "6.8 N [W]"
+    },
+    {
+      "title": "Adding a mass on top (Sample Problem 1c)",
+      "problem": "A 2.1 kg object is placed on top of the 3.0 kg block ($\\mu_S = 0.50$). Find the new maximum static friction.",
+      "steps": [
+        "**Given:** $m_T = 3.0 + 2.1 = 5.1$ kg; $\\mu_S = 0.50$",
+        "**Required:** $F_{S\\,max}$",
+        "**Analysis:** Same materials, so $\\mu_S$ is unchanged. $F_N = m_T g$.",
+        "**Solution:** $F_{S\\,max} = \\mu_S m_T g = (0.50)(5.1)(9.8) = 25$ N",
+        "**Statement:** The maximum static friction is 25 N."
+      ],
+      "answer": "25 N"
+    },
+    {
+      "title": "Constant velocity gives μ_K (Sample Problem 1d)",
+      "problem": "Once moving, it takes 8.8 N to keep the 3.0 kg block moving at constant velocity. Find $\\mu_K$.",
+      "steps": [
+        "**Given:** $m = 3.0$ kg; $F_a = 8.8$ N",
+        "**Required:** $\\mu_K$",
+        "**Analysis:** Constant velocity → $F_{net} = 0$ → $F_K = 8.8$ N.",
+        "**Solution:** $\\mu_K = \\dfrac{8.8}{(3.0)(9.8)} = 0.30$",
+        "**Statement:** The coefficient of kinetic friction is 0.30."
+      ],
+      "answer": "μ_K = 0.30"
+    },
+    {
+      "title": "Hockey player gliding on ice",
+      "problem": "A 75 kg hockey player glides on steel skate blades. Use Table 1 to find the kinetic friction on the skater.",
+      "steps": [
+        "**Given:** $m = 75$ kg; steel on ice $\\mu_K = 0.01$",
+        "**Required:** $F_K$",
+        "**Analysis:** $F_K = \\mu_K F_N = \\mu_K mg$",
+        "**Solution:** $F_K = (0.01)(75)(9.8) = 7.4$ N",
+        "**Statement:** The kinetic friction on the skater is about 7.4 N – tiny compared with the skater's 735 N weight."
+      ],
+      "answer": "7.4 N"
+    },
+    {
+      "title": "Friend pulls up on a trunk",
+      "problem": "A 110 kg trunk slides at constant velocity when pulled with 380 N. A friend then also pulls up on it with 150 N. What horizontal force is now needed for constant velocity?",
+      "steps": [
+        "**Given:** $m = 110$ kg; $F_a = 380$ N; $F_{up} = 150$ N",
+        "**Required:** new horizontal force",
+        "**Analysis:** First find $\\mu_K$, then the new normal force $F_N = mg - F_{up}$.",
+        "**Solution:** $\\mu_K = \\dfrac{380}{(110)(9.8)} = 0.3525$. New $F_N = 1078 - 150 = 928$ N. $F_K = (0.3525)(928) = 330$ N.",
+        "**Statement:** Only about 330 N is needed, so the friend's upward pull does help."
+      ],
+      "answer": "≈ 330 N"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Static friction is always equal to μ_S F_N.",
+      "fact": "μ_S F_N is the MAXIMUM. Static friction only becomes as large as needed to balance the applied force."
+    },
+    {
+      "myth": "Heavier objects have a larger coefficient of friction.",
+      "fact": "μ depends only on the materials. A heavier object has more friction because the normal force is larger, not because μ changes."
+    },
+    {
+      "myth": "Friction always has units of newtons, so μ does too.",
+      "fact": "μ is a ratio of two forces (N/N), so it has no units and no direction."
+    },
+    {
+      "myth": "Once moving, you must keep pushing harder than when starting.",
+      "fact": "Usually F_K < F_S max, so it takes less force to keep an object moving at constant velocity than to start it."
+    },
+    {
+      "myth": "Friction is always a bad thing.",
+      "fact": "Friction lets us walk, drive, brake, turn, grip and tie knots. Engineers often try to increase it (running shoes, tire treads)."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Ski wax",
+      "body": "Different waxes are made for different snow temperatures to lower the coefficient of kinetic friction between ski and snow (wood on snow is about 0.10–0.18)."
+    },
+    {
+      "title": "Your joints",
+      "body": "Synovial joints have μ_K ≈ 0.003 – lower than Teflon on Teflon! Synovial fluid between cartilage layers acts like oil in an engine. When this system fails, friction rises and joints become painful."
+    },
+    {
+      "title": "Bicycle brakes",
+      "body": "Pulling the lever presses the pads harder against the rim. A larger normal force means a larger friction force on the rim, slowing the wheel."
+    },
+    {
+      "title": "Road safety",
+      "body": "Rubber on wet asphalt can have μ as low as 0.25, compared with up to 0.80 when dry. Lower friction means a car cannot slow down as quickly, which is why drivers must slow down on wet roads. Salt melts ice so tires grip asphalt instead of ice (rubber on ice ≈ 0.005)."
+    }
+  ],
+  "practice": [
+    {
+      "question": "It takes a horizontal force of 62 N to get a 22 kg box to just start moving across the floor. Find μ_S.",
+      "hint": "$\\mu_S = F_{S\\,max}/mg$",
+      "solution": "$\\mu_S = \\dfrac{62}{(22)(9.8)} = 0.29$"
+    },
+    {
+      "question": "It takes 58 N to keep the same 22 kg box moving at constant velocity. Find μ_K.",
+      "hint": "Constant velocity: friction equals applied force.",
+      "solution": "$\\mu_K = \\dfrac{58}{(22)(9.8)} = 0.27$"
+    },
+    {
+      "question": "A 1300 kg car skids on dry asphalt (μ_K 0.5–0.80). Find the range of kinetic friction.",
+      "hint": "Use both ends of the range.",
+      "solution": "$F_K = \\mu_K mg$: $(0.5)(1300)(9.8) = 6400$ N up to $(0.80)(1300)(9.8) = 10\\,000$ N, so roughly 6000 N to 10 000 N."
+    },
+    {
+      "question": "The same car skids on ice (rubber on ice μ_K = 0.005). Find the friction.",
+      "hint": "Same formula.",
+      "solution": "$F_K = (0.005)(1300)(9.8) = 64$ N – about 150 times less than on dry asphalt!"
+    },
+    {
+      "question": "A 26 kg desk has μ_S = 0.25. Two people pull with 52 N [E] and 110 N [W]. Will it move?",
+      "hint": "Compare the net applied force with F_S max.",
+      "solution": "Net applied force = 58 N [W]. $F_{S\\,max} = (0.25)(26)(9.8) = 64$ N. Since 58 N < 64 N, the desk does not move; static friction is 58 N [E]."
+    },
+    {
+      "question": "A 12 000 kg bin has μ_S = 0.50 and μ_K = 0.40. Find the minimum force to (a) start it moving and (b) keep it moving at constant velocity.",
+      "hint": "Use each coefficient with F_N = mg.",
+      "solution": "(a) $(0.50)(12\\,000)(9.8) = 5.9 \\times 10^4$ N. (b) $(0.40)(12\\,000)(9.8) = 4.7 \\times 10^4$ N."
+    },
+    {
+      "question": "Sketch the graph of friction vs applied force for an object that starts at rest, when μ_S is slightly greater than μ_K.",
+      "hint": "Two parts to the graph.",
+      "solution": "A straight line from the origin with slope 1 up to F_S max, then a sudden drop to F_K, followed by a horizontal line at F_K."
+    },
+    {
+      "question": "A 1.4 kg block takes 5.5 N to start moving and 4.1 N to keep moving at constant velocity. Find both coefficients.",
+      "hint": "$F_N = (1.4)(9.8)$",
+      "solution": "$F_N = 13.7$ N. $\\mu_S = 5.5/13.7 = 0.40$; $\\mu_K = 4.1/13.7 = 0.30$."
+    }
+  ],
+  "summary": [
+    "Static friction prevents two surfaces in contact from sliding; it matches the applied force up to a maximum F_S max.",
+    "F_S max is the force that must be overcome to start a stationary object moving.",
+    "Kinetic friction acts on a moving object, opposite to its direction of motion; it is usually less than F_S max.",
+    "Kinetic friction includes sliding friction, rolling friction and fluid friction (drag).",
+    "The coefficient of friction is the ratio of friction to the normal force: μ_S = F_S max / F_N and μ_K = F_K / F_N. It has no units.",
+    "Coefficients of friction are determined experimentally and depend only on the types of materials in contact.",
+    "Changing the normal force (adding mass, pushing down, pulling up) changes the friction force but not μ."
+  ],
+  "questions": [
+    {
+      "id": "4-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 15,
+          "max": 40,
+          "step": 1
+        },
+        "Fs": {
+          "min": 60,
+          "max": 110,
+          "step": 2
+        },
+        "Fk": {
+          "min": 45,
+          "max": 58,
+          "step": 1
+        }
+      },
+      "derived": {
+        "FN": "m*9.8",
+        "muS": "Fs/(m*9.8)",
+        "muK": "Fk/(m*9.8)"
+      },
+      "text": "It takes a horizontal force of {{Fs}} N to get a {{m}} kg box to just start moving across a floor. Once it is moving, a horizontal force of {{Fk}} N keeps it moving at a constant velocity.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficient of static friction.",
+          "answer": {
+            "expr": "muS",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the coefficient of kinetic friction.",
+          "answer": {
+            "expr": "muK",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the two coefficients and explain the difference."
+        }
+      ],
+      "modelAnswer": "$F_N = mg = ({{m}})(9.8) = {{FN:3}}$ N\n\n(a) $\\mu_S = \\dfrac{F_{S\\,max}}{F_N} = \\dfrac{ {{Fs}} }{ {{FN:3}} } = {{muS:2}}$\n\n(b) At constant velocity $F_{net} = 0$, so $F_K = {{Fk}}$ N. $\\mu_K = \\dfrac{ {{Fk}} }{ {{FN:3}} } = {{muK:2}}$\n\n(c) $\\mu_S > \\mu_K$ because it takes more force to start the box moving than to keep it moving – the maximum static friction is greater than the kinetic friction.",
+      "rubric": [
+        {
+          "point": "Calculates F_N = mg",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Recognises F_K = F_a at constant velocity",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_K",
+          "marks": 1
+        },
+        {
+          "point": "Explains why μ_S > μ_K",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 2.0,
+          "max": 5.0,
+          "step": 0.5
+        },
+        "mt": {
+          "min": 1.0,
+          "max": 3.0,
+          "step": 0.5
+        },
+        "Fp": {
+          "min": 4.0,
+          "max": 6.0,
+          "step": 0.2
+        }
+      },
+      "derived": {
+        "muS": "0.50",
+        "muK": "0.30",
+        "Fs": "0.5*m*9.8",
+        "Fk": "0.3*m*9.8",
+        "mT": "m+mt",
+        "FsT": "0.5*(m+mt)*9.8"
+      },
+      "text": "A {{m}} kg block of wood sits on a horizontal wooden floor. The largest horizontal force that can be applied before it starts to move is {{Fs:3}} N. Once moving, it takes {{Fk:2}} N to keep it moving at constant velocity.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficient of static friction.",
+          "answer": {
+            "expr": "muS",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the force of friction acting on the block if a horizontal force of {{Fp}} N [E] acts on it.",
+          "answer": {
+            "expr": "Fp",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the maximum static friction if a {{mt}} kg object is placed on top of the block.",
+          "answer": {
+            "expr": "FsT",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Determine the coefficient of kinetic friction.",
+          "answer": {
+            "expr": "muK",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\mu_S = \\dfrac{ {{Fs:3}} }{ ({{m}})(9.8) } = {{muS:2}}$\n\n(b) {{Fp}} N is less than $F_{S\\,max}$ = {{Fs:3}} N, so the block stays at rest. Net force is zero, so static friction balances the push: **{{Fp}} N [W]**.\n\n(c) Same materials, so $\\mu_S$ is unchanged. $m_T = {{m}} + {{mt}} = {{mT}}$ kg. $F_{S\\,max} = \\mu_S m_T g = ({{muS:2}})({{mT}})(9.8) = {{FsT:2}}$ N.\n\n(d) $\\mu_K = \\dfrac{ {{Fk:2}} }{ ({{m}})(9.8) } = {{muK:2}}$",
+      "rubric": [
+        {
+          "point": "Correct μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Recognises push < F_S max so friction equals push, opposite direction",
+          "marks": 2
+        },
+        {
+          "point": "Uses total mass in (c) with unchanged μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Correct F_S max in (c)",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_K",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 55,
+          "max": 95,
+          "step": 1
+        }
+      },
+      "derived": {
+        "FK": "0.01*m*9.8",
+        "W": "m*9.8"
+      },
+      "text": "A {{m}} kg hockey player glides across the ice on steel skate blades. Use the coefficient of kinetic friction for steel on ice (μ_K = 0.01).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the magnitude of the kinetic friction acting on the skater?",
+          "answer": {
+            "expr": "FK",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Compare this force with the skater's weight and explain what it means for the skater's motion."
+        }
+      ],
+      "modelAnswer": "$F_K = \\mu_K F_N = \\mu_K mg = (0.01)({{m}})(9.8) = {{FK:2}}$ N\n\n(b) The player's weight is $({{m}})(9.8) = {{W:3}}$ N, so friction is only about 1 % of the weight. This very small friction is why a skater can glide a long way without pushing.",
+      "rubric": [
+        {
+          "point": "Uses F_K = μ_K mg",
+          "marks": 1
+        },
+        {
+          "point": "Correct friction force with units",
+          "marks": 1
+        },
+        {
+          "point": "Compares with weight and explains gliding",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1000,
+          "max": 1800,
+          "step": 50
+        }
+      },
+      "derived": {
+        "FN": "m*9.8",
+        "d1": "0.5*m*9.8",
+        "d2": "0.8*m*9.8",
+        "w1": "0.25*m*9.8",
+        "w2": "0.75*m*9.8",
+        "i": "0.005*m*9.8"
+      },
+      "text": "A {{m}} kg car skids across a road. Use these coefficients of kinetic friction: rubber on dry asphalt 0.5–0.80, rubber on wet asphalt 0.25–0.75, rubber on ice 0.005.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the range of kinetic friction on dry asphalt.",
+          "answer": {
+            "expr": "d2",
+            "unit": "N",
+            "sig": 2,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the range on wet asphalt.",
+          "answer": {
+            "expr": "w1",
+            "unit": "N",
+            "sig": 2,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the friction if the road is covered with ice.",
+          "answer": {
+            "expr": "i",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain what these results mean for a driver trying to stop."
+        }
+      ],
+      "modelAnswer": "$F_N = mg = ({{m}})(9.8) = {{FN:3}}$ N\n\n(a) Dry: $(0.5)({{FN:3}}) = {{d1:2}}$ N to $(0.80)({{FN:3}}) = {{d2:2}}$ N\n\n(b) Wet: $(0.25)({{FN:3}}) = {{w1:2}}$ N to $(0.75)({{FN:3}}) = {{w2:2}}$ N\n\n(c) Ice: $(0.005)({{FN:3}}) = {{i:2}}$ N\n\n(d) Friction is what slows the skidding car. On ice it is roughly a hundred times smaller than on dry asphalt, so the car takes much longer to slow down and the driver has little control. The coefficients are ranges because road conditions (wetness, roughness, cleanliness) vary.",
+      "rubric": [
+        {
+          "point": "Uses F_K = μ_K mg",
+          "marks": 1
+        },
+        {
+          "point": "Correct dry range",
+          "marks": 1
+        },
+        {
+          "point": "Correct wet range",
+          "marks": 1
+        },
+        {
+          "point": "Correct ice value",
+          "marks": 1
+        },
+        {
+          "point": "Explains safety implication",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1.0,
+          "max": 2.5,
+          "step": 0.1
+        },
+        "Fs": {
+          "min": 5.0,
+          "max": 8.0,
+          "step": 0.1
+        },
+        "Fk": {
+          "min": 3.5,
+          "max": 4.8,
+          "step": 0.1
+        }
+      },
+      "derived": {
+        "FN": "m*9.8",
+        "muS": "Fs/(m*9.8)",
+        "muK": "Fk/(m*9.8)"
+      },
+      "text": "A {{m}} kg block on a horizontal surface is pulled by a horizontal force. It takes {{Fs}} N to start the block moving and {{Fk}} N to keep it moving at a constant velocity.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficients of static and kinetic friction.",
+          "answer": {
+            "expr": "muS",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Which of these changes will affect the coefficients of friction? Explain. (i) turning the block onto another side (ii) changing the surface (iii) putting an object on top of the block"
+        },
+        {
+          "label": "c",
+          "text": "What effect will each situation have on the static and kinetic friction forces? Explain. (i) putting an object on the block (ii) applying an upward force on the block (iii) putting slippery grease on the surface"
+        }
+      ],
+      "modelAnswer": "(a) $F_N = ({{m}})(9.8) = {{FN:3}}$ N. $\\mu_S = {{Fs}}/{{FN:3}} = {{muS:2}}$; $\\mu_K = {{Fk}}/{{FN:3}} = {{muK:2}}$.\n\n(b) Coefficients depend only on the materials in contact.\n* (i) Turning the block onto another side: **no effect** – same materials (for most materials, contact area does not matter).\n* (ii) Changing the surface: **changes** both coefficients – different materials.\n* (iii) Putting an object on top: **no effect** on μ – same materials.\n\n(c)\n* (i) Object on the block: $F_N$ increases, so both $F_{S\\,max}$ and $F_K$ increase.\n* (ii) Upward force on the block: $F_N$ decreases, so both friction forces decrease.\n* (iii) Slippery grease: the coefficients decrease, so both friction forces decrease.",
+      "rubric": [
+        {
+          "point": "Correct μ_S and μ_K",
+          "marks": 2
+        },
+        {
+          "point": "Correct reasoning for each change in (b)",
+          "marks": 3
+        },
+        {
+          "point": "Correct effect on friction forces for each change in (c) using F_N or μ",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "id": "4-2-q06",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 90,
+          "max": 130,
+          "step": 5
+        },
+        "F": {
+          "min": 320,
+          "max": 420,
+          "step": 10
+        },
+        "U": {
+          "min": 100,
+          "max": 200,
+          "step": 10
+        },
+        "mf": {
+          "min": 45,
+          "max": 65,
+          "step": 1
+        }
+      },
+      "derived": {
+        "W": "m*9.8",
+        "mu": "F/(m*9.8)",
+        "N2": "m*9.8-U",
+        "Fb": "F/(m*9.8)*(m*9.8-U)",
+        "N3": "(m+mf)*9.8",
+        "Fc": "F/(m*9.8)*(m+mf)*9.8"
+      },
+      "text": "You are dragging a {{m}} kg trunk across a floor at a constant velocity with a horizontal force of {{F}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficient of kinetic friction.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "A friend helps by pulling up on the trunk with a force of {{U}} N [up]. Will this help? Calculate the horizontal force required to keep the trunk moving at constant velocity.",
+          "answer": {
+            "expr": "Fb",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Instead, your {{mf}} kg friend sits on the trunk. What horizontal force is required to keep it moving at constant velocity?",
+          "answer": {
+            "expr": "Fc",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Constant velocity, so $F_K = {{F}}$ N. $\\mu_K = \\dfrac{ {{F}} }{ ({{m}})(9.8) } = {{mu:3}}$ ≈ {{mu:2}}.\n\n(b) Pulling up reduces the normal force: $F_N = mg - F_{up} = {{W:4}} - {{U}} = {{N2:3}}$ N. Required force $= \\mu_K F_N = ({{mu:3}})({{N2:3}}) = {{Fb:2}}$ N. This is less than {{F}} N, so **yes, it helps**.\n\n(c) Friend sitting on it: $F_N = ({{m}} + {{mf}})(9.8) = {{N3:3}}$ N. Required force $= ({{mu:3}})({{N3:3}}) = {{Fc:2}}$ N – much **more** force is needed.",
+      "rubric": [
+        {
+          "point": "Correct μ_K using F_K = F_a",
+          "marks": 2
+        },
+        {
+          "point": "Reduces F_N by the upward pull",
+          "marks": 1
+        },
+        {
+          "point": "Correct force in (b) and conclusion",
+          "marks": 2
+        },
+        {
+          "point": "Uses combined mass in (c)",
+          "marks": 1
+        },
+        {
+          "point": "Correct force in (c)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 26,
+          "max": 32,
+          "step": 1
+        },
+        "F1": {
+          "min": 50,
+          "max": 56,
+          "step": 2
+        },
+        "F2": {
+          "min": 100,
+          "max": 108,
+          "step": 2
+        }
+      },
+      "derived": {
+        "net": "F2-F1",
+        "Fs": "0.25*m*9.8"
+      },
+      "text": "A {{m}} kg desk is at rest on the floor. The coefficient of static friction is 0.25. One person pulls on the desk with a force of {{F1}} N [E] and another pulls with a force of {{F2}} N [W].",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Will the desk move? Explain your reasoning with calculations.",
+          "answer": {
+            "expr": "net",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Net applied force $= {{F2}} - {{F1}} = {{net}}$ N [W].\n\nMaximum static friction $= \\mu_S mg = (0.25)({{m}})(9.8) = {{Fs:3}}$ N.\n\nSince {{net}} N < {{Fs:3}} N, the applied forces cannot overcome the maximum static friction. **The desk does not move.** Static friction acts at {{net}} N [E] to keep the net force zero.",
+      "rubric": [
+        {
+          "point": "Finds the net applied force with direction",
+          "marks": 1
+        },
+        {
+          "point": "Calculates F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Compares and concludes correctly",
+          "marks": 2
+        },
+        {
+          "point": "States the actual static friction and its direction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q08",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 8000,
+          "max": 15000,
+          "step": 500
+        },
+        "muS": {
+          "choices": [
+            0.45,
+            0.5,
+            0.55
+          ]
+        },
+        "muK": {
+          "choices": [
+            0.35,
+            0.4
+          ]
+        }
+      },
+      "derived": {
+        "FN": "m*9.8",
+        "Fs": "muS*m*9.8",
+        "Fk": "muK*m*9.8"
+      },
+      "text": "A {{m}} kg storage bin sits in a parking lot. The coefficient of static friction for the bin is {{muS}} and the coefficient of kinetic friction is {{muK}}. A truck pushes on the bin horizontally.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the minimum force exerted by the truck to start the bin moving.",
+          "answer": {
+            "expr": "Fs",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the minimum force to keep it moving at a constant velocity.",
+          "answer": {
+            "expr": "Fk",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$F_N = mg = ({{m}})(9.8) = {{FN:3}}$ N\n\n(a) $F_{S\\,max} = \\mu_S F_N = ({{muS}})({{FN:3}}) = {{Fs:2}}$ N\n\n(b) $F_K = \\mu_K F_N = ({{muK}})({{FN:3}}) = {{Fk:2}}$ N. At constant velocity the truck's force equals the kinetic friction.",
+      "rubric": [
+        {
+          "point": "Calculates F_N",
+          "marks": 1
+        },
+        {
+          "point": "Correct force to start moving",
+          "marks": 2
+        },
+        {
+          "point": "Correct force for constant velocity with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q09",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A gradually increasing horizontal force is applied to an object initially at rest on a horizontal surface. Sketch and explain the graph of the force of friction (vertical axis) versus the applied force (horizontal axis) when (a) the coefficient of static friction is slightly greater than the coefficient of kinetic friction, and (b) the two coefficients are equal.",
+      "modelAnswer": "(a) **Static region:** while the object stays at rest, static friction equals the applied force, so the graph is a straight line from the origin with a slope of 1. **At $F_{S\\,max}$** the object starts to move and friction **drops suddenly** to $F_K$. **Kinetic region:** the graph is a horizontal line at $F_K$ (slightly below the peak) for all larger applied forces; any extra force accelerates the object.\n\n(b) Same slope-1 line up to $F_{S\\,max}$, but then there is **no drop**: the graph continues as a horizontal line at the same height, because $F_K = F_{S\\,max}$ when $\\mu_S = \\mu_K$.",
+      "rubric": [
+        {
+          "point": "Slope-1 line from origin in static region with explanation",
+          "marks": 2
+        },
+        {
+          "point": "Sudden drop to F_K in (a)",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal line for kinetic friction with explanation",
+          "marks": 1
+        },
+        {
+          "point": "No drop in (b) with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Axes labelled correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q10",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "For each situation, decide whether friction is helpful, makes the action more difficult, or both. Explain your reasoning. (a) turning a doorknob (b) pushing a heavy box across a rough surface (c) gliding across smooth ice to demonstrate uniform motion (d) tying a knot",
+      "modelAnswer": "(a) **Helpful** – static friction between your hand and the knob lets you grip and turn it (some friction in the mechanism makes it a bit harder, so arguably both).\n\n(b) **Makes it more difficult** – kinetic friction opposes the box's motion, so you must push harder. (Friction between your shoes and the floor is helpful, so you could argue both.)\n\n(c) **Makes it more difficult** – any friction slows you down and spoils uniform motion; we want as little as possible.\n\n(d) **Helpful** – static friction between the strands of rope holds the knot in place; without it, the knot would slide apart.",
+      "rubric": [
+        {
+          "point": "Reasonable decision and explanation for (a)",
+          "marks": 1
+        },
+        {
+          "point": "for (b)",
+          "marks": 1
+        },
+        {
+          "point": "for (c)",
+          "marks": 1
+        },
+        {
+          "point": "for (d)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q11",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A typical bicycle braking system involves a lever on the handlebars and a brake pad near the rim of the wheel. Describe how the braking system works using the concepts of normal force and friction.",
+      "modelAnswer": "When the rider squeezes the lever, a cable pulls the brake pads inward so they press against the wheel rim. This pressing force is the normal force between the pads and the rim. Because friction is proportional to the normal force ($F_f = \\mu F_N$), squeezing harder increases the friction the pads exert on the rim. This friction acts opposite to the rim's motion and slows the wheel's rotation. The pad material is chosen to have a fairly high coefficient of friction with the rim. Wet rims lower the coefficient, so brakes work less well in rain.",
+      "rubric": [
+        {
+          "point": "Explains pads pressed against the rim produce a normal force",
+          "marks": 1
+        },
+        {
+          "point": "Relates friction to normal force (F_f = μF_N)",
+          "marks": 2
+        },
+        {
+          "point": "Explains friction opposes the motion and slows the wheel",
+          "marks": 1
+        },
+        {
+          "point": "Mentions the role of μ / materials or conditions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q12",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Use these coefficients of kinetic friction to answer the questions: rubber on concrete (dry) 0.6–0.85; rubber on concrete (wet) 0.45–0.75; rubber on asphalt (dry) 0.5–0.80; rubber on asphalt (wet) 0.25–0.75; rubber on ice 0.005. (a) Roads in Canada are typically made of asphalt or concrete. Is one significantly safer than the other? (b) Explain why drivers should reduce speed on wet roads. (c) Why do we salt roads in winter, especially when there is freezing rain?",
+      "modelAnswer": "(a) The ranges overlap a lot. Dry concrete (0.6–0.85) is slightly higher than dry asphalt (0.5–0.80), and wet concrete (0.45–0.75) has a higher minimum than wet asphalt (0.25–0.75). Concrete may be somewhat safer, especially when wet, but the difference depends on road condition, so neither is dramatically safer when dry.\n\n(b) Wet roads can have coefficients as low as 0.25, so the friction available to slow or turn the car is much smaller. With less friction, the car needs a greater distance to stop, so drivers must go slower to stop safely.\n\n(c) Freezing rain coats the road with ice, where μ_K is only about 0.005 – almost no friction. Salt melts the ice so the tires are in contact with the road surface again, restoring a much larger coefficient of friction.",
+      "rubric": [
+        {
+          "point": "Compares ranges and draws a supported conclusion in (a)",
+          "marks": 2
+        },
+        {
+          "point": "Explains lower μ on wet roads means less friction and longer stopping",
+          "marks": 2
+        },
+        {
+          "point": "Explains salt removes ice and restores higher μ",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q13",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A doorstop keeps a door open when it is wedged underneath the door. Use the concepts from this section to explain how a doorstop works.",
+      "modelAnswer": "When the doorstop is jammed under the door, the door presses down on the wedge and the wedge presses down on the floor. This creates a large normal force between the doorstop and the floor (and between the doorstop and the door). The maximum static friction, $F_{S\\,max} = \\mu_S F_N$, is therefore large. When the door tries to swing (pushed by a draft or a spring), static friction from the floor acts on the doorstop opposite to the attempted motion. As long as the push is less than $F_{S\\,max}$, static friction balances it and the door stays still. Rubber doorstops have a high μ_S, which helps even more.",
+      "rubric": [
+        {
+          "point": "Identifies the large normal force created by wedging",
+          "marks": 2
+        },
+        {
+          "point": "Uses F_S max = μ_S F_N",
+          "marks": 1
+        },
+        {
+          "point": "Explains static friction opposes the attempted motion and balances the push",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q14",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Describe how to determine (a) the coefficient of static friction and (b) the coefficient of kinetic friction between a wooden block and a tabletop experimentally. Include the equipment, the measurements, the calculations, and how you would make your results reliable.",
+      "modelAnswer": "**Equipment:** wooden block, balance, force sensor (or spring scale), level table.\n\n**Normal force:** measure the block's mass with a balance; $F_N = mg$ on a horizontal surface.\n\n(a) Attach the sensor and pull horizontally, slowly increasing the force. Record the **largest** reading just before the block starts to move: this is $F_{S\\,max}$. Calculate $\\mu_S = F_{S\\,max}/F_N$.\n\n(b) Once the block is moving, pull it at a **constant velocity** and record the (steady) reading. Because net force is zero, this equals $F_K$. Calculate $\\mu_K = F_K / F_N$.\n\n**Reliability:** keep the pull horizontal; repeat several trials and average; clean the surfaces; repeat with added masses on the block and plot friction vs normal force – the slope is μ. Results vary because surface condition affects friction, so averaging is important.",
+      "rubric": [
+        {
+          "point": "Determines F_N from mass",
+          "marks": 1
+        },
+        {
+          "point": "Correct method for F_S max (peak reading before motion)",
+          "marks": 2
+        },
+        {
+          "point": "Correct method for F_K (constant velocity reading)",
+          "marks": 2
+        },
+        {
+          "point": "Correct calculations of both coefficients",
+          "marks": 1
+        },
+        {
+          "point": "At least two valid reliability improvements",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q15",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain why the manufacturer of a running shoe might be more concerned about having a high coefficient of friction than the manufacturer of a dress shoe.",
+      "modelAnswer": "Runners need to start, stop and change direction quickly. To accelerate, the runner pushes backward on the ground and the ground pushes forward with **static friction**. The maximum static friction is $\\mu_S F_N$, so a high coefficient lets the runner push harder without slipping, giving larger accelerations and better control. A person in dress shoes usually walks at steady speeds and needs only enough friction not to slip; style and comfort matter more, so a very high μ is less important (and may even be undesirable on dance floors).",
+      "rubric": [
+        {
+          "point": "Links running to quick starts/stops/turning",
+          "marks": 1
+        },
+        {
+          "point": "Explains friction from the ground pushes the runner forward",
+          "marks": 1
+        },
+        {
+          "point": "Explains higher μ means higher maximum static friction / no slipping",
+          "marks": 2
+        },
+        {
+          "point": "Contrasts with dress shoe needs",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 40,
+          "max": 90,
+          "step": 1
+        }
+      },
+      "derived": {
+        "FK": "0.18*m*9.8",
+        "FW": "0.10*m*9.8"
+      },
+      "text": "A wooden toboggan with a total mass of {{m}} kg (including the rider) is pulled across dry snow at a constant velocity with a horizontal rope. The coefficient of kinetic friction for wood on dry snow is 0.18.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the tension in the rope.",
+          "answer": {
+            "expr": "FK",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "The toboggan reaches wet snow, where μ_K = 0.10. What horizontal force is now needed for constant velocity? Explain the change.",
+          "answer": {
+            "expr": "FW",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $F_K = \\mu_K mg = (0.18)({{m}})(9.8) = {{FK:2}}$ N. At constant velocity, net force is zero, so the tension in the rope equals the kinetic friction: **{{FK:2}} N**.\n\n(b) On wet snow: $F_K = (0.10)({{m}})(9.8) = {{FW:2}}$ N. Less force is needed because wood on wet snow has a lower coefficient of kinetic friction.",
+      "rubric": [
+        {
+          "point": "Uses F_K = μ_K mg",
+          "marks": 1
+        },
+        {
+          "point": "Explains tension equals friction at constant velocity",
+          "marks": 1
+        },
+        {
+          "point": "Correct answer (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct answer (b) with explanation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "F": {
+          "min": 80,
+          "max": 240,
+          "step": 10
+        },
+        "mu": {
+          "choices": [
+            0.2,
+            0.25,
+            0.3,
+            0.35,
+            0.4
+          ]
+        }
+      },
+      "derived": {
+        "FN": "F/mu",
+        "m": "F/mu/9.8"
+      },
+      "text": "A crate slides at constant velocity across a floor when a horizontal force of {{F}} N is applied. The coefficient of kinetic friction between the crate and the floor is {{mu}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the normal force on the crate.",
+          "answer": {
+            "expr": "FN",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the mass of the crate.",
+          "answer": {
+            "expr": "m",
+            "unit": "kg",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Constant velocity → $F_K = F_a = {{F}}$ N.\n\n$F_N = \\dfrac{F_K}{\\mu_K} = \\dfrac{ {{F}} }{ {{mu}} } = {{FN:3}}$ N\n\n(b) On a horizontal floor with no other vertical forces, $F_N = mg$, so $m = \\dfrac{ {{FN:3}} }{9.8} = {{m:2}}$ kg.",
+      "rubric": [
+        {
+          "point": "Identifies F_K = F_a",
+          "marks": 1
+        },
+        {
+          "point": "Rearranges μ_K = F_K/F_N correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct normal force",
+          "marks": 1
+        },
+        {
+          "point": "Correct mass",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 20,
+          "max": 40,
+          "step": 1
+        },
+        "D": {
+          "min": 50,
+          "max": 150,
+          "step": 10
+        },
+        "muS": {
+          "choices": [
+            0.4,
+            0.45,
+            0.5
+          ]
+        },
+        "muK": {
+          "choices": [
+            0.3,
+            0.35
+          ]
+        }
+      },
+      "derived": {
+        "FN": "m*9.8+D",
+        "Fs": "muS*(m*9.8+D)",
+        "Fk": "muK*(m*9.8+D)"
+      },
+      "text": "A {{m}} kg box rests on a floor with μ_S = {{muS}} and μ_K = {{muK}}. A student pushes down on the top of the box with a force of {{D}} N [down] while a friend tries to slide it with a horizontal force.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the normal force on the box.",
+          "answer": {
+            "expr": "FN",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the force needed to start the box moving.",
+          "answer": {
+            "expr": "Fs",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the force needed to keep it moving at constant velocity.",
+          "answer": {
+            "expr": "Fk",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain how the student's push affects the friend's task and whether it changes the coefficients."
+        }
+      ],
+      "modelAnswer": "(a) $F_N = mg + F_{down} = ({{m}})(9.8) + {{D}} = {{FN:3}}$ N\n\n(b) $F_{S\\,max} = \\mu_S F_N = ({{muS}})({{FN:3}}) = {{Fs:2}}$ N\n\n(c) $F_K = \\mu_K F_N = ({{muK}})({{FN:3}}) = {{Fk:2}}$ N\n\n(d) The downward push increases the normal force, which increases both friction forces, so the student is making the friend's job harder. The coefficients do not change, because the materials are the same.",
+      "rubric": [
+        {
+          "point": "Adds the downward push to the normal force",
+          "marks": 2
+        },
+        {
+          "point": "Correct F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Correct F_K",
+          "marks": 1
+        },
+        {
+          "point": "Explains effect via normal force, μ unchanged",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q19",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Explain why the coefficient of friction has no units and no direction, while the force of friction has both.",
+      "modelAnswer": "The coefficient of friction is defined as a ratio, $\\mu = F_f / F_N$. It divides one force magnitude (N) by another (N), so the units cancel and it is just a number. It compares the **sizes** of two forces, so it has no direction. The force of friction itself is a force: it is measured in newtons and is a vector, acting parallel to the surface, opposite to the motion (kinetic) or to the attempted motion (static).",
+      "rubric": [
+        {
+          "point": "States μ is a ratio of two forces so units cancel",
+          "marks": 2
+        },
+        {
+          "point": "Explains μ compares magnitudes so has no direction",
+          "marks": 1
+        },
+        {
+          "point": "States friction is a vector in newtons with a direction opposite motion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q20",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Two careful scientists measure the coefficient of static friction for rubber on concrete and obtain different values, even though neither made a mistake. Explain how this can happen and why tables of coefficients often give a range of values.",
+      "modelAnswer": "Coefficients of friction can only be found experimentally, and the result depends on the **condition of the surfaces**, not just their materials: how clean they are, whether they are wet or dry, and how rough they are. Two concrete samples may differ in roughness or moisture, and rubber may differ in age or temperature. Even repeated trials on the same surfaces can vary. Because of this natural variation, tables report a range (for example 0.6–0.85 for rubber on dry concrete) rather than a single exact value, and good experiments average several measurements.",
+      "rubric": [
+        {
+          "point": "States μ is determined experimentally",
+          "marks": 1
+        },
+        {
+          "point": "Identifies surface conditions (clean, wet/dry, roughness)",
+          "marks": 2
+        },
+        {
+          "point": "Explains why a range is reported / need for averaging",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q21",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A student says: \"If I push a heavy cabinet with 50 N and it doesn't move, then the static friction on it must be its maximum value, μ_S F_N.\" Explain what is wrong with this statement and describe what the static friction actually is.",
+      "modelAnswer": "$\\mu_S F_N$ is the **maximum** possible static friction, not the value it always has. Static friction adjusts to be exactly as large as needed to keep the object at rest, up to that maximum. If the cabinet doesn't move, the net force is zero, so static friction equals the applied force: **50 N**, opposite to the push. Only if the student pushes with exactly $F_{S\\,max}$ (and the cabinet is about to slide) does static friction equal $\\mu_S F_N$.",
+      "rubric": [
+        {
+          "point": "Identifies μ_S F_N as a maximum",
+          "marks": 2
+        },
+        {
+          "point": "Uses net force zero to conclude friction = 50 N",
+          "marks": 2
+        },
+        {
+          "point": "States the direction (opposite the push)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q22",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 5,
+          "max": 40,
+          "step": 1
+        }
+      },
+      "derived": {
+        "FN": "m*9.8",
+        "d": "0.78*m*9.8",
+        "g": "0.08*m*9.8",
+        "r": "0.78/0.08"
+      },
+      "text": "Steel on dry steel has μ_S = 0.78 and μ_K = 0.42. With grease, typical values are μ_S = 0.08 and μ_K = 0.05. A {{m}} kg steel machine part rests on a horizontal steel plate.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the force needed to start the part sliding when the surfaces are dry and when they are greased.",
+          "answer": {
+            "expr": "d",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many times larger is the dry value?",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why grease has this effect."
+        }
+      ],
+      "modelAnswer": "$F_N = ({{m}})(9.8) = {{FN:3}}$ N\n\n(a) Dry: $F_{S\\,max} = (0.78)({{FN:3}}) = {{d:2}}$ N. Greasy: $(0.08)({{FN:3}}) = {{g:2}}$ N.\n\n(b) Ratio $= {{d:3}} / {{g:3}} = {{r:2}}$ – grease reduces the force needed to start the part sliding by a factor of about {{r:2}}.\n\n(c) Grease changes the materials in contact (steel–grease–steel instead of steel–steel), which lowers the coefficient of friction. Machines are greased to reduce wear and the force needed to move parts.",
+      "rubric": [
+        {
+          "point": "Correct dry F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Correct greasy F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio",
+          "marks": 1
+        },
+        {
+          "point": "Explains grease changes μ by changing the surfaces in contact",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-2-q23",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "N": {
+          "min": 600,
+          "max": 2000,
+          "step": 100
+        }
+      },
+      "derived": {
+        "h": "0.003*N",
+        "l": "0.52*N",
+        "r": "0.52/0.003"
+      },
+      "text": "The coefficient of kinetic friction in a healthy human synovial joint is about 0.003, while leather on oak is 0.52 and Teflon on Teflon is 0.04. Suppose a joint must support a normal force of {{N}} N. (a) Calculate the kinetic friction in the joint for the human joint and for a hypothetical joint made of leather on oak. (b) Use your results to explain why damaged joints, where the synovial fluid and cartilage no longer work properly, can be painful. (c) Explain why engineers designing an artificial joint might choose Teflon-like materials.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the kinetic friction for each joint.",
+          "answer": {
+            "expr": "l",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Human joint: $F_K = (0.003)({{N}}) = {{h:2}}$ N. Leather on oak: $F_K = (0.52)({{N}}) = {{l:2}}$ N – about {{r:2}} times larger.\n\n(b) Synovial fluid between cartilage layers acts like oil in an engine, keeping friction tiny. If the fluid or cartilage is damaged, the surfaces rub more directly, the coefficient rises, and friction forces become much larger. These large forces resist motion and wear the surfaces, making the joint painful and stiff.\n\n(c) Teflon has a very low coefficient (0.04), so an artificial joint using it would have small friction forces, move smoothly and wear slowly, though it still has more friction than a healthy natural joint.",
+      "rubric": [
+        {
+          "point": "Correct friction for the human joint",
+          "marks": 1
+        },
+        {
+          "point": "Correct friction for leather on oak and comparison",
+          "marks": 1
+        },
+        {
+          "point": "Explains role of synovial fluid and effect of damage on μ and friction",
+          "marks": 2
+        },
+        {
+          "point": "Justifies low-μ material choice",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-2-q24",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe what happens to the friction acting on a heavy box as you push on it horizontally with a force that starts at zero and slowly increases until the box slides, and then you push just hard enough to keep it moving steadily. Use the terms static friction, maximum static friction and kinetic friction.",
+      "modelAnswer": "At first the box does not move: **static friction** acts opposite to your push and is exactly equal to it, growing as your push grows, so the net force stays zero. Eventually your push reaches the **maximum static friction**, $F_{S\\,max} = \\mu_S F_N$; pushing any harder starts the box sliding. Once it slides, **kinetic friction** acts opposite to the motion. It is usually smaller than $F_{S\\,max}$, so the box tends to lurch forward. To keep the box moving at a constant velocity, you reduce your push until it equals the kinetic friction, $F_K = \\mu_K F_N$, so the net force is zero again.",
+      "rubric": [
+        {
+          "point": "Static friction equals the push while at rest",
+          "marks": 2
+        },
+        {
+          "point": "Motion begins when the push exceeds F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Kinetic friction acts once moving and is usually smaller",
+          "marks": 1
+        },
+        {
+          "point": "Constant velocity requires push = F_K",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

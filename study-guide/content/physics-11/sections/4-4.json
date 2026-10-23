@@ -1,0 +1,1048 @@
+{
+  "id": "4-4",
+  "number": "4.4",
+  "title": "Forces Applied to Automotive Technology",
+  "estimatedMinutes": 90,
+  "overview": "Every time you ride in a car, physics is quietly keeping you safe. Tire treads channel water away so friction keeps working on wet roads, antilock brakes stop wheels from skidding, stability control helps a car follow the road around a turn, and crumple zones, seat belts and airbags reduce the forces on your body in a crash. In this section you will use friction, the normal force and Newton's laws to explain how these technologies work – and what their limitations are.",
+  "objectives": [
+    "Explain why the friction on rubber tires depends on contact area, and why race-car tires and passenger-car tires are designed differently.",
+    "Describe the three stages of hydroplaning and explain how tread depth and speed affect friction on a wet road.",
+    "Explain how disc brakes, antilock braking systems (ABS), traction control and electronic stability control (ESC) work in terms of forces and static vs kinetic friction.",
+    "Distinguish between understeering and oversteering and describe how ESC responds.",
+    "Explain how crumple zones, seat belts (pretensioners and load limiters) and airbags reduce the forces on people during a collision.",
+    "Evaluate the advantages and limitations of automotive safety technologies and the role of responsible driving."
+  ],
+  "lessons": [
+    {
+      "id": "physics-of-tires",
+      "title": "The physics of car tires",
+      "body": "For most pairs of materials (like a wooden block on a table), friction **does not depend on contact area** – it depends only on the coefficient of friction and the normal force:\n\n$$F_f = \\mu F_N$$\n\n**Rubber is an exception.** The static friction on a rubber tire on a road *does* depend on how much tire surface touches the road. More contact area means more grip.\n\n| Tire type | Design | Why |\n|---|---|---|\n| Race-car tire (\"slick\") | Very wide, **no tread** | Maximum rubber in contact → maximum static friction for cornering without slipping; also gets rid of heat quickly |\n| Passenger-car tire | Narrower, with small and large **grooves** (tread) | Must grip in all weather; grooves give water and slush a path to escape from under the tire |\n\nThat is why a race may be postponed when it rains – slick tires have nowhere to send the water.\n\n> **Analogy:** tread grooves are like the gutters on a roof. Without them, water piles up instead of draining away.\n\n**Tread depth.** A new passenger tire has a tread depth of about **7 mm to 8 mm**. As the tire wears, the grooves get shallower and carry away less water – worn tires are much more likely to hydroplane and should be replaced."
+    },
+    {
+      "id": "hydroplaning",
+      "title": "Hydroplaning: when tires lose the road",
+      "body": "On a wet road, the water in front of a rolling tire must be squeezed through the grooves and out behind it. Whether there is time for this depends on **speed**.\n\n| Stage | Speed | What the water does | Friction from the road |\n|---|---|---|---|\n| (a) Normal | Low, safe | Low water level in front; water escapes through grooves | Normal – tire touches road |\n| (b) Transition | Higher | Water builds up in front; tire starts to lose contact | Decreasing – less contact area |\n| (c) Hydroplane | Too fast | Tire rides on a layer of water | Almost none – rubber is now on **water**, not road |\n\nIn the hydroplane stage the materials in contact are **rubber and water**, which have a tiny coefficient of friction. With almost no net external force, the car keeps moving at nearly constant velocity (Newton's first law) – the driver **cannot steer or slow down effectively**.\n\n**How to avoid it:** slow down on wet roads and replace worn tires. Nothing else reliably prevents hydroplaning."
+    },
+    {
+      "id": "brakes-abs",
+      "title": "Disc brakes and antilock brakes (ABS)",
+      "body": "**Disc brakes.** A disc (rotor) is attached to the wheel. When you press the brake pedal, a **piston** squeezes **brake pads** against both sides of the rotor.\n\n- Pressing harder → larger **normal force** of the pads on the rotor → larger **friction** on the rotor ($F_f = \\mu F_N$).\n- Friction on the rotor slows the wheel.\n- The *road's* friction on the tire is what actually slows the **car** (it is the external force on the car).\n\nThis works just like bicycle rim brakes: on a bike, your hand lever squeezes pads against the wheel rim instead of a separate rotor.\n\n**The problem: locked wheels.** Brakes can stop the *wheel* from turning much faster than the road can stop the *car*. If a wheel locks, the tire **skids** – friction changes from static to **kinetic** (smaller), and a sliding tire can't steer.\n\n**ABS to the rescue.** An antilock braking system uses a computer and **wheel speed sensors**. If a wheel slows suddenly (about to lock), the computer **reduces the brake force for a moment**, lets the wheel roll again, then re-applies it – many times per second.\n\n- The tire stays close to the **maximum static friction**, which is larger than kinetic friction → shorter stopping distance (on most surfaces).\n- A rolling tire can still **steer** → the driver keeps control.\n\n**Using ABS correctly.** The pedal \"chatters\" or pulses during ABS braking – that is normal. **Keep firm, steady pressure; never pump the brakes** in an ABS car, as pumping makes the car travel farther before stopping. Some evidence suggests ABS hasn't improved crash statistics as much as expected because drivers misuse it, or steer off the road while avoiding an obstacle."
+    },
+    {
+      "id": "traction-esc",
+      "title": "Traction control and electronic stability control",
+      "body": "**Traction control** is the \"reverse\" of ABS:\n\n| | ABS | Traction control |\n|---|---|---|\n| When | Slowing down (braking) | Speeding up, especially from rest |\n| Problem | Wheels lock and slide | Wheels spin faster than the car is moving and slide |\n| Fix | Briefly reduce brake force | Reduce fuel to the engine and/or brake the spinning wheel |\n| Goal | Keep static friction, keep steering | Keep static friction, keep control |\n\nWhen drive wheels spin, the friction on them drops (kinetic instead of static) and the driver can lose control.\n\n**Electronic stability control (ESC)** uses **both** ABS and traction control. A sensor near the centre of the car detects when the car is sliding or turning differently from what the driver is steering. It helps in two dangerous situations:\n\n- **Understeering** – the front wheels don't have enough friction to turn the car; the car ploughs on in a straighter line than the driver intends.\n- **Oversteering** – the car turns more than intended; the back wheels slide sideways and the car starts to spin.\n\nESC responds by braking one or more individual wheels (using ABS) and/or reducing engine power (using traction control) so the car follows the driver's steering.\n\n> **Important limitation:** ESC does not drive the car for you. A driver going too fast for the road conditions can still crash, with or without ESC."
+    },
+    {
+      "id": "crash-safety",
+      "title": "Crash safety: dummies, seat belts, crumple zones and airbags",
+      "body": "**Crash test dummies** simulate a person in a collision. They carry three kinds of sensors:\n\n- **accelerometers** (e.g., head and torso) – measure acceleration of body parts\n- a **motion sensor in the chest** – measures how much the chest is compressed (torso injury)\n- **load sensors** – measure the forces on different body parts\n\n**Seat belts** keep you in your seat, but early belts caused injuries by pushing very hard on the body. Two modern features help:\n\n- **Pretensioner** – when a computer detects a crash, a small gas charge pushes a piston and gear that **reels the belt in**, pulling you into the best crash position.\n- **Load limiter** – in a violent crash it **lets out a little belt** (a sewn fold whose stitching breaks, or a torsion bar that twists), reducing the peak force on your chest.\n\n**Crumple zones.** Old cars had rigid frames that stopped almost instantly in a crash, giving the occupants huge accelerations. Crumple zones are designed to **crush**, which **increases the time** the car takes to stop. For the same change in speed, a longer stopping time means a smaller acceleration ($a = \\Delta v/\\Delta t$), and from Newton's second law a smaller force on the people inside ($F = ma$).\n\n**Plastic body parts** are flexible (they don't interfere with crumple zones) and light (a smaller mass is easier to stop, helping avoid a collision).\n\n**Airbags.** A crash sensor triggers a chemical reaction (sodium azide with potassium nitrate) that produces nitrogen gas, inflating a nylon bag at over 300 km/h. The person keeps moving forward when the car stops (inertia) and hits the soft, compressing bag instead of the steering wheel or dashboard. The compression **increases the time** of the person's collision, reducing the force.\n\n**Limitations:** sitting too close to an airbag can cause serious head and arm injuries – children should ride belted in the **back seat**. Always wear a seat belt, airbags or not."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "tread",
+      "definition": "The grooved outer surface of a tire; grooves let water escape from under the tire so it keeps contact with the road."
+    },
+    {
+      "term": "hydroplaning",
+      "definition": "When a tire rides on a layer of water and loses direct contact with the road, so friction from the road almost disappears."
+    },
+    {
+      "term": "disc brake",
+      "definition": "A brake in which a piston squeezes brake pads against a rotor attached to the wheel, creating friction that slows the wheel."
+    },
+    {
+      "term": "antilock braking system (ABS)",
+      "definition": "A computer-controlled system that briefly reduces brake force when a wheel is about to lock, preventing skidding."
+    },
+    {
+      "term": "traction control",
+      "definition": "A system that detects spinning drive wheels while accelerating and reduces engine power or brakes the wheel to regain grip."
+    },
+    {
+      "term": "electronic stability control (ESC)",
+      "definition": "A system that uses ABS and traction control to correct understeering and oversteering."
+    },
+    {
+      "term": "understeering",
+      "definition": "The front wheels lack enough friction to turn the car, so it travels in a straighter line than the driver intends."
+    },
+    {
+      "term": "oversteering",
+      "definition": "The car turns more than intended because the rear wheels slide sideways, which can spin the car."
+    },
+    {
+      "term": "crumple zone",
+      "definition": "A part of a car body designed to crush in a collision, increasing stopping time and reducing forces on occupants."
+    },
+    {
+      "term": "pretensioner",
+      "definition": "A seat-belt device that reels in the belt when a crash is detected, pulling the occupant into the best position."
+    },
+    {
+      "term": "load limiter",
+      "definition": "A seat-belt device that releases some belt under a very large force, reducing the force on the occupant."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Friction (most materials)",
+      "latex": "F_f = \\mu F_N",
+      "meaning": "Depends on materials and normal force, not area (rubber is an exception)."
+    },
+    {
+      "name": "Braking deceleration from friction alone",
+      "latex": "a = \\mu g",
+      "meaning": "Use μ_S for rolling (ABS) tires, μ_K for skidding (locked) tires."
+    },
+    {
+      "name": "Stopping distance",
+      "latex": "\\Delta d = \\frac{v_1^2}{2a}",
+      "meaning": "From v_2^2 = v_1^2 + 2aΔd with v_2 = 0."
+    },
+    {
+      "name": "Acceleration from stopping time",
+      "latex": "a = \\frac{\\Delta v}{\\Delta t}",
+      "meaning": "Longer stopping time (crumple zones, airbags) → smaller acceleration."
+    },
+    {
+      "name": "Newton's second law",
+      "latex": "F_{net} = ma",
+      "meaning": "Smaller acceleration → smaller force on the person."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Why ABS shortens stopping distance",
+      "problem": "A 1400 kg car travelling at 20 m/s on dry asphalt brakes hard. For rubber on dry asphalt, take $\\mu_S = 0.80$ (tires rolling, ABS working) and $\\mu_K = 0.60$ (wheels locked, skidding). Compare the stopping distances.",
+      "steps": [
+        "**Given:** $m = 1400$ kg, $v_1 = 20$ m/s, $v_2 = 0$, $\\mu_S = 0.80$, $\\mu_K = 0.60$. **Required:** $\\Delta d$ for each case.",
+        "**Analysis:** Road friction is the only horizontal force, so $ma = \\mu mg$ and $a = \\mu g$ (mass cancels). Then $\\Delta d = v_1^2/(2a)$.",
+        "**Solution (ABS, static):** $a = (0.80)(9.8) = 7.84$ m/s². $\\Delta d = \\dfrac{20^2}{2(7.84)} = 26$ m.",
+        "**Solution (locked, kinetic):** $a = (0.60)(9.8) = 5.88$ m/s². $\\Delta d = \\dfrac{20^2}{2(5.88)} = 34$ m."
+      ],
+      "answer": "**Statement:** With ABS the car stops in about 26 m; with locked wheels it skids about 34 m. ABS also lets the driver steer while braking."
+    },
+    {
+      "title": "Crumple zones reduce the force on a passenger",
+      "problem": "A 60 kg passenger is in a car travelling at 15 m/s that hits a wall. In a rigid car the passenger stops in 0.050 s; with a crumple zone (and a seat belt) the stopping time is 0.20 s. Compare the average force on the passenger.",
+      "steps": [
+        "**Given:** $m = 60$ kg, $\\Delta v = 15$ m/s (magnitude), $\\Delta t_1 = 0.050$ s, $\\Delta t_2 = 0.20$ s. **Required:** $F$ in each case.",
+        "**Analysis:** $a = \\Delta v/\\Delta t$ (from $v_2 = v_1 + a\\Delta t$), then $F = ma$.",
+        "**Rigid:** $a = 15/0.050 = 300$ m/s², $F = (60)(300) = 1.8 \\times 10^4$ N.",
+        "**Crumple zone:** $a = 15/0.20 = 75$ m/s², $F = (60)(75) = 4.5 \\times 10^3$ N."
+      ],
+      "answer": "**Statement:** Making the stopping time 4 times longer reduces the average force by a factor of 4 – from about 18 000 N to 4500 N."
+    },
+    {
+      "title": "Explaining hydroplaning with Newton's first law",
+      "problem": "A car hydroplanes on a flooded highway. Explain why the driver cannot slow down or steer.",
+      "steps": [
+        "Identify the surfaces in contact: once hydroplaning, the tire touches a layer of **water**, not the road.",
+        "The coefficient of friction between rubber and water is extremely small, so the friction force (the only horizontal external force that could slow or turn the car) is almost zero.",
+        "With almost no net external force, Newton's first law says the car continues at (nearly) constant velocity – same speed, same direction.",
+        "Turning the steering wheel or pressing the brake changes the wheels, but without road friction there is no external force to change the car's motion."
+      ],
+      "answer": "The driver loses control until the tires regain contact with the road. The only prevention is to drive slowly on wet roads and keep tires with enough tread depth."
+    },
+    {
+      "title": "Traction control and maximum acceleration",
+      "problem": "The drive wheels of a car support 9000 N of the car's weight on a snowy road ($\\mu_S = 0.30$, $\\mu_K = 0.15$). What is the largest forward friction force on the drive wheels if they grip, and if they spin?",
+      "steps": [
+        "**Given:** $F_N = 9000$ N on the drive wheels. **Required:** maximum friction in each case.",
+        "**Gripping (static):** $F_{S\\,max} = \\mu_S F_N = (0.30)(9000) = 2700$ N.",
+        "**Spinning (kinetic):** $F_K = \\mu_K F_N = (0.15)(9000) = 1350$ N."
+      ],
+      "answer": "**Statement:** Spinning wheels give only half the forward force. Traction control cuts power so the wheels grip, giving up to 2700 N of forward force and keeping the car controllable."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Car brakes stop the car.",
+      "fact": "Brakes slow the wheels. The external force that slows the car is the friction from the road on the tires."
+    },
+    {
+      "myth": "Locking the wheels stops a car fastest.",
+      "fact": "A skidding tire has kinetic friction, which is smaller than maximum static friction. Rolling tires (ABS) usually stop sooner and can still steer."
+    },
+    {
+      "myth": "You should pump the brakes when the ABS pedal chatters.",
+      "fact": "The chattering is normal. Keep firm, steady pressure; pumping makes the car travel farther."
+    },
+    {
+      "myth": "A stiffer, stronger car body is always safer.",
+      "fact": "Rigid cars stop almost instantly, causing huge accelerations. Crumple zones lengthen the stopping time and reduce forces on occupants."
+    },
+    {
+      "myth": "With airbags you don't need a seat belt.",
+      "fact": "Airbags work with seat belts. Without a belt you may be out of position, and an inflating airbag can seriously injure someone too close to it."
+    },
+    {
+      "myth": "ESC and ABS make it safe to drive fast in bad weather.",
+      "fact": "They help the driver keep control, but they cannot create friction that is not there. Only slower, careful driving does that."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Checking tread depth",
+      "body": "Many drivers check tread depth with a gauge or the tire's built-in wear bars. Since a new tire has 7–8 mm of tread and worn tires hydroplane more easily, replacing tires before they get too shallow is a simple, life-saving habit."
+    },
+    {
+      "title": "Racing in the rain",
+      "body": "Formula 1 teams switch from treadless slicks to grooved \"wet\" tires when it rains. Slicks give the most grip on a dry track because more rubber touches the road, but on a wet track they would hydroplane."
+    },
+    {
+      "title": "Exercise bikes",
+      "body": "Many stationary bikes use a friction pad pressed against the flywheel. Turning the resistance knob increases the normal force on the pad, increasing friction and making pedalling harder – the same physics as a disc brake."
+    },
+    {
+      "title": "Booster seats and the back seat",
+      "body": "Because airbags inflate at over 300 km/h, children are safest buckled into the back seat. Passenger airbags in many cars can be switched off when a rear-facing child seat must be used in front."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Tire X has 8 mm deep treads and tire Y has 2 mm deep treads (same design). Which is more likely to hydroplane on a wet road? Why?",
+      "hint": "Think about how much water the grooves can carry away.",
+      "solution": "Tire Y. Shallow grooves carry away less water, so water builds up in front of the tire at a lower speed and the tire loses contact with the road sooner."
+    },
+    {
+      "question": "Describe what happens to the force of friction on a tire as the contact area decreases during the transition stage of hydroplaning.",
+      "hint": "Rubber is the exception to the \"area doesn't matter\" rule.",
+      "solution": "For rubber, friction depends on contact area. As the water wedge grows, less rubber touches the road, so friction from the road decreases – until in the hydroplane stage it is almost zero."
+    },
+    {
+      "question": "Explain how a disc brake works in terms of the normal force and friction.",
+      "hint": "What does the piston do?",
+      "solution": "The piston pushes the pads against the rotor, creating a normal force. Friction ($\\mu F_N$) on the rotor opposes its rotation, slowing the wheel. Pressing harder increases $F_N$ and therefore the friction."
+    },
+    {
+      "question": "A 1200 kg car travelling at 25 m/s brakes with ABS on a road where $\\mu_S = 0.70$. Estimate its stopping distance.",
+      "hint": "$a = \\mu_S g$, then $\\Delta d = v^2/(2a)$.",
+      "solution": "$a = (0.70)(9.8) = 6.86$ m/s². $\\Delta d = 25^2/(2 \\times 6.86) = 46$ m."
+    },
+    {
+      "question": "Compare and contrast ABS and traction control.",
+      "hint": "When does each act, and what does each prevent?",
+      "solution": "Both use wheel sensors and a computer to stop tires sliding so static friction (larger) keeps acting. ABS acts while braking, preventing locked wheels by briefly reducing brake force. Traction control acts while accelerating, preventing wheel spin by reducing engine power or braking the spinning wheel."
+    },
+    {
+      "question": "A 70 kg driver moving at 14 m/s is stopped by an airbag in 0.15 s instead of hitting the steering wheel and stopping in 0.010 s. Find the average force in each case.",
+      "hint": "$a = \\Delta v/\\Delta t$, $F = ma$.",
+      "solution": "Airbag: $a = 14/0.15 = 93$ m/s², $F = 70 \\times 93 = 6.5 \\times 10^3$ N. Steering wheel: $a = 14/0.010 = 1400$ m/s², $F = 9.8 \\times 10^4$ N – about 15 times larger."
+    },
+    {
+      "question": "Explain the difference between a seat-belt pretensioner and a load limiter.",
+      "hint": "One pulls in, one lets out.",
+      "solution": "A pretensioner reels the belt in when a crash is detected, pulling the occupant into the best position. A load limiter lets some belt out (breaking stitches or a twisting torsion bar) when the belt force becomes very large, reducing the peak force on the body."
+    }
+  ],
+  "summary": [
+    "For rubber tires, friction depends on the contact area with the road; for most other materials it depends only on μ and F_N.",
+    "Hydroplaning occurs when a tire rides on water and loses contact with the road; it is caused by driving too fast on a wet road and is made worse by worn tread.",
+    "Disc brakes use a piston to press pads against a rotor; friction slows the wheel, and the road's friction slows the car.",
+    "ABS prevents wheels from locking during braking; traction control prevents wheels from spinning while accelerating; ESC uses both to prevent understeering and oversteering.",
+    "Crumple zones and airbags increase the time taken to stop in a collision, reducing acceleration and therefore the forces on occupants; seat-belt pretensioners and load limiters manage belt forces.",
+    "Safety technologies have limitations – nothing replaces careful driving at a speed suited to road conditions."
+  ],
+  "questions": [
+    {
+      "id": "4-4-q01",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Tire X has treads 8 mm deep. Tire Y has the same design, but its treads are only 2 mm deep.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Which tire is more likely to hydroplane on a wet road? Explain your reasoning."
+        },
+        {
+          "label": "b",
+          "text": "What happens to the force of friction on the tire as the contact area decreases during the transition stage of hydroplaning? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Tire Y. The grooves give water a path to escape from in front of the tire to behind it. Shallow 2 mm grooves carry much less water, so water builds up in front of the tire at a lower speed and it loses contact with the road sooner.\n\n(b) Rubber is an exception to the rule that friction doesn't depend on area – the friction on a rubber tire depends on how much of it touches the road. As water wedges under the tire during the transition stage, the contact area shrinks, so friction from the road decreases. In the hydroplane stage, friction from the road is essentially zero.",
+      "rubric": [
+        {
+          "point": "Chooses tire Y",
+          "marks": 1
+        },
+        {
+          "point": "Explains grooves channel water and shallow grooves channel less",
+          "marks": 2
+        },
+        {
+          "point": "States that friction on rubber depends on contact area",
+          "marks": 1
+        },
+        {
+          "point": "Concludes friction decreases as contact area decreases",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q02",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Describe what happens to the water levels near a tire as a car travels on a wet road at ever-increasing speeds. Name the three stages, and explain how the water levels affect the force of friction on the tires at each stage.",
+      "modelAnswer": "Normal stage (low speed): the water level in front of the tire is low; water has time to flow through the grooves and is squeezed out behind the tire (higher water level behind). The tire touches the road and friction is normal.\n\nTransition stage (higher speed): water doesn't have time to escape, so the level in front rises and some water gets under the tire. Contact area decreases, so friction from the road decreases.\n\nHydroplane stage (too fast): the water in front is so high that the tire rides on a layer of water and no longer touches the road. The surfaces in contact are rubber and water, so friction is almost zero – the driver can't steer or brake effectively, and the car continues at nearly constant velocity.",
+      "rubric": [
+        {
+          "point": "Names and describes the normal stage",
+          "marks": 1
+        },
+        {
+          "point": "Names and describes the transition stage",
+          "marks": 1
+        },
+        {
+          "point": "Names and describes the hydroplane stage",
+          "marks": 1
+        },
+        {
+          "point": "Links decreasing contact with the road to decreasing friction",
+          "marks": 1
+        },
+        {
+          "point": "Explains loss of control (rubber on water, Newton's first law)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q03",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Racing cars use very wide tires with no tread, while passenger cars use narrower tires with deep grooves. (a) Explain why the race-car design gives more grip on a dry track. (b) Explain why races are sometimes postponed when it rains. (c) Why would race-car tires be a poor choice for an everyday passenger car?",
+      "modelAnswer": "(a) For rubber, static friction depends on the area in contact with the road. A wide tire with no tread puts the maximum amount of rubber in contact, so the maximum static friction is larger, letting the car go around curves fast without slipping. It also dissipates heat quickly.\n\n(b) Treadless tires have no grooves to channel water away, so on a wet track water builds up under them and they hydroplane easily, losing almost all friction. That makes racing dangerous.\n\n(c) Passenger cars must work in all weather – rain, slush and snow. Without tread they would hydroplane on wet roads, so grooves are needed even though they reduce the contact area slightly.",
+      "rubric": [
+        {
+          "point": "Friction on rubber depends on contact area; wide slick = more contact",
+          "marks": 2
+        },
+        {
+          "point": "More static friction allows cornering without slipping",
+          "marks": 1
+        },
+        {
+          "point": "No grooves → hydroplaning in rain",
+          "marks": 1
+        },
+        {
+          "point": "Passenger tires must handle all weather, so need tread",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q04",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A student says: \"Friction never depends on contact area, so a wide tire and a narrow tire made of the same rubber should grip the road equally well.\" Evaluate this statement. Compare a wooden block on a table with a rubber tire on a road in your answer.",
+      "modelAnswer": "The statement is only partly correct. For most pairs of materials, such as a wooden block on a table, experiments (like Investigation 4.2.1) show that friction depends only on the coefficient of friction and the normal force: turning the block onto a smaller face does not change the friction. However, rubber is an exception: the static friction on a rubber tire depends on the surface area in contact with the road. A wider tire puts more rubber on the road and therefore grips better (on a dry road). So the student's statement is wrong for tires.",
+      "rubric": [
+        {
+          "point": "States friction for most materials depends on μ and F_N only",
+          "marks": 1
+        },
+        {
+          "point": "Uses the wooden block example correctly",
+          "marks": 1
+        },
+        {
+          "point": "Identifies rubber as an exception – friction depends on contact area",
+          "marks": 2
+        },
+        {
+          "point": "Clear conclusion that the statement is incorrect for tires",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q05",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Compare the disc brakes on a car with the rim brakes on a bicycle. Describe at least two similarities and two differences.",
+      "modelAnswer": "Similarities: both press brake pads against a surface attached to the turning wheel; both rely on friction, which increases when the pads are pressed harder (larger normal force); in both, friction from the road on the tire is what actually slows the vehicle.\n\nDifferences: in a car, a hydraulic piston pushes the pads, while on a bicycle a hand lever pulls a cable; car pads squeeze a separate rotor (disc) attached to the wheel hub, while bicycle pads squeeze the wheel rim itself; car brakes can be controlled by a computer (ABS), bicycle rim brakes cannot; car brakes must handle far greater forces and heat.",
+      "rubric": [
+        {
+          "point": "Two valid similarities",
+          "marks": 2
+        },
+        {
+          "point": "Two valid differences",
+          "marks": 2
+        },
+        {
+          "point": "Uses normal force / friction terminology correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q06",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain how disc brakes work in terms of forces and Newton's laws. Include the roles of the piston, the brake pads, the rotor and the road.",
+      "modelAnswer": "When the driver presses the pedal, the piston pushes the brake pads against both faces of the rotor, exerting a normal force on it. Friction between the pads and the rotor ($F_f = \\mu F_N$) acts opposite to the rotor's motion and slows the wheel; pressing harder increases the normal force and therefore the friction. By Newton's third law the rotor exerts an equal and opposite friction force on the pads.\n\nAs the wheel slows, the tire pushes forward on the road, and the road pushes backward on the tire with static friction (third law). This backward road friction is the external net force on the car, so by Newton's second law the car decelerates ($a = F_{net}/m$). Without road friction (e.g., on ice or when hydroplaning), stopping the wheels would not stop the car.",
+      "rubric": [
+        {
+          "point": "Piston pushes pads → normal force on rotor",
+          "marks": 1
+        },
+        {
+          "point": "Friction on rotor slows the wheel; more force → more friction",
+          "marks": 1
+        },
+        {
+          "point": "Uses Newton's third law correctly (pads/rotor or tire/road)",
+          "marks": 1
+        },
+        {
+          "point": "Road friction is the external force that decelerates the car (second law)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Discuss the validity of the statement: \"Car brakes slow the wheels down, but friction from the road slows the car down.\" Explain your reasoning and give at least two examples to support your argument.",
+      "modelAnswer": "The statement is valid. The brakes create friction between the pads and the rotor, which is an internal interaction between parts of the car – it slows the wheel's rotation. To change the motion of the whole car, an external force is needed, and that is the friction from the road on the tires.\n\nExamples: (1) On ice or while hydroplaning, pressing the brakes hard can lock the wheels completely, yet the car keeps sliding because the road (or water) provides almost no friction. (2) On a dry road with good tires the same braking stops the car quickly because the road friction is large. (3) Locked wheels skidding stop a car more slowly than ABS braking because kinetic road friction is less than maximum static friction, even though the wheels are completely stopped.",
+      "rubric": [
+        {
+          "point": "States the statement is valid",
+          "marks": 1
+        },
+        {
+          "point": "Brake friction acts on the wheel; road friction is the external force on the car",
+          "marks": 2
+        },
+        {
+          "point": "Two relevant supporting examples",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q08",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "An antilock braking system periodically reduces the braking force on a wheel. Explain how ABS can still (a) reduce the stopping distance and (b) help the driver keep control of the car.",
+      "modelAnswer": "(a) If the brakes lock a wheel, the tire skids and friction from the road becomes kinetic friction, which is smaller than the maximum static friction. ABS senses when a wheel is about to lock and briefly reduces the brake force so the tire keeps rolling. A rolling tire's contact patch is momentarily at rest relative to the road, so static friction acts and can stay near its maximum. Larger friction gives a larger deceleration ($a = \\mu g$) and a shorter stopping distance.\n\n(b) A skidding tire cannot change the car's direction – the car slides in a straight line. A rolling tire can still produce sideways static friction when the driver turns the wheel, so the driver can steer around an obstacle while braking.",
+      "rubric": [
+        {
+          "point": "Locked wheels → kinetic friction, which is smaller",
+          "marks": 1
+        },
+        {
+          "point": "ABS keeps tires rolling so static friction acts near maximum",
+          "marks": 1
+        },
+        {
+          "point": "Links larger friction to larger deceleration / shorter distance",
+          "marks": 1
+        },
+        {
+          "point": "Rolling tires allow steering; skidding tires do not",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A new driver in a car with ABS brakes hard to avoid a deer and feels the brake pedal chattering. (a) What is causing the chattering? (b) What should the driver do, and what should they never do? Explain. (c) Some evidence suggests ABS has not improved crash statistics as much as expected. Give two reasons.",
+      "modelAnswer": "(a) The ABS computer is rapidly reducing and re-applying the force on the brake pads to stop the wheels from locking. This rapid change is felt as pulsing or chattering in the pedal – it is normal.\n\n(b) Keep firm, steady pressure on the brake pedal and steer if needed. Never lift off or pump the brakes: pumping repeatedly releases the brakes entirely, so the car travels farther before stopping, and it defeats the ABS system.\n\n(c) Drivers don't use ABS properly – they lift their foot or pump the brakes when they feel the chattering. Also, drivers who keep steering control sometimes steer off the road to avoid an obstacle, which can cause more serious crashes.",
+      "rubric": [
+        {
+          "point": "Explains chattering as ABS rapidly changing brake force",
+          "marks": 1
+        },
+        {
+          "point": "Keep firm steady pressure",
+          "marks": 1
+        },
+        {
+          "point": "Never pump; explains it increases stopping distance",
+          "marks": 1
+        },
+        {
+          "point": "Two valid reasons for limited improvement",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "(a) Compare and contrast ABS and traction control. (b) Explain how and when electronic stability control (ESC) uses ABS and traction control.",
+      "modelAnswer": "(a) Similarities: both use wheel sensors and a computer; both prevent tires from sliding on the road so that static friction (larger than kinetic) keeps acting and the driver keeps control. Differences: ABS acts while braking, preventing wheels from locking by briefly reducing brake force; traction control acts while accelerating (especially from rest), preventing drive wheels from spinning faster than the car moves by reducing fuel to the engine and/or applying the brake to the spinning wheel. Traction control is often described as the reverse of ABS.\n\n(b) ESC has a sensor near the centre of the car that detects when the car is not following the driver's steering, such as tilting too much or sliding in a sharp turn. When the car understeers (front wheels lack grip and the car goes straighter than intended) or oversteers (rear wheels slide and the car turns too much or spins), ESC brakes one or more individual wheels using ABS and/or reduces engine power using traction control to bring the car back on the intended path.",
+      "rubric": [
+        {
+          "point": "Similarity: both prevent sliding/keep static friction using sensors",
+          "marks": 1
+        },
+        {
+          "point": "ABS acts while braking to prevent locking",
+          "marks": 1
+        },
+        {
+          "point": "Traction control acts while accelerating to prevent spinning",
+          "marks": 1
+        },
+        {
+          "point": "ESC detects understeer/oversteer",
+          "marks": 1
+        },
+        {
+          "point": "ESC brakes individual wheels (ABS) and/or reduces power (traction control)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q11",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain the difference between understeering and oversteering in terms of friction on the front and rear wheels. Why is each dangerous, and why can ESC not completely prevent crashes caused by driving too fast for the road conditions?",
+      "modelAnswer": "Understeering: when the driver turns, the friction on the front wheels is not enough to change the car's direction, so the car continues in a straighter line than intended – it can run off the outside of a curve or into another lane.\n\nOversteering: the rear wheels lose grip and slide sideways, so the car turns more than the driver intended and may spin around – the driver can lose control completely.\n\nESC can only brake individual wheels or reduce engine power – it cannot increase the maximum friction available between the tires and the road. If the car is going so fast that the required friction is greater than $\\mu F_N$ (e.g., on ice), no adjustment will keep the tires gripping. Only driving at a speed suited to the conditions keeps the needed friction within what the road can provide.",
+      "rubric": [
+        {
+          "point": "Correct description of understeering (front wheels lack friction)",
+          "marks": 1
+        },
+        {
+          "point": "Correct description of oversteering (rear wheels slide)",
+          "marks": 1
+        },
+        {
+          "point": "Explains the danger of each",
+          "marks": 1
+        },
+        {
+          "point": "ESC cannot create friction beyond the road's maximum",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 55,
+          "max": 85,
+          "step": 1
+        },
+        "v": {
+          "min": 12,
+          "max": 20,
+          "step": 1
+        },
+        "t1": {
+          "choices": [
+            0.04,
+            0.05,
+            0.06
+          ]
+        },
+        "t2": {
+          "choices": [
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      },
+      "derived": {
+        "a1": "v/t1",
+        "a2": "v/t2",
+        "F1": "m*v/t1",
+        "F2": "m*v/t2",
+        "ratio": "t2/t1"
+      },
+      "text": "A {{m}} kg passenger is in a car travelling at {{v}} m/s that collides with a concrete barrier. In an older car with a rigid frame, the passenger comes to rest in {{t1:2}} s. In a modern car with a crumple zone (and seat belt), the stopping time is {{t2:2}} s.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the magnitude of the passenger's average acceleration in the rigid car.",
+          "answer": {
+            "expr": "a1",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the average force on the passenger in the rigid car.",
+          "answer": {
+            "expr": "F1",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the average force on the passenger in the car with the crumple zone.",
+          "answer": {
+            "expr": "F2",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain, using your results and Newton's second law, how crumple zones reduce injuries."
+        }
+      ],
+      "modelAnswer": "(a) Using $v_2 = v_1 + a\\Delta t$ with $v_2 = 0$: $|a| = \\dfrac{ {{v}} }{ {{t1:2}} } = {{a1:2}}$ m/s².\n\n(b) $F = ma = ({{m}})({{a1:3}}) = {{F1:2}}$ N.\n\n(c) $|a| = {{v}}/{{t2:2}} = {{a2:3}}$ m/s², so $F = ({{m}})({{a2:3}}) = {{F2:2}}$ N.\n\n(d) The change in velocity is the same in both cars. The crumple zone crushes, making the stopping time {{ratio:2}} times longer, so the acceleration is {{ratio:2}} times smaller. From $F = ma$, the force on the passenger is also {{ratio:2}} times smaller, so injuries are less likely and less severe.",
+      "rubric": [
+        {
+          "point": "Correct acceleration from kinematics",
+          "marks": 1
+        },
+        {
+          "point": "Correct force in rigid car",
+          "marks": 1
+        },
+        {
+          "point": "Correct force with crumple zone",
+          "marks": 1
+        },
+        {
+          "point": "Explains longer time → smaller acceleration → smaller force (F = ma)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q13",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "(a) What is the purpose of an airbag? (b) Explain how an airbag inflates. (c) Explain, using Newton's laws, how an airbag protects a person during a collision. (d) Why should children ride in the back seat?",
+      "modelAnswer": "(a) To stop people from hitting hard surfaces such as the steering wheel or dashboard during a collision.\n\n(b) A crash sensor detects the collision and triggers a chemical reaction between sodium azide and potassium nitrate, which produces nitrogen gas. The gas inflates a thin, folded nylon bag extremely quickly – it bursts out at over 300 km/h.\n\n(c) When the car stops suddenly, the person keeps moving forward (Newton's first law – inertia). Instead of hitting a hard surface and stopping almost instantly, the person hits the airbag, which compresses. This increases the time interval over which the person stops, so the acceleration is smaller and, by Newton's second law ($F = ma$), the force on the person is smaller.\n\n(d) The airbag inflates so violently that a person sitting too close (such as a small child in the front seat) can suffer serious head and arm injuries. Children are better protected belted in the back seat.",
+      "rubric": [
+        {
+          "point": "Purpose of airbag",
+          "marks": 1
+        },
+        {
+          "point": "Sensor → chemical reaction → nitrogen gas inflates bag",
+          "marks": 1
+        },
+        {
+          "point": "Inertia (first law) explains forward motion of person",
+          "marks": 1
+        },
+        {
+          "point": "Longer stopping time → smaller acceleration → smaller force",
+          "marks": 2
+        },
+        {
+          "point": "Explains danger to children close to the airbag",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q14",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Early seat-belt designs sometimes injured people because of the large force the belt exerted on them. Describe two modern seat-belt innovations – the pretensioner and the load limiter – and explain how each reduces injuries. Include at least one way a load limiter can be built.",
+      "modelAnswer": "Pretensioner: when a computer detects a crash, it ignites gas in a chamber that pushes a piston; a rack gear on the piston turns a gear that reels in the belt. This pulls the occupant back into the optimal crash position in the seat, so the belt starts slowing them immediately and the forces are spread and reduced, and the person stays in the seat.\n\nLoad limiter: in a very violent crash, even a properly positioned person can be injured by the belt force. A load limiter releases a little extra belt when the force becomes very large, so the person stops over a slightly longer time and the peak force decreases. It can be built by sewing a fold into the belt (the stitching breaks under a large force, releasing more belt) or by using a torsion bar on the spool that twists slightly under a large force, letting some belt out.",
+      "rubric": [
+        {
+          "point": "Describes pretensioner operation (crash detected, belt reeled in)",
+          "marks": 1
+        },
+        {
+          "point": "Explains how pretensioner reduces injury",
+          "marks": 1
+        },
+        {
+          "point": "Describes purpose of load limiter (releases belt under large force)",
+          "marks": 1
+        },
+        {
+          "point": "Explains it reduces peak force",
+          "marks": 1
+        },
+        {
+          "point": "Describes a construction method (stitched fold or torsion bar)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q15",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Many modern cars have body panels made of plastic. Explain the two main safety advantages of plastic body parts during and before a collision, using physics concepts from this unit.",
+      "modelAnswer": "(1) Plastic is very flexible, so plastic body parts don't stiffen the car or interfere with the crumple zones. The crumple zones can still crush and lengthen the stopping time, reducing the forces on the occupants.\n\n(2) Plastic is lightweight, which keeps the car's mass low. For a given braking (friction) force, a smaller mass gives a larger deceleration ($a = F/m$), so the car is easier to stop and more likely to avoid the collision in the first place.",
+      "rubric": [
+        {
+          "point": "Flexibility does not interfere with crumple zones",
+          "marks": 2
+        },
+        {
+          "point": "Low mass → larger deceleration for same force (a = F/m)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q16",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Crash test dummies carry three different kinds of sensors. Name each type, state what it measures, and explain how engineers use the data to make cars safer.",
+      "modelAnswer": "Accelerometers (covering the dummy, e.g., on the head and torso) measure the acceleration of different body parts. Large accelerations mean large forces ($F = ma$) and a greater chance of injury.\n\nA motion sensor in the chest measures how much the chest is compressed during the crash, which is used to estimate the severity of injuries to the torso.\n\nLoad sensors located all over the dummy measure the forces acting on different parts of the body.\n\nEngineers compare the data from different designs (e.g., different crumple zones, seat belts with pretensioners or load limiters, airbags) and choose the designs that give the smallest accelerations, compressions and forces, so that real people are less likely to be injured.",
+      "rubric": [
+        {
+          "point": "Accelerometers – acceleration of body parts",
+          "marks": 1
+        },
+        {
+          "point": "Chest motion sensor – chest compression / torso injury",
+          "marks": 1
+        },
+        {
+          "point": "Load sensors – forces on body parts",
+          "marks": 1
+        },
+        {
+          "point": "Explains how data is used to improve designs",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1100,
+          "max": 1800,
+          "step": 50
+        },
+        "v": {
+          "min": 18,
+          "max": 28,
+          "step": 1
+        },
+        "muS": {
+          "choices": [
+            0.75,
+            0.8,
+            0.85
+          ]
+        },
+        "muK": {
+          "choices": [
+            0.55,
+            0.6,
+            0.65
+          ]
+        }
+      },
+      "derived": {
+        "aS": "muS*9.8",
+        "aK": "muK*9.8",
+        "dS": "v^2/(2*muS*9.8)",
+        "dK": "v^2/(2*muK*9.8)",
+        "FS": "muS*m*9.8"
+      },
+      "text": "A {{m}} kg car travelling at {{v}} m/s on dry asphalt brakes as hard as possible. For its tires on this road, the coefficient of static friction is {{muS:2}} and the coefficient of kinetic friction is {{muK:2}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "With ABS working, the tires keep rolling and the road exerts close to the maximum static friction. Calculate this friction force.",
+          "answer": {
+            "expr": "FS",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the stopping distance with ABS.",
+          "answer": {
+            "expr": "dS",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the stopping distance if the wheels lock and the car skids.",
+          "answer": {
+            "expr": "dK",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Besides the shorter distance, explain another safety advantage of ABS in this situation."
+        }
+      ],
+      "modelAnswer": "(a) $F_{S\\,max} = \\mu_S mg = ({{muS:2}})({{m}})(9.8) = {{FS:2}}$ N.\n\n(b) Friction is the only horizontal force: $a = F/m = \\mu_S g = {{aS:3}}$ m/s². From $v_2^2 = v_1^2 + 2a\\Delta d$ with $v_2 = 0$: $\\Delta d = \\dfrac{ {{v}}^2 }{2({{aS:3}})} = {{dS:2}}$ m.\n\n(c) Skidding means kinetic friction: $a = \\mu_K g = {{aK:3}}$ m/s². $\\Delta d = \\dfrac{ {{v}}^2 }{2({{aK:3}})} = {{dK:2}}$ m – about {{dK-dS:2}} m farther.\n\n(d) With rolling tires the driver can still steer around an obstacle while braking; a skidding car slides in a straight line and cannot be steered.",
+      "rubric": [
+        {
+          "point": "Correct maximum static friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct deceleration and stopping distance with ABS",
+          "marks": 2
+        },
+        {
+          "point": "Uses μ_K for skidding and correct distance",
+          "marks": 2
+        },
+        {
+          "point": "Steering control advantage explained",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v": {
+          "min": 20,
+          "max": 28,
+          "step": 1
+        },
+        "mu": {
+          "choices": [
+            0.5,
+            0.55,
+            0.6
+          ]
+        },
+        "muw": {
+          "choices": [
+            0.05,
+            0.08,
+            0.1
+          ]
+        }
+      },
+      "derived": {
+        "d1": "v^2/(2*mu*9.8)",
+        "d2": "v^2/(2*muw*9.8)"
+      },
+      "text": "A car travelling at {{v}} m/s on a wet highway needs to stop. When the tires are in contact with the wet road, the effective coefficient of friction is {{mu:2}}. If the car hydroplanes, assume the tires ride on water with an effective coefficient of friction of only {{muw}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the stopping distance when the tires stay in contact with the road.",
+          "answer": {
+            "expr": "d1",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the stopping distance if the car hydroplanes for the whole stop.",
+          "answer": {
+            "expr": "d2",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use your answers to explain why drivers should slow down on wet roads and replace worn tires."
+        }
+      ],
+      "modelAnswer": "(a) $a = \\mu g = ({{mu:2}})(9.8) = {{mu*9.8:3}}$ m/s². $\\Delta d = \\dfrac{v^2}{2a} = \\dfrac{ {{v}}^2 }{2({{mu*9.8:3}})} = {{d1:2}}$ m.\n\n(b) $a = ({{muw}})(9.8) = {{muw*9.8:3}}$ m/s². $\\Delta d = \\dfrac{ {{v}}^2 }{2({{muw*9.8:3}})} = {{d2:2}}$ m.\n\n(c) Hydroplaning makes the stopping distance about {{d2/d1:2}} times longer – the car essentially keeps going at nearly constant velocity because there is almost no friction. Hydroplaning happens when the speed is too high for the tread grooves to clear the water, and worn tires with shallow grooves clear less water. Driving slower and replacing worn tires keeps the tires in contact with the road so friction can stop and steer the car.",
+      "rubric": [
+        {
+          "point": "Correct stopping distance on wet road",
+          "marks": 2
+        },
+        {
+          "point": "Correct stopping distance when hydroplaning",
+          "marks": 1
+        },
+        {
+          "point": "Explains speed and tread depth link to hydroplaning",
+          "marks": 1
+        },
+        {
+          "point": "Uses results to justify slowing down / replacing tires",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q19",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Some stationary exercise bikes have a control knob that adjusts the amount of friction on the wheel. (a) What is the purpose of this device? (b) Describe a possible design for the device (describe or sketch the parts and how they interact). (c) Describe how you would perform an investigation to determine the relationship between the setting on the control and the maximum force of static friction on the wheel.",
+      "modelAnswer": "(a) To let the rider change how hard it is to pedal (the resistance), so the workout can be made easier or harder.\n\n(b) A friction pad (like a brake pad) is mounted next to the wheel (flywheel) and connected to a screw attached to the knob, possibly through a spring. Turning the knob moves the pad closer and squeezes it against the wheel harder, increasing the normal force of the pad on the wheel. Since $F_f = \\mu F_N$, a larger normal force gives larger friction. Turning the knob the other way reduces the normal force and the friction. This is the same principle as a disc brake.\n\n(c) Independent variable: knob setting. Dependent variable: maximum static friction on the wheel. Controlled variables: same bike, same pad, same point of measurement, same temperature. Attach a force sensor or spring scale to the wheel rim (e.g., with a string wrapped around it) and pull tangentially, gradually increasing the force until the wheel just starts to turn; the largest reading is $F_{S\\,max}$. Repeat three or more times per setting and average. Repeat for each setting and plot $F_{S\\,max}$ versus setting to find the relationship (e.g., linear). Safety: keep fingers clear of moving parts.",
+      "rubric": [
+        {
+          "point": "Correct purpose",
+          "marks": 1
+        },
+        {
+          "point": "Design with pad pressed against wheel by the control",
+          "marks": 1
+        },
+        {
+          "point": "Explains control changes normal force, hence friction",
+          "marks": 2
+        },
+        {
+          "point": "Identifies variables and a valid method to measure F_S max",
+          "marks": 2
+        },
+        {
+          "point": "Repeated trials and a graph to determine the relationship",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "FN": {
+          "min": 6000,
+          "max": 9000,
+          "step": 500
+        },
+        "m": {
+          "min": 1200,
+          "max": 1600,
+          "step": 50
+        },
+        "muS": {
+          "choices": [
+            0.25,
+            0.3,
+            0.35
+          ]
+        },
+        "muK": {
+          "choices": [
+            0.1,
+            0.12,
+            0.15
+          ]
+        }
+      },
+      "derived": {
+        "FS": "muS*FN",
+        "FK": "muK*FN",
+        "aS": "muS*FN/m",
+        "aK": "muK*FN/m"
+      },
+      "text": "A {{m}} kg front-wheel-drive car starts from rest on a snow-covered road. The front (drive) wheels support a normal force of {{FN}} N. For the tires on this snow, the coefficient of static friction is {{muS:2}} and the coefficient of kinetic friction is {{muK:2}}. Ignore other resistive forces.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the maximum forward friction force on the drive wheels if they grip without spinning, and the resulting maximum acceleration of the car.",
+          "answer": {
+            "expr": "aS",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "The driver presses the accelerator too hard and the wheels spin. Calculate the new forward friction force and acceleration.",
+          "answer": {
+            "expr": "aK",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain how traction control would help in this situation."
+        }
+      ],
+      "modelAnswer": "(a) The road pushes the drive wheels forward with static friction (reaction to the tires pushing back on the road). $F_{S\\,max} = \\mu_S F_N = ({{muS:2}})({{FN}}) = {{FS:2}}$ N. $a = F/m = {{FS:3}}/{{m}} = {{aS:2}}$ m/s².\n\n(b) Spinning tires slide, so kinetic friction acts: $F_K = ({{muK:2}})({{FN}}) = {{FK:2}}$ N, $a = {{FK:3}}/{{m}} = {{aK:2}}$ m/s² – a smaller acceleration, and sliding tires also give less steering control.\n\n(c) Traction control sensors detect that the wheels are spinning faster than the car is moving. The computer reduces fuel to the engine (and may brake the spinning wheel) until the tires grip again, so static friction – the larger force – acts. The car accelerates faster and the driver keeps control.",
+      "rubric": [
+        {
+          "point": "Correct maximum static friction and acceleration",
+          "marks": 2
+        },
+        {
+          "point": "Uses kinetic friction for spinning wheels; correct values",
+          "marks": 2
+        },
+        {
+          "point": "Explains traction control detects spin and reduces power to restore static friction",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-4-q21",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Tires that are under-inflated tend to wear more at their outer edges, while over-inflated tires wear more in the centre of the tread. Describe the effect these wear patterns might have on a car travelling on a wet road, and explain why keeping tires at the correct pressure improves safety.",
+      "modelAnswer": "Worn areas have shallower grooves, so they carry away less water. With under-inflation, the edges of the tread are worn; with over-inflation, the centre is worn. In both cases part of the tire's contact area can no longer channel water effectively, so water builds up under the tire at a lower speed and the car is more likely to enter the transition and hydroplane stages, reducing friction and control. Over-inflated tires also have a smaller contact area with the road, and since friction on rubber depends on contact area, they grip less. Correct pressure keeps the whole tread in even contact with the road, wears the grooves evenly, and maximizes both grip and water removal.",
+      "rubric": [
+        {
+          "point": "Worn areas have shallow grooves that remove less water",
+          "marks": 1
+        },
+        {
+          "point": "Links to earlier hydroplaning / reduced friction on wet roads",
+          "marks": 2
+        },
+        {
+          "point": "Mentions contact area effect on rubber friction",
+          "marks": 1
+        },
+        {
+          "point": "Explains benefit of correct pressure",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-4-q22",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "A car advertisement claims: \"With ABS, traction control and electronic stability control, our car keeps you safe in any weather.\" Evaluate this claim. In your answer, explain what each technology can and cannot do in terms of friction, and discuss the role of the driver.",
+      "modelAnswer": "The claim is exaggerated. ABS prevents the wheels from locking while braking, keeping the tires near maximum static friction and allowing steering. Traction control prevents wheel spin when accelerating, again keeping static friction. ESC uses both to correct understeering and oversteering. All three help the driver use the friction that is available more effectively.\n\nHowever, none of them can increase the maximum friction between the tires and the road, which is set by the materials (μ), the normal force and, for rubber, the contact area. On ice, or when hydroplaning on water, the available friction is tiny and the car still cannot stop or turn quickly. Also, drivers may misuse the systems (e.g., pumping ABS brakes) or drive faster because they feel safer. ESC doesn't drive the car – only responsible driving at a speed suited to the conditions keeps occupants safe. A balanced evaluation: the technologies reduce risk but do not guarantee safety \"in any weather\".",
+      "rubric": [
+        {
+          "point": "Correct description of what ABS, traction control and ESC each do",
+          "marks": 2
+        },
+        {
+          "point": "Explains they cannot exceed the maximum available friction (μ, F_N, area)",
+          "marks": 2
+        },
+        {
+          "point": "Discusses driver behaviour/misuse",
+          "marks": 1
+        },
+        {
+          "point": "Reasoned overall judgement of the claim",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

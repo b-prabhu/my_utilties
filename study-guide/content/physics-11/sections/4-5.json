@@ -1,0 +1,997 @@
+{
+  "id": "4-5",
+  "number": "4.5",
+  "title": "Forces Applied to Sports and Research",
+  "estimatedMinutes": 60,
+  "overview": "Newton's laws, gravity and friction are at work every time a golfer swings, a sprinter launches off the line or a skater glides across a rink. In this section you will see how engineers deliberately **increase** friction (grips, running shoes) or **decrease** it (skate blades, bearings, near-frictionless carbon), and how force ideas drive new research such as artificial limbs.",
+  "objectives": [
+    "Explain how the parts of a golf club (grip, shaft, head) are designed using ideas about friction and forces.",
+    "Explain why skates slide so easily on ice, and why the old \"pressure melting\" explanation is incomplete.",
+    "Describe how running shoes increase static friction and reduce the forces on joints.",
+    "Compare plain, rolling element, fluid and magnetic bearings, including advantages and disadvantages.",
+    "Describe current research on prostheses and near-frictionless carbon, and discuss related issues.",
+    "Use $F_f = \\mu F_N$ to compare friction for different materials used in sports and research."
+  ],
+  "lessons": [
+    {
+      "id": "increase-or-decrease",
+      "title": "More friction or less? The designer's big question",
+      "body": "Every piece of sports equipment answers one question: **do we want more friction or less friction here?**\n\n| Want MORE friction | Want LESS friction |\n|---|---|\n| Golf and hockey grips (control of the club/stick) | Skate blades on ice |\n| Running shoe outsoles (quick starts and stops) | Wax on skis and snowboards |\n| Rock-climbing shoes and chalk on hands | Teflon on frying pans |\n| Basketball shoes on a gym floor | Bearings in wheels, fans, motors |\n\nRemember from 4.2 that the magnitude of friction is\n\n$$F_f = \\mu F_N$$\n\nSo a designer has only two \"dials\" to turn:\n\n1. **Change the materials in contact** (this changes $\\mu$). Rubber on concrete has $\\mu$ around 0.6–0.85, while Teflon on Teflon is about 0.04.\n2. **Change the normal force** $F_N$ (for example, pressing harder, or adding weight).\n\n> **Everyday analogy:** Think of $\\mu$ as how \"grabby\" two surfaces are, and $F_N$ as how hard they are squeezed together. Grabby surfaces squeezed hard = lots of friction."
+    },
+    {
+      "id": "golf-club",
+      "title": "Golf club design: grip, shaft and head",
+      "body": "In golf (and in hockey, cricket and baseball) the goal of a long shot is to make the **club head hit the ball as fast as possible without the head twisting**.\n\n**The three parts of a club**\n\n- **Grip** – leather or rubber. Its job is to *increase the force of static friction* on the player's hands so the club does not slip or turn in the hands. More static friction = more control.\n- **Shaft** – steel or carbon-fibre resin composite.\n  - Carbon fibre is *lighter* (easier to swing fast) but *more expensive*.\n  - Long shafts → **woods** (long distance). Short shafts → **irons** (shorter distance).\n  - *Stiffer* shafts suit players who already swing quickly; *more flexible* shafts suit players who \"whip\" the head around to gain speed.\n- **Head** – the part that touches the ball.\n  - Heavier heads twist *less* on an off-centre hit, but they are harder to swing, so the ball is hit more slowly.\n\n**The sweet spot.** If the centre of the club face (the sweet spot) meets the ball, the head does not twist and the ball travels where it was aimed. An off-centre hit makes the head twist and sends the ball in the wrong direction.\n\n> **Key idea:** Equipment helps, but it cannot replace skill. A better club can add distance and control, but it cannot turn a beginner into a professional. The same is true for a hockey stick in a slapshot or a hand in a volleyball spike."
+    },
+    {
+      "id": "skates",
+      "title": "Why do skates slide so easily?",
+      "body": "The coefficient of kinetic friction of a steel skate blade on perfectly smooth ice can be as low as **0.005** – that is about 100 times smaller than rubber on dry concrete!\n\n**The old explanation (incomplete):** Physicists used to think the *pressure* of the blade melted the ice, creating a thin layer of water. We now know this only matters when the ice is at **exactly 0 °C**. Colder ice does not become slippery from pressure.\n\n**The modern explanation:** A very thin layer of **slushy liquid water exists naturally** on the surface of ice – about $10^{-8}$ m thick (around 10 nanometres!). This slushy layer is what lowers the friction.\n\n- As the ice gets colder, the layer gets *thinner*.\n- At about **−25 °C** the layer disappears completely, and $\\mu_K$ for a steel blade rises to about **0.6** – similar to most other materials.\n\n| Ice condition | Slushy layer | $\\mu_K$ (steel on ice) |\n|---|---|---|\n| Smooth rink ice | ≈ $10^{-8}$ m | as low as 0.005 |\n| Very cold (−25 °C) | none | ≈ 0.6 |\n\n**Curved blades.** Modern blades are slightly curved on the bottom. A skater digs the *edge* of the blade into the ice and uses the **normal force** from the ice to push forward when accelerating.\n\n> **Analogy:** The slushy layer is like a microscopic film of water on a wet kitchen floor – it is not much water, but it makes a big difference to how slippery the floor is."
+    },
+    {
+      "id": "running-shoes",
+      "title": "Running shoes: grip plus cushioning",
+      "body": "Running shoes are designed to **increase the force of static friction** that the ground exerts on the athlete. Why *static*? Because when your foot is planted, it is not sliding on the ground (see 4.3). By Newton's third law you push backward on the ground and the ground pushes you **forward** with static friction.\n\nSince $F_{S\\,max} = \\mu_S F_N$ and (on level ground, at the start) the net force is static friction, the largest possible acceleration is\n\n$$a_{max} = \\frac{\\mu_S m g}{m} = \\mu_S g$$\n\nSo a higher $\\mu_S$ means quicker starts, stops and changes of direction (manoeuvrability).\n\n**Parts of a running shoe**\n\n| Part | Material / feature | Physics purpose |\n|---|---|---|\n| Outsole (bottom tread) | durable carbon-rubber compound | increases $\\mu_S$ for grip |\n| Midsole | foam (harder inside, softer outside); sometimes air or gel | reduces forces on ankles and knees; stability + cushioning |\n| Upper | comfortable fabric | reduces movement of the foot inside the shoe |\n| Heel counter | hard cup shape | stability and control of heel movement |\n| Overall | as light as possible | less weight to move → helps speed |\n\n**Big forces!** The normal force on your feet can **triple** during sports. The midsole cushion absorbs some of this impact. Remember Newton's third law: the forces you exert on the ground are matched by equal and opposite forces from the ground on your feet – the shoe's job is to let you accelerate quickly *and* protect your body."
+    },
+    {
+      "id": "bearings",
+      "title": "Bearings: reducing friction in machines",
+      "body": "**Bearings** let surfaces slide or roll past each other while *reducing the force of friction*. They improve the efficiency of generators, motors, fans, wheels and more.\n\n| Bearing type | How it works | Advantages | Disadvantages / notes |\n|---|---|---|---|\n| **Plain bearing** | two surfaces slide over each other, lubricated with oil or graphite | simple, low friction | needs lubrication |\n| **Rolling element bearing** | balls or rollers (usually oiled) roll between the surfaces | very low friction; used for years | parts wear, noisier than fluid bearings |\n| **Fluid bearing** | a thin film of fluid (air or oil) separates the surfaces | cheap to make; quieter; friction drastically reduced | needs a seal and a pump; uses energy; can **fail suddenly** if the seal breaks. Used in computer hard drives |\n| **Magnetic bearing** | magnetic fields keep the surfaces apart (magnetic levitation) – no contact | no maintenance; no known upper speed limit | needs electricity (energy) for electromagnets; needs a **backup bearing** in case of failure. Used in motors, turbines, generators, Maglev trains, household meters |\n\n> **Analogy:** Rolling element bearings are the modern version of the ancient Egyptians rolling heavy stone blocks on logs. Rolling friction is much smaller than sliding friction, so the same push moves the load more easily.\n\nA fluid bearing works like the slushy layer under a skate blade: a thin layer of fluid keeps the two solid surfaces from touching directly, so the friction is tiny."
+    },
+    {
+      "id": "research",
+      "title": "New innovations: prostheses and near-frictionless carbon",
+      "body": "**Prosthesis design**\n\nA **prosthesis** is an artificial device that replaces a missing body part – for example dentures, hip replacements, heart valves, artificial hearts and artificial limbs.\n\n- New materials are **lighter, more durable and more flexible**. Some people argue that a modern artificial leg (lighter and stronger than a human leg) could give an athlete an *advantage*. Oscar Pistorius (\"blade runner\") was at first ruled ineligible for the 2008 Olympics for this reason; the ruling was overturned, though he did not qualify. He performed very well in the Paralympics.\n- **Targeted muscle reinnervation (TMR):** a robotic limb is connected to muscles. When the patient *thinks* about moving, muscles contract, sensors detect the contraction, and the limb moves.\n- The **Proto 1** arm uses TMR. It can take a credit card out of a wallet or stack cups using *sensory feedback* rather than vision. A key advantage is that it can closely monitor and adjust the **force of its grip**. The next design is planned to have 80 sensors (touch, position, temperature).\n\n**Near-frictionless carbon (NFC)**\n\nFriction causes **wear** and **loss of efficiency** in machines.\n\n| Material | Coefficient of friction (same test conditions) |\n|---|---|\n| Teflon | 0.04 |\n| Near-frictionless carbon | less than 0.001 |\n\nNFC is a very **hard coating** that resists wear from sliding and rolling, can be applied to many surfaces, and reduces the need to repair or replace moving parts. It is being researched for the space program and aircraft, could coat any bearing, and may someday be cheap enough for cars and compressors such as air conditioners.\n\nWith $F_f = \\mu F_N$, switching from Teflon to NFC at the same normal force cuts friction by a factor of at least $0.04 / 0.001 = 40$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "sweet spot",
+      "definition": "The centre of a club head (or bat) where hitting the ball does not make the head twist, so the ball goes in the intended direction."
+    },
+    {
+      "term": "grip",
+      "definition": "The leather or rubber part of a club or stick that increases static friction on the hands for better control."
+    },
+    {
+      "term": "outsole",
+      "definition": "The bottom tread of a running shoe, made from a carbon-rubber compound to increase the coefficient of static friction."
+    },
+    {
+      "term": "midsole",
+      "definition": "The foam layer of a running shoe that cushions impacts and reduces forces on ankles and knees."
+    },
+    {
+      "term": "heel counter",
+      "definition": "A hard, cup-shaped part of a running shoe that gives the heel stability."
+    },
+    {
+      "term": "bearing",
+      "definition": "A device that allows surfaces to slide or roll across each other while reducing the force of friction."
+    },
+    {
+      "term": "rolling element bearing",
+      "definition": "A bearing that uses lubricated balls or rollers between surfaces to reduce friction."
+    },
+    {
+      "term": "fluid bearing",
+      "definition": "A bearing in which a thin film of fluid (air or oil) separates two surfaces."
+    },
+    {
+      "term": "magnetic bearing",
+      "definition": "A bearing that uses magnetic fields to keep two surfaces apart (magnetic levitation)."
+    },
+    {
+      "term": "prosthesis",
+      "definition": "An artificial device that replaces a missing body part."
+    },
+    {
+      "term": "targeted muscle reinnervation (TMR)",
+      "definition": "A technique where a robotic limb is controlled by sensors that detect contractions of muscles the patient activates by thinking about moving."
+    },
+    {
+      "term": "near-frictionless carbon",
+      "definition": "A very hard coating with a coefficient of friction less than 0.001 that resists wear."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Force of friction",
+      "latex": "F_f = \\mu F_N",
+      "meaning": "Friction equals the coefficient of friction times the normal force."
+    },
+    {
+      "name": "Normal force on a level surface",
+      "latex": "F_N = mg",
+      "meaning": "With only gravity and the normal force acting vertically and no vertical acceleration."
+    },
+    {
+      "name": "Maximum starting acceleration (level ground)",
+      "latex": "a_{max} = \\frac{\\mu_S m g}{m} = \\mu_S g",
+      "meaning": "When static friction is the only horizontal force, the mass cancels."
+    },
+    {
+      "name": "Kinematics (from Unit 1)",
+      "latex": "v_2^2 = v_1^2 + 2a\\Delta d",
+      "meaning": "Links speed, acceleration and distance when time is unknown."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Skate blade on rink ice vs very cold ice",
+      "problem": "A 68 kg hockey player glides on steel skates. Compare the kinetic friction on the player when (a) the rink ice is smooth ($\\mu_K = 0.005$) and (b) the ice is at −25 °C ($\\mu_K = 0.6$).",
+      "steps": [
+        "On level ice the vertical forces balance, so $F_N = mg = (68\\ \\text{kg})(9.8\\ \\text{N/kg}) = 666.4\\ \\text{N}$ (extra digits carried).",
+        "(a) $F_K = \\mu_K F_N = (0.005)(666.4\\ \\text{N}) = 3.3\\ \\text{N}$",
+        "(b) $F_K = \\mu_K F_N = (0.6)(666.4\\ \\text{N}) = 4.0 \\times 10^2\\ \\text{N}$",
+        "Ratio: $\\frac{400}{3.3} \\approx 120$. Without the slushy layer, friction is over 100 times larger."
+      ],
+      "answer": "About 3.3 N on smooth rink ice versus about 400 N on −25 °C ice. The natural slushy layer makes the difference."
+    },
+    {
+      "title": "Teflon vs near-frictionless carbon",
+      "problem": "A machine part presses on a surface with a normal force of 250 N. Calculate the friction if the surfaces are coated with (a) Teflon ($\\mu = 0.04$) (b) near-frictionless carbon ($\\mu = 0.001$).",
+      "steps": [
+        "(a) $F_f = \\mu F_N = (0.04)(250\\ \\text{N}) = 10\\ \\text{N}$",
+        "(b) $F_f = (0.001)(250\\ \\text{N}) = 0.25\\ \\text{N}$",
+        "NFC reduces friction by a factor of $10 / 0.25 = 40$, which means much less wear and lost efficiency."
+      ],
+      "answer": "10 N with Teflon, 0.25 N with near-frictionless carbon (40 times less)."
+    },
+    {
+      "title": "How much faster can you start in running shoes?",
+      "problem": "A 60 kg athlete starts from rest on a level track. Find the maximum possible starting acceleration wearing (a) running shoes with $\\mu_S = 0.80$ (b) dress shoes with $\\mu_S = 0.50$.",
+      "steps": [
+        "Draw an FBD: $F_N$ up, $F_g$ down (these cancel), static friction forward is the net force.",
+        "$F_{net} = F_{S\\,max} = \\mu_S m g$, so $ma = \\mu_S m g$ and $a = \\mu_S g$ (mass cancels).",
+        "(a) $a = (0.80)(9.8\\ \\text{m/s}^2) = 7.8\\ \\text{m/s}^2$",
+        "(b) $a = (0.50)(9.8\\ \\text{m/s}^2) = 4.9\\ \\text{m/s}^2$"
+      ],
+      "answer": "7.8 m/s² [forward] in running shoes vs 4.9 m/s² [forward] in dress shoes. Higher $\\mu_S$ → quicker starts."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Skates slide because the pressure of the blade melts the ice.",
+      "fact": "Pressure melting only matters at exactly 0 °C. Skates slide because a thin slushy layer of water (about 10⁻⁸ m) exists naturally on the ice surface."
+    },
+    {
+      "myth": "Swinging harder always makes a golf ball go farther.",
+      "fact": "If the ball misses the sweet spot, the club head twists and the ball goes the wrong way. Speed *and* centred contact matter."
+    },
+    {
+      "myth": "A heavier club head is always better.",
+      "fact": "Heavier heads twist less on off-centre hits, but they are harder to swing, so the ball is hit more slowly."
+    },
+    {
+      "myth": "Magnetic bearings never fail, so they need no backup.",
+      "fact": "Magnetic bearings often require a backup bearing system in case they fail, and they need electricity to work."
+    },
+    {
+      "myth": "Running shoes are only about grip.",
+      "fact": "They also cushion impacts (the normal force can triple), give stability and are kept light."
+    },
+    {
+      "myth": "Good equipment makes a good athlete.",
+      "fact": "Better equipment can help, but nothing replaces skill and practice."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Ski and snowboard wax",
+      "body": "Wax lowers the coefficient of kinetic friction between the base and the snow, so riders glide faster. Different waxes suit different snow temperatures."
+    },
+    {
+      "title": "Computer hard drives",
+      "body": "Fluid bearings keep spinning parts separated by a thin film of fluid, making drives quieter and reducing friction."
+    },
+    {
+      "title": "Maglev trains",
+      "body": "Magnetic levitation keeps the train from touching the track, so there is no direct contact friction – but electricity is constantly needed."
+    },
+    {
+      "title": "Hip replacements",
+      "body": "An artificial hip needs low friction between moving surfaces, high resistance to wear, and enough strength to handle forces several times body weight."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Why is the grip of a golf club made of rubber or leather instead of smooth steel?",
+      "hint": "Which type of friction acts between the hands and the grip?",
+      "solution": "The hands should not slide on the grip, so static friction acts. Rubber and leather have a higher coefficient of static friction with skin than smooth steel, so the maximum static friction is larger and the club does not slip or twist in the hands. This gives the player more control."
+    },
+    {
+      "question": "A 50 kg skater stands on −25 °C ice ($\\mu_K = 0.6$). What kinetic friction acts if she slides? Why would a rink never be kept this cold?",
+      "hint": "$F_K = \\mu_K mg$",
+      "solution": "$F_K = (0.6)(50\\ \\text{kg})(9.8\\ \\text{N/kg}) = 2.9 \\times 10^2\\ \\text{N}$. This is far too much friction for gliding – the slushy surface layer that normally makes skating possible has disappeared."
+    },
+    {
+      "question": "Give one advantage and one disadvantage of a fluid bearing compared with a rolling element bearing.",
+      "hint": "Think about noise, cost, energy and failure.",
+      "solution": "Advantage: fluid bearings can be made cheaply and are quieter (and reduce friction drastically). Disadvantage: they need a seal and a pump, use energy to keep the lubricant in place, and can fail suddenly if the seal breaks."
+    },
+    {
+      "question": "Explain how the Proto 1 arm is different from a simple mechanical hook.",
+      "hint": "Think TMR and sensory feedback.",
+      "solution": "Proto 1 is controlled through targeted muscle reinnervation: the person thinks about moving, muscles contract and sensors move the arm. It uses sensory feedback (not just vision) and can closely monitor and adjust the force of its grip, allowing delicate tasks like taking a card from a wallet."
+    }
+  ],
+  "summary": [
+    "The study of forces is applied to improve sports technology – sometimes to increase friction (grips, running shoes) and sometimes to decrease it (skates, wax).",
+    "Golf clubs are designed so the head strikes the ball fast at the sweet spot without twisting; grip, shaft length/stiffness/material and head mass all matter.",
+    "Skates slide easily because a thin natural slushy layer (≈10⁻⁸ m) of water exists on ice; at −25 °C it disappears and μK ≈ 0.6.",
+    "Running shoes increase static friction (outsole) and absorb impact forces (midsole), while staying light.",
+    "Bearings (plain, rolling element, fluid, magnetic) decrease friction and improve efficiency, each with advantages and disadvantages.",
+    "Research on forces includes prosthesis design (e.g. TMR, Proto 1) and materials such as near-frictionless carbon (μ < 0.001 vs 0.04 for Teflon)."
+  ],
+  "questions": [
+    {
+      "id": "4-5-q01",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A golfer wants to hit a long drive.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain what the golfer must do with the club head to make the ball travel as far as possible in the intended direction."
+        },
+        {
+          "label": "b",
+          "text": "Explain what happens if the ball is struck away from the sweet spot."
+        }
+      ],
+      "modelAnswer": "(a) The club head must hit the ball as fast as possible, and the centre of the head (sweet spot) must make contact so the head does not twist. A faster head at impact gives the ball a larger speed, so it travels farther.\n\n(b) If the ball is struck off the sweet spot, the head twists on impact. The ball is pushed in the wrong direction and usually travels less far, so the golfer loses both distance and control.",
+      "rubric": [
+        {
+          "point": "States the head must be moving as fast as possible at impact",
+          "marks": 1
+        },
+        {
+          "point": "States the ball must be struck at the sweet spot / without the head twisting",
+          "marks": 1
+        },
+        {
+          "point": "Links faster head speed to greater distance",
+          "marks": 1
+        },
+        {
+          "point": "Explains that an off-centre hit makes the head twist and sends the ball in the wrong direction",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q02",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe the purpose and design of each part of a golf club: the grip, the shaft and the head. For each, link the design to a force or friction idea.",
+      "modelAnswer": "**Grip:** leather or rubber, chosen to increase the force of static friction on the player's hands so the club does not slip – giving more control.\n\n**Shaft:** steel or carbon-fibre composite. Carbon fibre is lighter (easier to swing fast) but more expensive. Longer shafts (woods) are for long distances; shorter shafts (irons) for shorter distances. Stiffer shafts suit players who swing quickly; more flexible shafts suit players who whip the head around to gain speed.\n\n**Head:** makes contact with the ball. Heavier heads twist less on off-centre hits, but are harder to swing so the ball is hit more slowly – a trade-off between control and speed.",
+      "rubric": [
+        {
+          "point": "Grip: material named and purpose linked to increasing static friction / control",
+          "marks": 2
+        },
+        {
+          "point": "Shaft: materials compared (carbon fibre lighter but more expensive)",
+          "marks": 1
+        },
+        {
+          "point": "Shaft: length (woods vs irons) and stiffness vs swing style explained",
+          "marks": 2
+        },
+        {
+          "point": "Head: heavier heads twist less but are harder to swing / slower ball",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q03",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The physics of striking a golf ball is similar to striking a ball or puck in other sports.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain how a spike in volleyball is similar to hitting a golf ball."
+        },
+        {
+          "label": "b",
+          "text": "Explain how a slapshot in hockey is similar to hitting a golf ball."
+        },
+        {
+          "label": "c",
+          "text": "Explain why \"nothing replaces skill and practice\" even with better equipment."
+        }
+      ],
+      "modelAnswer": "(a) In both cases the player tries to make the striking object (the hand / the club head) move as fast as possible at the moment of contact and to hit the ball squarely in the centre, so the ball leaves fast and in the intended direction.\n\n(b) In a slapshot the stick blade must be moving very fast when it meets the puck and must contact the puck squarely without twisting – just like the club head and the sweet spot. The stick shaft also flexes like a golf shaft.\n\n(c) Equipment can increase speed or control slightly (lighter shafts, better grips), but the player still has to produce the fast swing, time the contact and hit the sweet spot. These come only from technique, which takes practice.",
+      "rubric": [
+        {
+          "point": "Volleyball: fast hand at contact and centred contact identified",
+          "marks": 2
+        },
+        {
+          "point": "Hockey: fast blade at impact, square contact / no twisting identified",
+          "marks": 2
+        },
+        {
+          "point": "Explains equipment helps but technique (speed, timing, centred contact) comes from skill",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q04",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "At one time physicists thought that the blade of a skate pushing down on the ice created a thin layer of water that decreased friction.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain why physicists now know this explanation is not generally true."
+        },
+        {
+          "label": "b",
+          "text": "Explain why skates actually slide so easily over ice."
+        },
+        {
+          "label": "c",
+          "text": "Explain why blades do not slide easily over extremely cold ice."
+        }
+      ],
+      "modelAnswer": "(a) The pressure of the blade only melts ice when the ice is at exactly 0 °C. Ice that is colder than 0 °C does not become more slippery from this effect, yet skating works well on colder ice.\n\n(b) A very thin layer of slushy liquid water (about $10^{-8}$ m thick) exists naturally on the surface of the ice. This layer separates the blade from the solid ice and lowers the coefficient of kinetic friction to as little as 0.005.\n\n(c) The slushy layer gets thinner as the ice is cooled, and at about −25 °C it disappears completely. Then steel is in direct contact with solid ice and $\\mu_K$ rises to about 0.6, similar to most other materials, so the blade no longer glides.",
+      "rubric": [
+        {
+          "point": "Pressure melting only occurs at exactly 0 °C",
+          "marks": 1
+        },
+        {
+          "point": "Natural slushy layer on the ice surface identified (≈10⁻⁸ m)",
+          "marks": 2
+        },
+        {
+          "point": "Links layer to low μK (≈0.005)",
+          "marks": 1
+        },
+        {
+          "point": "Layer thins with cooling and vanishes at about −25 °C",
+          "marks": 1
+        },
+        {
+          "point": "States μK rises to about 0.6 so friction is much larger",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 55,
+          "max": 95,
+          "step": 1
+        }
+      },
+      "derived": {
+        "FN": "m*9.8",
+        "Fs": "0.005*FN",
+        "Fc": "0.6*FN",
+        "ratio": "0.6/0.005"
+      },
+      "text": "A {{m}} kg speed skater glides across a level rink on steel blades.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the magnitude of the kinetic friction on the skater when the ice is smooth and μK = 0.005.",
+          "answer": {
+            "expr": "Fs",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the kinetic friction if the ice were at −25 °C, where μK = 0.6.",
+          "answer": {
+            "expr": "Fc",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "How many times greater is the friction in (b)? Explain the physical reason for the difference.",
+          "answer": {
+            "expr": "ratio",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "On level ice $F_N = mg = ({{m}}\\ \\text{kg})(9.8\\ \\text{N/kg}) = {{FN:4}}\\ \\text{N}$.\n\n(a) $F_K = \\mu_K F_N = (0.005)({{FN:4}}\\ \\text{N}) = {{Fs:2}}\\ \\text{N}$\n\n(b) $F_K = (0.6)({{FN:4}}\\ \\text{N}) = {{Fc:2}}\\ \\text{N}$\n\n(c) $\\frac{0.6}{0.005} = 120$ times greater. At normal rink temperatures a thin natural slushy water layer separates blade and ice; at −25 °C this layer disappears, so steel touches solid ice directly.",
+      "rubric": [
+        {
+          "point": "Correct normal force F_N = mg",
+          "marks": 1
+        },
+        {
+          "point": "Correct friction for smooth ice",
+          "marks": 1
+        },
+        {
+          "point": "Correct friction at −25 °C",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio (120)",
+          "marks": 1
+        },
+        {
+          "point": "Explains the slushy layer disappears at very low temperature",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 50,
+          "max": 85,
+          "step": 1
+        },
+        "mus": {
+          "choices": [
+            0.72,
+            0.75,
+            0.8,
+            0.85
+          ]
+        },
+        "mud": {
+          "choices": [
+            0.45,
+            0.5,
+            0.52,
+            0.55
+          ]
+        }
+      },
+      "derived": {
+        "ar": "mus*9.8",
+        "ad": "mud*9.8",
+        "diff": "mus*9.8 - mud*9.8"
+      },
+      "text": "A {{m}} kg athlete starts from rest on a level track. In running shoes μS = {{mus}}; in dress shoes μS = {{mud}}. Assume static friction from the ground is the only horizontal force.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Draw (describe) the FBD of the athlete at the start."
+        },
+        {
+          "label": "b",
+          "text": "Calculate the maximum possible starting acceleration in running shoes.",
+          "answer": {
+            "expr": "ar",
+            "unit": "m/s^2",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the maximum possible starting acceleration in dress shoes.",
+          "answer": {
+            "expr": "ad",
+            "unit": "m/s^2",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain why the mass of the athlete was not actually needed."
+        }
+      ],
+      "modelAnswer": "(a) FBD: $\\vec F_N$ up, $\\vec F_g$ down (equal magnitudes), $\\vec F_{S\\,max}$ forward. Net force = static friction.\n\n(b) $ma = \\mu_S m g \\Rightarrow a = \\mu_S g = ({{mus}})(9.8\\ \\text{m/s}^2) = {{ar:2}}\\ \\text{m/s}^2$ [forward]\n\n(c) $a = ({{mud}})(9.8\\ \\text{m/s}^2) = {{ad:2}}\\ \\text{m/s}^2$ [forward]\n\n(d) Both $F_{S\\,max} = \\mu_S mg$ and $F_{net} = ma$ are proportional to the mass, so $m$ cancels: $a = \\mu_S g$. Running shoes give about {{diff:2}} m/s² more acceleration.",
+      "rubric": [
+        {
+          "point": "FBD: normal force, gravity, static friction forward",
+          "marks": 1
+        },
+        {
+          "point": "Uses F_net = F_Smax = μS m g",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration in running shoes with direction",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration in dress shoes",
+          "marks": 1
+        },
+        {
+          "point": "Explains mass cancels algebraically",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q07",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe the main parts of a running shoe (outsole, midsole, upper, heel counter). For each part explain how it uses or controls forces, and explain why the shoe must be both \"grippy\" and \"cushioned\".",
+      "modelAnswer": "- **Outsole:** carbon-rubber compound that increases the coefficient of static friction, so the ground can push the athlete forward with a larger static friction – quicker starts, stops and turns.\n- **Midsole:** foam (harder inner part for stability, softer outer part for cushioning; sometimes air or gel). It reduces the magnitude of forces on the ankles and knees. The normal force can triple during sports.\n- **Upper:** designed for comfort and to reduce movement of the foot inside the shoe.\n- **Heel counter:** hard cup that gives stability and controls heel movement.\n\nBy Newton's third law, the large forces the athlete exerts on the ground are matched by equal and opposite forces on the feet. The shoe must give high static friction so the athlete can accelerate quickly, but also absorb some of these large forces to prevent injury. It is also made light to help increase speed.",
+      "rubric": [
+        {
+          "point": "Outsole increases μS / static friction for acceleration",
+          "marks": 2
+        },
+        {
+          "point": "Midsole cushions and reduces forces on joints (normal force may triple)",
+          "marks": 2
+        },
+        {
+          "point": "Upper and heel counter purposes described",
+          "marks": 1
+        },
+        {
+          "point": "Uses Newton's third law to explain large forces on feet",
+          "marks": 1
+        },
+        {
+          "point": "Explains the need for both grip and cushioning (and light weight)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q08",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "The Therma Blade uses a small battery to heat a hockey skate blade while the player is on the ice. Heated blades experience significantly less friction than normal blades.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Using what you know about the slushy layer on ice, explain why a heated blade could experience less friction."
+        },
+        {
+          "label": "b",
+          "text": "The battery fits in the hollow plastic above the blade. Explain why this might be a disadvantage."
+        },
+        {
+          "label": "c",
+          "text": "Should heated blades be allowed in Canadian hockey leagues? Give a reasoned opinion with at least one argument on each side."
+        }
+      ],
+      "modelAnswer": "(a) Friction on ice is low because a thin slushy water layer separates blade and ice. Warming the blade melts a little more ice and thickens this liquid layer, so the blade and solid ice are separated better and the coefficient of kinetic friction decreases.\n\n(b) The battery adds mass the player must carry and accelerate, may need recharging or could fail during a game, and adds cost. A heavier skate is also tiring.\n\n(c) *For:* players could skate faster with less effort, reducing fatigue. *Against:* it may give an unfair advantage to those who can afford it, adds cost and reliability problems, and changes the nature of the game. A good answer takes a position and justifies it (e.g. allowed only if available to all players).",
+      "rubric": [
+        {
+          "point": "Links heat to a thicker liquid layer and lower μK",
+          "marks": 2
+        },
+        {
+          "point": "Gives a valid disadvantage of the battery (mass, failure, cost)",
+          "marks": 1
+        },
+        {
+          "point": "Argument for allowing",
+          "marks": 1
+        },
+        {
+          "point": "Argument against allowing",
+          "marks": 1
+        },
+        {
+          "point": "Clear, justified final opinion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "The ancient Egyptians used rolling logs to move large blocks of stone. Explain how the physics of a rolling element bearing is similar to this ancient method of reducing friction.",
+      "modelAnswer": "In both cases objects that **roll** are placed between two surfaces so the surfaces do not slide directly over each other. Rolling friction is much smaller than sliding friction, so a smaller applied force is needed to move the load. In a rolling element bearing, lubricated balls or rollers play the role of the logs, letting a shaft or wheel turn with very little friction.",
+      "rubric": [
+        {
+          "point": "Identifies rolling objects placed between surfaces (logs ↔ balls/rollers)",
+          "marks": 1
+        },
+        {
+          "point": "States rolling friction is less than sliding friction",
+          "marks": 1
+        },
+        {
+          "point": "Concludes less force is needed / greater efficiency",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Compare the four types of bearings: plain, rolling element, fluid and magnetic. For each, describe how it reduces friction and give one advantage and one disadvantage or limitation.",
+      "modelAnswer": "| Type | How it reduces friction | Advantage | Disadvantage |\n|---|---|---|---|\n| Plain | surfaces slide with oil or graphite lubrication | simple, low μ | needs lubrication, wears |\n| Rolling element | lubricated balls/rollers roll between surfaces | very low friction, proven | moving parts wear; noisier than fluid |\n| Fluid | film of air or oil separates surfaces | cheap, quiet, drastically lower friction | needs seal and pump, uses energy, fails suddenly if seal breaks |\n| Magnetic | magnetic fields separate surfaces (no contact) | no maintenance, no known speed limit | needs electricity; needs backup bearing |",
+      "rubric": [
+        {
+          "point": "Plain bearing described with advantage/disadvantage",
+          "marks": 2
+        },
+        {
+          "point": "Rolling element bearing described with advantage/disadvantage",
+          "marks": 2
+        },
+        {
+          "point": "Fluid bearing described with advantage/disadvantage",
+          "marks": 2
+        },
+        {
+          "point": "Magnetic bearing described with advantage/disadvantage",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q11",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe a typical fluid bearing and explain how it reduces friction. Then compare the physics of a fluid bearing to the blade of a skate on ice.",
+      "modelAnswer": "A fluid bearing uses a thin film of fluid, such as air or oil, to keep two solid surfaces apart. Because the solid surfaces do not touch directly, the friction is drastically reduced. A seal keeps the fluid in place and a pump replaces fluid that leaks out. \n\nA skate blade works in a similar way: a thin natural layer of slushy water separates the steel blade from the solid ice. In both cases a thin fluid layer replaces solid-on-solid contact, giving a very low coefficient of friction. Difference: the bearing's fluid must be actively maintained (energy, pump, seal), whereas the slushy layer exists naturally (but disappears on very cold ice).",
+      "rubric": [
+        {
+          "point": "Describes fluid film separating surfaces",
+          "marks": 1
+        },
+        {
+          "point": "Mentions seal and pump / energy requirement",
+          "marks": 1
+        },
+        {
+          "point": "Links to slushy water layer under a skate",
+          "marks": 1
+        },
+        {
+          "point": "Explains both reduce μ by preventing solid–solid contact",
+          "marks": 1
+        },
+        {
+          "point": "Notes a valid difference",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q12",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A classmate says: \"Magnetic bearing systems do not need backup bearings because they never fail.\" Explain what is wrong with this statement, rewrite it so it is correct, and describe how magnetic bearings work and their disadvantages compared with rolling element bearings.",
+      "modelAnswer": "The statement is wrong: magnetic bearings **can** fail (for example if the electricity to the electromagnets is lost), so they often require a **backup bearing system**. Corrected: \"Magnetic bearing systems often require backup bearings in case they fail.\"\n\nMagnetic bearings use magnetic fields to keep two surfaces separated (magnetic levitation), so there is no direct contact friction. They need no maintenance and have no known upper speed limit.\n\nDisadvantages vs rolling element bearings: they need electricity (energy) to run the electromagnets continuously, and they need a backup bearing, which adds cost and complexity.",
+      "rubric": [
+        {
+          "point": "Identifies the error and rewrites correctly",
+          "marks": 2
+        },
+        {
+          "point": "Explains magnetic fields separate surfaces (no contact)",
+          "marks": 1
+        },
+        {
+          "point": "States need for electricity/energy",
+          "marks": 1
+        },
+        {
+          "point": "States need for backup bearing as a disadvantage",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "FN": {
+          "min": 120,
+          "max": 600,
+          "step": 20
+        }
+      },
+      "derived": {
+        "Ft": "0.04*FN",
+        "Fn": "0.001*FN",
+        "factor": "0.04/0.001"
+      },
+      "text": "A sliding machine part presses on its track with a normal force of {{FN}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the force of friction if both surfaces are Teflon (μ = 0.04).",
+          "answer": {
+            "expr": "Ft",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the friction if the surfaces are coated with near-frictionless carbon (μ = 0.001).",
+          "answer": {
+            "expr": "Fn",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "By what factor is the friction reduced? Describe two benefits of this for the machine.",
+          "answer": {
+            "expr": "factor",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $F_f = \\mu F_N = (0.04)({{FN}}\\ \\text{N}) = {{Ft:2}}\\ \\text{N}$\n\n(b) $F_f = (0.001)({{FN}}\\ \\text{N}) = {{Fn:2}}\\ \\text{N}$\n\n(c) Factor $= \\frac{0.04}{0.001} = 40$. Benefits: much less wear on moving parts (fewer repairs/replacements) and less loss of efficiency, since less force is wasted overcoming friction. NFC is also very hard and resists wear from sliding and rolling.",
+      "rubric": [
+        {
+          "point": "Correct Teflon friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct NFC friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct factor of 40",
+          "marks": 1
+        },
+        {
+          "point": "Two valid benefits (less wear, greater efficiency, fewer repairs)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q14",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A student writes: \"Near-frictionless carbon has a coefficient of friction greater than that of Teflon.\" Correct this statement, then describe the properties of near-frictionless carbon and discuss two ways it might be used in the future.",
+      "modelAnswer": "Correct statement: \"Near-frictionless carbon has a coefficient of friction **less** than that of Teflon\" (less than 0.001 compared with 0.04 under the same conditions).\n\nProperties: extremely low friction, a very hard coating, resists wear from sliding and rolling, and can be applied to many types of surfaces.\n\nFuture uses: space program and aircraft parts; coating any type of bearing; possibly automobiles and compressors such as air conditioners once it becomes cheap enough. It would reduce the need to repair and replace moving parts.",
+      "rubric": [
+        {
+          "point": "Correctly rewrites the statement with values",
+          "marks": 1
+        },
+        {
+          "point": "Describes at least two properties (low μ, hard, wear-resistant, applied to many surfaces)",
+          "marks": 2
+        },
+        {
+          "point": "Discusses two possible future uses",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-5-q15",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe targeted muscle reinnervation (TMR) and the Proto 1 arm. Explain why being able to monitor and adjust the force of the grip is such an important feature of this artificial arm.",
+      "modelAnswer": "In TMR, a robotic arm or leg is connected to muscles in the body. When the patient thinks about moving the limb, the muscles contract, sensors detect the contraction, and the artificial limb moves.\n\nProto 1 is a prototype mechanical arm controlled with TMR. It can do complex tasks such as taking a credit card out of a wallet or stacking cups using sensory feedback rather than vision. Future designs are planned to have about 80 sensors for touch, position and temperature.\n\nGrip force matters because objects need different forces: too little force and static friction is not enough to hold the object (it slips), too much and a fragile object (a cup, a card) is crushed. Monitoring the force allows the arm to apply just enough normal force so that static friction holds the object safely.",
+      "rubric": [
+        {
+          "point": "Describes TMR: thought → muscle contraction → sensors → limb moves",
+          "marks": 2
+        },
+        {
+          "point": "Describes Proto 1 capabilities (sensory feedback, complex tasks)",
+          "marks": 1
+        },
+        {
+          "point": "Links grip force to normal force and static friction to hold objects",
+          "marks": 2
+        },
+        {
+          "point": "Explains danger of too much force (crushing)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q16",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Some people with artificial limbs want to compete with athletes in the Olympics and other sports events.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give three reasons why this should be allowed and even encouraged."
+        },
+        {
+          "label": "b",
+          "text": "As technology improves, artificial limbs may give a significant advantage. Should athletes using these limbs compete with those who do not? Justify your position, referring to the physical properties of modern prostheses."
+        }
+      ],
+      "modelAnswer": "(a) Possible reasons: promotes inclusion and equal opportunity; inspires others with disabilities; competition drives improvements in prosthesis technology; athletes still need skill, training and effort; it challenges stereotypes.\n\n(b) A strong answer takes a position. E.g. *Yes, with rules:* allow competition but have independent testing so limbs do not exceed natural limb performance. *No:* new limbs can be lighter and stronger than human legs, which may let athletes run faster and longer, so separate events (such as the Paralympics) are fairer. Reference to the Oscar Pistorius case (initially ruled ineligible in 2008, later overturned) supports the discussion.",
+      "rubric": [
+        {
+          "point": "Three distinct valid reasons for (a)",
+          "marks": 3
+        },
+        {
+          "point": "Clear position in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Refers to properties of prostheses (lighter, stronger, more flexible)",
+          "marks": 1
+        },
+        {
+          "point": "Considers fairness/the opposing view or a real example",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q17",
+      "type": "design",
+      "difficulty": 3,
+      "text": "A common prosthesis today is the artificial hip. Describe the characteristics the materials in a hip replacement must have to function properly, and explain each in terms of forces and friction.",
+      "modelAnswer": "- **Very low coefficient of friction** between the moving surfaces (like synovial joints, μ ≈ 0.003–0.01) so the joint moves smoothly with little force and no pain.\n- **High wear resistance**: friction causes wear; worn surfaces would loosen and fail, so hard, wear-resistant materials (or coatings like near-frictionless carbon) are useful.\n- **High strength**: the normal force on joints can be several times body weight (it can triple during sports), so the material must not crack or deform.\n- **Light weight**: so the person does not have to carry extra mass.\n- **Durable over many years and compatible with the body** (does not corrode or harm tissue).",
+      "rubric": [
+        {
+          "point": "Low friction explained",
+          "marks": 2
+        },
+        {
+          "point": "Wear resistance explained",
+          "marks": 1
+        },
+        {
+          "point": "Strength linked to large normal forces",
+          "marks": 2
+        },
+        {
+          "point": "At least one further sensible property (light, durable, compatible)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain why modern skate blades are slightly curved at the bottom, and use Newton's third law to explain how a skater accelerates forward on ice even though friction on the blade is very small.",
+      "modelAnswer": "The curved blade lets the skater tilt and dig the **edge** of the blade into the ice. The skater pushes on the ice sideways and backward with the edge. By Newton's third law, the ice pushes back on the blade with an equal and opposite force – a normal force from the ice on the edge – which has a forward component. This force, not friction along the blade, accelerates the skater. Gliding along the length of the blade has very low friction, while pushing against the edge gives a large force: the best of both.",
+      "rubric": [
+        {
+          "point": "Curve allows edge to dig into ice",
+          "marks": 1
+        },
+        {
+          "point": "Skater pushes on ice; ice pushes back (third law)",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the normal force on the edge as the forward push",
+          "marks": 1
+        },
+        {
+          "point": "Contrasts low friction gliding with large edge force",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 60,
+          "max": 90,
+          "step": 1
+        },
+        "v": {
+          "min": 6,
+          "max": 10,
+          "step": 0.5
+        }
+      },
+      "derived": {
+        "a1": "0.005*9.8",
+        "d1": "v^2/(2*0.005*9.8)",
+        "a2": "0.6*9.8",
+        "d2": "v^2/(2*0.6*9.8)"
+      },
+      "text": "A {{m}} kg hockey player glides (no pushing) at {{v}} m/s across level ice and coasts to a stop. Assume kinetic friction from the ice is the only horizontal force.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the magnitude of the player's acceleration on smooth rink ice (μK = 0.005).",
+          "answer": {
+            "expr": "a1",
+            "unit": "m/s^2",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate how far the player coasts before stopping on this ice.",
+          "answer": {
+            "expr": "d1",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Repeat (b) for ice at −25 °C (μK = 0.6), and comment on the result.",
+          "answer": {
+            "expr": "d2",
+            "unit": "m",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Net force = kinetic friction: $ma = \\mu_K mg \\Rightarrow a = \\mu_K g$ (opposite to motion).\n\n(a) $a = (0.005)(9.8\\ \\text{m/s}^2) = {{a1:2}}\\ \\text{m/s}^2$ (backward)\n\n(b) $v_2^2 = v_1^2 + 2a\\Delta d$ with $v_2 = 0$, $a = -{{a1:2}}\\ \\text{m/s}^2$:\n$\\Delta d = \\frac{0 - ({{v}}\\ \\text{m/s})^2}{2(-{{a1:2}}\\ \\text{m/s}^2)} = {{d1:2}}\\ \\text{m}$\n\n(c) $a = (0.6)(9.8) = {{a2:2}}\\ \\text{m/s}^2$, so $\\Delta d = \\frac{({{v}})^2}{2({{a2:2}})} = {{d2:2}}\\ \\text{m}$. On very cold ice the player stops in a tiny distance – the slushy layer is gone, so friction is about 120 times larger. (The mass cancels in both cases.)",
+      "rubric": [
+        {
+          "point": "Uses F_net = F_K = μK mg so a = μK g",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration on rink ice",
+          "marks": 1
+        },
+        {
+          "point": "Correct use of v2² = v1² + 2aΔd with sign of a",
+          "marks": 1
+        },
+        {
+          "point": "Correct coasting distance on rink ice",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance on −25 °C ice",
+          "marks": 1
+        },
+        {
+          "point": "Sensible comment linking to the slushy layer",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-5-q20",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Choose ONE sport not discussed in detail in this section (for example basketball, rock climbing, curling or skiing). Identify one place where designers try to INCREASE friction and one place where they try to DECREASE friction. For each, explain the design choice using $F_f = \\mu F_N$.",
+      "modelAnswer": "Example (curling): **Increase** – the slider-free shoe (\"gripper\") has a rubber sole with high μS so the curler can push off and walk on ice without slipping; static friction $\\mu_S F_N$ is large. **Decrease** – the slider sole (e.g. Teflon-like) has very low μK so the curler glides during delivery; sweeping warms the ice surface, thickening the liquid layer and lowering μK so the stone travels farther.\n\nAny sport is acceptable if the answer identifies a correct increase and decrease example and explains it by changing μ (materials) and/or $F_N$.",
+      "rubric": [
+        {
+          "point": "Valid example of increased friction in chosen sport",
+          "marks": 1
+        },
+        {
+          "point": "Explained using μ and/or F_N",
+          "marks": 2
+        },
+        {
+          "point": "Valid example of decreased friction",
+          "marks": 1
+        },
+        {
+          "point": "Explained using μ and/or F_N",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

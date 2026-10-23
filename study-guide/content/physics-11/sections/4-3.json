@@ -1,0 +1,2255 @@
+{
+  "id": "4-3",
+  "number": "4.3",
+  "title": "Solving Friction Problems",
+  "estimatedMinutes": 120,
+  "overview": "Sometimes we want lots of friction (running shoes, car tires) and sometimes as little as possible (a hockey puck gliding toward the net). In this section you will put friction to work in real problems: objects that refuse to move, people who use static friction to start running, and sliding objects that slow down and stop. You will combine free-body diagrams, Newton's laws, the coefficient-of-friction equations and the kinematics equations into one reliable problem-solving routine.",
+  "objectives": [
+    "Decide whether static or kinetic friction acts on an object in a given situation.",
+    "Calculate the combined maximum force of static friction acting on several connected objects, and the tension or contact force between them.",
+    "Explain how static friction can cause motion (walking, running, a car accelerating) using Newton's third law.",
+    "Calculate the maximum possible acceleration of a person or vehicle from the coefficient of static friction.",
+    "Use kinetic friction with Newton's second law to find the acceleration of single objects, connected objects and simple pulley systems.",
+    "Combine friction with the kinematics equations to find stopping distances, speeds and times.",
+    "Set up and solve multi-step friction problems using the GRASS method (Given, Required, Analysis, Solution, Statement)."
+  ],
+  "lessons": [
+    {
+      "id": "when-friction-helps",
+      "title": "Friction: friend or foe?",
+      "body": "Friction is neither \"good\" nor \"bad\" – it depends on what you want to do.\n\n| We want **more** friction | We want **less** friction |\n|---|---|\n| Running-shoe soles that grip the track | A hockey puck sliding toward the net |\n| Car tires that grip the road when braking or turning | Railway cars and truck trailers being pulled along |\n| Hands gripping a rope in tug-of-war | Skis gliding over snow |\n\nEngineers designing a running shoe choose sole materials with a **high coefficient of friction** and shape the tread so it still grips when wet. Engineers designing transportation systems try to **minimize** friction on the cars being pulled so less force is needed.\n\nIn every friction problem, your first job is to ask: **Is the object sliding over the surface or not?**\n\n- Not sliding (at rest relative to the surface) → **static friction**, $F_S \\le F_{S\\,max} = \\mu_S F_N$\n- Sliding → **kinetic friction**, $F_K = \\mu_K F_N$, always opposite to the direction of motion\n\n> **Think of it like this:** static friction is a \"matching\" force – it matches whatever push you give it, up to a limit. Kinetic friction is a \"fixed-price\" force – once sliding starts, it has one value, $\\mu_K F_N$, no matter how hard you push."
+    },
+    {
+      "id": "static-several-objects",
+      "title": "Static friction acting on several objects",
+      "body": "When two or more objects are **tied or pushed together**, you must overcome the **combined** maximum static friction on all of them before anything moves. A train pulling many railway cars must exert enough force to overcome the static friction on *every* car.\n\n**Strategy – treat the group as one object first**\n\n1. Add the masses: $m_T = m_1 + m_2 + \\dots$\n2. On a horizontal surface with only horizontal applied forces, $F_N = m_T g$.\n3. The largest force that will not cause motion is $F_{S\\,max} = \\mu_S m_T g$.\n\n**Then zoom in on one object** to find an internal force (rope tension or the push between two boxes). Draw the FBD for just the object farthest from the applied force – it only has that one internal force pulling or pushing it, balanced by its own static friction.\n\nFor example, if an adult pulls sled 1, which is tied to sled 2, then on the verge of moving:\n\n$$F_T = F_{S\\,max,2} = \\mu_S m_2 g$$\n\n> **Why can we ignore the rope at first?** Tension is an *internal* force – sled 1 is pulled back by the rope exactly as hard as sled 2 is pulled forward (Newton's third law), so those two forces cancel when we look at the whole system.\n\n**Pulley systems at rest.** If a block on a table is tied to a hanging object over a pulley, the hanging object's weight $m_{hang} g$ pulls the string. The block stays put as long as $m_{hang} g \\le \\mu_S m_{block} g$. At the largest hanging mass that does not move the block:\n\n$$\\mu_S = \\frac{m_{hang}}{m_{block}}$$"
+    },
+    {
+      "id": "static-causes-motion",
+      "title": "Static friction can cause motion",
+      "body": "It sounds strange, but **static friction is the force that pushes you forward when you walk or run**.\n\nWhen your foot is planted, the sole of your shoe is *at rest* relative to the ground (it is not sliding). You push **backward** on the ground – that is the action force. By Newton's third law, the ground pushes **forward** on your foot with an equal force – the reaction force. That forward reaction force is **static friction**.\n\nOn a horizontal surface, if friction is the only horizontal force, it *is* the net force:\n\n$$F_{net} = F_{S\\,max} \\quad\\Rightarrow\\quad ma_{max} = \\mu_S m g \\quad\\Rightarrow\\quad a_{max} = \\mu_S g$$\n\nNotice the mass cancels: the **maximum acceleration depends only on the coefficient of static friction** (and $g$). A light sprinter and a heavy sprinter wearing the same shoes on the same track have the same *maximum* possible acceleration.\n\n**Why sprinters don't want to slip.** Static friction is usually greater than kinetic friction ($\\mu_S > \\mu_K$). If your shoes slip, friction drops to the smaller kinetic value and your acceleration drops too. This is why sprinters push back with both feet, and why starting blocks help – they let the athlete push backward without slipping.\n\n**Pulling someone with static friction.** A person standing on rough ground can pull a friend on frictionless ice using a rope. The ground's static friction on the puller limits how hard they can pull without sliding: the maximum rope tension is $\\mu_S m_{puller} g$, so the skater's maximum acceleration is\n\n$$a_{skater} = \\frac{\\mu_S m_{puller} g}{m_{skater}}$$"
+    },
+    {
+      "id": "kinetic-friction-motion",
+      "title": "Kinetic friction and motion",
+      "body": "When an object **slides**, kinetic friction acts **opposite to the direction of motion** – not necessarily opposite to the applied force!\n\n**A common misconception** is that kinetic friction always *reduces* the net force. Consider a box sliding left:\n\n| Situation | Applied force | Kinetic friction | Net force |\n|---|---|---|---|\n| Person pushes **right** to stop it | right | right (opposite motion) | $F_a + F_K$ – large! |\n| Person pushes **left**, same way it is moving | left | right | $F_a - F_K$ – smaller |\n\nIn the first case friction *adds* to your push and helps stop the box quickly.\n\n**The kinetic friction routine**\n\n1. Draw the FBD; choose a positive direction (e.g., right and up positive).\n2. Vertical: $F_N = mg$ (if no other vertical forces). Then $F_K = \\mu_K F_N$.\n3. Horizontal: $\\vec{F}_{net} = \\vec{F}_a + \\vec{F}_K = m\\vec{a}$ – find $a$, keeping signs.\n4. Use kinematics to find what is asked:\n\n| If you know… | use |\n|---|---|\n| $v_1$, $v_2$, $a$, want $\\Delta d$ (no time) | $v_2^2 = v_1^2 + 2a\\Delta d$ |\n| $v_1$, $a$, $\\Delta t$, want $\\Delta d$ | $\\Delta d = v_1\\Delta t + \\tfrac{1}{2}a\\Delta t^2$ |\n| $v_1$, $a$, $\\Delta t$, want $v_2$ | $v_2 = v_1 + a\\Delta t$ |\n\n**Sliding to a stop with only friction.** If friction is the only horizontal force, $ma = -\\mu_K mg$, so $a = -\\mu_K g$ – again the mass cancels! A puck on rough ice slows down faster than on smooth ice, regardless of its mass.\n\n> **Carry extra digits.** Keep one or two extra digits in intermediate answers (like $a = 2.52$ m/s²) and round only the final answer."
+    },
+    {
+      "id": "connected-objects-kinetic",
+      "title": "Connected objects and pulleys with kinetic friction",
+      "body": "When objects are tied together and move together, they share the **same acceleration**.\n\n**Step 1 – the whole system.** Treat the objects as one: total mass $m_T$, total friction $\\mu_K m_T g$. Tension between objects is internal, so ignore it here:\n\n$$m_T a = F_a - \\mu_K m_T g$$\n\n**Step 2 – one object.** To find the tension, draw the FBD of the *last* object (the one being pulled by the rope only):\n\n$$m_2 a = F_T - \\mu_K m_2 g \\quad\\Rightarrow\\quad F_T = m_2 a + \\mu_K m_2 g$$\n\n**Pulley systems.** A block $m_1$ on a table is tied to a hanging object $m_2$. Think of the string as \"bending\" around the pulley so both objects move along one path. The hanging weight drives the motion; kinetic friction on the table block resists it:\n\n$$a = \\frac{m_2 g - \\mu_K m_1 g}{m_1 + m_2}$$\n\nThen find the tension from the hanging object's FBD (down positive):\n\n$$m_2 a = m_2 g - F_T \\quad\\Rightarrow\\quad F_T = m_2(g - a)$$\n\nNotice the tension is *less* than the hanging object's weight – if it were equal, the hanging object would not accelerate.\n\n**Check your answer:** the acceleration must be smaller than $g$, and the tension must be between zero and $m_2 g$. If the hanging weight is less than $\\mu_S m_1 g$ the system will not start moving at all!"
+    },
+    {
+      "id": "problem-solving-routine",
+      "title": "A reliable problem-solving routine (GRASS)",
+      "body": "Nearly every friction question can be solved with the same five steps.\n\n1. **Given** – list every quantity with units. Convert grams to kilograms.\n2. **Required** – what exactly are you finding? Magnitude only, or a vector with direction?\n3. **Analysis** – draw an FBD for the object (or system), choose positive directions, decide **static or kinetic**, and write the equations you will use.\n4. **Solution** – substitute and solve. Carry extra digits.\n5. **Statement** – answer the question in a sentence, with correct significant digits, units and direction.\n\n**Static or kinetic? A decision checklist**\n\n- Object at rest and staying at rest → static friction equals whatever is needed (up to $\\mu_S F_N$).\n- Object at rest, \"just about to move\" or \"largest force without moving\" → $F_{S\\,max} = \\mu_S F_N$.\n- Object sliding (speeding up, slowing down or constant velocity) → $F_K = \\mu_K F_N$.\n- A person walking/running or a rolling tire that does not skid → static friction from the ground.\n\n**Common traps**\n\n- Forgetting that an extra downward push (or an object placed on top) **increases** $F_N$ and therefore friction.\n- Forgetting that an upward pull **decreases** $F_N$ and therefore friction.\n- Using $\\mu_S$ when the object is already sliding.\n- Giving friction a direction opposite to the applied force instead of opposite to the **motion**."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "static friction",
+      "definition": "The friction force that acts on an object that is not sliding relative to a surface. It matches the applied force up to a maximum value."
+    },
+    {
+      "term": "maximum force of static friction (F_S max)",
+      "definition": "The largest static friction possible, F_S max = μ_S F_N; the force that must be overcome to start an object moving."
+    },
+    {
+      "term": "kinetic friction",
+      "definition": "The friction force exerted on a sliding object by a surface, always opposite to the direction of motion; F_K = μ_K F_N."
+    },
+    {
+      "term": "tension",
+      "definition": "The pulling force exerted by a rope, string or cable on the objects attached to it."
+    },
+    {
+      "term": "internal force",
+      "definition": "A force between parts of a system (like rope tension between two tied sleds); it cancels when the system is treated as one object."
+    },
+    {
+      "term": "system",
+      "definition": "A group of objects treated as one object with a total mass, when they move (or stay at rest) together."
+    },
+    {
+      "term": "action–reaction pair",
+      "definition": "Two forces of equal magnitude and opposite direction acting on two different objects (Newton's third law), such as your foot pushing the ground back and the ground pushing your foot forward."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Maximum static friction",
+      "latex": "F_{S\\,max} = \\mu_S F_N",
+      "meaning": "Largest friction before sliding starts."
+    },
+    {
+      "name": "Kinetic friction",
+      "latex": "F_K = \\mu_K F_N",
+      "meaning": "Friction on a sliding object; opposite to motion."
+    },
+    {
+      "name": "Normal force on a horizontal surface",
+      "latex": "F_N = mg",
+      "meaning": "Only when no other vertical forces act and there is no vertical acceleration."
+    },
+    {
+      "name": "Newton's second law",
+      "latex": "\\vec{F}_{net} = m\\vec{a}",
+      "meaning": "Sum of all forces (with signs) equals mass times acceleration."
+    },
+    {
+      "name": "Maximum acceleration from static friction",
+      "latex": "a_{max} = \\mu_S g",
+      "meaning": "When static friction is the only horizontal force (e.g., a runner starting)."
+    },
+    {
+      "name": "Deceleration from kinetic friction alone",
+      "latex": "a = -\\mu_K g",
+      "meaning": "A sliding object with no other horizontal force."
+    },
+    {
+      "name": "Pulley system acceleration",
+      "latex": "a = \\frac{m_2 g - \\mu_K m_1 g}{m_1 + m_2}",
+      "meaning": "m1 on a horizontal table, m2 hanging."
+    },
+    {
+      "name": "Kinematics (no time)",
+      "latex": "v_2^2 = v_1^2 + 2a\\Delta d",
+      "meaning": "Find stopping distance or final speed."
+    },
+    {
+      "name": "Kinematics (displacement)",
+      "latex": "\\Delta d = v_1\\Delta t + \\tfrac{1}{2}a\\Delta t^2",
+      "meaning": "Find distance travelled in a time interval."
+    },
+    {
+      "name": "Kinematics (velocity)",
+      "latex": "v_2 = v_1 + a\\Delta t",
+      "meaning": "Find final velocity or time."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Two sleds tied together (static friction)",
+      "problem": "Two sleds are tied together with a rope. The coefficient of static friction between each sled and the snow is 0.22. Sled 1 (with a small child) has a total mass of 27 kg and sled 2 (with a larger child) has a total mass of 38 kg. An adult pulls horizontally on sled 1.\n(a) What is the greatest horizontal force the adult can exert without moving either sled?\n(b) What is the magnitude of the tension in the rope at that moment?",
+      "steps": [
+        "**Given:** $m_1 = 27$ kg, $m_2 = 38$ kg, $\\mu_S = 0.22$. **Required:** (a) $F_a$ (b) $F_T$.",
+        "**Analysis (a):** Neither sled moves, so $F_{net} = 0$. Treat both sleds as one object: $m_T = 27 + 38 = 65$ kg. The largest applied force equals the total maximum static friction, $F_{S\\,max} = \\mu_S m_T g$.",
+        "**Solution (a):** $F_{S\\,max} = (0.22)(65\\text{ kg})(9.8\\text{ m/s}^2) = 140$ N.",
+        "**Analysis (b):** Draw the FBD of sled 2 alone. Only the rope pulls it forward and only static friction holds it back. Since sled 2 doesn't move, $F_T = F_{S\\,max,2} = \\mu_S m_2 g$.",
+        "**Solution (b):** $F_T = (0.22)(38\\text{ kg})(9.8\\text{ m/s}^2) = 82$ N."
+      ],
+      "answer": "**Statement:** (a) The adult can pull with up to 140 N [forward] without moving the sleds. (b) The tension in the rope is 82 N."
+    },
+    {
+      "title": "Static friction makes a runner accelerate",
+      "problem": "The coefficient of static friction between a 62 kg runner's shoes and the ground is 0.70. What is the maximum magnitude of the runner's acceleration starting from rest on a horizontal surface?",
+      "steps": [
+        "**Given:** $\\mu_S = 0.70$, $m = 62$ kg. **Required:** $a$.",
+        "**Analysis:** In the FBD, $F_N$ and $F_g$ cancel. The only horizontal force is static friction from the ground (the reaction to the runner pushing backward). So $F_{net} = F_{S\\,max} = \\mu_S mg$.",
+        "**Solution:** $F_{S\\,max} = (0.70)(62\\text{ kg})(9.8\\text{ m/s}^2) = 425.3$ N (two extra digits carried).",
+        "$a = \\dfrac{F_{net}}{m} = \\dfrac{425.3\\text{ N}}{62\\text{ kg}} = 6.9\\text{ m/s}^2$. (Shortcut: $a = \\mu_S g = 0.70 \\times 9.8 = 6.9$ m/s².)"
+      ],
+      "answer": "**Statement:** The runner's maximum acceleration is 6.9 m/s² [forward]."
+    },
+    {
+      "title": "Stopping a sliding box",
+      "problem": "A 250 kg box slides across a level floor ($\\mu_K = 0.20$) at 1.0 m/s [left]. A person pushes on it with a horizontal force of 140 N [right]. How far does the box travel before coming to rest?",
+      "steps": [
+        "**Given:** $m = 250$ kg, $\\mu_K = 0.20$, $\\vec{F}_a = 140$ N [right], $\\vec{v}_1 = 1.0$ m/s [left], $v_2 = 0$. Choose right as positive. **Required:** $\\Delta d$.",
+        "**Analysis:** The box moves left, so kinetic friction acts **right** – the same direction as the push. Find $F_K$, then $a$, then use $v_2^2 = v_1^2 + 2a\\Delta d$ (no time given).",
+        "**Solution:** $F_K = \\mu_K mg = (0.20)(250)(9.8) = 490$ N [right].",
+        "$ma = 140\\text{ N} + 490\\text{ N} = 630$ N, so $a = 630/250 = +2.52$ m/s² (one extra digit carried).",
+        "$\\Delta d = \\dfrac{v_2^2 - v_1^2}{2a} = \\dfrac{0 - (-1.0)^2}{2(2.52)} = -0.20$ m. The negative sign means the displacement is to the left."
+      ],
+      "answer": "**Statement:** The box moves 0.20 m [left] before stopping. If the person instead pushed in the direction of motion, friction and the push would be opposite, the net force smaller, and the box would travel farther."
+    },
+    {
+      "title": "Two sleds pulled across ice (kinetic friction and tension)",
+      "problem": "Two sleds tied together are pulled with a force of 150 N [E]. Sled 1 (in front) has mass 18.0 kg, sled 2 has mass 12.0 kg, and $\\mu_K = 0.20$ for each. Find (a) the acceleration and (b) the tension in the rope between them.",
+      "steps": [
+        "**Given:** $m_1 = 18.0$ kg, $m_2 = 12.0$ kg, $m_T = 30.0$ kg, $\\mu_K = 0.20$, $F_a = 150$ N [E]. East is positive.",
+        "**Analysis (a):** Treat both sleds as one object. Tension is internal and is ignored. $m_T a = F_a - \\mu_K m_T g$.",
+        "**Solution (a):** $F_K = (0.20)(30.0)(9.8) = 58.8$ N. $a = \\dfrac{150 - 58.8}{30.0} = 3.04$ m/s² → 3.0 m/s² [E].",
+        "**Analysis (b):** FBD of sled 2: the rope pulls east, friction acts west. $m_2 a = F_T - \\mu_K m_2 g$.",
+        "**Solution (b):** $F_T = (12.0)(3.04) + (0.20)(12.0)(9.8) = 36.5 + 23.5 = 60$ N."
+      ],
+      "answer": "**Statement:** (a) Both sleds accelerate at 3.0 m/s² [E]. (b) The tension in the rope is 60 N."
+    },
+    {
+      "title": "Block on a table pulled by a hanging object",
+      "problem": "A 3.2 kg block on a table is tied by a string over a pulley to a 1.5 kg hanging object. $\\mu_K = 0.30$ between the block and table. Find (a) the acceleration and (b) the tension.",
+      "steps": [
+        "**Given:** $m_1 = 3.2$ kg (table), $m_2 = 1.5$ kg (hanging), $\\mu_K = 0.30$. Positive is \"along the string\": right for the block, down for the hanging object.",
+        "**Analysis (a):** For the whole system, the driving force is the hanging weight and the resisting force is kinetic friction on the block: $(m_1+m_2)a = m_2 g - \\mu_K m_1 g$.",
+        "**Solution (a):** $m_2 g = 14.7$ N, $F_K = (0.30)(3.2)(9.8) = 9.41$ N. $a = \\dfrac{14.7 - 9.41}{4.7} = 1.13$ m/s² → 1.1 m/s².",
+        "**Analysis (b):** FBD of the hanging object (down positive): $m_2 a = m_2 g - F_T$.",
+        "**Solution (b):** $F_T = m_2(g - a) = (1.5)(9.8 - 1.13) = 13$ N."
+      ],
+      "answer": "**Statement:** The block accelerates at 1.1 m/s² [right] and the hanging object at 1.1 m/s² [down]; the tension is 13 N (less than the 14.7 N weight of the hanging object, as expected)."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Friction always acts opposite to the applied force.",
+      "fact": "Kinetic friction acts opposite to the direction of MOTION. If you push against a box sliding toward you, friction and your push point the same way."
+    },
+    {
+      "myth": "Kinetic friction always reduces the net force.",
+      "fact": "When the applied force opposes the motion (e.g., stopping a sliding box), friction adds to it and makes the net force larger."
+    },
+    {
+      "myth": "Static friction can only keep things still – it cannot make anything move.",
+      "fact": "Static friction from the ground is the forward force that accelerates walkers, runners and cars whose tires are not skidding."
+    },
+    {
+      "myth": "A heavier runner can accelerate faster because there is more friction.",
+      "fact": "More mass gives more friction but also more inertia. The maximum acceleration a = μ_S g does not depend on mass."
+    },
+    {
+      "myth": "If a push does not move a box, there is no friction acting.",
+      "fact": "Static friction is acting and is exactly equal and opposite to the push (as long as the push is less than μ_S F_N)."
+    },
+    {
+      "myth": "The tension in the string of a pulley system equals the weight of the hanging object.",
+      "fact": "Only if nothing accelerates. When the hanging object accelerates down, the tension is less than its weight: F_T = m(g − a)."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Starting blocks in sprinting",
+      "body": "Sprinters push backward against angled starting blocks. The blocks let them apply a large backward force without their shoes slipping, so they get the full benefit of static friction (and the blocks' push) for a fast start."
+    },
+    {
+      "title": "Trains and heavy loads",
+      "body": "A locomotive has to overcome the combined static friction of all the cars it pulls. Train engineers start gently and accelerate slowly so the locomotive's wheels do not spin – spinning wheels slide, and kinetic friction gives less forward force."
+    },
+    {
+      "title": "Ice quality in hockey",
+      "body": "Freshly resurfaced ice has a very low coefficient of kinetic friction (about 0.005), so passes travel far and fast. As the ice gets rough during a game, the coefficient rises and pucks slow down much sooner."
+    },
+    {
+      "title": "Moving furniture",
+      "body": "It takes a bigger shove to get a heavy desk started than to keep it sliding, because μ_S > μ_K. Once it is moving, keep it moving! Asking a friend to lift up slightly reduces the normal force and therefore the friction."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Two trunks sit side by side on the floor: a 52 kg trunk on the left and a 34 kg trunk on the right. A person pushes the larger trunk to the right. $\\mu_S = 0.35$. (a) What is the largest force that will not move either trunk? (b) What force does the larger trunk exert on the smaller one at that moment?",
+      "hint": "(a) Treat both trunks as one 86 kg object. (b) Draw the FBD of the smaller trunk – only the push from the larger trunk and static friction act horizontally.",
+      "solution": "(a) $F = \\mu_S m_T g = (0.35)(86)(9.8) = 290$ N. (b) $F = \\mu_S m_{small} g = (0.35)(34)(9.8) = 120$ N [right]."
+    },
+    {
+      "question": "A 4.0 kg block of wood on a table is tied to a string that runs over a pulley to a hanging object. The greatest hanging mass that does not move the block is 1.8 kg. Find $\\mu_S$.",
+      "hint": "At the limit, the hanging weight equals $F_{S\\,max}$ on the block.",
+      "solution": "$m_{hang} g = \\mu_S m_{block} g$, so $\\mu_S = 1.8/4.0 = 0.45$."
+    },
+    {
+      "question": "A 59 kg person wearing dress shoes ($\\mu_S = 0.52$) starts running. What is their maximum possible initial acceleration? Why is the mass not really needed?",
+      "hint": "Static friction is the net force.",
+      "solution": "$a = \\mu_S g = (0.52)(9.8) = 5.1$ m/s² [forward]. Mass cancels: $ma = \\mu_S mg$."
+    },
+    {
+      "question": "A 0.170 kg hockey puck moves at 21.2 m/s [W] on ice with $\\mu_K = 0.005$. What is its speed after 58.5 m?",
+      "hint": "$a = -\\mu_K g$, then $v_2^2 = v_1^2 + 2a\\Delta d$.",
+      "solution": "$a = -(0.005)(9.8) = -0.049$ m/s². $v_2^2 = 21.2^2 + 2(-0.049)(58.5) = 449.44 - 5.73 = 443.7$, so $v_2 = 21.1$ m/s."
+    },
+    {
+      "question": "A snowmobile (with rider, 320 kg) pulls two sleds (120 kg and 140 kg) across ice. The ground pushes the snowmobile forward with 1500 N. $\\mu_K = 0.15$ for the sleds; ignore friction on the snowmobile. Find the acceleration.",
+      "hint": "Total mass 580 kg; friction acts only on the two sleds (260 kg).",
+      "solution": "$F_K = (0.15)(260)(9.8) = 382$ N. $a = (1500 - 382)/580 = 1.9$ m/s² [forward]."
+    },
+    {
+      "question": "An electric motor pulls a 125 kg box with a cable tension of 350 N, and the box accelerates at 1.2 m/s² for 5.0 s. Find $\\mu_K$.",
+      "hint": "$ma = F_T - \\mu_K mg$.",
+      "solution": "$\\mu_K = \\dfrac{350 - (125)(1.2)}{(125)(9.8)} = \\dfrac{200}{1225} = 0.16$."
+    },
+    {
+      "question": "A 75 kg baseball player running at 2.8 m/s slides 3.8 m into home plate before stopping. Find $\\mu_K$.",
+      "hint": "Find the deceleration from kinematics, then $a = \\mu_K g$.",
+      "solution": "$a = \\dfrac{v_1^2}{2\\Delta d} = \\dfrac{2.8^2}{2(3.8)} = 1.03$ m/s². $\\mu_K = 1.03/9.8 = 0.11$."
+    },
+    {
+      "question": "A student holds a 0.80 kg book against a wall by pushing horizontally with 26 N. What is the minimum $\\mu_S$?",
+      "hint": "Here the normal force is the 26 N push, and static friction must hold up the book's weight.",
+      "solution": "$F_N = 26$ N; $F_{S\\,max} \\ge mg = 7.84$ N. $\\mu_S = 7.84/26 = 0.30$."
+    }
+  ],
+  "summary": [
+    "Static friction acts between an object and a surface when the object is not sliding; it matches the applied force up to μ_S F_N.",
+    "To move several connected objects you must overcome their combined maximum static friction; treat them as one object, then use one object's FBD to find internal forces.",
+    "Static friction can cause motion: the ground's static friction pushes walkers, runners and non-skidding tires forward (Newton's third law). Maximum acceleration is a = μ_S g.",
+    "Kinetic friction always acts opposite to the direction of motion, so it can add to or subtract from an applied force.",
+    "Connected objects moving together share one acceleration; in a pulley system a = (m2 g − μ_K m1 g)/(m1 + m2).",
+    "The kinematics equations can be combined with friction and Newton's laws to find stopping distances, speeds and times."
+  ],
+  "questions": [
+    {
+      "id": "4-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m1": {
+          "min": 20,
+          "max": 32,
+          "step": 1
+        },
+        "m2": {
+          "min": 33,
+          "max": 45,
+          "step": 1
+        },
+        "mu": {
+          "choices": [
+            0.18,
+            0.2,
+            0.22,
+            0.25
+          ]
+        }
+      },
+      "derived": {
+        "F": "mu*(m1+m2)*9.8",
+        "T": "mu*m2*9.8"
+      },
+      "text": "Two sleds are tied together with a rope on level snow. Sled 1 (with a child) has a total mass of {{m1}} kg and sled 2 has a total mass of {{m2}} kg. The coefficient of static friction between each sled and the snow is {{mu:2}}. An adult pulls horizontally on sled 1.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the greatest horizontal force the adult can exert without moving either sled.",
+          "answer": {
+            "expr": "F",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the magnitude of the tension in the rope between the sleds when the adult pulls with this force.",
+          "answer": {
+            "expr": "T",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the tension in the rope can be ignored in part (a)."
+        }
+      ],
+      "modelAnswer": "(a) Neither sled moves, so treat them as one object: $m_T = {{m1+m2}}$ kg. $F_{S\\,max} = \\mu_S m_T g = ({{mu:2}})({{m1+m2}})(9.8) = {{F:2}}$ N. The adult can pull with up to {{F:2}} N [forward].\n\n(b) FBD of sled 2: only the rope tension pulls it forward and static friction holds it back. $F_T = \\mu_S m_2 g = ({{mu:2}})({{m2}})(9.8) = {{T:2}}$ N.\n\n(c) Tension is an internal force. The rope pulls sled 2 forward and sled 1 backward with equal-magnitude forces (Newton's third law), so these cancel when both sleds are treated as one system.",
+      "rubric": [
+        {
+          "point": "Combines masses and recognises F_net = 0 so F_a = F_S max of the system",
+          "marks": 1
+        },
+        {
+          "point": "Correct F_S max = μ_S m_T g with units",
+          "marks": 1
+        },
+        {
+          "point": "Draws/describes FBD of sled 2 with F_T balanced by static friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct tension value",
+          "marks": 1
+        },
+        {
+          "point": "Explains tension as an internal force (third-law pair) that cancels for the system",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mA": {
+          "min": 45,
+          "max": 65,
+          "step": 1
+        },
+        "mB": {
+          "min": 25,
+          "max": 40,
+          "step": 1
+        },
+        "mu": {
+          "choices": [
+            0.3,
+            0.35,
+            0.4,
+            0.45
+          ]
+        }
+      },
+      "derived": {
+        "F": "mu*(mA+mB)*9.8",
+        "FB": "mu*mB*9.8",
+        "FA": "mu*mA*9.8"
+      },
+      "text": "Two trunks sit side by side on a floor. The larger trunk ({{mA}} kg) is to the left of the smaller trunk ({{mB}} kg). A person pushes horizontally on the larger trunk toward the right. The coefficient of static friction between each trunk and the floor is {{mu:2}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the magnitude of the maximum force the person can exert without moving either trunk.",
+          "answer": {
+            "expr": "F",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the force the larger trunk exerts on the smaller trunk at that moment.",
+          "answer": {
+            "expr": "FB",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "The person now pushes toward the left on the smaller trunk instead. Does the answer to (a) change? Calculate the new force between the trunks and explain.",
+          "answer": {
+            "expr": "FA",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Treat both trunks as one object, $m_T = {{mA+mB}}$ kg. $F = \\mu_S m_T g = ({{mu:2}})({{mA+mB}})(9.8) = {{F:2}}$ N.\n\n(b) FBD of the smaller trunk: the larger trunk pushes it right; static friction pushes left. At rest, $F_{AB} = \\mu_S m_B g = ({{mu:2}})({{mB}})(9.8) = {{FB:2}}$ N [right].\n\n(c) Part (a) does not change – the total mass and $\\mu_S$ are the same, so the maximum force is still {{F:2}} N. However, now the *larger* trunk is the one being pushed by the other trunk, so the contact force equals the larger trunk's maximum static friction: $\\mu_S m_A g = ({{mu:2}})({{mA}})(9.8) = {{FA:2}}$ N [left]. The contact force is bigger because it must hold back more mass.",
+      "rubric": [
+        {
+          "point": "System approach with total mass for (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum force",
+          "marks": 1
+        },
+        {
+          "point": "FBD of the far trunk; contact force balances its static friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct contact force in (b) with direction",
+          "marks": 1
+        },
+        {
+          "point": "States (a) unchanged with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct new contact force and explanation of why it is larger",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 3,
+          "max": 6,
+          "step": 0.2
+        },
+        "mu": {
+          "choices": [
+            0.3,
+            0.35,
+            0.4,
+            0.45,
+            0.5
+          ]
+        }
+      },
+      "derived": {
+        "mh": "mu*m"
+      },
+      "text": "A {{m:2}} kg block of wood sits on a horizontal table. A string tied to the block runs over a frictionless pulley at the edge of the table and down to a hanging object. Students find that the greatest mass that can be hung without moving the block is {{mh:2}} kg.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Draw (or describe) the FBD of the block and of the hanging object when the block is on the verge of moving."
+        },
+        {
+          "label": "b",
+          "text": "Calculate the coefficient of static friction between the block and the table.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the coefficient of static friction has no units."
+        }
+      ],
+      "modelAnswer": "(a) Block: $F_g$ down, $F_N$ up, tension toward the pulley, $F_{S\\,max}$ away from the pulley. Hanging object: $F_g$ down, tension up; the two forces are equal because it is at rest.\n\n(b) At rest, $F_T = m_{hang}g$ and $F_T = F_{S\\,max} = \\mu_S m_{block} g$. So $\\mu_S = \\dfrac{m_{hang}}{m_{block}} = \\dfrac{ {{mh:2}} }{ {{m:2}} } = {{mu:2}}$.\n\n(c) $\\mu = F_f / F_N$ is a ratio of two forces, both measured in newtons, so the units cancel.",
+      "rubric": [
+        {
+          "point": "Correct FBDs for both objects (four forces on block, two on hanging object)",
+          "marks": 2
+        },
+        {
+          "point": "Sets hanging weight equal to F_S max of the block",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Explains ratio of forces so units cancel",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 50,
+          "max": 90,
+          "step": 1
+        },
+        "mu": {
+          "choices": [
+            0.55,
+            0.6,
+            0.65,
+            0.7,
+            0.75,
+            0.8
+          ]
+        }
+      },
+      "derived": {
+        "F": "mu*m*9.8",
+        "a": "mu*9.8"
+      },
+      "text": "The coefficient of static friction between a {{m}} kg sprinter's shoes and a horizontal track is {{mu:2}}. The sprinter starts from rest without starting blocks.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the maximum force of static friction the track can exert on the sprinter.",
+          "answer": {
+            "expr": "F",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the maximum possible acceleration of the sprinter.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use Newton's third law to explain why it is static friction (not kinetic friction) that pushes the sprinter forward."
+        }
+      ],
+      "modelAnswer": "(a) $F_{S\\,max} = \\mu_S mg = ({{mu:2}})({{m}})(9.8) = {{F:2}}$ N.\n\n(b) $F_N$ and $F_g$ cancel; static friction is the net force. $a = F_{S\\,max}/m = {{a:2}}$ m/s² [forward] (or simply $a = \\mu_S g$).\n\n(c) The sprinter pushes backward on the track (action). The track pushes forward on the sprinter's foot with an equal and opposite force (reaction). Because the shoe does not slide relative to the track while it is planted, this reaction force is static friction. If the shoe slipped, friction would drop to the smaller kinetic value.",
+      "rubric": [
+        {
+          "point": "Correct F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Identifies static friction as the net force",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration with direction",
+          "marks": 1
+        },
+        {
+          "point": "Action–reaction pair described correctly",
+          "marks": 1
+        },
+        {
+          "point": "Explains shoe does not slide, so friction is static",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 50,
+          "max": 75,
+          "step": 1
+        },
+        "mu1": {
+          "choices": [
+            0.45,
+            0.5,
+            0.52,
+            0.55
+          ]
+        },
+        "mu2": {
+          "choices": [
+            0.62,
+            0.66,
+            0.7,
+            0.75
+          ]
+        }
+      },
+      "derived": {
+        "a1": "mu1*9.8",
+        "a2": "mu2*9.8",
+        "ratio": "mu1/mu2"
+      },
+      "text": "Two people start running from rest on the same floor. The first has a mass of {{m}} kg and wears dress shoes with a coefficient of static friction of {{mu1:2}}. The second wears running shoes with a coefficient of static friction of {{mu2:2}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the maximum possible initial acceleration of the person wearing dress shoes.",
+          "answer": {
+            "expr": "a1",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why we do not need the mass of either person to find the maximum initial acceleration."
+        },
+        {
+          "label": "c",
+          "text": "Determine the ratio of the two maximum accelerations (dress ÷ running) and compare it with the ratio of the coefficients.",
+          "answer": {
+            "expr": "ratio",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a_1 = \\mu_{S1} g = ({{mu1:2}})(9.8) = {{a1:2}}$ m/s² [forward].\n\n(b) $F_{net} = \\mu_S mg = ma$, so mass appears on both sides and cancels: $a = \\mu_S g$.\n\n(c) $a_2 = ({{mu2:2}})(9.8) = {{a2:2}}$ m/s². Ratio $= {{a1:3}} / {{a2:3}} = {{ratio:2}}$, which equals $\\,{{mu1:2}}/{{mu2:2}} = {{ratio:2}}$. The ratios are equal because acceleration is directly proportional to $\\mu_S$.",
+      "rubric": [
+        {
+          "point": "Correct a for dress shoes",
+          "marks": 1
+        },
+        {
+          "point": "Shows algebraically that mass cancels",
+          "marks": 2
+        },
+        {
+          "point": "Correct ratio",
+          "marks": 1
+        },
+        {
+          "point": "States ratios are equal and why (direct proportionality)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "ms": {
+          "min": 45,
+          "max": 65,
+          "step": 1
+        },
+        "mg": {
+          "min": 70,
+          "max": 90,
+          "step": 1
+        },
+        "mu": {
+          "choices": [
+            0.55,
+            0.6,
+            0.65,
+            0.7
+          ]
+        }
+      },
+      "derived": {
+        "T": "mu*mg*9.8",
+        "a": "T/ms"
+      },
+      "text": "A {{ms}} kg skater stands at rest on frictionless ice holding one end of a rope. A {{mg}} kg person stands on level ground just off the ice holding the other end. The coefficient of static friction between the ground and the off-ice person's shoes is {{mu:2}}. The person on the ground pulls the rope to accelerate the skater.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What limits how hard the off-ice person can pull? Calculate the maximum tension they can produce without sliding.",
+          "answer": {
+            "expr": "T",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the maximum possible acceleration of the skater.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) The rope pulls the off-ice person toward the ice. To stay at rest, static friction from the ground must balance the rope. The largest tension possible is $F_{S\\,max} = \\mu_S m g = ({{mu:2}})({{mg}})(9.8) = {{T:2}}$ N.\n\n(b) The only horizontal force on the skater is the tension: $a = \\dfrac{F_T}{m_s} = \\dfrac{ {{T:3}} }{ {{ms}} } = {{a:2}}$ m/s² [toward the off-ice person].",
+      "rubric": [
+        {
+          "point": "Identifies static friction on the off-ice person as the limit",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum tension",
+          "marks": 1
+        },
+        {
+          "point": "Uses tension as net force on the skater",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration with direction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 150,
+          "max": 300,
+          "step": 10
+        },
+        "mu": {
+          "choices": [
+            0.2,
+            0.22,
+            0.25,
+            0.28
+          ]
+        },
+        "Fa": {
+          "min": 100,
+          "max": 200,
+          "step": 10
+        },
+        "v": {
+          "choices": [
+            0.8,
+            1,
+            1.2,
+            1.5
+          ]
+        }
+      },
+      "derived": {
+        "FK": "mu*m*9.8",
+        "a1": "(Fa+FK)/m",
+        "d1": "v^2/(2*a1)",
+        "a2": "(FK-Fa)/m",
+        "d2": "v^2/(2*a2)"
+      },
+      "text": "A {{m}} kg box slides across a level floor. The coefficient of kinetic friction is {{mu:2}}. A person sees the box moving at {{v}} m/s [left] and pushes it with a horizontal force of {{Fa}} N [right].",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the force of kinetic friction acting on the box and state its direction.",
+          "answer": {
+            "expr": "FK",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How far does the box travel before coming to rest?",
+          "answer": {
+            "expr": "d1",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Now suppose the box is moving right at the same speed and the person still pushes right with the same force. How far does it travel before stopping?",
+          "answer": {
+            "expr": "d2",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Use your answers to explain the misconception that \"kinetic friction always reduces the net force\"."
+        }
+      ],
+      "modelAnswer": "Choose right as positive.\n\n(a) $F_K = \\mu_K mg = ({{mu:2}})({{m}})(9.8) = {{FK:2}}$ N, directed **right** (opposite to the motion, which is left).\n\n(b) Both forces act right: $a = \\dfrac{ {{Fa}} + {{FK:3}} }{ {{m}} } = {{a1:3}}$ m/s². Using $v_2^2 = v_1^2 + 2a\\Delta d$ with $v_2 = 0$: $\\Delta d = \\dfrac{v_1^2}{2a} = \\dfrac{ {{v}}^2 }{2({{a1:3}})} = {{d1:2}}$ m.\n\n(c) Now friction acts left and the push acts right: $|a| = \\dfrac{ {{FK:3}} - {{Fa}} }{ {{m}} } = {{a2:3}}$ m/s² (left, slowing the box). $\\Delta d = \\dfrac{ {{v}}^2 }{2({{a2:3}})} = {{d2:2}}$ m.\n\n(d) In (b) friction and the push point the same way, so friction *increases* the net force and the box stops quickly. Friction only reduces the net force when it opposes the applied force. Kinetic friction always opposes the **motion**, not necessarily the applied force.",
+      "rubric": [
+        {
+          "point": "Correct F_K and direction opposite to motion",
+          "marks": 1
+        },
+        {
+          "point": "Net force = F_a + F_K and correct acceleration in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct kinematics equation and distance in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Net force = F_K − F_a and correct acceleration in (c)",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance in (c)",
+          "marks": 1
+        },
+        {
+          "point": "Clear explanation of the misconception",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m1": {
+          "min": 15,
+          "max": 22,
+          "step": 1
+        },
+        "m2": {
+          "min": 8,
+          "max": 14,
+          "step": 1
+        },
+        "mu": {
+          "choices": [
+            0.15,
+            0.18,
+            0.2,
+            0.25
+          ]
+        },
+        "F": {
+          "min": 120,
+          "max": 180,
+          "step": 10
+        }
+      },
+      "derived": {
+        "M": "m1+m2",
+        "a": "(F-mu*M*9.8)/M",
+        "T": "m2*a+mu*m2*9.8"
+      },
+      "text": "Two sleds tied together are pulled across a snowy surface by a horizontal force of {{F}} N [E] applied to sled 1. Sled 1 has a mass of {{m1}} kg and sled 2 (behind it) has a mass of {{m2}} kg. The coefficient of kinetic friction for each sled is {{mu:2}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the acceleration of the sleds.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the magnitude of the tension in the rope between the sleds.",
+          "answer": {
+            "expr": "T",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the tension is less than the applied force."
+        }
+      ],
+      "modelAnswer": "East is positive.\n\n(a) System: $m_T = {{M}}$ kg. $F_K = \\mu_K m_T g = ({{mu:2}})({{M}})(9.8) = {{mu*M*9.8:3}}$ N. $a = \\dfrac{ {{F}} - {{mu*M*9.8:3}} }{ {{M}} } = {{a:2}}$ m/s² [E].\n\n(b) FBD of sled 2: $m_2 a = F_T - \\mu_K m_2 g$, so $F_T = ({{m2}})({{a:3}}) + ({{mu:2}})({{m2}})(9.8) = {{T:2}}$ N.\n\n(c) The rope only has to accelerate sled 2 and overcome sled 2's friction. The applied force must do that for *both* sleds, so it is larger. (In fact $F_T = F_a \\times m_2/m_T$.)",
+      "rubric": [
+        {
+          "point": "Treats sleds as one system with total friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration with direction",
+          "marks": 1
+        },
+        {
+          "point": "Correct FBD/equation for sled 2",
+          "marks": 1
+        },
+        {
+          "point": "Correct tension",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable explanation for F_T < F_a",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v1": {
+          "min": 18,
+          "max": 25,
+          "step": 0.5
+        },
+        "mu1": {
+          "choices": [
+            0.005,
+            0.006,
+            0.008
+          ]
+        },
+        "d": {
+          "min": 40,
+          "max": 70,
+          "step": 5
+        },
+        "mu2": {
+          "choices": [
+            0.04,
+            0.045,
+            0.05
+          ]
+        }
+      },
+      "derived": {
+        "v2": "sqrt(v1^2-2*mu1*9.8*d)",
+        "d2": "d*mu1/mu2"
+      },
+      "text": "A 0.170 kg hockey puck is moving at {{v1:3}} m/s [W] along smooth ice. The coefficient of kinetic friction between the puck and the ice is {{mu1:1}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the speed of the puck after it has travelled {{d}} m?",
+          "answer": {
+            "expr": "v2",
+            "unit": "m/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Later in the game the ice becomes rougher and the coefficient of kinetic friction rises to {{mu2:2}}. How far would the puck travel for the same initial and final speeds?",
+          "answer": {
+            "expr": "d2",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the mass of the puck was not needed."
+        }
+      ],
+      "modelAnswer": "East is positive (puck moves west, so $v_1 = -{{v1:3}}$ m/s and friction acts east).\n\n(a) Only friction acts horizontally: $a = \\mu_K g = ({{mu1:1}})(9.8) = {{mu1*9.8:3}}$ m/s² [E] – it opposes the motion. $v_2^2 = v_1^2 + 2a\\Delta d$ with $\\Delta d$ west: $v_2^2 = {{v1:3}}^2 - 2({{mu1*9.8:3}})({{d}})$, so $v_2 = {{v2:3}}$ m/s.\n\n(b) $\\Delta d = \\dfrac{v_1^2 - v_2^2}{2\\mu_K g}$. The speed change is the same, so $\\Delta d$ is inversely proportional to $\\mu_K$: $\\Delta d = {{d}} \\times \\dfrac{ {{mu1:1}} }{ {{mu2:2}} } = {{d2:3}}$ m.\n\n(c) $ma = \\mu_K mg$ – mass cancels, so the deceleration $\\mu_K g$ is the same for any puck.",
+      "rubric": [
+        {
+          "point": "Finds deceleration a = μ_K g opposite to motion",
+          "marks": 1
+        },
+        {
+          "point": "Correct kinematics equation and final speed",
+          "marks": 2
+        },
+        {
+          "point": "Correct distance on rougher ice",
+          "marks": 2
+        },
+        {
+          "point": "Explains mass cancellation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "ms": {
+          "min": 280,
+          "max": 360,
+          "step": 10
+        },
+        "m2": {
+          "min": 100,
+          "max": 140,
+          "step": 10
+        },
+        "m3": {
+          "min": 100,
+          "max": 160,
+          "step": 10
+        },
+        "F": {
+          "min": 1300,
+          "max": 1700,
+          "step": 100
+        },
+        "mu": {
+          "choices": [
+            0.12,
+            0.15,
+            0.18
+          ]
+        }
+      },
+      "derived": {
+        "M": "ms+m2+m3",
+        "a": "(F-mu*(m2+m3)*9.8)/M",
+        "T2": "m3*(a+mu*9.8)",
+        "T1": "(m2+m3)*(a+mu*9.8)"
+      },
+      "text": "A snowmobile is used to pull two sleds in a line across ice. The mass of the snowmobile and rider is {{ms}} kg, the first sled (right behind the snowmobile) is {{m2}} kg and the second sled is {{m3}} kg. The ground exerts a force of {{F}} N [forward] on the snowmobile. The coefficient of kinetic friction for the sleds on ice is {{mu:2}}. Assume no other friction acts on the snowmobile.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the acceleration of the snowmobile and sleds.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the tension in the rope between the snowmobile and the first sled.",
+          "answer": {
+            "expr": "T1",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the tension in the rope between the two sleds.",
+          "answer": {
+            "expr": "T2",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Forward is positive.\n\n(a) System mass $m_T = {{M}}$ kg. Friction acts only on the sleds: $F_K = ({{mu:2}})({{m2+m3}})(9.8) = {{mu*(m2+m3)*9.8:3}}$ N. $a = \\dfrac{ {{F}} - {{mu*(m2+m3)*9.8:3}} }{ {{M}} } = {{a:2}}$ m/s² [forward].\n\n(b) Treat both sleds as one object pulled by the first rope: $F_{T1} - \\mu_K(m_2+m_3)g = (m_2+m_3)a$, so $F_{T1} = ({{m2+m3}})({{a:3}} + {{mu*9.8:3}}) = {{T1:2}}$ N.\n\n(c) FBD of the second sled: $F_{T2} = m_3(a + \\mu_K g) = ({{m3}})({{a:3}} + {{mu*9.8:3}}) = {{T2:2}}$ N. It is smaller than $F_{T1}$ because it pulls less mass.",
+      "rubric": [
+        {
+          "point": "Uses total mass and friction on sleds only",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct system choice for first rope",
+          "marks": 1
+        },
+        {
+          "point": "Correct first tension",
+          "marks": 1
+        },
+        {
+          "point": "Correct FBD and second tension",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m1": {
+          "min": 3,
+          "max": 4,
+          "step": 0.1
+        },
+        "m2": {
+          "min": 1.4,
+          "max": 2,
+          "step": 0.1
+        },
+        "mu": {
+          "choices": [
+            0.2,
+            0.25,
+            0.3
+          ]
+        },
+        "v1": {
+          "choices": [
+            0.8,
+            1,
+            1.3,
+            1.5
+          ]
+        },
+        "t": {
+          "choices": [
+            1,
+            1.2,
+            1.5
+          ]
+        }
+      },
+      "derived": {
+        "a": "(m2*9.8-mu*m1*9.8)/(m1+m2)",
+        "T": "m2*(9.8-a)",
+        "d": "v1*t+0.5*a*t^2"
+      },
+      "text": "A string is tied to a {{m1:2}} kg object on a horizontal table and runs over a pulley to a {{m2:2}} kg hanging object. The coefficient of kinetic friction between the {{m1:2}} kg object and the table is {{mu:2}}. The objects are already moving, with the table object moving toward the pulley (right).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the acceleration of each object.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the magnitude of the tension in the string.",
+          "answer": {
+            "expr": "T",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "How far will the objects move in {{t:2}} s if the initial velocity of the table object is {{v1}} m/s [right]?",
+          "answer": {
+            "expr": "d",
+            "unit": "m",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Positive direction follows the string: right for the table object, down for the hanging object.\n\n(a) Driving force $m_2 g = {{m2*9.8:3}}$ N; friction $\\mu_K m_1 g = {{mu*m1*9.8:3}}$ N. $a = \\dfrac{ {{m2*9.8:3}} - {{mu*m1*9.8:3}} }{ {{m1+m2}} } = {{a:2}}$ m/s². The table object accelerates at {{a:2}} m/s² [right] and the hanging object at {{a:2}} m/s² [down].\n\n(b) Hanging object (down positive): $m_2 a = m_2 g - F_T \\Rightarrow F_T = ({{m2:2}})(9.8 - {{a:3}}) = {{T:2}}$ N.\n\n(c) $\\Delta d = v_1 \\Delta t + \\tfrac{1}{2}a\\Delta t^2 = ({{v1}})({{t:2}}) + \\tfrac{1}{2}({{a:3}})({{t:2}})^2 = {{d:2}}$ m.",
+      "rubric": [
+        {
+          "point": "Correct FBDs / identifies driving force and friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct system equation and acceleration (both objects, with directions)",
+          "marks": 2
+        },
+        {
+          "point": "Correct tension from one object's FBD",
+          "marks": 1
+        },
+        {
+          "point": "Correct kinematics and distance",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 110,
+          "max": 140,
+          "step": 5
+        },
+        "T": {
+          "min": 320,
+          "max": 400,
+          "step": 10
+        },
+        "a": {
+          "min": 1,
+          "max": 1.4,
+          "step": 0.1
+        },
+        "t": {
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "derived": {
+        "mu": "(T-m*a)/(m*9.8)",
+        "d1": "0.5*a*t^2",
+        "v": "a*t",
+        "d2": "v^2/(2*mu*9.8)"
+      },
+      "text": "An electric motor pulls a {{m}} kg box across a level floor using a long cable. The tension in the cable is {{T}} N and the box accelerates from rest at {{a:2}} m/s² [forward] for {{t:2}} s. Then the cable breaks and the box slides to a stop.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficient of kinetic friction.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How far does the box travel up to the moment the cable breaks?",
+          "answer": {
+            "expr": "d1",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "How far does the box travel from the moment the cable breaks until it stops?",
+          "answer": {
+            "expr": "d2",
+            "unit": "m",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $ma = F_T - \\mu_K mg \\Rightarrow \\mu_K = \\dfrac{F_T - ma}{mg} = \\dfrac{ {{T}} - ({{m}})({{a:2}}) }{({{m}})(9.8)} = {{mu:2}}$.\n\n(b) From rest: $\\Delta d = \\tfrac{1}{2}a\\Delta t^2 = \\tfrac{1}{2}({{a:2}})({{t:2}})^2 = {{d1:2}}$ m.\n\n(c) Speed when the cable breaks: $v = a\\Delta t = {{v:3}}$ m/s. Afterwards only friction acts: deceleration $= \\mu_K g = {{mu*9.8:3}}$ m/s². $\\Delta d = \\dfrac{v^2}{2\\mu_K g} = \\dfrac{ ({{v:3}})^2 }{2({{mu*9.8:3}})} = {{d2:2}}$ m.",
+      "rubric": [
+        {
+          "point": "Correct Newton's second law equation with friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_K",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance before break",
+          "marks": 1
+        },
+        {
+          "point": "Finds speed at break",
+          "marks": 1
+        },
+        {
+          "point": "Uses friction-only deceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct stopping distance",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "M": {
+          "min": 200,
+          "max": 300,
+          "step": 10
+        },
+        "muB": {
+          "choices": [
+            0.5,
+            0.55,
+            0.6
+          ]
+        },
+        "ms": {
+          "min": 55,
+          "max": 75,
+          "step": 1
+        },
+        "muS": {
+          "choices": [
+            0.65,
+            0.7,
+            0.72,
+            0.8
+          ]
+        }
+      },
+      "derived": {
+        "Fs": "muS*ms*9.8",
+        "Fb": "muB*M*9.8"
+      },
+      "text": "During fundraising week, students run a \"test of strength\". Contestants pay $1 to try to push a large box of books across the floor; if they move it they win $10. The box has a mass of {{M}} kg and a coefficient of static friction of {{muB:2}} with the floor. One contestant has a mass of {{ms}} kg, and the coefficient of static friction for his shoes on the floor is {{muS:2}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the maximum force of static friction acting on the student.",
+          "answer": {
+            "expr": "Fs",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the maximum force of static friction acting on the box.",
+          "answer": {
+            "expr": "Fb",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Is the competition fair? Explain your reasoning using Newton's third law."
+        }
+      ],
+      "modelAnswer": "(a) $F_{S\\,max} = ({{muS:2}})({{ms}})(9.8) = {{Fs:2}}$ N.\n\n(b) $F_{S\\,max} = ({{muB:2}})({{M}})(9.8) = {{Fb:2}}$ N.\n\n(c) When the student pushes the box, the box pushes back on the student with an equal force (third law). To stay planted, the student's shoes must supply that much static friction from the floor. The student can push horizontally with at most {{Fs:2}} N before his feet slip, but the box needs more than {{Fb:2}} N to start moving. Pushing horizontally, he cannot win, so the competition is not fair (unless contestants are allowed to brace against something or push in another way).",
+      "rubric": [
+        {
+          "point": "Correct friction on student",
+          "marks": 1
+        },
+        {
+          "point": "Correct friction on box",
+          "marks": 1
+        },
+        {
+          "point": "Uses third law to link push on box to friction needed on student",
+          "marks": 2
+        },
+        {
+          "point": "Sound conclusion comparing the two values",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "m1": {
+          "min": 50,
+          "max": 65,
+          "step": 1
+        },
+        "m2": {
+          "min": 70,
+          "max": 85,
+          "step": 1
+        }
+      },
+      "derived": {
+        "mu": "m2/m1"
+      },
+      "text": "In an action movie, an actor ({{m1}} kg) lies on a horizontal ice shelf holding a rope. The rope hangs over the edge of a cliff to a second actor ({{m2}} kg) hanging in midair. Neither actor can hold onto anything else, yet in the scene neither one moves.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the minimum coefficient of static friction between the first actor and the ice for this scene to be possible.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Is your answer reasonable for a surface of ice? Explain using typical values."
+        },
+        {
+          "label": "c",
+          "text": "Suggest what the director could change to make the scene more realistic, and explain the physics."
+        }
+      ],
+      "modelAnswer": "(a) Hanging actor at rest: $F_T = m_2 g$. Actor on ice at rest: $F_T = F_{S\\,max} = \\mu_S m_1 g$. So $\\mu_S = m_2/m_1 = {{m2}}/{{m1}} = {{mu:2}}$.\n\n(b) No. The coefficient of static friction for ice is typically about 0.1 or less (e.g., rubber or steel on ice), and here a value greater than 1 would be required. The actor would slide off the shelf.\n\n(c) Possible changes: make the hanging actor much lighter than the actor on the ice (reduces the tension needed); have the actor on the ice dig in with spikes or an ice axe (a much larger effective friction); or place the actor on rough rock or snow instead of ice. Each change either reduces the force pulling the actor or increases the maximum static friction available.",
+      "rubric": [
+        {
+          "point": "Equates tension to hanging weight and to F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Compares with realistic ice values and concludes unreasonable",
+          "marks": 1
+        },
+        {
+          "point": "Suggests a realistic change with correct physics reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m1": {
+          "min": 4,
+          "max": 6,
+          "step": 0.5
+        },
+        "m2": {
+          "min": 2,
+          "max": 3.5,
+          "step": 0.5
+        },
+        "mu": {
+          "choices": [
+            0.35,
+            0.4,
+            0.45
+          ]
+        },
+        "Fd": {
+          "min": 10,
+          "max": 20,
+          "step": 1
+        }
+      },
+      "derived": {
+        "F": "mu*(m1+m2)*9.8",
+        "T": "mu*m2*9.8",
+        "F2": "mu*((m1+m2)*9.8+Fd)",
+        "T2": "mu*(m2*9.8+Fd)"
+      },
+      "text": "In a static-friction experiment, two objects made of the same material are tied together with a string on a horizontal surface. The first object has a mass of {{m1:2}} kg and the second {{m2:2}} kg. Students pull on the first object and measure the maximum force of static friction for both objects together as {{F:3}} N.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficient of static friction.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the magnitude of the tension in the string when they are about to move?",
+          "answer": {
+            "expr": "T",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "A student now pushes down on the {{m2:2}} kg object with a force of {{Fd}} N [down]. Calculate the new maximum force of static friction on the pair.",
+          "answer": {
+            "expr": "F2",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Calculate the new tension and explain whether your answers to (c) would change if the student pushed down on the {{m1:2}} kg object instead.",
+          "answer": {
+            "expr": "T2",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\mu_S = \\dfrac{F_{S\\,max}}{(m_1+m_2)g} = \\dfrac{ {{F:3}} }{({{m1+m2}})(9.8)} = {{mu:2}}$.\n\n(b) FBD of the second object: $F_T = \\mu_S m_2 g = ({{mu:2}})({{m2:2}})(9.8) = {{T:2}}$ N.\n\n(c) The downward push increases the normal force on the second object: total $F_N = ({{m1+m2}})(9.8) + {{Fd}} = {{(m1+m2)*9.8+Fd:3}}$ N. $F_{S\\,max} = ({{mu:2}})({{(m1+m2)*9.8+Fd:3}}) = {{F2:2}}$ N.\n\n(d) For the second object $F_N = ({{m2:2}})(9.8) + {{Fd}}$ N, so $F_T = \\mu_S F_N = {{T2:2}}$ N. If the push were on the first object instead, the total maximum static friction would be the same ({{F2:2}} N), but the tension would return to {{T:2}} N because the second object's normal force would no longer be increased.",
+      "rubric": [
+        {
+          "point": "Correct μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Correct tension using FBD of second object",
+          "marks": 1
+        },
+        {
+          "point": "Recognises downward push increases F_N; correct new F_S max",
+          "marks": 2
+        },
+        {
+          "point": "Correct new tension",
+          "marks": 1
+        },
+        {
+          "point": "Correct reasoning for pushing on the other object",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 0.6,
+          "max": 1.2,
+          "step": 0.1
+        },
+        "F": {
+          "min": 20,
+          "max": 35,
+          "step": 1
+        }
+      },
+      "derived": {
+        "mu": "m*9.8/F"
+      },
+      "text": "A student holds a {{m}} kg book against a vertical wall by pushing on it horizontally toward the wall with a force of {{F}} N [R]. The book does not move.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Draw (or describe) the FBD of the book."
+        },
+        {
+          "label": "b",
+          "text": "Calculate the minimum coefficient of static friction between the book and the wall.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe two ways the student could make the book accelerate down without changing the applied force. Explain each."
+        }
+      ],
+      "modelAnswer": "(a) Applied force {{F}} N [R] toward the wall, normal force from the wall [L], gravity down, static friction up.\n\n(b) Horizontally: $F_N = F_a = {{F}}$ N. Vertically: static friction must balance gravity, $F_S = mg = {{m*9.8:3}}$ N. Minimum $\\mu_S = \\dfrac{mg}{F_N} = \\dfrac{ {{m*9.8:3}} }{ {{F}} } = {{mu:2}}$.\n\n(c) (i) Add mass to the book (e.g., place another object on it or tape something to it) – gravity increases but the maximum static friction ($\\mu_S F_N$) does not, so the book slides down. (ii) Reduce the coefficient of friction, e.g., put a slippery sheet or a lubricant between the book and the wall – $F_{S\\,max}$ decreases below $mg$.",
+      "rubric": [
+        {
+          "point": "Correct FBD with four forces and friction up",
+          "marks": 1
+        },
+        {
+          "point": "Recognises F_N equals the applied push",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Two valid methods with correct reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q17",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "M": {
+          "min": 3,
+          "max": 5,
+          "step": 0.2
+        },
+        "muS": {
+          "choices": [
+            0.4,
+            0.42,
+            0.45
+          ]
+        },
+        "muK": {
+          "choices": [
+            0.3,
+            0.32,
+            0.34
+          ]
+        },
+        "mb": {
+          "choices": [
+            0.1,
+            0.12,
+            0.15
+          ]
+        }
+      },
+      "derived": {
+        "FS": "muS*M*9.8",
+        "n": "round((muS*M-mb)/0.02-0.5+1e-9)",
+        "mh": "mb+(n+1)*0.02",
+        "a": "(mh*9.8-muK*M*9.8)/(M+mh)"
+      },
+      "text": "A string is tied to a {{M:2}} kg block on a table and runs over a pulley to a {{mb*1000}} g bucket. Students add 20 g washers to the bucket one at a time. The coefficient of static friction between the block and table is {{muS:2}} and the coefficient of kinetic friction is {{muK:2}} (the students do not know these values).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the maximum force of static friction on the block.",
+          "answer": {
+            "expr": "FS",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many washers can the students add without moving the block?",
+          "answer": {
+            "expr": "n",
+            "unit": "washers",
+            "sig": 0,
+            "tol": 0.001
+          }
+        },
+        {
+          "label": "c",
+          "text": "Will this method give an accurate value for the coefficient of static friction? Explain your reasoning."
+        },
+        {
+          "label": "d",
+          "text": "Calculate the acceleration of the block when the next washer is added and the objects start to move.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $F_{S\\,max} = \\mu_S Mg = ({{muS:2}})({{M:2}})(9.8) = {{FS:3}}$ N.\n\n(b) The hanging mass may be at most $F_{S\\,max}/g = \\mu_S M = {{muS*M:3}}$ kg. The washers can add at most $\\,{{muS*M:3}} - {{mb:2}} = {{muS*M-mb:3}}$ kg, i.e., $\\,{{muS*M-mb:3}}/0.020 = {{(muS*M-mb)/0.02:3}}$ washers. Only whole washers count, so {{n}} washers.\n\n(c) Not perfectly. Each washer adds 0.20 N, so the students only know the hanging weight to within one washer – the true $F_{S\\,max}$ lies somewhere between the last \"no motion\" weight and the first \"motion\" weight. Friction in the pulley and uneven surfaces also add error. Using smaller increments and repeating trials would improve accuracy.\n\n(d) Hanging mass with the next washer: $m_h = {{mh:3}}$ kg. Now kinetic friction acts: $a = \\dfrac{m_h g - \\mu_K Mg}{M + m_h} = \\dfrac{ {{mh*9.8:3}} - {{muK*M*9.8:3}} }{ {{M+mh:3}} } = {{a:2}}$ m/s².",
+      "rubric": [
+        {
+          "point": "Correct F_S max",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum hanging mass reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Correct whole number of washers",
+          "marks": 1
+        },
+        {
+          "point": "Discusses resolution of washer steps / pulley friction as limits on accuracy",
+          "marks": 1
+        },
+        {
+          "point": "Uses kinetic friction and correct hanging mass in (d)",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            5,
+            6,
+            7
+          ]
+        },
+        "m": {
+          "min": 60,
+          "max": 75,
+          "step": 1
+        },
+        "F1": {
+          "min": 2.9,
+          "max": 3.4,
+          "step": 0.1
+        },
+        "dF": {
+          "choices": [
+            0.2,
+            0.3,
+            0.4
+          ]
+        }
+      },
+      "derived": {
+        "F2": "F1-dF",
+        "muS": "F1*1000/(n*m*9.8)",
+        "muK": "F2*1000/(n*m*9.8)"
+      },
+      "text": "In a tug-of-war on a firm, horizontal sandy beach, team A has {{n}} players with an average mass of {{m}} kg. Team B pulls with a force of {{F1:2}} kN and just dislodges team A, then reduces its force to {{F2:2}} kN to pull team A across the sand at a constant velocity.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine team A's coefficient of static friction.",
+          "answer": {
+            "expr": "muS",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine team A's coefficient of kinetic friction.",
+          "answer": {
+            "expr": "muK",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why team B can pull with less force once team A starts sliding."
+        }
+      ],
+      "modelAnswer": "Team A's total mass $= {{n}} \\times {{m}} = {{n*m}}$ kg, so $F_N = ({{n*m}})(9.8) = {{n*m*9.8:3}}$ N.\n\n(a) Just dislodged: $F_{S\\,max} = {{F1*1000}}$ N. $\\mu_S = {{F1*1000}}/{{n*m*9.8:3}} = {{muS:2}}$.\n\n(b) Constant velocity means $F_{net} = 0$, so $F_K = {{F2*1000:3}}$ N. $\\mu_K = {{F2*1000:3}}/{{n*m*9.8:3}} = {{muK:2}}$.\n\n(c) Once team A slides, kinetic friction acts instead of static friction, and $\\mu_K < \\mu_S$. To keep them moving at constant velocity, team B only has to balance the smaller kinetic friction.",
+      "rubric": [
+        {
+          "point": "Correct total normal force",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_S",
+          "marks": 1
+        },
+        {
+          "point": "Uses constant velocity → F_net = 0 for kinetic",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_K",
+          "marks": 1
+        },
+        {
+          "point": "Explains static vs kinetic friction difference",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 220,
+          "max": 300,
+          "step": 10
+        },
+        "F1": {
+          "min": 250,
+          "max": 320,
+          "step": 10
+        },
+        "F2": {
+          "min": 300,
+          "max": 380,
+          "step": 10
+        },
+        "a": {
+          "choices": [
+            0.2,
+            0.25,
+            0.3,
+            0.35
+          ]
+        },
+        "t": {
+          "min": 4,
+          "max": 7,
+          "step": 0.2
+        }
+      },
+      "derived": {
+        "mu": "(F1+F2-m*a)/(m*9.8)",
+        "v": "a*t",
+        "ts": "a*t/(mu*9.8)"
+      },
+      "text": "Two students push a {{m}} kg piano across a level floor. Kathy pushes with {{F1}} N [forward] and Matt pushes with {{F2}} N [forward]. The piano accelerates at {{a:2}} m/s² [forward].",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the coefficient of kinetic friction.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "They push for {{t:2}} s starting from rest and then let go. How long does it take the piano to stop after they let go?",
+          "answer": {
+            "expr": "ts",
+            "unit": "s",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $ma = F_1 + F_2 - \\mu_K mg \\Rightarrow \\mu_K = \\dfrac{ {{F1+F2}} - ({{m}})({{a:2}}) }{({{m}})(9.8)} = {{mu:2}}$.\n\n(b) Speed after pushing: $v = a\\Delta t = ({{a:2}})({{t:2}}) = {{v:3}}$ m/s. After letting go only friction acts, deceleration $= \\mu_K g = {{mu*9.8:3}}$ m/s². Using $v_2 = v_1 + a\\Delta t$ with $v_2 = 0$: $\\Delta t = \\dfrac{ {{v:3}} }{ {{mu*9.8:3}} } = {{ts:2}}$ s.",
+      "rubric": [
+        {
+          "point": "Adds the two applied forces and sets up Newton's second law",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_K",
+          "marks": 1
+        },
+        {
+          "point": "Correct speed at release",
+          "marks": 1
+        },
+        {
+          "point": "Uses friction-only deceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct stopping time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 55,
+          "max": 80,
+          "step": 1
+        },
+        "Fw": {
+          "min": 40,
+          "max": 80,
+          "step": 2
+        },
+        "F": {
+          "min": 220,
+          "max": 300,
+          "step": 10
+        },
+        "t": {
+          "choices": [
+            1.5,
+            2,
+            2.5
+          ]
+        }
+      },
+      "derived": {
+        "a": "(F-Fw)/m",
+        "d": "0.5*a*t^2",
+        "mu": "F/(m*9.8)"
+      },
+      "text": "A {{m}} kg sprinter accelerates from rest into a strong headwind that exerts a resisting force of {{Fw}} N. The ground applies a constant forward force of {{F}} N on the sprinter's feet.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the sprinter's acceleration.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the distance travelled in the first {{t:2}} s.",
+          "answer": {
+            "expr": "d",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the minimum coefficient of friction between the sprinter's shoes and the track.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Is the friction from the ground on the sprinter static or kinetic? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $F_{net} = {{F}} - {{Fw}} = {{F-Fw}}$ N; $a = {{F-Fw}}/{{m}} = {{a:2}}$ m/s² [forward].\n\n(b) $\\Delta d = \\tfrac{1}{2}a\\Delta t^2 = \\tfrac{1}{2}({{a:3}})({{t:2}})^2 = {{d:2}}$ m.\n\n(c) The ground's friction must be at least {{F}} N: $\\mu_S = \\dfrac{ {{F}} }{({{m}})(9.8)} = {{mu:2}}$.\n\n(d) Static. The sprinter's planted shoe does not slide relative to the track; the ground pushes forward as the reaction to the sprinter pushing backward.",
+      "rubric": [
+        {
+          "point": "Correct net force and acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum μ",
+          "marks": 1
+        },
+        {
+          "point": "Static friction with correct reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q21",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 12,
+          "max": 20,
+          "step": 0.5
+        },
+        "v": {
+          "choices": [
+            1,
+            1.2,
+            1.4,
+            1.5
+          ]
+        },
+        "t": {
+          "choices": [
+            1.5,
+            2,
+            2.5
+          ]
+        },
+        "mu": {
+          "choices": [
+            0.2,
+            0.25,
+            0.3
+          ]
+        }
+      },
+      "derived": {
+        "a": "v/t",
+        "F": "m*a+mu*m*9.8"
+      },
+      "text": "A homeowner uniformly accelerates a {{m:3}} kg lawnmower from rest to {{v:2}} m/s in {{t:2}} s across level grass. The coefficient of kinetic friction is {{mu:2}}. Assume the push is horizontal.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the acceleration of the lawnmower.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the horizontal applied force.",
+          "answer": {
+            "expr": "F",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "What force is needed to keep the lawnmower moving at {{v:2}} m/s afterwards? Explain.",
+          "answer": {
+            "expr": "mu*m*9.8",
+            "unit": "N",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a = \\dfrac{v_2 - v_1}{\\Delta t} = \\dfrac{ {{v:2}} }{ {{t:2}} } = {{a:2}}$ m/s².\n\n(b) $ma = F_a - \\mu_K mg \\Rightarrow F_a = ({{m:3}})({{a:3}}) + ({{mu:2}})({{m:3}})(9.8) = {{F:2}}$ N [forward].\n\n(c) At constant velocity $F_{net} = 0$, so $F_a$ only needs to balance kinetic friction: $F_a = \\mu_K mg = {{mu*m*9.8:2}}$ N.",
+      "rubric": [
+        {
+          "point": "Correct acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation including friction",
+          "marks": 1
+        },
+        {
+          "point": "Correct applied force",
+          "marks": 1
+        },
+        {
+          "point": "Constant velocity → force equals kinetic friction, correct value",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q22",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 65,
+          "max": 95,
+          "step": 1
+        },
+        "v": {
+          "min": 2.4,
+          "max": 3.6,
+          "step": 0.2
+        },
+        "d": {
+          "min": 3,
+          "max": 4.5,
+          "step": 0.1
+        }
+      },
+      "derived": {
+        "a": "v^2/(2*d)",
+        "mu": "v^2/(2*d*9.8)"
+      },
+      "text": "A {{m}} kg baseball player is running at {{v:2}} m/s [forward] when he slides into home plate, travelling {{d:2}} m before coming to rest.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the magnitude of the player's acceleration while sliding.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the coefficient of kinetic friction.",
+          "answer": {
+            "expr": "mu",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $v_2^2 = v_1^2 + 2a\\Delta d$ with $v_2 = 0$: $a = -\\dfrac{v_1^2}{2\\Delta d} = -\\dfrac{ ({{v:2}})^2 }{2({{d:2}})} = -{{a:3}}$ m/s². Magnitude {{a:2}} m/s².\n\n(b) Only kinetic friction acts horizontally: $ma = \\mu_K mg$, so $\\mu_K = a/g = {{a:3}}/9.8 = {{mu:2}}$.",
+      "rubric": [
+        {
+          "point": "Correct kinematics equation and acceleration",
+          "marks": 2
+        },
+        {
+          "point": "Recognises friction is the net force",
+          "marks": 1
+        },
+        {
+          "point": "Correct μ_K",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q23",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m1": {
+          "min": 8,
+          "max": 14,
+          "step": 1
+        },
+        "m2": {
+          "min": 6,
+          "max": 12,
+          "step": 1
+        },
+        "m3": {
+          "min": 4,
+          "max": 10,
+          "step": 1
+        },
+        "F": {
+          "min": 120,
+          "max": 180,
+          "step": 10
+        },
+        "mu": {
+          "choices": [
+            0.2,
+            0.25,
+            0.3
+          ]
+        }
+      },
+      "derived": {
+        "M": "m1+m2+m3",
+        "a": "(F-mu*M*9.8)/M",
+        "T12": "(m2+m3)*(a+mu*9.8)",
+        "T23": "m3*(a+mu*9.8)"
+      },
+      "text": "Three crates are tied in a line with ropes and pulled across a level floor by a horizontal force of {{F}} N applied to the front crate. The front crate has a mass of {{m1}} kg, the middle crate {{m2}} kg and the last crate {{m3}} kg. The coefficient of kinetic friction for each crate is {{mu:2}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the acceleration of the crates.",
+          "answer": {
+            "expr": "a",
+            "unit": "m/s²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Calculate the tension in the rope between the front and middle crates.",
+          "answer": {
+            "expr": "T12",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the tension in the rope between the middle and last crates.",
+          "answer": {
+            "expr": "T23",
+            "unit": "N",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Which rope is more likely to break? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $m_T = {{M}}$ kg; $F_K = ({{mu:2}})({{M}})(9.8) = {{mu*M*9.8:3}}$ N. $a = \\dfrac{ {{F}} - {{mu*M*9.8:3}} }{ {{M}} } = {{a:2}}$ m/s² [forward].\n\n(b) The first rope pulls the middle and last crates together ({{m2+m3}} kg): $F_{T1} = (m_2+m_3)(a + \\mu_K g) = ({{m2+m3}})({{a:3}} + {{mu*9.8:3}}) = {{T12:2}}$ N.\n\n(c) The second rope pulls only the last crate: $F_{T2} = ({{m3}})({{a:3}} + {{mu*9.8:3}}) = {{T23:2}}$ N.\n\n(d) The rope between the front and middle crates carries the larger tension because it must accelerate (and overcome friction on) more mass, so it is more likely to break.",
+      "rubric": [
+        {
+          "point": "System approach for acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Correct first tension with suitable system choice",
+          "marks": 1
+        },
+        {
+          "point": "Correct second tension",
+          "marks": 1
+        },
+        {
+          "point": "Correct reasoning for which rope breaks",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q24",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain, using Newton's third law and an FBD, how static friction allows you to walk forward. Then explain why a sprinter wants to avoid slipping at the start of a race, and how starting blocks help.",
+      "modelAnswer": "When your foot is planted, you push backward on the ground (action). The ground pushes forward on your foot with an equal-magnitude force in the opposite direction (reaction). Since your shoe is not sliding relative to the ground, this forward force is static friction. FBD of the walker: $F_g$ down, $F_N$ up, static friction forward – friction is the net force that accelerates you.\n\nThe maximum static friction ($\\mu_S F_N$) is usually greater than kinetic friction ($\\mu_K F_N$). If a sprinter's shoes slip, the friction drops to the kinetic value, the forward net force is smaller and the acceleration is less. Starting blocks are angled surfaces the sprinter pushes back against; they let the sprinter apply a large backward push without slipping, so the reaction force forward is larger and the start is faster.",
+      "rubric": [
+        {
+          "point": "Identifies the action (push back on ground) and reaction (ground pushes forward)",
+          "marks": 2
+        },
+        {
+          "point": "States the reaction is static friction because the foot does not slide",
+          "marks": 1
+        },
+        {
+          "point": "FBD with friction forward as the net horizontal force",
+          "marks": 1
+        },
+        {
+          "point": "Explains μ_S > μ_K so slipping reduces acceleration",
+          "marks": 1
+        },
+        {
+          "point": "Explains how starting blocks help",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "4-3-q25",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A train engine is trying to start pulling a long line of stationary railway cars. (a) Explain why the engine might not move any of the cars even though it is pushing with a large force. (b) Explain why, once the train is moving, the engine needs less force to keep it moving at a constant speed. (c) Explain why train engineers accelerate gradually so that the engine's wheels do not spin.",
+      "modelAnswer": "(a) The cars are connected, so the engine must overcome the combined maximum static friction of all the cars ($\\mu_S$ times the total normal force). If its force is less than this total, the net force on the train is zero and nothing moves – static friction simply matches the engine's force.\n\n(b) Once moving, the friction on the cars is kinetic, and $\\mu_K$ is usually less than $\\mu_S$. At constant speed the net force is zero, so the engine only has to balance the smaller kinetic friction.\n\n(c) The engine is pushed forward by static friction from the rails on its wheels (reaction to the wheels pushing back on the rails). If the wheels spin, they slide over the rail and the friction becomes kinetic, which is smaller. The forward force drops, so the train accelerates less and the wheels/rails wear. Gradual acceleration keeps the required force below $F_{S\\,max}$.",
+      "rubric": [
+        {
+          "point": "Combined maximum static friction of all cars must be overcome",
+          "marks": 1
+        },
+        {
+          "point": "Static friction matches the applied force so net force is zero",
+          "marks": 1
+        },
+        {
+          "point": "Kinetic friction smaller than maximum static friction",
+          "marks": 1
+        },
+        {
+          "point": "Constant speed means balancing only kinetic friction",
+          "marks": 1
+        },
+        {
+          "point": "Spinning wheels → kinetic friction → less forward force",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "4-3-q26",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Design an investigation to predict and then test the acceleration of a system consisting of a cart or block on a horizontal table connected by a string over a pulley to a hanging mass. Your answer should include: (a) the measurements you would make to find the coefficient of kinetic friction first; (b) how you would use Newton's laws to predict the acceleration; (c) how you would measure the actual acceleration; (d) at least three sources of error and how to reduce them.",
+      "modelAnswer": "(a) Measure the block's mass with a balance. Pull the block at a constant velocity with a spring scale or force sensor held horizontally; at constant velocity $F_a = F_K$. Repeat several times and average. $\\mu_K = F_K / (mg)$.\n\n(b) For the system, $a = \\dfrac{m_2 g - \\mu_K m_1 g}{m_1 + m_2}$, where $m_1$ is the block and $m_2$ the hanging mass (chosen so that it is large enough to start the motion).\n\n(c) Release the system from rest and measure the time $\\Delta t$ for the block to travel a measured distance $\\Delta d$ (stopwatch, motion sensor or video). Use $\\Delta d = \\tfrac{1}{2}a\\Delta t^2$ so $a = 2\\Delta d/\\Delta t^2$. Repeat and average, then compare with the prediction (percentage difference).\n\n(d) Sources of error: friction and mass of the pulley (use a light, low-friction pulley); reaction time with a stopwatch (use a longer distance, a motion sensor or video); pulling the spring scale not exactly horizontally or not at constant velocity (practise, use a force sensor graph and average the steady section); string stretching or touching the table edge; variation in the table surface (use the same section of table each time).",
+      "rubric": [
+        {
+          "point": "Valid method for measuring μ_K at constant velocity",
+          "marks": 2
+        },
+        {
+          "point": "Correct prediction equation from Newton's laws",
+          "marks": 2
+        },
+        {
+          "point": "Valid method for measuring actual acceleration using kinematics",
+          "marks": 2
+        },
+        {
+          "point": "Three relevant sources of error with improvements",
+          "marks": 3
+        }
+      ]
+    }
+  ]
+}

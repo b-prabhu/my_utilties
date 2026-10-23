@@ -1,0 +1,1558 @@
+{
+ "id": "4-inv",
+ "number": "Labs",
+ "title": "Chapter 4 Investigations",
+ "estimatedMinutes": 90,
+ "overview": "Physics is an experimental science – every number in Chapter 4, from g = 9.8 N/kg to the coefficients of friction in Table 1, came from careful measurement. In this unit you will walk through the four Chapter 4 investigations: measuring the acceleration due to gravity and terminal speed (4.1.1), finding the factors that affect friction (4.2.1), measuring coefficients of friction (4.2.2) and predicting motion with friction (4.3.1). You will learn how to design fair tests, analyse data and explain errors like a scientist.",
+ "objectives": [
+  "Identify manipulated, responding and controlled variables and write a hypothesis with reasons.",
+  "Determine acceleration from ticker tape or motion sensor data and compare it with 9.8 m/s².",
+  "Explain why objects of different mass fall at the same rate and how air resistance produces terminal speed.",
+  "Measure F_S max and F_K correctly and calculate μ_S and μ_K, including from the slope of a graph.",
+  "Predict the acceleration of a block-and-pulley system with friction and compare it with a measured value using percentage error.",
+  "Describe specific sources of error, how they affect results and how to reduce them.",
+  "Design your own controlled experiments about friction and falling objects."
+ ],
+ "lessons": [
+  {
+   "id": "lab-skills",
+   "title": "Lab Skills Toolkit: Variables, Trials, Graphs and Error",
+   "body": "Every Chapter 4 investigation is built from the same handful of skills. Master these once and every lab becomes easier.\n\n### 1. The three kinds of variables\n\n| Variable | Also called | What it means | Example (Investigation 4.2.2) |\n|---|---|---|---|\n| **Manipulated** | independent | the thing *you* deliberately change | the type of surface |\n| **Responding** | dependent | the thing you *measure* to see the effect | $F_{S\\,max}$ and $F_K$ (and so $\\mu_S$, $\\mu_K$) |\n| **Controlled** | kept constant | everything you keep the same so the test is fair | same block, same mass, same side down, horizontal pull, slow constant speed |\n\nA quick check: *\"If I change the ____ (manipulated), what happens to the ____ (responding), while keeping ____ the same (controlled)?\"*\n\n### 2. Testable question → hypothesis → prediction\n\n* A **testable question** can be answered by measuring something: *\"How does the mass of an object affect the kinetic friction acting on it?\"*\n* A **hypothesis** gives your answer **and a reason**: *\"If the mass is doubled, $F_K$ will double, because a heavier object presses harder on the surface (larger $F_N$) and $F_K = \\mu_K F_N$.\"*\n* The reason is the important part. A hypothesis without a \"because\" is only a guess.\n\n### 3. Repeat trials and average\n\nReal measurements wobble. A spring scale needle shakes, your pull is not perfectly smooth, the surface is not identical everywhere. Doing **at least three trials** and using the **average** reduces the effect of these random errors:\n\n$$\\text{average} = \\frac{\\text{trial 1} + \\text{trial 2} + \\text{trial 3}}{3}$$\n\nIf one trial is wildly different from the others, look for a mistake (string caught, block tipped) and repeat it.\n\n### 4. Graphs tell the relationship\n\n* A straight line **through the origin** means the responding variable is **directly proportional** to the manipulated variable (double one → double the other).\n* For friction, a graph of $F_f$ (vertical axis) versus $F_N$ (horizontal axis) is a straight line through the origin and its **slope is the coefficient of friction**:\n\n$$\\text{slope} = \\frac{\\Delta F_f}{\\Delta F_N} = \\mu$$\n\n* For motion, the slope of a velocity–time graph is the acceleration.\n\n### 5. Comparing with an accepted or predicted value\n\n| Formula | Use it when |\n|---|---|\n| $\\%\\ \\text{error} = \\dfrac{\\lvert \\text{measured} - \\text{accepted (or predicted)}\\rvert}{\\text{accepted (or predicted)}} \\times 100\\%$ | you have a value you trust (e.g. $g = 9.8$ m/s², or an acceleration predicted with Newton's laws) |\n| $\\%\\ \\text{difference} = \\dfrac{\\lvert A - B\\rvert}{(A+B)/2} \\times 100\\%$ | you are comparing two measured values, neither of which is \"correct\" |\n\n### 6. Sources of error (and how to talk about them)\n\nName the error **and** say which way it pushes your result **and** how to reduce it. For example: *\"Friction in the pulley makes the measured acceleration smaller than predicted. Use a low-friction pulley and lubricate the axle.\"* Avoid vague answers like \"human error\".\n\n### 7. Safety in Chapter 4 labs\n\n* Do not drop masses near your feet; keep feet clear of the landing area and pick objects up straight away.\n* Keep strings and ticker tape from catching on equipment.\n* Clamp retort stands securely so they cannot tip.\n"
+  },
+  {
+   "id": "inv-4-1-1",
+   "title": "Investigation 4.1.1 – Acceleration Due to Gravity and Terminal Speed",
+   "body": "**Purpose.** Measure the acceleration of falling objects, find out whether mass changes it, and see how air resistance leads to terminal speed.\n\n**Testable questions**\n1. What is the acceleration due to gravity at your location?\n2. What factors, if any, affect the acceleration due to gravity?\n\n### Set-up in plain words\nA **motion sensor** is clamped to a retort stand and points straight down, *or* a **ticker tape timer** is clamped at the top with a strip of tape attached to the falling object. You drop a **50 g object**, then a **100 g object**, and finally both of them together with a **coffee filter**.\n\n### Variables\n\n| Manipulated | Responding | Controlled |\n|---|---|---|\n| mass of the object (50 g, 100 g); shape/area (coffee filter) | acceleration of the object | drop height, starting from rest, same sensor/timer, same location |\n\n### How to get the acceleration from your data\n\n* **Motion sensor:** the software draws a velocity–time graph. The **slope** of the straight part is the acceleration. Example: if $v = 0.98$ m/s at $t = 0.10$ s and $v = 3.92$ m/s at $t = 0.40$ s, then\n$$a = \\frac{\\Delta v}{\\Delta t} = \\frac{3.92 - 0.98}{0.40 - 0.10} = 9.8\\ \\text{m/s}^2$$\n* **Ticker tape:** the dots are made at equal time intervals. The gaps get **bigger and bigger** for an accelerating object. Measure the total distance $\\Delta d$ fallen from rest in time $\\Delta t$ and use\n$$\\Delta d = \\tfrac{1}{2} a \\Delta t^2 \\quad\\Rightarrow\\quad a = \\frac{2\\Delta d}{\\Delta t^2}$$\n\n### What you should find\n* The 50 g and 100 g objects have (almost) **the same acceleration**, close to 9.8 m/s². Mass does not affect the acceleration of a freely falling object, because a bigger mass has a bigger force of gravity ($F_g = mg$) but also more inertia, so $a = F_g/m = g$ for both.\n* The **coffee filter** lands last. It is light with a large cross-sectional area, so air resistance quickly grows to equal its weight. Its velocity–time graph rises briefly and then **levels off** – it has reached **terminal speed** and its acceleration becomes zero.\n\n### Simulation (Part B)\nIn a free-fall simulation you can see that:\n* increasing the **mass** (same area) gives a **higher** terminal speed – more air resistance is needed to balance the larger weight, so it must go faster;\n* increasing the **cross-sectional area** (same mass) gives a **lower** terminal speed.\n\n### Typical sources of error\n* Friction between the ticker tape and the timer (makes $a$ too small) – keep the tape straight and vertical.\n* Air resistance on the falling objects – use compact, dense objects.\n* Reading the slope from a curved part of the graph – choose the straight section only.\n* Sensor picks up your hand or the clamp – keep the area under the sensor clear.\n"
+  },
+  {
+   "id": "inv-4-2-1",
+   "title": "Investigation 4.2.1 – Factors That Affect Friction",
+   "body": "**Purpose.** Design your own controlled experiments to find out how four factors affect $F_{S\\,max}$ and $F_K$:\n\n1. the **mass** of the object\n2. the **contact area** with the surface\n3. the **smoothness** of the surfaces\n4. the **types of materials** in contact\n\n### Designing a fair test – change ONE thing at a time\n\n| Factor tested (manipulated) | How to change it | Keep controlled |\n|---|---|---|\n| mass | stack extra masses on the block | same block face, same surface, horizontal pull |\n| contact area | turn the block onto a narrow side vs. its wide side | same mass, same material, same surface |\n| smoothness | sandpaper vs. smooth desk | same block, same mass, same face |\n| type of material | wood on wood, wood on metal, wood on plastic | same mass, same face |\n\n**Responding variables:** $F_{S\\,max}$ (largest reading just before the block starts to move) and $F_K$ (average reading while pulling at a slow, constant velocity).\n\n### Measuring the two kinds of friction\n* **$F_{S\\,max}$:** pull the spring scale *gradually*, watching the reading climb. The **largest** reading just before the block breaks free is $F_{S\\,max}$. Using a smaller reading would underestimate it, because static friction only reaches its maximum at the instant motion begins.\n* **$F_K$:** keep pulling at a **slow constant velocity**. By Newton's first law, constant velocity means $\\vec F_{net} = 0$, so the spring scale force exactly balances kinetic friction: $F_a = F_K$. Because the reading jiggles, use the **average** reading, not the maximum (the maximum includes moments where you briefly sped up).\n\n### Expected results\n\n| Factor | Effect on $F_{S\\,max}$ and $F_K$ |\n|---|---|\n| mass ↑ | both ↑ in direct proportion (larger $F_N$) |\n| contact area | little or no change (for wood, metal, plastic) |\n| rougher surfaces | usually both ↑ |\n| different materials | both change – this is what the coefficient describes |\n| comparison | $F_{S\\,max}$ is usually slightly **greater** than $F_K$ |\n\nA graph of $F_K$ versus mass $m$ is a straight line through the origin (direct proportion). Its slope is $\\mu_K g$, so $\\mu_K = \\text{slope}/g$.\n\n### Sources of error and fixes\n* Pulling at an angle instead of horizontally (changes $F_N$) – keep the string parallel to the surface.\n* Jerky pulling – pull slowly and smoothly; repeat and average.\n* Surface not uniform (dust, scratches) – use the same strip of surface and clean it.\n* Spring scale not zeroed – zero it in the horizontal position before each trial.\n"
+  },
+  {
+   "id": "inv-4-2-2",
+   "title": "Investigation 4.2.2 – Coefficients of Friction",
+   "body": "**Purpose.** Measure $F_{S\\,max}$ and $F_K$ for a wood block on several surfaces and use them to calculate $\\mu_S$ and $\\mu_K$. Coefficients of friction **cannot be calculated from theory** – they must be measured.\n\n**Testable question:** How does the roughness of a surface affect $\\mu_S$ and $\\mu_K$ for a wood block, and how do the two coefficients compare?\n\n### Variables\n| Manipulated | Responding | Controlled |\n|---|---|---|\n| surface (desk, floor, metal, plastic…) | $F_{S\\,max}$, $F_K$ → $\\mu_S$, $\\mu_K$ | same block, same mass, same face down, horizontal pull, slow constant speed |\n\n### Procedure in plain words\n1. Make a table: **Surface | $F_{S\\,max}$ (3 trials) | $F_K$ (3 trials)**.\n2. Measure the block's mass on a balance and calculate $F_N = mg$ (on a level surface with only horizontal pulling, $F_N$ equals the force of gravity).\n3. Slowly increase the pull – record the largest reading before motion ($F_{S\\,max}$). Do this 3 times.\n4. Pull at a slow constant velocity – record the average reading ($F_K$). Do this 3 times.\n5. Repeat for at least two more surfaces: one you expect to be slippery and one you expect to be \"grippy\".\n\n### Analysis\n$$\\mu_S = \\frac{F_{S\\,max}}{F_N} \\qquad \\mu_K = \\frac{F_K}{F_N}$$\n\n| Surface | avg $F_{S\\,max}$ (N) | avg $F_K$ (N) | $\\mu_S$ | $\\mu_K$ |\n|---|---|---|---|---|\n| desk (0.250 kg block, $F_N$ = 2.45 N) | 1.05 | 0.84 | 0.43 | 0.34 |\n| plastic sheet | 0.61 | 0.49 | 0.25 | 0.20 |\n\nYou should find $\\mu_S > \\mu_K$ for each surface, and that rougher surfaces give larger coefficients.\n\n### Could $\\mu_K$ ever be bigger than $\\mu_S$?\nFor almost all real pairs of surfaces, no. It takes more force to *start* something sliding than to *keep* it sliding. If your data says $\\mu_K > \\mu_S$, suspect an error – for example, you accelerated the block while measuring $F_K$ (so $F_a > F_K$), or you recorded a value of static friction *before* it reached its maximum. (For a few very slippery pairs, such as Teflon on Teflon, the two can be equal.)\n\n### Sources of error\n* Pulling at an angle; uneven speed; worn or dusty patches; reading a moving needle. Repeat, average, and keep the string horizontal.\n"
+  },
+  {
+   "id": "inv-4-3-1",
+   "title": "Investigation 4.3.1 – Predicting Motion with Friction",
+   "body": "**Purpose.** Use Newton's laws to **predict** the acceleration of a block on a table pulled by a hanging mass over a pulley, then **measure** it and compare.\n\n### The set-up\nA wood block (mass $m_1$) sits on a flat surface. A string runs from the block over a pulley to a hanging object (mass $m_2$, starting at 100 g). A ticker tape timer or motion sensor records the block's motion. If 100 g does not make the system move, add more hanging mass until it accelerates when released.\n\n### Step 1 – Measure what you need\n* $m_1$ (balance) and $m_2$ (total hanging mass)\n* $\\mu_K$ for the block on this surface (pull it at constant velocity with a spring scale: $\\mu_K = F_K / F_N$)\n\n### Step 2 – Predict with Newton's laws\nTreat the block and the hanging mass as **one system** moving together. The only *external* forces along the direction of motion are the weight of the hanging mass (pulling the system forward) and kinetic friction on the block (holding it back). The tension is internal and cancels.\n\n$$F_{net} = m_2 g - \\mu_K m_1 g \\qquad a_{predicted} = \\frac{m_2 g - \\mu_K m_1 g}{m_1 + m_2}$$\n\n**Example.** $m_1$ = 0.50 kg, $m_2$ = 0.20 kg, $\\mu_K$ = 0.25:\n$$a = \\frac{(0.20)(9.8) - (0.25)(0.50)(9.8)}{0.50 + 0.20} = \\frac{1.96 - 1.225}{0.70} = 1.05\\ \\text{m/s}^2$$\n\n### Step 3 – Measure\nRelease from rest. From a ticker tape, measure the distance $\\Delta d$ moved in time $\\Delta t$ and use $a = 2\\Delta d / \\Delta t^2$. From a motion sensor, take the slope of the velocity–time graph.\n\n### Step 4 – Compare\n$$\\%\\ \\text{error} = \\frac{\\lvert a_{measured} - a_{predicted}\\rvert}{a_{predicted}} \\times 100\\%$$\n\nThe measured value is usually a little **smaller** than predicted, because the prediction ignores pulley friction, the timer dragging on the tape, the mass of the string and air resistance.\n\n### Apply and extend\n| Change | Effect on $a$ | Why |\n|---|---|---|\n| put an object on top of the block | $a$ decreases | more friction ($F_N$ larger) **and** more mass to accelerate |\n| increase the hanging mass | $a$ increases | bigger forward force; the extra mass added is small compared with the extra force |\n"
+  }
+ ],
+ "keyTerms": [
+  {
+   "term": "manipulated (independent) variable",
+   "definition": "The variable the experimenter deliberately changes."
+  },
+  {
+   "term": "responding (dependent) variable",
+   "definition": "The variable that is measured to see how it responds to the change."
+  },
+  {
+   "term": "controlled variable",
+   "definition": "A variable kept constant so that the test is fair."
+  },
+  {
+   "term": "testable question",
+   "definition": "A question that can be answered by carrying out measurements in an experiment."
+  },
+  {
+   "term": "hypothesis",
+   "definition": "A proposed answer to a testable question, including a prediction and a scientific reason for it."
+  },
+  {
+   "term": "controlled experiment",
+   "definition": "An experiment in which one variable is changed, one is measured and all others are kept constant (Investigations 4.1.1, 4.2.1, 4.2.2)."
+  },
+  {
+   "term": "observational study",
+   "definition": "An investigation where you observe and measure a system, often to compare with a prediction (Investigation 4.3.1)."
+  },
+  {
+   "term": "percentage error",
+   "definition": "How far a measured value is from an accepted or predicted value, as a percentage of that value."
+  },
+  {
+   "term": "percentage difference",
+   "definition": "How far apart two measured values are, as a percentage of their average."
+  },
+  {
+   "term": "terminal speed",
+   "definition": "The maximum constant speed of a falling object, reached when air resistance equals the force of gravity."
+  },
+  {
+   "term": "ticker tape timer",
+   "definition": "A device that marks dots on a paper tape at equal time intervals so that distance and time can be measured."
+  }
+ ],
+ "formulas": [
+  {
+   "name": "Acceleration from rest (ticker tape)",
+   "latex": "a = \\frac{2\\Delta d}{\\Delta t^2}",
+   "meaning": "From Δd = ½aΔt² when the object starts from rest."
+  },
+  {
+   "name": "Acceleration from a v–t graph",
+   "latex": "a = \\frac{\\Delta v}{\\Delta t}",
+   "meaning": "The slope of a velocity–time graph."
+  },
+  {
+   "name": "Coefficient of static friction",
+   "latex": "\\mu_S = \\frac{F_{S\\,max}}{F_N}",
+   "meaning": "Use the largest reading just before motion starts."
+  },
+  {
+   "name": "Coefficient of kinetic friction",
+   "latex": "\\mu_K = \\frac{F_K}{F_N}",
+   "meaning": "Use the average reading at constant velocity."
+  },
+  {
+   "name": "Slope of a friction graph",
+   "latex": "\\mu = \\frac{\\Delta F_f}{\\Delta F_N}",
+   "meaning": "Slope of a friction vs. normal force graph."
+  },
+  {
+   "name": "Predicted acceleration (Investigation 4.3.1)",
+   "latex": "a = \\frac{m_2 g - \\mu_K m_1 g}{m_1 + m_2}",
+   "meaning": "Block m₁ on a level surface pulled by hanging mass m₂."
+  },
+  {
+   "name": "Percentage error",
+   "latex": "\\%\\ \\text{error} = \\frac{|\\text{measured} - \\text{accepted}|}{\\text{accepted}} \\times 100\\%",
+   "meaning": "Compare with an accepted or predicted value."
+  },
+  {
+   "name": "Percentage difference",
+   "latex": "\\%\\ \\text{difference} = \\frac{|A - B|}{(A+B)/2} \\times 100\\%",
+   "meaning": "Compare two measured values."
+  }
+ ],
+ "workedExamples": [
+  {
+   "title": "Finding g from a ticker tape",
+   "problem": "A 100 g object is dropped from rest with a ticker tape attached. In the first 0.50 s it falls 1.18 m. Calculate its acceleration and the percentage error compared with 9.8 m/s².",
+   "steps": [
+    "**Given:** $\\Delta d$ = 1.18 m; $\\Delta t$ = 0.50 s; $v_1$ = 0; accepted $g$ = 9.8 m/s²",
+    "**Required:** $a$ and % error",
+    "**Analysis:** Starting from rest, $\\Delta d = \\tfrac{1}{2}a\\Delta t^2$, so $a = 2\\Delta d/\\Delta t^2$.",
+    "**Solution:** $a = \\dfrac{2(1.18\\ \\text{m})}{(0.50\\ \\text{s})^2} = \\dfrac{2.36}{0.25} = 9.44\\ \\text{m/s}^2$",
+    "$\\%\\ \\text{error} = \\dfrac{|9.44 - 9.8|}{9.8}\\times 100\\% = 3.7\\%$",
+    "**Statement:** The measured acceleration is 9.4 m/s² [down], 3.7 % below the accepted value – probably because the tape rubbed in the timer."
+   ],
+   "answer": "a ≈ 9.4 m/s² [down]; percentage error ≈ 3.7 %"
+  },
+  {
+   "title": "Coefficients from averaged trials",
+   "problem": "A 0.40 kg wood block is pulled on a lab bench. $F_{S\\,max}$ trials: 1.62 N, 1.70 N, 1.66 N. $F_K$ trials: 1.21 N, 1.25 N, 1.17 N. Find $\\mu_S$ and $\\mu_K$.",
+   "steps": [
+    "**Given:** $m$ = 0.40 kg, three trials of each force",
+    "**Required:** $\\mu_S$, $\\mu_K$",
+    "**Analysis:** Average each set, find $F_N = mg$, then divide.",
+    "**Solution:** avg $F_{S\\,max}$ = (1.62 + 1.70 + 1.66)/3 = 1.66 N; avg $F_K$ = (1.21 + 1.25 + 1.17)/3 = 1.21 N",
+    "$F_N = mg = (0.40)(9.8) = 3.92$ N",
+    "$\\mu_S = 1.66/3.92 = 0.42$; $\\mu_K = 1.21/3.92 = 0.31$",
+    "**Statement:** $\\mu_S$ = 0.42 and $\\mu_K$ = 0.31; as expected, $\\mu_S > \\mu_K$."
+   ],
+   "answer": "μS ≈ 0.42, μK ≈ 0.31"
+  },
+  {
+   "title": "Coefficient of friction from the slope of a graph",
+   "problem": "Students add masses to a block and measure $F_K$:\n\n| $F_N$ (N) | 4.9 | 9.8 | 14.7 | 19.6 |\n|---|---|---|---|---|\n| $F_K$ (N) | 1.4 | 3.0 | 4.3 | 5.9 |\n\nFind $\\mu_K$ from the graph of $F_K$ versus $F_N$.",
+   "steps": [
+    "**Analysis:** The graph is a straight line through (about) the origin, so $F_K \\propto F_N$. The slope is $\\mu_K$.",
+    "Use two points far apart on the best-fit line, e.g. (4.9 N, 1.4 N) and (19.6 N, 5.9 N).",
+    "**Solution:** slope $= \\dfrac{5.9 - 1.4}{19.6 - 4.9} = \\dfrac{4.5}{14.7} = 0.31$",
+    "**Statement:** $\\mu_K \\approx 0.31$. Using the slope of a best-fit line averages out the scatter of individual points – better than using any single trial."
+   ],
+   "answer": "μK ≈ 0.31"
+  },
+  {
+   "title": "Predicted vs. measured acceleration (Investigation 4.3.1)",
+   "problem": "A 0.60 kg block on a table is pulled by a 0.25 kg hanging mass over a pulley. $\\mu_K$ = 0.20. Starting from rest, the ticker tape shows the block moved 0.42 m in 0.75 s. Predict $a$, measure $a$, and find the percentage error.",
+   "steps": [
+    "**Given:** $m_1$ = 0.60 kg; $m_2$ = 0.25 kg; $\\mu_K$ = 0.20; $\\Delta d$ = 0.42 m; $\\Delta t$ = 0.75 s; $v_1$ = 0",
+    "**Predict:** $a = \\dfrac{m_2 g - \\mu_K m_1 g}{m_1 + m_2} = \\dfrac{(0.25)(9.8) - (0.20)(0.60)(9.8)}{0.85} = \\dfrac{2.45 - 1.176}{0.85} = 1.50\\ \\text{m/s}^2$",
+    "**Measure:** $a = \\dfrac{2\\Delta d}{\\Delta t^2} = \\dfrac{2(0.42)}{(0.75)^2} = \\dfrac{0.84}{0.5625} = 1.49\\ \\text{m/s}^2$",
+    "**Compare:** $\\%\\ \\text{error} = \\dfrac{|1.49 - 1.50|}{1.50}\\times 100\\% \\approx 0.7\\%$",
+    "**Statement:** Predicted 1.5 m/s², measured 1.49 m/s² (0.7 % error). Tip: a measured value noticeably *above* the prediction is a red flag – friction we ignored can only make the real acceleration smaller – so recount your dot intervals."
+   ],
+   "answer": "Predicted ≈ 1.5 m/s²; measured ≈ 1.49 m/s²; ≈ 0.7 % error"
+  },
+  {
+   "title": "Finding μS with a hanging bucket",
+   "problem": "A 4.0 kg block on a table is attached by string over a pulley to a bucket. The greatest total hanging mass that does not move the block is 1.8 kg. Find $\\mu_S$.",
+   "steps": [
+    "**Analysis:** At the point of slipping, the block is still at rest, so the tension (equal to the hanging weight) balances $F_{S\\,max}$.",
+    "$F_{S\\,max} = m_2 g = (1.8)(9.8) = 17.64$ N; $F_N = m_1 g = (4.0)(9.8) = 39.2$ N",
+    "$\\mu_S = 17.64 / 39.2 = 0.45$",
+    "**Statement:** $\\mu_S$ = 0.45. Adding mass in small steps (e.g. 20 g washers) makes the threshold more precise."
+   ],
+   "answer": "μS = 0.45"
+  }
+ ],
+ "misconceptions": [
+  {
+   "myth": "Heavier objects fall faster, so the 100 g object should have double the acceleration of the 50 g object.",
+   "fact": "Without significant air resistance both accelerate at about 9.8 m/s². Twice the mass means twice the force of gravity but also twice the inertia, so a = F_g/m = g."
+  },
+  {
+   "myth": "One careful trial is enough.",
+   "fact": "Random errors affect every measurement. Repeat at least three times and average; a single trial cannot show you whether a result is reliable."
+  },
+  {
+   "myth": "To measure kinetic friction, record the highest reading while the block slides.",
+   "fact": "Use the average reading at constant velocity. The highest reading includes moments where you sped the block up, when F_a was greater than F_K."
+  },
+  {
+   "myth": "A bigger contact area always gives more friction.",
+   "fact": "For wood, metal and plastic, contact area has little effect on friction – it depends on the materials and the normal force. Rubber (tires) is an exception."
+  },
+  {
+   "myth": "'Human error' is a good source of error to report.",
+   "fact": "Be specific: say what went wrong, which way it shifts the result, and how to fix it (e.g. pulling at an upward angle reduces F_N and makes μ too small – keep the string horizontal)."
+  },
+  {
+   "myth": "If the measured acceleration is bigger than the predicted one, friction must have helped.",
+   "fact": "Friction we ignored (pulley, timer, air) can only reduce the real acceleration. A measured value above the prediction usually means a measurement or timing mistake."
+  }
+ ],
+ "realWorld": [
+  {
+   "title": "Tire testing",
+   "body": "Tire companies measure coefficients of friction on wet, dry and icy test tracks, repeating each test many times – the same 'measure, repeat, average' method as Investigation 4.2.2, but with cars."
+  },
+  {
+   "title": "Sports surfaces",
+   "body": "Running tracks and gym floors are tested by dragging a weighted shoe sole with a force sensor. Too little friction causes slips; too much can cause ankle and knee injuries."
+  },
+  {
+   "title": "Skydiving and parachute design",
+   "body": "Engineers test parachutes by measuring how terminal speed changes with canopy area and load mass – exactly the variables you explored in the Investigation 4.1.1 simulation."
+  },
+  {
+   "title": "Predict, then test",
+   "body": "Engineers always calculate how a design should behave before building it, then compare with test results. A large percentage error tells them their model is missing something – just like Investigation 4.3.1."
+  }
+ ],
+ "practice": [
+  {
+   "question": "Identify the manipulated, responding and controlled variables if you test how the mass of a block affects F_K.",
+   "hint": "What do you change on purpose? What do you read off the spring scale?",
+   "solution": "Manipulated: mass of the block (add masses). Responding: kinetic friction F_K (spring scale reading at constant velocity). Controlled: same block face and surface, horizontal pull, slow constant speed, same spring scale."
+  },
+  {
+   "question": "A ball dropped from rest falls 0.78 m in 0.40 s. What is its acceleration?",
+   "hint": "Use a = 2Δd/Δt².",
+   "solution": "$a = 2(0.78)/(0.40)^2 = 1.56/0.16 = 9.75$ m/s² ≈ 9.8 m/s² [down]."
+  },
+  {
+   "question": "Three F_K trials give 2.3 N, 2.6 N and 2.5 N for a 1.0 kg block. Find μ_K.",
+   "hint": "Average first, then divide by F_N = mg.",
+   "solution": "Average = 7.4/3 = 2.47 N; F_N = 9.8 N; μ_K = 2.47/9.8 = 0.25."
+  },
+  {
+   "question": "Why must the spring scale be pulled horizontally in Investigation 4.2.2?",
+   "hint": "Think about what an upward part of the pull does to F_N.",
+   "solution": "If the pull is angled upward it lifts the block a little, reducing the normal force and therefore the friction. Then F_N ≠ mg and the calculated μ would be wrong (too small)."
+  },
+  {
+   "question": "Predicted a = 1.20 m/s², measured a = 1.08 m/s². Find the percentage error and suggest one reason the measured value is smaller.",
+   "hint": "Divide the difference by the predicted value.",
+   "solution": "% error = |1.08 − 1.20|/1.20 × 100 % = 10 %. Pulley friction (or the tape rubbing in the timer) adds extra friction not included in the prediction, reducing the actual acceleration."
+  },
+  {
+   "question": "A coffee filter's velocity–time graph rises and then becomes flat. What does the flat part tell you?",
+   "hint": "What is the slope of a flat line?",
+   "solution": "The slope is zero, so the acceleration is zero: the filter has reached terminal speed, and air resistance equals the force of gravity on it."
+  },
+  {
+   "question": "Write a hypothesis (with a reason) for: 'How does contact area affect the kinetic friction on a wooden block?'",
+   "hint": "Include 'if… then… because…'.",
+   "solution": "If the block is turned onto a smaller face, then F_K will stay about the same, because kinetic friction depends on the materials (μ_K) and the normal force, and the normal force (= mg) does not change when the block is turned."
+  },
+  {
+   "question": "What happens to the acceleration in Investigation 4.3.1 if you place an extra mass on the block? Explain.",
+   "hint": "Two things change: friction and total mass.",
+   "solution": "The acceleration decreases: the normal force on the block increases so kinetic friction increases (less net force), and the total mass to be accelerated also increases."
+  }
+ ],
+ "summary": [
+  "Identify manipulated, responding and controlled variables; change only one variable at a time.",
+  "A hypothesis states a prediction and a scientific reason for it.",
+  "Repeat each measurement (at least three trials) and use the average to reduce random error.",
+  "For an object falling from rest, a = 2Δd/Δt²; on a v–t graph, acceleration is the slope.",
+  "Objects of different mass fall with the same acceleration when air resistance is negligible; light objects with large areas reach terminal speed quickly.",
+  "F_S max is the largest reading just before motion; F_K is the average reading at constant velocity. μ = F_f/F_N and μ_S is usually greater than μ_K.",
+  "The slope of an F_f vs F_N graph is μ; the slope of an F_K vs m graph is μ_K g.",
+  "In Investigation 4.3.1, a_predicted = (m₂g − μ_K m₁g)/(m₁ + m₂); compare with the measured value using percentage error.",
+  "Report specific sources of error, the direction they push the result, and how to reduce them."
+ ],
+ "questions": [
+  {
+   "id": "4-inv-q01",
+   "type": "design",
+   "difficulty": 2,
+   "text": "Design a controlled experiment (based on Investigation 4.1.1) to measure the acceleration due to gravity at your school and to test whether the mass of an object affects it. You have a motion sensor or ticker tape timer, a retort stand and clamp, a 50 g object and a 100 g object.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Write a testable question and a hypothesis with a reason."
+    },
+    {
+     "label": "b",
+     "text": "Identify the manipulated, responding and controlled variables."
+    },
+    {
+     "label": "c",
+     "text": "Outline a step-by-step procedure, including safety precautions and repeated trials."
+    },
+    {
+     "label": "d",
+     "text": "Explain how you will calculate the acceleration from your data."
+    }
+   ],
+   "modelAnswer": "(a) *Does the mass of a falling object affect its acceleration?* Hypothesis: if the mass is doubled, the acceleration will stay the same (about 9.8 m/s²), because the force of gravity doubles but so does the inertia, so $a = F_g/m = g$.\n\n(b) Manipulated: mass (50 g, 100 g). Responding: acceleration. Controlled: drop height, release from rest, same timer/sensor, same location, compact objects (small air resistance).\n\n(c) 1. Clamp the sensor/timer to the stand and check the tape runs freely. 2. Attach/hold the 50 g object and release it from rest. 3. Record the data. 4. Repeat three times. 5. Repeat steps 2–4 with the 100 g object. Safety: keep feet clear of the landing area, pick up objects immediately, make sure the stand cannot tip.\n\n(d) Motion sensor: find the slope of the straight part of the v–t graph, $a = \\Delta v/\\Delta t$. Ticker tape: measure the distance $\\Delta d$ fallen from rest in a known time $\\Delta t$ (count dot intervals) and use $a = 2\\Delta d/\\Delta t^2$. Average the three trials for each mass and compare with 9.8 m/s² using percentage error.",
+   "rubric": [
+    {
+     "point": "Testable question that can be answered by measurement",
+     "marks": 1
+    },
+    {
+     "point": "Hypothesis with a prediction AND a physics reason (gravity force and inertia both scale with mass)",
+     "marks": 2
+    },
+    {
+     "point": "Correctly identifies manipulated, responding and at least two controlled variables",
+     "marks": 2
+    },
+    {
+     "point": "Logical procedure including release from rest and at least three trials per mass",
+     "marks": 2
+    },
+    {
+     "point": "At least one relevant safety precaution",
+     "marks": 1
+    },
+    {
+     "point": "Correct method for acceleration (slope of v–t graph or a = 2Δd/Δt²)",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q02",
+   "type": "problem",
+   "difficulty": 1,
+   "vars": {
+    "t": {
+     "min": 0.4,
+     "max": 0.7,
+     "step": 0.05
+    },
+    "atrue": {
+     "min": 9.3,
+     "max": 9.75,
+     "step": 0.05
+    }
+   },
+   "derived": {
+    "d": "round(0.5*atrue*t^2*1000)/1000",
+    "a": "2*d/t^2",
+    "pe": "abs(a-9.8)/9.8*100"
+   },
+   "text": "In Investigation 4.1.1, a ticker tape shows that a 50 g object, released from rest, fell {{d}} m in {{t:2}} s.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the acceleration of the object.",
+     "answer": {
+      "expr": "a",
+      "unit": "m/s²",
+      "sig": 3
+     }
+    },
+    {
+     "label": "b",
+     "text": "Calculate the percentage error compared with the accepted value of 9.8 m/s².",
+     "answer": {
+      "expr": "pe",
+      "unit": "%",
+      "sig": 2,
+      "tol": 0.1
+     }
+    },
+    {
+     "label": "c",
+     "text": "Suggest one specific source of error that would make the measured value smaller than 9.8 m/s² and how to reduce it."
+    }
+   ],
+   "modelAnswer": "(a) From rest, $\\Delta d = \\tfrac{1}{2}a\\Delta t^2$, so $a = \\dfrac{2\\Delta d}{\\Delta t^2} = \\dfrac{2({{d}}\\ \\text{m})}{({{t:2}}\\ \\text{s})^2} = {{a:3}}$ m/s² [down].\n\n(b) $\\%\\ \\text{error} = \\dfrac{|{{a:3}} - 9.8|}{9.8}\\times 100\\% = {{pe:2}}\\%$\n\n(c) Friction between the ticker tape and the timer acts upward on the object, reducing the net force and the acceleration. Keep the tape vertical and straight so it slides freely (or use a motion sensor). Air resistance is another valid answer (use a dense, compact object).",
+   "rubric": [
+    {
+     "point": "Uses Δd = ½aΔt² (from rest) rearranged correctly",
+     "marks": 1
+    },
+    {
+     "point": "Correct acceleration with units",
+     "marks": 1
+    },
+    {
+     "point": "Correct percentage error method and value",
+     "marks": 2
+    },
+    {
+     "point": "Specific error that reduces a, with explanation of why",
+     "marks": 1
+    },
+    {
+     "point": "Sensible way to reduce that error",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q03",
+   "type": "analysis",
+   "difficulty": 2,
+   "vars": {
+    "t1": {
+     "choices": [
+      0.1,
+      0.15,
+      0.2
+     ]
+    },
+    "dt": {
+     "choices": [
+      0.25,
+      0.3,
+      0.35,
+      0.4
+     ]
+    },
+    "ag": {
+     "min": 9.4,
+     "max": 9.9,
+     "step": 0.05
+    }
+   },
+   "derived": {
+    "t2": "t1+dt",
+    "v1": "round(ag*t1*100)/100",
+    "v2": "round(ag*(t1+dt)*100)/100",
+    "a": "(v2-v1)/dt",
+    "pe": "abs(a-9.8)/9.8*100"
+   },
+   "text": "A motion sensor records the velocity of a falling 100 g object. On the straight part of the velocity–time graph, the velocity is {{v1}} m/s [down] at {{t1:2}} s and {{v2}} m/s [down] at {{t2:2}} s.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Determine the acceleration of the object from the graph data.",
+     "answer": {
+      "expr": "a",
+      "unit": "m/s²",
+      "sig": 3
+     }
+    },
+    {
+     "label": "b",
+     "text": "Calculate the percentage error compared with 9.8 m/s².",
+     "answer": {
+      "expr": "pe",
+      "unit": "%",
+      "sig": 2,
+      "tol": 0.15
+     }
+    },
+    {
+     "label": "c",
+     "text": "The group repeated the trial with a 50 g object and got nearly the same acceleration. Use Newton's second law to explain why mass does not affect the acceleration of a falling object (ignoring air resistance)."
+    },
+    {
+     "label": "d",
+     "text": "Why should you use only the straight part of the graph?"
+    }
+   ],
+   "modelAnswer": "(a) $a = \\dfrac{\\Delta v}{\\Delta t} = \\dfrac{ {{v2}} - {{v1}} }{ {{t2:2}} - {{t1:2}} } = {{a:3}}$ m/s² [down]\n\n(b) $\\%\\ \\text{error} = \\dfrac{|{{a:3}} - 9.8|}{9.8}\\times 100\\% = {{pe:2}}\\%$\n\n(c) For a falling object $F_{net} = F_g = mg$. Newton's second law gives $a = F_{net}/m = mg/m = g$. Doubling the mass doubles the gravitational force but also doubles the inertia, so the acceleration is unchanged.\n\n(d) The straight part is where the acceleration is constant (free fall). At the start the object may still be in your hand or leaving the sensor's range, and near the end it may be hitting the floor or affected by air resistance; those parts would give a wrong slope.",
+   "rubric": [
+    {
+     "point": "Uses slope Δv/Δt with correct values",
+     "marks": 1
+    },
+    {
+     "point": "Correct acceleration with units and direction",
+     "marks": 1
+    },
+    {
+     "point": "Correct percentage error",
+     "marks": 1
+    },
+    {
+     "point": "Newton's second law argument: F_g = mg so a = g, independent of m",
+     "marks": 2
+    },
+    {
+     "point": "Explains why only the straight (constant-slope) part represents free fall",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q04",
+   "type": "explain",
+   "difficulty": 1,
+   "text": "In Part A of Investigation 4.1.1, a 50 g object, a 100 g object and a coffee filter are dropped at the same time from the same height.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Predict the order in which they land and justify your prediction."
+    },
+    {
+     "label": "b",
+     "text": "Describe and explain the shape of the velocity–time graph for the coffee filter."
+    },
+    {
+     "label": "c",
+     "text": "Draw (describe) free-body diagrams for the coffee filter just after release and once its graph has levelled off."
+    }
+   ],
+   "modelAnswer": "(a) The 50 g and 100 g objects land at (almost) the same time, and the coffee filter lands last. The two small dense objects experience little air resistance, so both accelerate at about 9.8 m/s². The coffee filter is very light with a large cross-sectional area, so air resistance quickly becomes comparable to its small weight.\n\n(b) The graph starts at zero and rises steeply (accelerating), then curves and becomes a horizontal line. As the filter speeds up, air resistance increases, so the net force and acceleration decrease. When air resistance equals the force of gravity, the net force is zero, the slope (acceleration) is zero and the filter falls at terminal speed.\n\n(c) Just after release: a long arrow $\\vec F_g$ down and a very short (or no) arrow $\\vec F_{air}$ up – net force down. At terminal speed: $\\vec F_g$ down and $\\vec F_{air}$ up, equal in length – net force zero.",
+   "rubric": [
+    {
+     "point": "Correct landing order (two masses together, filter last)",
+     "marks": 1
+    },
+    {
+     "point": "Justification using air resistance vs. weight / cross-sectional area",
+     "marks": 2
+    },
+    {
+     "point": "Describes v–t graph rising then levelling off",
+     "marks": 1
+    },
+    {
+     "point": "Explains decreasing acceleration as air resistance grows, zero at terminal speed",
+     "marks": 2
+    },
+    {
+     "point": "Two FBDs: unequal arrows then equal arrows, correctly labelled",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q05",
+   "type": "analysis",
+   "difficulty": 2,
+   "text": "In Part B of Investigation 4.1.1, you use a free-fall simulation that includes air resistance.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Describe the velocity–time graph of an object that falls for a long time. What happens to its acceleration, and why?"
+    },
+    {
+     "label": "b",
+     "text": "Predict and explain the effect on terminal speed of increasing the mass while keeping the cross-sectional area the same."
+    },
+    {
+     "label": "c",
+     "text": "Predict and explain the effect on terminal speed of increasing the cross-sectional area while keeping the mass the same."
+    },
+    {
+     "label": "d",
+     "text": "Use your answers to explain why a skydiver opens a parachute before landing."
+    }
+   ],
+   "modelAnswer": "(a) The graph starts as a straight line with slope ≈ 9.8 m/s², then curves and flattens into a horizontal line. The acceleration decreases from 9.8 m/s² to zero because air resistance grows as speed increases until it equals the force of gravity.\n\n(b) Terminal speed increases. A larger mass has a larger force of gravity, so air resistance must become larger to balance it – which needs a higher speed.\n\n(c) Terminal speed decreases. A larger cross-sectional area experiences more air resistance at any given speed, so the balance $F_{air} = F_g$ is reached at a lower speed.\n\n(d) Opening the parachute greatly increases the cross-sectional area, so air resistance becomes larger than gravity, the net force is upward and the skydiver slows down until a new, much lower terminal speed is reached – slow enough to land safely.",
+   "rubric": [
+    {
+     "point": "Describes graph: initial slope ~9.8, curves, levels off",
+     "marks": 1
+    },
+    {
+     "point": "Acceleration decreases to zero because air resistance increases with speed until it equals F_g",
+     "marks": 2
+    },
+    {
+     "point": "Larger mass → higher terminal speed with reason",
+     "marks": 2
+    },
+    {
+     "point": "Larger area → lower terminal speed with reason",
+     "marks": 2
+    },
+    {
+     "point": "Applies to parachute: larger area, net force up, lower terminal speed",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q06",
+   "type": "analysis",
+   "difficulty": 2,
+   "vars": {
+    "mu": {
+     "min": 0.18,
+     "max": 0.48,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "N1": "4.9",
+    "N2": "9.8",
+    "N3": "14.7",
+    "N4": "19.6",
+    "F1": "round((mu*4.9+0.06)*10)/10",
+    "F2": "round((mu*9.8-0.05)*10)/10",
+    "F3": "round((mu*14.7+0.04)*10)/10",
+    "F4": "round((mu*19.6-0.03)*10)/10",
+    "slope": "(F4-F1)/(N4-N1)"
+   },
+   "text": "In Investigation 4.2.1, students add masses to a wooden block and pull it at constant velocity on a bench. Their averaged results are:\n\n| $F_N$ (N) | {{N1}} | {{N2}} | {{N3}} | {{N4}} |\n|---|---|---|---|---|\n| $F_K$ (N) | {{F1:2}} | {{F2:2}} | {{F3:2}} | {{F4:2}} |",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Describe the graph of $F_K$ versus $F_N$ and the relationship it shows."
+    },
+    {
+     "label": "b",
+     "text": "Use the slope of the best-fit line to determine the coefficient of kinetic friction.",
+     "answer": {
+      "expr": "slope",
+      "unit": "",
+      "sig": 2,
+      "tol": 0.06
+     }
+    },
+    {
+     "label": "c",
+     "text": "Why is using the slope of a best-fit line better than calculating μ_K from a single data point?"
+    },
+    {
+     "label": "d",
+     "text": "Predict $F_K$ if the normal force were 24.5 N. Show your reasoning.",
+     "answer": {
+      "expr": "slope*24.5",
+      "unit": "N",
+      "sig": 2,
+      "tol": 0.07
+     }
+    }
+   ],
+   "modelAnswer": "(a) The points lie close to a straight line passing through (approximately) the origin. $F_K$ is directly proportional to $F_N$: doubling the normal force doubles the kinetic friction.\n\n(b) Using two well-separated points on the line, e.g. ({{N1}}, {{F1:2}}) and ({{N4}}, {{F4:2}}): slope $= \\dfrac{ {{F4:2}} - {{F1:2}} }{ {{N4}} - {{N1}} } = {{slope:2}}$. Since $F_K = \\mu_K F_N$, the slope is $\\mu_K \\approx {{slope:2}}$ (no units).\n\n(c) Every point contains random error. A best-fit line uses all the data, so errors in individual points partly cancel; one point could be unusually high or low.\n\n(d) $F_K = \\mu_K F_N = ({{slope:2}})(24.5\\ \\text{N}) \\approx {{slope*24.5:2}}$ N.",
+   "rubric": [
+    {
+     "point": "Straight line through origin → direct proportion",
+     "marks": 2
+    },
+    {
+     "point": "Correct slope calculation using points on line",
+     "marks": 1
+    },
+    {
+     "point": "Identifies slope as μ_K, no units, correct value",
+     "marks": 1
+    },
+    {
+     "point": "Explains benefit of best-fit line (averages random error)",
+     "marks": 1
+    },
+    {
+     "point": "Correct prediction using μ_K F_N",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q07",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 0.2,
+     "max": 0.6,
+     "step": 0.05
+    },
+    "muS": {
+     "min": 0.35,
+     "max": 0.6,
+     "step": 0.01
+    },
+    "gap": {
+     "min": 0.06,
+     "max": 0.15,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "FN": "m*9.8",
+    "s1": "round((muS*m*9.8+0.04)*100)/100",
+    "s2": "round((muS*m*9.8-0.05)*100)/100",
+    "s3": "round((muS*m*9.8+0.01)*100)/100",
+    "k1": "round(((muS-gap)*m*9.8-0.03)*100)/100",
+    "k2": "round(((muS-gap)*m*9.8+0.02)*100)/100",
+    "k3": "round(((muS-gap)*m*9.8+0.01)*100)/100",
+    "S": "(s1+s2+s3)/3",
+    "K": "(k1+k2+k3)/3",
+    "mS": "S/FN",
+    "mK": "K/FN"
+   },
+   "text": "In Investigation 4.2.2, a {{m:3}} kg wood block is pulled horizontally across a desktop. The results are:\n\n| Trial | 1 | 2 | 3 |\n|---|---|---|---|\n| $F_{S\\,max}$ (N) | {{s1:3}} | {{s2:3}} | {{s3:3}} |\n| $F_K$ (N) | {{k1:3}} | {{k2:3}} | {{k3:3}} |",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the average $F_{S\\,max}$ and average $F_K$."
+    },
+    {
+     "label": "b",
+     "text": "Calculate the coefficient of static friction.",
+     "answer": {
+      "expr": "mS",
+      "unit": "",
+      "sig": 2,
+      "tol": 0.03
+     }
+    },
+    {
+     "label": "c",
+     "text": "Calculate the coefficient of kinetic friction.",
+     "answer": {
+      "expr": "mK",
+      "unit": "",
+      "sig": 2,
+      "tol": 0.03
+     }
+    },
+    {
+     "label": "d",
+     "text": "Compare the two coefficients and explain whether the result is what you would expect."
+    }
+   ],
+   "modelAnswer": "(a) avg $F_{S\\,max} = ({{s1:3}} + {{s2:3}} + {{s3:3}})/3 = {{S:3}}$ N; avg $F_K = ({{k1:3}} + {{k2:3}} + {{k3:3}})/3 = {{K:3}}$ N\n\n(b) $F_N = mg = ({{m:3}})(9.8) = {{FN:3}}$ N (level surface, horizontal pull). $\\mu_S = \\dfrac{F_{S\\,max}}{F_N} = \\dfrac{ {{S:3}} }{ {{FN:3}} } = {{mS:2}}$\n\n(c) $\\mu_K = \\dfrac{F_K}{F_N} = \\dfrac{ {{K:3}} }{ {{FN:3}} } = {{mK:2}}$\n\n(d) $\\mu_S > \\mu_K$. This is expected: it takes more force to start an object sliding than to keep it sliding at constant velocity, so the maximum static friction is greater than the kinetic friction for the same surfaces.",
+   "rubric": [
+    {
+     "point": "Correct averages",
+     "marks": 1
+    },
+    {
+     "point": "Calculates F_N = mg",
+     "marks": 1
+    },
+    {
+     "point": "Correct μ_S",
+     "marks": 1
+    },
+    {
+     "point": "Correct μ_K",
+     "marks": 1
+    },
+    {
+     "point": "States μ_S > μ_K with a physical explanation",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q08",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "Answer these questions about measuring friction with a spring scale (Investigations 4.2.1 and 4.2.2).",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Why should you use the greatest reading needed to start the object moving to measure $F_{S\\,max}$?"
+    },
+    {
+     "label": "b",
+     "text": "Use Newton's laws to explain why the spring scale reading equals $F_K$ when the object is pulled at constant velocity."
+    },
+    {
+     "label": "c",
+     "text": "When determining $F_K$, why is the average reading better than the maximum reading?"
+    },
+    {
+     "label": "d",
+     "text": "Why is it important to repeat measurements several times and use average values?"
+    }
+   ],
+   "modelAnswer": "(a) Static friction matches the applied force and grows as you pull harder, up to a maximum. Any reading before the block starts to move is less than or equal to the maximum; only the largest reading at the instant of slipping equals $F_{S\\,max}$.\n\n(b) Constant velocity means zero acceleration, so by Newton's first (and second) law the net force is zero. Horizontally only the applied force and kinetic friction act, so they must be equal in magnitude and opposite in direction: $F_a = F_K$.\n\n(c) While pulling, your pull varies slightly; at moments of maximum reading you are briefly accelerating the block, so $F_a > F_K$. The average reading represents the force needed for constant velocity, which is the one equal to $F_K$.\n\n(d) Each measurement contains random error (jerky pulling, uneven surface, reading a moving needle). Averaging several trials reduces the effect of these random errors, makes the result more reliable and helps spot a faulty trial.",
+   "rubric": [
+    {
+     "point": "Static friction increases with applied force up to a maximum at the instant of slipping",
+     "marks": 2
+    },
+    {
+     "point": "Constant velocity → F_net = 0 → F_a = F_K (Newton's first/second law)",
+     "marks": 2
+    },
+    {
+     "point": "Maximum reading includes acceleration moments; average represents constant velocity",
+     "marks": 2
+    },
+    {
+     "point": "Repeating/averaging reduces random error and improves reliability",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q09",
+   "type": "analysis",
+   "difficulty": 3,
+   "vars": {
+    "m": {
+     "min": 0.3,
+     "max": 0.8,
+     "step": 0.05
+    },
+    "S": {
+     "min": 1.0,
+     "max": 1.6,
+     "step": 0.1
+    }
+   },
+   "derived": {
+    "K": "S+0.3",
+    "FN": "m*9.8",
+    "mS": "S/FN",
+    "mK": "K/FN"
+   },
+   "text": "A student pulls a {{m:2}} kg wooden block across a floor and reports an average $F_{S\\,max}$ of {{S:2}} N and an average $F_K$ of {{K:2}} N. They conclude that $\\mu_K$ is greater than $\\mu_S$ for wood on this floor.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the two coefficients from the student's data.",
+     "answer": {
+      "expr": "mK",
+      "unit": "",
+      "sig": 2,
+      "tol": 0.04
+     }
+    },
+    {
+     "label": "b",
+     "text": "Does this conclusion make sense? Explain using what you know about static and kinetic friction."
+    },
+    {
+     "label": "c",
+     "text": "Suggest two specific errors in technique that could produce these results, and explain how each one would affect the readings."
+    }
+   ],
+   "modelAnswer": "(a) $F_N = mg = ({{m:2}})(9.8) = {{FN:3}}$ N. $\\mu_S = {{S:2}}/{{FN:3}} = {{mS:2}}$; $\\mu_K = {{K:2}}/{{FN:3}} = {{mK:2}}$.\n\n(b) No. For almost all pairs of surfaces the force needed to start an object moving is greater than the force needed to keep it moving, so $\\mu_S \\ge \\mu_K$. A result with $\\mu_K > \\mu_S$ almost certainly indicates experimental error.\n\n(c) Any two, e.g.:\n* The student accelerated the block while measuring $F_K$ – the reading then exceeds $F_K$ because $F_a = F_K + ma$, making $F_K$ (and $\\mu_K$) too large.\n* The student recorded static friction before it reached its maximum (pulled too quickly, or read the scale too early), making $F_{S\\,max}$ too small.\n* Pulling upward at an angle during the static trials (reducing $F_N$ and the friction) but horizontally during the kinetic trials.\n* Kinetic trials done on a rougher/dirtier part of the floor than the static trials.",
+   "rubric": [
+    {
+     "point": "Correct μ_S and μ_K values",
+     "marks": 2
+    },
+    {
+     "point": "States conclusion is unlikely; μ_S is normally ≥ μ_K, with reason",
+     "marks": 2
+    },
+    {
+     "point": "First specific error with direction of effect",
+     "marks": 2
+    },
+    {
+     "point": "Second specific error with direction of effect",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q10",
+   "type": "design",
+   "difficulty": 2,
+   "text": "A classmate claims: \"A wider block has more friction because more of it touches the table.\" Design a controlled experiment (in the style of Investigation 4.2.1) to test this claim for a rectangular wooden block.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Write a hypothesis that includes a reason."
+    },
+    {
+     "label": "b",
+     "text": "State the manipulated, responding and controlled variables."
+    },
+    {
+     "label": "c",
+     "text": "Describe your procedure and a data table."
+    },
+    {
+     "label": "d",
+     "text": "Describe the results you would expect and how they relate to the equation $F_K = \\mu_K F_N$. Would your conclusion be the same for a rubber block? Explain."
+    }
+   ],
+   "modelAnswer": "(a) If the block is turned from its wide face to its narrow face, $F_{S\\,max}$ and $F_K$ will stay about the same, because friction depends on the types of materials (μ) and the normal force, and $F_N = mg$ does not change.\n\n(b) Manipulated: contact area (which face is down). Responding: $F_{S\\,max}$ and $F_K$. Controlled: same block (same mass, same wood), same surface strip, horizontal pull, slow constant speed, same spring scale.\n\n(c) Zero the spring scale horizontally. With the wide face down, slowly increase the pull and record the largest reading before motion (3 trials); then pull at slow constant velocity and record the average reading (3 trials). Repeat with the narrow face down (and the medium face). Table: Face | area (cm²) | $F_{S\\,max}$ trials 1–3 & average | $F_K$ trials 1–3 & average.\n\n(d) The averages for all faces should be nearly equal, showing friction is (approximately) independent of contact area. This agrees with $F_K = \\mu_K F_N$, which contains no area term – the claim is not supported. Rubber is an exception (as with car tires): friction on rubber does depend on contact area, so a rubber block might show more friction on its larger face.",
+   "rubric": [
+    {
+     "point": "Hypothesis with reason referring to μ and F_N",
+     "marks": 2
+    },
+    {
+     "point": "Correct variables including at least two controlled",
+     "marks": 2
+    },
+    {
+     "point": "Fair procedure: one face changed, repeated trials, F_S max and F_K measured properly",
+     "marks": 2
+    },
+    {
+     "point": "Suitable data table",
+     "marks": 1
+    },
+    {
+     "point": "Expected result: little/no change, linked to F_K = μ_K F_N",
+     "marks": 2
+    },
+    {
+     "point": "Notes rubber is an exception",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q11",
+   "type": "problem",
+   "difficulty": 3,
+   "vars": {
+    "m1": {
+     "min": 0.4,
+     "max": 0.9,
+     "step": 0.05
+    },
+    "m2": {
+     "min": 0.2,
+     "max": 0.4,
+     "step": 0.05
+    },
+    "muK": {
+     "min": 0.15,
+     "max": 0.3,
+     "step": 0.01
+    },
+    "t": {
+     "min": 0.6,
+     "max": 1.0,
+     "step": 0.05
+    },
+    "loss": {
+     "min": 0.88,
+     "max": 0.97,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "ap": "(m2*9.8 - muK*m1*9.8)/(m1+m2)",
+    "d": "round(0.5*ap*loss*t^2*100)/100",
+    "am": "2*d/t^2",
+    "pe": "abs(am-ap)/ap*100"
+   },
+   "text": "In Investigation 4.3.1, a {{m1:2}} kg wood block on a level bench is attached by a string over a pulley to a {{m2:2}} kg hanging object. The coefficient of kinetic friction between the block and the bench is {{muK:2}}. The system is released from rest and the ticker tape shows that the block moved {{d}} m in {{t:2}} s.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Draw (describe) FBDs for the block and the hanging object."
+    },
+    {
+     "label": "b",
+     "text": "Use Newton's laws to calculate the predicted acceleration of the system.",
+     "answer": {
+      "expr": "ap",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Determine the measured acceleration from the ticker tape data.",
+     "answer": {
+      "expr": "am",
+      "unit": "m/s²",
+      "sig": 2,
+      "tol": 0.03
+     }
+    },
+    {
+     "label": "d",
+     "text": "Calculate the percentage error.",
+     "answer": {
+      "expr": "pe",
+      "unit": "%",
+      "sig": 2,
+      "tol": 0.25
+     }
+    },
+    {
+     "label": "e",
+     "text": "Give two sources of error that explain why the measured value is smaller, and how to reduce each."
+    }
+   ],
+   "modelAnswer": "(a) Block: $\\vec F_g$ down, $\\vec F_N$ up (equal), tension $\\vec F_T$ toward the pulley, $\\vec F_K$ opposite. Hanging object: $\\vec F_g$ down, $\\vec F_T$ up (smaller than its weight, since it accelerates down).\n\n(b) Treat the two as one system ($m_T = {{m1+m2:2}}$ kg). External forces along the motion: weight of hanging object forward, kinetic friction backward. $F_K = \\mu_K m_1 g = ({{muK:2}})({{m1:2}})(9.8) = {{muK*m1*9.8:3}}$ N; $m_2 g = {{m2*9.8:3}}$ N.\n$a = \\dfrac{m_2 g - \\mu_K m_1 g}{m_1 + m_2} = \\dfrac{ {{m2*9.8:3}} - {{muK*m1*9.8:3}} }{ {{m1+m2:2}} } = {{ap:3}}$ m/s²\n\n(c) From rest: $a = \\dfrac{2\\Delta d}{\\Delta t^2} = \\dfrac{2({{d}})}{({{t:2}})^2} = {{am:3}}$ m/s²\n\n(d) $\\%\\ \\text{error} = \\dfrac{|{{am:3}} - {{ap:3}}|}{ {{ap:3}} }\\times 100\\% = {{pe:2}}\\%$\n\n(e) Any two: friction in the pulley axle (use a low-friction pulley); ticker tape rubbing in the timer (keep the tape straight/use a motion sensor); μ_K measured on a different part of the bench (measure along the same path); air resistance on the hanging mass; mass of the string not included.",
+   "rubric": [
+    {
+     "point": "Correct FBDs for both objects",
+     "marks": 2
+    },
+    {
+     "point": "Correct system approach: F_net = m₂g − μ_K m₁g over total mass",
+     "marks": 2
+    },
+    {
+     "point": "Correct predicted acceleration",
+     "marks": 1
+    },
+    {
+     "point": "Correct measured acceleration from a = 2Δd/Δt²",
+     "marks": 1
+    },
+    {
+     "point": "Correct percentage error",
+     "marks": 1
+    },
+    {
+     "point": "Two valid sources of error each with improvement",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q12",
+   "type": "problem",
+   "difficulty": 3,
+   "vars": {
+    "m1": {
+     "min": 0.5,
+     "max": 1.0,
+     "step": 0.05
+    },
+    "m2": {
+     "min": 0.25,
+     "max": 0.45,
+     "step": 0.05
+    },
+    "mu": {
+     "min": 0.12,
+     "max": 0.28,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "a": "round((m2*9.8 - mu*m1*9.8)/(m1+m2)*100)/100",
+    "muK": "(m2*9.8 - (m1+m2)*a)/(m1*9.8)"
+   },
+   "text": "A group skips the spring-scale step in Investigation 4.3.1 and instead uses the measured acceleration to find the coefficient of kinetic friction. Their {{m1:2}} kg block, pulled by a {{m2:2}} kg hanging mass, accelerates at {{a}} m/s².",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the coefficient of kinetic friction between the block and the surface.",
+     "answer": {
+      "expr": "muK",
+      "unit": "",
+      "sig": 2,
+      "tol": 0.04
+     }
+    },
+    {
+     "label": "b",
+     "text": "Calculate the tension in the string.",
+     "answer": {
+      "expr": "m2*(9.8-a)",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Explain why the value of μ_K found this way is likely to be slightly larger than the true value for the block and surface."
+    }
+   ],
+   "modelAnswer": "(a) For the whole system: $(m_1+m_2)a = m_2 g - \\mu_K m_1 g$, so\n$\\mu_K = \\dfrac{m_2 g - (m_1+m_2)a}{m_1 g} = \\dfrac{({{m2:2}})(9.8) - ({{m1+m2:2}})({{a}})}{({{m1:2}})(9.8)} = \\dfrac{ {{m2*9.8:3}} - {{(m1+m2)*a:3}} }{ {{m1*9.8:3}} } = {{muK:2}}$\n\n(b) Hanging object (down positive): $m_2 g - F_T = m_2 a$, so $F_T = m_2(g - a) = ({{m2:2}})(9.8 - {{a}}) = {{m2*(9.8-a):2}}$ N.\n\n(c) Every other resistance (pulley friction, tape drag, air resistance) also reduces the acceleration, but this method blames all of it on friction between the block and surface. So the calculated μ_K includes those extra effects and comes out a little too large.",
+   "rubric": [
+    {
+     "point": "Correct system equation rearranged for μ_K",
+     "marks": 2
+    },
+    {
+     "point": "Correct μ_K value",
+     "marks": 1
+    },
+    {
+     "point": "Correct tension using the hanging object's FBD",
+     "marks": 2
+    },
+    {
+     "point": "Explains other resistive forces are attributed to μ_K, making it too large",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q13",
+   "type": "analysis",
+   "difficulty": 3,
+   "vars": {
+    "m1": {
+     "min": 0.5,
+     "max": 0.8,
+     "step": 0.05
+    },
+    "m2": {
+     "min": 0.2,
+     "max": 0.35,
+     "step": 0.05
+    },
+    "muK": {
+     "min": 0.15,
+     "max": 0.25,
+     "step": 0.01
+    },
+    "extra": {
+     "choices": [
+      0.2,
+      0.25,
+      0.3
+     ]
+    }
+   },
+   "derived": {
+    "a0": "(m2*9.8 - muK*m1*9.8)/(m1+m2)",
+    "aTop": "(m2*9.8 - muK*(m1+extra)*9.8)/(m1+m2+extra)",
+    "aHang": "((m2+extra)*9.8 - muK*m1*9.8)/(m1+m2+extra)"
+   },
+   "text": "In Investigation 4.3.1, a {{m1:2}} kg block ($\\mu_K$ = {{muK:2}}) is pulled by a {{m2:2}} kg hanging mass. You then have an extra {{extra:2}} kg object to use.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the original acceleration.",
+     "answer": {
+      "expr": "a0",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "Calculate the acceleration if the extra object is placed on top of the block.",
+     "answer": {
+      "expr": "aTop",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Calculate the acceleration if the extra object is added to the hanging mass instead.",
+     "answer": {
+      "expr": "aHang",
+      "unit": "m/s²",
+      "sig": 2
+     }
+    },
+    {
+     "label": "d",
+     "text": "Explain, in terms of forces and mass, why the two changes have opposite effects even though the total mass of the system is the same in both cases."
+    }
+   ],
+   "modelAnswer": "Use $a = \\dfrac{m_{hang} g - \\mu_K m_{block} g}{m_{total}}$.\n\n(a) $a = \\dfrac{({{m2:2}})(9.8) - ({{muK:2}})({{m1:2}})(9.8)}{ {{m1+m2:2}} } = {{a0:2}}$ m/s²\n\n(b) Block mass becomes {{m1+extra:2}} kg: $a = \\dfrac{ {{m2*9.8:3}} - ({{muK:2}})({{m1+extra:2}})(9.8)}{ {{m1+m2+extra:2}} } = {{aTop:2}}$ m/s² (smaller)\n\n(c) Hanging mass becomes {{m2+extra:2}} kg: $a = \\dfrac{({{m2+extra:2}})(9.8) - {{muK*m1*9.8:3}} }{ {{m1+m2+extra:2}} } = {{aHang:2}}$ m/s² (larger)\n\n(d) Both changes add the same mass to the system, so the inertia increases equally. On the block, the extra mass increases $F_N$ and therefore kinetic friction, *reducing* the net force. On the hanging side, the extra mass increases the forward force of gravity, *increasing* the net force. Same mass, but the net force goes down in one case and up in the other, so the accelerations change in opposite directions.",
+   "rubric": [
+    {
+     "point": "Correct original acceleration",
+     "marks": 1
+    },
+    {
+     "point": "Correct acceleration with mass on block",
+     "marks": 1
+    },
+    {
+     "point": "Correct acceleration with mass hanging",
+     "marks": 1
+    },
+    {
+     "point": "Explains extra mass on block increases F_N and friction (smaller net force)",
+     "marks": 2
+    },
+    {
+     "point": "Explains extra hanging mass increases forward force; total mass same in both",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q14",
+   "type": "explain",
+   "difficulty": 2,
+   "text": "In Investigation 4.3.1 the measured acceleration is almost always a little less than the acceleration predicted with Newton's laws.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "List three specific sources of error in this investigation."
+    },
+    {
+     "label": "b",
+     "text": "For each, explain why it makes the measured acceleration smaller (or how it affects the result)."
+    },
+    {
+     "label": "c",
+     "text": "Suggest an improvement to reduce each error."
+    }
+   ],
+   "modelAnswer": "Any three, each with effect and fix, e.g.:\n\n| Source of error | Effect | Improvement |\n|---|---|---|\n| Friction in the pulley axle | extra backward force not in the prediction → smaller $a$ | use a low-friction (air or ball-bearing) pulley; lubricate |\n| Ticker tape dragging through the timer | extra friction on the block → smaller $a$ | keep the tape straight and level, or use a motion sensor |\n| μ_K measured on a different part of the surface | real friction may be larger or smaller than used in the prediction | measure μ_K along the exact path; clean the surface |\n| Mass of the string ignored | slightly more mass to accelerate → smaller $a$ | use light string or include its mass |\n| Air resistance on the hanging object | small backward force → smaller $a$ | use compact objects; short drops |\n| String not parallel to the surface | part of the tension lifts the block, changing $F_N$ | align the pulley so the string is horizontal |\n| Timing / counting dot errors | random error in $a$ | repeat trials, use longer runs, average |",
+   "rubric": [
+    {
+     "point": "Three specific, relevant sources of error",
+     "marks": 3
+    },
+    {
+     "point": "Explains effect of each on the measured acceleration",
+     "marks": 3
+    },
+    {
+     "point": "Practical improvement for each",
+     "marks": 3
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q15",
+   "type": "analysis",
+   "difficulty": 1,
+   "text": "Investigation 4.2.2 asks: \"How does the roughness of a surface affect the coefficient of static friction and the coefficient of kinetic friction for a block of wood, and how do these coefficients compare?\"",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Identify the manipulated, responding and controlled variables."
+    },
+    {
+     "label": "b",
+     "text": "Write a hypothesis with predictions and reasons."
+    },
+    {
+     "label": "c",
+     "text": "What type of relationship is being tested? Explain."
+    },
+    {
+     "label": "d",
+     "text": "Explain why coefficients of friction must be found by experiment rather than by calculation, and why different groups may get slightly different values for the same surfaces."
+    }
+   ],
+   "modelAnswer": "(a) Manipulated: the surface (its roughness/material). Responding: $F_{S\\,max}$ and $F_K$, used to calculate $\\mu_S$ and $\\mu_K$. Controlled: the same block (same mass and face), horizontal pull, slow constant speed for $F_K$, same spring scale.\n\n(b) If the surface is rougher, then both $\\mu_S$ and $\\mu_K$ will be larger, because rough surfaces interlock and grip more; on every surface $\\mu_S$ will be slightly larger than $\\mu_K$, because more force is needed to start motion than to keep it going.\n\n(c) A cause-and-effect relationship between a manipulated variable (surface) and responding variables (coefficients of friction), tested in a controlled experiment where all other variables are kept the same.\n\n(d) Coefficients depend on the materials and the condition of the surfaces (cleanliness, wetness, roughness), which theory cannot predict exactly. Small differences in surface condition, pulling technique and measurement error mean groups get different results, so coefficients are often given as ranges.",
+   "rubric": [
+    {
+     "point": "Correct manipulated and responding variables",
+     "marks": 1
+    },
+    {
+     "point": "At least two controlled variables",
+     "marks": 1
+    },
+    {
+     "point": "Hypothesis with predictions for both coefficients and reasons",
+     "marks": 2
+    },
+    {
+     "point": "Identifies cause-and-effect relationship in a controlled experiment",
+     "marks": 1
+    },
+    {
+     "point": "Explains experimental nature of μ and causes of variation",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q16",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "M": {
+     "min": 3.0,
+     "max": 5.0,
+     "step": 0.2
+    },
+    "muS": {
+     "min": 0.3,
+     "max": 0.5,
+     "step": 0.01
+    },
+    "bucket": {
+     "choices": [
+      0.1,
+      0.12,
+      0.15
+     ]
+    },
+    "w": {
+     "choices": [
+      0.01,
+      0.02,
+      0.05
+     ]
+    }
+   },
+   "derived": {
+    "Fs": "muS*M*9.8",
+    "mmax": "muS*M",
+    "n": "round((muS*M - bucket)/w - 0.5)"
+   },
+   "text": "A string is tied to a {{M:2}} kg block on a table and runs over a pulley to a {{bucket:3}} kg bucket. Students add {{w*1000:2}} g washers to the bucket one at a time. The coefficient of static friction for the block on the table is {{muS:2}}.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate the maximum force of static friction on the block.",
+     "answer": {
+      "expr": "Fs",
+      "unit": "N",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "What is the greatest total hanging mass that will not move the block?",
+     "answer": {
+      "expr": "mmax",
+      "unit": "kg",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "How many washers can be added without moving the block?",
+     "answer": {
+      "expr": "n",
+      "unit": "washers",
+      "tol": 0.001
+     }
+    },
+    {
+     "label": "d",
+     "text": "Is this a precise way to measure μ_S? Explain, and suggest how to improve it."
+    }
+   ],
+   "modelAnswer": "(a) $F_{S\\,max} = \\mu_S F_N = \\mu_S M g = ({{muS:2}})({{M:2}})(9.8) = {{Fs:3}}$ N\n\n(b) The block stays at rest while the hanging weight $m g \\le F_{S\\,max}$: $m_{max} = F_{S\\,max}/g = \\mu_S M = {{mmax:3}}$ kg\n\n(c) Mass available for washers $= {{mmax:3}} - {{bucket:3}} = {{mmax-bucket:3}}$ kg. Number $= {{mmax-bucket:3}}/{{w:3}} = {{(mmax-bucket)/w:3}}$, so the students can add **{{n}}** whole washers; the next one starts the block moving.\n\n(d) It is only moderately precise: the threshold is known only to within one washer ({{w*1000:2}} g), and a small bump can start the block early. Use smaller washers (or sand) near the threshold, add them gently, repeat several times and average.",
+   "rubric": [
+    {
+     "point": "Correct F_S max",
+     "marks": 1
+    },
+    {
+     "point": "Recognises hanging weight equals F_S max at threshold; correct maximum mass",
+     "marks": 2
+    },
+    {
+     "point": "Correct number of whole washers with reasoning",
+     "marks": 2
+    },
+    {
+     "point": "Evaluates precision (step size, disturbances) and gives an improvement",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q17",
+   "type": "analysis",
+   "difficulty": 2,
+   "vars": {
+    "muK": {
+     "min": 0.15,
+     "max": 0.45,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "slope": "round(muK*9.8*100)/100",
+    "mu": "slope/9.8"
+   },
+   "text": "In Investigation 4.2.1, students plot $F_K$ (vertical axis, in N) against the mass $m$ of the block plus added masses (horizontal axis, in kg). The best-fit line passes through the origin and has a slope of {{slope}} N/kg.",
+   "parts": [
+    {
+     "label": "a",
+     "text": "What relationship between $F_K$ and $m$ does the graph show? Would a similar relationship exist between $m$ and $F_{S\\,max}$? Explain."
+    },
+    {
+     "label": "b",
+     "text": "Show that the slope equals $\\mu_K g$, and use it to find $\\mu_K$.",
+     "answer": {
+      "expr": "mu",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Predict the kinetic friction on a 2.5 kg load on the same surface.",
+     "answer": {
+      "expr": "slope*2.5",
+      "unit": "N",
+      "sig": 2
+     }
+    }
+   ],
+   "modelAnswer": "(a) A straight line through the origin: $F_K$ is directly proportional to $m$. Yes – $F_{S\\,max} = \\mu_S m g$ is also proportional to $m$ (with a slightly steeper slope, $\\mu_S g$), because more mass means a larger normal force pressing the surfaces together.\n\n(b) On a level surface $F_N = mg$, so $F_K = \\mu_K F_N = (\\mu_K g)\\,m$. Comparing with $y = (\\text{slope})x$, slope $= \\mu_K g$. $\\mu_K = \\dfrac{ {{slope}}\\ \\text{N/kg}}{9.8\\ \\text{N/kg}} = {{mu:2}}$\n\n(c) $F_K = ({{slope}}\\ \\text{N/kg})(2.5\\ \\text{kg}) = {{slope*2.5:2}}$ N",
+   "rubric": [
+    {
+     "point": "Direct proportion identified",
+     "marks": 1
+    },
+    {
+     "point": "Same type of relationship for F_S max, with reason (normal force)",
+     "marks": 2
+    },
+    {
+     "point": "Derives slope = μ_K g",
+     "marks": 1
+    },
+    {
+     "point": "Correct μ_K",
+     "marks": 1
+    },
+    {
+     "point": "Correct prediction",
+     "marks": 1
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q18",
+   "type": "problem",
+   "difficulty": 2,
+   "vars": {
+    "m": {
+     "min": 0.2,
+     "max": 0.5,
+     "step": 0.05
+    },
+    "mA": {
+     "min": 0.35,
+     "max": 0.55,
+     "step": 0.01
+    },
+    "mB": {
+     "min": 0.12,
+     "max": 0.25,
+     "step": 0.01
+    }
+   },
+   "derived": {
+    "FN": "m*9.8",
+    "SA": "round(mA*m*9.8*100)/100",
+    "KA": "round((mA-0.08)*m*9.8*100)/100",
+    "SB": "round(mB*m*9.8*100)/100",
+    "KB": "round((mB-0.03)*m*9.8*100)/100",
+    "msA": "SA/FN",
+    "mkA": "KA/FN",
+    "msB": "SB/FN",
+    "mkB": "KB/FN"
+   },
+   "text": "A {{m:3}} kg wood block is tested on two surfaces in Investigation 4.2.2. Average results:\n\n| Surface | $F_{S\\,max}$ (N) | $F_K$ (N) |\n|---|---|---|\n| carpet tile | {{SA:3}} | {{KA:3}} |\n| plastic sheet | {{SB:3}} | {{KB:3}} |",
+   "parts": [
+    {
+     "label": "a",
+     "text": "Calculate μ_S and μ_K for the carpet tile.",
+     "answer": {
+      "expr": "mkA",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "b",
+     "text": "Calculate μ_S and μ_K for the plastic sheet.",
+     "answer": {
+      "expr": "mkB",
+      "unit": "",
+      "sig": 2
+     }
+    },
+    {
+     "label": "c",
+     "text": "Answer the testable question: how does surface roughness affect the coefficients, and how do μ_S and μ_K compare?"
+    },
+    {
+     "label": "d",
+     "text": "If a 0.500 kg mass is placed on the block, predict F_K on the plastic sheet. Did the coefficient change? Explain.",
+     "answer": {
+      "expr": "mkB*(m+0.5)*9.8",
+      "unit": "N",
+      "sig": 2
+     }
+    }
+   ],
+   "modelAnswer": "$F_N = mg = ({{m:3}})(9.8) = {{FN:3}}$ N\n\n(a) Carpet: $\\mu_S = {{SA:3}}/{{FN:3}} = {{msA:2}}$; $\\mu_K = {{KA:3}}/{{FN:3}} = {{mkA:2}}$\n\n(b) Plastic: $\\mu_S = {{SB:3}}/{{FN:3}} = {{msB:2}}$; $\\mu_K = {{KB:3}}/{{FN:3}} = {{mkB:2}}$\n\n(c) The rougher carpet tile has larger coefficients of both kinds than the smooth plastic. On each surface $\\mu_S > \\mu_K$.\n\n(d) New $F_N = ({{m+0.5:3}})(9.8) = {{(m+0.5)*9.8:3}}$ N; $F_K = \\mu_K F_N = ({{mkB:2}})({{(m+0.5)*9.8:3}}) = {{mkB*(m+0.5)*9.8:2}}$ N. The coefficient does not change – it depends only on the materials in contact; only the normal force (and so the friction force) increased.",
+   "rubric": [
+    {
+     "point": "Correct F_N",
+     "marks": 1
+    },
+    {
+     "point": "Correct coefficients for carpet",
+     "marks": 1
+    },
+    {
+     "point": "Correct coefficients for plastic",
+     "marks": 1
+    },
+    {
+     "point": "Conclusion: rougher → larger μ; μ_S > μ_K",
+     "marks": 2
+    },
+    {
+     "point": "Correct prediction and explanation that μ is unchanged",
+     "marks": 2
+    }
+   ]
+  },
+  {
+   "id": "4-inv-q19",
+   "type": "design",
+   "difficulty": 3,
+   "text": "Design an investigation to find out whether the coefficient of kinetic friction between a running shoe and the gym floor depends on whether the floor is clean, dusty or wet. Use only equipment from the Chapter 4 investigations (spring scale or force sensor, balance, masses, string).",
+   "parts": [
+    {
+     "label": "a",
+     "text": "State a testable question and hypothesis (with reasons)."
+    },
+    {
+     "label": "b",
+     "text": "List the variables and explain how you will control them."
+    },
+    {
+     "label": "c",
+     "text": "Describe the procedure and how you will calculate μ_K."
+    },
+    {
+     "label": "d",
+     "text": "Identify two likely sources of error and how you will reduce them."
+    },
+    {
+     "label": "e",
+     "text": "Explain how a sports-floor manager could use your results."
+    }
+   ],
+   "modelAnswer": "(a) *How does the condition of the floor (clean, dusty, wet) affect μ_K for a running shoe?* Hypothesis: μ_K will be greatest on the clean floor and smaller on the dusty and wet floors, because dust particles and water separate the rubber from the floor, reducing grip.\n\n(b) Manipulated: floor condition. Responding: $F_K$ → μ_K. Controlled: same shoe loaded with the same mass (so $F_N$ is the same), same patch of floor, horizontal pull, slow constant speed, same force sensor, same amount of dust/water each time.\n\n(c) Measure the mass of the shoe plus added mass; $F_N = mg$. Attach string to the shoe, pull horizontally at a slow constant velocity and record the average reading (3 trials) for each condition. $\\mu_K = F_K/F_N$; average the trials.\n\n(d) E.g. uneven spreading of water/dust – measure out the same volume/amount over the same area; pulling at an angle – keep the string horizontal; speeding up – watch for steady motion and use average reading; shoe sole wearing or getting wet between trials – dry and clean the sole between trials.\n\n(e) If μ_K drops a lot when the floor is dusty or wet, the manager knows that regular cleaning and immediately wiping up spills is important to prevent slips and injuries.",
+   "rubric": [
+    {
+     "point": "Testable question and hypothesis with reasons",
+     "marks": 2
+    },
+    {
+     "point": "Variables identified with methods of control",
+     "marks": 2
+    },
+    {
+     "point": "Procedure measures F_K correctly with repeated trials and calculates μ_K",
+     "marks": 2
+    },
+    {
+     "point": "Two sources of error with improvements",
+     "marks": 2
+    },
+    {
+     "point": "Sensible application of results",
+     "marks": 1
+    }
+   ]
+  }
+ ]
+}
