@@ -839,7 +839,7 @@
           "text": "Determine the average rate of change of the car's value from year 1 to year 4.",
           "answer": {
             "expr": "(v0*r^4 - v0*r)/3",
-            "unit": "$/year",
+            "unit": "dollars/year",
             "sig": 3
           }
         },

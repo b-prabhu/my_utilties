@@ -12,6 +12,8 @@ marked.setOptions({ gfm: true, breaks: false });
 function renderMarkdown(src, { inline = false } = {}) {
   if (!src) return '';
   const math = [];
+  // A literal dollar sign is written \$ (e.g. prices); keep it out of maths.
+  src = String(src).replace(/\\\$/g, '@@DOLLAR@@');
   // ```plot blocks become inline SVG graphs.
   let text = String(src).replace(/```plot\s*\n([\s\S]*?)```/g, (m, body) => {
     let svg;
@@ -31,6 +33,7 @@ function renderMarkdown(src, { inline = false } = {}) {
     return `@@MATH${math.length - 1}@@`;
   });
   text = inline ? marked.parseInline(text) : marked.parse(text);
+  text = text.replace(/@@DOLLAR@@/g, '$');
   return text.replace(/<p>\s*(@@MATH\d+@@)\s*<\/p>/g, '$1').replace(/@@MATH(\d+)@@/g, (_, i) => math[Number(i)]);
 }
 

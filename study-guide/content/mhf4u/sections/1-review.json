@@ -1,0 +1,1263 @@
+{
+  "id": "1-review",
+  "number": "Review",
+  "title": "Chapter 1 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "Bring the whole chapter together: characteristics of polynomial functions, factored form and symmetry, transformations, and average and instantaneous rates of change. Use this unit to check your understanding before a chapter test — work through the connections, then try the mixed problems.",
+  "objectives": [
+    "Connect degree, leading coefficient, finite differences and graph features.",
+    "Sketch polynomials from factored form and find equations from graphs.",
+    "Apply and describe transformations of power functions.",
+    "Calculate and interpret average and instantaneous rates of change.",
+    "Solve multi-step problems that combine ideas from the whole chapter."
+  ],
+  "lessons": [
+    {
+      "id": "big-picture",
+      "title": "Chapter 1 at a glance",
+      "body": "\n| Section | Big idea | Key tools |\n|---|---|---|\n| 1.2 Characteristics | Degree and sign of the leading coefficient control end behaviour, turning points and intercepts | quadrant language, $n - 1$ turning points, finite differences $= a \\times n!$ |\n| 1.3 Equations and graphs | Factored form shows zeros and their orders | cross / touch / flatten, sign tables, $f(-x)$ test for symmetry |\n| 1.4 Transformations | $y = a[k(x - d)]^n + c$ reshapes and moves $y = x^n$ | $(x, y) \\to (\\tfrac{x}{k} + d,\\ ay + c)$, vertex $(d, c)$ for even $n$ |\n| 1.5 Average rate of change | Slope of a secant over an interval | $\\dfrac{f(x_2) - f(x_1)}{x_2 - x_1}$ with units |\n| 1.6 Instantaneous rate of change | Slope of a tangent at a point | shrinking intervals, centred estimates, difference quotient |\n"
+    },
+    {
+      "id": "strategy",
+      "title": "A problem-solving checklist for polynomial questions",
+      "body": "\nWhen you meet any polynomial, run through these questions:\n\n1. **What is the degree? What is the leading coefficient?** → end behaviour and the maximum numbers of turning points and $x$-intercepts.\n2. **Is it factored (or can it be)?** → zeros, orders, sign intervals, sketch.\n3. **Is it a transformed power function?** → read $a, k, d, c$; map key points.\n4. **Is there symmetry?** → test $f(-x)$.\n5. **Is a rate of change asked for?** → an interval means a secant (average); a single moment means a tangent (instantaneous).\n6. **Is there a context?** → units, reasonable domain, meaning of intercepts.\n\n**Show your working.** In a written test the method earns most of the marks: write the formula, the substitution and a concluding sentence with units.\n"
+    },
+    {
+      "id": "connections",
+      "title": "Making connections across the chapter",
+      "body": "\nThe same graph can be studied with every tool from the chapter. Take $f(x) = x^3 - 6x^2 + 9x + 1 = x(x - 3)^2 + 1$.\n\n```plot\ntitle: y = x³ − 6x² + 9x + 1\nf: x^3 - 6*x^2 + 9*x + 1\ndomain: -0.5, 4.5\nrange: -2, 8\npoints: (1,5), (3,1), (0,1)\n```\n\n* **1.2:** cubic, $a = 1$, quadrant 3 → quadrant 1, at most 2 turning points; third differences constant at 6.\n* **1.3:** $f(x) - 1 = x(x - 3)^2$ touches $y = 1$ at $x = 3$.\n* **1.5:** average rate of change on $[0, 3]$: $\\dfrac{1 - 1}{3} = 0$.\n* **1.6:** instantaneous rate of change is about $-3$ at $x = 2$ and $9$ at $x = 4$, so there is a local minimum between them (at $(3, 1)$); it is 0 at the local maximum $(1, 5)$ as well.\n"
+    },
+    {
+      "id": "design-task",
+      "title": "Chapter problem: designing with polynomials",
+      "body": "\nDesigners of furniture, vehicles, jewellery and games combine polynomial curves. For a design report, include for each function you use:\n\n* the equation, domain and range, and end behaviour;\n* the value of the constant finite differences;\n* any transformations used and any symmetry;\n* connections to average and instantaneous rates of change (e.g. how steep an edge is at a point).\n\nExample: the top of a bench backrest could be $y = -0.02(x - 5)^4 + 6$, $0 \\le x \\le 10$ — even power, vertex $(5, 6)$, symmetric about $x = 5$, fourth differences constant at $-0.02 \\times 24 = -0.48$.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "degree / leading coefficient",
+      "definition": "Highest exponent and its coefficient; together they determine end behaviour."
+    },
+    {
+      "term": "finite differences",
+      "definition": "For a degree-$n$ polynomial, the $n$th differences are constant and equal $a \\times n!$ (unit steps)."
+    },
+    {
+      "term": "order of a zero",
+      "definition": "The number of times a factor repeats; odd order → sign change, even order → touch."
+    },
+    {
+      "term": "even / odd function",
+      "definition": "$f(-x) = f(x)$ (symmetric about the $y$-axis) / $f(-x) = -f(x)$ (symmetric about the origin)."
+    },
+    {
+      "term": "secant / tangent",
+      "definition": "Line through two points on a curve / line touching the curve at one point; their slopes give average / instantaneous rates of change."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Finite differences",
+      "latex": "\\Delta^n y = a \\times n!",
+      "meaning": "Unit $x$-steps."
+    },
+    {
+      "name": "Transformations",
+      "latex": "y = a[k(x - d)]^n + c, \\quad (x, y) \\to \\left(\\tfrac{x}{k} + d,\\ ay + c\\right)",
+      "meaning": ""
+    },
+    {
+      "name": "Average rate of change",
+      "latex": "\\frac{f(x_2) - f(x_1)}{x_2 - x_1}",
+      "meaning": "Slope of the secant."
+    },
+    {
+      "name": "Difference quotient",
+      "latex": "\\frac{f(a + h) - f(a)}{h}",
+      "meaning": "Approaches the instantaneous rate of change at $a$ as $h \\to 0$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Sketch from standard form by factoring",
+      "problem": "Sketch $y = x^3 - 2x^2 - x + 2$ and state its intercepts.",
+      "steps": [
+        "Group: $x^2(x - 2) - 1(x - 2) = (x - 2)(x^2 - 1) = (x - 2)(x - 1)(x + 1)$.",
+        "Zeros $-1, 1, 2$ (order 1); $y$-intercept $2$; cubic with $a = 1$: quadrant 3 → quadrant 1.",
+        "Sign pattern: $-, +, -, +$ on $(-\\infty, -1), (-1, 1), (1, 2), (2, \\infty)$."
+      ],
+      "answer": "$x$-intercepts $-1, 1, 2$; $y$-intercept 2.\n\n```plot\nf: x^3 - 2*x^2 - x + 2\ndomain: -2, 3\nrange: -6, 6\npoints: (-1,0), (1,0), (2,0), (0,2)\n```"
+    },
+    {
+      "title": "Average rates approximating an instantaneous rate",
+      "problem": "For $f(x) = -4x^3$, find the average rates of change on $[2, 2.5]$ and $[1.5, 2]$. Average them and say what the result approximates.",
+      "steps": [
+        "$f(2.5) = -62.5$, $f(2) = -32$, $f(1.5) = -13.5$.",
+        "$[2, 2.5]$: $\\dfrac{-62.5 + 32}{0.5} = -61$. $[1.5, 2]$: $\\dfrac{-32 + 13.5}{0.5} = -37$.",
+        "Average: $\\dfrac{-61 + (-37)}{2} = -49$, which approximates the instantaneous rate of change at $x = 2$ (the exact value is $-48$)."
+      ],
+      "answer": "−49, an estimate of the slope of the tangent at $x = 2$."
+    },
+    {
+      "title": "Roller coaster",
+      "problem": "For $h(x) = 0.0025x(x - 8)(x - 16)(x - 32)$, find the heights at $x = 4$ and $x = 12$ and the average rate of change between them.",
+      "steps": [
+        "$h(4) = 0.0025(4)(-4)(-12)(-28) = -13.44$ m.",
+        "$h(12) = 0.0025(12)(4)(-4)(-20) = 9.6$ m.",
+        "$\\dfrac{9.6 - (-13.44)}{12 - 4} = \\dfrac{23.04}{8} = 2.88$"
+      ],
+      "answer": "From the valley near $x = 4$ to the hill near $x = 12$, the track rises on average 2.88 m per horizontal metre."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Odd-degree means odd function.",
+      "fact": "Only if every exponent is odd."
+    },
+    {
+      "myth": "$(x + 4)$ shifts right.",
+      "fact": "$x + 4 = x - (-4)$: 4 units left."
+    },
+    {
+      "myth": "Average and instantaneous rates are the same thing.",
+      "fact": "Average = interval (secant); instantaneous = point (tangent). They agree only for linear relationships."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Design careers",
+      "body": "Industrial designers, animators and engineers combine transformed polynomial curves to create products and track shapes."
+    },
+    {
+      "title": "Science",
+      "body": "Finite differences reveal the right model for lab data; rates of change give velocities, growth rates and reaction rates."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Describe the symmetry and end behaviour of $f(x) = 5x^4 - 2x^3 + x^2 - 3x + 1$ and $g(x) = 4x^3 - 5x^2 + 7x - 3$.",
+      "hint": "Check exponents and $f(-x)$.",
+      "solution": "Neither function is even or odd (mixed exponents). $f$: degree 4, $a = 5 > 0$, both ends up (Q2 → Q1). $g$: degree 3, $a = 4 > 0$, Q3 → Q1."
+    },
+    {
+      "question": "Compare $f(x) = x^3$ with $g(x) = 0.5(x - 1)^3 + 3$.",
+      "hint": "Read $a$, $d$, $c$.",
+      "solution": "$g$ is $f$ compressed vertically by a factor of ½, then translated 1 unit right and 3 units up; its centre of symmetry is $(1, 3)$."
+    },
+    {
+      "question": "Compare $f(x) = x^4$ with $g(x) = -(2x + 6)^4$.",
+      "hint": "Factor the bracket.",
+      "solution": "$g(x) = -[2(x + 3)]^4$: horizontal compression by ½, reflection in the $x$-axis, 3 units left; vertex $(-3, 0)$, opens down."
+    },
+    {
+      "question": "The fifth differences of a polynomial are $-60$. Find the degree and leading coefficient.",
+      "hint": "$5! = 120$",
+      "solution": "Degree 5, $a = -0.5$."
+    },
+    {
+      "question": "Find the instantaneous rate of change of $f(x) = x^3 - 6x^2 + 9x + 1$ at $x = 2$ and $x = 4$. What lies between?",
+      "hint": "Use a centred interval.",
+      "solution": "About $-3$ and $9$: decreasing then increasing, so there is a local minimum between them (at $x = 3$)."
+    }
+  ],
+  "summary": [
+    "Degree and leading coefficient → end behaviour, turning points, intercept counts, finite differences.",
+    "Factored form → zeros, orders, sign intervals, sketches, equations from graphs.",
+    "Transformations $y = a[k(x - d)]^n + c$ → shape, position, vertex, range.",
+    "Rates of change: average (secant, interval) vs instantaneous (tangent, point)."
+  ],
+  "questions": [
+    {
+      "id": "1-r-q01",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": -4,
+          "max": -1,
+          "step": 1
+        },
+        "b": {
+          "min": -3,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": -5,
+          "max": 5,
+          "step": 1
+        },
+        "d": {
+          "min": -6,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The table of values represents a polynomial function.\n\n| $x$ | −3 | −2 | −1 | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|---|---|---|\n| $y$ | {{-27*a + 9*b - 3*c + d}} | {{-8*a + 4*b - 2*c + d}} | {{-a + b - c + d}} | {{d}} | {{a + b + c + d}} | {{8*a + 4*b + 2*c + d}} | {{27*a + 9*b + 3*c + d}} | {{64*a + 16*b + 4*c + d}} |",
+      "parts": [
+        {
+          "label": "i",
+          "text": "Degree",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "ii",
+          "text": "Sign of the leading coefficient"
+        },
+        {
+          "label": "iii",
+          "text": "Value of the leading coefficient",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "First differences: {{19*a - 5*b + c}}, {{7*a - 3*b + c}}, {{a - b + c}}, {{a + b + c}}, {{7*a + 3*b + c}}, {{19*a + 5*b + c}}, {{37*a + 7*b + c}}\n\nSecond differences: {{-12*a + 2*b}}, {{-6*a + 2*b}}, {{2*b}}, {{6*a + 2*b}}, {{12*a + 2*b}}, {{18*a + 2*b}}\n\nThird differences: {{6*a}} (all equal).\n\n(i) Degree 3 (third differences constant). (ii) {{6*a}} is negative, so the leading coefficient is negative. (iii) $6a_3 = {{6*a}} \\Rightarrow a_3 = {{a}}$.",
+      "rubric": [
+        {
+          "point": "Correct difference table",
+          "marks": 2
+        },
+        {
+          "point": "Degree 3",
+          "marks": 1
+        },
+        {
+          "point": "Sign negative with reason",
+          "marks": 1
+        },
+        {
+          "point": "Leading coefficient via a × 3!",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "For each constant finite difference (with $x$-steps of 1), state the degree of the polynomial function and determine its leading coefficient.\n\n(i) first differences $= -5$ (ii) fifth differences $= -60$ (iii) fourth differences $= 36$ (iv) second differences $= 18$ (v) third differences $= 42$ (vi) third differences $= -18$",
+      "parts": [
+        {
+          "label": "ii",
+          "text": "Leading coefficient for (ii)",
+          "answer": {
+            "expr": "-0.5",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "iii",
+          "text": "Leading coefficient for (iii)",
+          "answer": {
+            "expr": "1.5",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "vi",
+          "text": "Leading coefficient for (vi)",
+          "answer": {
+            "expr": "-3",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Use (constant $n$th difference) $= a \\times n!$.\n\n(i) degree 1, $a = -5$ (ii) degree 5, $a = -60/120 = -0.5$ (iii) degree 4, $a = 36/24 = 1.5$ (iv) degree 2, $a = 18/2 = 9$ (v) degree 3, $a = 42/6 = 7$ (vi) degree 3, $a = -18/6 = -3$",
+      "rubric": [
+        {
+          "point": "Degrees all correct",
+          "marks": 1
+        },
+        {
+          "point": "(i)–(ii) correct",
+          "marks": 1
+        },
+        {
+          "point": "(iii)–(iv) correct",
+          "marks": 1
+        },
+        {
+          "point": "(v)–(vi) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q03",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Classify each function by its end behaviour — \"quadrant 3 to quadrant 1\", \"quadrant 2 to quadrant 4\" or \"quadrant 2 to quadrant 1\" — and give reasons: $y = -x^5$, $y = \\tfrac23x^4$, $y = 4x^3$, $y = 0.2x^6$.",
+      "modelAnswer": "* $y = -x^5$: odd degree, negative → **quadrant 2 to quadrant 4**.\n* $y = 4x^3$: odd degree, positive → **quadrant 3 to quadrant 1**.\n* $y = \\tfrac23x^4$ and $y = 0.2x^6$: even degree, positive → **quadrant 2 to quadrant 1**.\n\nReason: odd degree makes the two ends go in opposite directions; even degree makes them go the same way; a negative leading coefficient reflects the graph in the $x$-axis.",
+      "rubric": [
+        {
+          "point": "Each function classified correctly",
+          "marks": 3
+        },
+        {
+          "point": "Reasoning based on degree parity and sign",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "H": {
+          "min": 2500,
+          "max": 4500,
+          "step": 100
+        }
+      },
+      "text": "A parachutist jumps from a plane {{H}} m above the ground. Their height, in metres, after $t$ seconds (before the parachute opens) is $h(t) = {{H}} - 4.9t^2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What type of function is $h$?"
+        },
+        {
+          "label": "b",
+          "text": "Which finite differences are constant, and what is their value?",
+          "answer": {
+            "expr": "-9.8",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behaviour of the unrestricted function."
+        },
+        {
+          "label": "d",
+          "text": "State a reasonable domain and interpret the $t$-intercept.",
+          "answer": {
+            "expr": "sqrt(H/4.9)",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "Determine the average rate of change of height over the first 10 s.",
+          "answer": {
+            "expr": "-49",
+            "unit": "m/s",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Quadratic. (b) Second differences constant, equal to $2 \\times (-4.9) = -9.8$ (1-s steps), because for degree 2 the constant difference is $a \\times 2!$.\n\n(c) Unrestricted: both ends down (quadrant 3 to quadrant 4).\n\n(d) $h = 0$ when $t = \\sqrt{ {{H}}/4.9 } \\approx {{sqrt(H/4.9):3}}$ s, so a reasonable domain is $0 \\le t \\le {{sqrt(H/4.9):3}}$. The positive $t$-intercept is the time the parachutist would reach the ground if the parachute never opened.\n\n(e) Average rate of change on $[0, 10]$: $\\dfrac{h(10) - h(0)}{10} = \\dfrac{-490}{10} = -49$ m/s (falling at 49 m/s on average).",
+      "rubric": [
+        {
+          "point": "Type and constant differences with explanation",
+          "marks": 2
+        },
+        {
+          "point": "End behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Domain and t-intercept interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Average rate of change with units",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "The graph of a polynomial function is shown. It passes through $(0, {{-6*a}})$.\n\n```plot\nf: {{a}}*(x+3)*(x+1)*(x-2)\ndomain: -4, 3\npoints: (-3,0), (-1,0), (2,0), (0,{{-6*a}})\n```",
+      "parts": [
+        {
+          "label": "i",
+          "text": "State the least possible degree and the sign of the leading coefficient."
+        },
+        {
+          "label": "ii",
+          "text": "Determine the $x$-intercepts, the factors and an equation. Give the leading coefficient.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "iii",
+          "text": "State the intervals where the function is positive and negative."
+        }
+      ],
+      "modelAnswer": "(i) Three $x$-intercepts where the graph crosses (order 1) → least possible degree 3. It rises from quadrant 3 to quadrant 1 → positive leading coefficient.\n\n(ii) $x$-intercepts $-3, -1, 2$; factors $(x + 3)$, $(x + 1)$, $(x - 2)$. Using $(0, {{-6*a}})$: ${{-6*a}} = k(3)(1)(-2) = -6k$, so $k = {{a}}$ and $y = {{a}}(x + 3)(x + 1)(x - 2)$.\n\n(iii) Positive for $x \\in (-3, -1) \\cup (2, \\infty)$; negative for $x \\in (-\\infty, -3) \\cup (-1, 2)$.",
+      "rubric": [
+        {
+          "point": "Least degree and sign with reasons",
+          "marks": 2
+        },
+        {
+          "point": "Correct factors and equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign intervals",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q06",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Describe the key features you would use to sketch each graph — degree, end behaviour, zeros and their orders, $y$-intercept — and then describe the shape of the graph.\n\n(a) $y = (x + 1)(x - 3)(x + 2)$ (b) $y = -x(x + 1)(x + 2)^2$ (c) $y = (x - 4)^2(x + 3)^3$",
+      "modelAnswer": "(a) Cubic, $a = 1$: Q3 → Q1. Zeros $-2, -1, 3$ (order 1). $y$-int $(1)(-3)(2) = -6$. Rises through $-2$, turns down through $-1$, passes $(0,-6)$, turns up through 3.\n\n(b) Quartic, $a = -1$: Q3 → Q4. Zeros $0$, $-1$ (order 1), $-2$ (order 2, touch). $y$-int 0. From below, touches the axis at $-2$ (local max at 0 height), stays negative until it crosses at $-1$, goes positive, crosses back down at 0.\n\n(c) Degree 5, $a = 1$: Q3 → Q1. Zeros 4 (order 2, touch) and $-3$ (order 3, flattened crossing). $y$-int $(16)(27) = 432$. From below, flattens through $-3$, rises high, comes down to touch at 4, rises again.",
+      "rubric": [
+        {
+          "point": "(a) features and shape",
+          "marks": 2
+        },
+        {
+          "point": "(b) features including touch at −2",
+          "marks": 2
+        },
+        {
+          "point": "(c) features including order 3 and order 2 behaviour",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The zeros of a quartic function are $-3$, $-1$ and $2$ (order 2).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write equations for two functions with these zeros."
+        },
+        {
+          "label": "b",
+          "text": "Determine the function that passes through $(1, {{8*k}})$. State its leading coefficient.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Any $y = k(x + 3)(x + 1)(x - 2)^2$, e.g. $k = 1$ and $k = -3$.\n\n(b) Through $(1, {{8*k}})$: ${{8*k}} = k_0(4)(2)(1) = 8k_0$, so $k_0 = {{k}}$: $y = {{k}}(x + 3)(x + 1)(x - 2)^2$.",
+      "rubric": [
+        {
+          "point": "General form with squared factor",
+          "marks": 1
+        },
+        {
+          "point": "Two example equations",
+          "marks": 1
+        },
+        {
+          "point": "Substitution of the point",
+          "marks": 1
+        },
+        {
+          "point": "Correct final equation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q08",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Without graphing, determine whether each function has line symmetry about the $y$-axis, point symmetry about the origin, or neither. Show the algebraic test.\n\n(a) $f(x) = -x^5 + 7x^3 + 2x$ (b) $f(x) = x^4 + 3x^2 + 1$ (c) $f(x) = 4x^3 - 3x^2 + 8x + 1$",
+      "modelAnswer": "(a) $f(-x) = x^5 - 7x^3 - 2x = -f(x)$: odd → point symmetry about the origin.\n\n(b) $f(-x) = x^4 + 3x^2 + 1 = f(x)$: even → line symmetry about the $y$-axis.\n\n(c) $f(-x) = -4x^3 - 3x^2 - 8x + 1 \\ne \\pm f(x)$: neither.",
+      "rubric": [
+        {
+          "point": "(a) correct with test",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct with test",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with test",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "(a) Describe the transformations applied to $f(x) = x^3$ to obtain $y = -\\tfrac12 f(x) - {{c}}$, write the equation, and state the domain and range.\n(b) Describe the transformations applied to $f(x) = x^4$ to obtain $y = {{a}}f\\left[\\tfrac12(x - {{d}})\\right] + 1$, write the equation, and state the domain, range, vertex and axis of symmetry.",
+      "parts": [
+        {
+          "label": "b",
+          "text": "$x$-coordinate of the vertex in (b)",
+          "answer": {
+            "expr": "d",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Vertical compression by a factor of ½, reflection in the $x$-axis, translation {{c}} units down: $y = -\\tfrac12x^3 - {{c}}$. Domain and range: all real numbers.\n\n(b) Horizontal stretch by a factor of 2, vertical stretch by a factor of {{a}}, translation {{d}} units right and 1 unit up: $y = {{a}}\\left[\\tfrac12(x - {{d}})\\right]^4 + 1$. Domain $\\{x \\in \\mathbb{R}\\}$, range $\\{y \\in \\mathbb{R},\\ y \\ge 1\\}$, vertex $({{d}}, 1)$, axis $x = {{d}}$.",
+      "rubric": [
+        {
+          "point": "(a) transformations",
+          "marks": 1
+        },
+        {
+          "point": "(a) equation, domain, range",
+          "marks": 1
+        },
+        {
+          "point": "(b) transformations including horizontal stretch by 2",
+          "marks": 2
+        },
+        {
+          "point": "(b) equation, range, vertex, axis",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            2,
+            4,
+            5
+          ]
+        },
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "$f(x) = x^3$ is compressed horizontally by a factor of $\\tfrac{1}{ {{k}} }$, stretched vertically by a factor of {{a}}, reflected in the $x$-axis, and translated {{d}} units left and {{c}} units up.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation and state the domain and range."
+        },
+        {
+          "label": "b",
+          "text": "Determine the image of $(1, 1)$. Give the $y$-coordinate.",
+          "answer": {
+            "expr": "c - a",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $y = -{{a}}[{{k}}(x + {{d}})]^3 + {{c}}$. Domain and range: all real numbers.\n\n(b) $(1, 1) \\to \\left(\\tfrac{1}{ {{k}} } - {{d}},\\ -{{a}} + {{c}}\\right) = \\left({{1/k - d:3}},\\ {{c - a}}\\right)$.",
+      "rubric": [
+        {
+          "point": "Correct equation",
+          "marks": 3
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Correct image point",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Consider the cubic $f(x) = -{{a}}x^3$.",
+      "parts": [
+        {
+          "label": "i",
+          "text": "Average rate of change on $[2, 2.5]$",
+          "answer": {
+            "expr": "-15.25*a",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "ii",
+          "text": "Average rate of change on $[1.5, 2]$",
+          "answer": {
+            "expr": "-9.25*a",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average the two rates and describe what the result approximates.",
+          "answer": {
+            "expr": "-12.25*a",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $f(2.5) = -{{a}}(15.625) = {{-15.625*a}}$, $f(2) = {{-8*a}}$, $f(1.5) = {{-3.375*a}}$.\n\n(i) $[2, 2.5]$: $\\dfrac{ {{-15.625*a}} - ({{-8*a}}) }{0.5} = {{-15.25*a}}$\n\n(ii) $[1.5, 2]$: $\\dfrac{ {{-8*a}} - ({{-3.375*a}}) }{0.5} = {{-9.25*a}}$\n\n(b) Average: $\\dfrac{ {{-15.25*a}} + ({{-9.25*a}}) }{2} = {{-12.25*a}}$. This approximates the **instantaneous rate of change** (slope of the tangent) at $x = 2$, because the two intervals are on either side of $x = 2$. (The exact value is ${{-12*a}}$.)",
+      "rubric": [
+        {
+          "point": "Correct function values",
+          "marks": 1
+        },
+        {
+          "point": "Rate on [2, 2.5]",
+          "marks": 1
+        },
+        {
+          "point": "Rate on [1.5, 2]",
+          "marks": 1
+        },
+        {
+          "point": "Average of the rates",
+          "marks": 1
+        },
+        {
+          "point": "Identifies it approximates the IROC at x = 2",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "c": {
+          "min": -5,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = x^3 - 6x^2 + 9x + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Instantaneous rate of change at $x = 2$",
+          "answer": {
+            "expr": "-3",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "b",
+          "text": "Instantaneous rate of change at $x = 4$",
+          "answer": {
+            "expr": "9",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "c",
+          "text": "What kind of point lies between? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Centred interval at $x = 2$: $\\dfrac{f(2.001) - f(1.999)}{0.002} \\approx -3$.\n\n(b) At $x = 4$: $\\dfrac{f(4.001) - f(3.999)}{0.002} \\approx 9$.\n\n(c) The rate changes from negative (decreasing) to positive (increasing), so the graph turns between $x = 2$ and $x = 4$: there is a **local minimum** there. Indeed $f(x) - {{c}} = x(x - 3)^2$, so the local minimum is $(3, {{c}})$, where the tangent is horizontal.",
+      "rubric": [
+        {
+          "point": "IROC at x = 2",
+          "marks": 2
+        },
+        {
+          "point": "IROC at x = 4",
+          "marks": 2
+        },
+        {
+          "point": "Identifies local minimum with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "A section of roller coaster is modelled by $h(x) = 0.0025x(x - 8)(x - 16)(x - 32)$, $0 < x < 32$, where $x$ is horizontal distance and $h$ is height relative to the platform, in metres. Use the heights at $x = 4$, $12$ and $26$ m.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Height at $x = 12$",
+          "answer": {
+            "expr": "9.6",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average rate of change from $x = 4$ to $x = 12$",
+          "answer": {
+            "expr": "2.88",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Average rate of change from $x = 12$ to $x = 26$",
+          "answer": {
+            "expr": "-5.7",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Where is the instantaneous rate of change greatest in size? Justify with a calculation."
+        }
+      ],
+      "modelAnswer": "(a) $h(4) = 0.0025(4)(-4)(-12)(-28) = -13.44$ m (a valley); $h(12) = 0.0025(12)(4)(-4)(-20) = 9.6$ m (a hill); $h(26) = 0.0025(26)(18)(10)(-6) = -70.2$ m.\n\n(b) $\\dfrac{9.6 - (-13.44)}{12 - 4} = 2.88$ m per horizontal metre (rising on average).\n\n(c) $\\dfrac{-70.2 - 9.6}{26 - 12} = -5.7$ (falling on average 5.7 m per metre).\n\n(d) The track is steepest near the right end, where it climbs out of the deep valley towards the platform: e.g. $\\dfrac{h(31.001) - h(30.999)}{0.002} \\approx 22.9$, compared with about $-10$ near $x = 0$ and about $-8.6$ at $x = 20$. As $x$ approaches 32 the slope keeps increasing (to about 30.7), so the greatest instantaneous rate of change is just before $x = 32$.",
+      "rubric": [
+        {
+          "point": "Heights correct",
+          "marks": 2
+        },
+        {
+          "point": "Average rate (b)",
+          "marks": 1
+        },
+        {
+          "point": "Average rate (c)",
+          "marks": 1
+        },
+        {
+          "point": "Identifies steepest region and supports with a calculation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q14",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "t": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "s": {
+          "min": 10,
+          "max": 40,
+          "step": 5
+        }
+      },
+      "text": "Explain which of these are average rates of change and which are not, and calculate the rate where possible.\n\n(a) The temperature of the pool decreased by {{t}}°C over 3 days. (b) The snowboarder crossed the finish line at 60 km/h. (c) About {{s}} cm of snow fell over a 5-h period. (d) The class average on the test was 75%.",
+      "modelAnswer": "(a) Average rate: $\\dfrac{-{{t}}}{3} \\approx {{-t/3:3}}$ °C/day.\n(b) Not average — a speed at one instant (instantaneous rate).\n(c) Average rate: $\\dfrac{ {{s}} }{5} = {{s/5}}$ cm/h.\n(d) Not a rate of change — a mean of marks.",
+      "rubric": [
+        {
+          "point": "(a) identified and calculated",
+          "marks": 1
+        },
+        {
+          "point": "(b) identified as instantaneous",
+          "marks": 1
+        },
+        {
+          "point": "(c) identified and calculated",
+          "marks": 1
+        },
+        {
+          "point": "(d) rejected with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "The graph shows the approximate value, $V$ (dollars), of a stock over a year ($t$ in months): $V(t) = 0.05t(t - 9)(t - 14) + 20$.\n\n```plot\nf: 0.05*x*(x-9)*(x-14) + 20\ndomain: 0, 12\nrange: 0, 35\npoints: (0,20), (6,27.2), (9,20), (12,16.4)\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value at the start and end of the year"
+        },
+        {
+          "label": "b",
+          "text": "Average rate of change from month 6 to month 9",
+          "answer": {
+            "expr": "-2.4",
+            "unit": "dollars/month",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Average rate of change from month 9 to month 12, and interpretation",
+          "answer": {
+            "expr": "-1.2",
+            "unit": "dollars/month",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Start $V(0) = 20$; end $V(12) = 16.40$.\n\n(b)–(c) Months 0–6: rising; $\\dfrac{27.20 - 20}{6} = 1.20$ dollars/month. Months 6–9: falling; $\\dfrac{20 - 27.20}{3} = -2.40$ dollars/month. Months 9–12: falling more slowly; $\\dfrac{16.40 - 20}{3} = -1.20$ dollars/month.\n\nInterpretation: the stock gained 1.20 dollars per month on average for half a year, then lost value, fastest between months 6 and 9.",
+      "rubric": [
+        {
+          "point": "Start and end values",
+          "marks": 1
+        },
+        {
+          "point": "Describes each interval from the graph",
+          "marks": 1
+        },
+        {
+          "point": "Three average rates",
+          "marks": 3
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "A function is represented by the table. Assume all of its zeros appear in the table and each zero has order 2.\n\n| $x$ | −3 | −2 | −1 | 0 | 1 | 2 | 3 |\n|---|---|---|---|---|---|---|---|\n| $y$ | {{k*16}} | 0 | {{k*4}} | {{k*4}} | 0 | {{k*16}} | {{k*100}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the graph."
+        },
+        {
+          "label": "b",
+          "text": "Determine the degree.",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write an equation in factored form. State the leading coefficient.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain the effect of the leading coefficient on the graph."
+        }
+      ],
+      "modelAnswer": "(a) The zeros are $-2$ and $1$, each of order 2, so the graph touches the $x$-axis at both and never crosses; all other values are positive, so the graph lies on or above the axis.\n\n(b) Degree $2 + 2 = 4$.\n\n(c) $y = a(x + 2)^2(x - 1)^2$. At $x = 0$: ${{4*k}} = a(4)(1)$, so $a = {{k}}$: $y = {{k}}(x + 2)^2(x - 1)^2$. Check $x = 3$: ${{k}}(25)(4) = {{100*k}}$ ✓.\n\n(d) The leading coefficient {{k}} is positive, so the graph opens upward (both ends up) and is vertically stretched by a factor of {{k}} compared with $y = (x+2)^2(x-1)^2$.",
+      "rubric": [
+        {
+          "point": "Identifies zeros and touch behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Degree 4",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation with a found",
+          "marks": 2
+        },
+        {
+          "point": "Explains effect of the leading coefficient",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Sketch-describe $y = x^3 - 2x^2 - x + 2$: factor it by grouping, then state the $x$- and $y$-intercepts, the end behaviour and the intervals where $y > 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$y$-intercept",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "$x^3 - 2x^2 - x + 2 = x^2(x - 2) - (x - 2) = (x - 2)(x^2 - 1) = (x - 2)(x - 1)(x + 1)$.\n\n$x$-intercepts $-1, 1, 2$; $y$-intercept 2. Cubic with $a = 1$: quadrant 3 → quadrant 1.\n\n$y > 0$ for $x \\in (-1, 1) \\cup (2, \\infty)$.",
+      "rubric": [
+        {
+          "point": "Factors by grouping",
+          "marks": 2
+        },
+        {
+          "point": "Intercepts",
+          "marks": 1
+        },
+        {
+          "point": "End behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Positive intervals",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q18",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Write two possible equations for a quartic function with zeros at $x = -{{p}}$ and $x = 0$ and a zero of order two at $x = {{q}}$. Explain how the two functions' graphs differ.",
+      "modelAnswer": "Factors: $(x + {{p}})$, $x$, $(x - {{q}})^2$; degree $1 + 1 + 2 = 4$ ✓.\n\n1. $y = x(x + {{p}})(x - {{q}})^2$ — $a = 1$, both ends up.\n2. $y = -2x(x + {{p}})(x - {{q}})^2$ — $a = -2$, both ends down and stretched vertically by 2.\n\nBoth cross the axis at $-{{p}}$ and 0 and touch it at {{q}}; they are reflections/stretches of one another (every member of the family $y = kx(x + {{p}})(x - {{q}})^2$ has these zeros).",
+      "rubric": [
+        {
+          "point": "Correct factors including the squared factor",
+          "marks": 2
+        },
+        {
+          "point": "Two valid equations",
+          "marks": 1
+        },
+        {
+          "point": "Explains differences (sign/stretch) and shared intercepts",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q19",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Use the difference quotient to determine the instantaneous rate of change of $f(x) = {{a}}x^2 - {{b}}x$ at $x = {{p}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Instantaneous rate of change",
+          "answer": {
+            "expr": "2*a*p - b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f({{p}} + h) = {{a}}({{p}} + h)^2 - {{b}}({{p}} + h) = {{a*p^2 - b*p}} + {{2*a*p - b}}h + {{a}}h^2$ and $f({{p}}) = {{a*p^2 - b*p}}$.\n\n$$\\frac{f({{p}} + h) - f({{p}})}{h} = \\frac{ {{2*a*p - b}}h + {{a}}h^2}{h} = {{2*a*p - b}} + {{a}}h$$\n\nAs $h \\to 0$, this approaches **{{2*a*p - b}}**.",
+      "rubric": [
+        {
+          "point": "Expands f(p + h)",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies the quotient",
+          "marks": 2
+        },
+        {
+          "point": "States the limiting value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "L": {
+          "min": 30,
+          "max": 40,
+          "step": 2
+        },
+        "W": {
+          "min": 20,
+          "max": 28,
+          "step": 2
+        }
+      },
+      "text": "An open box is made from a {{L}} cm by {{W}} cm sheet by cutting squares of side $x$ cm from the corners. Its volume is $V(x) = x({{L}} - 2x)({{W}} - 2x)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the degree, leading coefficient and a reasonable domain."
+        },
+        {
+          "label": "b",
+          "text": "Determine the average rate of change of the volume from $x = 2$ to $x = 3$.",
+          "answer": {
+            "expr": "3*(L-6)*(W-6) - 2*(L-4)*(W-4)",
+            "unit": "cm³/cm",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Estimate the instantaneous rate of change of the volume at $x = 2$.",
+          "answer": {
+            "expr": "12*4 - 8*(L+W) + L*W",
+            "unit": "cm³/cm",
+            "sig": 4,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) Cubic, leading coefficient $4$; reasonable domain $0 < x < {{W/2}}$.\n\n(b) $V(2) = 2({{L - 4}})({{W - 4}}) = {{2*(L-4)*(W-4)}}$ cm³ and $V(3) = 3({{L - 6}})({{W - 6}}) = {{3*(L-6)*(W-6)}}$ cm³. Average rate $= {{3*(L-6)*(W-6) - 2*(L-4)*(W-4)}}$ cm³ per cm.\n\n(c) Centred estimate at $x = 2$: $\\dfrac{V(2.001) - V(1.999)}{0.002} \\approx {{12*4 - 8*(L+W) + L*W:4}}$ cm³/cm: the volume is increasing at that rate as the cut size increases past 2 cm.",
+      "rubric": [
+        {
+          "point": "Degree, leading coefficient and domain",
+          "marks": 2
+        },
+        {
+          "point": "Average rate of change",
+          "marks": 2
+        },
+        {
+          "point": "Instantaneous rate estimate with interpretation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q21",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A student says: \\\"A polynomial of degree 4 always has 4 $x$-intercepts and 3 turning points.\\\" Correct the statement, explaining what the degree does and does not tell you. Include examples.",
+      "modelAnswer": "The degree gives **maximums**, not exact counts. A quartic has **at most** 4 $x$-intercepts and **at most** 3 turning points (and, being even degree, at least 1 turning point).\n\nExamples: $y = x^4 - 5x^2 + 4 = (x^2 - 1)(x^2 - 4)$ has 4 intercepts and 3 turning points; $y = x^4 + 1$ has 0 intercepts and 1 turning point; $y = (x - 1)^2(x + 2)^2$ has 2 intercepts (both touch points).",
+      "rubric": [
+        {
+          "point": "States counts are maximums",
+          "marks": 2
+        },
+        {
+          "point": "Correct bounds for quartic",
+          "marks": 1
+        },
+        {
+          "point": "Valid examples with fewer intercepts/turning points",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q22",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 3,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "The graph shown is a transformation of $y = x^4$ of the form $y = a(x - d)^4 + c$. The vertex and one other point are marked.\n\n```plot\nf: -{{a}}*(x-{{d}})^4 + {{c}}\ndomain: {{d}}-2, {{d}}+2\npoints: ({{d}},{{c}}), ({{d}}+1,{{c-a}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $a$",
+          "answer": {
+            "expr": "-a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Maximum value",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "The vertex is $({{d}}, {{c}})$, so $d = {{d}}$ and $c = {{c}}$. The graph opens down, so $a < 0$.\n\nUsing $({{d+1}}, {{c - a}})$: ${{c - a}} = a(1)^4 + {{c}} \\Rightarrow a = -{{a}}$.\n\n$$y = -{{a}}(x - {{d}})^4 + {{c}}$$\n\nRange $\\{y \\in \\mathbb{R},\\ y \\le {{c}}\\}$; axis of symmetry $x = {{d}}$. Transformations: vertical stretch by {{a}}, reflection in the $x$-axis, {{d}} right, {{c}} up.",
+      "rubric": [
+        {
+          "point": "Reads vertex to get d and c",
+          "marks": 1
+        },
+        {
+          "point": "Finds a using the second point",
+          "marks": 2
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Range, axis and description",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-r-q23",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain the difference between an average rate of change and an instantaneous rate of change, including their geometric meanings. Then describe three ways to estimate an instantaneous rate of change and say which is usually most accurate.",
+      "modelAnswer": "* **Average rate of change**: $\\dfrac{\\Delta y}{\\Delta x}$ over an interval; the slope of the **secant** joining the endpoints.\n* **Instantaneous rate of change**: the rate at one point; the slope of the **tangent** there.\n\nEstimation methods:\n1. From a graph — slope of a nearby secant, or of a sketched tangent.\n2. From a table — slope using the closest points (centred if possible).\n3. From an equation — slopes over shorter and shorter intervals (difference quotient) until they approach a value.\n\nThe equation method is usually most accurate, because the interval can be made as small as you like and no reading errors are involved.",
+      "rubric": [
+        {
+          "point": "Defines both rates",
+          "marks": 2
+        },
+        {
+          "point": "Geometric meanings secant/tangent",
+          "marks": 1
+        },
+        {
+          "point": "Three methods described",
+          "marks": 2
+        },
+        {
+          "point": "Justifies most accurate",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-r-q24",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Design a symmetric logo using at least two transformed power functions. For each function give the equation, domain, range, end behaviour, the value of the constant finite differences, the transformations used, and any symmetry. Explain how the functions fit together.",
+      "modelAnswer": "Sample answer:\n\n* $f(x) = -0.5(x)^4 + 8$, $-2 \\le x \\le 2$: even power with $a = -0.5$ (vertical compression by ½ and reflection in the $x$-axis), 8 up; vertex $(0, 8)$; range $0 \\le y \\le 8$ on this domain; fourth differences $-0.5 \\times 24 = -12$; symmetric about the $y$-axis.\n* $g(x) = 2x^2$, $-2 \\le x \\le 2$: vertical stretch by 2; range $0 \\le y \\le 8$; second differences $4$; symmetric about the $y$-axis.\n\nThe curves cross where $-0.5x^4 + 8 = 2x^2$, i.e. $x^4 + 4x^2 - 16 = 0$, so $x^2 = -2 + 2\\sqrt5 \\approx 2.47$ and $x \\approx \\pm1.57$; the region between them forms a petal shape. Because every piece is an even function, the logo is symmetric about the $y$-axis.\n\nAny well-explained design meeting the requirements earns full marks.",
+      "rubric": [
+        {
+          "point": "At least two correct transformed power functions",
+          "marks": 2
+        },
+        {
+          "point": "Domain, range and end behaviour stated",
+          "marks": 2
+        },
+        {
+          "point": "Finite differences correct",
+          "marks": 1
+        },
+        {
+          "point": "Transformations and symmetry explained",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

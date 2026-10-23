@@ -130,3 +130,7 @@ so a graph can follow randomised values, e.g. `f: {{a}}*(x-{{h}})^2+{{k}}`.
 * Leave a space between a LaTeX brace and a placeholder: `\frac{ {{a}} }{ {{b}} }`.
   `\frac{{{a}}}` is ambiguous and the validator will reject it.
 * Run `npm run validate` after every change.
+* `$` starts maths. Write a literal dollar sign as `\$` (in JSON: `"\\$12"`).
+* Very small or large placeholder values (below 10⁻⁴ or from 10¹⁰) print in
+  scientific notation, e.g. `2.5 × 10⁻¹²`. Students may type `2.5e-12`,
+  `2.5 × 10^-12` or `2.5x10^-12` as a final answer.
