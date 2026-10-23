@@ -111,3 +111,27 @@ src/
 public/           CSS and browser JS
 content/          study material (JSON)
 ```
+
+## Zero-cost edition (claude.ai artifact)
+
+`artifact/` builds the same study guide as a single claude.ai artifact, so
+there is no server to host or pay for:
+
+```bash
+node artifact/build.js     # writes artifact/dist/ (page + content files)
+```
+
+Publish `artifact/dist/index.html` with the files under `artifact/dist/content/`
+(Claude does this for you) and declare the capabilities `user` (profile),
+`db` with the rules `students` → read/write `owner` and `students/{self}` →
+read/write `interact`, and `sample` with images.
+
+* Sign-in is the student's claude.ai account (no separate passwords).
+* Each student's profile, theme, progress, tests and photos live under
+  `students/<their id>/` in the artifact's database: private to that student
+  and readable and markable by the artifact owner (the teacher).
+* Students must be given **Contributor** access (same organization) or be
+  invited by email as **Editor** (outside the organization, with no public
+  link) so they can save their work. Viewers can read the guide only.
+* "Mark with Claude" uses the viewer's own Claude usage through the `sample`
+  capability.
