@@ -1,0 +1,749 @@
+{
+  "id": "2-6",
+  "number": "2.6",
+  "title": "Solve Factorable Polynomial Inequalities Algebraically",
+  "estimatedMinutes": 75,
+  "overview": "When a polynomial factors, you don't need a graphing calculator to solve its inequality — you can find **exact** answers with algebra. In this section you will review linear inequalities (including the sign flip), then solve polynomial inequalities by considering cases and by using intervals in a sign table, handling negative leading coefficients and squared factors along the way.",
+  "objectives": [
+    "Solve linear inequalities, reversing the sign when multiplying or dividing by a negative.",
+    "Solve factorable polynomial inequalities by considering all cases.",
+    "Solve factorable polynomial inequalities using intervals, test values and sign tables.",
+    "Factor polynomials completely before solving inequalities.",
+    "Handle negative leading coefficients and repeated (squared) factors.",
+    "Represent solutions on number lines and in interval notation, and solve applied problems."
+  ],
+  "lessons": [
+    {
+      "id": "linear-review",
+      "title": "Warm-up: linear inequalities and the sign flip",
+      "body": "Solving a linear inequality is like solving an equation, with **one extra rule**:\n\n> When you **multiply or divide both sides by a negative number**, reverse the inequality sign.\n\n**Why?** Start with a true statement, $2 < 5$. Multiply both sides by $-2$: $-4$ and $-10$. Now $-4 > -10$ — the order has flipped. Multiplying by a negative reflects numbers across $0$ on the number line, so their order reverses.\n\n**Example:** solve $5 - 3x \\ge -7$.\n\n$-3x \\ge -12$\n\n$x \\le 4$ (divided by $-3$, so the sign flipped)\n\nOn a number line: a closed dot at $4$ with shading to the left.\n\nAdding or subtracting the same number, or multiplying by a **positive** number, never changes the direction."
+    },
+    {
+      "id": "cases",
+      "title": "Method 1: considering all cases",
+      "body": "A product of **two** factors is\n\n* **positive** when both factors have the **same** sign,\n* **negative** when they have **opposite** signs.\n\n**Example:** solve $(x - 2)(x + 4) > 0$.\n\n**Case 1 – both positive:** $x - 2 > 0$ and $x + 4 > 0$ → $x > 2$ and $x > -4$ → $x > 2$.\n\n**Case 2 – both negative:** $x - 2 < 0$ and $x + 4 < 0$ → $x < 2$ and $x < -4$ → $x < -4$.\n\nSolution: $x < -4$ or $x > 2$.\n\n> Within a case, the conditions are joined by **and**, so take the overlap. The cases are joined by **or**, so combine them.\n\nCases get long quickly: three factors already give four sign combinations to check. That's why the interval method is usually better."
+    },
+    {
+      "id": "intervals",
+      "title": "Method 2: intervals and a sign table",
+      "body": "This method works for any number of factors.\n\n1. Factor the polynomial completely and rearrange so one side is $0$.\n2. Find the zeros. Mark them on a number line; they split it into intervals.\n3. Build a **sign table**: pick a test value in each interval and find the sign of each factor and of the product.\n4. Choose the intervals whose sign matches the inequality. Include zeros for $\\le$ or $\\ge$.\n\n**Example:** solve $(x + 3)(x - 1)(x - 4) \\le 0$.\n\n| | $x < -3$ | $-3 < x < 1$ | $1 < x < 4$ | $x > 4$ |\n|---|---|---|---|---|\n| test value | $-4$ | $0$ | $2$ | $5$ |\n| $x + 3$ | $-$ | $+$ | $+$ | $+$ |\n| $x - 1$ | $-$ | $-$ | $+$ | $+$ |\n| $x - 4$ | $-$ | $-$ | $-$ | $+$ |\n| product | $-$ | $+$ | $-$ | $+$ |\n\nSolution ($\\le 0$, zeros included): $x \\le -3$ or $1 \\le x \\le 4$.\n\n> You don't always need the full table: one test value per interval in the factored form is enough. The table just keeps your work organised."
+    },
+    {
+      "id": "factor-first",
+      "title": "Factor first: harder inequalities",
+      "body": "Most inequalities are not given in factored form. Use every factoring tool from Sections 2.2 and 2.3 first.\n\n**Example:** solve $2x^3 + 5x^2 - 18x - 45 \\le 0$.\n\nGroup: $x^2(2x + 5) - 9(2x + 5) = (2x + 5)(x - 3)(x + 3)$.\n\nZeros: $-3$, $-\\tfrac52$, $3$. Positive leading coefficient, cubic → signs $-, +, -, +$.\n\nSolution: $x \\le -3$ or $-\\tfrac52 \\le x \\le 3$.\n\n**Watch out for:**\n* **Negative leading coefficients**, e.g. $-x^3 + \\dots$ or a factor like $(3 - x)$. Either multiply through by $-1$ (and **flip the sign**!) or track the extra negative in your table.\n* **Squared factors**, e.g. $(x + 2)^2$: it is never negative, so it doesn't change the sign — but it is $0$ at $x = -2$, which matters for strict inequalities."
+    },
+    {
+      "id": "applications",
+      "title": "Applications",
+      "body": "**Example:** an open-top box is made from a $40$ cm by $32$ cm sheet by cutting squares of side $x$ from each corner. For which $x$ is the volume greater than $2016$ cm³?\n\n* $V(x) = x(40 - 2x)(32 - 2x) = 4x^3 - 144x^2 + 1280x$, with $0 < x < 16$.\n* Solve $4x^3 - 144x^2 + 1280x > 2016 \\Rightarrow x^3 - 36x^2 + 320x - 504 > 0$.\n* $P(2) = 8 - 144 + 640 - 504 = 0$, so $(x - 2)(x^2 - 34x + 252) > 0$.\n* Quadratic formula: $x = 17 \\pm \\sqrt{37} \\approx 10.9$ or $23.1$.\n* Sign table with zeros $2$, $10.9$, $23.1$: positive on $(2, 10.9)$ and $(23.1, \\infty)$.\n* Only $0 < x < 16$ makes sense, so $2 < x < 10.9$ cm (approximately $2 < x < 17 - \\sqrt{37}$)."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "factorable inequality",
+      "definition": "A polynomial inequality whose polynomial can be factored, so it can be solved algebraically."
+    },
+    {
+      "term": "case",
+      "definition": "One possible combination of signs of the factors, e.g. both factors positive."
+    },
+    {
+      "term": "sign table",
+      "definition": "A table showing the sign of each factor and of the product on each interval."
+    },
+    {
+      "term": "test value",
+      "definition": "A value chosen inside an interval to find the sign there."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Sign flip",
+      "latex": "a < b \\text{ and } c < 0 \\Rightarrow ac > bc",
+      "meaning": "Reverse the inequality when multiplying/dividing by a negative."
+    },
+    {
+      "name": "Product of two factors",
+      "latex": "ab > 0 \\iff (a > 0, b > 0) \\text{ or } (a < 0, b < 0)",
+      "meaning": "Same signs → positive; opposite → negative."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Linear inequality",
+      "problem": "Solve $2(1 - x) < x + 8$ and show the solution on a number line.",
+      "steps": [
+        "$2 - 2x < x + 8$",
+        "$-3x < 6$",
+        "$x > -2$ (divided by $-3$, sign reversed)."
+      ],
+      "answer": "$x > -2$: open dot at $-2$, shading to the right."
+    },
+    {
+      "title": "Using cases",
+      "problem": "Solve $(2x - 3)(4 - x) \\le 0$ by considering cases.",
+      "steps": [
+        "The product is $\\le 0$ when the factors have opposite signs (or one is zero).",
+        "Case 1: $2x - 3 \\ge 0$ and $4 - x \\le 0$ → $x \\ge 1.5$ and $x \\ge 4$ → $x \\ge 4$.",
+        "Case 2: $2x - 3 \\le 0$ and $4 - x \\ge 0$ → $x \\le 1.5$ and $x \\le 4$ → $x \\le 1.5$."
+      ],
+      "answer": "$x \\le 1.5$ or $x \\ge 4$"
+    },
+    {
+      "title": "Sign table with a negative leading coefficient",
+      "problem": "Solve $-(2x + 3)(x - 1)(3x - 2) < 0$.",
+      "steps": [
+        "Multiply by $-1$ and flip: $(2x + 3)(x - 1)(3x - 2) > 0$.",
+        "Zeros: $-\\tfrac32$, $\\tfrac23$, $1$. Positive cubic → signs $-, +, -, +$.",
+        "Choose the positive intervals."
+      ],
+      "answer": "$-\\tfrac32 < x < \\tfrac23$ or $x > 1$"
+    },
+    {
+      "title": "A quartic",
+      "problem": "Solve $2x^4 + 5x^3 - 8x^2 - 17x - 6 \\ge 0$.",
+      "steps": [
+        "$P(-1) = 2 - 5 - 8 + 17 - 6 = 0$ → divide by $x + 1$: $2x^3 + 3x^2 - 11x - 6$.",
+        "$P(2) = 16 + 12 - 22 - 6 = 0$ → divide by $x - 2$: $2x^2 + 7x + 3 = (2x + 1)(x + 3)$.",
+        "$(x + 3)(x + 1)(2x + 1)(x - 2) \\ge 0$. Zeros $-3, -1, -\\tfrac12, 2$; positive quartic → signs $+, -, +, -, +$."
+      ],
+      "answer": "$x \\le -3$ or $-1 \\le x \\le -\\tfrac12$ or $x \\ge 2$"
+    },
+    {
+      "title": "A squared factor",
+      "problem": "Solve $(x^2 + 4x + 4)(x^2 - 25) < 0$.",
+      "steps": [
+        "Factor: $(x + 2)^2(x - 5)(x + 5) < 0$.",
+        "$(x + 2)^2 > 0$ except at $x = -2$ where it is $0$ (and then the product is $0$, not $< 0$).",
+        "So we need $(x - 5)(x + 5) < 0$, i.e. $-5 < x < 5$, and $x \\neq -2$."
+      ],
+      "answer": "$-5 < x < 5$, $x \\neq -2$ — i.e. $(-5, -2) \\cup (-2, 5)$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$-2x > 6 \\Rightarrow x > -3$",
+      "fact": "Dividing by $-2$ reverses the sign: $x < -3$."
+    },
+    {
+      "myth": "$(x - 2)(x + 4) > 0$ means $x - 2 > 0$ **or** $x + 4 > 0$.",
+      "fact": "Both factors must have the same sign: both positive **and** together, or both negative together."
+    },
+    {
+      "myth": "Squared factors can be ignored completely.",
+      "fact": "They don't change the sign, but they make the product $0$ at their zero — exclude that point for $<$ or $>$."
+    },
+    {
+      "myth": "Solve $x(x - 3) > 0$ by dividing by $x$: $x - 3 > 0$.",
+      "fact": "You can't divide by $x$ — you don't know its sign. Use a sign table: $x < 0$ or $x > 3$."
+    },
+    {
+      "myth": "The signs always alternate, starting with $+$ on the left.",
+      "fact": "The left-most sign depends on the degree and leading coefficient; repeated factors can stop the alternation. Test each interval."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Manufacturing",
+      "body": "Finding the range of cut sizes that keeps a box's volume above a minimum is a factorable polynomial inequality."
+    },
+    {
+      "title": "Safety limits",
+      "body": "Engineers find when a stress or temperature model stays below a safe limit; when the model factors, the exact boundaries come from algebra."
+    },
+    {
+      "title": "Profit",
+      "body": "A business is profitable when its profit polynomial is positive; the break-even points (zeros) bound the profitable intervals."
+    },
+    {
+      "title": "Exact answers",
+      "body": "Algebraic solutions give exact boundary values (like $17 - \\sqrt{37}$), which matter when tolerances are tight."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Solve $x + 3 \\le 5$ and $2x + 1 > -4$.",
+      "hint": "Isolate $x$.",
+      "solution": "$x \\le 2$; $x > -2.5$."
+    },
+    {
+      "question": "Solve $(x + 2)(x - 4) > 0$ by considering cases.",
+      "hint": "Both positive or both negative.",
+      "solution": "Both positive: $x > 4$. Both negative: $x < -2$. Solution: $x < -2$ or $x > 4$."
+    },
+    {
+      "question": "Solve $(x - 3)(x + 2) \\le 0$ using intervals.",
+      "hint": "Zeros $-2$ and $3$.",
+      "solution": "Test $0$: $(-3)(2) < 0$ ✓. Solution: $-2 \\le x \\le 3$."
+    },
+    {
+      "question": "Solve $(x - 2)(3 - x)(x - 1) \\ge 0$.",
+      "hint": "Note the factor $3 - x$.",
+      "solution": "Zeros $1, 2, 3$. Leading coefficient $-1$: signs $+, -, +, -$. Solution: $x \\le 1$ or $2 \\le x \\le 3$."
+    },
+    {
+      "question": "Solve $9x^2 - 16 < 0$.",
+      "hint": "Difference of squares.",
+      "solution": "$(3x - 4)(3x + 4) < 0$: $-\\tfrac43 < x < \\tfrac43$."
+    },
+    {
+      "question": "Solve $-x^3 + 6x^2 - 9x > 0$.",
+      "hint": "Factor out $-x$.",
+      "solution": "$-x(x - 3)^2 > 0 \\Rightarrow x(x - 3)^2 < 0$. $(x - 3)^2 \\ge 0$, so we need $x < 0$ (and $x \\neq 3$, automatically true). Solution: $x < 0$."
+    },
+    {
+      "question": "Solve $x^3 - 4x^2 - 4x + 16 \\ge 0$.",
+      "hint": "Group.",
+      "solution": "$x^2(x - 4) - 4(x - 4) = (x - 4)(x - 2)(x + 2)$. Signs $-, +, -, +$. Solution: $-2 \\le x \\le 2$ or $x \\ge 4$."
+    }
+  ],
+  "summary": [
+    "Reverse the inequality sign when multiplying or dividing by a negative number.",
+    "Factorable inequalities can be solved by **cases** (best for two factors) or by **intervals** with test values (best for three or more).",
+    "Always factor completely and get $0$ on one side first.",
+    "Include zeros for $\\le$ and $\\ge$; exclude them for $<$ and $>$.",
+    "Squared factors never change the sign but are zero at their root; negative leading coefficients flip the whole sign pattern."
+  ],
+  "questions": [
+    {
+      "id": "2-6-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": -9,
+          "max": 1,
+          "step": 1
+        }
+      },
+      "text": "Solve ${{a}} - {{b}}x > {{c}}$. Show each step, explain any change to the inequality sign, and describe the solution on a number line.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the boundary value of the solution.",
+          "answer": {
+            "expr": "(a - c)/b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "${{a}} - {{b}}x > {{c}}$\n\n$-{{b}}x > {{c - a}}$\n\n$x < \\dfrac{ {{c - a}} }{-{{b}}}$ — dividing by a **negative** number reverses the inequality sign.\n\n$x < {{(a - c)/b:4}}$\n\nNumber line: an **open** dot at ${{(a - c)/b:4}}$ (not included, since the inequality is strict) with shading to the left.",
+      "rubric": [
+        {
+          "point": "Correct algebraic steps",
+          "marks": 1
+        },
+        {
+          "point": "Reverses the inequality when dividing by a negative, with explanation",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        },
+        {
+          "point": "Correct number line description (open dot, direction)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $(x - {{p}})(x + {{q}}) > 0$ by considering all cases.",
+      "modelAnswer": "A product of two factors is positive when both factors have the same sign.\n\n**Case 1 — both positive:** $x - {{p}} > 0$ and $x + {{q}} > 0$ → $x > {{p}}$ and $x > -{{q}}$ → $x > {{p}}$.\n\n**Case 2 — both negative:** $x - {{p}} < 0$ and $x + {{q}} < 0$ → $x < {{p}}$ and $x < -{{q}}$ → $x < -{{q}}$.\n\nSolution: $x < -{{q}}$ or $x > {{p}}$, i.e. $(-\\infty, -{{q}}) \\cup ({{p}}, \\infty)$.",
+      "rubric": [
+        {
+          "point": "States both cases correctly",
+          "marks": 2
+        },
+        {
+          "point": "Solves each case using the overlap (and)",
+          "marks": 2
+        },
+        {
+          "point": "Combines cases into the final solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "r": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $(x + {{q}})(x - {{p}})(x - {{r}}) \\le 0$ using intervals. Organise your work in a sign table.",
+      "modelAnswer": "Zeros: $-{{q}}$, ${{p}}$, ${{r}}$.\n\n| | $x < -{{q}}$ | $-{{q}} < x < {{p}}$ | ${{p}} < x < {{r}}$ | $x > {{r}}$ |\n|---|---|---|---|---|\n| test value | ${{-q - 1}}$ | ${{(p - q)/2}}$ | ${{(p + r)/2}}$ | ${{r + 1}}$ |\n| $x + {{q}}$ | $-$ | $+$ | $+$ | $+$ |\n| $x - {{p}}$ | $-$ | $-$ | $+$ | $+$ |\n| $x - {{r}}$ | $-$ | $-$ | $-$ | $+$ |\n| product | $-$ | $+$ | $-$ | $+$ |\n\nThe product is $\\le 0$ on the first and third intervals, including the zeros:\n\n$$x \\le -{{q}} \\text{ or } {{p}} \\le x \\le {{r}}$$",
+      "rubric": [
+        {
+          "point": "Correct zeros and intervals",
+          "marks": 1
+        },
+        {
+          "point": "Correct signs of each factor in the table",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign of the product",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with endpoints included",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            1,
+            3
+          ]
+        },
+        "b": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve $(2x - {{a}})(3 - x)(x + {{b}}) \\ge 0$. Explain how you handled the factor $(3 - x)$.",
+      "modelAnswer": "Zeros: $x = {{a/2}}$, $x = 3$, $x = -{{b}}$.\n\nThe factor $3 - x$ has a negative $x$-coefficient, so the leading coefficient of the product is $2 \\times (-1) \\times 1 = -2 < 0$. (Equivalently, write $3 - x = -(x - 3)$.) The sign pattern of a negative cubic, from the left, is $+, -, +, -$.\n\n| Interval | $x < -{{b}}$ | $-{{b}} < x < {{a/2}}$ | ${{a/2}} < x < 3$ | $x > 3$ |\n|---|---|---|---|---|\n| Sign | $+$ | $-$ | $+$ | $-$ |\n\nCheck with $x = 0$: $(-{{a}})(3)({{b}}) < 0$ ✓\n\n$$x \\le -{{b}} \\text{ or } {{a/2}} \\le x \\le 3$$",
+      "rubric": [
+        {
+          "point": "Correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "Handles $(3 - x)$ correctly (negative leading coefficient or rewriting)",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign pattern with a test value",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 5,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c2": "q + r - 1",
+        "c1": "q*r - q - r",
+        "c0": "q*r"
+      },
+      "text": "Solve $x^3 + {{c2}}x^2 + {{c1}}x - {{c0}} < 0$ algebraically.",
+      "modelAnswer": "**Factor:** $P(1) = 1 + {{c2}} + {{c1}} - {{c0}} = 0$, so $x - 1$ is a factor. Dividing gives $x^2 + {{q+r}}x + {{q*r}} = (x + {{q}})(x + {{r}})$.\n\n$(x + {{r}})(x + {{q}})(x - 1) < 0$\n\nZeros: $-{{r}}$, $-{{q}}$, $1$. Positive cubic → signs $-, +, -, +$.\n\n$$x < -{{r}} \\text{ or } -{{q}} < x < 1$$",
+      "rubric": [
+        {
+          "point": "Factors the cubic completely",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with strict inequalities",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $12x^2 + 25x - 7 > 0$ by factoring.",
+      "modelAnswer": "$12x^2 + 25x - 7$: $ac = -84$; $28$ and $-3$ multiply to $-84$ and add to $25$.\n\n$12x^2 + 28x - 3x - 7 = 4x(3x + 7) - 1(3x + 7) = (4x - 1)(3x + 7)$\n\nZeros $-\\tfrac73$ and $\\tfrac14$. Parabola opens up → positive outside the zeros.\n\n$$x < -\\tfrac73 \\text{ or } x > \\tfrac14$$",
+      "rubric": [
+        {
+          "point": "Factors correctly",
+          "marks": 2
+        },
+        {
+          "point": "Finds the zeros",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $6x^3 + 13x^2 - 41x + 12 \\le 0$.",
+      "modelAnswer": "Possible rational zeros: $\\pm1, \\pm2, \\pm3, \\pm4, \\pm6, \\pm12, \\pm\\tfrac12, \\pm\\tfrac13, \\dots$\n\n$P(-4) = -384 + 208 + 164 + 12 = 0$, so $x + 4$ is a factor.\n\nSynthetic division with $-4$: $6, 13, -41, 12 \\to 6, -11, 3, \\mathbf{0}$.\n\n$6x^2 - 11x + 3 = (2x - 3)(3x - 1)$\n\n$(x + 4)(3x - 1)(2x - 3) \\le 0$. Zeros $-4, \\tfrac13, \\tfrac32$; positive cubic → $-, +, -, +$.\n\n$$x \\le -4 \\text{ or } \\tfrac13 \\le x \\le \\tfrac32$$",
+      "rubric": [
+        {
+          "point": "Finds a rational zero",
+          "marks": 1
+        },
+        {
+          "point": "Divides and factors completely",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q08",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $-3x^4 + 10x^3 + 20x^2 - 40x - 32 \\ge 0$.",
+      "modelAnswer": "**Factor.** $P(2) = -48 + 80 + 80 - 80 - 32 = 0$ → $x - 2$ is a factor.\nSynthetic division with $2$: $-3, 10, 20, -40, -32 \\to -3, 4, 28, 16, \\mathbf{0}$.\n\nFor $-3x^3 + 4x^2 + 28x + 16$: $Q(-2) = 24 + 16 - 56 + 16 = 0$ → $x + 2$ is a factor.\nSynthetic division with $-2$: $-3, 4, 28, 16 \\to -3, 10, 8, \\mathbf{0}$.\n\n$-3x^2 + 10x + 8 = -(3x^2 - 10x - 8) = -(3x + 2)(x - 4)$\n\n$P(x) = -(x - 2)(x + 2)(3x + 2)(x - 4)$\n\n**Signs.** Zeros $-2, -\\tfrac23, 2, 4$. Negative leading coefficient, even degree → down on both ends: $-, +, -, +, -$.\n\n$$-2 \\le x \\le -\\tfrac23 \\text{ or } 2 \\le x \\le 4$$",
+      "rubric": [
+        {
+          "point": "Finds two zeros using the factor theorem",
+          "marks": 2
+        },
+        {
+          "point": "Factors completely, handling the negative sign",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign pattern",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q09",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Solve $(x^2 + 4x + 4)(x^2 - 25) < 0$. Explain carefully how the squared factor affects your solution.",
+      "modelAnswer": "Factor: $(x + 2)^2(x - 5)(x + 5) < 0$.\n\n$(x + 2)^2$ is **never negative**: it is positive for $x \\neq -2$ and $0$ at $x = -2$. So it doesn't affect the sign of the product, but at $x = -2$ the product equals $0$, which does **not** satisfy $< 0$.\n\nSo we need $(x - 5)(x + 5) < 0$, i.e. $-5 < x < 5$, and also $x \\neq -2$.\n\n$$-5 < x < -2 \\text{ or } -2 < x < 5$$",
+      "rubric": [
+        {
+          "point": "Factors completely",
+          "marks": 1
+        },
+        {
+          "point": "Explains that the squared factor is non-negative and doesn't change the sign",
+          "marks": 2
+        },
+        {
+          "point": "Excludes $x = -2$ with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q10",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "choices": [
+            1,
+            2,
+            4,
+            5,
+            7
+          ]
+        }
+      },
+      "text": "Solve $9x^2 - {{a^2}} < 0$ and show the solution on a number line.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the right-hand endpoint.",
+          "answer": {
+            "expr": "a/3",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$9x^2 - {{a^2}} = (3x - {{a}})(3x + {{a}})$.\n\nZeros $\\pm\\tfrac{ {{a}} }{3}$. The parabola opens upward, so it is negative between the zeros.\n\n$$-\\tfrac{ {{a}} }{3} < x < \\tfrac{ {{a}} }{3}$$ (about $\\pm{{a/3:3}}$)\n\nNumber line: open dots at $\\pm\\tfrac{ {{a}} }{3}$ with shading between them.",
+      "rubric": [
+        {
+          "point": "Factors the difference of squares",
+          "marks": 1
+        },
+        {
+          "point": "Correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution and number line",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $-x^3 + 6x^2 - 9x > 0$.",
+      "modelAnswer": "Factor: $-x^3 + 6x^2 - 9x = -x(x^2 - 6x + 9) = -x(x - 3)^2$.\n\n$-x(x - 3)^2 > 0$. Multiply by $-1$ and reverse: $x(x - 3)^2 < 0$.\n\n$(x - 3)^2 \\ge 0$, and the product is $0$ at $x = 3$. So we need $x < 0$ (where $(x - 3)^2 > 0$ automatically).\n\n$$x < 0$$",
+      "rubric": [
+        {
+          "point": "Factors completely including the perfect square",
+          "marks": 2
+        },
+        {
+          "point": "Handles the negative sign correctly",
+          "marks": 1
+        },
+        {
+          "point": "Uses the squared factor correctly to reach $x < 0$",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $2x^3 + 5x^2 - 18x - 45 \\le 0$ by factoring. Show the solution on a number line.",
+      "modelAnswer": "Group: $x^2(2x + 5) - 9(2x + 5) = (2x + 5)(x^2 - 9) = (2x + 5)(x - 3)(x + 3)$.\n\nZeros $-3$, $-\\tfrac52$, $3$. Positive cubic → signs $-, +, -, +$.\n\n$$x \\le -3 \\text{ or } -\\tfrac52 \\le x \\le 3$$\n\nNumber line: closed dot at $-3$ with shading left; closed dots at $-2.5$ and $3$ with shading between.",
+      "rubric": [
+        {
+          "point": "Factors by grouping",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution and number line",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $2x^4 + 5x^3 - 8x^2 - 17x - 6 \\ge 0$.",
+      "modelAnswer": "$P(-1) = 2 - 5 - 8 + 17 - 6 = 0$ → $x + 1$ is a factor. Synthetic division: $2, 5, -8, -17, -6 \\to 2, 3, -11, -6, \\mathbf{0}$.\n\n$Q(x) = 2x^3 + 3x^2 - 11x - 6$: $Q(2) = 16 + 12 - 22 - 6 = 0$ → $x - 2$ is a factor. Synthetic division: $2, 3, -11, -6 \\to 2, 7, 3, \\mathbf{0}$.\n\n$2x^2 + 7x + 3 = (2x + 1)(x + 3)$.\n\n$P(x) = (x + 3)(x + 1)(2x + 1)(x - 2)$. Zeros $-3, -1, -\\tfrac12, 2$; positive quartic → $+, -, +, -, +$.\n\n$$x \\le -3 \\text{ or } -1 \\le x \\le -\\tfrac12 \\text{ or } x \\ge 2$$",
+      "rubric": [
+        {
+          "point": "Finds two zeros and divides correctly",
+          "marks": 2
+        },
+        {
+          "point": "Factors completely",
+          "marks": 1
+        },
+        {
+          "point": "Correct sign pattern",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution (three pieces)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q14",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "An open-top box is made from a $40$ cm by $32$ cm piece of cardboard by cutting congruent squares of side $x$ cm from the corners and folding up the sides. Determine algebraically the values of $x$ that give a volume greater than $2016$ cm³.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the upper limit of $x$ to one decimal place.",
+          "answer": {
+            "expr": "17 - sqrt(37)",
+            "unit": "cm",
+            "sig": 3,
+            "tol": 0.01
+          }
+        }
+      ],
+      "modelAnswer": "$V(x) = x(40 - 2x)(32 - 2x) = 4x^3 - 144x^2 + 1280x$, with $0 < x < 16$.\n\n$4x^3 - 144x^2 + 1280x > 2016 \\Rightarrow x^3 - 36x^2 + 320x - 504 > 0$.\n\n$P(2) = 8 - 144 + 640 - 504 = 0$, so $x - 2$ is a factor: $(x - 2)(x^2 - 34x + 252) > 0$.\n\nQuadratic formula: $x = \\dfrac{34 \\pm \\sqrt{1156 - 1008}}{2} = 17 \\pm \\sqrt{37} \\approx 10.92$ or $23.08$.\n\nSigns (positive cubic) with zeros $2, 10.92, 23.08$: $-, +, -, +$.\n\nPositive on $(2, 10.92)$ and $(23.08, \\infty)$. Within the domain $0 < x < 16$:\n\n$$2 < x < 17 - \\sqrt{37} \\approx 10.9 \\text{ cm}$$",
+      "rubric": [
+        {
+          "point": "Correct volume function and domain",
+          "marks": 1
+        },
+        {
+          "point": "Sets up and rearranges the inequality",
+          "marks": 1
+        },
+        {
+          "point": "Factors using the factor theorem and quadratic formula",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 1
+        },
+        {
+          "point": "Applies the domain to give the final answer",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q15",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Why is it necessary to reverse an inequality sign when each side is multiplied or divided by a negative value? Support your answer with numerical examples and a number-line explanation.",
+      "modelAnswer": "Multiplying by a negative number reflects every number across $0$ on the number line, which reverses their order.\n\n* $3 < 7$ is true. Multiply by $-1$: $-3$ and $-7$. Now $-3 > -7$, so the sign must flip.\n* $-2 < 4$. Divide by $-2$: $1$ and $-2$; $1 > -2$, flipped again.\n\nOn the number line, $3$ is to the left of $7$, but after reflecting across $0$, $-3$ is to the **right** of $-7$. If you kept the original sign you would write a false statement. Multiplying by a positive number only stretches distances, so the order is kept.",
+      "rubric": [
+        {
+          "point": "Explains reflection/ordering reversal",
+          "marks": 2
+        },
+        {
+          "point": "At least two correct numerical examples",
+          "marks": 2
+        },
+        {
+          "point": "Contrasts with multiplying by a positive",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-6-q16",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "(a) What are the similarities between solving a linear inequality and solving a polynomial inequality? (b) Which is usually more efficient for solving factorable polynomial inequalities algebraically — considering cases or using intervals? Explain with reference to the number of factors.",
+      "modelAnswer": "(a) **Similarities:** both use the same inequality symbols and notation for solutions (intervals, number lines); both require isolating or rearranging, and reversing the sign when multiplying/dividing by a negative; the boundary value(s) come from the related equation. A linear inequality has one boundary point; a polynomial inequality may have several, so its solution can be several intervals.\n\n(b) **Intervals** are usually more efficient. With $n$ factors, considering cases requires checking all sign combinations ($2^n$ in general; already $4$ cases for $3$ factors, $8$ for $4$). The interval method only needs one test value per interval — $n + 1$ intervals for $n$ distinct zeros — and organises naturally in a sign table. Cases are reasonable for two factors.",
+      "rubric": [
+        {
+          "point": "At least two valid similarities",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the key difference (several boundaries/intervals)",
+          "marks": 1
+        },
+        {
+          "point": "Chooses intervals with a reason based on the number of factors",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q17",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student solved $(x - 2)(x + 4) > 0$ like this:\n\n$x - 2 > 0$ or $x + 4 > 0$, so $x > 2$ or $x > -4$. Answer: $x > -4$.\n\nFind the error, explain why it is wrong (use a test value), and give the correct solution.",
+      "modelAnswer": "The student treated the inequality like an equation. For $ab = 0$ we can say $a = 0$ **or** $b = 0$, but for $ab > 0$ both factors must have the **same sign**.\n\nTest value showing the answer is wrong: $x = 0$ is in the student's answer ($0 > -4$), but $(0 - 2)(0 + 4) = -8$, which is **not** $> 0$.\n\nCorrect: both positive → $x > 2$; both negative → $x < -4$.\n\n$$x < -4 \\text{ or } x > 2$$",
+      "rubric": [
+        {
+          "point": "Identifies the error (applying the zero product idea to an inequality)",
+          "marks": 2
+        },
+        {
+          "point": "Uses a test value to show the answer fails",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-6-q18",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Write two different quartic inequalities — one using $\\ge$ and one using $\\le$ — whose solution is $x \\le -3$ or $-1 \\le x \\le 2$ or $x \\ge 5$. Show that each one has exactly this solution.",
+      "modelAnswer": "The boundary values are $-3, -1, 2, 5$, giving the factors $(x + 3)(x + 1)(x - 2)(x - 5)$.\n\nA positive quartic has the sign pattern $+, -, +, -, +$ across $(-\\infty, -3)$, $(-3, -1)$, $(-1, 2)$, $(2, 5)$, $(5, \\infty)$ — positive exactly on the required intervals.\n\n* **Using $\\ge$:** $(x + 3)(x + 1)(x - 2)(x - 5) \\ge 0$\n* **Using $\\le$:** multiply by $-1$: $-(x + 3)(x + 1)(x - 2)(x - 5) \\le 0$ (now the pattern is $-, +, -, +, -$ and we want $\\le 0$, the same intervals).\n\n**Check with test values** in the first inequality: $x = 0$ (inside $-1 \\le x \\le 2$): $(3)(1)(-2)(-5) = 30 \\ge 0$ ✓ included. $x = 3$ (outside the solution): $(6)(4)(1)(-2) = -48$, which is not $\\ge 0$ ✓ excluded. $x = -2$ (outside): $(1)(-1)(-4)(-7) = -28$ ✓ excluded.",
+      "rubric": [
+        {
+          "point": "Identifies the four boundary factors",
+          "marks": 1
+        },
+        {
+          "point": "Correct $\\ge$ inequality with sign justification",
+          "marks": 2
+        },
+        {
+          "point": "Correct $\\le$ inequality (negated)",
+          "marks": 1
+        },
+        {
+          "point": "Verifies with test values",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

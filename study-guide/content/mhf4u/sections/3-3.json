@@ -50,7 +50,7 @@
       "definition": "A function $f(x) = \\dfrac{ax+b}{cx+d}$ with $c \\ne 0$."
     },
     {
-      "term": "horizontal asymptote $y = \frac{a}{c}$",
+      "term": "horizontal asymptote $y = \\frac{a}{c}$",
       "definition": "The value the function approaches as x → ±∞, found by dividing every term by x."
     },
     {
