@@ -1,0 +1,1499 @@
+{
+  "id": "7-review",
+  "number": "Review",
+  "title": "Chapter 7 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "This review brings together every strategy from the chapter — common bases, logarithms of both sides, quadratic form, the laws of logarithms, logarithmic equations and modelling — with questions modelled on the Chapter Review and Practice Test. Work through them under test conditions, then check your solutions.",
+  "objectives": [
+    "Choose an appropriate strategy for any exponential or logarithmic equation",
+    "Apply the product, quotient and power laws to simplify, evaluate and solve",
+    "Identify and reject extraneous roots",
+    "Solve half-life, compound interest, sound and caffeine problems",
+    "Select, use and critique exponential models of real data"
+  ],
+  "lessons": [
+    {
+      "id": "toolkit",
+      "title": "Your equation-solving toolkit",
+      "body": "\nUse this decision table when you meet a new equation.\n\n| The equation looks like… | Strategy | Section |\n|---|---|---|\n| $4^{x+5} = 64^x$ (bases are powers of one number) | Write both sides with a **common base**, equate exponents | 7.1 |\n| $1.07^t = 2$ or $4^{2x-1} = 3^{x+2}$ | **Take logarithms** of both sides, power law, collect and factor | 7.2 |\n| $2^{2x} - 4(2^x) - 1 = 0$ or $2^x - 2^{-x} = 4$ | **Quadratic form**: let $z = b^x$; reject $z \\le 0$ | 7.2 |\n| $\\log(x - 4) = 1$ | Rewrite in **exponential form** | 7.4 |\n| $\\log x + \\log(x + 3) = 1$ | **Combine** with the laws, then exponential form; check roots | 7.3–7.4 |\n| A word problem with data | Choose and fit a **model**, then solve | 7.5 |\n\n**Always:** isolate the power or the logarithm before converting, and check for extraneous roots.\n"
+    },
+    {
+      "id": "laws",
+      "title": "Exponent laws and logarithm laws side by side",
+      "body": "\n| Exponents | Logarithms ($b>0,\\ b\\ne1$, arguments $>0$) |\n|---|---|\n| $b^mb^n = b^{m+n}$ | $\\log_b(mn) = \\log_b m + \\log_b n$ |\n| $\\dfrac{b^m}{b^n} = b^{m-n}$ | $\\log_b\\dfrac mn = \\log_b m - \\log_b n$ |\n| $(b^m)^n = b^{mn}$ | $\\log_b m^n = n\\log_b m$ |\n| $b^0 = 1$, $b^1 = b$ | $\\log_b 1 = 0$, $\\log_b b = 1$ |\n| $b^m = b^n \\Rightarrow m = n$ | $\\log_b m = \\log_b n \\Rightarrow m = n$ |\n\nAnd the bridge between them: $\\log_b x = y \\iff b^y = x$, and any positive number is a power of any base: $a = b^{\\frac{\\log a}{\\log b}}$.\n"
+    },
+    {
+      "id": "checking",
+      "title": "Checking answers and extraneous roots",
+      "body": "\n| Equation type | Where extraneous roots come from | How to reject |\n|---|---|---|\n| Exponential in quadratic form | $z = b^x$ gives $z \\le 0$ | $b^x > 0$ always |\n| Logarithmic | Combined logs are defined where the originals are not | Every **original** argument must be $> 0$ |\n\n**Graphical check:** graph each side as a separate function and find the intersection(s); the x-coordinates are the solutions. The number of intersections tells you how many real solutions exist.\n"
+    },
+    {
+      "id": "modelling",
+      "title": "Modelling checklist",
+      "body": "\n1. **Plot the data** and describe the shape.\n2. **Fit** candidate models with technology (linear, quadratic, exponential).\n3. **Judge** them: which makes sense before, after and between the data? What does the situation suggest (percentage growth → exponential; area → quadratic)?\n4. **Solve** the problem with the chosen model — usually by isolating a power and taking logarithms.\n5. **State** assumptions and limitations, and answer in context with units.\n\n**Key models:** $A = A_0\\left(\\frac12\\right)^{\\frac th}$, $P = P_0(2)^{\\frac td}$, $A = P(1+i)^n$, $L = 10\\log\\frac{I}{I_0}$, $\\beta_2 - \\beta_1 = 10\\log\\frac{I_2}{I_1}$.\n"
+    },
+    {
+      "id": "wrap-up",
+      "title": "Chapter problem wrap-up: Summer-Fest",
+      "body": "\nPaid admissions at Decimal Point's Summer-Fest concert:\n\n| Year | 2000 | 2001 | 2002 | 2003 | 2004 | 2005 | 2006 | 2007 |\n|---|---|---|---|---|---|---|---|---|\n| Admissions | 450 | 512 | 606 | 718 | 815 | 956 | 1092 | 1220 |\n\nEach year the attendance grows by roughly the same **percentage** (about 15–18%), which suggests an exponential model. Exponential regression with $t$ = years since 2000 gives approximately\n\n$$A = 452(1.157)^t$$\n\n```plot\ntitle: Summer-Fest attendance and the venue capacity\nf: 452*1.157^x | label=A = 452(1.157)^t\nf: 5000 | dashed; label=capacity 5000\ndomain: 0, 20\nrange: 0, 7000\nticks: 2, 1000\npoints: (0,450), (1,512), (2,606), (3,718), (4,815), (5,956), (6,1092), (7,1220)\n```\n\nThe venue holds 5000 people: $5000 = 452(1.157)^t$ gives $t = \\frac{\\log(5000/452)}{\\log 1.157} \\approx 16.4$, so the venue would be full around **2016** if the trend continued. Parking for 1800 vehicles, at about 2.5 people per vehicle, supports about 4500 people — reached even sooner. Planners might add shuttle buses, sell advance tickets, or cap attendance.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "common base",
+      "definition": "A single base used to rewrite both sides of an exponential equation."
+    },
+    {
+      "term": "extraneous root",
+      "definition": "A value found by a correct-looking algebraic process that does not satisfy the original equation."
+    },
+    {
+      "term": "half-life",
+      "definition": "The time for an amount to decay to half its value: $h$ in $A = A_0\\left(\\frac12\\right)^{\\frac th}$."
+    },
+    {
+      "term": "doubling period",
+      "definition": "The time for a quantity to double: $d$ in $P = P_0(2)^{\\frac td}$."
+    },
+    {
+      "term": "product law of logarithms",
+      "definition": "$\\log_b(mn) = \\log_b m + \\log_b n$."
+    },
+    {
+      "term": "quotient law of logarithms",
+      "definition": "$\\log_b\\frac mn = \\log_b m - \\log_b n$."
+    },
+    {
+      "term": "power law of logarithms",
+      "definition": "$\\log_b m^n = n\\log_b m$."
+    },
+    {
+      "term": "mathematical model",
+      "definition": "A function that describes a real situation well enough to interpolate, extrapolate and support decisions."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Any number as a power of b",
+      "latex": "a = b^{\\frac{\\log a}{\\log b}}",
+      "meaning": "Works for $a>0,\\ b>0,\\ b\\ne1$."
+    },
+    {
+      "name": "Solve a power equation",
+      "latex": "b^x = c \\;\\Rightarrow\\; x = \\frac{\\log c}{\\log b}",
+      "meaning": "Take logarithms and apply the power law."
+    },
+    {
+      "name": "Laws of logarithms",
+      "latex": "\\log_b(mn) = \\log_b m + \\log_b n \\quad \\log_b\\frac{m}{n} = \\log_b m - \\log_b n \\quad \\log_b m^n = n\\log_b m",
+      "meaning": ""
+    },
+    {
+      "name": "Definition",
+      "latex": "\\log_b x = y \\iff b^y = x",
+      "meaning": ""
+    },
+    {
+      "name": "Half-life",
+      "latex": "A = A_0\\left(\\tfrac12\\right)^{\\frac th}",
+      "meaning": ""
+    },
+    {
+      "name": "Compound interest",
+      "latex": "A = P(1+i)^n",
+      "meaning": ""
+    },
+    {
+      "name": "Sound levels",
+      "latex": "L = 10\\log\\frac{I}{I_0} \\qquad \\beta_2 - \\beta_1 = 10\\log\\frac{I_2}{I_1}",
+      "meaning": "$I_0 = 10^{-12}$ W/m²"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Write as powers of 4",
+      "problem": "Write as a power of 4: (a) 64 (b) $\\frac1{16}$ (c) $(\\sqrt[3]8)^5$",
+      "steps": [
+        "(a) $64 = 4^3$",
+        "(b) $\\frac{1}{16} = 4^{-2}$",
+        "(c) $(\\sqrt[3]{8})^5 = 2^5 = 32 = (4^{\\frac12})^5 = 4^{\\frac52}$"
+      ],
+      "answer": "$4^3$, $4^{-2}$, $4^{\\frac52}$"
+    },
+    {
+      "title": "Half-life from data",
+      "problem": "A 50-mg sample of cobalt-60 decays to 40 mg after 1.6 min. Find the half-life and the time to decay to 5%.",
+      "steps": [
+        "$0.8 = 0.5^{\\frac{1.6}{h}} \\Rightarrow h = \\frac{1.6\\log0.5}{\\log0.8} \\approx 4.97$ min.",
+        "$0.05 = 0.5^{\\frac t{4.97}} \\Rightarrow t = \\frac{4.97\\log0.05}{\\log0.5} \\approx 21.5$ min."
+      ],
+      "answer": "$h \\approx 4.97$ min; about 21.5 min"
+    },
+    {
+      "title": "Quadratic form with two valid roots",
+      "problem": "Solve $2^x + 12(2^{-x}) = 7$.",
+      "steps": [
+        "Multiply by $2^x$: $2^{2x} + 12 = 7(2^x)$, so $z^2 - 7z + 12 = 0$ with $z = 2^x$.",
+        "$(z - 3)(z - 4) = 0$, so $2^x = 3$ or $2^x = 4$.",
+        "$x = \\frac{\\log 3}{\\log 2} \\approx 1.585$ or $x = 2$. Both $z$ values are positive, so both are valid."
+      ],
+      "answer": "$x \\approx 1.585$ or $x = 2$"
+    },
+    {
+      "title": "Simplify with careful restrictions",
+      "problem": "Simplify $\\log(x^2 + 2x - 15) - \\log(x^2 - 7x + 12)$ and state the restrictions.",
+      "steps": [
+        "Factor: $\\log\\dfrac{(x+5)(x-3)}{(x-3)(x-4)} = \\log\\dfrac{x+5}{x-4}$.",
+        "$(x+5)(x-3) > 0$ needs $x > 3$ or $x < -5$.",
+        "$(x-3)(x-4) > 0$ needs $x > 4$ or $x < 3$.",
+        "Both: $x > 4$ or $x < -5$."
+      ],
+      "answer": "$\\log\\dfrac{x+5}{x-4}$, $x < -5$ or $x > 4$"
+    },
+    {
+      "title": "Logarithmic equation with an extraneous root",
+      "problem": "Solve $\\log_2 x + \\log_2(x + 2) = 3$.",
+      "steps": [
+        "$\\log_2[x(x+2)] = 3 \\Rightarrow x^2 + 2x = 8 \\Rightarrow (x + 4)(x - 2) = 0$.",
+        "$x = -4$ makes $\\log_2 x$ undefined: reject.",
+        "$x = 2$: $\\log_2 2 + \\log_2 4 = 3$ ✓."
+      ],
+      "answer": "$x = 2$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\log(x + y) = \\log x + \\log y$.",
+      "fact": "$\\log(xy) = \\log x + \\log y$; there is no law for $\\log(x+y)$."
+    },
+    {
+      "myth": "$\\frac{\\log a}{\\log b} = \\log(a - b)$ or $\\log\\frac ab$.",
+      "fact": "$\\frac{\\log a}{\\log b}$ is a quotient of two numbers (it equals $\\log_b a$). Evaluate top and bottom separately."
+    },
+    {
+      "myth": "Every quadratic in a log equation gives one valid and one extraneous root.",
+      "fact": "Check each root; there may be two, one or no valid roots."
+    },
+    {
+      "myth": "$b^x$ can equal a negative number for some $x$.",
+      "fact": "$b^x > 0$ for every real $x$ when $b > 0$."
+    },
+    {
+      "myth": "A model with $r^2$ close to 1 is always the right model.",
+      "fact": "Several models can fit well; choose the one that also makes sense outside the data."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Medicine",
+      "body": "Caffeine, medications and medical tracers leave the body exponentially; their half-lives determine dosing schedules."
+    },
+    {
+      "title": "Personal finance",
+      "body": "Compound interest, depreciation and comparing salary offers all lead to exponential equations solved with logarithms."
+    },
+    {
+      "title": "Event planning",
+      "body": "Organisers of growing events like Summer-Fest use exponential models to predict when they will outgrow a venue."
+    },
+    {
+      "title": "Music technology",
+      "body": "Guitar sustain, amplifier balance and decibel levels all rely on exponential and logarithmic relationships."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Write as a power of 5: (a) 20 (b) 0.8",
+      "hint": "$5^k = 20$.",
+      "solution": "(a) $5^{\\frac{\\log20}{\\log5}} \\approx 5^{1.861}$ (b) $5^{\\frac{\\log0.8}{\\log5}} \\approx 5^{-0.139}$"
+    },
+    {
+      "question": "Solve $3^{5x} = 27^{x-1}$.",
+      "hint": "Base 3.",
+      "solution": "$5x = 3x - 3$, so $x = -1.5$."
+    },
+    {
+      "question": "Solve $8^{2x+1} = 32^{2x-3}$.",
+      "hint": "Base 2.",
+      "solution": "$6x + 3 = 10x - 15$, so $x = 4.5$."
+    },
+    {
+      "question": "Solve exactly: $3^{x-2} = 5^x$.",
+      "hint": "Logs, collect, factor.",
+      "solution": "$x = \\frac{-2\\log 3}{\\log 5 - \\log 3} \\approx -4.301$"
+    },
+    {
+      "question": "Solve $4^{2x} - 4^x - 20 = 0$.",
+      "hint": "$z = 4^x$.",
+      "solution": "$(z-5)(z+4) = 0$; reject $z = -4$; $x = \\frac{\\log5}{\\log4} \\approx 1.161$."
+    },
+    {
+      "question": "Evaluate $\\log_6 8 + \\log_6 27$.",
+      "hint": "Product law.",
+      "solution": "$\\log_6 216 = 3$"
+    },
+    {
+      "question": "Solve $\\log(2x + 10) = 2$.",
+      "hint": "$10^2$.",
+      "solution": "$2x + 10 = 100$, so $x = 45$."
+    },
+    {
+      "question": "A 500-dollar bond earns 6.6% compounded semi-annually. How long to double?",
+      "hint": "$i = 0.033$, $n = 2t$.",
+      "solution": "$t = \\frac{\\log2}{2\\log1.033} \\approx 10.7$ years."
+    }
+  ],
+  "summary": [
+    "Choose the strategy from the form of the equation: common base, logarithms of both sides, quadratic form, exponential form, or combine-then-convert.",
+    "The laws of logarithms mirror the exponent laws; they need positive arguments and a common base.",
+    "Always check for extraneous roots, algebraically or graphically.",
+    "Exponential models (half-life, doubling, compound interest) and logarithmic scales (decibels) connect the algebra to real decisions.",
+    "A good model fits the data **and** makes sense beyond it; state its assumptions."
+  ],
+  "questions": [
+    {
+      "id": "7-rev-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Write each as a single power of 4. Show your reasoning.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$64$ — exponent",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$4$ — exponent",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\frac{1}{16}$ — exponent",
+          "answer": {
+            "expr": "-2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$(\\sqrt[3]{8})^5$ — exponent",
+          "answer": {
+            "expr": "2.5",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $64 = 4^3$\n\n(b) $4 = 4^1$\n\n(c) $\\frac{1}{16} = 4^{-2}$\n\n(d) $(\\sqrt[3]{8})^5 = 2^5 = (4^{\\frac12})^5 = 4^{\\frac52}$",
+      "rubric": [
+        {
+          "point": "(a)–(c) correct",
+          "marks": 2
+        },
+        {
+          "point": "(d) simplifies the radical and uses 2 = 4^(1/2)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Write each number as a power of 5, giving the exponent exactly and to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "20",
+          "answer": {
+            "expr": "log(20)/log(5)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.003
+          }
+        },
+        {
+          "label": "b",
+          "text": "0.8",
+          "answer": {
+            "expr": "log(0.8)/log(5)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.01
+          }
+        }
+      ],
+      "modelAnswer": "(a) $5^k = 20 \\Rightarrow k = \\frac{\\log 20}{\\log 5} \\approx 1.861$, so $20 \\approx 5^{1.861}$.\n\n(b) $5^k = 0.8 \\Rightarrow k = \\frac{\\log 0.8}{\\log 5} \\approx -0.139$, so $0.8 \\approx 5^{-0.139}$. The exponent is negative because $0.8 < 1$.",
+      "rubric": [
+        {
+          "point": "(a) exact and decimal exponent",
+          "marks": 2
+        },
+        {
+          "point": "(b) exact and decimal exponent",
+          "marks": 2
+        },
+        {
+          "point": "Explains the negative exponent",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve each equation using a common base. Check one of your answers by substitution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$3^{5x} = 27^{x-{{a}}}$",
+          "answer": {
+            "expr": "-1.5*a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$8^{2x+1} = 32^{2x-{{b}}}$",
+          "answer": {
+            "expr": "(5*b+3)/4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $3^{5x} = 3^{3x-{{3*a}}} \\Rightarrow 2x = -{{3*a}} \\Rightarrow x = {{-1.5*a}}$.\n\n(b) $2^{6x+3} = 2^{10x-{{5*b}}} \\Rightarrow 4x = {{5*b+3}} \\Rightarrow x = {{(5*b+3)/4}}$.",
+      "rubric": [
+        {
+          "point": "(a) common base and exponents",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) common base and exponents",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "Checks one answer",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A0": {
+          "choices": [
+            40,
+            50,
+            60
+          ]
+        },
+        "r": {
+          "choices": [
+            0.75,
+            0.8,
+            0.85
+          ]
+        },
+        "t": {
+          "choices": [
+            1.2,
+            1.6,
+            2.0
+          ]
+        }
+      },
+      "derived": {
+        "A1": "A0*r"
+      },
+      "text": "A {{A0}}-mg sample of cobalt-60 decays to {{A1:3}} mg after {{t}} min.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the half-life of cobalt-60.",
+          "answer": {
+            "expr": "t*log(0.5)/log(r)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until 5% of the initial amount remains?",
+          "answer": {
+            "expr": "t*log(0.5)/log(r)*log(0.05)/log(0.5)",
+            "unit": "min",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{r}} = 0.5^{\\frac{ {{t}} }{h}} \\Rightarrow h = \\dfrac{ {{t}}\\log0.5}{\\log {{r}} } \\approx {{t*log(0.5)/log(r):4}}$ min.\n\n(b) $0.05 = 0.5^{\\frac th} \\Rightarrow t = \\dfrac{h\\log0.05}{\\log0.5} \\approx {{t*log(0.5)/log(r)*log(0.05)/log(0.5):4}}$ min.",
+      "rubric": [
+        {
+          "point": "Correct half-life set-up",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-life",
+          "marks": 1
+        },
+        {
+          "point": "Correct 5% set-up",
+          "marks": 1
+        },
+        {
+          "point": "Correct time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve each equation exactly, then give a decimal approximation to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$3^{x-2} = 5^x$",
+          "answer": {
+            "expr": "2*log(3)/(log(3)-log(5))",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.003
+          }
+        },
+        {
+          "label": "b",
+          "text": "$2^{k-2} = 3^{k+1}$",
+          "answer": {
+            "expr": "(log(3)+2*log(2))/(log(2)-log(3))",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.003
+          }
+        }
+      ],
+      "modelAnswer": "(a) $(x - 2)\\log 3 = x\\log 5 \\Rightarrow x\\log3 - x\\log5 = 2\\log3 \\Rightarrow x = \\dfrac{2\\log 3}{\\log 3 - \\log 5} \\approx -4.301$.\n\n(b) $(k - 2)\\log 2 = (k + 1)\\log 3 \\Rightarrow k(\\log2 - \\log3) = \\log3 + 2\\log2 \\Rightarrow k = \\dfrac{\\log3 + 2\\log2}{\\log2 - \\log3} \\approx -6.129$.",
+      "rubric": [
+        {
+          "point": "(a) logs, collect and factor",
+          "marks": 1
+        },
+        {
+          "point": "(a) exact and decimal",
+          "marks": 1
+        },
+        {
+          "point": "(b) logs, collect and factor",
+          "marks": 1
+        },
+        {
+          "point": "(b) exact and decimal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q06",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve each equation. Check for extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$4^{2x} - 4^x - 20 = 0$",
+          "answer": {
+            "expr": "log(5)/log(4)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$2^x + 12(2^{-x}) = 7$ — give the smaller root",
+          "answer": {
+            "expr": "log(3)/log(2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $z = 4^x$: $z^2 - z - 20 = 0 \\Rightarrow (z - 5)(z + 4) = 0$. Reject $z = -4$ ($4^x > 0$). $x = \\frac{\\log5}{\\log4} \\approx 1.161$.\n\n(b) Multiply by $2^x$: $2^{2x} - 7(2^x) + 12 = 0 \\Rightarrow (z - 3)(z - 4) = 0$. $2^x = 3 \\Rightarrow x \\approx 1.585$; $2^x = 4 \\Rightarrow x = 2$. Both valid.",
+      "rubric": [
+        {
+          "point": "(a) quadratic in 4^x",
+          "marks": 1
+        },
+        {
+          "point": "(a) rejects the negative root and solves",
+          "marks": 1
+        },
+        {
+          "point": "(b) multiplies by 2^x correctly",
+          "marks": 1
+        },
+        {
+          "point": "(b) both roots found",
+          "marks": 1
+        },
+        {
+          "point": "(b) recognises both are valid",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "V1": {
+          "choices": [
+            1400,
+            1516,
+            1600
+          ]
+        }
+      },
+      "text": "A computer bought for 2000 dollars loses value according to $V(t) = 2000\\left(\\frac12\\right)^{\\frac th}$, where $t$ is in years and $h$ is the half-life of its value. After 1 year it is worth about {{V1}} dollars.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the half-life of the computer's value?",
+          "answer": {
+            "expr": "log(0.5)/log(V1/2000)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until it is worth 10% of its purchase price?",
+          "answer": {
+            "expr": "log(0.5)/log(V1/2000)*log(0.1)/log(0.5)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{V1/2000:4}} = 0.5^{\\frac1h} \\Rightarrow h = \\dfrac{\\log0.5}{\\log {{V1/2000:4}} } \\approx {{log(0.5)/log(V1/2000):3}}$ years.\n\n(b) $0.1 = 0.5^{\\frac th} \\Rightarrow t = \\dfrac{h\\log0.1}{\\log0.5} \\approx {{log(0.5)/log(V1/2000)*log(0.1)/log(0.5):3}}$ years.",
+      "rubric": [
+        {
+          "point": "Correct half-life set-up",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-life",
+          "marks": 1
+        },
+        {
+          "point": "Correct 10% set-up",
+          "marks": 1
+        },
+        {
+          "point": "Correct time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q08",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Evaluate using the laws of logarithms. Show the single logarithm before evaluating.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_6 8 + \\log_6 27$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_4 128 - \\log_4 8$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$2\\log 2 + 2\\log 5$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$2\\log 3 + \\log\\left(\\frac{25}{2}\\right)$",
+          "answer": {
+            "expr": "log(112.5)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_6(8\\times27) = \\log_6 216 = 3$\n\n(b) $\\log_4\\frac{128}{8} = \\log_4 16 = 2$\n\n(c) $\\log(2^2\\times5^2) = \\log 100 = 2$\n\n(d) $\\log\\left(9\\times\\frac{25}{2}\\right) = \\log 112.5 \\approx 2.051$",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Write as a single logarithm, then write the second one as a sum or difference of simpler logarithms. State restrictions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_7 8 + \\log_7 4 - \\log_7 16$ as a single log"
+        },
+        {
+          "label": "b",
+          "text": "$2\\log a + \\log(3b) - \\frac12\\log c$ as a single log"
+        },
+        {
+          "label": "c",
+          "text": "$\\log(a^2bc)$ as a sum"
+        },
+        {
+          "label": "d",
+          "text": "$\\log\\left(\\frac{k}{\\sqrt m}\\right)$ as a difference"
+        }
+      ],
+      "modelAnswer": "(a) $\\log_7\\frac{8\\times4}{16} = \\log_7 2$.\n\n(b) $\\log\\dfrac{3a^2b}{\\sqrt c}$, $a, b, c > 0$.\n\n(c) $\\log(a^2bc) = 2\\log a + \\log b + \\log c$, $a, b, c > 0$.\n\n(d) $\\log\\dfrac{k}{\\sqrt m} = \\log k - \\frac12\\log m$, $k, m > 0$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct, including the power law",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Simplify each expression and state the restrictions on the variable. Explain how you found the restrictions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log(2m + 6) - \\log(m^2 - 9)$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log(x^2 + 2x - 15) - \\log(x^2 - 7x + 12)$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log\\dfrac{2(m+3)}{(m-3)(m+3)} = \\log\\dfrac{2}{m-3}$. Need $2m + 6 > 0$ ($m > -3$) and $m^2 - 9 > 0$ ($m > 3$ or $m < -3$): so $m > 3$.\n\n(b) $\\log\\dfrac{(x+5)(x-3)}{(x-3)(x-4)} = \\log\\dfrac{x+5}{x-4}$. Need $(x+5)(x-3) > 0$ ($x > 3$ or $x < -5$) and $(x-3)(x-4) > 0$ ($x > 4$ or $x < 3$): so $x > 4$ or $x < -5$.",
+      "rubric": [
+        {
+          "point": "(a) correct simplification",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct restriction",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct simplification",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct restriction with both intervals",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q11",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "c": {
+          "choices": [
+            10,
+            20,
+            30,
+            40
+          ]
+        }
+      },
+      "text": "Solve each equation and check.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log(2x + {{c}}) = 2$",
+          "answer": {
+            "expr": "(100-c)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$1 - \\log(2x) = 0$",
+          "answer": {
+            "expr": "5",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $2x + {{c}} = 100 \\Rightarrow x = {{(100-c)/2}}$.\n\n(b) $\\log(2x) = 1 \\Rightarrow 2x = 10 \\Rightarrow x = 5$.",
+      "rubric": [
+        {
+          "point": "(a) exponential form",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) isolates the log",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $\\log_2 x + \\log_2(x + 2) = 3$. Check for extraneous roots, and explain how you would confirm your answer with graphing technology.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The solution.",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$\\log_2[x(x+2)] = 3 \\Rightarrow x^2 + 2x - 8 = 0 \\Rightarrow (x + 4)(x - 2) = 0$.\n\nReject $x = -4$ ($\\log_2(-4)$ undefined). $x = 2$: $1 + 2 = 3$ ✓.\n\nGraph $y_1 = \\log_2 x + \\log_2(x + 2)$ and $y_2 = 3$; they meet only at $x = 2$.",
+      "rubric": [
+        {
+          "point": "Product law and exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Solves the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the extraneous root",
+          "marks": 1
+        },
+        {
+          "point": "Describes a graphical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "choices": [
+            10,
+            20,
+            25,
+            40
+          ]
+        },
+        "h": {
+          "choices": [
+            2,
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "The percent, $P$, of caffeine remaining in your bloodstream $t$ hours after drinking coffee is related by $t = 5\\left(\\dfrac{\\log P}{\\log 0.5}\\right)$, where $P$ is a decimal fraction of the amount consumed.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long until the caffeine drops to {{p}}% of the amount consumed?",
+          "answer": {
+            "expr": "5*log(p/100)/log(0.5)",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "If you drink coffee at 9:00 a.m., what percent of the caffeine remains {{h}} hours later?",
+          "answer": {
+            "expr": "100*0.5^(h/5)",
+            "unit": "%",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the half-life of caffeine according to this model? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $t = 5\\left(\\dfrac{\\log {{p/100}} }{\\log 0.5}\\right) \\approx {{5*log(p/100)/log(0.5):3}}$ h.\n\n(b) $t = {{h}}$: ${{h}} = 5\\dfrac{\\log P}{\\log0.5} \\Rightarrow \\log P = \\frac{ {{h}} }{5}\\log 0.5 \\Rightarrow P = 0.5^{\\frac{ {{h}} }{5}} \\approx {{0.5^(h/5):3}}$, i.e. about {{100*0.5^(h/5):3}}% remains.\n\n(c) The formula is the half-life model $P = 0.5^{\\frac t5}$ rearranged, so caffeine has a half-life of 5 h.",
+      "rubric": [
+        {
+          "point": "(a) substitutes and evaluates",
+          "marks": 2
+        },
+        {
+          "point": "(b) rearranges into exponential form",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct percent",
+          "marks": 1
+        },
+        {
+          "point": "(c) identifies the half-life",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "choices": [
+            5.6,
+            6.6,
+            7.2
+          ]
+        },
+        "P": {
+          "choices": [
+            500,
+            1000
+          ]
+        }
+      },
+      "text": "A savings bond offers {{r}}% interest, compounded semi-annually. A {{P}}-dollar bond is purchased.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the value as a function of time in years."
+        },
+        {
+          "label": "b",
+          "text": "Determine the value after 5 years.",
+          "answer": {
+            "expr": "P*(1+r/200)^10",
+            "unit": "dollars",
+            "sig": 5,
+            "tol": 0.002
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long until the investment doubles?",
+          "answer": {
+            "expr": "log(2)/(2*log(1+r/200))",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe how the graph would change if (i) a bonus of 1% of the principal were added after 3 years, (ii) the initial investment were doubled."
+        }
+      ],
+      "modelAnswer": "(a) $A = {{P}}(1 + {{r/200:4}})^{2t}$.\n\n(b) $A(5) = {{P}}(1 + {{r/200:4}})^{10} \\approx {{P*(1+r/200)^10:6}}$ dollars.\n\n(c) $2 = (1 + {{r/200:4}})^{2t} \\Rightarrow t = \\dfrac{\\log2}{2\\log(1 + {{r/200:4}})} \\approx {{log(2)/(2*log(1+r/200)):4}}$ years.\n\n(d)(i) A 1% bonus after 3 years adds $0.01\\times{{P}} = {{P/100}}$ dollars from $t = 3$ on: the graph jumps up by {{P/100}} at $t = 3$ (a vertical translation of that part). (ii) Doubling the initial investment stretches the graph vertically by a factor of 2; the doubling time is unchanged.",
+      "rubric": [
+        {
+          "point": "(a) correct model",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct value",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct doubling time",
+          "marks": 1
+        },
+        {
+          "point": "(d)(i) describes the vertical translation after 3 years",
+          "marks": 1
+        },
+        {
+          "point": "(d)(ii) describes the vertical stretch",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q15",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A student claims that $\\sqrt{8} = 2^3$. Determine whether the claim is correct. Write $\\sqrt 8$ as a power of 2 and as a power of 4, explaining each step.",
+      "modelAnswer": "Incorrect: $2^3 = 8$, not $\\sqrt8$.\n\n$\\sqrt8 = 8^{\\frac12} = (2^3)^{\\frac12} = 2^{\\frac32}$.\n\nSince $2 = 4^{\\frac12}$: $2^{\\frac32} = (4^{\\frac12})^{\\frac32} = 4^{\\frac34}$.\n\nCheck: $4^{0.75} \\approx 2.828 \\approx \\sqrt8$ ✓.",
+      "rubric": [
+        {
+          "point": "Identifies the claim as incorrect",
+          "marks": 1
+        },
+        {
+          "point": "Writes √8 = 2^(3/2) with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Writes √8 = 4^(3/4) with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Checks numerically",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $2^{x+{{a}}} = 4^x$ in two different ways (common base, and taking logarithms). Explain why both methods must agree.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Common base: $2^{x+{{a}}} = 2^{2x} \\Rightarrow x + {{a}} = 2x \\Rightarrow x = {{a}}$.\n\nLogarithms: $(x + {{a}})\\log 2 = x\\log 4 = 2x\\log2$. Divide by $\\log 2$: $x + {{a}} = 2x$, so $x = {{a}}$.\n\nBoth methods apply valid operations to the same equation, so they must give the same solution.",
+      "rubric": [
+        {
+          "point": "Common-base solution",
+          "marks": 1
+        },
+        {
+          "point": "Logarithm solution",
+          "marks": 1
+        },
+        {
+          "point": "Explanation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q17",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "State the product law of logarithms in words and in symbols. Then use numerical examples to show that each of the following is **not** a law of logarithms: (i) $\\log a\\times\\log b = \\log(ab)$ (ii) $\\log a\\times\\log b = \\log(a + b)$ (iii) $\\log a + \\log b = \\log(a + b)$.",
+      "modelAnswer": "Product law: the logarithm of a product equals the sum of the logarithms of its factors: $\\log_b(mn) = \\log_b m + \\log_b n$ ($m, n > 0$).\n\nUse $a = b = 10$:\n\n(i) $\\log10\\times\\log10 = 1$, but $\\log100 = 2$.\n\n(ii) $1$, but $\\log 20 \\approx 1.301$.\n\n(iii) $\\log10 + \\log10 = 2$, but $\\log 20 \\approx 1.301$.",
+      "rubric": [
+        {
+          "point": "States the product law in words and symbols",
+          "marks": 2
+        },
+        {
+          "point": "Counterexample for (i)",
+          "marks": 1
+        },
+        {
+          "point": "Counterexample for (ii)",
+          "marks": 1
+        },
+        {
+          "point": "Counterexample for (iii)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q18",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Simplify $\\log_2 5 + \\log_2 10 - \\log_2 25$ to a single number. Explain each step.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value.",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$\\log_2\\dfrac{5\\times10}{25} = \\log_2 2 = 1$ (product and quotient laws, then $\\log_b b = 1$).",
+      "rubric": [
+        {
+          "point": "Combines using the product and quotient laws",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies the argument",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates log_2 2 = 1",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q19",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Write $\\log_3 6 + \\log_3 4 - \\log_3\\left(\\frac83\\right)$ as a single logarithm, and then evaluate.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value.",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$\\log_3\\dfrac{6\\times4}{8/3} = \\log_3\\dfrac{24\\times3}{8} = \\log_3 9 = 2$.",
+      "rubric": [
+        {
+          "point": "Single logarithm",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies the argument correctly",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve each equation.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$8^{x+2} = 4^{2x-1}$",
+          "answer": {
+            "expr": "8",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$3^x = 81^{x-4}$",
+          "answer": {
+            "expr": "16/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log 2 = \\log(x + 5) - 1$",
+          "answer": {
+            "expr": "15",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log 8 = \\log(x - 2) + 1$",
+          "answer": {
+            "expr": "2.8",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $2^{3x+6} = 2^{4x-2} \\Rightarrow x = 8$.\n\n(b) $3^x = 3^{4x-16} \\Rightarrow 3x = 16 \\Rightarrow x = \\frac{16}{3}$.\n\n(c) $\\log(x + 5) = \\log 2 + 1 = \\log 20 \\Rightarrow x = 15$.\n\n(d) $\\log(x - 2) = \\log 8 - 1 = \\log 0.8 \\Rightarrow x = 2.8$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) writes 1 as log 10 and combines",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q21",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A0": {
+          "choices": [
+            50
+          ]
+        },
+        "A1": {
+          "choices": [
+            41,
+            43,
+            45
+          ]
+        },
+        "t": {
+          "choices": [
+            10
+          ]
+        }
+      },
+      "text": "A technician places {{A0}} mg of a radioactive substance in a chamber. After {{t}} min, {{A1}} mg remain.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the half-life.",
+          "answer": {
+            "expr": "t*log(0.5)/log(A1/A0)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until it decays to 1% of its initial amount?",
+          "answer": {
+            "expr": "t*log(0.5)/log(A1/A0)*log(0.01)/log(0.5)",
+            "unit": "min",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\frac{ {{A1}} }{ {{A0}} } = 0.5^{\\frac{ {{t}} }{h}} \\Rightarrow h = \\dfrac{ {{t}}\\log 0.5}{\\log({{A1}}/{{A0}})} \\approx {{t*log(0.5)/log(A1/A0):4}}$ min.\n\n(b) $0.01 = 0.5^{\\frac th} \\Rightarrow t \\approx {{t*log(0.5)/log(A1/A0)*log(0.01)/log(0.5):4}}$ min.",
+      "rubric": [
+        {
+          "point": "Correct half-life",
+          "marks": 2
+        },
+        {
+          "point": "Correct time to 1%",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q22",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $2\\log(x - 1) = \\log(x + 1)$ and identify any extraneous roots. Explain why the root you reject is extraneous.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Valid solution.",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Power law: $\\log(x - 1)^2 = \\log(x + 1)$, so $x^2 - 2x + 1 = x + 1$ and $x^2 - 3x = 0$, giving $x(x - 3) = 0$.\n\n$x = 0$: $\\log(-1)$ is undefined, so it is extraneous — it satisfies $(x-1)^2 = x + 1$ but not the original equation.\n\n$x = 3$: $2\\log 2 = \\log 4$ ✓.",
+      "rubric": [
+        {
+          "point": "Power law and equating arguments",
+          "marks": 1
+        },
+        {
+          "point": "Solves the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Rejects x = 0 with an explanation",
+          "marks": 1
+        },
+        {
+          "point": "Verifies x = 3",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q23",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The equation $3^x = 2^{x+1}$ was solved by graphing $y_1 = 3^x$ and $y_2 = 2^{x+1}$ on a graphing calculator, and the intersection was found near $x = 1.71$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What equation is being solved?"
+        },
+        {
+          "label": "b",
+          "text": "What is the solution? Explain how you know."
+        },
+        {
+          "label": "c",
+          "text": "Verify the solution using algebraic reasoning.",
+          "answer": {
+            "expr": "log(2)/(log(3)-log(2))",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) The equation is $3^x = 2^{x+1}$.\n\n(b) The solution is the x-coordinate of the point of intersection, $x \\approx 1.71$, because there both functions have the same value.\n\n(c) $x\\log3 = (x+1)\\log2 \\Rightarrow x(\\log3 - \\log2) = \\log2 \\Rightarrow x = \\dfrac{\\log2}{\\log3 - \\log2} \\approx 1.710$ ✓.",
+      "rubric": [
+        {
+          "point": "(a) identifies the equation",
+          "marks": 1
+        },
+        {
+          "point": "(b) explains why the x-coordinate is the solution",
+          "marks": 1
+        },
+        {
+          "point": "(c) algebraic verification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q24",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Two data sets each curve upward on a scatter plot. Describe how you would decide whether a quadratic or an exponential model is better for each, and give one example situation where each type is the better model. Justify your examples.",
+      "modelAnswer": "Decide by (1) the context — percentage growth suggests exponential; dependence on a square (area, falling distance) suggests quadratic; (2) checking ratios of successive values at equal steps (constant ratio → exponential) versus second differences (constant → quadratic); and (3) checking which model behaves sensibly when extrapolated.\n\nExponential example: a population or investment growing by a fixed percentage, because each increase is proportional to the current amount.\n\nQuadratic example: the area of a circular spill whose radius grows steadily, because area $= \\pi r^2$.",
+      "rubric": [
+        {
+          "point": "Describes using context",
+          "marks": 1
+        },
+        {
+          "point": "Describes a numerical test (ratios vs second differences)",
+          "marks": 1
+        },
+        {
+          "point": "Describes checking extrapolation",
+          "marks": 1
+        },
+        {
+          "point": "Valid exponential example with justification",
+          "marks": 1
+        },
+        {
+          "point": "Valid quadratic example with justification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q25",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "Y": {
+          "choices": [
+            2010,
+            2012,
+            2015
+          ]
+        },
+        "k": {
+          "choices": [
+            2,
+            2.5,
+            3
+          ]
+        }
+      },
+      "text": "**Chapter problem wrap-up.** Summer-Fest paid admissions are modelled by $A = 452(1.157)^t$, where $t$ is the number of years since 2000. The concert venue holds 5000 people, and parking can accommodate no more than 1800 vehicles.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain why an exponential model makes sense for this situation."
+        },
+        {
+          "label": "b",
+          "text": "Predict the attendance in {{Y}}.",
+          "answer": {
+            "expr": "452*1.157^(Y-2000)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "When will the venue's capacity be reached?",
+          "answer": {
+            "expr": "log(5000/452)/log(1.157)",
+            "unit": "years after 2000",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Assuming about {{k}} people per vehicle, when will parking become a problem?",
+          "answer": {
+            "expr": "log(1800*k/452)/log(1.157)",
+            "unit": "years after 2000",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "State the assumptions you made and suggest one measure planners could take."
+        }
+      ],
+      "modelAnswer": "(a) Each year attendance grows by roughly the same percentage (about 15.7%), which is the signature of exponential growth; word-of-mouth spreads in proportion to the number of past fans.\n\n(b) $A({{Y-2000}}) = 452(1.157)^{ {{Y-2000}} } \\approx {{452*1.157^(Y-2000):4}}$.\n\n(c) $5000 = 452(1.157)^t \\Rightarrow t = \\dfrac{\\log(5000/452)}{\\log1.157} \\approx 16.4$, so around 2016.\n\n(d) Assume about {{k}} people per vehicle: $1800\\times{{k}} = {{1800*k}}$ people. $t = \\dfrac{\\log({{1800*k}}/452)}{\\log1.157} \\approx {{log(1800*k/452)/log(1.157):3}}$, i.e. around {{2000+ceil(log(1800*k/452)/log(1.157))}}. Parking runs out first if this is earlier than 2016.\n\n(e) Assumptions: the growth rate stays constant, the region's population can supply the fans, and the people-per-vehicle figure holds. Solutions such as shuttle buses or advance ticket caps could delay a move.",
+      "rubric": [
+        {
+          "point": "(a) justifies the exponential model",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct prediction",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct year for capacity",
+          "marks": 1
+        },
+        {
+          "point": "(d) uses a stated assumption about vehicles",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct parking calculation",
+          "marks": 1
+        },
+        {
+          "point": "(e) states assumptions or planning measures",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-rev-q26",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Create a **one-page study summary** for this chapter in the form of worked examples. Write and fully solve one example of each: (a) an exponential equation solved with a common base; (b) an exponential equation with different bases solved with logarithms; (c) an exponential equation of quadratic form with an extraneous root; (d) a logarithmic equation that needs the product or quotient law and has an extraneous root. For each, name the strategy and explain how you checked the answer.",
+      "modelAnswer": "Sample:\n\n(a) $9^{x} = 27^{x-1}$: $3^{2x} = 3^{3x-3} \\Rightarrow x = 3$. Check: $9^3 = 729 = 27^2$ ✓.\n\n(b) $5^x = 2^{x+3}$: $x\\log5 = (x+3)\\log2 \\Rightarrow x = \\frac{3\\log2}{\\log5 - \\log2} \\approx 2.27$. Check with a graph.\n\n(c) $3^{2x} - 2(3^x) - 3 = 0$: $(z - 3)(z + 1) = 0$; reject $z = -1$; $x = 1$.\n\n(d) $\\log(x + 3) + \\log x = 1$: $x^2 + 3x - 10 = 0 \\Rightarrow x = 2$ or $-5$; reject $-5$.",
+      "rubric": [
+        {
+          "point": "(a) correct example and solution",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct example and solution",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct example with the extraneous root identified",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct example with the extraneous root identified",
+          "marks": 1
+        },
+        {
+          "point": "Names the strategy and the check for each",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1306,7 +1306,7 @@
         "Fs": "muS*ms*9.8",
         "Fb": "muB*M*9.8"
       },
-      "text": "During fundraising week, students run a \"test of strength\". Contestants pay $1 to try to push a large box of books across the floor; if they move it they win $10. The box has a mass of {{M}} kg and a coefficient of static friction of {{muB:2}} with the floor. One contestant has a mass of {{ms}} kg, and the coefficient of static friction for his shoes on the floor is {{muS:2}}.",
+      "text": "During fundraising week, students run a \"test of strength\". Contestants pay \\$1 to try to push a large box of books across the floor; if they move it they win \\$10. The box has a mass of {{M}} kg and a coefficient of static friction of {{muB:2}} with the floor. One contestant has a mass of {{ms}} kg, and the coefficient of static friction for his shoes on the floor is {{muS:2}}.",
       "parts": [
         {
           "label": "a",
