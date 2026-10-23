@@ -9,8 +9,14 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | All 25 resumes, transcribed into structured sections |
-| `pipeline_questions.js` | 62 Round 1 theory questions with expected answers, plus the per-candidate stream map |
+| `pipeline_resumes.js` | All 27 resumes, transcribed into structured sections |
+| `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
+
+Round 1 questions come in two families. Candidates hired to build software draw the
+seven engineering theory topics; the project and process managers draw a parallel set
+of seven — governance, planning, risk, stakeholders, metrics, people and commercials —
+with PMO and service-operations variants inside it. A candidate's `QSTREAM` entry picks
+the family: add `fam:"delivery"` to move someone across.
 
 To run it outside Claude, keep the three together and rename the data files to
 `resumes.js` and `questions.js` — the page loads them by those names. Everything works
@@ -53,16 +59,16 @@ their own view.
 - CTC, ECTC and Offered CTC are **INR lakhs per annum**; dates are `DD-MMM-YY`.
 - `Days to LWD` is negative once the last working day has passed, measured against the
   as-on date in `Summary!B4` — the single input cell.
-- Commercials are captured for all 23. Where a candidate gives a **notice period but no
+- Commercials are captured for all 27. Where a candidate gives a **notice period but no
   exit date**, availability reads "Notice period only" and shows the notice rather than
   pretending a date is known.
 
 ## Where the pipeline stands
 
-25 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026 and 2 on
-8-Oct-2026. Four roles: Technical Consultant, Technology Lead, Senior Software Engineer and
-Technical Project Manager. All 25 have a CV on file and a verdict against it. 63 open actions:
-14 High, 33 Medium, 16 Low.
+27 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
+8-Oct-2026 and 2 on 22-Oct-2026. Five roles: Technical Consultant, Technology Lead, Senior
+Software Engineer, Technical Project Manager and Process Manager. All 27 have a CV on file
+and a verdict against it. 75 open actions: 19 High, 38 Medium, 18 Low.
 
 Headline findings:
 
@@ -80,3 +86,8 @@ Headline findings:
 - Of the two Technical Project Managers, **Saravana (24)** has a real delivery record but four
   employers since Dec 2022, and **Veena (25)** has 18 years on a stack with no .NET Core, no
   cloud and no containers, plus an unexplained 15-month gap.
+- The two Process Managers read the title differently. **Dinesh (26)** is a PMO running
+  contract-to-cash at Cognizant, with two gaps on the CV and no process certification.
+  **Sowdhamini (27)** is a BPO operations manager with a Lean Six Sigma Black Belt, five
+  employers since Sep 2022 and roughly three years of the claimed ten missing from her CV.
+  They are not competing for the same job as written — settle what the role owns first.

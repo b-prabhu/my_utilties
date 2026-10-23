@@ -1114,5 +1114,116 @@ var RESUMES = {
     "Played a key role in securing repeat business through consistent project delivery."
   ]]]},
   {h:"Education", b:[["p","M.Sc. Computer Technology \u2014 Coimbatore Institute of Technology, 2007, 70%."]]}
+]},
+
+26: {file:"Dinesh_Kumar.pdf", title:"PMO | Project management and operations | Contract-to-cash",
+  contact:"+91 9894771567 · +91 9524445440 · kumdin321@gmail.com",
+  sections:[
+  {h:"Profile summary", b:[["p","Professional with experience in project management and operations, specialising in the PMO role at Cognizant. Manages the contract-to-cash lifecycle, with time sheet and billing system management, financial planning, client payment follow-ups and accounts receivable."]]},
+  {h:"Core competencies", b:[["ul",[
+    "Contract to cash: contract creation, timesheet validation, billing, invoicing, accounts receivable and collections, allocations, rate set amendment, price builder, forecasting, work model and other PMO activities.",
+    "Project management: managing projects from initiation to closure, using project management tools and methodologies for timely delivery.",
+    "Strategic planning and execution: aligning project objectives with organisational goals and driving the execution of project plans.",
+    "Stakeholder engagement: communicating with stakeholders at all levels, managing expectations and keeping projects aligned with business needs.",
+    "Analytical and decision-making: interpreting project information and making decisions to guide direction and resolve issues.",
+    "Risk management: identifying, assessing and mitigating project risks to limit the impact on timelines and deliverables.",
+    "Communication: facilitating meetings, presenting project updates and producing project documentation.",
+    "Technology: MS Office Suite (Excel, Word, PowerPoint) for reporting and documentation, plus project management software for tracking.",
+    "Team leadership: guiding project teams and motivating members towards project objectives."
+  ]]]},
+  {h:"Core skills", b:[["ul",[
+    "PMO and project management",
+    "Strategic planning and alignment",
+    "Stakeholder engagement and management",
+    "Process optimisation and governance",
+    "Financial management",
+    "Risk identification and mitigation",
+    "Change management",
+    "Quality assurance and control",
+    "Leadership and team motivation"
+  ]]]},
+  {h:"Work experience", b:[
+    ["job","PMO","Cognizant","Since Jul 2022",[
+      "Ran the contract-to-cash lifecycle for multiple projects, from initiation through to revenue realisation.",
+      "Managed Statement of Work processing, setting out agreements and expectations between the company and clients.",
+      "Oversaw onboarding and allocation for new projects, aligning resources with project requirements.",
+      "Implemented time sheet monitoring and billing to track project hours and improve billing accuracy.",
+      "Carried out invoice processing and time sheet reconciliation to maintain financial accuracy and prevent revenue leakage.",
+      "Supported budgeting and forecasting with financial data for decision-making.",
+      "Followed up on client payments to keep receivables current and cash flow healthy.",
+      "Coordinated offboarding and release of project resources, including knowledge transfer.",
+      "Created service orders, supporting project initiation and scope definition.",
+      "Managed accounts receivable and monitored unbilled revenue."]],
+    ["job","Implementation Manager / Specialist","Tata Consultancy Services","Jul 2020 – Jun 2022",[
+      "Led the implementation of cash management solutions, coordinating account managers, client services and operations partners.",
+      "Managed project operations across HR, Finance and Marketing functions.",
+      "Applied implementation methodologies across the project life cycle for project control and timely delivery.",
+      "Set and managed business partner expectations within governance frameworks.",
+      "Used escalation channels to keep delivery on track, and enforced quality standards and practices.",
+      "Reduced implementation cycle times through process optimisation, and led process enhancement projects."]],
+    ["job","Transaction Processing Associate","Accenture","Aug 2019 – Feb 2020",[
+      "Managed prematching and fails resolution for equity and fixed income trades in global markets, working with custodians, brokers and trade support.",
+      "Achieved 100% prematching accuracy and documented processes in the system.",
+      "Worked to client money regulations under FCA norms.",
+      "Processed cash settlements within currency cut-off times, prioritising trades to prevent buy-in executions.",
+      "Produced daily, weekly and monthly reporting on trade settlements, and handled exceptions and clearing across KR, TW, CNY and IND markets."]],
+    ["job","Senior Analyst, and earlier Analyst","State Street HCL Services","Jan 2019 – Aug 2019, and Jan 2016 – May 2017",[
+      "Conducted trade settlements and pre-matching, verifying broker and custody reports.",
+      "Led pre-matching for trades across EMEA markets, including high-sensitivity markets.",
+      "Coordinated with custodians and brokers on trade corrections, and investigated and resolved failing trades.",
+      "Managed the BDI repair queue, inputting and creating SSIs in the GRS application.",
+      "Produced end-of-day reports on pre-matching and failing trades for oversight teams."]]
+  ]},
+  {h:"Education", b:[["p","MBA Finance, May 2014 — Bharathidasan University, Trichy, Tamil Nadu."]]}
+]},
+
+27: {file:"Sowdhamini_J.pdf", title:"Manager — Operations | BPO | Workforce, quality and client management",
+  contact:"8086298137 · sowdhaminij5908@gmail.com · Coimbatore, India",
+  sections:[
+  {h:"Professional summary", b:[["p","Operations manager with 10 years in the BPO industry spanning medical billing, airlines, customer support, technical support, sales and billing. Works in workforce management, attrition control, quality assurance and client escalation handling."]]},
+  {h:"Skills", b:[["ul",[
+    "Operations management and workforce planning",
+    "Employee training and staff development",
+    "Performance evaluation and goal setting",
+    "Task delegation and team leadership",
+    "Attrition control and employee engagement",
+    "Quality assurance and daily audit reviews",
+    "Client escalation handling and resolution",
+    "Meeting facilitation and business review presentations",
+    "Process improvement and compliance management",
+    "Cross-functional collaboration",
+    "Roster management and shrinkage control",
+    "Strategic planning and service level achievement"
+  ]]]},
+  {h:"Work history", b:[
+    ["job","Manager — Operations","ATAIN, Bangalore","Apr 2026 – present",[
+      "Ran performance management by setting targets through goal sheets, tracking metrics and giving regular feedback.",
+      "Handled client escalations through an escalation tracker, seeing each to resolution.",
+      "Managed day-to-day staffing to limit shrinkage, taking daily adherence commitments from team leads to roster shifts.",
+      "Used agent tenure and banding data to focus quality monitoring on new hires and low performers.",
+      "Monitored performance trends, identified low performers and ran improvement plans.",
+      "Tracked probable attrition cases using early warning systems, open houses and retention tools."]],
+    ["job","Assistant Manager","Hexaware, Coimbatore","Aug 2024 – Apr 2026",[
+      "Supervised day-to-day operations against performance, quality and service expectations.",
+      "Applied company policies consistently, including disciplinary action where needed.",
+      "Resolved customer complaints requiring management-level escalation.",
+      "Worked with the management team on plans for business growth and improvement."]],
+    ["job","Associate Manager","Sutherland, Chennai","Nov 2023 – Aug 2024",[
+      "Managed cross-functional projects to completion against company objectives.",
+      "Ran training and onboarding for new hires.",
+      "Reported on key performance indicators for leadership decision-making.",
+      "Resolved conflicts within the team through negotiation and active listening."]],
+    ["job","Team Leader","HCL, Chennai","Sep 2022 – Nov 2023",[
+      "Resolved denied and rejected payments from insurance companies.",
+      "Managed and supervised billing department staff, including training, evaluation and workflow distribution.",
+      "Audited claims submitted by medical billing staff for regulatory compliance.",
+      "Monitored accounts receivable ageing and worked to reduce outstanding balances from patients and insurers.",
+      "Set performance expectations for the team and tracked progress against them."]],
+    ["job","Team Leader","Tech Mahindra, Chennai","Jun 2019 – Sep 2022",[
+      "Developed team members through targeted coaching sessions.",
+      "Streamlined workflows to reduce turnaround times on critical tasks.",
+      "Reviewed performance metrics regularly and acted on service quality issues."]]
+  ]},
+  {h:"Certifications and education", b:[["p","Lean Six Sigma Black Belt, July 2025. B.E. Electronics and Communication — Dhanalakshmi Srinivasan College of Engineering, Jan 2016, 66%. HSC, Amirta Vidhayalam, Jan 2012, 79%."]]}
 ]}
 };

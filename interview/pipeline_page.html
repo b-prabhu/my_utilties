@@ -500,7 +500,7 @@
     <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
       <h1>Certainti Hiring Portal</h1>
-      <p>IKrux Engineering &middot; 25 candidates &middot; submitted 5 Sep, 21 Sep and 8 Oct 2026</p>
+      <p>IKrux Engineering &middot; 27 candidates &middot; submitted 5 Sep, 21 Sep, 8 Oct and 22 Oct 2026</p>
     </div>
     <div class="mtools">
       <div class="asof">As on<b id="asof">&mdash;</b></div>
@@ -593,7 +593,8 @@
   var R = (typeof RESUMES !== "undefined") ? RESUMES : {};
 
   /* ===================== source data ===================== */
-  var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer","Technical Project Manager"];
+  var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer","Technical Project Manager",
+               "Process Manager"];
   var C = [
     [1,0,"Jeganagan Murugesan","9940641190","jeganagan@gmail.com","L&T Infotech","14 Years",
      ".Net 14 Years | React 3 Years | Cloud 3 Years | Lead 4 Years | AI 2 Years | Client Interaction 10 Years",
@@ -670,16 +671,29 @@
      "Coimbatore","LWD : 15-Jun-26","2026-06-15",12.5,18.5,"No"],
     [25,3,"Veena Kuppusamy","9894188254","veenakcbe@gmail.com","G2 TechSoft","18 Years",
      "Technical Project Manager: 10 Years | Backend .Net: 10 Years",
-     "Coimbatore","LWD : 30-Mar-26","2026-03-30",16,22,"No"]
+     "Coimbatore","LWD : 30-Mar-26","2026-03-30",16,22,"No"],
+
+    /* IKrux submission of 22 Oct 2026 \u2014 the first Process Manager roles. */
+    [26,4,"Dinesh Kumar C","9894771567","kumdin321@gmail.com","Cognizant","8.4 Years",
+     "Process Management: 6 Years | Client: 8 Years",
+     "Coimbatore","LWD : 4-Sep-26","2026-09-04",10.5,15,"No"],
+    [27,4,"Sowdhamini J","8086298137","sowdhaminij@yahoo.com","Atain","10 Years",
+     "Process Management: 6 Years | Client: 6 Years",
+     "Coimbatore","LWD : 12-Oct-26","2026-10-12",12,17,"No"]
   ].map(function(r){
     return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
             totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
             ctc:r[11], ectc:r[12], offers:r[13],
             src:"IKrux Engineering",
-            subDate:(r[0] <= 17 ? "21-Sep-2026" : r[0] <= 23 ? "5-Sep-2026" : "8-Oct-2026")};
+            subDate:(r[0] <= 17 ? "21-Sep-2026" : r[0] <= 23 ? "5-Sep-2026"
+                     : r[0] <= 25 ? "8-Oct-2026" : "22-Oct-2026")};
   }).sort(function(a, b){ return a.sl - b.sl; });
 
   var VERDICT = {
+    26:{k:"caution", h:"Clean PMO record, with two gaps and a question about the remit",
+       t:"Four years running contract-to-cash as PMO at Cognizant \u2014 SOW processing, onboarding and allocation, timesheet and billing control, invoice and timesheet reconciliation, support to budgeting and forecasting, payment follow-up and unbilled revenue tracking \u2014 preceded by two years as an Implementation Manager at TCS on cash management solutions. That is the six years of process management the row credits, and the CV supports it. Three things to weigh. His CV carries two gaps: twenty months between State Street HCL ending May 2017 and resuming in Jan 2019, and five months between Accenture and TCS in 2020. His first four years were securities trade settlement \u2014 prematching, fails resolution, EMEA markets \u2014 a different discipline from what he does now. And the PMO work is commercial operations rather than process design or improvement: there is no PMP, Prince2, Lean or Six Sigma anywhere on the CV, and the MBA is in Finance. The LWD of 4 Sep 2026 has passed while the CV still shows Cognizant as current."},
+    27:{k:"risk", h:"Real operations credentials, but five employers in four years",
+       t:"A genuine BPO operations manager: workforce planning, shrinkage and adherence, attrition tracking through early warning systems and open houses, quality monitoring banded by agent tenure, client escalation handling and business reviews \u2014 with a Lean Six Sigma Black Belt taken in July 2025, the only formal process credential across the two Process Manager submissions. Three concerns. Tenure: five employers since September 2022 \u2014 Tech Mahindra, HCL, Sutherland, Hexaware and ATAIN \u2014 and the current one is six months old. Span: the row records 10 years, but her work history begins June 2019, about seven and a half, leaving roughly three years after her January 2016 degree unaccounted for. Domain: her experience is BPO \u2014 medical billing, airlines, customer support, technical support, sales and billing \u2014 not IT project or delivery process management, which makes her a different proposition from Dinesh under the same job title. Smaller points: the LWD of 12 Oct 2026 has passed while the CV shows ATAIN as current, that employer is in Bangalore against a Coimbatore row, and the row\u2019s e-mail address is not the one on her CV."},
     24:{k:"caution", h:"Real delivery record, but four employers in under three years",
        t:"Genuine technical project management: 20+ member cross-functional teams, \u20b95M+ budgets, 95% on-time milestones, stakeholders across three continents, and current AI/LLM delivery work evaluating OpenAI, Gemini and GPT-OSS against cost and latency. PMP and a GCP certification. The concern is tenure, not capability: since Dec 2022 he has had four employers \u2014 InFynd 11 months, Bluekode 7, Mobitech 7 on contract, CG-VAK 15 \u2014 with two of those explicitly consultant or contract engagements, against a 9-year run at Ugam before that. He also left InFynd in June 2026. Separately, the row credits Backend Node.js at 5 years; his CV lists Node only in a skills line, and his hands-on development was Python, Java and Selenium at Ugam up to 2020."},
     25:{k:"risk", h:"Long experience, but a dated stack and a 15-month gap",
@@ -768,6 +782,18 @@
     {id:"a52", sl:23, sev:"Medium", issue:"LWD of 30 Sep 2026 has passed, so he is already out.", act:"Confirm current status and availability."},
     {id:"a53", sl:23, sev:"Low", issue:"The row credits React: 2+ Years; the CV mentions React once, on a single pharmacy application.", act:"Verify the React depth if the role needs front-end work."},
     {id:"a54", sl:23, sev:"Low", issue:"Accenture is his only employer across all five years, and the degree is B.E. Mechatronics rather than computer science.", act:"Probe adaptability outside a single engineering culture; the CGPA of 8.97 and the Azure certification offset the degree."},
+    {id:"a64", sl:26, sev:"High", issue:"LWD of 4 Sep 2026 has passed, so he has been out around seven weeks, while the CV still shows Cognizant as current.", act:"Confirm his current status and when he can start."},
+    {id:"a65", sl:26, sev:"High", issue:"Two gaps on the CV: twenty months between State Street HCL ending May 2017 and resuming Jan 2019, and five months between Accenture and TCS in 2020.", act:"Ask him to account for both."},
+    {id:"a66", sl:26, sev:"Medium", issue:"His PMO work is commercial operations \u2014 contract-to-cash, timesheets, billing, receivables \u2014 rather than process design or improvement, and the first four years were securities trade settlement.", act:"Confirm the remit this role actually carries before the panel meets him."},
+    {id:"a67", sl:26, sev:"Medium", issue:"No process or project management certification anywhere on the CV \u2014 no PMP, Prince2, Lean or Six Sigma; the MBA is in Finance.", act:"Decide whether the role requires one, and say so in the brief."},
+    {id:"a68", sl:26, sev:"Low", issue:"No location appears anywhere on his CV; the row records Coimbatore.", act:"Confirm he is in Coimbatore or will relocate."},
+    {id:"a69", sl:27, sev:"High", issue:"Five employers since Sep 2022 \u2014 Tech Mahindra, HCL, Sutherland, Hexaware and ATAIN \u2014 and the current one is only six months old.", act:"Probe the reason for each move and what would make her stay."},
+    {id:"a70", sl:27, sev:"High", issue:"Recorded at 10 years, but her work history starts June 2019, about seven and a half; roughly three years after her Jan 2016 degree are unaccounted for.", act:"Ask her to account for 2016 to 2019, and restate the span on the row."},
+    {id:"a71", sl:27, sev:"High", issue:"LWD of 12 Oct 2026 has passed while the CV shows ATAIN as current.", act:"Confirm her current status and availability."},
+    {id:"a72", sl:27, sev:"Medium", issue:"Her ten years are BPO operations \u2014 medical billing, airlines, customer support, sales and billing \u2014 not IT project or delivery process management.", act:"Decide whether this opening is an operations role before scheduling a panel."},
+    {id:"a73", sl:27, sev:"Medium", issue:"The row gives sowdhaminij@yahoo.com; her CV gives sowdhaminij5908@gmail.com.", act:"Confirm which address reaches her before anything is sent."},
+    {id:"a74", sl:27, sev:"Low", issue:"Her current employer ATAIN is in Bangalore, while both the row and her CV header say Coimbatore.", act:"Confirm where she is based now and whether the ATAIN role was remote."},
+    {id:"a75", sl:null, sev:"Medium", issue:"The two Process Manager submissions read the title differently: one is a PMO running contract-to-cash, the other a BPO operations manager. They are not competing for the same job as written.", act:"Write down what this role actually owns before either panel meets, and tell IKrux, or the slate will keep arriving mixed."},
     {id:"a55", sl:24, sev:"High", issue:"Four employers since Dec 2022 \u2014 InFynd 11 months, Bluekode 7, Mobitech 7 on contract, CG-VAK 15 \u2014 two of them explicitly consultant or contract engagements.", act:"Probe the reason for each move and what would make him stay; a permanent delivery role needs that answered."},
     {id:"a56", sl:25, sev:"High", issue:"Unexplained 15-month gap between Alligatortek ending Dec 2020 and Inno Valley starting Mar 2022.", act:"Ask her to account for it."},
     {id:"a57", sl:25, sev:"High", issue:"Out of employment around six months \u2014 G2 TechSoft ended 30 Mar 2026.", act:"Confirm current status and what she has been doing since."},
@@ -887,16 +913,27 @@
   var QT = (typeof QTOPICS !== "undefined") ? QTOPICS : [];
   var QB = (typeof QBANK !== "undefined") ? QBANK : [];
   var QS = (typeof QSTREAM !== "undefined") ? QSTREAM : {};
-  var STREAM_LABEL = {dotnet:".NET", java:"Java", node:"Node / JavaScript", support:"Production support"};
+  var STREAM_LABEL = {dotnet:".NET", java:"Java", node:"Node / JavaScript", support:"Production support",
+                      pmo:"PMO / delivery operations", ops:"Service operations"};
 
   function blankR1(){ return {off:{}, sc:{}, nt:{}, note:""}; }
   var r1 = {};
   C.forEach(function(c){ r1[c.sl] = blankR1(); });
 
+  /* Each candidate belongs to one question family: the engineering topics, or
+     the delivery set for people hired to run work rather than build it. The
+     family's own wildcard ("all" for engineering, the family name otherwise)
+     marks a question every stream in that family can be asked. */
+  function famOf(sl){ return (QS[sl] && QS[sl].fam) || "eng"; }
+  function topicsFor(sl){
+    var fam = famOf(sl);
+    return QT.filter(function(t){ return (t.fam || "eng") === fam; });
+  }
   function qPool(sl, topic){
     var st = QS[sl] || {s:"all", l:"any"};
+    var wild = (famOf(sl) === "eng") ? "all" : famOf(sl);
     return QB.filter(function(q){
-      return q.k === topic && (q.s === "all" || q.s === st.s) && (q.l === "any" || q.l === st.l);
+      return q.k === topic && (q.s === wild || q.s === st.s) && (q.l === "any" || q.l === st.l);
     });
   }
   function qFor(sl, topic){
@@ -907,7 +944,7 @@
   }
   function r1Scores(sl){
     var vals = [];
-    QT.forEach(function(t){
+    topicsFor(sl).forEach(function(t){
       var q = qFor(sl, t.k);
       if (q && r1[sl].sc[q.id]) vals.push(r1[sl].sc[q.id]);
     });
@@ -1124,7 +1161,7 @@
     {key:"fExp",   label:"Total experience", get:function(c){ return c.fExp; },   opts:["Under 6 years","6 – 12 years","Over 12 years"]},
     {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L","Not captured"]},
     {key:"fLoc",   label:"Current location", get:function(c){ return c.fLoc; },   opts:["Coimbatore","Chennai","Erode","Elsewhere"]},
-    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026"]},
+    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026","22-Oct-2026"]},
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},
@@ -1692,11 +1729,12 @@
 
     var head = el("div", "r1head");
     head.appendChild(el("span", "st", (STREAM_LABEL[st.s] || "General") +
-      "  \u00b7  " + (st.l === "mid" ? "mid-level" : "senior") + " theory set"));
+      "  \u00b7  " + (st.l === "mid" ? "mid-level" : "senior") +
+      (famOf(sl) === "eng" ? " theory set" : " delivery set")));
     var rall = el("button", "iconsm", "\u21bb  Recycle all");
     rall.type = "button"; rall.disabled = !canWrite;
     rall.addEventListener("click", function(){
-      QT.forEach(function(t){ r1[sl].off[t.k] = ((r1[sl].off[t.k] || 0) + 1); });
+      topicsFor(sl).forEach(function(t){ r1[sl].off[t.k] = ((r1[sl].off[t.k] || 0) + 1); });
       touchR1(sl); saveR1(sl); openDrawer(sl, "round1");
     });
     var tog = el("button", "iconsm", showAnswers ? "Hide answers" : "Show answers");
@@ -1734,8 +1772,11 @@
     body.appendChild(sec0);
 
     var sec = el("section", "sec");
-    sec.appendChild(el("h3", null, "Round 1 \u00b7 theory \u00b7 " + QT.length + " questions"));
-    QT.forEach(function(t){
+    var topics = topicsFor(sl);
+    sec.appendChild(el("h3", null, "Round 1 \u00b7 " +
+      (famOf(sl) === "eng" ? "theory" : "delivery and process") +
+      " \u00b7 " + topics.length + " questions"));
+    topics.forEach(function(t){
       var q = qFor(sl, t.k);
       var card = el("div", "qcard");
       var top = el("div", "qtop");

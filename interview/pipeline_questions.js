@@ -10,13 +10,25 @@
    l  level: "any", "senior" (leads and consultants) or "mid"           */
 
 var QTOPICS = [
-  {k:"design",      h:"System design patterns"},
-  {k:"integration", h:"Integration patterns"},
-  {k:"security",    h:"Security considerations"},
-  {k:"scale",       h:"Scalability"},
-  {k:"tenancy",     h:"Multi-tenancy"},
-  {k:"infra",       h:"Infrastructure"},
-  {k:"arch",        h:"Architecture"}
+  /* Engineering theory — drawn on by every candidate whose stream is a
+     technology stream. */
+  {k:"design",      h:"System design patterns",     fam:"eng"},
+  {k:"integration", h:"Integration patterns",       fam:"eng"},
+  {k:"security",    h:"Security considerations",    fam:"eng"},
+  {k:"scale",       h:"Scalability",                fam:"eng"},
+  {k:"tenancy",     h:"Multi-tenancy",              fam:"eng"},
+  {k:"infra",       h:"Infrastructure",             fam:"eng"},
+  {k:"arch",        h:"Architecture",               fam:"eng"},
+  /* Delivery and process management — for candidates hired to run work
+     rather than build it. A candidate sees one family or the other, never
+     both. */
+  {k:"dgov",        h:"Delivery governance",        fam:"delivery"},
+  {k:"dplan",       h:"Planning and estimation",    fam:"delivery"},
+  {k:"drisk",       h:"Risk and escalation",        fam:"delivery"},
+  {k:"dstake",      h:"Stakeholder management",     fam:"delivery"},
+  {k:"dmetric",     h:"Metrics and improvement",    fam:"delivery"},
+  {k:"dpeople",     h:"People and team management", fam:"delivery"},
+  {k:"dcomm",       h:"Commercials and resourcing", fam:"delivery"}
 ];
 
 /* Competency stream per candidate, taken from what the CV actually shows
@@ -34,7 +46,12 @@ var QSTREAM = {
   /* Added 8 Oct 2026 */
   23:{s:"java",  l:"mid"},
   /* Technical Project Managers, added 14 Oct 2026 — streamed on their backend background */
-  24:{s:"node",  l:"senior"}, 25:{s:"dotnet", l:"senior"}
+  24:{s:"node",  l:"senior"}, 25:{s:"dotnet", l:"senior"},
+  /* Process Managers, added 23 Oct 2026. Neither is hired to build software,
+     so both draw the delivery family rather than the engineering topics:
+     Dinesh on the PMO questions, Sowdhamini on the operations ones. */
+  26:{s:"pmo", l:"senior", fam:"delivery"},
+  27:{s:"ops", l:"senior", fam:"delivery"}
 };
 
 var QBANK = [
@@ -354,6 +371,163 @@ var QBANK = [
 {k:"arch", s:"support", l:"any", id:"a9",
  q:"Describe the architecture of an application you support, from the user's request to the database, and where you have seen it fail.",
  a:"A strong answer traces the whole path \u2014 client, load balancer, web tier, application tier, the service that owns the logic, its cache, its database, and any downstream integrations \u2014 and names the technologies at each hop. Then it identifies real failure points from experience: a connection pool exhausted, a certificate expiry, a dependency timing out, a batch holding locks, a disk or tablespace filling. What distinguishes a good support engineer is knowing which layer a given symptom points to and what evidence would confirm it, rather than reciting a diagram.",
- f:"Push for specifics: which component, what symptom, how they proved it. Generic answers here mean they have watched dashboards rather than diagnosed."}
+ f:"Push for specifics: which component, what symptom, how they proved it. Generic answers here mean they have watched dashboards rather than diagnosed."},
+
+/* ====================================================================
+   Delivery and process management set.
+
+   The seven topics above are engineering theory and do not apply to a
+   process or delivery manager. These questions form a second family,
+   drawn on by candidates whose QSTREAM entry carries fam:"delivery".
+   Within it, s:"delivery" suits any of them, s:"pmo" is for a PMO or
+   project-operations background and s:"ops" for service and operations
+   management.                                            Added 23 Oct 2026 */
+
+/* -------------------------------------------------------- governance */
+{k:"dgov", s:"delivery", l:"any", id:"dg1",
+ q:"What does your weekly governance pack actually contain, and who reads which part of it?",
+ a:"A good answer separates the audiences. The team needs the work-level view — what is in flight, what is blocked, the defect trend. The client needs outcomes against commitments: milestones, scope changes, risks and the decisions they owe us. Internal leadership needs the commercial and resourcing picture: utilisation, margin, staffing gaps, escalations. It names a cadence — daily standup, weekly status, monthly business review — and says which decisions each forum is allowed to take. Strong candidates add that the pack is generated from the tracker rather than assembled by hand, and that every red item carries a named owner and a date.",
+ f:"Weak answers describe a slide template. Push on who owns each red item, and what happens between two weekly reports when something goes wrong."},
+
+{k:"dgov", s:"delivery", l:"senior", id:"dg2",
+ q:"A project reports green every week and then misses its date. What was wrong with the governance?",
+ a:"Watermelon reporting — green outside, red inside. The usual causes: status is self-reported by the people who would be blamed for red, progress is measured by activity rather than finished and accepted work, there is no agreed definition of done, risks are logged but never costed, and raising a problem has been punished before. The fixes are structural: measure against accepted deliverables, watch leading indicators — open defects, scope added after baseline, dependency ageing, velocity trend — rather than a RAG dot, make the first red free, and sample-audit rather than trusting the roll-up.",
+ f:"Listen for whether they have been on the wrong end of this themselves. Ask which leading indicator would have caught it."},
+
+{k:"dgov", s:"pmo", l:"any", id:"dg3",
+ q:"Walk me through contract-to-cash end to end, and tell me where it usually breaks.",
+ a:"Contract or SOW signed, project and rate set up, resources allocated against the code, time entered and approved, billing run, invoice issued, receipt and collections, revenue recognised — with unbilled and accruals tracked throughout. The common breaks: work starting before the SOW is signed or before a project code exists, so time is parked somewhere unbillable; timesheets missing the approval cut-off; rate amendments not loaded before the billing run; allocations left open after someone rolls off; disputed invoices with no owner; and unbilled ageing because nobody reconciles it monthly.",
+ f:"Ask for a specific control they put in to stop revenue leakage — and how they found the leak in the first place."},
+
+{k:"dgov", s:"ops", l:"any", id:"dg4",
+ q:"How do you run a shift so that service levels hold on the worst day of the month?",
+ a:"Plan from the volume forecast and the shrinkage you actually see rather than the budgeted figure; roster to the interval, not the day; keep a flex pool or cross-trained agents; take adherence commitments from team leads the day before rather than on the morning; watch intraday against forecast and move people at the first divergence, not at the breach. Have a documented escalation for queue depth and a pre-agreed degradation — what you stop doing first. Afterwards the exception is reviewed, not merely survived.",
+ f:"Ask what they stop doing when they are short. A candidate with no pre-agreed answer has been improvising."},
+
+/* ------------------------------------------- planning and estimation */
+{k:"dplan", s:"delivery", l:"any", id:"dpl1",
+ q:"How do you estimate a piece of work nobody in the team has done before?",
+ a:"Break it down until the pieces resemble something already delivered, then combine analogy with bottom-up for the known parts. Give a range with the assumptions that would move it, and keep the estimate separate from the commitment. Allow explicitly for integration, test, environments, rework and non-project time rather than adding a flat fudge. Re-estimate once a first slice is genuinely built. Record the assumptions in the SOW so that a changed assumption becomes a change request rather than an argument.",
+ f:"Push on what they do when the answer is ‘too long’. A candidate who compresses the estimate rather than the scope is a risk."},
+
+{k:"dplan", s:"delivery", l:"any", id:"dpl2",
+ q:"The client wants a fixed date and a fixed scope. How do you respond?",
+ a:"Something has to flex — date, scope, cost or quality — and quality is the one that flexes silently if nobody chooses. The useful answer holds the date, negotiates a prioritised scope with a defined minimum, phases the rest, and puts the trade-off in writing with the assumptions behind it. If the business truly needs both, add capacity early rather than late, buy down the riskiest item first, and agree a checkpoint at which scope is re-cut if the burn says the date is at risk.",
+ f:"Watch for a candidate who simply agrees. Ask what they have personally refused, and what happened next."},
+
+{k:"dplan", s:"pmo", l:"any", id:"dpl3",
+ q:"How do you build a forecast for a project that is already running?",
+ a:"Actuals to date from time and billing, committed allocations for the remaining months, rate card by grade and location, and the known changes — roll-offs, rate amendments, planned ramps, leave and holiday calendars. Reconcile the bottom-up resource forecast against contract value and the revenue already recognised, and show unbilled and collections separately. Strong answers re-forecast monthly, explain variance against the last forecast rather than the original plan, and flag the month in which the project runs out of contract value.",
+ f:"Ask how they treat someone allocated but not billable, and what they do when the forecast and the contract value diverge."},
+
+{k:"dplan", s:"ops", l:"any", id:"dpl4",
+ q:"How do you size a team for a process you are taking over?",
+ a:"From volume and handle time: forecast volume per interval, average handle time and its spread, occupancy target, shrinkage covering leave, training, breaks and attrition, and the service level required. A capacity or Erlang model gives required heads; then add ramp, trainer time and a nesting period before new hires carry full load, and allow for the learning curve raising handle time in the early weeks. Reconcile against the client’s budget and say plainly where the model and the budget disagree.",
+ f:"Ask for their shrinkage assumption and where the number came from. A figure with no source is a guess."},
+
+/* ------------------------------------------- risk and escalation */
+{k:"drisk", s:"delivery", l:"any", id:"drk1",
+ q:"What makes a risk log useful rather than theatre?",
+ a:"Every risk has an owner, an observable trigger, an impact in money or days rather than high/medium/low alone, a mitigation someone is actually doing, and a review date. Risks are retired or realised rather than carried forever, and the log drives the governance conversation instead of being read out at it. Strong answers separate risk from issue from dependency, and can point to contingency that was genuinely budgeted rather than hoped for.",
+ f:"Ask for a risk they logged that then happened, and whether the mitigation actually worked."},
+
+{k:"drisk", s:"delivery", l:"senior", id:"drk2",
+ q:"When do you escalate, and how do you escalate without burning the relationship?",
+ a:"Escalate when the issue is outside your authority, when the agreed mitigation has failed, or when a commitment is going to move — and before the impact lands, not after. Good escalation is pre-warned, so the counterpart hears it from you first and never in a report; specific about what you need and by when; carries options rather than a complaint; and travels up your line and the client’s in step. It stays about the problem and the decision rather than the person.",
+ f:"Ask about an escalation they regret, or one they left too late."},
+
+{k:"drisk", s:"pmo", l:"any", id:"drk3",
+ q:"You discover that four months of work has been delivered against an SOW that was never signed. What do you do?",
+ a:"Stop the bleeding first: establish the exact exposure in hours, cost, people and dates, get the work covered going forward through a letter of intent, an interim PO or an instruction to pause, and tell your own leadership immediately — this is a revenue and audit problem, not paperwork. Then assemble evidence of the work and of the client’s acceptance, negotiate retrospective cover, and book the unbilled position honestly rather than hiding it. Afterwards, put in the control that would have caught it: no project code and no allocation without a signed SOW.",
+ f:"Listen for whether they tell anyone. A candidate who quietly fixes it is the real risk."},
+
+{k:"drisk", s:"ops", l:"any", id:"drk4",
+ q:"An attrition spike takes 15% of your tenured agents in a month. Walk me through the first two weeks.",
+ a:"Stabilise service first: re-roster, pull in the flex pool, pause non-critical work, protect the hardest queues with the most tenured people, and tell the client before the numbers do. In parallel find the cause rather than assuming it — exit conversations, stay conversations with those most likely to go next, and the data by shift, team lead and tenure band. Then act on what the data says; the honest answers are usually pay, roster or one specific supervisor. Start hiring and nesting knowing it will not help for weeks, and say so rather than promising a recovery you cannot deliver.",
+ f:"Ask what the real cause turned out to be last time, and whether they could fix it or only report it."},
+
+/* ------------------------------------ stakeholder and client management */
+{k:"dstake", s:"delivery", l:"any", id:"dst1",
+ q:"How do you handle a stakeholder who keeps changing what they want?",
+ a:"Separate the pattern from the person: churn usually means the requirement was never really agreed, or two stakeholders disagree and you are the channel between them. Fix it structurally — one accountable decision-maker per area, decisions recorded with dates, a change process that prices and schedules each change rather than refusing it, and a backlog they prioritise themselves so the trade-off is theirs. Then show the cost of churn in their own currency: a change log with the days and the money it has already taken.",
+ f:"Ask how they get two senior stakeholders who disagree into the same room, rather than relaying between them."},
+
+{k:"dstake", s:"delivery", l:"any", id:"dst2",
+ q:"How do you deliver bad news to a client?",
+ a:"Early, directly, on a call rather than in a report: the facts, the impact, the options, your recommendation and the ask. Own your part without over-apologising or blaming the team, bring the recovery plan and the date of the next update, then meet that date. Strong candidates pre-brief their own management and any sponsor who should not be surprised in front of their peers.",
+ f:"Ask for the last time they did it and how the client reacted."},
+
+{k:"dstake", s:"pmo", l:"any", id:"dst3",
+ q:"The client disputes an invoice. Take me through what you do.",
+ a:"Acknowledge quickly and commit to a date for the answer. Pull the backing — approved timesheets, allocation records, the rate card version in force, the SOW clause and any amendment — and establish whether the dispute is factual, a process failure on our side, or a negotiation. Get the undisputed portion paid now and ring-fence the rest. Fix the root cause, whether that is a wrong rate loaded, unapproved time billed, or a resource billed after roll-off. Keep the ageing visible so it does not drift into a write-off by neglect.",
+ f:"Ask about a dispute they lost, and what the real cause was."},
+
+{k:"dstake", s:"ops", l:"any", id:"dst4",
+ q:"What does a good monthly business review with the client look like?",
+ a:"Performance against the agreed metrics with the misses explained and owned, the trend rather than a single month, what changed as a result of last month’s actions, what you need from the client — forecast accuracy, system access, decisions — and one or two improvements proposed with the benefit quantified. It is a working session, not a read-out. Strong candidates never put a number in front of the client that the client’s own team has not already seen.",
+ f:"Ask what they do when the client’s own volume forecast is what caused the miss."},
+
+/* ------------------------------------------ metrics and improvement */
+{k:"dmetric", s:"delivery", l:"any", id:"dmt1",
+ q:"Which handful of metrics tell you whether delivery is actually healthy?",
+ a:"A small set, each with a reason: throughput or velocity as a trend rather than an absolute, milestone or schedule variance, defect escape rate and rework, scope added after baseline, dependency ageing, and on the people side utilisation against attrition. A good answer insists on counterweighted pairs so no single number can be gamed — speed against quality, utilisation against attrition — and acts when the trend turns rather than when a threshold breaks.",
+ f:"Ask which metric they have seen gamed, and how they noticed."},
+
+{k:"dmetric", s:"delivery", l:"any", id:"dmt2",
+ q:"Describe an improvement you made where you can state the before and the after number.",
+ a:"Looking for a concrete case: the baseline and how it was measured, the cause established from evidence rather than assumed, the change made, the result, and whether it still held six months later. Strong answers name the thing that did not work first, and say what stopped the improvement decaying — a control chart, a checklist, an automated check, or a named owner.",
+ f:"If the number is suspiciously round, ask how it was measured before the change."},
+
+{k:"dmetric", s:"pmo", l:"senior", id:"dmt3",
+ q:"How would you measure whether the PMO is worth what it costs?",
+ a:"In outcomes the business already cares about: days sales outstanding and collections, unbilled ageing, leakage found and prevented, billing accuracy and credit notes issued, forecast accuracy against actuals, elapsed time from SOW signature to project start, and utilisation against target. A PMO that only reports is a cost; one that shortens the cash cycle and prevents leakage pays for itself, and a good candidate can say roughly by how much.",
+ f:"Ask what they would stop doing if the PMO had to be cut by a third."},
+
+{k:"dmetric", s:"ops", l:"any", id:"dmt4",
+ q:"Take me through one Lean Six Sigma project you ran, at the level of the actual data.",
+ a:"Define: the problem in the customer’s terms with a baseline. Measure: how the data was collected and whether the measurement system itself was trustworthy. Analyse: the cause established from data rather than opinion, with the tool named — Pareto, a fishbone whose branches were actually verified, a hypothesis genuinely tested. Improve: the change and its pilot. Control: the chart, the limits and the owner that keep it. Strong candidates are honest about the step they usually have to redo, and can name a project where the data overturned their first hypothesis.",
+ f:"A Black Belt who cannot describe the measurement system analysis, or who has no example of the data proving them wrong, has done the training rather than the work."},
+
+/* ------------------------------------- people and team management */
+{k:"dpeople", s:"delivery", l:"any", id:"dpp1",
+ q:"How do you deal with someone who is not performing?",
+ a:"Establish the facts before the conversation: what the expectation was, whether it was ever made explicit, and whether the cause is capability, clarity, workload or something outside work. Then a direct, private, specific conversation — what is happening, what is expected, what support, by when, and what follows if it does not change — documented, and followed up on the date promised. Strong answers include cases where the cause turned out to be theirs, through unclear expectations or badly matched work, and cases they did have to exit, handled without humiliating the person.",
+ f:"Ask for one they turned around and one they could not. Someone who has only ever succeeded has not had the conversation."},
+
+{k:"dpeople", s:"delivery", l:"any", id:"dpp2",
+ q:"How do you keep a team motivated through a long, unglamorous piece of work?",
+ a:"Honesty about why it matters and how long it will last; visible progress against something finite; rotation so nobody carries the worst of it for months; removing the friction that makes dull work worse; specific rather than generic recognition; and protecting time off instead of praising heroics. A good answer admits motivation is mostly the absence of avoidable annoyance, and handles money and promotion honestly rather than hinting.",
+ f:"Ask what they personally did about the dullest part, not what they told the team."},
+
+{k:"dpeople", s:"pmo", l:"any", id:"dpp3",
+ q:"You depend on people who do not report to you — project managers, finance, account managers. How do you get them to do what the process needs?",
+ a:"Make the right thing easy and the wrong thing visible: hang the deadline off one they already have, such as the billing cut-off; put the gap in a report their own manager reads; send a pre-filled form rather than a request; and give the reason in their currency — the PM cares about margin, finance about the close, the account manager about the client. Build the relationship before you need it, escalate rarely and predictably, and never let someone first see their own name on a red item in front of their boss.",
+ f:"Ask about someone who simply would not comply, and what finally worked."},
+
+{k:"dpeople", s:"ops", l:"any", id:"dpp4",
+ q:"Your team leads give you adherence commitments they do not keep. What do you do?",
+ a:"First check whether the commitment was realistic — a roster built on budgeted shrinkage rather than actual sets people up to fail. Then make the gap visible daily rather than monthly, hold each lead to their own number in front of their peers without humiliating them, and find which constraint is real: transport, split shifts, a leave policy, one chronically short team. Fix the constraint where you can and hold the line where you cannot. Strong answers make the data self-serve so leads see their own gap before you do.",
+ f:"Ask what they did about the one lead who never improved."},
+
+/* ----------------------------------- commercials and resourcing */
+{k:"dcomm", s:"delivery", l:"any", id:"dcm1",
+ q:"What drives margin on a services engagement, and what can you actually control?",
+ a:"Price is largely set at sale. Delivery controls the grade pyramid, the location mix, utilisation of the billed team, non-billable effort, rework, and scope absorbed without a change request — plus leakage through unapproved time, late billing, unbilled ageing and discounts given to settle disputes. A good answer names the lever with the biggest effect in their own experience, usually grade mix or absorbed scope, and says what they changed.",
+ f:"Ask what they gave away last year without raising a change request, and why."},
+
+{k:"dcomm", s:"delivery", l:"any", id:"dcm2",
+ q:"A key person is leaving mid-project. What do you do, in order?",
+ a:"Assess exposure first: what only they know, what is in flight, what the client-facing impact is. Secure the knowledge while they are still there — documented handover, pairing, recorded walkthroughs, and the unglamorous items such as access, credentials and the undocumented runbook. Rebalance the plan honestly rather than assuming a replacement is immediately equivalent, tell the client if a commitment moves, and start the backfill knowing the ramp. Afterwards, remove the single point of failure instead of recreating it.",
+ f:"Ask what they have done to stop one person becoming indispensable in the first place."},
+
+{k:"dcomm", s:"pmo", l:"any", id:"dcm3",
+ q:"How do you manage allocations and utilisation across several projects at once?",
+ a:"One source of truth for who is allocated where and at what percentage, kept current, with allocations closed on roll-off rather than left running. Watch bench and partial allocations, which hide inside an average, and reconcile allocation against timesheets, because the two diverge quietly. Forecast the roll-off calendar forward so bench is seen before it arrives, and work the pipeline with account managers rather than reacting. Report utilisation against billable capacity rather than head count, and be explicit about trainees, leave and non-billable commitments.",
+ f:"Ask how they catch someone allocated to two projects at 100% each."},
+
+{k:"dcomm", s:"ops", l:"any", id:"dcm4",
+ q:"How do you hold a cost line when the client wants more without paying more?",
+ a:"Quantify the ask in heads and rupees and put it in front of them, and distinguish a genuine volume change — which the contract should already price — from scope creep dressed up as one more report. Offer the trade: we can do this if we stop that, or if the volume forecast holds. Get the decision in writing. Where the relationship matters, give something small and visible and hold the line on the expensive thing, and keep a running log of absorbed asks so the next commercial conversation has evidence.",
+ f:"Ask what they absorbed anyway, and what it cost."}
 
 ];

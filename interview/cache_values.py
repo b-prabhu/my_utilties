@@ -12,7 +12,7 @@ from openpyxl import load_workbook
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
 SRC = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
-ASON = dt.date(2026, 10, 14)
+ASON = dt.date(2026, 10, 23)
 NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 ET.register_namespace("", NS)
 ET.register_namespace("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships")
@@ -61,6 +61,7 @@ MEASURE = {
     "Submitted 5 Sep 2026":        {2: sum(c["subDate"] == "5-Sep-2026" for c in C)},
     "Submitted 21 Sep 2026":       {2: sum(c["subDate"] == "21-Sep-2026" for c in C)},
     "Submitted 8 Oct 2026":        {2: sum(c["subDate"] == "8-Oct-2026" for c in C)},
+    "Submitted 22 Oct 2026":       {2: sum(c["subDate"] == "22-Oct-2026" for c in C)},
     "CTC and ECTC captured":       {2: len(num("ctc", C))},
     "Commercials not yet captured": {2: N - len(num("ctc", C))},
     "Holding a competing offer":   {2: sum(bool(c["offers"]) and c["offers"] != "No" for c in C)},

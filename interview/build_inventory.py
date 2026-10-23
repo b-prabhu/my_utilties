@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Rebuild the interview inventory workbook for all 22 candidates.
+"""Rebuild the interview inventory workbook for every candidate in the portal.
 
 Reads data.json, which is dumped straight out of the portal's own data files,
 so the workbook and the portal cannot drift apart.
@@ -14,7 +14,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
 OUT = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
-ASON = dt.date(2026, 10, 14)
+ASON = dt.date(2026, 10, 23)
 
 F = "Arial"
 NAVY, BAND2, BAND3, BAND4 = "1F3864", "2E75B6", "548235", "7030A0"
@@ -83,15 +83,27 @@ for c in D["C"]:
 BY_SL = {c["sl"]: c for c in D["C"]}
 
 
-def pool(sl, topic):
-    st = D["QSTREAM"].get(str(sl)) or D["QSTREAM"].get(sl) or {"s": "all", "l": "any"}
-    return [q for q in D["QBANK"]
-            if q["k"] == topic and (q["s"] == "all" or q["s"] == st["s"])
-            and (q["l"] == "any" or q["l"] == st["l"])]
-
-
 def stream_of(sl):
     return D["QSTREAM"].get(str(sl)) or D["QSTREAM"].get(sl) or {"s": "all", "l": "any"}
+
+
+def fam_of(sl):
+    return stream_of(sl).get("fam", "eng")
+
+
+def topics_for(sl):
+    """A candidate sees one question family: engineering theory, or the
+    delivery set for the people hired to run work rather than build it."""
+    f = fam_of(sl)
+    return [t for t in D["QTOPICS"] if t.get("fam", "eng") == f]
+
+
+def pool(sl, topic):
+    st = stream_of(sl)
+    wild = "all" if fam_of(sl) == "eng" else fam_of(sl)
+    return [q for q in D["QBANK"]
+            if q["k"] == topic and (q["s"] == wild or q["s"] == st["s"])
+            and (q["l"] == "any" or q["l"] == st["l"])]
 
 
 wb = Workbook()
@@ -214,7 +226,7 @@ ws.sheet_view.showGridLines = False
 
 # ======================================================= 2. Resume Validation
 rv = wb.create_sheet("Resume Validation")
-banner(rv, "Resume validation - all 22 candidates",
+banner(rv, "Resume validation - all %d candidates" % len(D["C"]),
        "Every candidate has a CV on file. The verdict compares what the resume says against "
        "the row as submitted; SL 18-22 arrived as resumes only, so there was no row to compare.", 8)
 header(rv, 4, ["SL. No", "Candidate", "Source", "Resume file", "Headline on the CV",
@@ -242,7 +254,7 @@ rv.freeze_panes = "C5"
 # ================================================================ 3. Action Log
 dq = wb.create_sheet("Action Log")
 banner(dq, "Open actions before scheduling interviews",
-       "Raised from reading all 22 resumes against their submitted rows, plus arithmetic checks. "
+       "Raised from reading all %d resumes against their submitted rows, plus arithmetic checks. " % len(D["C"]) +
        "Owner and status are yours to fill in.", 7)
 header(dq, 4, ["Item", "SL. No", "Candidate", "Severity", "Issue", "Action required", "Owner / status"],
        [6, 8, 24, 11, 62, 62, 20])
@@ -274,7 +286,8 @@ banner(qb, "Round 1 - theory question bank with expected answers",
        "matching their competency stream and level; recycling moves to the next in that pool." % len(D["QBANK"]), 7)
 header(qb, 4, ["No.", "Topic", "Suits", "Level", "Question", "Expected answer", "Follow up / watch for"],
        [5, 22, 14, 10, 56, 86, 62], fill=HDR4)
-SNAME = {"all": "Any stream", "dotnet": ".NET", "java": "Java", "node": "Node / JS", "support": "Support"}
+SNAME = {"all": "Any stream", "dotnet": ".NET", "java": "Java", "node": "Node / JS", "support": "Support",
+         "delivery": "Any delivery", "pmo": "PMO / delivery ops", "ops": "Service operations"}
 LNAME = {"any": "Any", "senior": "Senior", "mid": "Mid"}
 TNAME = {t["k"]: t["h"] for t in D["QTOPICS"]}
 torder = {t["k"]: i for i, t in enumerate(D["QTOPICS"])}
@@ -295,8 +308,10 @@ qb.auto_filter.ref = "A4:G%d" % (4 + len(qs))
 # ============================================ 5. Round 1 set per candidate
 qs2 = wb.create_sheet("Round 1 by Candidate")
 banner(qs2, "Round 1 - the question each candidate starts on",
-       "The default draw for each of the 22 candidates: one question per topic, with the expected "
-       "answer. Recycling in the portal moves to the next question in that topic's pool.", 8)
+       "The default draw for each of the %d candidates: one question per topic, with the expected "
+       "answer. Recycling in the portal moves to the next question in that topic's pool. Engineers "
+       "draw the theory topics; the project and process managers draw the delivery set."
+       % len(D["C"]), 8)
 header(qs2, 4, ["SL. No", "Candidate", "Stream", "Level", "Topic", "Question",
                 "Expected answer", "Score (1-5)"],
        [7, 23, 15, 9, 22, 54, 84, 11], fill=HDR4)
@@ -304,7 +319,7 @@ row = 5
 for c in sorted(D["C"], key=lambda x: x["sl"]):
     st = stream_of(c["sl"])
     start = row
-    for t in D["QTOPICS"]:
+    for t in topics_for(c["sl"]):
         pl = pool(c["sl"], t["k"])
         q = pl[0] if pl else None
         style(qs2.cell(row=row, column=1, value=c["sl"]), halign="center")
@@ -387,6 +402,7 @@ header(sm, r + 1, ["Measure", "Count"])
 meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("C")),
         ("Submitted 21 Sep 2026", '=COUNTIF(%s,"21-Sep-2026")' % RNG("C")),
         ("Submitted 8 Oct 2026", '=COUNTIF(%s,"8-Oct-2026")' % RNG("C")),
+        ("Submitted 22 Oct 2026", '=COUNTIF(%s,"22-Oct-2026")' % RNG("C")),
         ("CTC and ECTC captured", '=COUNT(%s)' % RNG("N")),
         ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("N")),
         ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("P"), RNG("P"))),
@@ -420,25 +436,29 @@ SUMMARY_LAST = rr
 
 # ================================================================ 7. Read Me
 rm = wb.create_sheet("Read Me", 0)
-banner(rm, "Interview inventory - Certainti hiring, 22 candidates",
-       "Rebuilt on 8 Oct 2026 from the same data the Certainti Hiring Portal runs on, so the two "
-       "cannot drift apart.", 4)
+banner(rm, "Interview inventory - Certainti hiring, %d candidates" % len(D["C"]),
+       "Rebuilt on %d %s %d from the same data the Certainti Hiring Portal runs on, so the two "
+       "cannot drift apart." % (ASON.day, MON[ASON.month - 1], ASON.year), 4)
 rm.column_dimensions["A"].width = 28
 rm.column_dimensions["B"].width = 104
 rows = [
- ("What this is", "All 22 candidates: 17 submitted by IKrux Engineering on 21-Sep-2026 and 5 that "
-  "arrived as resumes on 6-Oct-2026. Every one has a CV on file and a verdict against it."),
+ ("What this is", "All %d candidates, every one submitted by IKrux Engineering: %s. Each has a CV "
+  "on file and a verdict against it." % (
+      len(D["C"]),
+      ", ".join("%d on %s" % (sum(1 for c in D["C"] if c["subDate"] == b), b)
+                for b in ["5-Sep-2026", "21-Sep-2026", "8-Oct-2026", "22-Oct-2026"]))),
  ("Interview Inventory", "Columns A-P are the submitted fields, Q-V are calculated, and W onward is "
   "the grey tracking block: recommended role, screening, four interview rounds with date, panel and "
   "result, then outcome. Result and status fields are dropdowns."),
  ("Resume Validation", "What each CV says and how it compares with the row, colour-coded green, "
   "amber or red. For SL 18-22 there was no submitted row, so the verdict assesses the profile itself."),
- ("Action Log", "46 open items ranked High, Medium then Low, each with the action it needs and a "
-  "column for owner and status."),
- ("Round 1 Question Bank", "All 62 theory questions with the expected answer and a follow-up to push "
-  "with. Filter by topic, stream or level."),
- ("Round 1 by Candidate", "The question each candidate starts on for each of the seven topics, with "
-  "its expected answer and a score column."),
+ ("Action Log", "%d open items ranked High, Medium then Low, each with the action it needs and a "
+  "column for owner and status." % len(D["FLAGS"])),
+ ("Round 1 Question Bank", "All %d questions with the expected answer and a follow-up to push with - "
+  "the engineering theory set and the delivery and process management set. Filter by topic, stream "
+  "or level." % len(D["QBANK"])),
+ ("Round 1 by Candidate", "The question each candidate starts on for each of their seven topics, "
+  "with its expected answer and a score column."),
  ("Summary", "Role mix, availability, source, commercials, flags and the interview funnel - all "
   "formulas, so they stay live as the tracking columns are filled in."),
  ("Cells you edit", "Summary!B4 (the as-on date, blue on yellow), the grey tracking columns on the "
