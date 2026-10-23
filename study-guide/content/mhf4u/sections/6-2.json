@@ -1,0 +1,1273 @@
+{
+  "id": "6-2",
+  "number": "6.2",
+  "title": "Logarithms",
+  "estimatedMinutes": 75,
+  "overview": "A **logarithm** is simply an exponent. It lets you answer \"how long until…?\" questions where the unknown is in the exponent. In this section you will define the logarithmic function as the inverse of the exponential function, switch between exponential and logarithmic form, and evaluate and approximate logarithms.",
+  "objectives": [
+    "Explain the meaning of $\\log_b x$ as an exponent.",
+    "Rewrite exponential equations in logarithmic form and vice versa.",
+    "Evaluate logarithms exactly by writing the argument as a power of the base.",
+    "Explain the restrictions on the base and argument of a logarithm.",
+    "Approximate logarithms using bracketing, systematic trial, graphs and a calculator (common logarithms).",
+    "Solve simple problems using logarithmic models."
+  ],
+  "lessons": [
+    {
+      "id": "log-is-exponent",
+      "title": "A logarithm is an exponent",
+      "body": "In 6.1 the inverse of $y = b^x$ was written $x = b^y$. That form is awkward: we usually want $y$ by itself. So mathematicians gave the inverse a name:\n\n$$y = \\log_b x \\quad\\text{means}\\quad b^y = x$$\n\nRead it as \"$y$ equals the logarithm of $x$ to the base $b$.\"\n\n**The big idea:** $\\log_b x$ answers the question *\"to what exponent must I raise $b$ to get $x$?\"*\n\n| Question | Answer | Written as a log |\n|---|---|---|\n| 2 to what power is 8? | 3 | $\\log_2 8 = 3$ |\n| 5 to what power is 25? | 2 | $\\log_5 25 = 2$ |\n| 10 to what power is 0.01? | −2 | $\\log_{10} 0.01 = -2$ |\n\n> **Analogy:** an exponential function takes an exponent and gives you a result (\"3 doublings give 8\"). A logarithm runs the machine backwards: give it the result and it tells you the exponent (\"8 needs 3 doublings\").\n\n```plot\ntitle: y = log₂ x is the reflection of y = 2^x in y = x\nf: 2^x | label=y = 2^x\nf: logb(2, x) | label=y = log₂ x\nf: x | dashed; label=y = x\ndomain: -4, 8\nrange: -4, 8\npoints: (1,0), (2,1), (4,2)\n```"
+    },
+    {
+      "id": "converting",
+      "title": "Switching between exponential and logarithmic form",
+      "body": "Every exponential statement has a logarithmic twin. **The base stays the base; the exponent becomes the answer of the log.**\n\n$$\\underbrace{b}_{\\text{base}}{}^{\\overbrace{y}^{\\text{exponent}}} = x \\quad\\Longleftrightarrow\\quad \\log_{\\underbrace{b}_{\\text{base}}} x = \\overbrace{y}^{\\text{exponent}}$$\n\n| Exponential form | Logarithmic form |\n|---|---|\n| $2^4 = 16$ | $\\log_2 16 = 4$ |\n| $m = n^3$ | $\\log_n m = 3$ |\n| $3^{-2} = \\frac19$ | $\\log_3 \\frac19 = -2$ |\n| $10^5 = 100\\,000$ | $\\log 100\\,000 = 5$ |\n| $r^s = t$ | $\\log_r t = s$ |\n\nA memory trick: in $\\log_b x = y$, start at the base $b$, go **up** to $y$ (the exponent), and land on $x$: $b^y = x$ (\"**b**ase to the **y** equals **x**\")."
+    },
+    {
+      "id": "evaluating",
+      "title": "Evaluating logarithms exactly",
+      "body": "To evaluate a log without a calculator, **rewrite the argument as a power of the base**.\n\n* $\\log_3 81$: $81 = 3^4$, so $\\log_3 81 = 4$.\n* $\\log_2 \\frac18$: $\\frac18 = 2^{-3}$, so $\\log_2 \\frac18 = -3$.\n* $\\log_{10} 0.01$: $0.01 = 10^{-2}$, so the answer is $-2$.\n* $\\log_4 2$: $2 = 4^{1/2}$, so $\\log_4 2 = \\frac12$.\n\nUseful facts that follow straight from the definition:\n\n| Fact | Why |\n|---|---|\n| $\\log_b 1 = 0$ | $b^0 = 1$ |\n| $\\log_b b = 1$ | $b^1 = b$ |\n| $\\log_b (b^k) = k$ | the exponent that gives $b^k$ is $k$ |\n\n**Common logarithms.** Base 10 is so common that the base is usually left off: $\\log x$ means $\\log_{10} x$. So $\\log 1000 = 3$ and $\\log 0.001 = -3$. Your calculator's **LOG** key computes common logarithms.\n\nLogarithms **can be negative or fractional** — they are exponents, and exponents can be anything. What cannot be negative is the *argument*."
+    },
+    {
+      "id": "restrictions",
+      "title": "Which bases and arguments are allowed?",
+      "body": "$y = \\log_b x$ is defined only when\n\n$$b > 0,\\quad b \\neq 1,\\quad x > 0$$\n\n* **The argument must be positive.** $\\log_2(-4)$ asks \"2 to what power gives $-4$?\" A positive base raised to any power is positive, so there is no answer.\n* **The base can't be negative.** A negative base gives undefined results for many exponents ($(-2)^{0.5}$ is not real).\n* **The base can't be 0.** $0^y = 0$ for every positive $y$, so $\\log_0 0$ would have infinitely many answers and other values none.\n* **The base can't be 1.** $1^y = 1$ for every $y$, so $\\log_1 1$ has infinitely many answers and $\\log_1 5$ has none.\n\n**Key features of $y = \\log_b x$ ($b > 1$):** domain $x > 0$, range all reals, $x$-intercept 1, no $y$-intercept, vertical asymptote $x = 0$, increasing, passes through $(1, 0)$ and $(b, 1)$. For $0 < b < 1$ it is decreasing instead."
+    },
+    {
+      "id": "approximating",
+      "title": "Approximating logarithms",
+      "body": "Most logarithms are not whole numbers. Three ways to estimate them:\n\n**1. Bracketing and systematic trial.** For $\\log_2 10$: $2^3 = 8$ and $2^4 = 16$, so the answer is between 3 and 4. Try values:\n\n| Estimate | Check | Verdict |\n|---|---|---|\n| 3.50 | $2^{3.5} \\approx 11.3$ | too high |\n| 3.30 | $2^{3.3} \\approx 9.85$ | a little low |\n| 3.32 | $2^{3.32} \\approx 9.99$ | very close |\n\nSo $\\log_2 10 \\approx 3.32$.\n\n**2. Graphically.** Graph $y = 2^x$ and find the $x$-value where $y = 10$, or graph $y = 2^x$ and $y = 10$ and find their intersection.\n\n**3. Calculator (common logs).** $\\log 2500 \\approx 3.40$ — sensible, because $10^3 = 1000 < 2500 < 10\\,000 = 10^4$.\n\n**Logarithms grow slowly.** To increase $\\log x$ by just 1, $x$ must be multiplied by 10. That is why logarithmic scales can squeeze huge ranges (like 0.000 001 to 1 000 000) into a short span (−6 to 6)."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "logarithm",
+      "definition": "$\\log_b x$ is the exponent to which the base $b$ must be raised to produce $x$: $\\log_b x = y \\iff b^y = x$."
+    },
+    {
+      "term": "logarithmic function",
+      "definition": "$y = \\log_b x$, $b > 0$, $b \\neq 1$, the inverse of the exponential function $y = b^x$."
+    },
+    {
+      "term": "common logarithm",
+      "definition": "A logarithm with base 10, written $\\log x$ without a base."
+    },
+    {
+      "term": "argument",
+      "definition": "The input of a logarithm (the $x$ in $\\log_b x$); it must be positive."
+    },
+    {
+      "term": "base",
+      "definition": "The number being raised to a power; for logarithms $b > 0$ and $b \\neq 1$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Definition of a logarithm",
+      "latex": "\\log_b x = y \\iff b^y = x",
+      "meaning": "Valid for $b > 0$, $b \\neq 1$, $x > 0$."
+    },
+    {
+      "name": "Special values",
+      "latex": "\\log_b 1 = 0,\\qquad \\log_b b = 1,\\qquad \\log_b b^k = k",
+      "meaning": "These follow directly from the definition."
+    },
+    {
+      "name": "Common logarithm",
+      "latex": "\\log x = \\log_{10} x",
+      "meaning": "Base 10 is understood when no base is written."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Write exponential equations in logarithmic form",
+      "problem": "Rewrite in logarithmic form: (a) $16 = 2^4$ (b) $m = n^3$ (c) $3^{-2} = \\frac19$",
+      "steps": [
+        "(a) The base is 2 and the exponent is 4: $\\log_2 16 = 4$.",
+        "(b) The base is $n$ and the exponent is 3: $\\log_n m = 3$.",
+        "(c) The base is 3 and the exponent is $-2$: $\\log_3 \\frac19 = -2$. Logarithms can be negative."
+      ],
+      "answer": "(a) $\\log_2 16 = 4$ (b) $\\log_n m = 3$ (c) $\\log_3 \\frac19 = -2$"
+    },
+    {
+      "title": "Evaluate logarithms",
+      "problem": "Evaluate (a) $\\log_3 81$ (b) $\\log_2 \\frac18$ (c) $\\log 0.01$",
+      "steps": [
+        "(a) Let $y = \\log_3 81$. Then $3^y = 81 = 3^4$, so $y = 4$.",
+        "(b) Think: 2 to what exponent gives $\\frac18$? $\\frac18 = 2^{-3}$, so $\\log_2 \\frac18 = -3$.",
+        "(c) Let $y = \\log 0.01$. Then $10^y = 0.01 = 10^{-2}$, so $y = -2$."
+      ],
+      "answer": "(a) 4 (b) −3 (c) −2"
+    },
+    {
+      "title": "Write logarithmic equations in exponential form",
+      "problem": "Rewrite (a) $\\log_4 64 = 3$ (b) $y = \\log x$ in exponential form.",
+      "steps": [
+        "(a) The base is 4, the exponent is 3: $4^3 = 64$.",
+        "(b) No base is written, so the base is 10: $10^y = x$."
+      ],
+      "answer": "(a) $4^3 = 64$ (b) $10^y = x$"
+    },
+    {
+      "title": "Approximate a logarithm",
+      "problem": "Find $\\log_2 10$ to two decimal places, and $\\log 2500$.",
+      "steps": [
+        "**Bracket:** $2^3 = 8 < 10 < 16 = 2^4$, so $3 < \\log_2 10 < 4$.",
+        "**Systematic trial:** $2^{3.5} \\approx 11.3$ (too high), $2^{3.3} \\approx 9.85$ (low), $2^{3.35} \\approx 10.2$ (high), $2^{3.32} \\approx 9.99$ (good).",
+        "**Calculator:** $\\log 2500 \\approx 3.40$; check: $10^{3.40} \\approx 2512$ ✓."
+      ],
+      "answer": "$\\log_2 10 \\approx 3.32$ and $\\log 2500 \\approx 3.40$."
+    },
+    {
+      "title": "Time for a web site to reach N visitors",
+      "problem": "Visitors to a web site triple every day. The time, in days, to reach $N$ visitors is $t = \\dfrac{\\log N}{\\log 3}$. How long until 1000 visitors?",
+      "steps": [
+        "Substitute $N = 1000$: $t = \\dfrac{\\log 1000}{\\log 3} = \\dfrac{3}{0.4771}$.",
+        "$t \\approx 6.29$ days.",
+        "**Check:** $3^{6.29} \\approx 1000$ ✓ — about 6.3 days of tripling."
+      ],
+      "answer": "About 6.3 days."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\log_2 8 = 4$ because $8 \\div 2 = 4$.",
+      "fact": "A logarithm is an **exponent**, not a quotient: $2^3 = 8$, so $\\log_2 8 = 3$."
+    },
+    {
+      "myth": "Logarithms can never be negative.",
+      "fact": "The *argument* must be positive, but the log itself can be anything: $\\log 0.001 = -3$."
+    },
+    {
+      "myth": "$\\log(-100) = -2$.",
+      "fact": "No power of 10 is negative, so $\\log(-100)$ is undefined."
+    },
+    {
+      "myth": "$\\log x$ has no base.",
+      "fact": "When no base is written, the base is 10 (a common logarithm)."
+    },
+    {
+      "myth": "Since $\\log_2 16 = 4$, doubling 16 to 32 should double the log to 8.",
+      "fact": "Doubling the argument only adds 1: $\\log_2 32 = 5$. Logarithms turn multiplication into addition."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "How long until…?",
+      "body": "Exponential models give the amount at a given time; logarithms answer the reverse question — *when* will a population, investment or number of web visitors reach a target?"
+    },
+    {
+      "title": "Fog and headlights",
+      "body": "Fog absorbs light exponentially, so the distance of a car can be estimated from its headlight brightness with a logarithmic formula such as $d = -167 \\log\\left(\\frac{I}{125}\\right)$."
+    },
+    {
+      "title": "Radiation shielding",
+      "body": "Spacecraft hulls block cosmic radiation exponentially with thickness. Logarithms tell engineers how thick the hull must be to let through less than 1% of the radiation."
+    },
+    {
+      "title": "Rumours and social media",
+      "body": "If every person shares a message with 2 new people a day, the reach triples daily, and a log tells you how many days it takes to reach the whole school."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Rewrite $5^{-2} = \\frac{1}{25}$ in logarithmic form.",
+      "hint": "Base 5, exponent −2.",
+      "solution": "$\\log_5 \\frac{1}{25} = -2$."
+    },
+    {
+      "question": "Rewrite $\\log_7 49 = 2$ in exponential form.",
+      "hint": "The base stays the base.",
+      "solution": "$7^2 = 49$."
+    },
+    {
+      "question": "Evaluate $\\log_4 \\frac{1}{64}$.",
+      "hint": "Write $\\frac{1}{64}$ as a power of 4.",
+      "solution": "$\\frac{1}{64} = 4^{-3}$, so the answer is $-3$."
+    },
+    {
+      "question": "Evaluate $\\log_2 1024$.",
+      "hint": "$2^{10} = ?$",
+      "solution": "$2^{10} = 1024$, so $\\log_2 1024 = 10$."
+    },
+    {
+      "question": "Evaluate $\\log 10^{-4}$ and $\\log 1$.",
+      "hint": "Use $\\log_b b^k = k$ and $\\log_b 1 = 0$.",
+      "solution": "$\\log 10^{-4} = -4$ and $\\log 1 = 0$."
+    },
+    {
+      "question": "Between which two integers is $\\log_3 50$? Estimate it to one decimal place.",
+      "hint": "$3^3 = 27$ and $3^4 = 81$.",
+      "solution": "Between 3 and 4. $3^{3.5} \\approx 46.8$ and $3^{3.6} \\approx 52.2$, so $\\log_3 50 \\approx 3.6$."
+    },
+    {
+      "question": "Does $\\log_2(-4)$ have meaning? Explain.",
+      "hint": "Can a positive number raised to a power be negative?",
+      "solution": "No. $2^y > 0$ for every $y$, so no exponent produces $-4$."
+    },
+    {
+      "question": "Solve $\\log_3 x = 4$.",
+      "hint": "Rewrite in exponential form.",
+      "solution": "$x = 3^4 = 81$."
+    }
+  ],
+  "summary": [
+    "$\\log_b x$ is the exponent to which $b$ must be raised to give $x$: $\\log_b x = y \\iff b^y = x$.",
+    "The logarithmic function $y = \\log_b x$ is the inverse of $y = b^x$: reflect in $y = x$.",
+    "Defined only for $b > 0$, $b \\neq 1$ and $x > 0$; the log itself can be any real number.",
+    "$\\log_b 1 = 0$, $\\log_b b = 1$, $\\log_b b^k = k$; $\\log x$ means $\\log_{10} x$.",
+    "Approximate logs by bracketing between powers, systematic trial, graphs, or a calculator (for common logs)."
+  ],
+  "questions": [
+    {
+      "id": "6-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "k": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        },
+        "n": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Rewrite each equation in logarithmic form. Then explain, in words, what the logarithm means in part (a).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{b}}^{ {{k}} } = {{b^k}}$"
+        },
+        {
+          "label": "b",
+          "text": "${{b}}^{-2} = \\frac{1}{ {{b^2}} }$"
+        },
+        {
+          "label": "c",
+          "text": "$10^{ {{n}} } = {{10^n}}$"
+        },
+        {
+          "label": "d",
+          "text": "$m = p^5$"
+        }
+      ],
+      "modelAnswer": "(a) ${{b}}^{ {{k}} } = {{b^k}}$ → $\\log_{ {{b}} } {{b^k}} = {{k}}$. Meaning: {{k}} is the exponent to which {{b}} must be raised to give {{b^k}}.\n\n(b) ${{b}}^{-2} = \\frac{1}{ {{b^2}} }$ → $\\log_{ {{b}} } \\frac{1}{ {{b^2}} } = -2$.\n\n(c) $10^{ {{n}} } = {{10^n}}$ → $\\log {{10^n}} = {{n}}$ (common logarithm, base 10 understood).\n\n(d) $m = p^{5}$ → $\\log_p m = 5$.",
+      "rubric": [
+        {
+          "point": "(a) correct log form",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct explanation of the log as an exponent",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct, with negative result",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct common log",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct with variables",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            5,
+            7
+          ]
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Rewrite each equation in exponential form.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_{ {{b}} } {{b^k}} = {{k}}$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log 10\\,000 = 4$"
+        },
+        {
+          "label": "c",
+          "text": "$w = \\log_b z$"
+        },
+        {
+          "label": "d",
+          "text": "$-2 = \\log \\frac{1}{100}$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log_{ {{b}} } {{b^k}} = {{k}}$ → ${{b}}^{ {{k}} } = {{b^k}}$.\n\n(b) $\\log 10\\,000 = 4$ → $10^4 = 10\\,000$.\n\n(c) $w = \\log_b z$ → $b^w = z$.\n\n(d) $-2 = \\log \\frac{1}{100}$ → $10^{-2} = \\frac{1}{100}$.\n\nIn each case the base of the logarithm becomes the base of the power, and the value of the logarithm becomes the exponent.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct, base 10 recognised",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with variables",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct with negative exponent",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "m": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Evaluate each logarithm without a calculator. Show how you rewrote the argument as a power of the base.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_{ {{b}} } {{b^k}}$",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_{ {{b}} } \\frac{1}{ {{b^m}} }$",
+          "answer": {
+            "expr": "-m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_{ {{b}} } 1$",
+          "answer": {
+            "expr": "0",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log_{ {{b}} } {{b}}$",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{b^k}} = {{b}}^{ {{k}} }$, so $\\log_{ {{b}} } {{b^k}} = {{k}}$.\n\n(b) $\\frac{1}{ {{b^m}} } = {{b}}^{-{{m}} }$, so $\\log_{ {{b}} } \\frac{1}{ {{b^m}} } = -{{m}}$.\n\n(c) $\\log_{ {{b}} } 1 = 0$ because ${{b}}^0 = 1$.\n\n(d) $\\log_{ {{b}} } {{b}} = 1$ because ${{b}}^1 = {{b}}$.",
+      "rubric": [
+        {
+          "point": "(a) correct with power shown",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct negative answer with power shown",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with reason",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "p": {
+          "min": -7,
+          "max": -2,
+          "step": 1
+        }
+      },
+      "text": "Evaluate each common logarithm without a calculator and explain your reasoning for part (c).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log {{10^n}}$",
+          "answer": {
+            "expr": "n",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log {{10^(-m)}}$",
+          "answer": {
+            "expr": "-m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log 10^{ {{p}} }$",
+          "answer": {
+            "expr": "p",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log \\frac{1}{100}$",
+          "answer": {
+            "expr": "-2",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $10^{ {{n}} } = {{10^n}}$, so $\\log {{10^n}} = {{n}}$.\n\n(b) $10^{-{{m}} } = {{10^(-m)}}$, so $\\log {{10^(-m)}} = -{{m}}$.\n\n(c) $\\log 10^{ {{p}} } = {{p}}$: the exponent to which 10 must be raised to give $10^{ {{p}} }$ is {{p}} itself ($\\log_b b^k = k$).\n\n(d) $\\frac{1}{100} = 10^{-2}$, so $\\log \\frac{1}{100} = -2$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct negative answer",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with explanation",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            10,
+            12,
+            20,
+            25,
+            40,
+            50,
+            70,
+            100,
+            150,
+            200
+          ]
+        }
+      },
+      "text": "Consider $\\log_2 {{n}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Between which two consecutive integers does $\\log_2 {{n}}$ lie? Justify your answer."
+        },
+        {
+          "label": "b",
+          "text": "Use systematic trial to estimate $\\log_2 {{n}}$ to two decimal places.",
+          "answer": {
+            "expr": "logb(2,n)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.01
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe a graphical method you could use to check your estimate."
+        }
+      ],
+      "modelAnswer": "(a) $2^{ {{floor(logb(2,n))}} } = {{2^floor(logb(2,n))}}$ and $2^{ {{floor(logb(2,n))+1}} } = {{2^(floor(logb(2,n))+1)}}$. Since ${{2^floor(logb(2,n))}} < {{n}} < {{2^(floor(logb(2,n))+1)}}$, $\\log_2 {{n}}$ lies between {{floor(logb(2,n))}} and {{floor(logb(2,n))+1}}.\n\n(b) Systematic trial: try the midpoint, $2^{ {{floor(logb(2,n)) + 0.5}} } \\approx {{2^(floor(logb(2,n)) + 0.5):4}}$, and compare with {{n}}; adjust the estimate up if the result is too small and down if it is too large. Narrowing in this way gives $2^{ {{logb(2,n):3}} } \\approx {{2^(round(logb(2,n)*100)/100):4}} \\approx {{n}}$.\n\nSo $\\log_2 {{n}} \\approx {{logb(2,n):3}}$ (to two decimal places).\n\n(c) Graph $y = 2^x$ and $y = {{n}}$ and find the $x$-coordinate of their intersection, or trace $y = 2^x$ to the point where $y = {{n}}$. The $x$-value is about {{logb(2,n):3}}.",
+      "rubric": [
+        {
+          "point": "Brackets the log between the correct consecutive integers with powers shown",
+          "marks": 2
+        },
+        {
+          "point": "Uses systematic trial with checks",
+          "marks": 1
+        },
+        {
+          "point": "Estimate correct to two decimal places",
+          "marks": 1
+        },
+        {
+          "point": "Describes a valid graphical method",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q06",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 150,
+          "max": 9500,
+          "step": 50
+        },
+        "c": {
+          "choices": [
+            0.2,
+            0.05,
+            0.0037,
+            0.45,
+            0.009
+          ]
+        }
+      },
+      "text": "Use a calculator to evaluate each common logarithm to two decimal places. Then check one answer by rewriting it in exponential form.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log {{a}}$",
+          "answer": {
+            "expr": "log(a)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log {{c}}$",
+          "answer": {
+            "expr": "log(c)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.01
+          }
+        },
+        {
+          "label": "c",
+          "text": "Check your answer to (a) using exponential form and explain why it is reasonable."
+        }
+      ],
+      "modelAnswer": "(a) $\\log {{a}} \\approx {{log(a):3}}$\n\n(b) $\\log {{c}} \\approx {{log(c):3}}$\n\n(c) Check (a): $10^{ {{log(a):3}} } \\approx {{10^(round(log(a)*100)/100):3}} \\approx {{a}}$ ✓. The answer is reasonable because ${{a}}$ lies between $10^{ {{floor(log(a))}} }$ and $10^{ {{floor(log(a))+1}} }$, so its log lies between {{floor(log(a))}} and {{floor(log(a))+1}}.",
+      "rubric": [
+        {
+          "point": "(a) correct to two decimals",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct, including sign",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct exponential check",
+          "marks": 1
+        },
+        {
+          "point": "(c) reasonableness argument using powers of 10",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q07",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A student claims that each of the following expressions has a value. For each one, explain whether it has meaning.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_2(-4)$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log_1 5$"
+        },
+        {
+          "label": "c",
+          "text": "$\\log_{-2} 4$"
+        },
+        {
+          "label": "d",
+          "text": "$\\log_5 \\frac{1}{25}$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log_2(-4)$ asks \"2 to what power gives −4?\" Any power of a positive base is positive, so no real exponent works: **undefined**.\n\n(b) $\\log_1 5$: $1^y = 1$ for every $y$, so no exponent gives 5: **undefined**. (And $\\log_1 1$ would have infinitely many answers, so base 1 is not allowed.)\n\n(c) $\\log_{-2} 4$: negative bases are not allowed. Even though $(-2)^2 = 4$, a negative base is undefined for many exponents (e.g. $(-2)^{0.5}$), so $y = \\log_{-2} x$ is not a function.\n\n(d) $\\log_5 \\frac{1}{25} = -2$ **is** meaningful: the argument $\\frac{1}{25}$ is positive and the base 5 is valid. A logarithm can be negative even though its argument cannot.",
+      "rubric": [
+        {
+          "point": "(a) correct reason: positive base cannot give a negative result",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct reason about base 1",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct reason about negative bases",
+          "marks": 1
+        },
+        {
+          "point": "(d) recognises it is valid, distinguishing negative log from negative argument",
+          "marks": 1
+        },
+        {
+          "point": "Clear statement of the restrictions b > 0, b ≠ 1, x > 0",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n1": {
+          "choices": [
+            1000,
+            5000,
+            2000
+          ]
+        },
+        "n2": {
+          "choices": [
+            1000000,
+            2000000,
+            500000
+          ]
+        }
+      },
+      "text": "The number of visitors to a popular web site is tripling every day. The time, $t$, in days, for $N$ visitors to see the site is given by $t = \\dfrac{\\log N}{\\log 3}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long will it take until the number of visitors reaches {{n1}}?",
+          "answer": {
+            "expr": "log(n1)/log(3)",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until it reaches {{n2}}?",
+          "answer": {
+            "expr": "log(n2)/log(3)",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the two answers. Why is the second time not much larger than the first?"
+        }
+      ],
+      "modelAnswer": "(a) $t = \\dfrac{\\log {{n1}}}{\\log 3} = \\dfrac{ {{log(n1):4}} }{ {{log(3):4}} } \\approx {{log(n1)/log(3):3}}$ days.\n\n(b) $t = \\dfrac{\\log {{n2}}}{\\log 3} = \\dfrac{ {{log(n2):4}} }{ {{log(3):4}} } \\approx {{log(n2)/log(3):3}}$ days.\n\n(c) Multiplying the number of visitors by {{n2/n1}} only adds about {{log(n2)/log(3) - log(n1)/log(3):3}} days. Because the site triples each day, each extra day multiplies the audience by 3, so even huge increases in $N$ take only a few more days — the logarithm grows slowly.",
+      "rubric": [
+        {
+          "point": "Correct substitution into the formula",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct time",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct time",
+          "marks": 1
+        },
+        {
+          "point": "(c) explains the small difference using the slow growth of logs / tripling",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-2-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "i": {
+          "min": 20,
+          "max": 80,
+          "step": 5
+        }
+      },
+      "text": "Fog greatly reduces the intensity of oncoming headlights. The distance, $d$, in metres, of an oncoming car whose headlights have an intensity of $I$ lumens is given by $d = -167\\log\\left(\\frac{I}{125}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How far away is a car whose headlight intensity is {{i}} lm?",
+          "answer": {
+            "expr": "-167*log(i/125)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "If the headlight intensity doubles, does this mean the car is half as far away? Explain."
+        },
+        {
+          "label": "c",
+          "text": "What implications do these results have for recommended driver behaviour?"
+        }
+      ],
+      "modelAnswer": "(a) $d = -167\\log\\left(\\dfrac{ {{i}} }{125}\\right) = -167\\log({{i/125:4}}) = -167({{log(i/125):4}}) \\approx {{-167*log(i/125):3}}$ m.\n\n(b) If the intensity doubles to {{2*i}} lm, $d = -167\\log\\left(\\dfrac{ {{2*i}} }{125}\\right) \\approx {{-167*log(2*i/125):3}}$ m. This is about {{-167*log(2):3}} m closer, **not** half as far. Doubling $I$ only changes $\\log I$ by $\\log 2 \\approx 0.301$, so the distance drops by $167 \\times 0.301 \\approx 50$ m whatever the starting distance.\n\n(c) Drivers cannot judge distance by headlight brightness in fog: a car that looks only a little brighter may be much closer. Drivers should slow down, increase following distance, and use low beams.",
+      "rubric": [
+        {
+          "point": "(a) correct distance with working",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct new distance",
+          "marks": 1
+        },
+        {
+          "point": "(b) explains it is not half the distance (subtracts a fixed amount)",
+          "marks": 1
+        },
+        {
+          "point": "(c) sensible implication for driver behaviour",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "A spacecraft's hull blocks cosmic radiation according to $P = 100(0.2)^x$, where $P$ is the percent of radiation transmitted through a hull $x$ centimetres thick.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What thickness of hull will ensure that less than 1% of the radiation passes through?",
+          "answer": {
+            "expr": "logb(0.2, 0.01)",
+            "unit": "cm",
+            "sig": 3,
+            "tol": 0.02
+          }
+        },
+        {
+          "label": "b",
+          "text": "By how much would the thickness need to increase to reduce the transmission to 0.1%?",
+          "answer": {
+            "expr": "logb(0.2, 0.001) - logb(0.2, 0.01)",
+            "unit": "cm",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain the pattern you notice."
+        }
+      ],
+      "modelAnswer": "(a) We need $100(0.2)^x < 1$, i.e. $(0.2)^x < 0.01$. In logarithmic form, $x = \\log_{0.2} 0.01$.\n\nSystematic trial: $(0.2)^2 = 0.04$, $(0.2)^3 = 0.008$, so $2 < x < 3$. $(0.2)^{2.8} \\approx 0.011$, $(0.2)^{2.9} \\approx 0.0094$, $(0.2)^{2.86} \\approx 0.0100$.\n\nThe hull must be at least about **2.86 cm** thick.\n\n(b) For 0.1%: $(0.2)^x = 0.001$, giving $x \\approx 4.29$ cm (since $(0.2)^{4.29} \\approx 0.001$). The thickness must increase by about $4.29 - 2.86 \\approx 1.43$ cm.\n\n(c) Each extra 1.43 cm cuts the transmitted radiation by another factor of 10, because the transmitted fraction is exponential in the thickness.",
+      "rubric": [
+        {
+          "point": "Sets up the correct inequality/equation",
+          "marks": 1
+        },
+        {
+          "point": "Rewrites in log form or uses a valid method",
+          "marks": 1
+        },
+        {
+          "point": "Correct thickness for 1%",
+          "marks": 1
+        },
+        {
+          "point": "Correct increase for 0.1%",
+          "marks": 1
+        },
+        {
+          "point": "Explains the factor-of-10 pattern",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n1": {
+          "min": 20,
+          "max": 60,
+          "step": 10
+        },
+        "pop": {
+          "min": 800,
+          "max": 1600,
+          "step": 100
+        }
+      },
+      "text": "Four friends start a rumour, and each person who hears it tells two new students per day. Assuming no one hears the rumour twice, the time, $t$, in days, for the rumour to reach $N$ students is $t = \\dfrac{\\log\\left(\\frac{N}{4}\\right)}{\\log 3}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long will it take to reach {{n1}} students?",
+          "answer": {
+            "expr": "log(n1/4)/log(3)",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long to reach half of a student population of {{pop}}?",
+          "answer": {
+            "expr": "log(pop/8)/log(3)",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long to reach the entire student population?",
+          "answer": {
+            "expr": "log(pop/4)/log(3)",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe how the graph of $t$ versus $N$ would change if more than 4 students, or fewer than 4 students, started the rumour."
+        }
+      ],
+      "modelAnswer": "(a) $t = \\dfrac{\\log({{n1}}/4)}{\\log 3} = \\dfrac{ {{log(n1/4):4}} }{ {{log(3):4}} } \\approx {{log(n1/4)/log(3):3}}$ days.\n\n(b) Half of {{pop}} is {{pop/2}}: $t = \\dfrac{\\log({{pop/8}})}{\\log 3} \\approx {{log(pop/8)/log(3):3}}$ days.\n\n(c) Whole school: $t = \\dfrac{\\log({{pop/4}})}{\\log 3} \\approx {{log(pop/4)/log(3):3}}$ days — only about {{log(2)/log(3):2}} of a day longer than reaching half the school.\n\n(d) If more than 4 students start the rumour, $\\frac{N}{4}$ is replaced by a smaller fraction, so the graph shifts down (fewer days needed for each $N$). If fewer start it, the graph shifts up.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with comment",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct description of the effect of the starting number",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-2-q12",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Consider $\\log_x x$ for different values of $x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Evaluate $\\log_x x$ for several values of $x$."
+        },
+        {
+          "label": "b",
+          "text": "Make a conjecture about the value of $\\log_x x$. For which values of $x$ does it hold?"
+        },
+        {
+          "label": "c",
+          "text": "Prove your conjecture using algebraic reasoning."
+        }
+      ],
+      "modelAnswer": "(a) $\\log_2 2 = 1$, $\\log_{10} 10 = 1$, $\\log_7 7 = 1$, $\\log_{0.5} 0.5 = 1$.\n\n(b) $\\log_x x = 1$ for every allowed base: $x > 0$ and $x \\neq 1$.\n\n(c) Let $y = \\log_x x$. In exponential form, $x^y = x = x^1$, so $y = 1$. The value is not defined for $x = 1$ (base 1 not allowed: $1^y = 1$ for every $y$), $x \\le 0$ (base must be positive).",
+      "rubric": [
+        {
+          "point": "Evaluates several cases correctly",
+          "marks": 1
+        },
+        {
+          "point": "States the general result with conditions",
+          "marks": 1
+        },
+        {
+          "point": "Algebraic justification via exponential form",
+          "marks": 2
+        },
+        {
+          "point": "Explains the excluded values",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Compare the rate of change of $y = \\log x$ with that of its inverse, $y = 10^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the average rate of change of $y = \\log x$ on the intervals $[1, 10]$, $[10, 100]$ and $[100, 1000]$."
+        },
+        {
+          "label": "b",
+          "text": "Calculate the average rate of change of $y = 10^x$ on $[0, 1]$, $[1, 2]$ and $[2, 3]$."
+        },
+        {
+          "label": "c",
+          "text": "How are the rates of change alike and how are they different? Explain why using the relationship between the two graphs."
+        }
+      ],
+      "modelAnswer": "(a) Average rates for $y = \\log x$: from $x = 1$ to $10$: $\\frac{1 - 0}{9} \\approx 0.111$; from 10 to 100: $\\frac{1}{90} \\approx 0.0111$; from 100 to 1000: $\\frac{1}{900} \\approx 0.00111$. The rate decreases (by a factor of 10 each time).\n\n(b) For $y = 10^x$: from $x = 0$ to 1 the rate is 9; from 1 to 2 it is 90; from 2 to 3 it is 900. The rate increases by a factor of 10 each time.\n\n(c) Alike: both functions are always increasing. Different: the exponential's rate of change grows without bound (it gets steeper), while the logarithm's rate of change shrinks toward 0 (it flattens out). This makes sense because the graphs are reflections in $y = x$: a steep segment of one becomes a shallow segment of the other — the slopes are reciprocals at corresponding points.",
+      "rubric": [
+        {
+          "point": "Correct average rates for the log function",
+          "marks": 1
+        },
+        {
+          "point": "Correct average rates for the exponential function",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the decreasing vs increasing rates",
+          "marks": 1
+        },
+        {
+          "point": "Explains using reflection in y = x / reciprocal slopes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-2-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            5
+          ]
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 4,
+          "max": 9,
+          "step": 1
+        },
+        "j": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve each equation by first rewriting it in exponential form.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_{ {{b}} } x = {{k}}$",
+          "answer": {
+            "expr": "b^k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log x = -{{m}}$",
+          "answer": {
+            "expr": "10^(-m)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_x {{c^2}} = 2$",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log_{ {{b}} } {{b^j}} = y$",
+          "answer": {
+            "expr": "j",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_{ {{b}} } x = {{k}}$ → $x = {{b}}^{ {{k}} } = {{b^k}}$.\n\n(b) $\\log x = -{{m}}$ → $x = 10^{-{{m}} } = {{10^(-m)}}$.\n\n(c) $\\log_x {{c^2}} = 2$ → $x^2 = {{c^2}}$, so $x = {{c}}$ (reject $x = -{{c}}$ because a base must be positive).\n\n(d) $\\log_{ {{b}} } {{b^j}} = y$ → ${{b}}^y = {{b^j}} = {{b}}^{ {{j}} }$, so $y = {{j}}$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with rejection of the negative base",
+          "marks": 2
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q15",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Let $y = \\log x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the inverse of this function in exponential form."
+        },
+        {
+          "label": "b",
+          "text": "Describe how to sketch both graphs on the same grid, listing at least three points on each."
+        },
+        {
+          "label": "c",
+          "text": "State the domain, range, intercepts and asymptote of each function."
+        }
+      ],
+      "modelAnswer": "(a) The inverse of $y = \\log x$ is $y = 10^x$ (swap $x$ and $y$: $x = \\log y$, i.e. $10^x = y$).\n\n(b) Key points: $y = \\log x$ passes through $(0.1, -1)$, $(1, 0)$, $(10, 1)$; $y = 10^x$ passes through $(-1, 0.1)$, $(0, 1)$, $(1, 10)$. The graphs are reflections of each other in $y = x$.\n```plot\nf: log(x) | label=y = log x\nf: 10^x | label=y = 10^x\nf: x | dashed\ndomain: -3, 11\nrange: -3, 11\npoints: (1,0), (10,1), (0,1), (1,10)\n```\n\n(c) $y = \\log x$: domain $x > 0$, range all reals, $x$-intercept 1, no $y$-intercept, vertical asymptote $x = 0$, increasing. $y = 10^x$: domain all reals, range $y > 0$, $y$-intercept 1, horizontal asymptote $y = 0$, increasing.",
+      "rubric": [
+        {
+          "point": "Correct inverse in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Correct key points of both graphs",
+          "marks": 1
+        },
+        {
+          "point": "Describes the reflection in y = x",
+          "marks": 1
+        },
+        {
+          "point": "Correct key features of both functions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-2-q16",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 5,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Logarithmic functions grow very slowly.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How large must $x$ be for $\\log x$ to equal {{n}}?",
+          "answer": {
+            "expr": "10^n",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why it is difficult to view a broad range of $y = \\log x$ on a graphing calculator."
+        },
+        {
+          "label": "c",
+          "text": "Describe how semi-log graph paper helps, and what shape $y = \\log x$ has on it."
+        }
+      ],
+      "modelAnswer": "(a) $\\log x$ increases by 1 every time $x$ is multiplied by 10: $\\log 1 = 0$, $\\log 10 = 1$, $\\log 100 = 2$, $\\log 1000 = 3$. To reach $y = {{n}}$ you need $x = 10^{ {{n}} } = {{10^n}}$.\n\n(b) On a standard window with $x$ from 0 to 10 you see $y$ only from about $-1$ to 1; even with $x$ up to one million, $y$ only reaches 6. You can view only a few integer values of $y$ at once.\n\n(c) A semi-log graph plots $\\log x$ (instead of $x$) on the horizontal axis. Then equal steps represent multiplying by 10, and $y = \\log x$ appears as a straight line, so a huge range of values can be shown and compared clearly.",
+      "rubric": [
+        {
+          "point": "Explains that each increase of 1 needs ×10 in x",
+          "marks": 1
+        },
+        {
+          "point": "Correct x for the given y",
+          "marks": 1
+        },
+        {
+          "point": "Explains the difficulty of viewing a broad range",
+          "marks": 1
+        },
+        {
+          "point": "Describes semi-log graphing and why it straightens the graph",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-2-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        },
+        "n": {
+          "choices": [
+            20,
+            30,
+            45,
+            60,
+            100,
+            200
+          ]
+        }
+      },
+      "text": "Without using a calculator, estimate $\\log_{ {{b}} } {{n}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Between which two consecutive integers does the value lie? Justify."
+        },
+        {
+          "label": "b",
+          "text": "Give an estimate to one decimal place and explain how you checked it.",
+          "answer": {
+            "expr": "logb(b,n)",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.04
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{b}}^{ {{floor(logb(b,n))}} } = {{b^floor(logb(b,n))}}$ and ${{b}}^{ {{floor(logb(b,n))+1}} } = {{b^(floor(logb(b,n))+1)}}$. Because ${{n}}$ lies between these powers, $\\log_{ {{b}} } {{n}}$ is between {{floor(logb(b,n))}} and {{floor(logb(b,n))+1}}.\n\n(b) ${{n}}$ is about {{(n - b^floor(logb(b,n)))/(b^(floor(logb(b,n))+1) - b^floor(logb(b,n))):2}} of the way between the two powers, but because exponential growth speeds up, the log is a bit further along than a straight-line estimate. A good estimate is about {{logb(b,n):2}}; check: ${{b}}^{ {{logb(b,n):3}} } \\approx {{n}}$.",
+      "rubric": [
+        {
+          "point": "Correct bracketing powers",
+          "marks": 1
+        },
+        {
+          "point": "Correct consecutive integers",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable estimate with justification",
+          "marks": 2
+        },
+        {
+          "point": "Checks the estimate in exponential form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-2-q18",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A friend asks you, \"Is a logarithm an exponent?\" Write a clear explanation for your friend.",
+      "modelAnswer": "Yes. $\\log_b x$ is defined as **the exponent to which the base $b$ must be raised to produce $x$**. For example, $\\log_2 8 = 3$ because $2^3 = 8$ — the \"3\" is the exponent. Every logarithmic statement $\\log_b x = y$ is the same fact as the exponential statement $b^y = x$; the logarithm just isolates the exponent so we can find an unknown power. Because exponents can be negative or fractions, logarithms can be too: $\\log 0.01 = -2$, $\\log_4 2 = \\frac12$.",
+      "rubric": [
+        {
+          "point": "States a logarithm is the exponent needed to produce x from base b",
+          "marks": 2
+        },
+        {
+          "point": "Gives a correct numerical example",
+          "marks": 1
+        },
+        {
+          "point": "Connects the log form to the exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Notes logs can be negative/fractional",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1198 @@
+{
+  "id": "7-1",
+  "number": "7.1",
+  "title": "Equivalent Forms of Exponential Equations",
+  "estimatedMinutes": 60,
+  "overview": "Numbers have many 'names': 64 is $2^6$, $4^3$ and $8^2$. In this section you learn to rewrite powers with a different base — by inspection, or with logarithms when the number is not a neat power — and use a **common base** to solve exponential equations quickly.",
+  "objectives": [
+    "Rewrite a power, root or reciprocal as a power of a different base",
+    "Explain why $4^x$ and $2^{2x}$ are equivalent and prove it with exponent laws",
+    "Write any positive number as a power of any base using $a = b^{\\frac{\\log a}{\\log b}}$",
+    "Solve exponential equations by expressing both sides with a common base",
+    "Check solutions using graphing technology (intersection of two graphs)",
+    "Solve simple exponential inequalities using a common base"
+  ],
+  "lessons": [
+    {
+      "id": "same-number-many-names",
+      "title": "One number, many names",
+      "body": "\nA person can be called by a first name, a nickname, a jersey number or a job title — and it is still the same person. Numbers work the same way. The number 64 can be written as\n\n| Form | Why it equals 64 |\n|---|---|\n| $2^6$ | $2\\times2\\times2\\times2\\times2\\times2$ |\n| $4^3$ | $4\\times4\\times4$ |\n| $8^2$ | $8\\times8$ |\n| $64^1$ | any number to the power 1 is itself |\n\nChoosing the **right name** for a number is one of the most useful tools in this chapter: when two powers are written with the **same base**, they are easy to compare and to solve.\n\n### Why does this work for functions too?\nCompare $f(x) = 4^x$ and $g(x) = 2^{2x}$. Using the power of a power law,\n\n$$2^{2x} = (2^2)^x = 4^x$$\n\nso $f$ and $g$ are **the same function** written in two ways. Their graphs lie exactly on top of each other.\n\n```plot\ntitle: f(x) = 4^x and g(x) = 2^(2x) are the same curve\nf: 4^x | label=f(x) = 4^x\nf: 2^(2*x) | dashed; label=g(x) = 2^(2x)\ndomain: -2, 2\nrange: -1, 16\nticks: 0.5, 2\n```\n\nA concrete picture: bacteria that **quadruple** every hour give the sequence $1, 4, 16, 64, \\dots = 4^n$. Bacteria that **double every half hour** give $1, 2, 4, 8, 16, \\dots$ — after $n$ hours that is $2^{2n}$ cells. Same numbers, two descriptions.\n"
+    },
+    {
+      "id": "rewrite-by-inspection",
+      "title": "Changing the base by inspection",
+      "body": "\nWhen a number is a **known power** of the new base, you can rewrite it by inspection. Memorise the small powers — they appear constantly:\n\n| base | powers |\n|---|---|\n| 2 | 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 |\n| 3 | 3, 9, 27, 81, 243, 729 |\n| 5 | 5, 25, 125, 625 |\n| 6 | 6, 36, 216 |\n| 10 | 10, 100, 1000, 10 000 |\n\n**Recipe**\n\n1. Write every radical as a rational exponent: $\\sqrt[n]{x^m} = x^{\\frac{m}{n}}$.\n2. Write every base as a power of the new base (e.g. $16 = 2^4$, $\\frac{1}{8} = 2^{-3}$).\n3. Apply the exponent laws: $(b^m)^n = b^{mn}$, $b^m b^n = b^{m+n}$, $\\frac{b^m}{b^n} = b^{m-n}$.\n\n**Example:** write $\\sqrt{16}\\times(\\sqrt[5]{32})^3$ with base 2.\n\n$$\\sqrt{16}\\times(\\sqrt[5]{32})^3 = 16^{\\frac{1}{2}}\\times 32^{\\frac{3}{5}} = (2^4)^{\\frac12}\\times(2^5)^{\\frac35} = 2^2\\times 2^3 = 2^5$$\n\n> Reciprocals give **negative** exponents: $\\left(\\frac{1}{8}\\right)^2 = (2^{-3})^2 = 2^{-6}$.\n"
+    },
+    {
+      "id": "any-number-any-base",
+      "title": "Any positive number as a power of any base",
+      "body": "\nCan 12 be written as a power of 2? It is not $2^3$ (that is 8) and not $2^4$ (that is 16), so the exponent must be **between 3 and 4**. To find it, solve $2^k = 12$ with logarithms:\n\n$$2^k = 12 \\;\\Rightarrow\\; \\log 2^k = \\log 12 \\;\\Rightarrow\\; k\\log 2 = \\log 12 \\;\\Rightarrow\\; k = \\frac{\\log 12}{\\log 2} \\approx 3.585$$\n\nSo $12 = 2^{\\frac{\\log 12}{\\log 2}} \\approx 2^{3.585}$. Check: $2^{3.585} \\approx 12.0$ ✓.\n\n### The general result\nFor any $a > 0$ and any base $b > 0,\\ b \\ne 1$:\n\n$$a = b^{\\frac{\\log a}{\\log b}}$$\n\n*Why?* Let $a = b^k$. Taking the common logarithm, $\\log a = k \\log b$, so $k = \\frac{\\log a}{\\log b}$.\n\nA neat special case: $10 = 2^{\\frac{1}{\\log 2}}$ because $\\log 10 = 1$.\n\n### What *cannot* be done\n* A **negative** number or **zero** cannot be written as a power of a positive base, because $b^k > 0$ for every real $k$.\n* The base $b = 1$ is useless: $1^k = 1$ for every $k$.\n"
+    },
+    {
+      "id": "common-base-equations",
+      "title": "Solving equations by writing both sides with a common base",
+      "body": "\nThe key property:\n\n> If $b^m = b^n$ (with $b>0,\\ b\\ne1$), then $m = n$.\n\nExponential functions with a base other than 1 are one-to-one, so equal powers of the same base must have equal exponents.\n\n**Steps**\n\n1. Write both sides as powers of the **same base**.\n2. Simplify with the power of a power law.\n3. **Equate the exponents** and solve the resulting linear (or quadratic) equation.\n4. Check by substitution or with a graph.\n\n**Example:** solve $4^{x+5} = 64^x$.\n\n$$4^{x+5} = (4^3)^x = 4^{3x} \\;\\Rightarrow\\; x+5 = 3x \\;\\Rightarrow\\; x = \\tfrac{5}{2}$$\n\n**Example:** solve $4^{2x} = 8^{x-3}$. Neither 4 nor 8 is a power of the other, but both are powers of 2:\n\n$$(2^2)^{2x} = (2^3)^{x-3} \\;\\Rightarrow\\; 2^{4x} = 2^{3x-9} \\;\\Rightarrow\\; 4x = 3x-9 \\;\\Rightarrow\\; x = -9$$\n\n> There may be **more than one** possible common base. $81^{2x} = 9^{x+3}$ can be solved with base 3 *or* base 9 — you get the same answer either way.\n"
+    },
+    {
+      "id": "graphical-check",
+      "title": "Checking with a graph",
+      "body": "\nEvery exponential equation $L(x) = R(x)$ can be checked graphically: graph $y = L(x)$ and $y = R(x)$ on the same axes and find the **x-coordinate of the point of intersection** (on a graphing calculator use the *Intersect* operation; you may need to adjust the window).\n\n**Example:** $3^{w+1} = 9^{w-1}$. Algebraically, $3^{w+1} = 3^{2w-2}$ gives $w+1 = 2w-2$, so $w = 3$. The graphs agree:\n\n```plot\ntitle: y = 3^(x+1) and y = 9^(x-1) meet where x = 3\nf: 3^(x+1) | label=y = 3^(x+1)\nf: 9^(x-1) | label=y = 9^(x-1)\ndomain: 0, 4\nrange: 0, 120\nticks: 1, 20\npoints: (3, 81)\n```\n\nThe y-coordinate (81) is the common value of both sides — it is **not** the solution. The solution is the x-coordinate, $x = 3$.\n"
+    },
+    {
+      "id": "inequalities",
+      "title": "Extension: exponential inequalities",
+      "body": "\nThe same idea works for inequalities. If the base is **greater than 1**, the function $y = b^x$ is increasing, so the inequality sign is kept when you compare exponents:\n\n$$2^{3x} > 4^{x+1} \\;\\Rightarrow\\; 2^{3x} > 2^{2x+2} \\;\\Rightarrow\\; 3x > 2x + 2 \\;\\Rightarrow\\; x > 2$$\n\nGraphically, the solution is the set of $x$-values where the graph of the left side lies **above** the graph of the right side.\n\n> Be careful if the base is between 0 and 1: $y = \\left(\\frac12\\right)^x$ is *decreasing*, so the inequality reverses. Rewriting with a base greater than 1 (for example $\\left(\\frac12\\right)^x = 2^{-x}$) avoids the trap.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "base",
+      "definition": "In $b^x$, the number $b$ that is multiplied repeatedly. For exponential functions $b > 0,\\ b \\ne 1$."
+    },
+    {
+      "term": "exponent",
+      "definition": "In $b^x$, the number $x$ that tells how many factors of the base (or, for rational exponents, which root and power)."
+    },
+    {
+      "term": "common base",
+      "definition": "A single base used to rewrite every power in an equation, e.g. writing 4 and 8 as $2^2$ and $2^3$."
+    },
+    {
+      "term": "equivalent expressions",
+      "definition": "Expressions that are equal for every allowed value of the variable, e.g. $4^x$ and $2^{2x}$."
+    },
+    {
+      "term": "rational exponent",
+      "definition": "An exponent that is a fraction: $x^{\\frac{m}{n}} = \\left(\\sqrt[n]{x}\\right)^m$."
+    },
+    {
+      "term": "common logarithm",
+      "definition": "A logarithm with base 10, written $\\log x$. It is used to find unknown exponents."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Power of a power",
+      "latex": "(b^m)^n = b^{mn}",
+      "meaning": "Used to rewrite a base as a power, e.g. $8^x = (2^3)^x = 2^{3x}$."
+    },
+    {
+      "name": "Product and quotient of powers",
+      "latex": "b^m b^n = b^{m+n} \\qquad \\frac{b^m}{b^n} = b^{m-n}",
+      "meaning": "Same base: add or subtract exponents."
+    },
+    {
+      "name": "Rational exponents",
+      "latex": "\\sqrt[n]{x} = x^{\\frac{1}{n}} \\qquad \\sqrt[n]{x^m} = x^{\\frac{m}{n}}",
+      "meaning": "Turn radicals into powers before changing the base."
+    },
+    {
+      "name": "Equal powers",
+      "latex": "b^m = b^n \\;\\Rightarrow\\; m = n \\quad (b>0,\\ b\\ne1)",
+      "meaning": "Lets you equate exponents once the bases match."
+    },
+    {
+      "name": "Any number as a power of base b",
+      "latex": "a = b^{\\frac{\\log a}{\\log b}} \\quad (a>0,\\ b>0,\\ b\\ne1)",
+      "meaning": "Works even when $a$ is not a 'nice' power of $b$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Express in base 2",
+      "problem": "Write each in terms of a power with base 2: (a) $8$ (b) $4^3$ (c) $\\sqrt{16}\\times(\\sqrt[5]{32})^3$ (d) $12$",
+      "steps": [
+        "(a) $8 = 2^3$ because $2\\times2\\times2 = 8$.",
+        "(b) $4^3 = (2^2)^3 = 2^6$ (power of a power law).",
+        "(c) $\\sqrt{16}\\times(\\sqrt[5]{32})^3 = 16^{\\frac12}\\times32^{\\frac35} = (2^4)^{\\frac12}\\times(2^5)^{\\frac35} = 2^2\\times2^3 = 2^5$.",
+        "(d) 12 is not an integer power of 2. Solve $2^k = 12$: $k\\log 2 = \\log 12$, so $k = \\frac{\\log 12}{\\log 2} \\approx 3.585$."
+      ],
+      "answer": "$8 = 2^3$, $4^3 = 2^6$, $\\sqrt{16}(\\sqrt[5]{32})^3 = 2^5$, $12 = 2^{\\frac{\\log 12}{\\log 2}} \\approx 2^{3.585}$"
+    },
+    {
+      "title": "Solve with a common base (base 4)",
+      "problem": "Solve $4^{x+5} = 64^x$.",
+      "steps": [
+        "Notice $64 = 4^3$, so the right side is $(4^3)^x = 4^{3x}$.",
+        "Now $4^{x+5} = 4^{3x}$. Equate exponents: $x + 5 = 3x$.",
+        "Solve: $5 = 2x$, so $x = \\frac52 = 2.5$.",
+        "Check: $4^{7.5} = 32\\,768$ and $64^{2.5} = 32\\,768$ ✓."
+      ],
+      "answer": "$x = 2.5$"
+    },
+    {
+      "title": "Solve when neither base is a power of the other",
+      "problem": "Solve $4^{2x} = 8^{x-3}$.",
+      "steps": [
+        "Both 4 and 8 are powers of 2: $(2^2)^{2x} = (2^3)^{x-3}$.",
+        "Power of a power: $2^{4x} = 2^{3x-9}$.",
+        "Equate exponents: $4x = 3x - 9$, so $x = -9$.",
+        "Check: $4^{-18} = 2^{-36}$ and $8^{-12} = 2^{-36}$ ✓."
+      ],
+      "answer": "$x = -9$"
+    },
+    {
+      "title": "Two different common bases",
+      "problem": "Solve $81^{2x} = 9^{x+3}$ (a) using base 3 and (b) using base 9.",
+      "steps": [
+        "(a) $81 = 3^4$ and $9 = 3^2$: $3^{8x} = 3^{2x+6}$, so $8x = 2x+6$ and $x = 1$.",
+        "(b) $81 = 9^2$: $9^{4x} = 9^{x+3}$, so $4x = x + 3$ and $x = 1$.",
+        "Both methods give the same root — as they must, because the expressions are equal for every $x$."
+      ],
+      "answer": "$x = 1$"
+    },
+    {
+      "title": "Write a number as a power of a base of your choice",
+      "problem": "Write 28 as a power of 3 and as a power of 5. Check with a calculator.",
+      "steps": [
+        "Solve $3^k = 28$: $k = \\frac{\\log 28}{\\log 3} \\approx 3.033$, so $28 \\approx 3^{3.033}$.",
+        "Solve $5^k = 28$: $k = \\frac{\\log 28}{\\log 5} \\approx 2.070$, so $28 \\approx 5^{2.070}$.",
+        "Check: $3^{3.033} \\approx 28.0$ and $5^{2.070} \\approx 28.0$ ✓."
+      ],
+      "answer": "$28 \\approx 3^{3.033} \\approx 5^{2.070}$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$2^3 \\times 2^4 = 4^7$ — multiply the bases and add the exponents.",
+      "fact": "Only the **exponents** change: $2^3\\times2^4 = 2^{3+4} = 2^7$. The base stays 2."
+    },
+    {
+      "myth": "$(2^3)^2 = 2^5$.",
+      "fact": "A power of a power **multiplies** exponents: $(2^3)^2 = 2^6$."
+    },
+    {
+      "myth": "In $4^x = 8^{x-1}$ I can equate exponents right away: $x = x - 1$.",
+      "fact": "Exponents can only be equated when the **bases are the same**. Rewrite first: $2^{2x} = 2^{3x-3}$, so $2x = 3x-3$ and $x = 3$."
+    },
+    {
+      "myth": "$\\sqrt{8} = 2^3$.",
+      "fact": "$\\sqrt{8} = 8^{\\frac12} = (2^3)^{\\frac12} = 2^{\\frac32}$."
+    },
+    {
+      "myth": "Any number, even $-8$, can be written as a power of 2.",
+      "fact": "$2^k > 0$ for every real $k$, so negative numbers and zero **cannot** be powers of a positive base."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Bacteria and doubling",
+      "body": "A culture that doubles every 20 minutes triples… no — it multiplies by $2^3 = 8$ every hour. Rewriting $2^{3t}$ as $8^t$ lets a lab technician switch between 'per 20 min' and 'per hour' descriptions instantly."
+    },
+    {
+      "title": "Computer memory",
+      "body": "Memory sizes are powers of 2: $1024 = 2^{10}$, $1\\,048\\,576 = 2^{20} = 1024^2 = 4^{10}$. Engineers move between these forms all the time."
+    },
+    {
+      "title": "Sound and music",
+      "body": "Each octave up doubles a note's frequency. Twelve equal semitone steps make an octave, so one semitone multiplies the frequency by $2^{\\frac{1}{12}}$ — a power with a rational exponent."
+    },
+    {
+      "title": "Acoustic engineering",
+      "body": "Engineers who design concert halls and noise control use powers of 10 to compare sound intensities, often rewriting values as powers of a convenient base."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Write with base 2: (a) $4^6$ (b) $8^3$ (c) $\\left(\\frac18\\right)^2$",
+      "hint": "Write 4, 8 and $\\frac18$ as powers of 2 first.",
+      "solution": "(a) $(2^2)^6 = 2^{12}$ (b) $(2^3)^3 = 2^9$ (c) $(2^{-3})^2 = 2^{-6}$"
+    },
+    {
+      "question": "Write with base 3: (a) $27^2$ (b) $\\left(\\frac13\\right)^4$ (c) 10",
+      "hint": "For (c) solve $3^k = 10$.",
+      "solution": "(a) $3^6$ (b) $3^{-4}$ (c) $10 = 3^{\\frac{\\log 10}{\\log 3}} \\approx 3^{2.096}$"
+    },
+    {
+      "question": "Write as a single power of 4: (a) $(\\sqrt{16})^3$ (b) $\\sqrt[3]{16}$",
+      "hint": "$16 = 4^2$.",
+      "solution": "(a) $(4^2)^{\\frac32} = 4^3$ (b) $(4^2)^{\\frac13} = 4^{\\frac23}$"
+    },
+    {
+      "question": "Solve $2^{4x} = 4^{x+3}$.",
+      "hint": "Write $4 = 2^2$.",
+      "solution": "$2^{4x} = 2^{2x+6}$, so $4x = 2x + 6$ and $x = 3$."
+    },
+    {
+      "question": "Solve $25^{x-1} = 5^{3x}$.",
+      "hint": "$25 = 5^2$.",
+      "solution": "$5^{2x-2} = 5^{3x}$, so $2x - 2 = 3x$ and $x = -2$."
+    },
+    {
+      "question": "Solve $36^{3m-1} = 6^{2m+5}$.",
+      "hint": "$36 = 6^2$.",
+      "solution": "$6^{6m-2} = 6^{2m+5}$, so $4m = 7$ and $m = \\frac74$."
+    },
+    {
+      "question": "Solve $125^{2y-1} = 25^{y+4}$.",
+      "hint": "Use base 5.",
+      "solution": "$5^{6y-3} = 5^{2y+8}$, so $4y = 11$ and $y = \\frac{11}{4}$."
+    },
+    {
+      "question": "Show that $10 = 3^{\\frac{1}{\\log 3}}$.",
+      "hint": "Solve $3^k = 10$ using common logarithms.",
+      "solution": "$3^k = 10 \\Rightarrow k\\log 3 = \\log 10 = 1 \\Rightarrow k = \\frac{1}{\\log 3}$, so $10 = 3^{\\frac{1}{\\log 3}}$."
+    }
+  ],
+  "summary": [
+    "Exponential expressions can be written with different bases; e.g. $4^x = 2^{2x}$.",
+    "Turn radicals into rational exponents, write each base as a power of the new base, then use the exponent laws.",
+    "Any positive number $a$ can be written as a power of any base $b>0,\\ b\\ne1$: $a = b^{\\frac{\\log a}{\\log b}}$.",
+    "To solve an exponential equation, write both sides with a common base and equate the exponents.",
+    "Graphing both sides and finding the intersection is a reliable check; the solution is the x-coordinate."
+  ],
+  "questions": [
+    {
+      "id": "7-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "n": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Write each expression as a single power of 2. Show each exponent law you use.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$8^{ {{k}} }$ — give the exponent",
+          "answer": {
+            "expr": "3*k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\left(\\frac{1}{16}\\right)^{ {{m}} }$ — give the exponent",
+          "answer": {
+            "expr": "-4*m",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\sqrt{32}$ — give the exponent",
+          "answer": {
+            "expr": "2.5",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$4^{ {{n}} }\\times 8$ — give the exponent",
+          "answer": {
+            "expr": "2*n+3",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $8^{ {{k}} } = (2^3)^{ {{k}} } = 2^{ {{3*k}} }$ (power of a power).\n\n(b) $\\left(\\frac{1}{16}\\right)^{ {{m}} } = (2^{-4})^{ {{m}} } = 2^{ {{-4*m}} }$.\n\n(c) $\\sqrt{32} = 32^{\\frac12} = (2^5)^{\\frac12} = 2^{\\frac52} = 2^{2.5}$.\n\n(d) $4^{ {{n}} }\\times 8 = 2^{ {{2*n}} }\\times 2^3 = 2^{ {{2*n+3}} }$ (product of powers).",
+      "rubric": [
+        {
+          "point": "Rewrites 8, 1/16, 32 and 4 correctly as powers of 2",
+          "marks": 1
+        },
+        {
+          "point": "Applies the power of a power law correctly in (a) and (b)",
+          "marks": 1
+        },
+        {
+          "point": "Converts the radical to a rational exponent in (c)",
+          "marks": 1
+        },
+        {
+          "point": "Adds exponents correctly in (d)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Write each expression as a single power of 3.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$27^{ {{a}} }$",
+          "answer": {
+            "expr": "3*a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\left(\\frac19\\right)^{ {{b}} }$",
+          "answer": {
+            "expr": "-2*b",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\sqrt[4]{81}$",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\dfrac{1}{\\sqrt{3}}$",
+          "answer": {
+            "expr": "-0.5",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $27^{ {{a}} } = (3^3)^{ {{a}} } = 3^{ {{3*a}} }$\n\n(b) $\\left(\\frac{1}{9}\\right)^{ {{b}} } = (3^{-2})^{ {{b}} } = 3^{ {{-2*b}} }$\n\n(c) $\\sqrt[4]{81} = (3^4)^{\\frac14} = 3^1$\n\n(d) $\\frac{1}{\\sqrt{3}} = 3^{-\\frac12}$",
+      "rubric": [
+        {
+          "point": "Correct exponent for (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct exponent for (b), using a negative exponent for the reciprocal",
+          "marks": 1
+        },
+        {
+          "point": "Correct exponent for (c)",
+          "marks": 1
+        },
+        {
+          "point": "Correct exponent for (d), combining a root and a reciprocal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "N": {
+          "choices": [
+            6,
+            10,
+            12,
+            20,
+            28,
+            50,
+            70
+          ]
+        },
+        "b": {
+          "choices": [
+            2,
+            3,
+            5
+          ]
+        }
+      },
+      "text": "The number {{N}} is not an integer power of {{b}}.\n\nWrite {{N}} as a power of {{b}}, giving the exponent both exactly and correct to three decimal places. Then explain how you could check your answer with a calculator.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the exponent correct to three decimal places.",
+          "answer": {
+            "expr": "log(N)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.002
+          }
+        }
+      ],
+      "modelAnswer": "Let ${{b}}^k = {{N}}$. Take the common logarithm of both sides:\n\n$$k\\log {{b}} = \\log {{N}} \\quad\\Rightarrow\\quad k = \\frac{\\log {{N}} }{\\log {{b}} } \\approx {{log(N)/log(b):4}}$$\n\nSo ${{N}} = {{b}}^{\\frac{\\log {{N}} }{\\log {{b}} }} \\approx {{b}}^{ {{log(N)/log(b):4}} }$.\n\nCheck: evaluate ${{b}}^{ {{log(N)/log(b):4}} }$ on a calculator; it gives approximately {{N}}.",
+      "rubric": [
+        {
+          "point": "Sets up the equation b^k = N",
+          "marks": 1
+        },
+        {
+          "point": "Takes logarithms of both sides and applies the power law",
+          "marks": 1
+        },
+        {
+          "point": "Exact exponent log N / log b",
+          "marks": 1
+        },
+        {
+          "point": "Decimal exponent correct to three decimal places",
+          "marks": 1
+        },
+        {
+          "point": "Describes a valid calculator check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "choices": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $2^{ {{p}}x} = 4^{x+{{a}}}$. Check your answer by substitution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "2*a/(p-2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Write 4 as $2^2$: $4^{x+{{a}}} = 2^{2x+{{2*a}}}$.\n\nSo $2^{ {{p}}x} = 2^{2x+{{2*a}}}$. Equate exponents:\n\n$${{p}}x = 2x + {{2*a}} \\;\\Rightarrow\\; {{p-2}}x = {{2*a}} \\;\\Rightarrow\\; x = {{2*a/(p-2):4}}$$\n\nCheck: both sides equal $2^{ {{p*2*a/(p-2):4}} }$ ✓.",
+      "rubric": [
+        {
+          "point": "Rewrites 4 as 2^2 and simplifies the right side",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents correctly",
+          "marks": 1
+        },
+        {
+          "point": "Solves the linear equation",
+          "marks": 1
+        },
+        {
+          "point": "Checks by substitution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Solve $25^{x-{{a}}} = 5^{3x}$ and check your solution graphically: describe what you would graph and what you would expect to see.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "-2*a",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Write 25 as $5^2$: $5^{2x-{{2*a}}} = 5^{3x}$.\n\nEquate exponents: $2x - {{2*a}} = 3x$, so $x = {{-2*a}}$.\n\nGraphical check: graph $y_1 = 25^{x-{{a}}}$ and $y_2 = 5^{3x}$ on the same axes and use the intersect operation. The curves should cross at $x = {{-2*a}}$ (the y-value there is $5^{ {{-6*a}} }$, very close to 0, so a small window near the x-axis is needed).",
+      "rubric": [
+        {
+          "point": "Writes both sides with base 5",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents and solves correctly",
+          "marks": 2
+        },
+        {
+          "point": "Describes graphing both sides and finding the x-coordinate of the intersection",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q06",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve $3^{w+{{a}}} = 9^{w-{{b}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $w$.",
+          "answer": {
+            "expr": "a+2*b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$9^{w-{{b}}} = (3^2)^{w-{{b}}} = 3^{2w-{{2*b}}}$.\n\nEquate exponents: $w + {{a}} = 2w - {{2*b}}$, so $w = {{a+2*b}}$.\n\nCheck: $3^{ {{2*a+2*b}} }$ on the left; $9^{ {{a+b}} } = 3^{ {{2*a+2*b}} }$ on the right ✓.",
+      "rubric": [
+        {
+          "point": "Rewrites 9 as 3^2",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Solve $36^{3m-{{a}}} = 6^{2m+{{b}}}$. Give your answer as a fraction and as a decimal.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $m$ (decimal).",
+          "answer": {
+            "expr": "(2*a+b)/4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$36 = 6^2$, so $6^{6m-{{2*a}}} = 6^{2m+{{b}}}$.\n\nEquate exponents: $6m - {{2*a}} = 2m + {{b}}$, so $4m = {{2*a+b}}$ and $m = \\frac{ {{2*a+b}} }{4} = {{(2*a+b)/4:4}}$.",
+      "rubric": [
+        {
+          "point": "Writes 36 as a power of 6",
+          "marks": 1
+        },
+        {
+          "point": "Applies power of a power to get 6m − 2a",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents and isolates m",
+          "marks": 1
+        },
+        {
+          "point": "Correct fraction and decimal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Solve $4^{3x} = 8^{x-{{a}}}$. Explain why you cannot simply equate the exponents $3x$ and $x - {{a}}$ in the original equation.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "-a",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The bases 4 and 8 are different, so equal powers do **not** mean equal exponents ($4^1 \\ne 8^1$). First write both as powers of 2:\n\n$$(2^2)^{3x} = (2^3)^{x-{{a}}} \\;\\Rightarrow\\; 2^{6x} = 2^{3x-{{3*a}}}$$\n\nNow the bases match: $6x = 3x - {{3*a}}$, so $3x = {{-3*a}}$ and $x = {{-a}}$.",
+      "rubric": [
+        {
+          "point": "Explains that exponents may only be equated when the bases are equal",
+          "marks": 1
+        },
+        {
+          "point": "Rewrites both sides with base 2",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies with the power of a power law",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $125^{2y-1} = 25^{y+{{a}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $y$.",
+          "answer": {
+            "expr": "(2*a+3)/4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Use base 5: $125 = 5^3$ and $25 = 5^2$.\n\n$$5^{6y-3} = 5^{2y+{{2*a}}} \\;\\Rightarrow\\; 6y - 3 = 2y + {{2*a}} \\;\\Rightarrow\\; 4y = {{2*a+3}} \\;\\Rightarrow\\; y = \\frac{ {{2*a+3}} }{4} = {{(2*a+3)/4:4}}$$",
+      "rubric": [
+        {
+          "point": "Chooses base 5 and rewrites both bases",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents",
+          "marks": 1
+        },
+        {
+          "point": "Solves correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Solve $16^{2k-{{a}}} = 32^{k+{{b}}}$. Then verify your answer by evaluating both sides as powers of 2.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $k$.",
+          "answer": {
+            "expr": "(4*a+5*b)/3",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$16 = 2^4$ and $32 = 2^5$:\n\n$$2^{8k-{{4*a}}} = 2^{5k+{{5*b}}} \\;\\Rightarrow\\; 8k - {{4*a}} = 5k + {{5*b}} \\;\\Rightarrow\\; 3k = {{4*a+5*b}} \\;\\Rightarrow\\; k = \\frac{ {{4*a+5*b}} }{3} \\approx {{(4*a+5*b)/3:4}}$$\n\nVerify: left exponent $8k - {{4*a}} \\approx {{8*(4*a+5*b)/3-4*a:4}}$; right exponent $5k + {{5*b}} \\approx {{5*(4*a+5*b)/3+5*b:4}}$ — equal, so both sides are the same power of 2 ✓.",
+      "rubric": [
+        {
+          "point": "Writes 16 and 32 as powers of 2",
+          "marks": 1
+        },
+        {
+          "point": "Applies power of a power law to both sides",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents and solves for k",
+          "marks": 1
+        },
+        {
+          "point": "Verifies that both exponents are equal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $(\\sqrt{8})^x = 2^{x-{{a}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "-2*a",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\sqrt{8} = 8^{\\frac12} = (2^3)^{\\frac12} = 2^{\\frac32}$, so $(\\sqrt8)^x = 2^{\\frac32 x}$.\n\nEquate exponents: $\\frac32 x = x - {{a}}$, so $\\frac12 x = -{{a}}$ and $x = {{-2*a}}$.",
+      "rubric": [
+        {
+          "point": "Writes √8 as 2^(3/2)",
+          "marks": 1
+        },
+        {
+          "point": "Applies the power law to get 2^(3x/2)",
+          "marks": 1
+        },
+        {
+          "point": "Equates exponents and solves",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q12",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Consider the equation $10^{2x} = 100^{2x-{{a}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve by expressing both sides as powers of a common base.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Solve the same equation by taking the common logarithm of both sides."
+        },
+        {
+          "label": "c",
+          "text": "Which method do you prefer? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $100 = 10^2$, so $10^{2x} = 10^{4x-{{2*a}}}$. Equate exponents: $2x = 4x - {{2*a}}$, so $x = {{a}}$.\n\n(b) Take the common logarithm: $\\log 10^{2x} = \\log 100^{2x-{{a}}}$, so $2x\\log 10 = (2x-{{a}})\\log 100$, i.e. $2x = 2(2x-{{a}})$, giving $2x = 4x - {{2*a}}$ and $x = {{a}}$.\n\n(c) Both methods give the same root. The common-base method is quicker when the bases are obviously related; taking logarithms always works, even when no common base exists. Any well-reasoned preference earns credit.",
+      "rubric": [
+        {
+          "point": "(a) Solves using the common base 10",
+          "marks": 2
+        },
+        {
+          "point": "(b) Takes logarithms, applies the power law and solves",
+          "marks": 2
+        },
+        {
+          "point": "(c) Compares the methods with a reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q13",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Can **any** number be written as a power of **any** other number? Explain your answer fully: state the conditions under which it is possible, give a supporting example, and give a counterexample showing when it is not possible.",
+      "modelAnswer": "Any **positive** number $a$ can be written as a power of any **positive base $b \\ne 1$**: solving $b^k = a$ gives $k = \\frac{\\log a}{\\log b}$, so $a = b^{\\frac{\\log a}{\\log b}}$.\n\nExample: $12 = 2^{\\frac{\\log 12}{\\log 2}} \\approx 2^{3.585}$.\n\nCounterexamples:\n* $-8$ cannot be written as a power of 2, because $2^k > 0$ for every real $k$ (similarly 0 cannot).\n* No number other than 1 is a power of base 1, because $1^k = 1$ always.",
+      "rubric": [
+        {
+          "point": "States the condition a > 0",
+          "marks": 1
+        },
+        {
+          "point": "States the condition b > 0, b ≠ 1",
+          "marks": 1
+        },
+        {
+          "point": "Explains how to find the exponent using logarithms",
+          "marks": 1
+        },
+        {
+          "point": "Gives a correct supporting example",
+          "marks": 1
+        },
+        {
+          "point": "Gives a correct counterexample with a reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Use algebraic reasoning to prove each result.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $a = b^{\\frac{\\log a}{\\log b}}$ for any $a, b > 0$, $b \\ne 1$."
+        },
+        {
+          "label": "b",
+          "text": "Hence show that $10 = 2^{\\frac{1}{\\log 2}}$."
+        },
+        {
+          "label": "c",
+          "text": "Develop a formula that writes 10 as a power of any base $b$."
+        }
+      ],
+      "modelAnswer": "(a) Let $a = b^k$. Taking common logarithms, $\\log a = k\\log b$, so $k = \\frac{\\log a}{\\log b}$. Therefore $a = b^{\\frac{\\log a}{\\log b}}$ for $a > 0,\\ b > 0,\\ b\\ne 1$.\n\n(b) With $a = 10$ and $b = 2$: $10 = 2^{\\frac{\\log 10}{\\log 2}} = 2^{\\frac{1}{\\log 2}}$ because $\\log 10 = 1$.\n\n(c) In general $10 = b^{\\frac{1}{\\log b}}$ for any $b > 0,\\ b \\ne 1$.",
+      "rubric": [
+        {
+          "point": "Sets a = b^k and takes logarithms of both sides",
+          "marks": 1
+        },
+        {
+          "point": "Applies the power law and isolates k",
+          "marks": 1
+        },
+        {
+          "point": "Uses log 10 = 1 to complete (b)",
+          "marks": 1
+        },
+        {
+          "point": "States the general formula in (c) with the restriction on b",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Consider $81^{2x} = 9^{x+{{a}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve using base 3.",
+          "answer": {
+            "expr": "a/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Solve using base 9."
+        },
+        {
+          "label": "c",
+          "text": "Describe how to solve it with graphing technology."
+        },
+        {
+          "label": "d",
+          "text": "Which method do you prefer, and why?"
+        }
+      ],
+      "modelAnswer": "(a) Base 3: $3^{8x} = 3^{2x+{{2*a}}}$, so $6x = {{2*a}}$ and $x = {{a/3:4}}$.\n\n(b) Base 9: $81 = 9^2$, so $9^{4x} = 9^{x+{{a}}}$, giving $3x = {{a}}$ and $x = {{a/3:4}}$.\n\n(c) Graph $y_1 = 81^{2x}$ and $y_2 = 9^{x+{{a}}}$; they intersect at $x \\approx {{a/3:3}}$.\n\n(d) Both bases work because $81$ and $9$ are both powers of 3 and $81$ is also a power of 9. Base 9 gives smaller numbers, but either choice is valid with a reason.",
+      "rubric": [
+        {
+          "point": "(a) Correct solution using base 3",
+          "marks": 2
+        },
+        {
+          "point": "(b) Correct solution using base 9",
+          "marks": 2
+        },
+        {
+          "point": "(c) Describes a correct graphical check",
+          "marks": 1
+        },
+        {
+          "point": "(d) Reflects on the methods with a reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q16",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Consider $f(x) = 4^x$ and $g(x) = 2^{2x}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Make a table of values for $x = 0, 1, 2, 3$."
+        },
+        {
+          "label": "b",
+          "text": "Predict what you will see when both are graphed on the same axes."
+        },
+        {
+          "label": "c",
+          "text": "Prove the relationship algebraically."
+        },
+        {
+          "label": "d",
+          "text": "Describe a real situation or concrete model that each function could describe."
+        }
+      ],
+      "modelAnswer": "(a) For $x = 0, 1, 2, 3$: $f$ gives $1, 4, 16, 64$ and $g$ gives $2^0, 2^2, 2^4, 2^6 = 1, 4, 16, 64$ — identical.\n\n(b) The graphs coincide: there is only one visible curve.\n\n(c) $g(x) = 2^{2x} = (2^2)^x = 4^x = f(x)$ by the power of a power law, for every real $x$.\n\n(d) Example: bacteria quadrupling every hour ($4^n$) and bacteria doubling every half hour ($2^{2n}$) give the same counts each hour.",
+      "rubric": [
+        {
+          "point": "Correct table of values showing equal outputs",
+          "marks": 1
+        },
+        {
+          "point": "Predicts that the graphs are identical",
+          "marks": 1
+        },
+        {
+          "point": "Algebraic proof using the power of a power law",
+          "marks": 2
+        },
+        {
+          "point": "A sensible concrete model or context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q17",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create your own exponential equation that can be solved by choosing **more than one** common base (for example, both sides can be written with base 2 or with base 4). Solve your equation using **two different common bases**, and then describe how you would check the root with graphing technology.",
+      "modelAnswer": "Sample: $16^{x} = 4^{x+3}$.\n\nBase 2: $2^{4x} = 2^{2x+6}$, so $2x = 6$ and $x = 3$.\n\nBase 4: $4^{2x} = 4^{x+3}$, so $x = 3$.\n\nCheck: graph $y_1 = 16^x$ and $y_2 = 4^{x+3}$; they intersect at $(3, 4096)$, so $x = 3$.",
+      "rubric": [
+        {
+          "point": "Creates a valid equation that allows two common bases",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with the first base",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with the second base",
+          "marks": 1
+        },
+        {
+          "point": "Describes a correct graphical check (x-coordinate of intersection)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q18",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve each inequality and explain why the direction of the inequality sign is kept when you compare exponents.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$2^{3x} > 4^{x+{{a}}}$ — the solution is $x >$ ?",
+          "answer": {
+            "expr": "2*a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$81^{x-2} < 27^{2x+1}$ — the solution is $x >$ ?",
+          "answer": {
+            "expr": "-5.5",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $4^{x+{{a}}} = 2^{2x+{{2*a}}}$, so $2^{3x} > 2^{2x+{{2*a}}}$. Since $y = 2^x$ is increasing (base > 1), larger power means larger exponent: $3x > 2x + {{2*a}}$, so $x > {{2*a}}$.\n\n(b) $81^{x-2} = 3^{4x-8}$ and $27^{2x+1} = 3^{6x+3}$. So $4x - 8 < 6x + 3$, giving $-11 < 2x$ and $x > -\\frac{11}{2}$.\n\nThe sign is kept because the base 3 (or 2) is greater than 1, so the exponential function is increasing.",
+      "rubric": [
+        {
+          "point": "(a) Rewrites with base 2 and solves",
+          "marks": 2
+        },
+        {
+          "point": "(b) Rewrites with base 3 and solves",
+          "marks": 2
+        },
+        {
+          "point": "Explains that an increasing function preserves the inequality",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q19",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student solved $4^{x+1} = 8^{x}$ like this:\n\n> $4^{x+1} = 8^x$\n> $x + 1 = x$\n> $1 = 0$, so there is no solution.\n\nIdentify the error, explain why it is an error, and give a correct solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Correct value of $x$.",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "The student equated exponents while the bases were **different** (4 and 8). That is only valid when the bases are equal.\n\nCorrect solution: $(2^2)^{x+1} = (2^3)^x$, so $2^{2x+2} = 2^{3x}$. Equate exponents: $2x + 2 = 3x$, so $x = 2$.\n\nCheck: $4^3 = 64$ and $8^2 = 64$ ✓.",
+      "rubric": [
+        {
+          "point": "Identifies equating exponents with unequal bases as the error",
+          "marks": 1
+        },
+        {
+          "point": "Explains why this is not valid",
+          "marks": 1
+        },
+        {
+          "point": "Rewrites both sides with a common base",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with a check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-1-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Write each expression as a single power of 4. Show your work.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$(\\sqrt{16})^3$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\sqrt[3]{16}$",
+          "answer": {
+            "expr": "2/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\sqrt{64}\\times(\\sqrt[4]{128})^3$",
+          "answer": {
+            "expr": "33/8",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "$(\\sqrt2)^8\\times(\\sqrt[3]{2})^4$",
+          "answer": {
+            "expr": "8/3",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $(\\sqrt{16})^3 = 4^3$, exponent 3.\n\n(b) $\\sqrt[3]{16} = (4^2)^{\\frac13} = 4^{\\frac23}$, exponent $\\frac23 \\approx 0.667$.\n\n(c) $\\sqrt{64} = 8 = 2^3$ and $(\\sqrt[4]{128})^3 = (2^7)^{\\frac34} = 2^{\\frac{21}{4}}$. Product: $2^{3 + \\frac{21}{4}} = 2^{\\frac{33}{4}} = (4^{\\frac12})^{\\frac{33}{4}} = 4^{\\frac{33}{8}}$, exponent $4.125$.\n\n(d) $(\\sqrt2)^8 = 2^4$ and $(\\sqrt[3]{2})^4 = 2^{\\frac43}$. Product: $2^{\\frac{16}{3}} = 4^{\\frac{8}{3}}$, exponent $\\approx 2.667$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) converts each radical and combines exponents",
+          "marks": 2
+        },
+        {
+          "point": "(d) converts and uses 2 = 4^(1/2)",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

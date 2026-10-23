@@ -1,0 +1,1153 @@
+{
+  "id": "1-2",
+  "number": "1.2",
+  "title": "Characteristics of Polynomial Functions",
+  "estimatedMinutes": 75,
+  "overview": "Polynomial functions model profit, volume, population and motion. In this section you learn to read a polynomial's 'personality' straight from its equation: the **degree** and the **sign of the leading coefficient** tell you the end behaviour, how many times the graph can cross the $x$-axis, how many hills and valleys it can have, and whether it has a highest or lowest point. You will also use **finite differences** to recognise a polynomial from a table of values.",
+  "objectives": [
+    "Identify polynomial functions and state their degree and leading coefficient.",
+    "Describe end behaviour using the degree and the sign of the leading coefficient.",
+    "Relate the degree to the possible number of $x$-intercepts and turning points.",
+    "Distinguish local and absolute maximum and minimum points.",
+    "Use finite differences to find the degree and leading coefficient from a table.",
+    "Interpret polynomial models and choose a reasonable domain."
+  ],
+  "lessons": [
+    {
+      "id": "what-is-a-polynomial",
+      "title": "What makes a function a polynomial?",
+      "body": "\nA **polynomial function** has the form\n\n$$f(x) = a_nx^n + a_{n-1}x^{n-1} + \\dots + a_2x^2 + a_1x + a_0$$\n\nwhere every exponent is a **whole number** ($0, 1, 2, 3, \\dots$) and the coefficients $a_n, a_{n-1}, \\dots, a_0$ are real numbers.\n\n| Vocabulary | Meaning | In $f(x) = -3x^4 + 2x^2 - x + 7$ |\n|---|---|---|\n| **degree** | the highest exponent, $n$ | $4$ (a *quartic*) |\n| **leading coefficient** | the coefficient $a_n$ of the highest-power term | $-3$ |\n| **constant term** | $a_0$, which is also the $y$-intercept | $7$ |\n\nA **power function** such as $y = x^3$ or $y = -2x^4$ is the simplest polynomial: just one term. Every polynomial graph \"inherits\" its long-run shape from its leading term, because for very large $|x|$ the highest power dominates everything else.\n\n**Not polynomials:** $y = x^{-2}$ (negative exponent), $y = \\sqrt{x} = x^{1/2}$ (fractional exponent), $y = 3^x$ (the variable is in the exponent), $y = \\dfrac{1}{x+1}$.\n\n> **Tip:** expand or think about the product before deciding. $g(x) = x(4 - x) = -x^2 + 4x$ is a quadratic with leading coefficient $-1$.\n\n| Degree | Name |\n|---|---|\n| 0 | constant |\n| 1 | linear |\n| 2 | quadratic |\n| 3 | cubic |\n| 4 | quartic |\n| 5 | quintic |\n"
+    },
+    {
+      "id": "end-behaviour",
+      "title": "End behaviour: degree and the sign of the leading coefficient",
+      "body": "\n**End behaviour** describes what $y$ does as $x \\to \\infty$ (far right) and as $x \\to -\\infty$ (far left). Only two things matter: whether the degree is **odd or even**, and whether the leading coefficient is **positive or negative**.\n\n| | Leading coefficient $> 0$ | Leading coefficient $< 0$ |\n|---|---|---|\n| **Odd degree** | quadrant 3 → quadrant 1 (like $y = x$): as $x\\to-\\infty$, $y\\to-\\infty$; as $x\\to\\infty$, $y\\to\\infty$ | quadrant 2 → quadrant 4 (like $y = -x$) |\n| **Even degree** | quadrant 2 → quadrant 1 (like $y = x^2$): both ends up | quadrant 3 → quadrant 4 (like $y = -x^2$): both ends down |\n\nOdd-degree graphs have ends pointing in **opposite** directions; even-degree graphs have ends pointing in the **same** direction.\n\n```plot\ntitle: Odd degree, positive (blue) vs even degree, positive (red)\nf: x^3 - 4*x | label=y = x³ − 4x (odd)\nf: x^4 - 5*x^2 + 4 | label=y = x⁴ − 5x² + 4 (even)\ndomain: -3, 3\nrange: -8, 8\n```\n\n**Domain and range**\n* Every polynomial has domain $\\{x \\in \\mathbb{R}\\}$.\n* An **odd**-degree polynomial has range $\\{y \\in \\mathbb{R}\\}$: it eventually goes up forever on one side and down forever on the other.\n* An **even**-degree polynomial with $a_n > 0$ has a lowest point, so its range is $\\{y \\in \\mathbb{R},\\ y \\ge a\\}$ where $a$ is the minimum value. With $a_n < 0$ the range is $\\{y \\in \\mathbb{R},\\ y \\le a\\}$ where $a$ is the maximum value.\n"
+    },
+    {
+      "id": "turning-points",
+      "title": "Turning points and x-intercepts",
+      "body": "\nA **local maximum** is a point that is higher than all nearby points (a \"hilltop\"); a **local minimum** is lower than all nearby points (a \"valley\"). An **absolute** (global) maximum or minimum is the highest or lowest point on the *whole* graph.\n\nFor a polynomial of degree $n$:\n\n| Feature | Odd degree $n$ | Even degree $n$ |\n|---|---|---|\n| number of $x$-intercepts | at least 1, at most $n$ | from 0 up to $n$ |\n| local max + local min (turning points) | at most $n - 1$ (an even number) | at most $n - 1$ (an odd number, at least 1) |\n| absolute max / min | none | exactly one kind: a minimum if $a_n>0$, a maximum if $a_n<0$ |\n\n**Why must an odd-degree graph cross the $x$-axis?** Its ends go in opposite directions — one end below the axis, the other above. A polynomial graph is one unbroken curve, so it has to cross the $x$-axis somewhere in between.\n\n**Reading a graph backwards:** if a graph has 3 turning points, its degree is **at least 4** (because $n - 1 \\ge 3$). If its ends go in opposite directions, the degree is odd.\n\n```plot\ntitle: Quartic: 3 turning points, 4 x-intercepts\nf: -0.25*(x+3)*(x+1)*(x-2)*(x-3)\ndomain: -4, 4\nrange: -6, 8\npoints: (-3,0), (-1,0), (2,0), (3,0)\n```\n\nThe quartic above has a negative leading coefficient (both ends down), two local maxima and one local minimum — a total of $3 = 4 - 1$ turning points. Its highest hilltop is also the absolute maximum.\n"
+    },
+    {
+      "id": "finite-differences",
+      "title": "Finite differences",
+      "body": "\nWhen $x$-values in a table go up in **equal steps**, we can subtract consecutive $y$-values to get **first differences**, then subtract those to get **second differences**, and so on.\n\nFor a polynomial function of degree $n$, the $n$th differences\n\n* are **constant** (all equal),\n* have the **same sign** as the leading coefficient $a$, and\n* equal $a \\times n!$ when the $x$-step is 1, where $n! = n \\times (n-1) \\times \\dots \\times 2 \\times 1$.\n\n| Degree $n$ | constant difference | so $a =$ |\n|---|---|---|\n| 1 | $a \\times 1$ | first difference ÷ 1 |\n| 2 | $a \\times 2$ | second difference ÷ 2 |\n| 3 | $a \\times 6$ | third difference ÷ 6 |\n| 4 | $a \\times 24$ | fourth difference ÷ 24 |\n| 5 | $a \\times 120$ | fifth difference ÷ 120 |\n\n**Example.** $y = x^3 - x^2$ for $x = -3, -2, \\dots, 4$:\n\n| $x$ | $y$ | 1st | 2nd | 3rd |\n|---|---|---|---|---|\n| −3 | −36 | | | |\n| −2 | −12 | 24 | | |\n| −1 | −2 | 10 | −14 | |\n| 0 | 0 | 2 | −8 | 6 |\n| 1 | 0 | 0 | −2 | 6 |\n| 2 | 4 | 4 | 4 | 6 |\n| 3 | 18 | 14 | 10 | 6 |\n| 4 | 48 | 30 | 16 | 6 |\n\nThe third differences are constant, so the function is **cubic**. They are positive, so $a > 0$, and $6 = a \\times 3! = 6a$ gives $a = 1$.\n\n> Always subtract in the same order: **later value minus earlier value**.\n"
+    },
+    {
+      "id": "modelling",
+      "title": "Polynomial models in the real world",
+      "body": "\nMany quantities that rise and fall are modelled by polynomials: profit, the volume of a box, the height of a falling object, a bacteria population.\n\n**Bacteria example.** After an antibacterial spray is applied, a culture's population is\n\n| $t$ (min) | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n|---|---|---|---|---|---|---|---|---|\n| $P$ | 800 | 799 | 782 | 737 | 652 | 515 | 314 | 37 |\n\nThe third differences are all $-12$, so the model is cubic with $-12 = 6a$, giving $a = -2$. Regression on a graphing calculator gives $P(t) = -2t^3 - 2t^2 + 3t + 800$.\n\n**Reasonable domain.** A model is only meaningful where the situation makes sense. Here $t \\ge 0$ (time starts when the spray is applied) and $P \\ge 0$ (no negative bacteria), so roughly $0 \\le t \\le 7.1$ minutes. Outside that interval the equation still produces numbers, but they describe nothing real.\n\n**Questions to ask about any model**\n1. What do the degree and leading coefficient say about long-run behaviour — and does that match reality?\n2. What restrictions on the domain are reasonable?\n3. What do the intercepts mean in context?\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "polynomial function",
+      "definition": "A function of the form $f(x)=a_nx^n+\\dots+a_1x+a_0$ where $n$ is a whole number and the coefficients are real numbers."
+    },
+    {
+      "term": "degree",
+      "definition": "The highest exponent of $x$ in a polynomial function."
+    },
+    {
+      "term": "leading coefficient",
+      "definition": "The coefficient of the term with the highest power of $x$."
+    },
+    {
+      "term": "end behaviour",
+      "definition": "The behaviour of $y$ as $x\\to\\infty$ and $x\\to-\\infty$, often described with quadrants (e.g. 'from quadrant 3 to quadrant 1')."
+    },
+    {
+      "term": "local maximum / local minimum",
+      "definition": "A point that is higher (or lower) than all points near it; also called a turning point."
+    },
+    {
+      "term": "absolute (global) maximum / minimum",
+      "definition": "The highest (or lowest) point on the entire graph. Only even-degree polynomials have one."
+    },
+    {
+      "term": "finite differences",
+      "definition": "Differences between consecutive $y$-values in a table whose $x$-values are equally spaced."
+    },
+    {
+      "term": "n factorial ($n!$)",
+      "definition": "$n! = n\\times(n-1)\\times\\dots\\times2\\times1$; for example $4! = 24$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "General polynomial",
+      "latex": "f(x)=a_nx^n+a_{n-1}x^{n-1}+\\dots+a_1x+a_0",
+      "meaning": "$n$ is the degree and $a_n$ the leading coefficient."
+    },
+    {
+      "name": "Constant finite differences",
+      "latex": "\\Delta^n y = a \\times n!",
+      "meaning": "For $x$-steps of 1, the $n$th differences of a degree-$n$ polynomial equal the leading coefficient times $n!$."
+    },
+    {
+      "name": "Maximum number of turning points",
+      "latex": "\\text{turning points} \\le n-1",
+      "meaning": "A degree-$n$ polynomial has at most $n-1$ local maximum and minimum points."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Describe a polynomial from its equation",
+      "problem": "For $g(x) = -x^4 + 10x^2 + 5x - 4$, state the degree, leading coefficient, end behaviour, $y$-intercept, possible number of $x$-intercepts and the maximum number of turning points.",
+      "steps": [
+        "**Degree and leading coefficient.** The highest power is $x^4$, so the degree is 4 (quartic) and the leading coefficient is $-1$.",
+        "**End behaviour.** Even degree with a negative leading coefficient: both ends point down, so the graph extends from quadrant 3 to quadrant 4.",
+        "**y-intercept.** Set $x = 0$: $g(0) = -4$.",
+        "**x-intercepts.** An even-degree polynomial can have 0 to 4 $x$-intercepts. (A graph shows this one has 4.)",
+        "**Turning points.** At most $4 - 1 = 3$. With a negative leading coefficient it has an absolute maximum and no absolute minimum."
+      ],
+      "answer": "Quartic, $a=-1$, Q3 → Q4, $y$-intercept $-4$, 0–4 $x$-intercepts, at most 3 turning points."
+    },
+    {
+      "title": "Degree and leading coefficient from a table",
+      "problem": "Use finite differences to find the degree and leading coefficient.\n\n| $x$ | −2 | −1 | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|---|---|\n| $y$ | −54 | −8 | 0 | 6 | 22 | 36 | 12 | −110 |",
+      "steps": [
+        "First differences: $46, 8, 6, 16, 14, -24, -122$.",
+        "Second differences: $-38, -2, 10, -2, -38, -98$.",
+        "Third differences: $36, 12, -12, -36, -60$.",
+        "Fourth differences: $-24, -24, -24, -24$ — constant, so the function is **quartic** (degree 4).",
+        "The constant difference is negative, so $a<0$. Solve $-24 = a \\times 4! = 24a$, so $a = -1$."
+      ],
+      "answer": "Degree 4, leading coefficient $-1$."
+    },
+    {
+      "title": "From a constant difference to the leading coefficient",
+      "problem": "The fifth differences of a polynomial function (with $x$-steps of 1) are constant at $-60$. State the degree and the leading coefficient.",
+      "steps": [
+        "Fifth differences are constant, so the degree is 5.",
+        "$-60 = a \\times 5! = 120a$",
+        "$a = -\\dfrac{60}{120} = -0.5$"
+      ],
+      "answer": "Quintic with leading coefficient $-0.5$."
+    },
+    {
+      "title": "A falling parachutist",
+      "problem": "A parachutist jumps from 3500 m. Their height is $h(t) = 3500 - 4.9t^2$. Without building a table, which differences are constant and what is their value? What is a reasonable domain?",
+      "steps": [
+        "$h$ is quadratic (degree 2), so the **second** differences are constant.",
+        "Their value is $a \\times 2! = -4.9 \\times 2 = -9.8$.",
+        "End behaviour of the equation: both ends down (Q3 → Q4). In reality the model only applies while the parachutist is in the air.",
+        "Set $h = 0$: $t^2 = \\dfrac{3500}{4.9} \\approx 714.3$, so $t \\approx 26.7$ s. A reasonable domain is $0 \\le t \\le 26.7$ (ignoring the parachute opening)."
+      ],
+      "answer": "Second differences, constant at −9.8; domain about $0 \\le t \\le 26.7$ s."
+    },
+    {
+      "title": "Box volume model",
+      "problem": "Squares of side $x$ cm are cut from the corners of a 30 cm by 20 cm sheet, and the sides are folded up to make an open box. Write the volume function and describe its degree, leading coefficient and reasonable domain.",
+      "steps": [
+        "Length $30 - 2x$, width $20 - 2x$, height $x$: $V(x) = x(30 - 2x)(20 - 2x)$.",
+        "Multiplying the $x$-terms: $x \\cdot (-2x)\\cdot(-2x) = 4x^3$, so it is cubic with leading coefficient 4.",
+        "All three dimensions must be positive: $x > 0$ and $20 - 2x > 0 \\Rightarrow x < 10$.",
+        "Reasonable domain: $0 < x < 10$. Outside this, the equation gives values but no real box exists."
+      ],
+      "answer": "$V(x)=x(30-2x)(20-2x)$, cubic, $a=4$, domain $0<x<10$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The degree tells you exactly how many $x$-intercepts there are.",
+      "fact": "The degree is only the *maximum*. A quartic can have 0, 1, 2, 3 or 4 $x$-intercepts."
+    },
+    {
+      "myth": "The leading coefficient is the first number written in the equation.",
+      "fact": "It is the coefficient of the **highest power**. In $f(x) = 5 + 2x - 3x^3$ the leading coefficient is $-3$."
+    },
+    {
+      "myth": "A cubic always has two turning points.",
+      "fact": "A cubic has either 0 or 2 turning points ($y = x^3$ has none). It can never have exactly 1."
+    },
+    {
+      "myth": "Second differences are always the ones to check.",
+      "fact": "Keep taking differences until they are constant; the step at which they become constant gives the degree."
+    },
+    {
+      "myth": "A local maximum is the highest point on the graph.",
+      "fact": "A local maximum is only the highest point *nearby*. An odd-degree polynomial has local maxima but no absolute maximum."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Medicine",
+      "body": "Reaction time after a dose of a drug can be modelled by a polynomial such as $r(d) = -0.7d^3 + d^2$, valid only for small doses."
+    },
+    {
+      "title": "Packaging design",
+      "body": "The volume of an open box folded from a sheet is cubic; designers use the model to choose the cut size that gives the most volume."
+    },
+    {
+      "title": "Biology",
+      "body": "Finite differences in lab data reveal whether a population model should be quadratic, cubic or higher before running a regression."
+    },
+    {
+      "title": "Physics",
+      "body": "Height of a falling object, $h(t) = h_0 - 4.9t^2$, is quadratic: its second differences are constant at $-9.8$ for 1-s steps."
+    }
+  ],
+  "practice": [
+    {
+      "question": "State the degree, leading coefficient and end behaviour of $f(x) = 2x^3 - 4x^2 + x + 1$.",
+      "hint": "Odd degree, positive leading coefficient.",
+      "solution": "Degree 3, leading coefficient 2. As $x\\to-\\infty$, $y\\to-\\infty$; as $x\\to\\infty$, $y\\to\\infty$ (quadrant 3 to quadrant 1)."
+    },
+    {
+      "question": "Is $h(x) = 3^x + 2x$ a polynomial function? Explain.",
+      "hint": "Where is the variable?",
+      "solution": "No. In $3^x$ the variable is an exponent, so it is an exponential term, not a power of $x$ with a whole-number exponent."
+    },
+    {
+      "question": "What is the maximum number of turning points of a degree-6 polynomial? The minimum number of $x$-intercepts?",
+      "hint": "Use $n-1$, and remember even-degree graphs may not cross the axis.",
+      "solution": "At most $6-1 = 5$ turning points. The minimum number of $x$-intercepts is 0 (for example $y = x^6 + 1$)."
+    },
+    {
+      "question": "The third differences of a polynomial are constant at 42. Find the degree and leading coefficient.",
+      "hint": "$3! = 6$",
+      "solution": "Degree 3 and $42 = 6a$, so $a = 7$."
+    },
+    {
+      "question": "Explain why $y = -2x^5 + 5x^3 - x$ has no maximum point and no minimum point.",
+      "hint": "Look at the end behaviour.",
+      "solution": "It has odd degree with a negative leading coefficient, so as $x\\to-\\infty$, $y\\to\\infty$ and as $x\\to\\infty$, $y\\to-\\infty$. The graph rises and falls without bound, so there is no highest or lowest point (only local ones)."
+    },
+    {
+      "question": "Write the range of $f(x) = x^4 - 8x^2 + 3$ if its minimum value is $-13$.",
+      "hint": "Even degree, positive leading coefficient.",
+      "solution": "$\\{y \\in \\mathbb{R},\\ y \\ge -13\\}$."
+    },
+    {
+      "question": "The table $x = 0,1,2,3,4$; $y = 5, 7, 13, 23, 37$ comes from a polynomial. Find its degree and leading coefficient.",
+      "hint": "Take differences.",
+      "solution": "First differences 2, 6, 10, 14; second differences 4, 4, 4. Quadratic, and $4 = 2a$ so $a = 2$."
+    },
+    {
+      "question": "Sketch-describe a polynomial with degree 5, positive leading coefficient and exactly 3 $x$-intercepts.",
+      "hint": "Some intercepts can be touch points.",
+      "solution": "Example: $y = (x+2)(x-1)(x-3)(x^2+1)$. Multiplying the $x$-terms gives $x^5$, so the degree is 5 and $a = 1 > 0$. The factor $x^2 + 1$ is never 0, so the only $x$-intercepts are $-2, 1, 3$. The graph runs from quadrant 3 to quadrant 1, crossing the axis at each intercept."
+    }
+  ],
+  "summary": [
+    "A polynomial has whole-number exponents; its degree is the highest exponent and its leading coefficient multiplies that term.",
+    "Odd degree: ends in opposite directions, range all real numbers, at least one $x$-intercept, no absolute max or min.",
+    "Even degree: ends in the same direction, has an absolute minimum ($a>0$) or maximum ($a<0$), from 0 to $n$ $x$-intercepts.",
+    "A degree-$n$ polynomial has at most $n-1$ turning points and at most $n$ $x$-intercepts.",
+    "The $n$th finite differences of a degree-$n$ polynomial are constant, have the sign of $a$, and equal $a\\times n!$ (for $x$-steps of 1)."
+  ],
+  "questions": [
+    {
+      "id": "1-2-q01",
+      "type": "conceptual",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = -{{a}}x^5 + {{b}}x^2 - 7$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the degree."
+        },
+        {
+          "label": "b",
+          "text": "State the leading coefficient."
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behaviour and explain how you know."
+        },
+        {
+          "label": "d",
+          "text": "State the possible numbers of $x$-intercepts and the maximum number of turning points.",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "e",
+          "text": "State the $y$-intercept.",
+          "answer": {
+            "expr": "-7",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "(a) The highest power is $x^5$, so the degree is **5**.\n\n(b) The leading coefficient is $-{{a}}$.\n\n(c) Odd degree and negative leading coefficient: as $x \\to -\\infty$, $y \\to \\infty$ and as $x \\to \\infty$, $y \\to -\\infty$. The graph extends from **quadrant 2 to quadrant 4**.\n\n(d) An odd-degree polynomial has at least 1 and at most 5 $x$-intercepts, and at most $5 - 1 = 4$ turning points.\n\n(e) The $y$-intercept is $f(0) = -7$.",
+      "rubric": [
+        {
+          "point": "Correct degree",
+          "marks": 1
+        },
+        {
+          "point": "Correct leading coefficient",
+          "marks": 1
+        },
+        {
+          "point": "Correct end behaviour with reason (odd degree, negative coefficient)",
+          "marks": 2
+        },
+        {
+          "point": "States 1 to 5 x-intercepts",
+          "marks": 1
+        },
+        {
+          "point": "States at most 4 turning points",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 3,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "A polynomial function has degree $n = {{n}}$. Answer each part and justify your reasoning.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the greatest possible number of $x$-intercepts?",
+          "answer": {
+            "expr": "n",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the greatest possible number of turning points?",
+          "answer": {
+            "expr": "n-1",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the least possible number of $x$-intercepts? Explain.",
+          "answer": {
+            "expr": "n - 2*floor(n/2)",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "(a) A degree-$n$ polynomial can cross or touch the $x$-axis at most $n$ times: at most **{{n}}** $x$-intercepts.\n\n(b) The number of turning points is at most $n - 1 = {{n-1}}$.\n\n(c) If $n$ is odd the ends point in opposite directions, so the graph must cross the $x$-axis at least once (minimum 1). If $n$ is even both ends point the same way, so the graph can stay entirely above or below the axis (minimum 0). For $n = {{n}}$ the minimum is **{{n - 2*floor(n/2)}}**.",
+      "rubric": [
+        {
+          "point": "Maximum x-intercepts = n",
+          "marks": 1
+        },
+        {
+          "point": "Maximum turning points = n − 1",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum number of x-intercepts",
+          "marks": 1
+        },
+        {
+          "point": "Justifies minimum using end behaviour (odd vs even)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": -5,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": -6,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The table of values represents a polynomial function.\n\n| $x$ | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| $y$ | {{c}} | {{a + b + c}} | {{8*a + 4*b + c}} | {{27*a + 9*b + c}} | {{64*a + 16*b + c}} | {{125*a + 25*b + c}} |\n\nUse finite differences to determine the degree, the sign of the leading coefficient, and the value of the leading coefficient. Show your difference table.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the degree.",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the value of the constant differences.",
+          "answer": {
+            "expr": "6*a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the value of the leading coefficient.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "First differences: {{a+b}}, {{7*a+3*b}}, {{19*a+5*b}}, {{37*a+7*b}}, {{61*a+9*b}}\n\nSecond differences: {{6*a+2*b}}, {{12*a+2*b}}, {{18*a+2*b}}, {{24*a+2*b}}\n\nThird differences: {{6*a}}, {{6*a}}, {{6*a}} — constant.\n\n(a) The third differences are constant, so the function is **cubic** (degree 3).\n\n(b) The constant difference {{6*a}} is positive, so the leading coefficient is **positive**.\n\n(c) $6a = {{6*a}}$ since $3! = 6$, so $a = {{a}}$.",
+      "rubric": [
+        {
+          "point": "Correct first and second differences",
+          "marks": 2
+        },
+        {
+          "point": "Finds constant third differences",
+          "marks": 1
+        },
+        {
+          "point": "Concludes degree 3",
+          "marks": 1
+        },
+        {
+          "point": "Sign of leading coefficient positive with reason",
+          "marks": 1
+        },
+        {
+          "point": "Uses a × 3! to get the leading coefficient",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The fourth differences of a polynomial function (with $x$-values increasing by 1) are constant and equal to {{-24*a}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the degree."
+        },
+        {
+          "label": "b",
+          "text": "State the sign of the leading coefficient."
+        },
+        {
+          "label": "c",
+          "text": "Determine the leading coefficient.",
+          "answer": {
+            "expr": "-a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe the end behaviour and state whether the graph has a maximum or minimum point."
+        }
+      ],
+      "modelAnswer": "(a) Fourth differences are constant, so the degree is **4** (quartic).\n\n(b) The leading coefficient has the same sign as the constant differences, so it is **negative**.\n\n(c) $-{{24*a}} = a_4 \\times 4! = 24a_4$, so $a_4 = -{{a}}$.\n\n(d) An even-degree polynomial with a negative leading coefficient extends from quadrant 3 to quadrant 4 and has an **absolute maximum** point but no minimum point.",
+      "rubric": [
+        {
+          "point": "Degree 4 with reason",
+          "marks": 1
+        },
+        {
+          "point": "Negative sign with reason",
+          "marks": 1
+        },
+        {
+          "point": "Leading coefficient using 4! = 24",
+          "marks": 2
+        },
+        {
+          "point": "End behaviour and maximum point described",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q05",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain, using end behaviour, why every polynomial function of odd degree has at least one $x$-intercept, while a polynomial function of even degree may have none. Give an example of an even-degree function with no $x$-intercepts.",
+      "modelAnswer": "An odd-degree polynomial has ends pointing in **opposite** directions: if $a > 0$, $y \\to -\\infty$ on the left and $y \\to \\infty$ on the right (reversed if $a<0$). Since a polynomial graph is a single unbroken (continuous) curve, it must pass from below the $x$-axis to above it, so it crosses the axis at least once.\n\nAn even-degree polynomial has both ends pointing in the **same** direction (both up if $a>0$). The whole graph can therefore stay above (or below) the $x$-axis. Example: $f(x) = x^4 + 3$ has minimum value 3, so it never reaches the $x$-axis.",
+      "rubric": [
+        {
+          "point": "Odd degree: ends in opposite directions",
+          "marks": 1
+        },
+        {
+          "point": "Uses continuity / unbroken curve to argue a crossing",
+          "marks": 2
+        },
+        {
+          "point": "Even degree: ends in same direction so can avoid axis",
+          "marks": 1
+        },
+        {
+          "point": "Valid example with no x-intercepts",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 0,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 700,
+          "max": 950,
+          "step": 10
+        },
+        "d": {
+          "min": 0,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "A bacteria population, $P$, is measured $t$ minutes after a spray is applied.\n\n| $t$ (min) | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| $P$ | {{c}} | {{c - a + b + d}} | {{c - 8*a + 4*b + 2*d}} | {{c - 27*a + 9*b + 3*d}} | {{c - 64*a + 16*b + 4*d}} | {{c - 125*a + 25*b + 5*d}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Use finite differences to identify the type of polynomial that models the data."
+        },
+        {
+          "label": "b",
+          "text": "Determine the value of the leading coefficient.",
+          "answer": {
+            "expr": "-a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain what restrictions on the domain are reasonable for this model."
+        }
+      ],
+      "modelAnswer": "(a) First differences: {{-a+b+d}}, {{-7*a+3*b+d}}, {{-19*a+5*b+d}}, {{-37*a+7*b+d}}, {{-61*a+9*b+d}}\n\nSecond differences: {{-6*a+2*b}}, {{-12*a+2*b}}, {{-18*a+2*b}}, {{-24*a+2*b}}\n\nThird differences: {{-6*a}}, {{-6*a}}, {{-6*a}}. They are constant, so a **cubic** function models the data.\n\n(b) $-{{6*a}} = a_3 \\times 3! = 6a_3$, so the leading coefficient is $-{{a}}$.\n\n(c) The population is decreasing faster and faster; a negative-leading-coefficient cubic eventually goes to $-\\infty$, which is impossible for a population. A reasonable domain is from $t = 0$ until $P$ reaches 0 (the population cannot be negative and time starts when the spray is applied).",
+      "rubric": [
+        {
+          "point": "Correct difference table to constant third differences",
+          "marks": 2
+        },
+        {
+          "point": "Identifies cubic model",
+          "marks": 1
+        },
+        {
+          "point": "Leading coefficient from −6a = 6·a₃",
+          "marks": 2
+        },
+        {
+          "point": "Reasonable domain explained (t ≥ 0, P ≥ 0)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "H": {
+          "min": 2500,
+          "max": 4500,
+          "step": 100
+        }
+      },
+      "text": "A parachutist jumps from a plane {{H}} m above the ground. Their height, in metres, $t$ seconds after the jump is modelled by $h(t) = {{H}} - 4.9t^2$ (ignore the parachute).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What type of function is $h(t)$?"
+        },
+        {
+          "label": "b",
+          "text": "Without making a table, state which finite differences are constant and their value. Explain.",
+          "answer": {
+            "expr": "-9.8",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the end behaviour if the domain is not restricted."
+        },
+        {
+          "label": "d",
+          "text": "Determine a reasonable domain and explain what the positive $t$-intercept represents.",
+          "answer": {
+            "expr": "sqrt(H/4.9)",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $h(t)$ is a **quadratic** (degree 2) function.\n\n(b) For a degree-2 polynomial the **second** differences are constant. Their value is $a \\times 2! = -4.9 \\times 2 = -9.8$ (for 1-second steps).\n\n(c) As an equation with no restrictions, both ends point down: as $t \\to \\pm\\infty$, $h \\to -\\infty$ (quadrant 3 to quadrant 4).\n\n(d) Set $h(t) = 0$: $4.9t^2 = {{H}}$, so $t = \\sqrt{\\dfrac{ {{H}} }{4.9}} \\approx {{sqrt(H/4.9):3}}$ s. A reasonable domain is $0 \\le t \\le {{sqrt(H/4.9):3}}$, since time starts at the jump and the model ends at the ground. The positive $t$-intercept is the time the parachutist would reach the ground.",
+      "rubric": [
+        {
+          "point": "Identifies quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Second differences constant",
+          "marks": 1
+        },
+        {
+          "point": "Value −9.8 with reasoning a × 2!",
+          "marks": 2
+        },
+        {
+          "point": "End behaviour described",
+          "marks": 1
+        },
+        {
+          "point": "Solves for landing time",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable domain and meaning of t-intercept",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q08",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The graph of a polynomial function is shown.\n\n```plot\nf: -0.25*(x+3)*(x+1)*(x-2)*(x-3)\ndomain: -4, 4\nrange: -8, 10\npoints: (-3,0), (-1,0), (2,0), (3,0)\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Is the degree odd or even? Is the leading coefficient positive or negative? Explain."
+        },
+        {
+          "label": "b",
+          "text": "Determine the least possible degree. Justify.",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the $x$-intercepts."
+        },
+        {
+          "label": "d",
+          "text": "Describe any maximum or minimum points and the form of the range."
+        }
+      ],
+      "modelAnswer": "(a) Both ends point down (quadrant 3 to quadrant 4), so the degree is **even** and the leading coefficient is **negative**.\n\n(b) The graph has 3 turning points (two local maxima and one local minimum). Since a degree-$n$ polynomial has at most $n-1$ turning points, $n - 1 \\ge 3$, so the least possible degree is **4**.\n\n(c) There are 4 $x$-intercepts: $-3, -1, 2, 3$.\n\n(d) It has an absolute maximum (the higher of the two hilltops) and no absolute minimum. Range: $\\{y\\in\\mathbb{R},\\ y \\le M\\}$ where $M$ is that maximum value.",
+      "rubric": [
+        {
+          "point": "Even degree with reason",
+          "marks": 1
+        },
+        {
+          "point": "Negative leading coefficient with reason",
+          "marks": 1
+        },
+        {
+          "point": "Least possible degree 4 using turning points",
+          "marks": 2
+        },
+        {
+          "point": "Correct x-intercepts",
+          "marks": 1
+        },
+        {
+          "point": "Absolute maximum, no minimum, range form",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q09",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 6,
+          "max": 30,
+          "step": 6
+        }
+      },
+      "text": "Create an equation for a polynomial function that has degree 5, a negative leading coefficient, a $y$-intercept of {{k}}, and exactly three distinct $x$-intercepts. Explain how your equation meets each condition and describe the end behaviour.",
+      "modelAnswer": "One possible answer: $f(x) = -\\dfrac{ {{k}} }{6}(x - 1)(x - 2)(x - 3)(x^2 + 1)$.\n\nCheck the $y$-intercept: $f(0) = -\\dfrac{ {{k}} }{6}(-1)(-2)(-3)(1) = -\\dfrac{ {{k}} }{6}(-6) = {{k}}$ ✓\n\n* Degree: the factors contain $x \\cdot x \\cdot x \\cdot x^2 = x^5$ ✓\n* Leading coefficient: $-\\dfrac{ {{k}} }{6} < 0$ ✓\n* $x$-intercepts: $1, 2, 3$ only, because $x^2 + 1 = 0$ has no real solutions ✓ (another approach: use a repeated factor such as $(x-1)^2(x-2)^2(x-3)$ times a negative constant.)\n* End behaviour: odd degree, negative leading coefficient → quadrant 2 to quadrant 4.\n\nAny equation that satisfies all four conditions with a correct explanation earns full marks.",
+      "rubric": [
+        {
+          "point": "Equation has degree 5",
+          "marks": 1
+        },
+        {
+          "point": "Leading coefficient negative",
+          "marks": 1
+        },
+        {
+          "point": "y-intercept equals the required value (shown by substitution)",
+          "marks": 2
+        },
+        {
+          "point": "Exactly three distinct x-intercepts justified",
+          "marks": 2
+        },
+        {
+          "point": "Correct end behaviour",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q10",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Determine the value of the constant finite differences for $f(x) = {{a}}x^4 - 3x^2 + x$ (using $x$-values that increase by 1), and state which differences they are.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Which differences are constant?",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine their value.",
+          "answer": {
+            "expr": "24*a",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The degree is 4, so the **fourth** differences are constant.\n\nValue $= a \\times 4! = {{a}} \\times 24 = {{24*a}}$.\n\nThe other terms ($-3x^2 + x$) do not affect the fourth differences.",
+      "rubric": [
+        {
+          "point": "Identifies fourth differences",
+          "marks": 1
+        },
+        {
+          "point": "Uses a × 4!",
+          "marks": 1
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q11",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "A student examines a table of values with $x$-values $0, 1, 2, 3, 4, 5$ and finds that the second differences are all equal to {{2*a}}. The student concludes: \"The leading coefficient is {{2*a}}.\" Explain the error and give the correct leading coefficient. Then describe the graph's end behaviour and range type.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Correct leading coefficient",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "The student forgot that the constant $n$th differences equal $a \\times n!$, not $a$. Here $n = 2$ (second differences constant), so\n\n$${{2*a}} = a \\times 2! = 2a \\quad\\Rightarrow\\quad a = {{a}}.$$\n\nThe function is quadratic with a positive leading coefficient, so it opens up: both ends rise (quadrant 2 to quadrant 1). It has a minimum value, so the range has the form $\\{y \\in \\mathbb{R},\\ y \\ge k\\}$ where $k$ is the minimum.",
+      "rubric": [
+        {
+          "point": "Identifies that differences equal a × n!",
+          "marks": 2
+        },
+        {
+          "point": "Correct leading coefficient",
+          "marks": 1
+        },
+        {
+          "point": "Correct end behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Range has a minimum value form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q12",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain why the graph of a cubic function can have zero or two turning points but never exactly one. Use sketches described in words, or the example $y = x^3$ and $y = x^3 - 3x$.",
+      "modelAnswer": "A cubic with $a > 0$ falls to $-\\infty$ on the left and rises to $\\infty$ on the right. If the graph turned exactly once, it would change from rising to falling (or falling to rising) and then keep going that way forever — but then the right-hand end could not rise. To end up going up, every \"turn down\" must be followed by a \"turn up\". So turning points come in pairs: 0 or 2 for a cubic (at most $3 - 1 = 2$).\n\n* $y = x^3$ rises all the time: 0 turning points.\n* $y = x^3 - 3x$ rises, turns down at a local maximum $(-1, 2)$, then turns back up at a local minimum $(1, -2)$: 2 turning points.",
+      "rubric": [
+        {
+          "point": "Uses end behaviour of cubic",
+          "marks": 1
+        },
+        {
+          "point": "Argues turns must come in pairs to match the ends",
+          "marks": 2
+        },
+        {
+          "point": "States max of n − 1 = 2",
+          "marks": 1
+        },
+        {
+          "point": "Example(s) correctly described",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "L": {
+          "min": 30,
+          "max": 50,
+          "step": 2
+        },
+        "W": {
+          "min": 16,
+          "max": 28,
+          "step": 2
+        }
+      },
+      "text": "An open-top box is made from a {{L}} cm by {{W}} cm sheet of cardboard by cutting squares of side $x$ cm from each corner and folding up the sides.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the volume, $V(x)$."
+        },
+        {
+          "label": "b",
+          "text": "State the degree and the leading coefficient.",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "State a reasonable domain. Explain.",
+          "answer": {
+            "expr": "W/2",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe the end behaviour of the unrestricted function and why most of it has no meaning here."
+        }
+      ],
+      "modelAnswer": "(a) $V(x) = x({{L}} - 2x)({{W}} - 2x)$.\n\n(b) Multiplying the $x$-terms of each factor gives $x(-2x)(-2x) = 4x^3$: the function is **cubic** with leading coefficient **4**.\n\n(c) Every dimension must be positive: $x > 0$, ${{W}} - 2x > 0 \\Rightarrow x < {{W/2}}$ (and ${{L}} - 2x > 0 \\Rightarrow x < {{L/2}}$). So the reasonable domain is $0 < x < {{W/2}}$.\n\n(d) Without restrictions, a cubic with a positive leading coefficient goes from quadrant 3 to quadrant 1. Outside $0 < x < {{W/2}}$ the values (including positive values for $x > {{L/2}}$) do not represent a real box.",
+      "rubric": [
+        {
+          "point": "Correct volume function",
+          "marks": 2
+        },
+        {
+          "point": "Degree 3 and leading coefficient 4 justified",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Comments on end behaviour vs reality",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q14",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "For each function, decide whether it is a polynomial function. If it is, state its degree and leading coefficient; if not, explain why not.\n\n$f(x) = 3x^4 - 5x + 1$, $\\quad g(x) = x(4 - x)$, $\\quad h(x) = 3^x + 2x$, $\\quad m(x) = x^{-2}$, $\\quad r(x) = 5(x - 1)^3$",
+      "modelAnswer": "* $f$: polynomial, degree 4, leading coefficient 3.\n* $g(x) = x(4-x) = -x^2 + 4x$: polynomial, degree 2, leading coefficient $-1$.\n* $h$: **not** a polynomial — $3^x$ has the variable in the exponent.\n* $m$: **not** a polynomial — the exponent $-2$ is not a whole number.\n* $r(x) = 5(x-1)^3$: polynomial, degree 3; expanding, the $x^3$ term is $5x^3$, so the leading coefficient is 5.",
+      "rubric": [
+        {
+          "point": "f correct",
+          "marks": 1
+        },
+        {
+          "point": "g expanded and correct",
+          "marks": 1
+        },
+        {
+          "point": "h rejected with reason",
+          "marks": 1
+        },
+        {
+          "point": "m rejected with reason",
+          "marks": 1
+        },
+        {
+          "point": "r correct with leading coefficient 5",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "The function $f(x) = (x^2 - {{p}})^2 + {{k}}$ is a quartic.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the end behaviour."
+        },
+        {
+          "label": "b",
+          "text": "Determine the minimum value of the function. Explain.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range."
+        },
+        {
+          "label": "d",
+          "text": "How many $x$-intercepts does the graph have? Explain.",
+          "answer": {
+            "expr": "0",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "(a) Expanding, $(x^2)^2 = x^4$, so the leading coefficient is **1** (positive) and the degree is 4. Both ends point up: quadrant 2 to quadrant 1.\n\n(b) $(x^2 - {{p}})^2 \\ge 0$ for all $x$, and it equals 0 when $x^2 = {{p}}$, i.e. $x = \\pm\\sqrt{ {{p}} }$. So the minimum value of $f$ is **{{k}}**.\n\n(c) Range: $\\{y \\in \\mathbb{R},\\ y \\ge {{k}}\\}$. Domain: $\\{x \\in \\mathbb{R}\\}$.\n\n(d) Since the minimum value {{k}} is positive, the graph never reaches the $x$-axis: **0** $x$-intercepts — which shows an even-degree polynomial can have no $x$-intercepts.",
+      "rubric": [
+        {
+          "point": "Degree, leading coefficient and end behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Explains square is never negative to find minimum",
+          "marks": 2
+        },
+        {
+          "point": "Correct range and domain",
+          "marks": 1
+        },
+        {
+          "point": "No x-intercepts with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a1": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "a2": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "a3": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Each statement gives the constant finite differences of a polynomial function (with $x$-values increasing by 1). For each, state the degree and determine the leading coefficient.\n\n(i) second differences $= {{2*a1}}$ (ii) third differences $= -{{6*a2}}$ (iii) fifth differences $= {{120*a3}}$",
+      "parts": [
+        {
+          "label": "i",
+          "text": "Leading coefficient for (i)",
+          "answer": {
+            "expr": "a1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "ii",
+          "text": "Leading coefficient for (ii)",
+          "answer": {
+            "expr": "-a2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "iii",
+          "text": "Leading coefficient for (iii)",
+          "answer": {
+            "expr": "a3",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(i) Degree 2: $ {{2*a1}} = a \\times 2! \\Rightarrow a = {{a1}}$.\n\n(ii) Degree 3: $-{{6*a2}} = a \\times 3! = 6a \\Rightarrow a = -{{a2}}$.\n\n(iii) Degree 5: ${{120*a3}} = a \\times 5! = 120a \\Rightarrow a = {{a3}}$.",
+      "rubric": [
+        {
+          "point": "Degrees all correct",
+          "marks": 1
+        },
+        {
+          "point": "(i) correct",
+          "marks": 1
+        },
+        {
+          "point": "(ii) correct including sign",
+          "marks": 1
+        },
+        {
+          "point": "(iii) correct using 5! = 120",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-2-q17",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain the difference between a local maximum point and an absolute maximum point. Then explain why $f(x) = x^3 - 3x$ has a local maximum at $(-1, 2)$ but no absolute maximum.",
+      "modelAnswer": "A **local maximum** is higher than all the points *close to it* on either side — a hilltop. An **absolute maximum** is the highest point on the *entire* graph.\n\nFor $f(x) = x^3 - 3x$: near $x = -1$, the values are less than $f(-1) = -1 + 3 = 2$ (e.g. $f(-1.5) = 1.125$, $f(-0.5) = 1.375$), so $(-1, 2)$ is a local maximum. But $f$ is a cubic with a positive leading coefficient, so as $x \\to \\infty$, $f(x) \\to \\infty$; e.g. $f(3) = 18 > 2$. There is no highest point at all.",
+      "rubric": [
+        {
+          "point": "Defines local maximum",
+          "marks": 1
+        },
+        {
+          "point": "Defines absolute maximum",
+          "marks": 1
+        },
+        {
+          "point": "Verifies (−1, 2) is higher than nearby points",
+          "marks": 1
+        },
+        {
+          "point": "Uses end behaviour to show no absolute maximum",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-2-q18",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Without graphing, describe the key features of each function — degree, leading coefficient, end behaviour, $y$-intercept, possible number of $x$-intercepts, maximum number of turning points and whether it has an absolute maximum or minimum.\n\n(i) $g(x) = 0.5x^4 - 3x^2 + 5x$ (ii) $h(x) = x^5 - 7x^3 + 2x - 3$ (iii) $p(x) = -x^6 + 5x^3 + 4$",
+      "modelAnswer": "(i) Degree 4, $a = 0.5 > 0$: both ends up (Q2 → Q1). $y$-intercept 0. Between 0 and 4 $x$-intercepts (at least one, since $g(0)=0$). At most 3 turning points. Has an absolute **minimum**, no maximum.\n\n(ii) Degree 5, $a = 1 > 0$: Q3 → Q1. $y$-intercept $-3$. Between 1 and 5 $x$-intercepts. At most 4 turning points. No absolute maximum or minimum.\n\n(iii) Degree 6, $a = -1 < 0$: both ends down (Q3 → Q4). $y$-intercept 4. Between 0 and 6 $x$-intercepts (in fact at least 2, because $p(0) = 4 > 0$ while both ends go to $-\\infty$). At most 5 turning points. Has an absolute **maximum**, no minimum.",
+      "rubric": [
+        {
+          "point": "(i) all features correct",
+          "marks": 2
+        },
+        {
+          "point": "(ii) all features correct",
+          "marks": 2
+        },
+        {
+          "point": "(iii) all features correct",
+          "marks": 2
+        },
+        {
+          "point": "Reasoning connects features to degree and sign",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

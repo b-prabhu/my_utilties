@@ -1,0 +1,930 @@
+{
+  "id": "5-2",
+  "number": "5.2",
+  "title": "Graphs of Reciprocal Trigonometric Functions",
+  "estimatedMinutes": 70,
+  "overview": "Every primary trigonometric function has a reciprocal partner: $\\csc x$, $\\sec x$ and $\\cot x$. You will sketch their graphs from the graphs of sine, cosine and tangent, describe their properties, solve simple equations involving them, and learn not to confuse reciprocal notation ($\\csc x$) with inverse notation ($\\sin^{-1}x$).",
+  "objectives": [
+    "Sketch $y=\\csc x$, $y=\\sec x$ and $y=\\cot x$ from the graphs of their reciprocals.",
+    "State the domain, range, period and asymptotes of each reciprocal function.",
+    "Determine values of $x$ for which a reciprocal function takes a given value.",
+    "Explain the difference between reciprocal and inverse trigonometric notation.",
+    "Model real situations (shadows, wires, light paths) with reciprocal trigonometric functions."
+  ],
+  "lessons": [
+    {
+      "id": "reciprocal-idea",
+      "title": "Thinking in reciprocals",
+      "body": "The three **reciprocal trigonometric functions** are\n\n$$\\csc x=\\frac{1}{\\sin x}\\qquad \\sec x=\\frac{1}{\\cos x}\\qquad \\cot x=\\frac{1}{\\tan x}=\\frac{\\cos x}{\\sin x}$$\n\nYou can sketch each one from its \"parent\" using four reciprocal rules you already met with rational functions:\n\n| When the parent is… | the reciprocal is… |\n|---|---|\n| $1$ or $-1$ | the same value ($\\frac11=1$, $\\frac{1}{-1}=-1$) – the graphs **touch** |\n| a small positive number (close to 0) | a **large** positive number |\n| a small negative number | a large negative number |\n| $0$ | **undefined** – a vertical asymptote |\n| increasing | decreasing (and vice versa) |\n| positive / negative | the same sign |\n\nSo the reciprocal graph lives where the parent lives (same sign), shoots off to infinity at the parent's zeros, and turns around wherever the parent has a max or min of $\\pm1$."
+    },
+    {
+      "id": "cosecant",
+      "title": "The graph of y = csc x",
+      "body": "Start with $y=\\sin x$ (dashed below).\n\n* $\\sin x=0$ at $x=0,\\pi,2\\pi$ → **asymptotes** of $y=\\csc x$.\n* $\\sin x=1$ at $x=\\frac{\\pi}{2}$ → $\\csc x=1$, a **local minimum** of the \"U\"-shaped branch.\n* $\\sin x=-1$ at $x=\\frac{3\\pi}{2}$ → $\\csc x=-1$, a **local maximum** of the downward branch.\n* As $x$ moves from $\\frac{\\pi}{2}$ toward $0$, $\\sin x$ shrinks toward $0^+$ so $\\csc x$ grows toward $+\\infty$.\n\n\n```plot\ntitle: y = csc x with y = sin x\nf: 1/sin(x) | label=y = csc x\nf: sin(x) | dashed; label=y = sin x\ndomain: -pi/4, 9*pi/4\nrange: -5, 5\nxticks: pi\nasymptote x: 0, pi, 2*pi\npoints: (pi/2,1), (3*pi/2,-1)\n```\n\n\n| Property | $y=\\csc x$ |\n|---|---|\n| Domain | $\\{x\\in\\mathbb R\\mid x\\ne n\\pi,\\ n\\in\\mathbb Z\\}$ |\n| Range | $\\{y\\mid y\\le-1\\ \\text{or}\\ y\\ge1\\}$ |\n| Period | $2\\pi$ |\n| Asymptotes on $[0,2\\pi]$ | $x=0,\\ x=\\pi,\\ x=2\\pi$ |"
+    },
+    {
+      "id": "secant",
+      "title": "The graph of y = sec x",
+      "body": "Apply the same reasoning to $y=\\cos x$: asymptotes where $\\cos x=0$, turning points where $\\cos x=\\pm1$.\n\n\n```plot\ntitle: y = sec x with y = cos x\nf: 1/cos(x) | label=y = sec x\nf: cos(x) | dashed; label=y = cos x\ndomain: -pi/4, 9*pi/4\nrange: -5, 5\nxticks: pi\nasymptote x: pi/2, 3*pi/2\npoints: (0,1), (pi,-1), (2*pi,1)\n```\n\n\n| Property | $y=\\sec x$ |\n|---|---|\n| Domain | $\\{x\\in\\mathbb R\\mid x\\ne\\frac{\\pi}{2}+n\\pi\\}$ |\n| Range | $\\{y\\mid y\\le-1\\ \\text{or}\\ y\\ge1\\}$ |\n| Period | $2\\pi$ |\n| Asymptotes on $[0,2\\pi]$ | $x=\\frac{\\pi}{2},\\ x=\\frac{3\\pi}{2}$ |\n\nBecause $\\cos x=\\sin\\left(x+\\frac{\\pi}{2}\\right)$, the secant graph is the cosecant graph shifted $\\frac{\\pi}{2}$ to the left: $\\sec x=\\csc\\left(x+\\frac{\\pi}{2}\\right)$."
+    },
+    {
+      "id": "cotangent",
+      "title": "The graph of y = cot x",
+      "body": "$\\cot x=\\dfrac{\\cos x}{\\sin x}$.\n\n* **Asymptotes** where $\\sin x=0$: $x=0,\\pi,2\\pi$ (where $\\tan x=0$).\n* **Zeros** where $\\cos x=0$: $x=\\frac{\\pi}{2},\\frac{3\\pi}{2}$ (where $\\tan x$ has its asymptotes).\n* Where $\\tan x$ increases, $\\cot x$ decreases. Both equal $\\pm1$ at odd multiples of $\\frac{\\pi}{4}$.\n\n\n```plot\ntitle: y = cot x with y = tan x\nf: 1/tan(x) | label=y = cot x\nf: tan(x) | dashed; label=y = tan x\ndomain: -pi/4, 9*pi/4\nrange: -5, 5\nxticks: pi\nasymptote x: 0, pi, 2*pi\n```\n\n\n| Property | $y=\\cot x$ |\n|---|---|\n| Domain | $\\{x\\in\\mathbb R\\mid x\\ne n\\pi\\}$ |\n| Range | $\\{y\\in\\mathbb R\\}$ |\n| Period | $\\pi$ |\n| Asymptotes on $[0,2\\pi]$ | $x=0,\\ \\pi,\\ 2\\pi$ |"
+    },
+    {
+      "id": "solving-and-notation",
+      "title": "Values on reciprocal graphs, and reciprocal vs inverse notation",
+      "body": "**Finding $x$ when a reciprocal value is known.** Turn it into a primary ratio:\n\n$$\\csc x=3\\iff\\sin x=\\tfrac13\\qquad \\sec x=2\\iff\\cos x=\\tfrac12\\qquad \\cot x=-4\\iff\\tan x=-\\tfrac14$$\n\nThen use the inverse key and the CAST rule (or graphing technology) to find all solutions in $[0,2\\pi]$. For $\\sin x=\\frac13$: $x\\approx0.34$ and $x\\approx\\pi-0.34\\approx2.80$.\n\n**Reciprocal is not inverse.** The notation is easy to confuse:\n\n| Expression | Meaning | Example |\n|---|---|---|\n| $\\csc\\frac12$ | $\\dfrac{1}{\\sin(0.5\\text{ rad})}$ – a **number** | $\\approx\\dfrac{1}{0.4794}\\approx2.0858$ |\n| $\\sin^{-1}\\left(\\frac12\\right)$ | the **angle** whose sine is $\\frac12$ | $\\frac{\\pi}{6}$ (also $\\frac{5\\pi}{6}$, …) |\n\n$\\sin^{-1}x$ asks *\"which angle?\"*; $\\csc x$ asks *\"what is one over the sine?\"* On a calculator, $\\csc x$ uses the sine key and then the reciprocal key ($x^{-1}$), while $\\sin^{-1}$ is the 2nd function of the sine key."
+    },
+    {
+      "id": "applications",
+      "title": "Modelling with reciprocal functions",
+      "body": "Reciprocal ratios appear naturally whenever a length is the **hypotenuse** or the **adjacent side** divided by a fixed side.\n\n* **Sunlight through the atmosphere.** If the atmosphere has thickness 1 unit and the Sun's rays meet the ground at angle $x$, the rays travel through $y$ units where $\\sin x=\\frac1y$, so $y=\\csc x$. As $x\\to0$ (Sun near the horizon) the path grows without bound – that is why sunsets are dimmer and redder.\n* **Shadows.** A tree of height $h$ casts a shadow $s$ with $\\tan x=\\frac{h}{s}$, so $s=h\\cot x$. As $x\\to\\frac{\\pi}{2}$ (Sun overhead) the shadow shrinks to 0; as $x\\to0$ the shadow becomes infinitely long.\n* **Swimming across a pool.** Diving in and swimming diagonally across a pool of width $w$ at angle $x$ to the width gives distance $d=w\\sec x$.\n* **Swing rides.** The angle of a swing satisfies $\\cot x=\\dfrac{rg}{v^2}$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "cosecant",
+      "definition": "$\\csc x=\\frac{1}{\\sin x}$; undefined where $\\sin x=0$."
+    },
+    {
+      "term": "secant",
+      "definition": "$\\sec x=\\frac{1}{\\cos x}$; undefined where $\\cos x=0$."
+    },
+    {
+      "term": "cotangent",
+      "definition": "$\\cot x=\\frac{1}{\\tan x}=\\frac{\\cos x}{\\sin x}$; undefined where $\\sin x=0$."
+    },
+    {
+      "term": "reciprocal trigonometric function",
+      "definition": "One of $\\csc$, $\\sec$, $\\cot$ – the reciprocal of a primary trigonometric function."
+    },
+    {
+      "term": "inverse trigonometric notation",
+      "definition": "$\\sin^{-1}x$, $\\cos^{-1}x$, $\\tan^{-1}x$ give an **angle** with the given ratio – not a reciprocal."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Reciprocal identities",
+      "latex": "\\csc x=\\frac{1}{\\sin x},\\quad \\sec x=\\frac{1}{\\cos x},\\quad \\cot x=\\frac{1}{\\tan x}",
+      "meaning": "Convert a reciprocal equation into a primary-ratio equation."
+    },
+    {
+      "name": "Cotangent as a quotient",
+      "latex": "\\cot x=\\frac{\\cos x}{\\sin x}",
+      "meaning": "Zeros where $\\cos x=0$, asymptotes where $\\sin x=0$."
+    },
+    {
+      "name": "Shift relationship",
+      "latex": "\\sec x=\\csc\\left(x+\\frac{\\pi}{2}\\right)",
+      "meaning": "Follows from $\\cos x=\\sin(x+\\frac{\\pi}{2})$."
+    },
+    {
+      "name": "Pythagorean identity (reciprocal form)",
+      "latex": "\\csc^2x=1+\\cot^2x",
+      "meaning": "Divide $\\sin^2x+\\cos^2x=1$ by $\\sin^2x$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Solving csc x = 3",
+      "problem": "Determine all $x\\in[0,2\\pi]$ with $\\csc x=3$, to two decimal places. What happens where $\\csc x=-1$?",
+      "steps": [
+        "$\\csc x=3\\iff\\sin x=\\frac13$.",
+        "$\\sin^{-1}\\left(\\frac13\\right)\\approx0.3398$, so $x\\approx0.34$ (quadrant I).",
+        "Sine is also positive in quadrant II: $x=\\pi-0.3398\\approx2.80$.",
+        "$\\csc x=-1$ when $\\sin x=-1$, i.e. at $x=\\frac{3\\pi}{2}$ – the only place in $[0,2\\pi]$; here the cosecant and sine graphs touch."
+      ],
+      "answer": "$x\\approx0.34$ and $x\\approx2.80$."
+    },
+    {
+      "title": "Solving cot x = 8",
+      "problem": "Determine all $x\\in[0,2\\pi]$ with $\\cot x=8$.",
+      "steps": [
+        "$\\cot x=8\\iff\\tan x=\\frac18=0.125$.",
+        "$\\tan^{-1}(0.125)\\approx0.1244$, so $x\\approx0.12$.",
+        "Tangent has period $\\pi$: $x\\approx0.1244+\\pi\\approx3.27$."
+      ],
+      "answer": "$x\\approx0.12$ and $x\\approx3.27$."
+    },
+    {
+      "title": "Reciprocal versus inverse",
+      "problem": "Explain the difference between $\\csc\\frac{1}{\\sqrt2}$ and $\\sin^{-1}\\left(\\frac{1}{\\sqrt2}\\right)$ and evaluate each.",
+      "steps": [
+        "$\\csc\\frac{1}{\\sqrt2}=\\dfrac{1}{\\sin(0.7071\\text{ rad})}$ – one over the sine of the **angle** $0.7071$ rad.",
+        "$\\sin(0.7071)\\approx0.6496$, so $\\csc\\frac{1}{\\sqrt2}\\approx1.539$.",
+        "$\\sin^{-1}\\left(\\frac{1}{\\sqrt2}\\right)$ is an **angle** whose sine is $\\frac{1}{\\sqrt2}$: $\\frac{\\pi}{4}\\approx0.785$ (also $\\frac{3\\pi}{4}$, …)."
+      ],
+      "answer": "$\\csc\\frac{1}{\\sqrt2}\\approx1.539$ (a single number); $\\sin^{-1}\\frac{1}{\\sqrt2}=\\frac{\\pi}{4}$ (an angle, one of many)."
+    },
+    {
+      "title": "Shadow length",
+      "problem": "A tree 12 m tall casts a shadow of length $s$ when the Sun's angle of elevation is $x$. Show that $s=12\\cot x$ and describe the graph on $\\left(0,\\frac{\\pi}{2}\\right)$.",
+      "steps": [
+        "In the right triangle, the tree is opposite $x$ and the shadow is adjacent: $\\tan x=\\frac{12}{s}$.",
+        "Rearrange: $s=\\frac{12}{\\tan x}=12\\cot x$.\n\n```plot\nf: 12/tan(x) | label=s = 12 cot x\ndomain: 0.05, pi/2\nrange: 0, 60\nxticks: pi\nticks: 0.25, 10\n```\n\n",
+        "As $x\\to0^+$, $\\cot x\\to\\infty$: the shadow becomes extremely long (Sun at the horizon).",
+        "As $x\\to\\frac{\\pi}{2}^-$, $\\cot x\\to0$: the shadow disappears (Sun overhead)."
+      ],
+      "answer": "$s=12\\cot x$, decreasing from very large values to 0 across $\\left(0,\\frac{\\pi}{2}\\right)$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\csc x$ is the same as $\\sin^{-1}x$.",
+      "fact": "$\\csc x=\\frac{1}{\\sin x}$ is a reciprocal (a number). $\\sin^{-1}x$ is an inverse – it returns an **angle**."
+    },
+    {
+      "myth": "$\\sec x$ is the reciprocal of $\\sin x$ because both start with 's'.",
+      "fact": "Each pair contains exactly one 'co': $\\csc$ ↔ $\\sin$, $\\sec$ ↔ $\\cos$, $\\cot$ ↔ $\\tan$. So $\\sec x=\\frac{1}{\\cos x}$, not $\\frac{1}{\\sin x}$."
+    },
+    {
+      "myth": "The reciprocal graph has asymptotes where the parent graph has asymptotes.",
+      "fact": "Asymptotes of the reciprocal occur where the parent is **zero**. Where tangent has asymptotes, cotangent has **zeros**."
+    },
+    {
+      "myth": "$y=\\csc x$ has an amplitude of 1.",
+      "fact": "Cosecant and secant are unbounded, so they have no amplitude; their range is $y\\le-1$ or $y\\ge1$."
+    },
+    {
+      "myth": "To evaluate $\\sec2$ press 2nd-COS.",
+      "fact": "2nd-COS is $\\cos^{-1}$. Evaluate $\\cos 2$ first, then take the reciprocal."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Radar antennas",
+      "body": "Engineers shape the radiation pattern of radar antenna arrays using a cosecant function so that energy is spread to where aircraft actually are, not wasted on empty airspace."
+    },
+    {
+      "title": "Awnings",
+      "body": "An awning that must completely shade a 2 m window when the Sun is at elevation $x$ needs to project $d=2\\cot x$ from the wall."
+    },
+    {
+      "title": "Lighthouse beams",
+      "body": "A lighthouse 500 m from a straight cliff rotates its beam through angle $x$; the distance to the spot lit on the cliff is $500\\sec x$."
+    },
+    {
+      "title": "Swing rides",
+      "body": "On a swing ride, $\\cot x=\\frac{rg}{v^2}$ relates the swing angle to the speed $v$ and the distance $r$ from the centre."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Determine all $x\\in[0,2\\pi]$ with $\\csc x=5$, to two decimal places.",
+      "hint": "$\\sin x=\\frac15$; sine positive in quadrants I and II.",
+      "solution": "$\\sin^{-1}(0.2)\\approx0.20$; $\\pi-0.20\\approx2.94$. So $x\\approx0.20,\\ 2.94$."
+    },
+    {
+      "question": "Determine all $x\\in[0,2\\pi]$ with $\\sec x=2$.",
+      "hint": "$\\cos x=\\frac12$.",
+      "solution": "$x=\\frac{\\pi}{3}\\approx1.05$ and $x=\\frac{5\\pi}{3}\\approx5.24$."
+    },
+    {
+      "question": "Determine all $x\\in[0,2\\pi]$ with $\\cot x=-4$.",
+      "hint": "$\\tan x=-0.25$; tangent negative in quadrants II and IV.",
+      "solution": "Reference angle $\\tan^{-1}(0.25)\\approx0.245$. $x\\approx\\pi-0.245\\approx2.90$ and $x\\approx2\\pi-0.245\\approx6.04$."
+    },
+    {
+      "question": "Explain the difference between $\\cot1$ and $\\tan^{-1}(1)$ and evaluate each.",
+      "hint": "One is a reciprocal of a ratio; the other is an angle.",
+      "solution": "$\\cot1=\\frac{1}{\\tan(1\\text{ rad})}\\approx\\frac{1}{1.557}\\approx0.642$. $\\tan^{-1}(1)=\\frac{\\pi}{4}\\approx0.785$ (an angle)."
+    },
+    {
+      "question": "Describe the graph of $y=\\sec x$ as a transformation of $y=\\csc x$. Is there more than one transformation?",
+      "hint": "Use $\\cos x=\\sin(x+\\frac{\\pi}{2})$.",
+      "solution": "A translation $\\frac{\\pi}{2}$ left: $\\sec x=\\csc(x+\\frac{\\pi}{2})$. Since the period is $2\\pi$, a translation $\\frac{3\\pi}{2}$ right also works (and any of these plus multiples of $2\\pi$)."
+    },
+    {
+      "question": "For what values of $x$ in $[0,2\\pi]$ does $\\cos x=\\sec x$?",
+      "hint": "$\\cos x=\\frac{1}{\\cos x}\\Rightarrow\\cos^2x=1$.",
+      "solution": "$\\cos x=\\pm1$: $x=0,\\ \\pi,\\ 2\\pi$."
+    },
+    {
+      "question": "Where do $y=\\tan x$ and $y=\\cot x$ intersect on $[0,2\\pi]$?",
+      "hint": "$\\tan x=\\frac{1}{\\tan x}\\Rightarrow\\tan^2x=1$.",
+      "solution": "$\\tan x=\\pm1$: $x=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}$."
+    }
+  ],
+  "summary": [
+    "$\\csc x=\\frac{1}{\\sin x}$, $\\sec x=\\frac{1}{\\cos x}$, $\\cot x=\\frac{1}{\\tan x}$.",
+    "Reciprocal graphs have vertical asymptotes at the zeros of the parent and touch the parent where it equals $\\pm1$.",
+    "$\\csc$ and $\\sec$ have period $2\\pi$ and range $y\\le-1$ or $y\\ge1$; $\\cot$ has period $\\pi$ and range $\\mathbb R$.",
+    "Solve reciprocal equations by converting to the primary ratio.",
+    "$\\csc x$ (reciprocal) is not $\\sin^{-1}x$ (inverse)."
+  ],
+  "questions": [
+    {
+      "id": "5-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "c": {
+          "choices": [
+            1.5,
+            2.5,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "text": "Determine all values of $x$ in $[0,2\\pi]$ such that $\\csc x={{c}}$. Round to two decimal places and explain your method.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smallest solution",
+          "answer": {
+            "expr": "asin(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Other solution",
+          "answer": {
+            "expr": "pi-asin(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\csc x={{c}}\\iff\\sin x=\\dfrac{1}{ {{c}} }\\approx{{1/c:4}}$.\n\nQuadrant I: $x=\\sin^{-1}\\left(\\frac{1}{ {{c}} }\\right)\\approx{{asin(1/c):3}}$.\n\nSine is also positive in quadrant II: $x=\\pi-{{asin(1/c):3}}\\approx{{pi-asin(1/c):3}}$.",
+      "rubric": [
+        {
+          "point": "Converts to sin x = 1/c",
+          "marks": 1
+        },
+        {
+          "point": "Correct first solution",
+          "marks": 1
+        },
+        {
+          "point": "Correct second solution using quadrant II",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "c": {
+          "choices": [
+            1.2,
+            1.5,
+            2.5,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "Determine all values of $x$ in $[0,2\\pi]$ such that $\\sec x={{c}}$, to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smallest solution",
+          "answer": {
+            "expr": "acos(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Other solution",
+          "answer": {
+            "expr": "2*pi-acos(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cos x=\\dfrac{1}{ {{c}} }$. Quadrant I: $x=\\cos^{-1}\\left(\\frac{1}{ {{c}} }\\right)\\approx{{acos(1/c):3}}$.\n\nCosine is also positive in quadrant IV: $x=2\\pi-{{acos(1/c):3}}\\approx{{2*pi-acos(1/c):3}}$.",
+      "rubric": [
+        {
+          "point": "Converts to cos x = 1/c",
+          "marks": 1
+        },
+        {
+          "point": "Correct quadrant I solution",
+          "marks": 1
+        },
+        {
+          "point": "Correct quadrant IV solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "choices": [
+            2,
+            3,
+            4,
+            5,
+            8
+          ]
+        }
+      },
+      "text": "Determine all values of $x$ in $[0,2\\pi]$ such that $\\cot x=-{{c}}$, to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution",
+          "answer": {
+            "expr": "pi-atan(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution",
+          "answer": {
+            "expr": "2*pi-atan(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\tan x=-\\dfrac{1}{ {{c}} }$. The reference angle is $\\tan^{-1}\\left(\\frac{1}{ {{c}} }\\right)\\approx{{atan(1/c):3}}$.\n\nTangent is negative in quadrants II and IV:\n\n$x=\\pi-{{atan(1/c):3}}\\approx{{pi-atan(1/c):3}}$ and $x=2\\pi-{{atan(1/c):3}}\\approx{{2*pi-atan(1/c):3}}$.",
+      "rubric": [
+        {
+          "point": "Converts to tan x = −1/c",
+          "marks": 1
+        },
+        {
+          "point": "Correct reference angle",
+          "marks": 1
+        },
+        {
+          "point": "Both solutions in the correct quadrants",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q04",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "(a) Explain the difference between $\\csc\\dfrac{1}{ {{n}} }$ and $\\sin^{-1}\\left(\\dfrac{1}{ {{n}} }\\right)$. (b) Determine a value for each.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain the difference."
+        },
+        {
+          "label": "b",
+          "text": "Value of $\\csc\\frac{1}{ {{n}} }$",
+          "answer": {
+            "expr": "1/sin(1/n)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Value of $\\sin^{-1}\\left(\\frac{1}{ {{n}} }\\right)$",
+          "answer": {
+            "expr": "asin(1/n)",
+            "unit": "rad",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\csc\\frac{1}{ {{n}} }$ is the reciprocal of the sine of the angle $\\frac{1}{ {{n}} }$ rad – a single number. $\\sin^{-1}\\left(\\frac{1}{ {{n}} }\\right)$ is an angle whose sine equals $\\frac{1}{ {{n}} }$; there are infinitely many such angles.\n\n(b) $\\csc\\frac{1}{ {{n}} }=\\dfrac{1}{\\sin({{1/n:4}})}\\approx{{1/sin(1/n):4}}$.\n\n$\\sin^{-1}\\left(\\frac{1}{ {{n}} }\\right)\\approx{{asin(1/n):4}}$ rad (another answer is $\\pi-{{asin(1/n):4}}$).",
+      "rubric": [
+        {
+          "point": "Explains reciprocal meaning",
+          "marks": 1
+        },
+        {
+          "point": "Explains inverse meaning (an angle, many answers)",
+          "marks": 1
+        },
+        {
+          "point": "Correct csc value",
+          "marks": 1
+        },
+        {
+          "point": "Correct inverse value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-2-q05",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain how to sketch the graph of $y=\\csc x$ on $[0,2\\pi]$ using the graph of $y=\\sin x$. Your explanation should identify where the graphs intersect, where the asymptotes are and why, and how the shape of each branch is determined. State the domain, range and period of $y=\\csc x$.",
+      "modelAnswer": "1. Sketch $y=\\sin x$.\n2. The graphs intersect where $\\sin x=\\pm1$ (since $\\frac{1}{1}=1$ and $\\frac{1}{-1}=-1$): $\\left(\\frac{\\pi}{2},1\\right)$ and $\\left(\\frac{3\\pi}{2},-1\\right)$.\n3. Where $\\sin x=0$ ($x=0,\\pi,2\\pi$), $\\csc x$ is undefined; as $\\sin x\\to0$, $\\csc x$ grows without bound, so these are vertical asymptotes.\n4. From $x=\\frac{\\pi}{2}$ toward $0$ or toward $\\pi$, $\\sin x$ decreases toward $0^+$, so $\\csc x$ increases toward $+\\infty$ – a U-shaped branch above with minimum $(\\frac{\\pi}{2},1)$. Between $\\pi$ and $2\\pi$ the branch opens downward with maximum $(\\frac{3\\pi}{2},-1)$.\n\nDomain $x\\ne n\\pi$; range $y\\le-1$ or $y\\ge1$; period $2\\pi$.",
+      "rubric": [
+        {
+          "point": "Intersections at sin x = ±1",
+          "marks": 1
+        },
+        {
+          "point": "Asymptotes at zeros of sine with reason",
+          "marks": 2
+        },
+        {
+          "point": "Branch shape from reciprocal behaviour",
+          "marks": 2
+        },
+        {
+          "point": "Domain, range, period",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q06",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Copy and complete a summary of $y=\\sec x$ and $y=\\cot x$: for each, give the domain, range, period, the equations of the asymptotes on $[0,2\\pi]$, and any zeros on $[0,2\\pi]$.",
+      "modelAnswer": "$y=\\sec x$: domain $x\\ne\\frac{\\pi}{2}+n\\pi$; range $y\\le-1$ or $y\\ge1$; period $2\\pi$; asymptotes $x=\\frac{\\pi}{2}$, $x=\\frac{3\\pi}{2}$; no zeros.\n\n$y=\\cot x$: domain $x\\ne n\\pi$; range $\\mathbb R$; period $\\pi$; asymptotes $x=0$, $x=\\pi$, $x=2\\pi$; zeros at $x=\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$.",
+      "rubric": [
+        {
+          "point": "Secant domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Secant period and asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Cotangent domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Cotangent period, asymptotes and zeros",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q07",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "(a) Describe the graph of $y=\\sec x$ as a transformation of $y=\\csc x$. (b) Is there more than one transformation that works? Explain.",
+      "modelAnswer": "(a) Because $\\cos x=\\sin\\left(x+\\frac{\\pi}{2}\\right)$, taking reciprocals gives $\\sec x=\\csc\\left(x+\\frac{\\pi}{2}\\right)$: the secant graph is the cosecant graph translated $\\frac{\\pi}{2}$ to the left.\n\n(b) Yes. Both graphs have period $2\\pi$, so a translation of $\\frac{\\pi}{2}+2n\\pi$ left (e.g. $\\frac{3\\pi}{2}$ to the right) also works. A reflection in the $y$-axis combined with a translation also works, since $\\csc(-x)=-\\csc x$ and so $\\csc\\left(\\frac{\\pi}{2}-x\\right)=\\sec x$.",
+      "rubric": [
+        {
+          "point": "Correct translation with justification from identity",
+          "marks": 2
+        },
+        {
+          "point": "States other translations due to period",
+          "marks": 1
+        },
+        {
+          "point": "Explains with an example",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-2-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 8,
+          "max": 20,
+          "step": 1
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "When the Sun is at an angle of elevation $x$, a tree of height {{h}} m casts a shadow of length $s$ metres.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $s={{h}}\\cot x$."
+        },
+        {
+          "label": "b",
+          "text": "Find the shadow length when $x=\\frac{\\pi}{ {{n}} }$.",
+          "answer": {
+            "expr": "h/tan(pi/n)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the graph of $s$ on $x\\in\\left(0,\\frac{\\pi}{2}\\right)$ and interpret it as $x$ approaches 0 and $\\frac{\\pi}{2}$."
+        }
+      ],
+      "modelAnswer": "(a) The tree is opposite $x$ and the shadow adjacent: $\\tan x=\\dfrac{ {{h}} }{s}$, so $s=\\dfrac{ {{h}} }{\\tan x}={{h}}\\cot x$.\n\n(b) At $x=\\frac{\\pi}{ {{n}} }$: $s={{h}}\\cot\\frac{\\pi}{ {{n}} }\\approx{{h/tan(pi/n):3}}$ m.\n\n(c) As $x\\to0^+$, $\\cot x\\to+\\infty$: the shadow becomes very long (Sun near the horizon). As $x\\to\\frac{\\pi}{2}^-$, $\\cot x\\to0$: the shadow shrinks to nothing (Sun directly overhead). The graph decreases throughout $\\left(0,\\frac{\\pi}{2}\\right)$ with a vertical asymptote at $x=0$.",
+      "rubric": [
+        {
+          "point": "Shows s = h cot x from the triangle",
+          "marks": 2
+        },
+        {
+          "point": "Correct shadow length",
+          "marks": 1
+        },
+        {
+          "point": "Interprets both ends with the asymptote",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "choices": [
+            1.5,
+            2,
+            2.4,
+            3
+          ]
+        }
+      },
+      "text": "An awning shades a window of height {{h}} m. It projects a distance $d$ from the wall so that the window is completely shaded when the Sun's elevation is $x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $d={{h}}\\cot x$."
+        },
+        {
+          "label": "b",
+          "text": "How far must the awning project if $x=\\frac{\\pi}{3}$?",
+          "answer": {
+            "expr": "h/sqrt(3)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Interpret the graph as $x\\to0$ and $x\\to\\frac{\\pi}{2}$."
+        }
+      ],
+      "modelAnswer": "(a) The window height is opposite $x$ and $d$ is adjacent: $\\tan x=\\frac{ {{h}} }{d}$, so $d={{h}}\\cot x$.\n\n(b) $x=\\frac{\\pi}{3}$: $d={{h}}\\cot\\frac{\\pi}{3}=\\dfrac{ {{h}} }{\\sqrt3}\\approx{{h/sqrt(3):3}}$ m.\n\n(c) As $x\\to0$, $d\\to\\infty$ (no awning could shade the window when the Sun is very low). As $x\\to\\frac{\\pi}{2}$, $d\\to0$ (the Sun is overhead, so almost no projection is needed).",
+      "rubric": [
+        {
+          "point": "Derives d = h cot x",
+          "marks": 2
+        },
+        {
+          "point": "Correct projection for π/3",
+          "marks": 1
+        },
+        {
+          "point": "Interprets limiting behaviour",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 3,
+          "max": 9,
+          "step": 1
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "A sailboat's mast is {{h}} m high. A wire of length $l$ metres runs from the bow to the top of the mast, making an angle of inclination $x$ with the deck.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $l={{h}}\\csc x$."
+        },
+        {
+          "label": "b",
+          "text": "Find the wire length when $x=\\frac{\\pi}{ {{n}} }$.",
+          "answer": {
+            "expr": "h/sin(pi/n)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Interpret the graph of $l$ on $\\left(0,\\frac{\\pi}{2}\\right]$ as $x\\to0$ and $x\\to\\frac{\\pi}{2}$."
+        }
+      ],
+      "modelAnswer": "(a) The mast is opposite $x$, the wire is the hypotenuse: $\\sin x=\\dfrac{ {{h}} }{l}$, so $l=\\dfrac{ {{h}} }{\\sin x}={{h}}\\csc x$.\n\n(b) At $x=\\frac{\\pi}{ {{n}} }$: $l={{h}}\\csc\\frac{\\pi}{ {{n}} }\\approx{{h/sin(pi/n):3}}$ m.\n\n(c) As $x\\to0$, $\\csc x\\to\\infty$: the wire would need to be extremely long (attached very far from the mast). As $x\\to\\frac{\\pi}{2}$, $\\csc x\\to1$, so $l\\to{{h}}$ m: the wire becomes vertical, the same length as the mast.",
+      "rubric": [
+        {
+          "point": "Derives l = h csc x",
+          "marks": 2
+        },
+        {
+          "point": "Correct length",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation near 0",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation near π/2 (approaches h)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-2-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "A lifeguard at one end of a pool of width $w$ runs along the length to a point $P$, then dives in and swims a distance $d$ to a swimmer at the opposite corner $S$. The swimming path makes angle $x$ with the width of the pool. The pool length is $l=2w$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $d=w\\sec x$."
+        },
+        {
+          "label": "b",
+          "text": "Determine the range of values that $x$ may take.",
+          "answer": {
+            "expr": "atan(2)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the range of values of $d$ in terms of $w$.",
+          "answer": {
+            "expr": "sqrt(5)",
+            "unit": "× w",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Suggest a reason the lifeguard might swim rather than run all the way."
+        }
+      ],
+      "modelAnswer": "(a) The width $w$ is adjacent to $x$ and $d$ is the hypotenuse: $\\cos x=\\frac{w}{d}$, so $d=w\\sec x$.\n\n(b) If $P$ is directly across from $S$, $x=0$. If $P$ is at the far end (where the lifeguard started), the horizontal leg is $l=2w$, so $\\tan x=\\frac{2w}{w}=2$ and $x=\\tan^{-1}2\\approx1.11$. So $0\\le x\\le1.11$.\n\n(c) $d=w\\sec x$ increases on this interval: from $w\\sec0=w$ to $w\\sec(1.107)=w\\sqrt{1+4}=\\sqrt5\\,w\\approx2.24w$.\n\n(d) Running all the way round means covering the length and then the width on foot ($3w$ in total) with no way to reach the swimmer from the deck; diving in earlier lets the lifeguard reach the swimmer sooner along a shorter overall path, even though swimming is slower than running.",
+      "rubric": [
+        {
+          "point": "Derives d = w sec x",
+          "marks": 2
+        },
+        {
+          "point": "Correct interval for x including tan⁻¹2",
+          "marks": 2
+        },
+        {
+          "point": "Correct range of d",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable explanation of choice",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-2-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "choices": [
+            3,
+            3.5,
+            4,
+            5
+          ]
+        },
+        "v": {
+          "choices": [
+            4.2,
+            5.4,
+            6
+          ]
+        }
+      },
+      "text": "On a swing ride, the angle $x$ that a swing makes with the vertical satisfies $\\cot x=\\dfrac{rg}{v^2}$, where $r$ is the distance (m) from the centre of rotation, $g=9.8$ m/s² and $v$ is the speed (m/s). A swing is {{r}} m from the centre and moves at {{v}} m/s.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $x$ to the nearest hundredth of a radian.",
+          "answer": {
+            "expr": "atan(v^2/(r*9.8))",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "If $r$ is doubled at the same speed, does the angle double? Justify.",
+          "answer": {
+            "expr": "atan(v^2/(2*r*9.8))",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "If the speed is doubled at the same $r$, does the angle halve? Justify.",
+          "answer": {
+            "expr": "atan(4*v^2/(r*9.8))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\cot x=\\dfrac{ {{r}}(9.8)}{ {{v}}^2}\\approx{{r*9.8/v^2:4}}$, so $\\tan x\\approx{{v^2/(r*9.8):4}}$ and $x\\approx{{atan(v^2/(r*9.8)):3}}$ rad.\n\n(b) Doubling $r$ doubles $\\cot x$: $\\tan x\\approx{{v^2/(2*r*9.8):4}}$, $x\\approx{{atan(v^2/(2*r*9.8)):3}}$. The angle does **not** halve or double – the relationship between $x$ and $\\cot x$ is not linear.\n\n(c) Doubling $v$ divides $\\cot x$ by 4, giving $x\\approx{{atan(4*v^2/(r*9.8)):3}}$, which is not twice the original angle.",
+      "rubric": [
+        {
+          "point": "Correct angle in (a)",
+          "marks": 2
+        },
+        {
+          "point": "Correct reasoning with calculation in (b)",
+          "marks": 2
+        },
+        {
+          "point": "Correct reasoning with calculation in (c)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "D": {
+          "choices": [
+            300,
+            400,
+            500,
+            600
+          ]
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "A lighthouse with a rotating beam is {{D}} m south of a straight coastal cliff that runs west to east. The beam rotates through angle $x$ measured from due north.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find a relation for the distance $d$ from the lighthouse to the lit point on the cliff."
+        },
+        {
+          "label": "b",
+          "text": "Find $d$ when $x=\\frac{\\pi}{ {{n}} }$.",
+          "answer": {
+            "expr": "D/cos(pi/n)",
+            "unit": "m",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "What happens as $x\\to\\frac{\\pi}{2}$? Explain."
+        }
+      ],
+      "modelAnswer": "(a) The perpendicular distance {{D}} m is adjacent to $x$ and the beam's path is the hypotenuse: $d={{D}}\\sec x$.\n\n(b) At $x=\\frac{\\pi}{ {{n}} }$: $d={{D}}\\sec\\frac{\\pi}{ {{n}} }\\approx{{D/cos(pi/n):4}}$ m.\n\n(c) As $x\\to\\frac{\\pi}{2}$ the beam becomes parallel to the cliff and never reaches it: $d\\to\\infty$, a vertical asymptote at $x=\\frac{\\pi}{2}$.",
+      "rubric": [
+        {
+          "point": "Derives d = D sec x",
+          "marks": 2
+        },
+        {
+          "point": "Correct distance",
+          "marks": 1
+        },
+        {
+          "point": "Explains asymptote physically",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Solve each equation on $[0,2\\pi]$ and explain your reasoning: (a) $\\cos x=\\sec x$; (b) $\\tan x=\\cot x$; (c) $\\csc x=\\sin x$.",
+      "modelAnswer": "(a) $\\cos x=\\frac{1}{\\cos x}\\Rightarrow\\cos^2x=1\\Rightarrow\\cos x=\\pm1$: $x=0,\\pi,2\\pi$.\n\n(b) $\\tan x=\\frac{1}{\\tan x}\\Rightarrow\\tan^2x=1\\Rightarrow\\tan x=\\pm1$: $x=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}$.\n\n(c) $\\sin^2x=1\\Rightarrow\\sin x=\\pm1$: $x=\\frac{\\pi}{2},\\frac{3\\pi}{2}$. These are the points where a function and its reciprocal both equal $\\pm1$.",
+      "rubric": [
+        {
+          "point": "Correct solutions to (a)",
+          "marks": 2
+        },
+        {
+          "point": "Correct solutions to (b)",
+          "marks": 2
+        },
+        {
+          "point": "Correct solutions to (c) with explanation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q15",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Consider $y=\\csc 2x$. Predict the values of $x$ in $[0,2\\pi]$ at which vertical asymptotes occur, and state the period. Justify your prediction.",
+      "modelAnswer": "Asymptotes occur where $\\sin2x=0$: $2x=n\\pi\\Rightarrow x=\\frac{n\\pi}{2}$. On $[0,2\\pi]$: $x=0,\\frac{\\pi}{2},\\pi,\\frac{3\\pi}{2},2\\pi$.\n\nPeriod: $\\frac{2\\pi}{2}=\\pi$, half that of $y=\\csc x$, because the parent $\\sin2x$ has period $\\pi$.",
+      "rubric": [
+        {
+          "point": "Sets sin 2x = 0",
+          "marks": 1
+        },
+        {
+          "point": "All five asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Correct period with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-2-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "When the Sun is directly overhead its rays pass through 1 unit of atmosphere. When the Sun is inclined at angle $x$ to Earth's surface the rays pass through $y$ units. (a) Explain why $y=\\csc x$. (b) Describe what happens to $y$ as $x\\to0$ and explain why this makes sense. (c) State two assumptions in this model.",
+      "modelAnswer": "(a) The atmosphere has vertical thickness 1, opposite angle $x$; the ray's path $y$ is the hypotenuse: $\\sin x=\\frac1y$, so $y=\\frac{1}{\\sin x}=\\csc x$.\n\n(b) As $x\\to0$, $\\sin x\\to0$, so $y\\to\\infty$: the Sun's rays travel through more and more air as the Sun approaches the horizon, which is why sunlight is weaker at sunrise and sunset.\n\n(c) Earth's surface is flat; the atmosphere is uniform and ends at a fixed height (so the path is a straight line through a constant-thickness layer).",
+      "rubric": [
+        {
+          "point": "Derives y = csc x",
+          "marks": 2
+        },
+        {
+          "point": "Describes and explains behaviour near 0",
+          "marks": 2
+        },
+        {
+          "point": "Two valid assumptions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-2-q17",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Use graphs of $y=\\csc^2x$ and $y=\\cot^2x$ (or a table of values) to decide whether $\\csc^2x=\\cot^2x$ is an identity. If it is not, find a similar equation that is an identity and prove it.",
+      "modelAnswer": "It is not an identity: at $x=\\frac{\\pi}{2}$, $\\csc^2x=1$ but $\\cot^2x=0$. The graphs have the same shape but $y=\\csc^2x$ is always 1 unit higher.\n\nConjecture: $\\csc^2x=1+\\cot^2x$.\n\nProof: start with $\\sin^2x+\\cos^2x=1$ and divide by $\\sin^2x$ ($\\sin x\\ne0$):\n$$1+\\frac{\\cos^2x}{\\sin^2x}=\\frac{1}{\\sin^2x}\\ \\Rightarrow\\ 1+\\cot^2x=\\csc^2x.$$",
+      "rubric": [
+        {
+          "point": "Counterexample showing not an identity",
+          "marks": 2
+        },
+        {
+          "point": "Correct conjecture from graphs",
+          "marks": 1
+        },
+        {
+          "point": "Valid proof",
+          "marks": 3
+        }
+      ]
+    }
+  ]
+}

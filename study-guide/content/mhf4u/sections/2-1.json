@@ -1,0 +1,1189 @@
+{
+  "id": "2-1",
+  "number": "2.1",
+  "title": "The Remainder Theorem",
+  "estimatedMinutes": 75,
+  "overview": "Dividing polynomials works just like long division with numbers — and it has a powerful shortcut. In this section you will divide a polynomial by a binomial, write the answer in quotient form with its restriction, and use the **remainder theorem** to find a remainder instantly by substitution. You will use these tools to solve for unknown coefficients and to find the dimensions of objects from their volume.",
+  "objectives": [
+    "Divide a polynomial by a binomial of the form $x - b$ or $ax - b$ using long division.",
+    "Write the result of a division in quotient form, state its restriction, and write the division statement.",
+    "Use placeholders for missing terms.",
+    "Explain why the remainder theorem works.",
+    "Use the remainder theorem to find a remainder without dividing.",
+    "Solve for unknown coefficients using given remainders.",
+    "Solve problems, such as finding dimensions from a volume, using division."
+  ],
+  "lessons": [
+    {
+      "id": "why-divide",
+      "title": "Dividing polynomials: the big idea",
+      "body": "You already know how to divide whole numbers. When you divide $579$ by $8$ you get $72$ with a remainder of $3$, and you can **check** the answer by multiplying back:\n\n$$579 = 8 \\times 72 + 3$$\n\nPolynomials work in exactly the same way. When a polynomial $P(x)$ (the **dividend**) is divided by a binomial $x - b$ (the **divisor**), you get a **quotient** $Q(x)$ and a **remainder** $R$:\n\n$$P(x) = (x - b)\\,Q(x) + R$$\n\nThis is called the **division statement**. You can also write the result in **quotient form**:\n\n$$\\frac{P(x)}{x - b} = Q(x) + \\frac{R}{x - b}, \\qquad x \\neq b$$\n\n| Whole numbers | Polynomials |\n|---|---|\n| dividend $579$ | dividend $P(x)$ |\n| divisor $8$ | divisor $x - b$ |\n| quotient $72$ | quotient $Q(x)$ |\n| remainder $3$ | remainder $R$ |\n| check: $8 \\times 72 + 3 = 579$ | check: $(x-b)Q(x) + R = P(x)$ |\n\n**Why the restriction $x \\neq b$?** In quotient form you are dividing by $x - b$. If $x = b$, the divisor is $0$, and division by zero is undefined. So every time you write a quotient form you must state the **restriction** on $x$.\n\n> **Degree check:** dividing a degree-$n$ polynomial by a linear binomial always gives a quotient of degree $n-1$, and the remainder is a constant (degree $0$)."
+    },
+    {
+      "id": "long-division",
+      "title": "Long division, one step at a time",
+      "body": "Long division of polynomials repeats the same four moves: **Divide → Multiply → Subtract → Bring down**. Always write both polynomials in **descending order of degree** first.\n\n**Example:** divide $2x^3 - 3x^2 + 4x - 7$ by $x - 2$.\n\n| Step | What you do | Result |\n|---|---|---|\n| 1. Divide | $2x^3 \\div x$ | $2x^2$ (first term of the quotient) |\n| 2. Multiply | $2x^2(x - 2)$ | $2x^3 - 4x^2$ |\n| 3. Subtract | $(2x^3 - 3x^2) - (2x^3 - 4x^2)$ | $x^2$, then bring down $+4x$: $\\;x^2 + 4x$ |\n| 4. Divide | $x^2 \\div x$ | $+x$ |\n| 5. Multiply | $x(x - 2)$ | $x^2 - 2x$ |\n| 6. Subtract | $(x^2 + 4x) - (x^2 - 2x)$ | $6x$, then bring down $-7$: $\\;6x - 7$ |\n| 7. Divide | $6x \\div x$ | $+6$ |\n| 8. Multiply | $6(x - 2)$ | $6x - 12$ |\n| 9. Subtract | $(6x - 7) - (6x - 12)$ | $5$ ← the **remainder** |\n\nSo the quotient is $2x^2 + x + 6$ and the remainder is $5$:\n\n$$\\frac{2x^3 - 3x^2 + 4x - 7}{x - 2} = 2x^2 + x + 6 + \\frac{5}{x - 2}, \\quad x \\neq 2$$\n\n**Check:** $(x - 2)(2x^2 + x + 6) + 5 = 2x^3 + x^2 + 6x - 4x^2 - 2x - 12 + 5 = 2x^3 - 3x^2 + 4x - 7$ ✓\n\n### Placeholders for missing terms\nIf a power of $x$ is missing, insert it with a coefficient of $0$ **before** you divide. For example, write $x^3 - 7x + 6$ as $x^3 + 0x^2 - 7x + 6$. The placeholder keeps like terms lined up in columns, so you never subtract an $x$ term from an $x^2$ term by mistake.\n\n> **Tip:** subtracting is where most errors happen. Change the sign of every term in the line you are subtracting, then add."
+    },
+    {
+      "id": "divide-by-ax-b",
+      "title": "Dividing by a binomial of the form ax − b",
+      "body": "The same process works when the divisor's leading coefficient is not $1$, such as $2x - 1$ or $3x + 2$. The only difference is that each \"divide\" step now divides by $ax$.\n\n**Example:** divide $6x^3 + 5x^2 - 2x + 4$ by $2x - 1$.\n\n| Step | Work | Result |\n|---|---|---|\n| Divide | $6x^3 \\div 2x$ | $3x^2$ |\n| Multiply, subtract | $(6x^3 + 5x^2) - (6x^3 - 3x^2)$ | $8x^2$; bring down: $8x^2 - 2x$ |\n| Divide | $8x^2 \\div 2x$ | $+4x$ |\n| Multiply, subtract | $(8x^2 - 2x) - (8x^2 - 4x)$ | $2x$; bring down: $2x + 4$ |\n| Divide | $2x \\div 2x$ | $+1$ |\n| Multiply, subtract | $(2x + 4) - (2x - 1)$ | $5$ |\n\n$$\\frac{6x^3 + 5x^2 - 2x + 4}{2x - 1} = 3x^2 + 4x + 1 + \\frac{5}{2x - 1}, \\quad x \\neq \\tfrac{1}{2}$$\n\nThe restriction comes from setting the divisor equal to zero: $2x - 1 = 0 \\Rightarrow x = \\tfrac12$."
+    },
+    {
+      "id": "remainder-theorem",
+      "title": "The remainder theorem: the remainder without dividing",
+      "body": "Look again at the division statement $P(x) = (x - b)Q(x) + R$. It is true for **every** value of $x$, so substitute $x = b$:\n\n$$P(b) = (b - b)\\,Q(b) + R = 0 \\cdot Q(b) + R = R$$\n\nThat gives the **remainder theorem**:\n\n> When a polynomial $P(x)$ is divided by $x - b$, the remainder is $P(b)$.\n> When $P(x)$ is divided by $ax - b$, the remainder is $P\\!\\left(\\tfrac{b}{a}\\right)$.\n\n**Finding the right value to substitute.** Set the divisor equal to zero and solve:\n\n| Divisor | Solve divisor $= 0$ | Remainder |\n|---|---|---|\n| $x - 3$ | $x = 3$ | $P(3)$ |\n| $x + 4$ | $x = -4$ | $P(-4)$ |\n| $2x - 1$ | $x = \\tfrac12$ | $P\\!\\left(\\tfrac12\\right)$ |\n| $3x + 2$ | $x = -\\tfrac23$ | $P\\!\\left(-\\tfrac23\\right)$ |\n\n**Example:** the remainder when $P(x) = 2x^3 - 3x^2 + 4x - 7$ is divided by $x - 2$ is\n$P(2) = 2(8) - 3(4) + 4(2) - 7 = 16 - 12 + 8 - 7 = 5$, which matches the long division.\n\n**Graph connection.** $P(b) = R$ means the point $(b, R)$ is on the graph of $y = P(x)$. The remainder is simply the height of the graph at $x = b$.\n\n```plot\ntitle: The remainder when P(x) = 2x³ − 3x² + 4x − 7 is divided by x − 2 is P(2) = 5\nf: 2*x^3 - 3*x^2 + 4*x - 7 | label=y = P(x)\ndomain: -1.5, 3\nrange: -25, 25\nticks: 0.5, 5\npoints: (2, 5)\n```\n\n> The remainder theorem gives the **remainder only**. If you also need the quotient, you still have to divide."
+    },
+    {
+      "id": "unknown-coefficients",
+      "title": "Using the remainder theorem to find unknown coefficients",
+      "body": "If you know the remainder, the remainder theorem gives you an **equation** you can solve.\n\n**One unknown.** Find $k$ if $x^3 + kx^2 - 4x + 5$ leaves a remainder of $8$ when divided by $x - 1$.\n\n$P(1) = 1 + k - 4 + 5 = k + 2$. Set $k + 2 = 8$, so $k = 6$.\n\n**Two unknowns.** You need two pieces of information, which give two equations. Solve them as a linear system (elimination or substitution).\n\nFor $P(x) = x^3 + mx^2 + nx - 6$: remainder $-6$ when divided by $x - 1$, remainder $0$ when divided by $x + 2$.\n\n* $P(1) = 1 + m + n - 6 = -6 \\;\\Rightarrow\\; m + n = -1$\n* $P(-2) = -8 + 4m - 2n - 6 = 0 \\;\\Rightarrow\\; 4m - 2n = 14 \\;\\Rightarrow\\; 2m - n = 7$\n\nAdd the two equations: $3m = 6$, so $m = 2$, and then $n = -1 - 2 = -3$.\n\n**Check:** $P(x) = x^3 + 2x^2 - 3x - 6$; $P(1) = 1 + 2 - 3 - 6 = -6$ ✓ and $P(-2) = -8 + 8 + 6 - 6 = 0$ ✓. Always substitute back to check.\n\n**Same remainder for two divisors.** If $P(x)$ leaves the same remainder when divided by $x - p$ and by $x - q$, then $P(p) = P(q)$. Set the two expressions equal and solve."
+    },
+    {
+      "id": "applications",
+      "title": "Applications: dimensions from a volume",
+      "body": "Many measurement problems are polynomial division in disguise.\n\nFor a rectangular box, $V = lwh$. If you know the volume $V(x)$ and one dimension, divide to get the product of the other two:\n\n$$\\text{area of base} = lw = \\frac{V(x)}{h}$$\n\n**Example:** $V(x) = x^3 + 7x^2 + 14x + 8$ and the height is $h = x + 2$.\n\nDividing gives $\\dfrac{x^3 + 7x^2 + 14x + 8}{x + 2} = x^2 + 5x + 4$ with remainder $0$.\n\nFactor the base area: $x^2 + 5x + 4 = (x + 1)(x + 4)$. So possible dimensions are $(x + 1)$ cm by $(x + 4)$ cm by $(x + 2)$ cm.\n\nWhen $x = 3$: $4$ cm by $7$ cm by $5$ cm, and $V = 140$ cm³. Check: $V(3) = 27 + 63 + 42 + 8 = 140$ ✓\n\n> A remainder of $0$ means the divisor divides **evenly** – it is a factor. You will use this idea constantly in Section 2.2."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "dividend",
+      "definition": "The polynomial being divided, $P(x)$."
+    },
+    {
+      "term": "divisor",
+      "definition": "The polynomial you divide by; in this chapter a binomial such as $x - b$ or $ax - b$."
+    },
+    {
+      "term": "quotient",
+      "definition": "The result of the division, $Q(x)$. Its degree is one less than the degree of $P(x)$ when the divisor is linear."
+    },
+    {
+      "term": "remainder",
+      "definition": "What is left over after division, $R$. When dividing by a linear binomial, the remainder is a constant."
+    },
+    {
+      "term": "division statement",
+      "definition": "$P(x) = (x - b)Q(x) + R$ — the equation used to check a division."
+    },
+    {
+      "term": "quotient form",
+      "definition": "$\\dfrac{P(x)}{x - b} = Q(x) + \\dfrac{R}{x - b}$, written with its restriction $x \\neq b$."
+    },
+    {
+      "term": "restriction",
+      "definition": "A value the variable cannot take because it makes the divisor zero."
+    },
+    {
+      "term": "placeholder",
+      "definition": "A term with coefficient $0$ (e.g. $0x^2$) inserted for a missing power so the columns line up."
+    },
+    {
+      "term": "remainder theorem",
+      "definition": "When $P(x)$ is divided by $x - b$ the remainder is $P(b)$; when divided by $ax - b$ it is $P\\left(\\frac{b}{a}\\right)$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Division statement",
+      "latex": "P(x) = (x - b)\\,Q(x) + R",
+      "meaning": "Use it to check any division: divisor × quotient + remainder = dividend."
+    },
+    {
+      "name": "Quotient form",
+      "latex": "\\frac{P(x)}{x - b} = Q(x) + \\frac{R}{x - b},\\quad x \\neq b",
+      "meaning": "Always state the restriction."
+    },
+    {
+      "name": "Remainder theorem (x − b)",
+      "latex": "R = P(b)",
+      "meaning": "Substitute the value of $x$ that makes the divisor zero."
+    },
+    {
+      "name": "Remainder theorem (ax − b)",
+      "latex": "R = P\\!\\left(\\frac{b}{a}\\right)",
+      "meaning": "For divisors like $2x - 1$, substitute $x = \frac12$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Long division with a remainder",
+      "problem": "Divide $x^3 + 3x^2 - 5x + 4$ by $x - 1$. Write the result in quotient form, state the restriction and check.",
+      "steps": [
+        "**Divide:** $x^3 \\div x = x^2$. **Multiply:** $x^2(x - 1) = x^3 - x^2$. **Subtract:** $(x^3 + 3x^2) - (x^3 - x^2) = 4x^2$. Bring down $-5x$.",
+        "**Divide:** $4x^2 \\div x = 4x$. **Multiply:** $4x(x - 1) = 4x^2 - 4x$. **Subtract:** $(4x^2 - 5x) - (4x^2 - 4x) = -x$. Bring down $+4$.",
+        "**Divide:** $-x \\div x = -1$. **Multiply:** $-1(x - 1) = -x + 1$. **Subtract:** $(-x + 4) - (-x + 1) = 3$.",
+        "Quotient $x^2 + 4x - 1$, remainder $3$. Restriction: $x - 1 \\neq 0$, so $x \\neq 1$.",
+        "**Check:** $(x - 1)(x^2 + 4x - 1) + 3 = x^3 + 4x^2 - x - x^2 - 4x + 1 + 3 = x^3 + 3x^2 - 5x + 4$ ✓"
+      ],
+      "answer": "$\\dfrac{x^3 + 3x^2 - 5x + 4}{x - 1} = x^2 + 4x - 1 + \\dfrac{3}{x - 1},\\ x \\neq 1$"
+    },
+    {
+      "title": "A placeholder is needed",
+      "problem": "Divide $2x^3 - 9x + 5$ by $x + 2$.",
+      "steps": [
+        "Insert the missing $x^2$ term: $2x^3 + 0x^2 - 9x + 5$.",
+        "$2x^3 \\div x = 2x^2$; $2x^2(x + 2) = 2x^3 + 4x^2$; subtract: $0x^2 - 4x^2 = -4x^2$; bring down $-9x$.",
+        "$-4x^2 \\div x = -4x$; $-4x(x + 2) = -4x^2 - 8x$; subtract: $-9x - (-8x) = -x$; bring down $+5$.",
+        "$-x \\div x = -1$; $-1(x + 2) = -x - 2$; subtract: $5 - (-2) = 7$.",
+        "Check with the remainder theorem: $P(-2) = 2(-8) - 9(-2) + 5 = -16 + 18 + 5 = 7$ ✓"
+      ],
+      "answer": "$\\dfrac{2x^3 - 9x + 5}{x + 2} = 2x^2 - 4x - 1 + \\dfrac{7}{x + 2},\\ x \\neq -2$"
+    },
+    {
+      "title": "Remainder theorem with ax − b",
+      "problem": "Find the remainder when $P(x) = 4x^3 - 6x^2 + 2x - 1$ is divided by $2x - 1$.",
+      "steps": [
+        "Set the divisor to zero: $2x - 1 = 0 \\Rightarrow x = \\tfrac12$.",
+        "$P\\left(\\tfrac12\\right) = 4\\left(\\tfrac18\\right) - 6\\left(\\tfrac14\\right) + 2\\left(\\tfrac12\\right) - 1 = \\tfrac12 - \\tfrac32 + 1 - 1$",
+        "$= -1$"
+      ],
+      "answer": "The remainder is $-1$."
+    },
+    {
+      "title": "Solving for an unknown coefficient",
+      "problem": "Determine $k$ so that $P(x) = 2x^3 + kx^2 - 3x + 4$ leaves a remainder of $10$ when divided by $x + 2$.",
+      "steps": [
+        "By the remainder theorem the remainder is $P(-2)$.",
+        "$P(-2) = 2(-8) + k(4) - 3(-2) + 4 = -16 + 4k + 6 + 4 = 4k - 6$",
+        "Set $4k - 6 = 10$, so $4k = 16$ and $k = 4$.",
+        "**Check:** $P(-2) = -16 + 16 + 6 + 4 = 10$ ✓"
+      ],
+      "answer": "$k = 4$"
+    },
+    {
+      "title": "Dimensions of a box",
+      "problem": "The volume of a box is $V(x) = 2x^3 + 7x^2 + 2x - 3$ and the height is $x + 1$. Find expressions for the length and width, and the dimensions when $x = 2$ (units in metres).",
+      "steps": [
+        "Base area $= \\dfrac{V(x)}{x + 1}$. Divide: $2x^3 \\div x = 2x^2$; $2x^2(x+1) = 2x^3 + 2x^2$; subtract → $5x^2 + 2x$.",
+        "$5x^2 \\div x = 5x$; $5x(x+1) = 5x^2 + 5x$; subtract → $-3x - 3$. $-3x \\div x = -3$; $-3(x+1) = -3x - 3$; remainder $0$.",
+        "Base area $= 2x^2 + 5x - 3 = (2x - 1)(x + 3)$.",
+        "Dimensions: $(2x - 1)$ by $(x + 3)$ by $(x + 1)$. When $x = 2$: $3$ m by $5$ m by $3$ m, volume $45$ m³. Check $V(2) = 16 + 28 + 4 - 3 = 45$ ✓"
+      ],
+      "answer": "$(2x-1)$ m, $(x+3)$ m and $(x+1)$ m; at $x = 2$: 3 m × 5 m × 3 m."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "To find the remainder when dividing by $x + 3$, substitute $x = 3$.",
+      "fact": "Solve $x + 3 = 0$: substitute $x = -3$. The sign flips."
+    },
+    {
+      "myth": "You can skip a missing power when dividing, e.g. divide $x^3 - 7x + 6$ as written.",
+      "fact": "Insert a placeholder $0x^2$ first so like terms stay lined up."
+    },
+    {
+      "myth": "$\\dfrac{P(x)}{x - 2} = Q(x) + R$",
+      "fact": "The remainder must also be divided by the divisor: $Q(x) + \\dfrac{R}{x - 2}$, with $x \\neq 2$."
+    },
+    {
+      "myth": "For a divisor $2x - 1$ the remainder is $P(1)$.",
+      "fact": "Set $2x - 1 = 0$, so $x = \\tfrac12$ and the remainder is $P\\left(\\tfrac12\\right)$."
+    },
+    {
+      "myth": "The remainder theorem gives the quotient too.",
+      "fact": "It gives only the remainder. Use long (or synthetic) division when you need the quotient."
+    },
+    {
+      "myth": "When subtracting in long division, only the first term changes sign.",
+      "fact": "Subtract the **whole** line: change the sign of every term, then add."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Packaging and design",
+      "body": "Engineers model the volume of a container with a polynomial. Dividing by a known dimension (like a fixed height) gives an expression for the base area, which tells them what length and width are possible."
+    },
+    {
+      "title": "Checking your own work",
+      "body": "The division statement $P(x) = (x - b)Q(x) + R$ is a built-in error check — the same idea as checking $579 \\div 8$ by computing $8 \\times 72 + 3$."
+    },
+    {
+      "title": "Quick evaluation",
+      "body": "The remainder theorem says dividing by $x - b$ and evaluating $P(b)$ give the same number. That shortcut lets you evaluate a polynomial or test a value quickly, which is how calculators and computers evaluate polynomials efficiently."
+    },
+    {
+      "title": "Error-detecting codes",
+      "body": "Computers detect transmission errors in data (such as Wi-Fi packets) by treating the data as a polynomial and checking the remainder after dividing by an agreed polynomial. A nonzero remainder signals an error."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Divide $x^3 + 2x^2 - 5x - 6$ by $x - 2$. What does the remainder tell you?",
+      "hint": "Use Divide → Multiply → Subtract → Bring down three times.",
+      "solution": "Quotient $x^2 + 4x + 3$, remainder $0$. Check: $P(2) = 8 + 8 - 10 - 6 = 0$. A remainder of $0$ means $x - 2$ divides evenly, so it is a factor: $x^3 + 2x^2 - 5x - 6 = (x - 2)(x + 1)(x + 3)$."
+    },
+    {
+      "question": "Find the remainder when $P(x) = x^4 - 3x^2 + 2x - 5$ is divided by $x + 1$.",
+      "hint": "Substitute the value that makes $x + 1 = 0$.",
+      "solution": "$P(-1) = 1 - 3 - 2 - 5 = -9$. The remainder is $-9$."
+    },
+    {
+      "question": "Divide $3x^3 - 4x + 2$ by $x - 1$ and write the division statement.",
+      "hint": "Insert $0x^2$.",
+      "solution": "$3x^3 + 0x^2 - 4x + 2$: quotient $3x^2 + 3x - 1$, remainder $1$. Division statement: $3x^3 - 4x + 2 = (x - 1)(3x^2 + 3x - 1) + 1$."
+    },
+    {
+      "question": "What is the remainder when $P(x) = 6x^3 + x^2 - 4x + 3$ is divided by $3x + 1$?",
+      "hint": "Set $3x + 1 = 0$.",
+      "solution": "$x = -\\tfrac13$: $P\\left(-\\tfrac13\\right) = 6\\left(-\\tfrac1{27}\\right) + \\tfrac19 + \\tfrac43 + 3 = -\\tfrac29 + \\tfrac19 + \\tfrac{12}{9} + \\tfrac{27}{9} = \\tfrac{38}{9}$."
+    },
+    {
+      "question": "Find $k$ if $x^3 - kx^2 + 2x + 1$ has remainder $-3$ when divided by $x - 2$.",
+      "hint": "Write $P(2)$ in terms of $k$ and set it equal to $-3$.",
+      "solution": "$P(2) = 8 - 4k + 4 + 1 = 13 - 4k = -3$, so $k = 4$."
+    },
+    {
+      "question": "Explain why the remainder after dividing by $x - 5$ cannot contain an $x$ term.",
+      "hint": "Compare the degree of the remainder with the degree of the divisor.",
+      "solution": "You keep dividing while the remainder's degree is at least the divisor's degree. The divisor has degree 1, so you stop only when the remainder has degree 0 — a constant."
+    },
+    {
+      "question": "The volume of a box is $V(x) = x^3 + 6x^2 + 11x + 6$ and the height is $x + 3$. Find the possible length and width.",
+      "hint": "Divide $V(x)$ by $x + 3$, then factor.",
+      "solution": "$V(x) \\div (x + 3) = x^2 + 3x + 2 = (x + 1)(x + 2)$. Length and width: $x + 1$ and $x + 2$."
+    },
+    {
+      "question": "For what value of $b$ does $P(x) = x^3 + bx - 4$ leave the same remainder when divided by $x - 1$ and by $x + 1$?",
+      "hint": "Set $P(1) = P(-1)$.",
+      "solution": "$P(1) = 1 + b - 4 = b - 3$ and $P(-1) = -1 - b - 4 = -b - 5$. So $b - 3 = -b - 5$, giving $b = -1$."
+    }
+  ],
+  "summary": [
+    "Long division of polynomials repeats **divide, multiply, subtract, bring down**; use placeholders for missing terms.",
+    "Division statement: $P(x) = (x - b)Q(x) + R$. Quotient form: $\\frac{P(x)}{x - b} = Q(x) + \\frac{R}{x - b}$, $x \\neq b$.",
+    "Check a division with divisor × quotient + remainder = dividend.",
+    "**Remainder theorem:** dividing $P(x)$ by $x - b$ leaves remainder $P(b)$; dividing by $ax - b$ leaves $P\\left(\\frac{b}{a}\\right)$.",
+    "Knowing a remainder gives an equation, so you can solve for unknown coefficients."
+  ],
+  "questions": [
+    {
+      "id": "2-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "derived": {
+        "R": "k^3 + a*k^2 - b*k + c"
+      },
+      "text": "Use the remainder theorem to determine the remainder when $P(x) = x^3 + {{a}}x^2 - {{b}}x + {{c}}$ is divided by $x - {{k}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the remainder.",
+          "answer": {
+            "expr": "R",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Is $x - {{k}}$ a factor of $P(x)$? Explain how you know."
+        }
+      ],
+      "modelAnswer": "Set the divisor equal to zero: $x - {{k}} = 0$, so $x = {{k}}$.\n\n$P({{k}}) = ({{k}})^3 + {{a}}({{k}})^2 - {{b}}({{k}}) + {{c}}$\n\n$= {{k^3}} + {{a*k^2}} - {{b*k}} + {{c}}$\n\n$= {{R}}$\n\n(b) Since the remainder is ${{R}}$, not $0$, the binomial $x - {{k}}$ does not divide evenly into $P(x)$, so it is **not** a factor. (If the remainder had been $0$, it would be a factor.)",
+      "rubric": [
+        {
+          "point": "Identifies that the remainder is $P(k)$ (substitutes the correct value)",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes and evaluates each term correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct remainder",
+          "marks": 1
+        },
+        {
+          "point": "Explains that a nonzero remainder means it is not a factor",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "R": "2*(-k)^3 - a*k^2 - b*k - c"
+      },
+      "text": "Determine the remainder when $P(x) = 2x^3 - {{a}}x^2 + {{b}}x - {{c}}$ is divided by $x + {{k}}$. Show the value you substitute and why.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the remainder.",
+          "answer": {
+            "expr": "R",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The divisor $x + {{k}}$ equals zero when $x = -{{k}}$, so the remainder is $P(-{{k}})$.\n\n$P(-{{k}}) = 2(-{{k}})^3 - {{a}}(-{{k}})^2 + {{b}}(-{{k}}) - {{c}}$\n\n$= {{-2*k^3}} - {{a*k^2}} - {{b*k}} - {{c}}$\n\n$= {{R}}$\n\nThe remainder is ${{R}}$.",
+      "rubric": [
+        {
+          "point": "States that $x = -k$ must be substituted, with a reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct handling of the signs of each term",
+          "marks": 2
+        },
+        {
+          "point": "Correct remainder",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "q1": "a + k",
+        "q0": "b + k*(a + k)",
+        "R": "c + k*(b + k*(a + k))"
+      },
+      "text": "Divide $x^3 + {{a}}x^2 + {{b}}x + {{c}}$ by $x - {{k}}$ using long division.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the result in quotient form.",
+          "answer": {
+            "expr": "R",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the restriction on $x$ and explain why it is needed."
+        },
+        {
+          "label": "c",
+          "text": "Write the corresponding division statement and use it (or the remainder theorem) to check your answer."
+        }
+      ],
+      "modelAnswer": "**Long division**\n\n1. $x^3 \\div x = x^2$. $x^2(x - {{k}}) = x^3 - {{k}}x^2$. Subtract: $({{a}} + {{k}})x^2 = {{q1}}x^2$. Bring down ${{b}}x$.\n2. ${{q1}}x^2 \\div x = {{q1}}x$. ${{q1}}x(x - {{k}}) = {{q1}}x^2 - {{q1*k}}x$. Subtract: $({{b}} + {{q1*k}})x = {{q0}}x$. Bring down ${{c}}$.\n3. ${{q0}}x \\div x = {{q0}}$. ${{q0}}(x - {{k}}) = {{q0}}x - {{q0*k}}$. Subtract: ${{c}} + {{q0*k}} = {{R}}$.\n\nQuotient: $x^2 + {{q1}}x + {{q0}}$, remainder ${{R}}$.\n\n(a) $\\dfrac{x^3 + {{a}}x^2 + {{b}}x + {{c}}}{x - {{k}}} = x^2 + {{q1}}x + {{q0}} + \\dfrac{ {{R}} }{x - {{k}}}$\n\n(b) Restriction: $x \\neq {{k}}$, because the divisor $x - {{k}}$ would be $0$ and division by zero is undefined.\n\n(c) $x^3 + {{a}}x^2 + {{b}}x + {{c}} = (x - {{k}})(x^2 + {{q1}}x + {{q0}}) + {{R}}$.\nCheck with the remainder theorem: $P({{k}}) = {{k^3}} + {{a*k^2}} + {{b*k}} + {{c}} = {{R}}$ ✓",
+      "rubric": [
+        {
+          "point": "Correct first quotient term and subtraction",
+          "marks": 1
+        },
+        {
+          "point": "Correct second and third quotient terms",
+          "marks": 2
+        },
+        {
+          "point": "Correct remainder",
+          "marks": 1
+        },
+        {
+          "point": "Quotient form written correctly (remainder over divisor)",
+          "marks": 1
+        },
+        {
+          "point": "Correct restriction with reason",
+          "marks": 1
+        },
+        {
+          "point": "Division statement and a valid check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "q0": "k^2 - a",
+        "R": "c + k*(k^2 - a)"
+      },
+      "text": "Divide $x^3 - {{a}}x + {{c}}$ by $x - {{k}}$. Explain why a placeholder is needed and write the result in quotient form.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the remainder?",
+          "answer": {
+            "expr": "R",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The dividend has no $x^2$ term, so write it as $x^3 + 0x^2 - {{a}}x + {{c}}$. The placeholder keeps the $x^2$, $x$ and constant columns lined up so like terms are subtracted from like terms.\n\n1. $x^3 \\div x = x^2$; $x^2(x - {{k}}) = x^3 - {{k}}x^2$; subtract: $0x^2 - (-{{k}}x^2) = {{k}}x^2$. Bring down $-{{a}}x$.\n2. ${{k}}x^2 \\div x = {{k}}x$; ${{k}}x(x - {{k}}) = {{k}}x^2 - {{k^2}}x$; subtract: $-{{a}}x + {{k^2}}x = {{q0}}x$. Bring down ${{c}}$.\n3. ${{q0}}x \\div x = {{q0}}$; ${{q0}}(x - {{k}}) = {{q0}}x - {{q0*k}}$; subtract: ${{c}} + {{q0*k}} = {{R}}$.\n\n$$\\frac{x^3 - {{a}}x + {{c}}}{x - {{k}}} = x^2 + {{k}}x + {{q0}} + \\frac{ {{R}} }{x - {{k}}},\\quad x \\neq {{k}}$$\n\nCheck: $P({{k}}) = {{k^3}} - {{a*k}} + {{c}} = {{R}}$ ✓",
+      "rubric": [
+        {
+          "point": "Explains the need for the $0x^2$ placeholder",
+          "marks": 1
+        },
+        {
+          "point": "Sets up the division with the placeholder",
+          "marks": 1
+        },
+        {
+          "point": "Correct quotient",
+          "marks": 2
+        },
+        {
+          "point": "Correct remainder",
+          "marks": 1
+        },
+        {
+          "point": "Quotient form with restriction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        },
+        "r": {
+          "min": 7,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "derived": {
+        "p2": "2*a - 3",
+        "p1": "2*b - a",
+        "p0": "r - b"
+      },
+      "text": "Divide $6x^3 + {{p2}}x^2 + {{p1}}x + {{p0}}$ by $2x - 1$. Write the result in quotient form and state the restriction. Then verify the remainder using the remainder theorem.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the remainder.",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "1. $6x^3 \\div 2x = 3x^2$; $3x^2(2x - 1) = 6x^3 - 3x^2$; subtract: ${{p2}}x^2 + 3x^2 = {{2*a}}x^2$. Bring down ${{p1}}x$.\n2. ${{2*a}}x^2 \\div 2x = {{a}}x$; ${{a}}x(2x - 1) = {{2*a}}x^2 - {{a}}x$; subtract: ${{p1}}x + {{a}}x = {{2*b}}x$. Bring down ${{p0}}$.\n3. ${{2*b}}x \\div 2x = {{b}}$; ${{b}}(2x - 1) = {{2*b}}x - {{b}}$; subtract: ${{p0}} + {{b}} = {{r}}$.\n\n$$\\frac{6x^3 + {{p2}}x^2 + {{p1}}x + {{p0}}}{2x - 1} = 3x^2 + {{a}}x + {{b}} + \\frac{ {{r}} }{2x - 1},\\quad x \\neq \\tfrac12$$\n\n**Verify:** the divisor is zero when $x = \\tfrac12$.\n$P\\left(\\tfrac12\\right) = 6\\left(\\tfrac18\\right) + {{p2}}\\left(\\tfrac14\\right) + {{p1}}\\left(\\tfrac12\\right) + {{p0}} = {{0.75 + p2/4 + p1/2 + p0:4}}$ ✓ equals the remainder.",
+      "rubric": [
+        {
+          "point": "Correct first step dividing by $2x$",
+          "marks": 1
+        },
+        {
+          "point": "Correct quotient",
+          "marks": 2
+        },
+        {
+          "point": "Correct remainder",
+          "marks": 1
+        },
+        {
+          "point": "Restriction $x \\neq \\frac12$",
+          "marks": 1
+        },
+        {
+          "point": "Verifies using $P(1/2)$",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": -4,
+          "max": 5,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "R": "m^3 + k*m^2 - a*m + c"
+      },
+      "text": "When $P(x) = x^3 + kx^2 - {{a}}x + {{c}}$ is divided by $x - {{m}}$, the remainder is ${{R}}$. Determine the value of $k$ and check your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "By the remainder theorem, the remainder is $P({{m}})$.\n\n$P({{m}}) = ({{m}})^3 + k({{m}})^2 - {{a}}({{m}}) + {{c}} = {{m^3}} + {{m^2}}k - {{a*m}} + {{c}} = {{m^2}}k + {{m^3 - a*m + c}}$\n\nSet this equal to ${{R}}$:\n\n${{m^2}}k + {{m^3 - a*m + c}} = {{R}}$\n\n${{m^2}}k = {{R - (m^3 - a*m + c)}}$\n\n$k = {{k}}$\n\n**Check:** $P({{m}}) = {{m^3}} + ({{k}})({{m^2}}) - {{a*m}} + {{c}} = {{R}}$ ✓",
+      "rubric": [
+        {
+          "point": "Uses the remainder theorem to write $P(m)$ = remainder",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies $P(m)$ correctly in terms of $k$",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$ correctly",
+          "marks": 1
+        },
+        {
+          "point": "Checks the answer by substitution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": -3,
+          "max": 4,
+          "step": 1
+        },
+        "n": {
+          "min": -5,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "derived": {
+        "R1": "1 + m + n - c",
+        "R2": "-8 + 4*m - 2*n - c"
+      },
+      "text": "When $P(x) = x^3 + mx^2 + nx - {{c}}$ is divided by $x - 1$ the remainder is ${{R1}}$, and when it is divided by $x + 2$ the remainder is ${{R2}}$. Determine $m$ and $n$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $m$.",
+          "answer": {
+            "expr": "m",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find $n$.",
+          "answer": {
+            "expr": "n",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**Equation 1:** $P(1) = 1 + m + n - {{c}} = {{R1}}$, so $m + n = {{R1 + c - 1}}$.\n\n**Equation 2:** $P(-2) = -8 + 4m - 2n - {{c}} = {{R2}}$, so $4m - 2n = {{R2 + 8 + c}}$, or $2m - n = {{(R2 + 8 + c)/2}}$.\n\n**Solve by elimination.** Add the equations $m + n = {{R1 + c - 1}}$ and $2m - n = {{(R2 + 8 + c)/2}}$:\n\n$3m = {{R1 + c - 1 + (R2 + 8 + c)/2}}$, so $m = {{m}}$.\n\nSubstitute: $n = {{R1 + c - 1}} - ({{m}}) = {{n}}$.\n\n**Check:** $P(1) = 1 + ({{m}}) + ({{n}}) - {{c}} = {{R1}}$ ✓ and $P(-2) = -8 + 4({{m}}) - 2({{n}}) - {{c}} = {{R2}}$ ✓",
+      "rubric": [
+        {
+          "point": "Writes $P(1)$ = first remainder as an equation",
+          "marks": 1
+        },
+        {
+          "point": "Writes $P(-2)$ = second remainder as an equation",
+          "marks": 1
+        },
+        {
+          "point": "Solves the linear system correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct values of $m$ and $n$",
+          "marks": 1
+        },
+        {
+          "point": "Checks both remainders",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "q": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "b": "a*(q - p) - (p^2 - p*q + q^2)"
+      },
+      "text": "For what value of $b$ will $P(x) = x^3 + {{a}}x^2 + bx + {{c}}$ have the same remainder when it is divided by $x - {{p}}$ and by $x + {{q}}$?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $b$.",
+          "answer": {
+            "expr": "b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Same remainder means $P({{p}}) = P(-{{q}})$.\n\n$P({{p}}) = {{p^3}} + {{a*p^2}} + {{p}}b + {{c}}$\n\n$P(-{{q}}) = {{-q^3}} + {{a*q^2}} - {{q}}b + {{c}}$\n\nSet them equal:\n${{p^3 + a*p^2}} + {{p}}b = {{-q^3 + a*q^2}} - {{q}}b$\n\n${{p + q}}b = {{-q^3 + a*q^2 - p^3 - a*p^2}}$\n\n$b = {{b}}$\n\n**Check:** with $b = {{b}}$, $P({{p}}) = {{p^3 + a*p^2 + p*b + c}}$ and $P(-{{q}}) = {{-q^3 + a*q^2 - q*b + c}}$ — equal ✓",
+      "rubric": [
+        {
+          "point": "Recognises that $P(p) = P(-q)$",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates both expressions correctly",
+          "marks": 2
+        },
+        {
+          "point": "Solves for $b$",
+          "marks": 1
+        },
+        {
+          "point": "Checks that the remainders are equal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "q": {
+          "min": 4,
+          "max": 5,
+          "step": 1
+        },
+        "r": {
+          "min": 6,
+          "max": 7,
+          "step": 1
+        },
+        "X": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "s1": "p + q + r",
+        "s2": "p*q + p*r + q*r",
+        "s3": "p*q*r"
+      },
+      "text": "The volume, in cubic centimetres, of a rectangular box is $V(x) = x^3 + {{s1}}x^2 + {{s2}}x + {{s3}}$. The height of the box is $x + {{p}}$ centimetres.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an expression for the area of the base."
+        },
+        {
+          "label": "b",
+          "text": "Determine expressions for the possible length and width."
+        },
+        {
+          "label": "c",
+          "text": "Find the dimensions and the volume of the box when $x = {{X}}$.",
+          "answer": {
+            "expr": "(X+q)*(X+r)*(X+p)",
+            "unit": "cm³",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Base area $= \\dfrac{V(x)}{h} = \\dfrac{x^3 + {{s1}}x^2 + {{s2}}x + {{s3}}}{x + {{p}}}$.\n\nLong division: $x^3 \\div x = x^2$; $x^2(x + {{p}}) = x^3 + {{p}}x^2$; subtract → ${{q+r}}x^2 + {{s2}}x$.\n${{q+r}}x^2 \\div x = {{q+r}}x$; ${{q+r}}x(x + {{p}}) = {{q+r}}x^2 + {{p*(q+r)}}x$; subtract → ${{q*r}}x + {{s3}}$.\n${{q*r}}x \\div x = {{q*r}}$; ${{q*r}}(x + {{p}}) = {{q*r}}x + {{q*r*p}}$; remainder $0$.\n\nBase area $= x^2 + {{q+r}}x + {{q*r}}$.\n\n(b) Factor: two numbers that multiply to ${{q*r}}$ and add to ${{q+r}}$ are ${{q}}$ and ${{r}}$, so $x^2 + {{q+r}}x + {{q*r}} = (x + {{q}})(x + {{r}})$. Possible dimensions: $(x + {{q}})$ cm by $(x + {{r}})$ cm by $(x + {{p}})$ cm.\n\n(c) When $x = {{X}}$: ${{X+q}}$ cm by ${{X+r}}$ cm by ${{X+p}}$ cm. Volume $= {{X+q}} \\times {{X+r}} \\times {{X+p}} = {{(X+q)*(X+r)*(X+p)}}$ cm³.\nCheck: $V({{X}}) = {{X^3}} + {{s1*X^2}} + {{s2*X}} + {{s3}} = {{(X+q)*(X+r)*(X+p)}}$ ✓",
+      "rubric": [
+        {
+          "point": "Recognises that base area = volume ÷ height",
+          "marks": 1
+        },
+        {
+          "point": "Divides correctly to get the base area",
+          "marks": 2
+        },
+        {
+          "point": "Factors the base area",
+          "marks": 1
+        },
+        {
+          "point": "States all three dimensions in terms of $x$",
+          "marks": 1
+        },
+        {
+          "point": "Correct numerical dimensions and volume",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q10",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain, using the division statement $P(x) = (x - b)Q(x) + R$, why the remainder when $P(x)$ is divided by $x - b$ is $P(b)$. Then explain what the remainder tells you about the graph of $y = P(x)$.",
+      "modelAnswer": "The division statement is true for every value of $x$. Substituting $x = b$:\n\n$P(b) = (b - b)Q(b) + R = 0 \\cdot Q(b) + R = R$.\n\nThe factor $(x - b)$ becomes zero, wiping out the quotient term, so only the remainder is left. That is the remainder theorem.\n\n**Graph:** $P(b) = R$ means the point $(b, R)$ lies on the graph of $y = P(x)$. The remainder is the $y$-value (height) of the graph at $x = b$. If $R = 0$, the graph crosses or touches the $x$-axis at $x = b$.",
+      "rubric": [
+        {
+          "point": "Substitutes $x = b$ into the division statement",
+          "marks": 1
+        },
+        {
+          "point": "Explains that $(b - b)Q(b) = 0$ so $P(b) = R$",
+          "marks": 2
+        },
+        {
+          "point": "Connects the remainder to the point $(b, R)$ on the graph",
+          "marks": 1
+        },
+        {
+          "point": "Clear, complete communication",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q11",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "A student wrote:\n\n$$\\frac{x^3 - 2x^2 + 4x - 5}{x - 1} = x^2 - x + 3 - 2$$\n\nIdentify the error(s), write the correct result, and verify it.",
+      "modelAnswer": "Errors:\n1. The remainder $-2$ must be divided by the divisor. It should be $\\dfrac{-2}{x - 1}$, not $-2$.\n2. The restriction $x \\neq 1$ is missing.\n\nCorrect: $\\dfrac{x^3 - 2x^2 + 4x - 5}{x - 1} = x^2 - x + 3 - \\dfrac{2}{x - 1},\\ x \\neq 1$.\n\nVerify with the division statement: $(x - 1)(x^2 - x + 3) - 2 = x^3 - x^2 + 3x - x^2 + x - 3 - 2 = x^3 - 2x^2 + 4x - 5$ ✓.\nOr with the remainder theorem: $P(1) = 1 - 2 + 4 - 5 = -2$ ✓.",
+      "rubric": [
+        {
+          "point": "Identifies that the remainder must be written over the divisor",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the missing restriction",
+          "marks": 1
+        },
+        {
+          "point": "Writes the correct quotient form",
+          "marks": 1
+        },
+        {
+          "point": "Verifies by multiplying back or by the remainder theorem",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Divide $x^3 - 7x + 6$ by $x - 2$. Use your result to write $x^3 - 7x + 6$ as a product of three linear factors.",
+      "modelAnswer": "Insert a placeholder: $x^3 + 0x^2 - 7x + 6$.\n\n1. $x^3 \\div x = x^2$; $x^2(x - 2) = x^3 - 2x^2$; subtract → $2x^2 - 7x$.\n2. $2x^2 \\div x = 2x$; $2x(x - 2) = 2x^2 - 4x$; subtract → $-3x + 6$.\n3. $-3x \\div x = -3$; $-3(x - 2) = -3x + 6$; subtract → $0$.\n\nQuotient $x^2 + 2x - 3$, remainder $0$, so $x^3 - 7x + 6 = (x - 2)(x^2 + 2x - 3)$.\n\nFactor the quadratic: $x^2 + 2x - 3 = (x + 3)(x - 1)$.\n\n$x^3 - 7x + 6 = (x - 2)(x + 3)(x - 1)$. Check: $P(2) = 8 - 14 + 6 = 0$ ✓",
+      "rubric": [
+        {
+          "point": "Uses a placeholder for the missing $x^2$ term",
+          "marks": 1
+        },
+        {
+          "point": "Correct quotient and remainder 0",
+          "marks": 2
+        },
+        {
+          "point": "Factors the quadratic quotient",
+          "marks": 1
+        },
+        {
+          "point": "Writes the full factorisation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student says the remainder when $P(x) = 4x^3 + 2x^2 - 6x + 5$ is divided by $2x + 1$ is $P(1)$. Explain the mistake and find the correct remainder.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the correct remainder.",
+          "answer": {
+            "expr": "8",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The value to substitute is the one that makes the divisor zero: $2x + 1 = 0 \\Rightarrow x = -\\tfrac12$. Substituting $x = 1$ would only give the remainder for the divisor $x - 1$.\n\n$P\\left(-\\tfrac12\\right) = 4\\left(-\\tfrac18\\right) + 2\\left(\\tfrac14\\right) - 6\\left(-\\tfrac12\\right) + 5 = -\\tfrac12 + \\tfrac12 + 3 + 5 = 8$\n\nThe remainder is $8$.",
+      "rubric": [
+        {
+          "point": "Explains that the divisor must be set to zero",
+          "marks": 1
+        },
+        {
+          "point": "Identifies $x = -\\frac12$",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates $P(-\\frac12)$ correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct remainder 8",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "r": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "When a polynomial $P(x)$ is divided by $x + {{p}}$, the quotient is $x^2 + {{a}}x + {{b}}$ and the remainder is ${{r}}$. Determine $P(x)$ in expanded form and verify using the remainder theorem.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the constant term of $P(x)$?",
+          "answer": {
+            "expr": "b*p + r",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Use the division statement $P(x) = (\\text{divisor})(\\text{quotient}) + \\text{remainder}$:\n\n$P(x) = (x + {{p}})(x^2 + {{a}}x + {{b}}) + {{r}}$\n\n$= x^3 + {{a}}x^2 + {{b}}x + {{p}}x^2 + {{a*p}}x + {{b*p}} + {{r}}$\n\n$= x^3 + {{a+p}}x^2 + {{b + a*p}}x + {{b*p + r}}$\n\n**Verify:** $P(-{{p}}) = {{-p^3}} + {{(a+p)*p^2}} - {{(b+a*p)*p}} + {{b*p + r}} = {{r}}$ ✓",
+      "rubric": [
+        {
+          "point": "Uses the division statement",
+          "marks": 1
+        },
+        {
+          "point": "Expands the product correctly",
+          "marks": 2
+        },
+        {
+          "point": "Collects like terms and adds the remainder",
+          "marks": 1
+        },
+        {
+          "point": "Verifies with $P(-p)$",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q15",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create a cubic polynomial $P(x)$ that leaves a remainder of $7$ when divided by $x - 2$. Explain your method, then verify your polynomial in two different ways.",
+      "modelAnswer": "**One method:** choose any quadratic quotient, e.g. $Q(x) = x^2 + 1$, and build $P(x)$ from the division statement:\n\n$P(x) = (x - 2)(x^2 + 1) + 7 = x^3 - 2x^2 + x - 2 + 7 = x^3 - 2x^2 + x + 5$\n\n**Verification 1 (remainder theorem):** $P(2) = 8 - 8 + 2 + 5 = 7$ ✓\n\n**Verification 2 (long division):** dividing $x^3 - 2x^2 + x + 5$ by $x - 2$ gives quotient $x^2 + 1$ and remainder $7$ ✓\n\n(Another method: start from any cubic $P(x)$, calculate $P(2)$, and adjust the constant term so that $P(2) = 7$.) Many answers are possible.",
+      "rubric": [
+        {
+          "point": "Valid cubic polynomial",
+          "marks": 1
+        },
+        {
+          "point": "Clear explanation of the method (division statement or adjusting the constant)",
+          "marks": 2
+        },
+        {
+          "point": "Verification using the remainder theorem",
+          "marks": 1
+        },
+        {
+          "point": "Second verification (division or graph)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q16",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "R": {
+          "min": 3,
+          "max": 15,
+          "step": 1
+        }
+      },
+      "text": "The remainder when $P(x)$ is divided by $x - {{k}}$ is ${{R}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Name one point that must lie on the graph of $y = P(x)$."
+        },
+        {
+          "label": "b",
+          "text": "Does the graph of $y = P(x)$ have an $x$-intercept at $x = {{k}}$? Explain."
+        },
+        {
+          "label": "c",
+          "text": "Explain why $x - {{k}}$ must be a factor of $P(x) - {{R}}$."
+        }
+      ],
+      "modelAnswer": "(a) By the remainder theorem $P({{k}}) = {{R}}$, so the point $({{k}}, {{R}})$ is on the graph of $y = P(x)$.\n\n(b) Not necessarily — a remainder of ${{R}}$ (not zero) means $x - {{k}}$ is **not** a factor. The graph does **not** cross the $x$-axis at $x = {{k}}$; it passes through height ${{R}}$ there.\n\n(c) $P(x) - {{R}}$: dividing by $x - {{k}}$ leaves remainder $P({{k}}) - {{R}} = 0$. So $x - {{k}}$ **is** a factor of $P(x) - {{R}}$.",
+      "rubric": [
+        {
+          "point": "Identifies the point $(k, R)$",
+          "marks": 1
+        },
+        {
+          "point": "Explains that a nonzero remainder means not a factor / not an $x$-intercept",
+          "marks": 2
+        },
+        {
+          "point": "Shows that $P(x) - R$ has remainder 0, so $x - k$ is a factor",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-1-q17",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "k": {
+          "min": -3,
+          "max": 3,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "m": {
+          "choices": [
+            2
+          ]
+        }
+      },
+      "derived": {
+        "R1": "m^4 + k*m^3 - a*m - c",
+        "R2": "m^4 - k*m^3 + a*m - c"
+      },
+      "text": "Let $f(x) = x^4 + kx^3 - {{a}}x - {{c}}$. When $f(x)$ is divided by $x - {{m}}$, the remainder is ${{R1}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the value of $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the remainder when $f(x)$ is divided by $x + {{m}}$.",
+          "answer": {
+            "expr": "R2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe how you could verify your answer to part (b)."
+        }
+      ],
+      "modelAnswer": "(a) $f({{m}}) = {{m^4}} + {{m^3}}k - {{a*m}} - {{c}} = {{R1}}$\n\n${{m^3}}k = {{R1 - m^4 + a*m + c}}$, so $k = {{k}}$.\n\n(b) Remainder when divided by $x + {{m}}$ is $f(-{{m}})$:\n\n$f(-{{m}}) = {{m^4}} + ({{k}})(-{{m}})^3 - {{a}}(-{{m}}) - {{c}} = {{m^4}} + {{-k*m^3}} + {{a*m}} - {{c}} = {{R2}}$\n\n(c) You can verify by long division of $x^4 + {{k}}x^3 + 0x^2 - {{a}}x - {{c}}$ by $x + {{m}}$ (placeholder needed for $x^2$) or by graphing $y = f(x)$ and reading the $y$-value at $x = -{{m}}$, which should be ${{R2}}$.",
+      "rubric": [
+        {
+          "point": "Sets up $f(m) = R$",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates $f(-m)$ with the correct $k$",
+          "marks": 2
+        },
+        {
+          "point": "Describes a valid verification method",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-1-q18",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain the difference between the dividend, divisor, quotient and remainder using both a numerical example and a polynomial example. Why is the remainder after dividing a polynomial by a linear binomial always a constant?",
+      "modelAnswer": "**Numerical:** $23 \\div 5$: dividend $23$, divisor $5$, quotient $4$, remainder $3$, because $23 = 5 \\times 4 + 3$.\n\n**Polynomial:** $(x^2 + 3x + 5) \\div (x + 1)$: dividend $x^2 + 3x + 5$, divisor $x + 1$, quotient $x + 2$, remainder $3$, because $(x + 1)(x + 2) + 3 = x^2 + 3x + 5$.\n\nThe remainder must have a **lower degree than the divisor** — otherwise you could keep dividing. A linear divisor has degree 1, so the remainder has degree 0, which means it is a constant.",
+      "rubric": [
+        {
+          "point": "Correct numerical example with all four parts",
+          "marks": 1
+        },
+        {
+          "point": "Correct polynomial example with all four parts",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the remainder's degree is less than the divisor's degree",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

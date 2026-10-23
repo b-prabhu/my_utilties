@@ -1,0 +1,1177 @@
+{
+  "id": "6-1",
+  "number": "6.1",
+  "title": "The Exponential Function and Its Inverse",
+  "estimatedMinutes": 80,
+  "overview": "Exponential functions describe anything that grows or shrinks by the same **factor** each step — bacteria, investments, radioactive decay. In this section you will see why their rate of change keeps growing, learn the key features of $y = b^x$, and meet its inverse, which reflects the graph in the line $y = x$.",
+  "objectives": [
+    "Recognize an exponential function from a table (finite differences or constant ratios), graph or equation.",
+    "Explain why the rate of change of $y = b^x$ is proportional to the function.",
+    "Calculate average rates of change and estimate instantaneous rates of change of exponential functions.",
+    "State the key features of $y = b^x$ for $b > 1$ and $0 < b < 1$.",
+    "Graph the inverse $x = b^y$ by reflecting in $y = x$ and state its key features.",
+    "Write an equation for an exponential function from data or a graph."
+  ],
+  "lessons": [
+    {
+      "id": "what-is-exponential",
+      "title": "What makes a function exponential?",
+      "body": "An **exponential function** has the variable in the **exponent**:\n\n$$y = b^x, \\quad b > 0,\\ b \\neq 1$$\n\nCompare it with a power function such as $y = x^3$, where the variable is the *base*. That one small change makes a huge difference in behaviour.\n\n| $x$ | $y = x^3$ | $y = 3^x$ |\n|---|---|---|\n| 1 | 1 | 3 |\n| 2 | 8 | 9 |\n| 3 | 27 | 27 |\n| 5 | 125 | 243 |\n| 10 | 1000 | 59 049 |\n\nEventually the exponential function leaves every polynomial far behind.\n\n**Growth or decay?**\n\n* If $b > 1$, every step of 1 in $x$ **multiplies** $y$ by $b$ — the graph rises faster and faster (exponential **growth**: bacteria, compound interest, a viral video).\n* If $0 < b < 1$, every step multiplies $y$ by a number less than 1 — the graph falls toward zero (exponential **decay**: radioactive material, a car's value).\n\n**Why must the base be positive and not 1?**\n\n* $b = 1$ gives $y = 1^x = 1$ for every $x$ — a horizontal line, not growth or decay.\n* A negative base breaks down for many inputs: $(-2)^{0.5} = \\sqrt{-2}$ is not a real number, so the points never join into a smooth curve.\n\n> **Analogy:** a power function is like adding the same number of floors to a building each year; an exponential function is like *doubling* the building every year."
+    },
+    {
+      "id": "rate-of-change",
+      "title": "Finite differences and rates of change",
+      "body": "For a polynomial of degree $n$, the $n$th differences are constant. Exponential functions behave differently: **the differences never become constant — they repeat the same exponential pattern.**\n\nTake $y = 2^x$:\n\n| $x$ | $y$ | $\\Delta_1 y$ | $\\Delta_2 y$ | $\\Delta_3 y$ |\n|---|---|---|---|---|\n| 0 | 1 | 1 | 1 | 1 |\n| 1 | 2 | 2 | 2 | 2 |\n| 2 | 4 | 4 | 4 | |\n| 3 | 8 | 8 | | |\n| 4 | 16 | | | |\n\nEvery column is the same sequence $1, 2, 4, 8, \\dots$ For $y = 3^x$ the first differences are $2, 6, 18, 54, \\dots$ — each is **twice** the matching $y$-value, and the ratio of consecutive differences is 3, the base.\n\n**Key idea:** the rate of change of an exponential function is **proportional to the function itself**. The bigger $y$ gets, the faster it grows.\n\n**Average rate of change** on an interval is the slope of the secant:\n\n$$\\text{average rate of change} = \\frac{\\Delta y}{\\Delta x} = \\frac{f(x_2) - f(x_1)}{x_2 - x_1}$$\n\n**Instantaneous rate of change** at a point is the slope of the tangent. Estimate it with a secant over a very small interval, e.g.\n\n$$\\text{slope at } x = a \\approx \\frac{f(a + 0.001) - f(a)}{0.001}$$\n\nFor $y = 2^x$ the slope of the tangent at $x = 0$ is about $0.69$, at $x = 1$ about $1.39$, at $x = 2$ about $2.77$. Each value is double the previous one — the rates themselves grow exponentially."
+    },
+    {
+      "id": "key-features",
+      "title": "Key features of y = b^x",
+      "body": "Every function $y = b^x$ (with no other transformations) shares these features:\n\n| Feature | $b > 1$ (growth) | $0 < b < 1$ (decay) |\n|---|---|---|\n| Domain | $\\{x \\in \\mathbb{R}\\}$ | $\\{x \\in \\mathbb{R}\\}$ |\n| Range | $\\{y \\in \\mathbb{R},\\ y > 0\\}$ | $\\{y \\in \\mathbb{R},\\ y > 0\\}$ |\n| $y$-intercept | 1 | 1 |\n| $x$-intercept | none | none |\n| Positive/negative | positive for all $x$ | positive for all $x$ |\n| Increasing/decreasing | increasing everywhere | decreasing everywhere |\n| Asymptote | horizontal, $y = 0$ | horizontal, $y = 0$ |\n\n```plot\ntitle: Growth and decay through (0, 1)\nf: 2^x | label=y = 2^x\nf: (1/2)^x | dashed; label=y = (1/2)^x\ndomain: -4, 4\nrange: -1, 9\npoints: (0,1)\nasymptote y: 0\n```\n\nTwo handy anchor points: $(0, 1)$ because $b^0 = 1$, and $(1, b)$ because $b^1 = b$. If you can read the point where $x = 1$ off a graph, you know the base."
+    },
+    {
+      "id": "inverse",
+      "title": "The inverse of an exponential function",
+      "body": "To find the inverse of any function, **swap $x$ and $y$**. For $y = b^x$ the inverse is\n\n$$x = b^y$$\n\nGraphically, the inverse is the **reflection of the graph in the line $y = x$**: every point $(a, c)$ becomes $(c, a)$.\n\n| $y = 2^x$ | | inverse $x = 2^y$ |\n|---|---|---|\n| $(-2, \\tfrac14)$ | → | $(\\tfrac14, -2)$ |\n| $(0, 1)$ | → | $(1, 0)$ |\n| $(1, 2)$ | → | $(2, 1)$ |\n| $(3, 8)$ | → | $(8, 3)$ |\n\n```plot\ntitle: An exponential function and its inverse\nf: 2^x | label=y = 2^x\nf: logb(2, x) | label=x = 2^y\nf: x | dashed; label=y = x\ndomain: -4, 8\nrange: -4, 8\npoints: (0,1), (1,0), (1,2), (2,1)\n```\n\nBecause every $x$-value of the inverse gives exactly one $y$-value (it passes the vertical line test), **the inverse is also a function**. Its key features are the exponential's features with $x$ and $y$ swapped:\n\n* domain $\\{x \\in \\mathbb{R},\\ x > 0\\}$, range $\\{y \\in \\mathbb{R}\\}$\n* $x$-intercept 1, no $y$-intercept\n* **vertical** asymptote $x = 0$\n* increasing if $b > 1$, decreasing if $0 < b < 1$\n* negative for $0 < x < 1$ and positive for $x > 1$ (when $b > 1$)\n\nIn the next section this inverse gets its own name: the **logarithmic function**."
+    },
+    {
+      "id": "equation-from-data",
+      "title": "Writing an equation from a table or a graph",
+      "body": "To decide whether data are exponential, check whether **$y$ is multiplied by the same factor** each time $x$ increases by 1 (equivalently, whether the first differences are proportional to the $y$-values).\n\n**Steps to write $y = b^x$ from data:**\n\n1. Check that $(0, 1)$ is in the table (true for any $b$, since $b^0 = 1$).\n2. Read the value when $x = 1$: that value **is** $b$.\n3. Check the other points: when $x = 2$, $y$ should be $b^2$; when $x = 3$, $b^3$, and so on.\n4. Negative $x$-values work too: when $x = -1$, $y = \\frac{1}{b}$.\n\nFor a graph, find the point with $x = 1$ (or any convenient point) and solve $y = b^x$ for $b$. For example, if the graph passes through $(2, 25)$ then $b^2 = 25$, so $b = 5$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "exponential function",
+      "definition": "A function of the form $y = b^x$ with $b > 0$, $b \\neq 1$; the variable is in the exponent."
+    },
+    {
+      "term": "exponential growth",
+      "definition": "Behaviour of $y = b^x$ when $b > 1$: $y$ is multiplied by $b$ each time $x$ increases by 1."
+    },
+    {
+      "term": "exponential decay",
+      "definition": "Behaviour of $y = b^x$ when $0 < b < 1$: $y$ shrinks by the factor $b$ each time $x$ increases by 1."
+    },
+    {
+      "term": "asymptote",
+      "definition": "A line that a graph approaches but never reaches. $y = b^x$ has the horizontal asymptote $y = 0$; its inverse has the vertical asymptote $x = 0$."
+    },
+    {
+      "term": "inverse of a function",
+      "definition": "The relation obtained by swapping $x$ and $y$; its graph is the reflection in the line $y = x$. The inverse of $y = b^x$ is $x = b^y$."
+    },
+    {
+      "term": "average rate of change",
+      "definition": "The slope of a secant line: $\\frac{\\Delta y}{\\Delta x}$ over an interval."
+    },
+    {
+      "term": "instantaneous rate of change",
+      "definition": "The slope of the tangent at a single point, estimated with a secant over a very small interval."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Exponential function",
+      "latex": "y = b^x,\\quad b > 0,\\ b \\neq 1",
+      "meaning": "Domain all real numbers, range $y > 0$, $y$-intercept 1, asymptote $y = 0$."
+    },
+    {
+      "name": "Inverse of the exponential function",
+      "latex": "x = b^y",
+      "meaning": "Reflection of $y = b^x$ in $y = x$; domain $x > 0$, range all reals, asymptote $x = 0$."
+    },
+    {
+      "name": "Average rate of change",
+      "latex": "\\frac{\\Delta y}{\\Delta x} = \\frac{f(x_2) - f(x_1)}{x_2 - x_1}",
+      "meaning": "Slope of the secant between two points."
+    },
+    {
+      "name": "Estimating an instantaneous rate",
+      "latex": "m \\approx \\frac{f(a + h) - f(a)}{h},\\ h \\text{ very small}",
+      "meaning": "Use $h = 0.001$ or smaller."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Write an equation to fit data",
+      "problem": "Write an equation for the data: $(0, 1), (1, 4), (2, 16), (3, 64)$.",
+      "steps": [
+        "**Check the pattern.** First differences: $3, 12, 48$. Each is 4 times the previous one, and $\\frac{3}{12} = \\frac{1}{4} = \\frac{4}{16}$, so the differences are proportional to the $y$-values: the data are exponential.",
+        "**Use $y = b^x$.** The point $(0, 1)$ is true for any base. From $(1, 4)$: $4 = b^1$, so $b = 4$.",
+        "**Check the rest.** $4^2 = 16$ ✓, $4^3 = 64$ ✓."
+      ],
+      "answer": "The equation is $y = 4^x$."
+    },
+    {
+      "title": "Key features of f(x) = 4^x and its inverse",
+      "problem": "For $f(x) = 4^x$, list the key features, sketch the graph and its inverse, and list the inverse's key features.",
+      "steps": [
+        "**$f(x) = 4^x$:** domain $\\{x \\in \\mathbb{R}\\}$; range $\\{y \\in \\mathbb{R}, y > 0\\}$; no $x$-intercept; $y$-intercept 1; positive everywhere; increasing everywhere; horizontal asymptote $y = 0$.",
+        "**Sketch:** plot $(-1, \\tfrac14), (0, 1), (1, 4)$ and draw a curve hugging $y = 0$ on the left.\n```plot\nf: 4^x | label=y = 4^x\nf: logb(4, x) | label=x = 4^y\nf: x | dashed\ndomain: -4, 6\nrange: -4, 6\npoints: (0,1), (1,4), (1,0), (4,1)\n```",
+        "**Inverse $x = 4^y$:** swap every point: $(\\tfrac14, -1), (1, 0), (4, 1)$.",
+        "**Inverse features:** domain $\\{x \\in \\mathbb{R}, x > 0\\}$; range $\\{y \\in \\mathbb{R}\\}$; $x$-intercept 1; no $y$-intercept; negative for $0 < x < 1$, positive for $x > 1$; increasing; vertical asymptote $x = 0$."
+      ],
+      "answer": "The features of the inverse are the features of $f$ with the roles of $x$ and $y$ exchanged."
+    },
+    {
+      "title": "Average and instantaneous rate of change",
+      "problem": "An influenza virus spreads through a school according to $N = 10(2)^t$, where $N$ people are infected after $t$ days. Find the average rate of change between day 1 and day 2, and estimate the instantaneous rate of change at day 2.",
+      "steps": [
+        "**Values:** $N(1) = 10(2)^1 = 20$, $N(2) = 10(2)^2 = 40$.",
+        "**Average rate:** $\\frac{40 - 20}{2 - 1} = 20$ people per day.",
+        "**Instantaneous rate at $t = 2$:** use a tiny interval. $N(2.001) = 10(2)^{2.001} \\approx 40.0277$. Slope $\\approx \\frac{40.0277 - 40}{0.001} \\approx 27.7$ people per day.",
+        "**Interpret:** the average (20/day) is lower because the spread was slower near day 1; by day 2 the infection is spreading faster, about 28 people per day."
+      ],
+      "answer": "Average rate ≈ 20 people/day; instantaneous rate at day 2 ≈ 28 people/day."
+    },
+    {
+      "title": "Is the function exponential?",
+      "problem": "Decide which table is exponential: Table A $(1,3),(2,6),(3,9),(4,12)$; Table B $(0,1),(1,3),(2,9),(3,27)$.",
+      "steps": [
+        "**Table A:** first differences $3, 3, 3$ — constant, so the function is **linear** ($y = 3x$).",
+        "**Table B:** first differences $2, 6, 18$; each $y$ is 3 times the previous $y$. Constant ratio → **exponential**.",
+        "**Equation for B:** $(1, 3)$ gives $b = 3$, so $y = 3^x$. Check: $3^2 = 9$ ✓, $3^3 = 27$ ✓."
+      ],
+      "answer": "Table B is exponential: $y = 3^x$."
+    },
+    {
+      "title": "Velocity of a spaceship",
+      "problem": "A spaceship's distance from Planet X is $d(t) = 1.4^t$ (hundreds of km) after $t$ seconds. Find the average velocity between 3 s and 4 s and estimate the instantaneous velocity at 4 s.",
+      "steps": [
+        "**Average:** $d(3) = 1.4^3 = 2.744$, $d(4) = 1.4^4 = 3.8416$. Average velocity $= \\frac{3.8416 - 2.744}{1} \\approx 1.10$ hundred km/s.",
+        "**Instantaneous at 4 s:** $d(4.001) = 1.4^{4.001} \\approx 3.84289$. Slope $\\approx \\frac{3.84289 - 3.84160}{0.001} \\approx 1.29$ hundred km/s."
+      ],
+      "answer": "About 110 km/s on average between 3 s and 4 s; about 129 km/s at the instant $t = 4$ s."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$y = x^3$ and $y = 3^x$ are basically the same kind of function.",
+      "fact": "In $x^3$ the variable is the base (a power function, constant 3rd differences). In $3^x$ the variable is the exponent (exponential, differences never become constant)."
+    },
+    {
+      "myth": "The graph of $y = 2^x$ eventually touches the $x$-axis on the left.",
+      "fact": "$2^x > 0$ for every $x$. The graph gets closer and closer to $y = 0$ but never reaches it: $y = 0$ is an asymptote."
+    },
+    {
+      "myth": "A negative base like $(-2)^x$ is just a 'flipped' exponential.",
+      "fact": "$(-2)^x$ is undefined for many inputs (e.g. $x = 0.5$), so it isn't a smooth function at all. That is why the base must be positive."
+    },
+    {
+      "myth": "The inverse of $y = 2^x$ is $y = \\frac{1}{2^x}$.",
+      "fact": "$\\frac{1}{2^x}$ is the *reciprocal*. The *inverse* swaps $x$ and $y$: $x = 2^y$, the reflection in $y = x$."
+    },
+    {
+      "myth": "The average rate of change over an interval equals the rate at its midpoint for any function.",
+      "fact": "That only works for quadratics/lines. For exponentials, the curve bends upward so averaging the endpoint rates over- or under-estimates; you must use a small secant."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Bacteria and viruses",
+      "body": "When each cell divides in two, a colony's size follows $P = P_0(2)^t$. Doctors use the growth rate to decide how quickly an infection must be treated."
+    },
+    {
+      "title": "Compound interest",
+      "body": "Money earning a fixed percentage each year grows exponentially. The *rate* at which your savings grow increases as the balance grows — interest earns interest."
+    },
+    {
+      "title": "Depreciation",
+      "body": "A car that loses 15% of its value each year is worth $V_0(0.85)^t$ — exponential decay. The dollar loss is largest in the first years."
+    },
+    {
+      "title": "Nuclear medicine",
+      "body": "Radioactive tracers used in hospital scans decay exponentially, so technologists must calculate how much remains when the patient is imaged."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Is the table $(0, 1), (1, 5), (2, 25), (3, 125)$ exponential? If so, write its equation.",
+      "hint": "Look at the ratio of consecutive $y$-values.",
+      "solution": "Each $y$ is 5 times the previous one, so it is exponential with $b = 5$: $y = 5^x$."
+    },
+    {
+      "question": "State the domain, range, intercepts and asymptote of $y = (\\tfrac13)^x$.",
+      "hint": "Decay functions share the same domain, range and asymptote as growth functions.",
+      "solution": "Domain $\\{x \\in \\mathbb{R}\\}$, range $\\{y > 0\\}$, $y$-intercept 1, no $x$-intercept, asymptote $y = 0$; decreasing everywhere."
+    },
+    {
+      "question": "Find the average rate of change of $y = 3^x$ from $x = 1$ to $x = 3$.",
+      "hint": "$\\frac{f(3) - f(1)}{3 - 1}$",
+      "solution": "$\\frac{27 - 3}{2} = 12$."
+    },
+    {
+      "question": "Estimate the slope of the tangent to $y = 2^x$ at $x = 3$.",
+      "hint": "Use $h = 0.001$.",
+      "solution": "$\\frac{2^{3.001} - 2^3}{0.001} \\approx \\frac{8.00555 - 8}{0.001} \\approx 5.55$."
+    },
+    {
+      "question": "List three points on the inverse of $y = 3^x$.",
+      "hint": "Swap coordinates of points on $y = 3^x$.",
+      "solution": "$(1, 0), (3, 1), (9, 2)$ (also $(\\tfrac13, -1)$)."
+    },
+    {
+      "question": "A graph of $y = b^x$ passes through $(2, 36)$. Find $b$ and write the inverse.",
+      "hint": "Solve $b^2 = 36$ with $b > 0$.",
+      "solution": "$b = 6$; the function is $y = 6^x$ and its inverse is $x = 6^y$."
+    },
+    {
+      "question": "Explain why the inverse of $y = 2^x$ has a vertical asymptote.",
+      "hint": "What happens to a horizontal line when it is reflected in $y = x$?",
+      "solution": "$y = 2^x$ has horizontal asymptote $y = 0$. Reflecting in $y = x$ turns it into the vertical line $x = 0$, so the inverse approaches $x = 0$ but never reaches it."
+    },
+    {
+      "question": "A colony starts with 300 bacteria and doubles each day: $P = 300(2)^t$. How many are there after 4 days, and what was the average growth rate per day over those 4 days?",
+      "hint": "Find $P(4)$ and $P(0)$.",
+      "solution": "$P(4) = 300 \\times 16 = 4800$. Average rate $= \\frac{4800 - 300}{4} = 1125$ bacteria per day."
+    }
+  ],
+  "summary": [
+    "An exponential function has the form $y = b^x$, $b > 0$, $b \\neq 1$: growth when $b > 1$, decay when $0 < b < 1$.",
+    "Its finite differences repeat the exponential pattern; the rate of change is proportional to the function itself.",
+    "Key features: domain all reals, range $y > 0$, $y$-intercept 1, horizontal asymptote $y = 0$.",
+    "The inverse $x = b^y$ is the reflection in $y = x$: domain $x > 0$, range all reals, $x$-intercept 1, vertical asymptote $x = 0$. It is a function.",
+    "Average rate of change = slope of a secant; instantaneous rate of change ≈ slope of a secant over a tiny interval."
+  ],
+  "questions": [
+    {
+      "id": "6-1-q01",
+      "type": "analysis",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Three tables of values are given.\n\n| $x$ | Table A: $y$ | Table B: $y$ | Table C: $y$ |\n|---|---|---|---|\n| 0 | 0 | 1 | 1 |\n| 1 | 1 | {{b}} | 3 |\n| 2 | 3 | {{b^2}} | 6 |\n| 3 | 10 | {{b^3}} | 9 |\n| 4 | 16 | {{b^4}} | 12 |\n\nDetermine which table(s) represent an exponential function. Justify your answer using finite differences or ratios, and write an equation for any exponential function you find.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the base of the exponential function in Table B?",
+          "answer": {
+            "expr": "b",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "**Table A:** first differences $1, 2, 7, 6$ — no pattern; ratios $3, 3.33, 1.6$ are not constant. Not exponential.\n\n**Table B:** each $y$-value is {{b}} times the previous one (ratio constant = {{b}}). The first differences $ {{b-1}}, {{b^2-b}}, {{b^3-b^2}}, {{b^4-b^3}} $ are each {{b}} times the previous difference, so they are proportional to the function. **Exponential:** since $(1, {{b}})$ is on the graph, $b = {{b}}$ and $y = {{b}}^x$.\n\n**Table C:** first differences $2, 3, 3, 3$ and ratios $3, 2, 1.5, 1.33$. The values grow by a (nearly) constant *amount*, not a constant *factor*, so it is not exponential.",
+      "rubric": [
+        {
+          "point": "States Table A is not exponential with a correct reason (no constant ratio)",
+          "marks": 1
+        },
+        {
+          "point": "Shows a constant ratio / proportional differences for Table B",
+          "marks": 1
+        },
+        {
+          "point": "Writes $y = b^x$ with the correct base for Table B",
+          "marks": 1
+        },
+        {
+          "point": "States Table C is not exponential (constant differences, not constant ratio)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "text": "The points $(-1, \\tfrac{1}{ {{b}} })$, $(0, 1)$, $(1, {{b}})$ and $(2, {{b^2}})$ lie on the graph of an exponential function $y = b^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation of the function."
+        },
+        {
+          "label": "b",
+          "text": "Find $y$ when $x = 3$.",
+          "answer": {
+            "expr": "b^3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write an equation for the inverse and list three points on it."
+        }
+      ],
+      "modelAnswer": "Since $y = b^x$ passes through $(1, {{b}})$: ${{b}} = b^1$, so $b = {{b}}$.\n\nCheck: $ {{b}}^2 = {{b^2}} $ ✓ and $ {{b}}^{-1} = \\frac{1}{ {{b}} } $ ✓.\n\n(a) The equation is $y = {{b}}^x$.\n\n(b) $y = {{b}}^3 = {{b^3}}$.\n\n(c) The inverse swaps $x$ and $y$: $x = {{b}}^y$. Three points: $(\\tfrac{1}{ {{b}} }, -1)$, $(1, 0)$, $({{b}}, 1)$.",
+      "rubric": [
+        {
+          "point": "Uses a point (e.g. x = 1) to find the base",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of $y$ when $x = 3$",
+          "marks": 1
+        },
+        {
+          "point": "Correct inverse equation x = b^y",
+          "marks": 1
+        },
+        {
+          "point": "Three correct points on the inverse (coordinates swapped)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "x1": {
+          "min": 0,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Consider the function $y = {{b}}^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the average rate of change of $y$ with respect to $x$ from $x = {{x1}}$ to $x = {{x1+1}}$.",
+          "answer": {
+            "expr": "b^(x1+1) - b^x1",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Without drawing a graph, explain how the average rate of change on the interval from $x = {{x1+1}}$ to $x = {{x1+2}}$ compares with your answer to (a)."
+        }
+      ],
+      "modelAnswer": "(a) $f({{x1}}) = {{b}}^{ {{x1}} } = {{b^x1}}$ and $f({{x1+1}}) = {{b}}^{ {{x1+1}} } = {{b^(x1+1)}}$.\n\nAverage rate of change $= \\dfrac{ {{b^(x1+1)}} - {{b^x1}} }{ {{x1+1}} - {{x1}} } = {{b^(x1+1) - b^x1}}$.\n\n(b) Over the next interval the average rate of change is $ {{b^(x1+2) - b^(x1+1)}} $, which is {{b}} times larger. Because each first difference of an exponential function is {{b}} times the one before, the rate of change grows in proportion to the function itself — the graph gets steeper and steeper.",
+      "rubric": [
+        {
+          "point": "Correct function values at both endpoints",
+          "marks": 1
+        },
+        {
+          "point": "Correct average rate of change",
+          "marks": 1
+        },
+        {
+          "point": "Computes the next interval's rate (or compares)",
+          "marks": 1
+        },
+        {
+          "point": "Explains the rate is multiplied by the base / proportional to the function",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            5
+          ]
+        },
+        "a": {
+          "min": 0,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "For the function $f(x) = {{b}}^x$, estimate the instantaneous rate of change at $x = {{a}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the slope of the tangent at $x = {{a}}$.",
+          "answer": {
+            "expr": "(b^(a+0.001) - b^a)/0.001",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.04
+          }
+        },
+        {
+          "label": "b",
+          "text": "Repeat for $x = {{a+1}}$ and explain how the two results are related.",
+          "answer": {
+            "expr": "(b^(a+1.001) - b^(a+1))/0.001",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.04
+          }
+        }
+      ],
+      "modelAnswer": "Use a secant through $x = {{a}}$ and $x = {{a}} + 0.001$:\n\n$f({{a}}) = {{b}}^{ {{a}} } = {{b^a:4}}$\n\n$f({{a}}.001) = {{b}}^{ {{a+0.001}} } \\approx {{b^(a+0.001):7}}$\n\n$$m \\approx \\frac{ {{b^(a+0.001):7}} - {{b^a:4}} }{0.001} \\approx {{(b^(a+0.001) - b^a)/0.001:3}}$$\n\n(b) At $x = {{a+1}}$ the estimate is about ${{(b^(a+1.001) - b^(a+1))/0.001:3}}$, which is {{b}} times as large. The instantaneous rate of change of an exponential function is proportional to the value of the function: when $y$ is multiplied by {{b}}, so is the slope of the tangent.",
+      "rubric": [
+        {
+          "point": "Sets up a secant over a very small interval (or a tangent line)",
+          "marks": 1
+        },
+        {
+          "point": "Correct function values",
+          "marks": 1
+        },
+        {
+          "point": "Instantaneous rate within about 3% of the true value",
+          "marks": 1
+        },
+        {
+          "point": "Repeats at $x = a + 1$ and explains the factor of b",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-1-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n0": {
+          "min": 5,
+          "max": 20,
+          "step": 5
+        }
+      },
+      "text": "An influenza virus spreads through a school according to the function $N = {{n0}}(2)^t$, where $N$ is the number of people infected and $t$ is the time, in days.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many people are infected after 3 days?",
+          "answer": {
+            "expr": "n0*8",
+            "unit": "people",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the average rate of change between day 1 and day 2.",
+          "answer": {
+            "expr": "2*n0",
+            "unit": "people/day",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Estimate the instantaneous rate of change after 2 days.",
+          "answer": {
+            "expr": "n0*(2^2.001-4)/0.001",
+            "unit": "people/day",
+            "sig": 3,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain why the answers to (b) and (c) are different."
+        }
+      ],
+      "modelAnswer": "(a) $N(3) = {{n0}}(2)^3 = {{n0*8}}$ people.\n\n(b) $N(1) = {{2*n0}}$, $N(2) = {{4*n0}}$. Average rate $= \\dfrac{ {{4*n0}} - {{2*n0}} }{2 - 1} = {{2*n0}}$ people per day.\n\n(c) $N(2.001) = {{n0}}(2)^{2.001} \\approx {{n0*2^2.001:6}}$. Slope $\\approx \\dfrac{ {{n0*2^2.001:6}} - {{4*n0}} }{0.001} \\approx {{n0*(2^2.001-4)/0.001:3}}$ people per day.\n\n(d) The average rate in (b) describes the whole day from $t = 1$ to $t = 2$, when the infection was spreading more slowly at first. The instantaneous rate in (c) is the speed of spread at the single moment $t = 2$, when more people are already infected, so it is larger.",
+      "rubric": [
+        {
+          "point": "Correct N(3)",
+          "marks": 1
+        },
+        {
+          "point": "Correct average rate of change",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable estimate of the instantaneous rate at t = 2",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the average and instantaneous rates differ",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-1-q06",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Consider $f(x) = {{b}}^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "List the key features of $f$: domain, range, intercepts, intervals where it is positive/negative and increasing/decreasing, and the asymptote."
+        },
+        {
+          "label": "b",
+          "text": "List the same key features for the inverse of $f$."
+        },
+        {
+          "label": "c",
+          "text": "Explain why the features of the inverse are related to the features of $f$ the way they are."
+        }
+      ],
+      "modelAnswer": "(a) Key features of $f(x) = {{b}}^x$:\n* domain $\\{x \\in \\mathbb{R}\\}$; range $\\{y \\in \\mathbb{R}, y > 0\\}$\n* no $x$-intercept; $y$-intercept 1\n* positive for all $x$\n* increasing for all $x$ (since ${{b}} > 1$)\n* horizontal asymptote $y = 0$\n\n(b) The inverse $x = {{b}}^y$ is the reflection of $f$ in $y = x$:\n* domain $\\{x \\in \\mathbb{R}, x > 0\\}$; range $\\{y \\in \\mathbb{R}\\}$\n* $x$-intercept 1; no $y$-intercept\n* negative for $0 < x < 1$, positive for $x > 1$\n* increasing for all $x > 0$\n* vertical asymptote $x = 0$\n\n(c) Every feature involving $x$ in one function involves $y$ in the other because reflecting in $y = x$ swaps the coordinates of every point. The horizontal asymptote becomes vertical, the $y$-intercept becomes an $x$-intercept, and the domain and range trade places.",
+      "rubric": [
+        {
+          "point": "Correct domain and range of f",
+          "marks": 1
+        },
+        {
+          "point": "Correct intercepts and asymptote of f",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and range of the inverse",
+          "marks": 1
+        },
+        {
+          "point": "Correct intercept and asymptote of the inverse",
+          "marks": 1
+        },
+        {
+          "point": "Explains features swap because coordinates swap in y = x",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q07",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Let $g(x) = \\left(\\frac{1}{ {{b}} }\\right)^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give three points on the graph of $g$ and describe its shape."
+        },
+        {
+          "label": "b",
+          "text": "Identify the key features of $g$ and of its inverse."
+        },
+        {
+          "label": "c",
+          "text": "Compare $g$ with $f(x) = {{b}}^x$. How are they alike and how are they different?"
+        }
+      ],
+      "modelAnswer": "(a) Points: $(-1, {{b}})$, $(0, 1)$, $(1, \\tfrac{1}{ {{b}} })$. The graph falls from left to right, approaching $y = 0$ as $x$ increases.\n\n(b) $g$: domain all reals, range $y > 0$, $y$-intercept 1, no $x$-intercept, decreasing everywhere, asymptote $y = 0$.\n\nThe inverse $x = \\left(\\frac{1}{ {{b}} }\\right)^y$ passes through $({{b}}, -1)$, $(1, 0)$, $(\\tfrac{1}{ {{b}} }, 1)$: domain $x > 0$, range all reals, $x$-intercept 1, no $y$-intercept, **decreasing** everywhere, vertical asymptote $x = 0$. It is positive for $0 < x < 1$ and negative for $x > 1$.\n\n(c) Compared with $f(x) = {{b}}^x$: alike — same domain, range, $y$-intercept and asymptote; different — $f$ increases while $g$ decreases. In fact $g(x) = {{b}}^{-x}$, so $g$ is the reflection of $f$ in the $y$-axis.",
+      "rubric": [
+        {
+          "point": "Three correct points / correct shape described for g",
+          "marks": 1
+        },
+        {
+          "point": "Correct key features of g",
+          "marks": 1
+        },
+        {
+          "point": "Correct key features of the inverse (including decreasing, positive on 0<x<1)",
+          "marks": 2
+        },
+        {
+          "point": "Compares with b^x, noting reflection in the y-axis",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q08",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 3,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "The graph of $y = 2^x$ is reflected in the line $y = x$ to produce its inverse, $x = 2^y$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Complete a table of inverse points for $(-3, \\tfrac18)$, $(-1, \\tfrac12)$, $(0, 1)$, $(2, 4)$ and $({{k}}, {{2^k}})$."
+        },
+        {
+          "label": "b",
+          "text": "What is the $y$-coordinate on the inverse when $x = {{2^k}}$?",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the coordinates of image points are written as $(y, x)$."
+        }
+      ],
+      "modelAnswer": "(a) Swap each pair:\n\n| $y = 2^x$ | inverse |\n|---|---|\n| $(-3, \\tfrac18)$ | $(\\tfrac18, -3)$ |\n| $(-1, \\tfrac12)$ | $(\\tfrac12, -1)$ |\n| $(0, 1)$ | $(1, 0)$ |\n| $(2, 4)$ | $(4, 2)$ |\n| $({{k}}, {{2^k}})$ | $({{2^k}}, {{k}})$ |\n\n(b) On the inverse, the $y$-value when $x = {{2^k}}$ is the exponent that gives ${{2^k}}$ when 2 is raised to it: $2^y = {{2^k}}$, so $y = {{k}}$.\n\n(c) When the image point is plotted, its coordinates are written in the order $(y, x)$ because reflecting in $y = x$ exchanges the input and the output.",
+      "rubric": [
+        {
+          "point": "Correct inverse points for the given values",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-value of the inverse at the given x",
+          "marks": 1
+        },
+        {
+          "point": "Explains coordinates are swapped by reflection in y = x",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q09",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Consider the functions $f(x) = 3x$, $g(x) = x^3$ and $h(x) = 3^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Organize the key features (domain, range, intercepts, intervals of increase/decrease, asymptotes) of each function in a table."
+        },
+        {
+          "label": "b",
+          "text": "Which key features are common to all three? Which are different?"
+        },
+        {
+          "label": "c",
+          "text": "How do the instantaneous rates of change of the three functions compare as $x$ increases?"
+        }
+      ],
+      "modelAnswer": "(a)\n\n| Feature | $f(x) = 3x$ | $g(x) = x^3$ | $h(x) = 3^x$ |\n|---|---|---|---|\n| Domain | all reals | all reals | all reals |\n| Range | all reals | all reals | $y > 0$ |\n| $x$-int | 0 | 0 | none |\n| $y$-int | 0 | 0 | 1 |\n| Positive | $x > 0$ | $x > 0$ | all $x$ |\n| Increasing | always | always | always |\n| Asymptote | none | none | $y = 0$ |\n\n(b) Common: all three have domain all reals and are increasing everywhere. Different: $h$ has a restricted range, an asymptote and no zero; $f$ and $g$ pass through the origin.\n\n(c) $f$ has a constant rate of change (slope 3). The rate of change of $g$ is always non-negative and grows like $x^2$ (its 3rd differences are constant). The rate of change of $h$ is proportional to $h$ itself, so it eventually grows faster than that of any polynomial: for large $x$, $h$ is far steeper than $g$ and $f$.",
+      "rubric": [
+        {
+          "point": "Correct feature table for the linear function",
+          "marks": 1
+        },
+        {
+          "point": "Correct feature table for the cubic",
+          "marks": 1
+        },
+        {
+          "point": "Correct feature table for the exponential",
+          "marks": 1
+        },
+        {
+          "point": "Identifies common and different features",
+          "marks": 1
+        },
+        {
+          "point": "Compares rates of change correctly for all three",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-1-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Consider $f(x) = (-2)^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Evaluate $f(x)$ for $x = -1, 0, 1, 2, 3$."
+        },
+        {
+          "label": "b",
+          "text": "Explain why $f(0.5)$ and $f(2.5)$ are undefined."
+        },
+        {
+          "label": "c",
+          "text": "Use these results to explain why exponential functions are defined only for positive bases."
+        }
+      ],
+      "modelAnswer": "(a) $f(0) = 1$, $f(1) = -2$, $f(2) = 4$, $f(3) = -8$, $f(-1) = -\\tfrac12$. The outputs alternate in sign.\n\n(b) $f(0.5) = (-2)^{0.5} = \\sqrt{-2}$, which is not a real number; similarly $f(2.5) = (-2)^{5/2} = (\\sqrt{-2})^5$ is undefined. Any exponent with an even denominator requires an even root of a negative number.\n\n(c) The integer points jump above and below the $x$-axis and the points between them are undefined, so they cannot be joined into a smooth, continuous curve. A function of the form $y = b^x$ is only defined for all real $x$ (and is smooth and one-to-one) when $b > 0$; $b = 1$ is also excluded because $1^x = 1$ is a constant.",
+      "rubric": [
+        {
+          "point": "Correct table of integer values showing alternating signs",
+          "marks": 1
+        },
+        {
+          "point": "Explains $(-2)^{0.5}$ requires the square root of a negative",
+          "marks": 2
+        },
+        {
+          "point": "Concludes the points do not form a smooth curve / function",
+          "marks": 1
+        },
+        {
+          "point": "States the restriction b > 0 (and b ≠ 1) with reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            1.3,
+            1.4,
+            1.5
+          ]
+        },
+        "t1": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "A spaceship approaches Planet X. Its distance from the planet is modelled by $d(t) = {{b}}^t$, where $d$ is in hundreds of kilometres and $t$ is in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the ship's average velocity between {{t1}} s and {{t1+1}} s.",
+          "answer": {
+            "expr": "b^(t1+1) - b^t1",
+            "unit": "hundred km/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Estimate the ship's instantaneous velocity at {{t1+1}} s.",
+          "answer": {
+            "expr": "(b^(t1+1.001) - b^(t1+1))/0.001",
+            "unit": "hundred km/s",
+            "sig": 3,
+            "tol": 0.04
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why your answers to (a) and (b) are not equal."
+        }
+      ],
+      "modelAnswer": "(a) $d({{t1}}) = {{b}}^{ {{t1}} } \\approx {{b^t1:4}}$, $d({{t1+1}}) \\approx {{b^(t1+1):4}}$.\n\nAverage velocity $= \\dfrac{ {{b^(t1+1):4}} - {{b^t1:4}} }{1} \\approx {{b^(t1+1) - b^t1:3}}$ hundred km/s.\n\n(b) $d({{t1+1}}.001) \\approx {{b^(t1+1.001):6}}$.\n\nInstantaneous velocity $\\approx \\dfrac{ {{b^(t1+1.001):6}} - {{b^(t1+1):6}} }{0.001} \\approx {{(b^(t1+1.001) - b^(t1+1))/0.001:3}}$ hundred km/s.\n\n(c) The instantaneous velocity at the end of the interval is greater than the average velocity over the interval because the distance function is exponential: its rate of change keeps increasing, so the ship's speed at $t = {{t1+1}}$ is higher than its average speed during the second before.",
+      "rubric": [
+        {
+          "point": "Correct distances at both times",
+          "marks": 1
+        },
+        {
+          "point": "Correct average velocity with units",
+          "marks": 1
+        },
+        {
+          "point": "Instantaneous velocity estimated with a small interval",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the instantaneous value exceeds the average",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v0": {
+          "min": 24000,
+          "max": 40000,
+          "step": 2000
+        },
+        "r": {
+          "choices": [
+            0.8,
+            0.85,
+            0.75
+          ]
+        }
+      },
+      "text": "A new car worth {{v0}} dollars loses value so that $V(t) = {{v0}}({{r}})^t$, where $t$ is the age in years.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the average rate of change of the car's value from year 1 to year 4.",
+          "answer": {
+            "expr": "(v0*r^4 - v0*r)/3",
+            "unit": "$/year",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why the rate of change is negative."
+        },
+        {
+          "label": "c",
+          "text": "Describe how the rate at which the car loses value changes over time. Explain your reasoning."
+        }
+      ],
+      "modelAnswer": "(a) $V(1) = {{v0}}({{r}}) = {{v0*r:5}}$ dollars; $V(4) = {{v0}}({{r}})^4 \\approx {{v0*r^4:5}}$ dollars.\n\nAverage rate of change $= \\dfrac{ {{v0*r^4:5}} - {{v0*r:5}} }{4 - 1} \\approx {{(v0*r^4 - v0*r)/3:4}}$ dollars per year.\n\n(b) The rate is negative because the value is decreasing: $0 < {{r}} < 1$ means each year the value is multiplied by a number less than 1 (exponential decay).\n\n(c) The magnitude of the rate of change decreases over time. The yearly loss is ${{100*(1-r):2}}\\%$ of the current value, and the current value keeps shrinking, so the dollar amount lost each year gets smaller — the graph levels off toward its asymptote $V = 0$.",
+      "rubric": [
+        {
+          "point": "Correct values V(1) and V(4)",
+          "marks": 1
+        },
+        {
+          "point": "Correct average rate of change (negative)",
+          "marks": 2
+        },
+        {
+          "point": "Explains negative sign from decay base 0 < b < 1",
+          "marks": 1
+        },
+        {
+          "point": "Explains that the size of the loss decreases because it is proportional to the value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q13",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "For the function $y = {{b}}^x$, the first differences for $x = 0, 1, 2, 3, 4$ are calculated.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the first differences."
+        },
+        {
+          "label": "b",
+          "text": "Show that the first differences are proportional to the $y$-values. What is the constant of proportionality?",
+          "answer": {
+            "expr": "b-1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Predict, then verify, the pattern in the second differences. Why will the differences never become constant?"
+        }
+      ],
+      "modelAnswer": "(a) $y$-values: $1, {{b}}, {{b^2}}, {{b^3}}, {{b^4}}$. First differences: ${{b-1}}, {{b^2-b}}, {{b^3-b^2}}, {{b^4-b^3}}$.\n\n(b) Each difference is ${{b}}$ times the one before it. In general $\\Delta_1 y = b^{x+1} - b^x = b^x(b - 1)$, so each first difference is $(b - 1) = {{b-1}}$ times the $y$-value at the start of its interval: the differences are proportional to the function.\n\n(c) Second differences: ${{(b-1)^2}}, {{b*(b-1)^2}}, {{b^2*(b-1)^2}}$ — again multiplied by {{b}} each time. Taking differences only multiplies the pattern by another factor $(b - 1)$, so the differences never become constant, unlike a polynomial whose $n$th differences are constant.",
+      "rubric": [
+        {
+          "point": "Correct first differences",
+          "marks": 1
+        },
+        {
+          "point": "Shows that the differences are proportional to y (factor b − 1) and grow by factor b",
+          "marks": 2
+        },
+        {
+          "point": "Correct second differences",
+          "marks": 1
+        },
+        {
+          "point": "Explains why differences never become constant",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q14",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "The graph of $f(x) = (\\sqrt{2})^x$ and its inverse are drawn on the same grid as the line $y = x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $(2, 2)$ and $(4, 4)$ are on the graph of $f$."
+        },
+        {
+          "label": "b",
+          "text": "Explain why these points are also on the inverse of $f$."
+        },
+        {
+          "label": "c",
+          "text": "Does the graph of $y = 2^x$ meet its inverse? What happens when $0 < b < 1$? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $f(2) = (\\sqrt2)^2 = 2$ and $f(4) = (\\sqrt2)^4 = 4$, so $(2, 2)$ and $(4, 4)$ lie on $f$ and on $y = x$.\n\n(b) A point with equal coordinates is unchanged by reflection in $y = x$, so $(2, 2)$ and $(4, 4)$ are also on the inverse. The function, its inverse and the line $y = x$ all meet at these two points.\n\n(c) For $y = 2^x$, $2^x > x$ for every $x$ (e.g. $2^1 = 2 > 1$, $2^2 = 4 > 2$ and the gap widens), so the graph is entirely above $y = x$ and never meets its inverse. For a base $0 < b < 1$, the decreasing graph must cross $y = x$ exactly once, so the function and its inverse always meet at one point on $y = x$.",
+      "rubric": [
+        {
+          "point": "Verifies both points lie on f and y = x",
+          "marks": 1
+        },
+        {
+          "point": "Explains invariant points under reflection in y = x",
+          "marks": 1
+        },
+        {
+          "point": "Shows y = 2^x stays above y = x so no intersection",
+          "marks": 2
+        },
+        {
+          "point": "Correct conclusion for 0 < b < 1",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q15",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p0": {
+          "min": 100,
+          "max": 500,
+          "step": 50
+        },
+        "k": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "A bacterial colony doubles every day. Its population is $P(t) = {{p0}}(2)^t$, where $t$ is the time, in days.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the initial population? How can you tell from the equation?",
+          "answer": {
+            "expr": "p0",
+            "unit": "bacteria",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many bacteria are present after {{k}} days?",
+          "answer": {
+            "expr": "p0*2^k",
+            "unit": "bacteria",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What was the population 1 day before $t = 0$?",
+          "answer": {
+            "expr": "p0/2",
+            "unit": "bacteria",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find the average rate of change over the first {{k}} days.",
+          "answer": {
+            "expr": "(p0*2^k - p0)/k",
+            "unit": "bacteria/day",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) The initial population is $P(0) = {{p0}}(2)^0 = {{p0}}$, the coefficient in front of the power.\n\n(b) $P({{k}}) = {{p0}}(2)^{ {{k}} } = {{p0*2^k}}$ bacteria.\n\n(c) $P(-1) = {{p0}}(2)^{-1} = {{p0/2}}$ — one day ago the colony was half its present size.\n\n(d) Average rate $= \\dfrac{ {{p0*2^k}} - {{p0}} }{ {{k}} } = {{(p0*2^k - p0)/k:4}}$ bacteria per day.",
+      "rubric": [
+        {
+          "point": "Identifies the initial population with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct P(k)",
+          "marks": 1
+        },
+        {
+          "point": "Correct population one day earlier",
+          "marks": 1
+        },
+        {
+          "point": "Correct average rate of change",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q16",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Two students are comparing the functions $f(x) = 2^x$ and $g(x) = 2x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How can finite differences be used to tell the two functions apart?"
+        },
+        {
+          "label": "b",
+          "text": "How do their graphs differ?"
+        },
+        {
+          "label": "c",
+          "text": "Explain, in your own words, the key difference between exponential and linear growth."
+        }
+      ],
+      "modelAnswer": "(a) Finite differences of $g$: constant (2 each time) → linear. Finite differences of $f$: $1, 2, 4, 8, \\dots$ — they double each time and never become constant → exponential.\n\n(b) Graph of $g$: a straight line through the origin with slope 2. Graph of $f$: a curve through $(0, 1)$ that hugs the asymptote $y = 0$ on the left and gets steeper and steeper on the right.\n\n(c) For $f$, as $x$ increases by 1 the output **doubles** (multiplicative change); for $g$ the output **increases by 2** (additive change). That is the essential difference between exponential and linear growth.",
+      "rubric": [
+        {
+          "point": "Correct finite difference analysis for both",
+          "marks": 2
+        },
+        {
+          "point": "Correct graphical description for both",
+          "marks": 1
+        },
+        {
+          "point": "Explains multiplicative vs additive change",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-1-q17",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Consider the family of functions $f(x) = b^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What happens to the shape of the graph of $f(x) = b^x$ when $b = 1$?"
+        },
+        {
+          "label": "b",
+          "text": "What happens to the shape of its inverse?"
+        },
+        {
+          "label": "c",
+          "text": "Explain why this happens, and why $b = 1$ is excluded from the definition of an exponential function."
+        }
+      ],
+      "modelAnswer": "(a) If $b = 1$, $f(x) = 1^x = 1$ for every $x$: the graph is the horizontal line $y = 1$.\n\n(b) Its \"inverse\" $x = 1^y$ becomes $x = 1$, a vertical line.\n\n(c) The vertical line $x = 1$ fails the vertical line test (one input, infinitely many outputs), so it is not a function. Also, for $y = 1^x$ there is no growth or decay — every input gives the same output, so the function is not one-to-one. This is why the base $b = 1$ is excluded from exponential functions.",
+      "rubric": [
+        {
+          "point": "Describes y = 1 horizontal line",
+          "marks": 1
+        },
+        {
+          "point": "Describes the inverse x = 1",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the inverse is not a function (vertical line test)",
+          "marks": 2
+        },
+        {
+          "point": "Links this to excluding b = 1",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-1-q18",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3
+          ]
+        }
+      },
+      "text": "The graph shows an exponential function of the form $y = b^x$.\n```plot\nf: {{b}}^x\ndomain: -3, 3\nrange: -1, {{b^2 + 2}}\npoints: (0,1), (1,{{b}}), (2,{{b^2}})\nasymptote y: 0\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation of the function."
+        },
+        {
+          "label": "b",
+          "text": "List three points on the inverse and write its equation."
+        },
+        {
+          "label": "c",
+          "text": "State the domain, range and asymptote of the inverse."
+        },
+        {
+          "label": "d",
+          "text": "Use the inverse to determine the exponent $y$ for which $ {{b}}^y = {{b^3}} $.",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) The graph passes through $(1, {{b}})$, and $b^1 = b$, so $b = {{b}}$: the equation is $y = {{b}}^x$. (Check: $(2, {{b^2}})$ ✓.)\n\n(b) Points on the inverse: $(1, 0)$, $({{b}}, 1)$, $({{b^2}}, 2)$; equation $x = {{b}}^y$.\n\n(c) The inverse has domain $x > 0$, range all reals and vertical asymptote $x = 0$.\n\n(d) Using the inverse: we need the $y$-value with ${{b}}^y = {{b^3}}$, which is $y = 3$, because ${{b}}^3 = {{b^3}}$.",
+      "rubric": [
+        {
+          "point": "Reads a point to find b",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct inverse points and equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct inverse domain/range/asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Uses the inverse to find the required value",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

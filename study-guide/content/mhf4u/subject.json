@@ -1,0 +1,15 @@
+{
+  "id": "mhf4u",
+  "name": "Advanced Functions 12 (MHF4U)",
+  "description": "Polynomial, rational, trigonometric, exponential and logarithmic functions, rates of change and combining functions.",
+  "chapters": [
+    { "id": "ch1", "number": 1, "title": "Polynomial Functions", "sections": ["1-2", "1-3", "1-4", "1-5", "1-6", "1-review"] },
+    { "id": "ch2", "number": 2, "title": "Polynomial Equations and Inequalities", "sections": ["2-1", "2-2", "2-3", "2-4", "2-5", "2-6", "2-review"] },
+    { "id": "ch3", "number": 3, "title": "Rational Functions", "sections": ["3-1", "3-2", "3-3", "3-4", "3-5", "3-review"] },
+    { "id": "ch4", "number": 4, "title": "Trigonometry", "sections": ["4-1", "4-2", "4-3", "4-4", "4-5", "4-review"] },
+    { "id": "ch5", "number": 5, "title": "Trigonometric Functions", "sections": ["5-1", "5-2", "5-3", "5-4", "5-5", "5-review"] },
+    { "id": "ch6", "number": 6, "title": "Exponential and Logarithmic Functions", "sections": ["6-1", "6-2", "6-3", "6-4", "6-5", "6-review"] },
+    { "id": "ch7", "number": 7, "title": "Tools and Strategies for Solving Exponential and Logarithmic Equations", "sections": ["7-1", "7-2", "7-3", "7-4", "7-5", "7-review"] },
+    { "id": "ch8", "number": 8, "title": "Combining Functions", "sections": ["8-1", "8-2", "8-3", "8-4", "8-5", "8-review"] }
+  ]
+}

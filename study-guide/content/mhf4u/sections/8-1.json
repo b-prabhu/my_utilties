@@ -1,0 +1,1421 @@
+{
+  "id": "8-1",
+  "number": "8.1",
+  "title": "Sums and Differences of Functions",
+  "estimatedMinutes": 75,
+  "overview": "Why are some spots in a wave pool rough while others are calm? Why does a fundraiser lose money until it sells enough T-shirts? Both questions are answered by **adding and subtracting functions**. In this section you will combine functions algebraically and graphically using the superposition principle, find the domain and range of the result, and apply sums and differences to profit, voltage and wave problems.",
+  "objectives": [
+    "Determine equations for $f(x) + g(x)$ and $f(x) - g(x)$ and evaluate them.",
+    "Use the superposition principle to graph sums and differences of functions.",
+    "Determine the domain and range of a sum or difference of functions.",
+    "Explain why addition of functions is commutative and subtraction is not.",
+    "Model and solve cost, revenue, profit and break-even problems.",
+    "Interpret sums of sinusoidal functions as constructive and destructive interference."
+  ],
+  "lessons": [
+    {
+      "id": "what-is-combined",
+      "title": "What Is a Combined Function?",
+      "body": "\nSo far in this course you have studied many *families* of functions: polynomial, rational, trigonometric, exponential and logarithmic. Real situations are rarely that tidy. The profit of a business, the height of a wave in a wave pool, or the total number of tiles in a growing pattern usually depend on **two or more functions working together**.\n\n> A **combined function** is a function made by joining two or more functions with an operation: addition, subtraction, multiplication, division or composition.\n\nIn this section we look at the first two operations.\n\n| Notation | Meaning | Read as |\n|---|---|---|\n| $(f+g)(x) = f(x) + g(x)$ | add the outputs | \"f plus g of x\" |\n| $(f-g)(x) = f(x) - g(x)$ | subtract the outputs | \"f minus g of x\" |\n\n### Finding the equation algebraically\nAdd (or subtract) the expressions, then **collect like terms**.\n\nIf $f(x) = 2x^2 + 3x$ and $g(x) = 4x - 7$:\n\n$$\\begin{aligned}(f+g)(x) &= (2x^2 + 3x) + (4x - 7) = 2x^2 + 7x - 7\\\\ (f-g)(x) &= (2x^2 + 3x) - (4x - 7) = 2x^2 - x + 7\\end{aligned}$$\n\n**Watch the brackets!** When subtracting, the minus sign applies to *every* term of $g(x)$: $-(4x - 7) = -4x + 7$.\n\n### Evaluating at a value – two ways\nTo find $(f+g)(2)$:\n\n* **Method 1:** use the combined equation: $2(2)^2 + 7(2) - 7 = 15$.\n* **Method 2:** evaluate each function first: $f(2) = 14$, $g(2) = 1$, so $(f+g)(2) = 14 + 1 = 15$.\n\nBoth methods must give the same answer – a great way to check your algebra.\n"
+    },
+    {
+      "id": "superposition",
+      "title": "The Superposition Principle",
+      "body": "\nHow do you **graph** a sum of two functions without finding its equation? Use the superposition principle.\n\n> **Superposition principle:** the sum of two or more functions can be found by **adding the ordinates (y-coordinates)** of the functions at each abscissa (x-coordinate).\n\nThink of it as stacking: at each $x$, stand $g(x)$ on top of $f(x)$.\n\n### Using a table\nLet $f(x) = x^2$ and $g(x) = x$.\n\n| $x$ | $f(x) = x^2$ | $g(x) = x$ | $h(x) = f(x) + g(x)$ |\n|---|---|---|---|\n| −2 | 4 | −2 | 2 |\n| −1 | 1 | −1 | 0 |\n| 0 | 0 | 0 | 0 |\n| 1 | 1 | 1 | 2 |\n| 2 | 4 | 2 | 6 |\n\n```plot\ntitle: Superposition: h(x) = x² + x\nf: x^2 | label=f(x) = x²\nf: x | dashed; label=g(x) = x\nf: x^2 + x | label=h(x) = f(x) + g(x)\ndomain: -3, 3\nrange: -3, 8\npoints: (-1,0), (0,0), (-0.5,-0.25)\n```\n\n### Constant vs. variable vertical translation\n* Adding a **constant** function, e.g. $g(x) = 3$, shifts every point of $f$ up by the **same** amount: $y = x^2 + 3$ is a vertical translation of $y = x^2$.\n* Adding a **non-constant** function, e.g. $g(x) = x$, shifts points by **different** amounts – up where $g(x) > 0$, down where $g(x) < 0$. This is a **variable vertical translation**; the shape itself changes.\n\n### Useful points when sketching\n* Where $g(x) = 0$, the sum passes through the point of $f$ (and vice versa).\n* Where $f(x) = -g(x)$, the sum is **zero** – an x-intercept of $f + g$.\n* Far from the origin, the \"bigger\" (faster-growing) function dominates the shape.\n"
+    },
+    {
+      "id": "differences",
+      "title": "Differences of Functions",
+      "body": "\nThe superposition principle also works for subtraction, because **subtracting is the same as adding the opposite**:\n\n$$f(x) - g(x) = f(x) + [-g(x)]$$\n\nSo to graph $y = f(x) - g(x)$: first reflect $g$ in the x-axis to get $-g(x)$, then add y-coordinates.\n\n### Order matters for subtraction\nAddition of functions is **commutative**: $f(x) + g(x) = g(x) + f(x)$ for all functions.\n\nSubtraction is **not**: $g(x) - f(x) = -[f(x) - g(x)]$. The graph of $y = g(x) - f(x)$ is the **reflection in the x-axis** of the graph of $y = f(x) - g(x)$.\n\n**Example.** $f(x) = 2^x$ and $g(x) = 3$.\n\n| Combined function | Transformation of $y = 2^x$ | Range |\n|---|---|---|\n| $y = 2^x + 3$ | translate up 3 | $\\{y \\in \\mathbb{R}, y > 3\\}$ |\n| $y = 2^x - 3$ | translate down 3 | $\\{y \\in \\mathbb{R}, y > -3\\}$ |\n| $y = 3 - 2^x$ | reflect in x-axis, then translate up 3 | $\\{y \\in \\mathbb{R}, y < 3\\}$ |\n\n```plot\nf: 2^x + 3 | label=y = 2^x + 3\nf: 2^x - 3 | label=y = 2^x − 3\nf: 3 - 2^x | dashed; label=y = 3 − 2^x\ndomain: -4, 4\nrange: -8, 10\nasymptote y: 3\nasymptote y: -3\n```\n"
+    },
+    {
+      "id": "domain-range",
+      "title": "Domain and Range of Sums and Differences",
+      "body": "\nA sum or difference only makes sense where **both** functions exist.\n\n> The domain of $f + g$ or $f - g$ is the set of $x$-values **common to the domains** of $f$ and $g$ (their intersection).\n\n| $f(x)$ | $g(x)$ | Domain of $f \\pm g$ |\n|---|---|---|\n| $x^2$ | $3x - 1$ | $\\{x \\in \\mathbb{R}\\}$ |\n| $\\sqrt{x}$ | $\\dfrac{1}{x-4}$ | $\\{x \\in \\mathbb{R}, x \\ge 0, x \\ne 4\\}$ |\n| $\\sin x$ | $\\log x$ | $\\{x \\in \\mathbb{R}, x > 0\\}$ |\n\nThe **range** is not found by combining ranges. Find it from the equation or graph of the combined function – for a quadratic, find the vertex; for others, look at maximum/minimum values and asymptotes.\n\n**Example:** $h(x) = x^2 + x = x(x+1)$ has zeros $0$ and $-1$. By symmetry the vertex is midway, at $x = -\\tfrac12$, and $h(-\\tfrac12) = \\tfrac14 - \\tfrac12 = -\\tfrac14$. The parabola opens up, so the range is $\\{y \\in \\mathbb{R}, y \\ge -\\tfrac14\\}$.\n"
+    },
+    {
+      "id": "applications",
+      "title": "Applications: Cost, Revenue, Profit and Waves",
+      "body": "\n### Business: the profit function\n* **Total cost** = fixed cost + variable cost: $C(n) = F + vn$\n* **Revenue** = price × number sold: $R(n) = pn$\n* **Profit** = revenue − cost: $P(n) = R(n) - C(n)$\n\nThe **break-even point** is where $R(n) = C(n)$, i.e. where $P(n) = 0$. Below it the business loses money (\"in the red\"); above it the business makes money (\"in the black\").\n\n**Practical domain:** $n$ counts items, so $n$ is a whole number, $n \\ge 0$ – and there may be a maximum (e.g. a vendor can sell at most 250 hotdogs a day). The dependent variables ($C$, $R$, $P$) are dollar amounts and do not need to be integers.\n\n### Science: adding signals and waves\n* **AC–DC voltage:** a signal $V = 10\\sin t + 15$ is an alternating part plus a constant part. Its range is $[5, 25]$, so the minimum is 5 V, the maximum is 25 V and the average is the DC value, 15 V.\n* **Wave pools:** two waves add by superposition. If $h(x) = \\sin x + \\sin(x - c)$:\n  * $c = 0$ (in phase) → crests line up → **constructive interference**, amplitude doubles to 2.\n  * $c = \\pi$ (half a cycle out of phase) → crests meet troughs → **total destructive interference**, $h(x) = 0$.\n  * $c = 2\\pi$ → back in phase.\n\nThat is why some spots in a wave pool have huge waves while others are almost calm.\n\n### Growing patterns\nA tile pattern may have parts growing linearly ($2n$), quadratically ($n^2$) and exponentially ($2^n$). The total is the sum, $T(n) = 2^n + n^2 + 2n$. For large $n$ the exponential part grows fastest, so the graph of $T$ eventually looks just like $y = 2^n$.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "combined function",
+      "definition": "A function formed by combining two or more functions using addition, subtraction, multiplication, division or composition."
+    },
+    {
+      "term": "superposition principle",
+      "definition": "The sum of two or more functions can be found by adding the y-coordinates (ordinates) of the functions at each x-coordinate (abscissa). It also applies to differences, since subtracting is adding the opposite."
+    },
+    {
+      "term": "variable vertical translation",
+      "definition": "Adding a non-constant function $g(x)$ to $f(x)$ moves each point of $f$ up or down by a different amount, $g(x)$, so the shape of the graph changes."
+    },
+    {
+      "term": "break-even point",
+      "definition": "The point where revenue equals cost, $R(n) = C(n)$, so profit is zero."
+    },
+    {
+      "term": "commutative",
+      "definition": "An operation is commutative if reversing the order of the operands gives the same result. Addition of functions is commutative; subtraction is not."
+    },
+    {
+      "term": "constructive / destructive interference",
+      "definition": "When two waves are in phase their superposition has a larger amplitude (constructive); when they are out of phase the amplitude is smaller (destructive). Same-frequency waves half a cycle out of phase cancel completely."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Sum of functions",
+      "latex": "(f+g)(x) = f(x) + g(x)",
+      "meaning": "Add the outputs at each $x$. Domain: common domain of $f$ and $g$."
+    },
+    {
+      "name": "Difference of functions",
+      "latex": "(f-g)(x) = f(x) - g(x) = f(x) + [-g(x)]",
+      "meaning": "Subtract every term of $g(x)$. $g - f$ is the reflection of $f - g$ in the x-axis."
+    },
+    {
+      "name": "Profit",
+      "latex": "P(n) = R(n) - C(n), \\quad C(n) = F + vn, \\quad R(n) = pn",
+      "meaning": "$F$ fixed cost, $v$ variable cost per item, $p$ price per item."
+    },
+    {
+      "name": "Break-even",
+      "latex": "R(n) = C(n) \\iff n = \\frac{F}{p - v}",
+      "meaning": "For linear cost and revenue."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Apply the superposition principle",
+      "problem": "Let $f(x) = x^2$. Determine an equation for $h(x) = f(x) + g(x)$, graph it and state its domain and range when (a) $g(x) = 3$ (b) $g(x) = x$.",
+      "steps": [
+        "**(a)** $h(x) = x^2 + 3$. Adding the constant 3 to every y-coordinate is a vertical translation of $y = x^2$ up 3 units.",
+        "Domain $\\{x \\in \\mathbb{R}\\}$. The vertex is $(0, 3)$ and the parabola opens up, so the range is $\\{y \\in \\mathbb{R}, y \\ge 3\\}$.",
+        "**(b)** $h(x) = x^2 + x = x(x + 1)$. Zeros: $x = 0$ and $x = -1$.",
+        "The vertex lies midway between the zeros: $x = -\\tfrac12$. $h(-\\tfrac12) = \\tfrac14 - \\tfrac12 = -\\tfrac14$.",
+        "Domain $\\{x \\in \\mathbb{R}\\}$, range $\\{y \\in \\mathbb{R}, y \\ge -\\tfrac14\\}$. This is a *variable* vertical translation of $y = x^2$."
+      ],
+      "answer": "(a) $h(x) = x^2 + 3$, range $y \\ge 3$; (b) $h(x) = x^2 + x$, range $y \\ge -\\tfrac14$; both have domain $\\mathbb{R}$."
+    },
+    {
+      "title": "The profit function (T-shirt fundraiser)",
+      "problem": "Student Council pays a fixed cost of &#36;200 plus &#36;5 per T-shirt and sells each shirt for &#36;8. (a) Write $C(n)$ and $R(n)$. (b) Find the break-even point. (c) Model profit. (d) When does council make money?",
+      "steps": [
+        "**Given:** $F = 200$, $v = 5$, $p = 8$.",
+        "$C(n) = 200 + 5n$ and $R(n) = 8n$.",
+        "Break-even: $8n = 200 + 5n \\Rightarrow 3n = 200 \\Rightarrow n = 66\\tfrac23$. Then $R = 8(66\\tfrac23) = 533\\tfrac13$.",
+        "Profit: $P(n) = R(n) - C(n) = 8n - (200 + 5n) = 3n - 200$.",
+        "$P(n) > 0$ when $3n > 200$, i.e. $n > 66.\\overline{6}$. Since $n$ is a whole number, council makes money when it sells **67 or more** shirts and loses money for 66 or fewer.",
+        "Practical domain: $\\{n \\in \\mathbb{W}\\}$ (whole numbers). Ranges: $C \\ge 200$, $R \\ge 0$, $P \\ge -200$."
+      ],
+      "answer": "Break-even ≈ (67 shirts, &#36;533); $P(n) = 3n - 200$; profit for $n \\ge 67$."
+    },
+    {
+      "title": "An AC–DC voltage signal",
+      "problem": "A signal is made of $V_{AC} = 10\\sin t$ and $V_{DC} = 15$ (volts, $t$ in seconds, radians). Find the combined function, its domain and range, and its minimum, maximum and average voltage.",
+      "steps": [
+        "$V(t) = V_{AC} + V_{DC} = 10\\sin t + 15$.",
+        "$\\sin t$ ranges from −1 to 1, so $10\\sin t$ ranges from −10 to 10.",
+        "Adding 15 translates this up: $V$ ranges from $15 - 10 = 5$ to $15 + 10 = 25$.",
+        "Domain $\\{t \\in \\mathbb{R}, t \\ge 0\\}$ (time), range $\\{V \\in \\mathbb{R}, 5 \\le V \\le 25\\}$.",
+        "Average = midline = 15 V."
+      ],
+      "answer": "min 5 V, max 25 V, average 15 V."
+    },
+    {
+      "title": "Domain of a sum",
+      "problem": "State the domain of $h(x) = \\sqrt{x} + \\dfrac{1}{x-4}$ and evaluate $h(9)$.",
+      "steps": [
+        "$\\sqrt{x}$ needs $x \\ge 0$.",
+        "$\\dfrac{1}{x-4}$ needs $x \\ne 4$.",
+        "The domain of the sum is the common domain: $\\{x \\in \\mathbb{R}, x \\ge 0, x \\ne 4\\}$.",
+        "$h(9) = \\sqrt9 + \\dfrac{1}{9-4} = 3 + 0.2 = 3.2$."
+      ],
+      "answer": "Domain $x \\ge 0, x \\ne 4$; $h(9) = 3.2$."
+    },
+    {
+      "title": "Wave interference",
+      "problem": "Describe $h(x) = \\sin x + \\sin(x - c)$ for $c = 0$, $c = \\pi$ and $c = 2\\pi$.",
+      "steps": [
+        "$c = 0$: $h(x) = 2\\sin x$. Crests line up – constructive interference, amplitude 2, range $[-2, 2]$.",
+        "$c = \\pi$: $\\sin(x - \\pi) = -\\sin x$, so $h(x) = \\sin x - \\sin x = 0$. Total destructive interference – a flat line.",
+        "$c = 2\\pi$: $\\sin(x - 2\\pi) = \\sin x$, so again $h(x) = 2\\sin x$.",
+        "In a wave pool, spots where waves arrive in phase are rough; spots where they arrive half a cycle apart are calm."
+      ],
+      "answer": "$2\\sin x$, $0$, $2\\sin x$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$f(x) - g(x)$ for $g(x) = 3x - 7$ is $f(x) - 3x - 7$.",
+      "fact": "The minus applies to the whole of $g$: $f(x) - (3x - 7) = f(x) - 3x + 7$."
+    },
+    {
+      "myth": "$f - g$ and $g - f$ have the same graph.",
+      "fact": "$g - f = -(f - g)$; the graphs are reflections of each other in the x-axis. Only addition is commutative."
+    },
+    {
+      "myth": "The range of $f + g$ is found by adding the ranges of $f$ and $g$.",
+      "fact": "Not in general. For $f(x) = x^2$ and $g(x) = x$, both ranges include 0 or more, yet $f + g$ reaches $-\\tfrac14$. Find the range from the combined equation or graph."
+    },
+    {
+      "myth": "The domain of a sum is the union of the domains.",
+      "fact": "It is the **intersection** – the x-values where *both* functions are defined."
+    },
+    {
+      "myth": "Because profit equations are continuous lines, any $n$ can be used.",
+      "fact": "In context, $n$ counts items, so the practical domain is whole numbers (and may have a maximum)."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Wave pools",
+      "body": "Two sinusoidal waves meeting in a pool add by superposition. In-phase arrival doubles the height; half-cycle out-of-phase arrival cancels it. Engineers place wave generators so the interference pattern is fun but safe."
+    },
+    {
+      "title": "Running a food truck",
+      "body": "Daily profit = revenue − (fixed costs + variable costs). Lowering the fixed cost moves the break-even point; lowering the variable cost changes the slope of the profit line, which matters most when sales are high."
+    },
+    {
+      "title": "Electronics",
+      "body": "Many electrical signals are a DC level plus an AC ripple, $V = A\\sin t + B$. The DC part sets the average; the AC part sets how far the voltage swings."
+    },
+    {
+      "title": "Paycheques",
+      "body": "A server earning wages plus tips has total earnings $E(h) = (\\text{wage} + \\text{tips})h$ – a sum of two linear functions of hours worked."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Let $f(x) = 5x$ and $g(x) = x + 7$. Find $f + g$, $f - g$ and $g - f$.",
+      "hint": "Collect like terms; distribute the minus sign.",
+      "solution": "$(f+g)(x) = 6x + 7$; $(f-g)(x) = 4x - 7$; $(g-f)(x) = -4x + 7$."
+    },
+    {
+      "question": "Let $f(x) = -4x^2 + 5$ and $g(x) = 2x - 3$. Find $h(x) = f(x) + g(x)$ and $h(-3)$.",
+      "hint": "Either combine first or evaluate each function at −3.",
+      "solution": "$h(x) = -4x^2 + 2x + 2$. $h(-3) = -36 - 6 + 2 = -40$. Check: $f(-3) = -31$, $g(-3) = -9$, sum $-40$. ✓"
+    },
+    {
+      "question": "Sketch $y = 2^x - 3$ and give its domain and range.",
+      "hint": "It is a vertical translation of $y = 2^x$.",
+      "solution": "Translate $y = 2^x$ down 3. Domain $\\mathbb{R}$; horizontal asymptote $y = -3$; range $\\{y \\in \\mathbb{R}, y > -3\\}$."
+    },
+    {
+      "question": "A hotdog vendor has fixed costs of &#36;120 per day, variable costs of &#36;1 per hotdog, sells hotdogs for &#36;2.50 and can sell at most 250 a day. Find the break-even point and the maximum daily profit.",
+      "hint": "$P(h) = 2.5h - (120 + h)$.",
+      "solution": "$P(h) = 1.5h - 120$. Break-even: $h = 80$ hotdogs (&#36;200). Maximum profit at $h = 250$: $1.5(250) - 120 = &#36;255$."
+    },
+    {
+      "question": "What are the minimum, maximum and average values of $V(t) = 6\\sin t + 9$?",
+      "hint": "$\\sin t$ is between −1 and 1.",
+      "solution": "Min $9 - 6 = 3$, max $9 + 6 = 15$, average 9."
+    },
+    {
+      "question": "State the domain of $y = \\sin x + \\log x$.",
+      "hint": "Which function has a restricted domain?",
+      "solution": "$\\sin x$ is defined everywhere; $\\log x$ needs $x > 0$. Domain $\\{x \\in \\mathbb{R}, x > 0\\}$."
+    },
+    {
+      "question": "A tile pattern has $2^n$ blue tiles, $n^2$ green tiles and $2n$ yellow tiles at stage $n$. How many tiles are in stage 5?",
+      "hint": "Add the three parts.",
+      "solution": "$T(5) = 32 + 25 + 10 = 67$ tiles."
+    },
+    {
+      "question": "Explain why $y = x^2 + x$ is called a *variable* vertical translation of $y = x^2$.",
+      "hint": "How far does each point move?",
+      "solution": "Each point $(x, x^2)$ moves vertically by $g(x) = x$: up when $x > 0$, down when $x < 0$, not at all at $x = 0$. The amount varies with $x$, so the shape changes (the vertex moves to $(-\\tfrac12, -\\tfrac14)$)."
+    }
+  ],
+  "summary": [
+    "A combined function joins functions with an operation; $(f \\pm g)(x) = f(x) \\pm g(x)$.",
+    "**Superposition principle:** add y-coordinates at each x-value to graph a sum; subtracting is adding the opposite.",
+    "Addition of functions is commutative; subtraction is not – $g - f$ is the reflection of $f - g$ in the x-axis.",
+    "The domain of $f \\pm g$ is the domain common to both functions; find the range from the combined function.",
+    "Profit $P = R - C$; the break-even point is where $R = C$. Practical domains often restrict $n$ to whole numbers.",
+    "Sums of sinusoidal functions model interference: in phase → constructive, half-cycle out of phase → destructive."
+  ],
+  "questions": [
+    {
+      "id": "8-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "d": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = {{a}}x + {{b}}$ and $g(x) = {{c}}x - {{d}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $(f+g)(x)$ and evaluate $(f+g)({{k}})$.",
+          "answer": {
+            "expr": "(a+c)*k+b-d",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $(f-g)(x)$ and evaluate $(f-g)({{k}})$.",
+          "answer": {
+            "expr": "(a-c)*k+b+d",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine $(g-f)(x)$ and evaluate $(g-f)({{k}})$.",
+          "answer": {
+            "expr": "(c-a)*k-b-d",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain the relationship between your answers to (b) and (c)."
+        }
+      ],
+      "modelAnswer": "**(a)** $(f+g)(x) = ({{a}}x + {{b}}) + ({{c}}x - {{d}}) = {{a+c}}x + ({{b-d}})$.\n$(f+g)({{k}}) = {{a+c}}({{k}}) + ({{b-d}}) = {{(a+c)*k+b-d}}$.\n\n**(b)** $(f-g)(x) = ({{a}}x + {{b}}) - ({{c}}x - {{d}}) = {{a}}x + {{b}} - {{c}}x + {{d}} = ({{a-c}})x + {{b+d}}$.\n$(f-g)({{k}}) = {{(a-c)*k+b+d}}$.\n\n**(c)** $(g-f)(x) = -[(f-g)(x)] = ({{c-a}})x - {{b+d}}$, so $(g-f)({{k}}) = {{(c-a)*k-b-d}}$.\n\n**(d)** The values in (b) and (c) are opposites because $g - f = -(f - g)$: the graphs are reflections in the x-axis. Subtraction of functions is not commutative.",
+      "rubric": [
+        {
+          "point": "Correct simplified equation for f + g",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of (f + g)(k)",
+          "marks": 1
+        },
+        {
+          "point": "Distributes the negative correctly to find f − g",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of (f − g)(k)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of (g − f)(k)",
+          "marks": 1
+        },
+        {
+          "point": "Explains that g − f = −(f − g) (reflection / not commutative)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = {{a}}x^2 - {{b}}$ and $g(x) = {{c}}x + {{d}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $h(x) = f(x) + g(x)$ and find $h(-{{k}})$.",
+          "answer": {
+            "expr": "a*k*k-c*k+d-b",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $j(x) = f(x) - g(x)$ and find $j({{m}})$. Verify by evaluating $f({{m}})$ and $g({{m}})$ separately.",
+          "answer": {
+            "expr": "a*m*m-c*m-b-d",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $h(x) = f(x) + g(x) = {{a}}x^2 + {{c}}x + ({{d-b}})$.\n$h(-{{k}}) = {{a}}({{k*k}}) - {{c*k}} + ({{d-b}}) = {{a*k*k-c*k+d-b}}$.\n\n**(b)** $j(x) = f(x) - g(x) = {{a}}x^2 - {{c}}x - {{b+d}}$.\n$j({{m}}) = {{a}}({{m*m}}) - {{c*m}} - {{b+d}} = {{a*m*m-c*m-b-d}}$.\n\nCheck (b) by evaluating separately: $f({{m}}) = {{a*m*m-b}}$, $g({{m}}) = {{c*m+d}}$, difference ${{a*m*m-b-c*m-d}}$. ✓",
+      "rubric": [
+        {
+          "point": "Correct equation for h(x) = f(x) + g(x)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value h(−k)",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation for j(x) = f(x) − g(x), negative distributed",
+          "marks": 1
+        },
+        {
+          "point": "Correct value j(m)",
+          "marks": 1
+        },
+        {
+          "point": "Verifies a value by evaluating f and g separately",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "F": {
+          "min": 300,
+          "max": 600,
+          "step": 50
+        },
+        "v": {
+          "min": 12,
+          "max": 18,
+          "step": 1
+        },
+        "p": {
+          "min": 25,
+          "max": 35,
+          "step": 1
+        },
+        "N": {
+          "min": 60,
+          "max": 120,
+          "step": 10
+        }
+      },
+      "text": "A school club is selling hoodies. There is a fixed cost of &#36;{{F}} plus a variable cost of &#36;{{v}} per hoodie, and each hoodie sells for &#36;{{p}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write equations for the total cost $C(n)$ and revenue $R(n)$ for $n$ hoodies."
+        },
+        {
+          "label": "b",
+          "text": "Determine the break-even quantity.",
+          "answer": {
+            "expr": "F/(p-v)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Develop an algebraic model for the profit function and describe its graph."
+        },
+        {
+          "label": "d",
+          "text": "Calculate the profit if {{N}} hoodies are sold.",
+          "answer": {
+            "expr": "(p-v)*N-F",
+            "unit": "$",
+            "sig": 4
+          }
+        },
+        {
+          "label": "e",
+          "text": "When does the club lose money and when does it make money? Give the practical domain."
+        }
+      ],
+      "modelAnswer": "**(a)** $C(n) = {{F}} + {{v}}n$ and $R(n) = {{p}}n$.\n\n**(b)** Break-even: $R(n) = C(n)$\n${{p}}n = {{F}} + {{v}}n \\Rightarrow {{p-v}}n = {{F}} \\Rightarrow n = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):4}}$.\nThe revenue (= cost) there is about &#36;{{p*F/(p-v):4}}. The club breaks even at about {{F/(p-v):3}} hoodies.\n\n**(c)** $P(n) = R(n) - C(n) = {{p}}n - ({{F}} + {{v}}n) = {{p-v}}n - {{F}}$.\nIt is a line with slope {{p-v}} (profit per hoodie) and P-intercept −{{F}}; it crosses the n-axis at the break-even point.\n\n**(d)** $P({{N}}) = {{p-v}}({{N}}) - {{F}} = {{(p-v)*N-F}}$ dollars.\n\n**(e)** The club loses money when $P(n) < 0$ (below the break-even number) and makes money when $P(n) > 0$. Practical domain: $n$ is a whole number $\\ge 0$; $C \\ge {{F}}$, $R \\ge 0$, $P \\ge -{{F}}$.",
+      "rubric": [
+        {
+          "point": "Correct cost and revenue equations",
+          "marks": 1
+        },
+        {
+          "point": "Sets R = C and solves for the break-even quantity",
+          "marks": 2
+        },
+        {
+          "point": "Correct profit function P(n) = R − C",
+          "marks": 1
+        },
+        {
+          "point": "Correct profit for N items",
+          "marks": 1
+        },
+        {
+          "point": "Interprets loss/profit regions and gives a sensible practical domain",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "F": {
+          "min": 100,
+          "max": 160,
+          "step": 10
+        },
+        "v": {
+          "choices": [
+            0.75,
+            1,
+            1.25
+          ]
+        },
+        "p": {
+          "choices": [
+            2.5,
+            3,
+            3.5
+          ]
+        },
+        "M": {
+          "min": 200,
+          "max": 300,
+          "step": 25
+        }
+      },
+      "text": "A hotdog vendor has fixed costs of &#36;{{F}} per day plus &#36;{{v}} per hotdog. Hotdogs sell for &#36;{{p}} each, and the vendor can sell at most {{M}} hotdogs a day.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the break-even point and explain what its coordinates mean.",
+          "answer": {
+            "expr": "F/(p-v)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Develop an algebraic model for the profit function $P(h)$."
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range of $C(h)$, $R(h)$ and $P(h)$ in the context of this problem."
+        },
+        {
+          "label": "d",
+          "text": "What is the maximum daily profit?",
+          "answer": {
+            "expr": "(p-v)*M-F",
+            "unit": "$",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "$C(h) = {{F}} + {{v}}h$, $R(h) = {{p}}h$.\n\n**(a)** Break-even: ${{p}}h = {{F}} + {{v}}h \\Rightarrow h = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):3}}$. Cost and revenue are both about &#36;{{p*F/(p-v):3}} there.\n\n**(b)** $P(h) = R(h) - C(h) = {{p-v}}h - {{F}}$.\n\n**(c)** Practical domain: $\\{h \\in \\mathbb{W}, 0 \\le h \\le {{M}}\\}$.\n$C$: from &#36;{{F}} to &#36;{{F+v*M}}; $R$: from &#36;0 to &#36;{{p*M}}; $P$: from −&#36;{{F}} to &#36;{{(p-v)*M-F}}.\n\n**(d)** $P$ is increasing, so the maximum profit is at $h = {{M}}$: $P({{M}}) = {{p-v}}({{M}}) - {{F}} = &#36;{{(p-v)*M-F}}$.",
+      "rubric": [
+        {
+          "point": "Correct break-even quantity with working",
+          "marks": 2
+        },
+        {
+          "point": "Correct profit function",
+          "marks": 1
+        },
+        {
+          "point": "Practical domain uses whole numbers and the maximum of M",
+          "marks": 1
+        },
+        {
+          "point": "Correct ranges for C, R and P in context",
+          "marks": 1
+        },
+        {
+          "point": "Identifies max profit at h = M and computes it",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q05",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "F": {
+          "min": 100,
+          "max": 140,
+          "step": 10
+        },
+        "v": {
+          "choices": [
+            1,
+            1.2
+          ]
+        },
+        "p": {
+          "choices": [
+            2.5,
+            3
+          ]
+        },
+        "M": {
+          "min": 200,
+          "max": 260,
+          "step": 20
+        },
+        "dF": {
+          "min": 15,
+          "max": 30,
+          "step": 5
+        },
+        "dv": {
+          "choices": [
+            0.1,
+            0.15,
+            0.2
+          ]
+        }
+      },
+      "text": "A vendor's daily costs are $C(h) = {{F}} + {{v}}h$ and revenue is $R(h) = {{p}}h$, with at most {{M}} items sold per day. The vendor can either **(A)** reduce fixed costs by &#36;{{dF}} per day, or **(B)** reduce the variable cost by &#36;{{dv}} per item.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the break-even quantity under option A.",
+          "answer": {
+            "expr": "(F-dF)/(p-v)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the break-even quantity under option B.",
+          "answer": {
+            "expr": "F/(p-v+dv)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Find the maximum daily profit under each option, and advise the vendor which to choose. Explain using the graphs of the profit functions.",
+          "answer": {
+            "expr": "(p-v+dv)*M-F",
+            "unit": "$ (option B)",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "Current profit: $P(h) = {{p-v}}h - {{F}}$; break-even ≈ {{F/(p-v):3}} items.\n\n**Option A:** $P_A(h) = {{p-v}}h - {{F-dF}}$. Break-even $= \\dfrac{ {{F-dF}} }{ {{p-v}} } \\approx {{(F-dF)/(p-v):3}}$. Max profit $= {{p-v}}({{M}}) - {{F-dF}} = {{(p-v)*M-F+dF:4}}$.\n\n**Option B:** $P_B(h) = {{p-v+dv}}h - {{F}}$. Break-even $= \\dfrac{ {{F}} }{ {{p-v+dv}} } \\approx {{F/(p-v+dv):3}}$. Max profit $= {{p-v+dv}}({{M}}) - {{F}} = {{(p-v+dv)*M-F:4}}$.\n\n**(c)** Compare: the option with the smaller break-even is better for low-sales days; the option with the larger maximum profit is better when the vendor sells close to {{M}}. Option A lowers the whole profit line by a constant (parallel shift); option B makes the line steeper, so its benefit grows with sales. A good recommendation names which option wins on each measure and links the choice to how many items the vendor usually sells.",
+      "rubric": [
+        {
+          "point": "Correct break-even for option A",
+          "marks": 1
+        },
+        {
+          "point": "Correct break-even for option B",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum profit for option A",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum profit for option B",
+          "marks": 1
+        },
+        {
+          "point": "Explains graphically: A shifts the line, B changes its slope",
+          "marks": 1
+        },
+        {
+          "point": "Gives reasoned advice that depends on typical sales",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q06",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "A": {
+          "min": 4,
+          "max": 12,
+          "step": 1
+        },
+        "B": {
+          "min": 13,
+          "max": 24,
+          "step": 1
+        }
+      },
+      "text": "A voltage signal is made of an alternating part $V_{AC} = {{A}}\\sin t$ and a direct part $V_{DC} = {{B}}$, both in volts ($t$ in seconds, radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the combined function and describe its graph."
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range of the combined function."
+        },
+        {
+          "label": "c",
+          "text": "Determine the minimum, maximum and average voltage.",
+          "answer": {
+            "expr": "B-A",
+            "unit": "V (minimum)",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $V(t) = {{A}}\\sin t + {{B}}$. Its graph is the sine curve with amplitude {{A}}, translated up {{B}} units (superposition of a sinusoid and a constant).\n\n**(b)** Domain $\\{t \\in \\mathbb{R}, t \\ge 0\\}$. Since $-1 \\le \\sin t \\le 1$: $-{{A}} \\le {{A}}\\sin t \\le {{A}}$, so ${{B-A}} \\le V \\le {{B+A}}$. Range $\\{V \\in \\mathbb{R}, {{B-A}} \\le V \\le {{B+A}}\\}$.\n\n**(c)** Minimum {{B-A}} V, maximum {{B+A}} V, average (midline) {{B}} V.",
+      "rubric": [
+        {
+          "point": "Correct combined equation and description of the graph",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and range with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Correct minimum and maximum",
+          "marks": 1
+        },
+        {
+          "point": "Correct average value (midline)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2$ and $g(x) = {{b}}x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain how to use the superposition principle to graph $h(x) = f(x) + g(x)$, including a short table of values."
+        },
+        {
+          "label": "b",
+          "text": "Determine an equation for $h(x)$ and its zeros."
+        },
+        {
+          "label": "c",
+          "text": "Find the vertex and state the domain and range of $h$.",
+          "answer": {
+            "expr": "-b*b/4",
+            "unit": "(minimum value)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain why $h$ is called a variable vertical translation of $y = x^2$."
+        }
+      ],
+      "modelAnswer": "**(a)** At each $x$, add the y-values. Sample table:\n\n| $x$ | $x^2$ | ${{b}}x$ | sum |\n|---|---|---|---|\n| −2 | 4 | {{-2*b}} | {{4-2*b}} |\n| 0 | 0 | 0 | 0 |\n| 2 | 4 | {{2*b}} | {{4+2*b}} |\n\n**(b)** $h(x) = x^2 + {{b}}x = x(x + {{b}})$; zeros $x = 0$ and $x = -{{b}}$.\n\n**(c)** The vertex is midway between the zeros: $x = -\\dfrac{ {{b}} }{2} = {{-b/2}}$. $h({{-b/2}}) = ({{-b/2}})^2 + {{b}}({{-b/2}}) = {{-b*b/4}}$.\nDomain $\\{x \\in \\mathbb{R}\\}$, range $\\{y \\in \\mathbb{R}, y \\ge {{-b*b/4}}\\}$.\n\n**(d)** Each point of $y = x^2$ moves vertically by ${{b}}x$ – up for $x > 0$, down for $x < 0$ – a variable vertical translation, so the vertex moves from $(0,0)$ to $({{-b/2}}, {{-b*b/4}})$. (Adding a constant would move every point equally.)",
+      "rubric": [
+        {
+          "point": "Uses superposition (table or adding ordinates) correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation and zeros",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertex x-coordinate",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum value and range",
+          "marks": 1
+        },
+        {
+          "point": "Explains variable vs constant vertical translation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q08",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Your friend says: \\\"$f(x) - g(x)$ and $g(x) - f(x)$ are the same function, because addition and subtraction both combine functions.\\\"",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Is your friend correct? Use an example to support your answer."
+        },
+        {
+          "label": "b",
+          "text": "Describe how the graphs of $y = f(x) - g(x)$ and $y = g(x) - f(x)$ are related, and explain why."
+        },
+        {
+          "label": "c",
+          "text": "Is the sum of two functions commutative? Explain."
+        }
+      ],
+      "modelAnswer": "**(a)** The claim is incorrect. Example: $f(x) = x^2$, $g(x) = 2x$. Then $f - g = x^2 - 2x$, while $g - f = 2x - x^2$. At $x = 3$: $f - g = 3$ but $g - f = -3$.\n\n**(b)** In general $g(x) - f(x) = -[f(x) - g(x)]$: every y-value changes sign, so the graph of $g - f$ is the **reflection in the x-axis** of the graph of $f - g$. They have the same zeros but opposite signs everywhere else.\n\n**(c)** Addition **is** commutative: $f(x) + g(x) = g(x) + f(x)$, because adding real numbers is commutative at every $x$. Subtraction is not commutative (except in the special case $f = g$, when both are 0).",
+      "rubric": [
+        {
+          "point": "States the claim is false with a correct counterexample",
+          "marks": 2
+        },
+        {
+          "point": "Explains that g − f = −(f − g), a reflection in the x-axis",
+          "marks": 2
+        },
+        {
+          "point": "Correctly states that addition is commutative and subtraction is not, with reason",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-1-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "derived": {
+        "b": "a+5+r"
+      },
+      "text": "Let $f(x) = \\sqrt{x - {{a}}}$ and $g(x) = \\dfrac{1}{x - {{b}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the domain of $y = f(x) + g(x)$. Explain your reasoning."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate $(f+g)({{a+4}})$.",
+          "answer": {
+            "expr": "2+1/(a+4-b)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the behaviour of the graph of $f + g$ near $x = {{b}}$ and at $x = {{a}}$."
+        }
+      ],
+      "modelAnswer": "**(a)** $f$ needs $x - {{a}} \\ge 0$, so $x \\ge {{a}}$. $g$ needs $x \\ne {{b}}$.\nThe domain of $f + g$ is the **common** domain: $\\{x \\in \\mathbb{R}, x \\ge {{a}}, x \\ne {{b}}\\}$.\n\n**(b)** $(f+g)({{a+4}}) = \\sqrt{4} + \\dfrac{1}{ {{a+4-b}} } = 2 + {{1/(a+4-b):4}} = {{2+1/(a+4-b):4}}$.\n\n**(c)** At $x = {{b}}$ the term $g(x)$ is undefined, so $f + g$ has a vertical asymptote at $x = {{b}}$ (values grow without bound near it). At $x = {{a}}$ the graph starts (endpoint) at $({{a}}, {{1/(a-b):3}})$.",
+      "rubric": [
+        {
+          "point": "Correct restriction from the square root",
+          "marks": 1
+        },
+        {
+          "point": "Correct restriction from the rational function",
+          "marks": 1
+        },
+        {
+          "point": "States domain as the intersection",
+          "marks": 1
+        },
+        {
+          "point": "Correct evaluation",
+          "marks": 1
+        },
+        {
+          "point": "Describes asymptote/endpoint behaviour",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = 2^x$ and $g(x) = {{k}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe how to obtain the graphs of $y = f(x) + g(x)$, $y = f(x) - g(x)$ and $y = g(x) - f(x)$ as transformations of $y = 2^x$."
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range of each combined function."
+        },
+        {
+          "label": "c",
+          "text": "Find the x-intercept of $y = f(x) - g(x)$ and explain why $y = g(x) - f(x)$ has the same one.",
+          "answer": {
+            "expr": "logb(2,k)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)**\n* $y = 2^x + {{k}}$: vertical translation of $y = 2^x$ up {{k}}. Asymptote $y = {{k}}$.\n* $y = 2^x - {{k}}$: translation down {{k}}. Asymptote $y = -{{k}}$.\n* $y = {{k}} - 2^x$: reflection of $y = 2^x$ in the x-axis, then translation up {{k}}. Asymptote $y = {{k}}$.\n\n**(b)** All three have domain $\\{x \\in \\mathbb{R}\\}$. Ranges: $y > {{k}}$; $y > -{{k}}$; $y < {{k}}$.\n\n**(c)** $y = 2^x - {{k}}$ has x-intercept where $2^x = {{k}}$, i.e. $x = \\log_2 {{k}} \\approx {{logb(2,k):3}}$. $y = {{k}} - 2^x$ has the same x-intercept (it is the reflection of $2^x - {{k}}$ in the x-axis).",
+      "rubric": [
+        {
+          "point": "Correct transformation description for each of the three functions",
+          "marks": 2
+        },
+        {
+          "point": "Correct asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Correct domains and ranges",
+          "marks": 2
+        },
+        {
+          "point": "Correct shared x-intercept with explanation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "s": {
+          "min": 5,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "A growing pattern of tiles has $2^n$ blue tiles, $n^2$ green tiles and ${{c}}n$ yellow tiles in stage $n$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Classify the growth of each colour of tile."
+        },
+        {
+          "label": "b",
+          "text": "Write an equation for the total number of tiles, $T(n)$."
+        },
+        {
+          "label": "c",
+          "text": "How many tiles are needed for stage {{s}}?",
+          "answer": {
+            "expr": "2^s+s*s+c*s",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "For large values of $n$, the graph of $T(n)$ appears to merge with one of its component functions. Which one, and why? Refer to rates of change."
+        }
+      ],
+      "modelAnswer": "**(a)** Blue grows exponentially ($2^n$), green quadratically ($n^2$), yellow linearly (${{c}}n$).\n\n**(b)** $T(n) = 2^n + n^2 + {{c}}n$.\n\n**(c)** $T({{s}}) = 2^{ {{s}} } + {{s}}^2 + {{c}}({{s}}) = {{2^s}} + {{s*s}} + {{c*s}} = {{2^s+s*s+c*s}}$.\n\n**(d)** For large $n$ the graph of $T$ looks like $y = 2^n$. The rate of change of a linear function is constant, a quadratic's rate of change grows linearly, but an exponential function's rate of change grows in proportion to its value, so $2^n$ eventually outgrows the other parts and dominates the sum.",
+      "rubric": [
+        {
+          "point": "Identifies linear, quadratic and exponential parts",
+          "marks": 1
+        },
+        {
+          "point": "Correct total-tiles equation using superposition",
+          "marks": 1
+        },
+        {
+          "point": "Correct number of tiles in stage s",
+          "marks": 1
+        },
+        {
+          "point": "Identifies 2^n as the dominant function",
+          "marks": 1
+        },
+        {
+          "point": "Explains using rates of change",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-1-q12",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Two waves in a wave pool are modelled by $f(x) = \\sin x$ and $g(x) = \\sin(x - c)$, where $c$ is a phase shift (radians). Consider $h(x) = f(x) + g(x)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe $h(x)$ when $c = 0$. Give its range."
+        },
+        {
+          "label": "b",
+          "text": "Describe $h(x)$ when $c = \\pi$. Justify algebraically."
+        },
+        {
+          "label": "c",
+          "text": "Describe $h(x)$ when $c = 2\\pi$."
+        },
+        {
+          "label": "d",
+          "text": "Use your results to explain why some spots in a wave pool have high waves and others are nearly calm."
+        }
+      ],
+      "modelAnswer": "**(a)** $c = 0$: $h(x) = 2\\sin x$, amplitude 2, range $[-2, 2]$. The crests and troughs coincide – constructive interference.\n\n**(b)** $c = \\pi$: $\\sin(x - \\pi) = -\\sin x$, so $h(x) = 0$ for all $x$. Range $\\{0\\}$. Crests meet troughs – total destructive interference.\n\n**(c)** $c = 2\\pi$: $\\sin(x - 2\\pi) = \\sin x$ (period $2\\pi$), so $h(x) = 2\\sin x$ again.\n\n**(d)** Different spots in the pool receive the two waves with different phase differences. Where they arrive in phase the waves add to large heights; where they arrive half a cycle apart they cancel, leaving calm water.",
+      "rubric": [
+        {
+          "point": "Correct result and description for c = 0",
+          "marks": 1
+        },
+        {
+          "point": "Correct result for c = π with use of sin(x − π) = −sin x",
+          "marks": 2
+        },
+        {
+          "point": "Correct result for c = 2π using periodicity",
+          "marks": 1
+        },
+        {
+          "point": "Explains constructive/destructive interference in a wave pool",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-1-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 18,
+          "max": 26,
+          "step": 1
+        }
+      },
+      "text": "The annual operating costs for a toy company's game division are:\n\n| Fixed costs | | Variable costs (per game) | |\n|---|---|---|---|\n| Rent | &#36;12 000 | Material | &#36;6 |\n| Taxes | &#36;3 000 | Labour | &#36;9 |\n| Utilities | &#36;5 000 | | |\n\nEach game sells for &#36;{{p}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the total fixed cost $Y_1$ and total variable cost $Y_2$ as functions of the number of games $n$, and describe each graph."
+        },
+        {
+          "label": "b",
+          "text": "Use the superposition principle to find $Y_3 = Y_1 + Y_2$. What does it represent?"
+        },
+        {
+          "label": "c",
+          "text": "Write the revenue function $Y_4$ and find the break-even point.",
+          "answer": {
+            "expr": "20000/(p-15)",
+            "unit": "games",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find $Y_5 = Y_4 - Y_3$ and explain its meaning to the left of, at, and to the right of its n-intercept."
+        },
+        {
+          "label": "e",
+          "text": "Predict how the break-even point changes if the price is increased or decreased. State any assumptions."
+        }
+      ],
+      "modelAnswer": "**(a)** Fixed: $Y_1 = 12\\,000 + 3000 + 5000 = 20\\,000$ (a horizontal line – the cost does not depend on the number of games). Variable: $Y_2 = 15n$ (a line through the origin with slope 15).\n\n**(b)** By superposition, $Y_3 = Y_1 + Y_2 = 20\\,000 + 15n$: total cost.\n\n**(c)** Revenue $Y_4 = {{p}}n$. Break-even: ${{p}}n = 20\\,000 + 15n \\Rightarrow n = \\dfrac{20\\,000}{ {{p-15}} } \\approx {{20000/(p-15):4}}$ games. It is called the break-even point because revenue exactly covers costs (profit = 0).\n\n**(d)** $Y_5 = Y_4 - Y_3 = {{p-15}}n - 20\\,000$ is the profit. Left of its n-intercept the division loses money, at the intercept it breaks even, right of it the division makes a profit.\n\n**(e)** Raising the price makes the revenue line steeper, so it meets the cost line sooner: the break-even point moves left (fewer games needed). Lowering the price moves it right. This assumes the number of games sold does not change when the price changes.",
+      "rubric": [
+        {
+          "point": "Correct fixed and variable cost functions with graph shapes",
+          "marks": 1
+        },
+        {
+          "point": "Correct total cost function by superposition",
+          "marks": 1
+        },
+        {
+          "point": "Correct break-even quantity",
+          "marks": 1
+        },
+        {
+          "point": "Correct profit function and interpretation of regions",
+          "marks": 2
+        },
+        {
+          "point": "Correct reasoning about price changes and stated assumption",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q14",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "w": {
+          "min": 6,
+          "max": 12,
+          "step": 1
+        },
+        "t": {
+          "min": 5,
+          "max": 10,
+          "step": 1
+        },
+        "H": {
+          "min": 20,
+          "max": 52,
+          "step": 4
+        }
+      },
+      "text": "Max earns &#36;{{w}}/h as a server plus an average of &#36;{{t}}/h in tips.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write functions for Max's wages and tips in terms of hours worked, $h$."
+        },
+        {
+          "label": "b",
+          "text": "Develop an algebraic model for Max's total earnings and describe its graph."
+        },
+        {
+          "label": "c",
+          "text": "How much does Max earn in a {{H}}-hour week?",
+          "answer": {
+            "expr": "(w+t)*H",
+            "unit": "$",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Wages $W(h) = {{w}}h$; tips $T(h) = {{t}}h$. Both are lines through the origin (slopes {{w}} and {{t}}).\n\n**(b)** Total $E(h) = W(h) + T(h) = {{w+t}}h$ – by superposition the slopes add.\n\n**(c)** $E({{H}}) = {{w+t}}({{H}}) = &#36;{{(w+t)*H}}$.",
+      "rubric": [
+        {
+          "point": "Correct wage and tip functions",
+          "marks": 1
+        },
+        {
+          "point": "Correct total earnings function using superposition",
+          "marks": 1
+        },
+        {
+          "point": "Correct earnings for H hours",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m1": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b1": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "m2": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "b2": {
+          "min": 5,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "The graphs of two linear functions $f$ and $g$ are shown.\n\n```plot\nf: {{m1}}*x + {{b1}} | label=f(x)\nf: -{{m2}}*x + {{b2}} | dashed; label=g(x)\ndomain: -5, 5\nrange: -12, 14\nticks: 1, 2\npoints: (0,{{b1}}), (0,{{b2}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine equations for $f(x)$ and $g(x)$ from the graph."
+        },
+        {
+          "label": "b",
+          "text": "Determine an equation for $y = f(x) + g(x)$. What happens to the slopes and intercepts?"
+        },
+        {
+          "label": "c",
+          "text": "Find $(f+g)(2)$ two ways.",
+          "answer": {
+            "expr": "2*(m1-m2)+b1+b2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $f$ has y-intercept {{b1}} and slope {{m1}}: $f(x) = {{m1}}x + {{b1}}$. $g$ has y-intercept {{b2}} and slope −{{m2}}: $g(x) = -{{m2}}x + {{b2}}$.\n\n**(b)** $f(x) + g(x) = ({{m1}} - {{m2}})x + ({{b1}} + {{b2}}) = {{m1-m2}}x + {{b1+b2}}$. The slopes add and the y-intercepts add.\n\n**(c)** $(f+g)(2) = {{m1-m2}}(2) + {{b1+b2}} = {{2*(m1-m2)+b1+b2}}$. Check by superposition: $f(2) = {{2*m1+b1}}$, $g(2) = {{-2*m2+b2}}$, sum ${{2*m1+b1-2*m2+b2}}$. ✓",
+      "rubric": [
+        {
+          "point": "Reads correct equation of f from the graph",
+          "marks": 1
+        },
+        {
+          "point": "Reads correct equation of g from the graph",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation of f + g",
+          "marks": 1
+        },
+        {
+          "point": "Correct value at x = 2 with a superposition check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q16",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Investigate whether the sum of two even functions is even, odd or neither.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Choose two even functions of different types (e.g. polynomial and trigonometric). Test their sum and state a hypothesis."
+        },
+        {
+          "label": "b",
+          "text": "Prove your hypothesis algebraically for any two even functions."
+        },
+        {
+          "label": "c",
+          "text": "Verify with a second pair of functions."
+        },
+        {
+          "label": "d",
+          "text": "What happens for the sum of two odd functions? Justify."
+        }
+      ],
+      "modelAnswer": "**(a)** Example: $f(x) = x^2$ and $g(x) = \\cos x$ are both even. $h(x) = x^2 + \\cos x$; $h(-2) = 4 + \\cos(-2) = 4 + \\cos 2 = h(2)$. The graph looks symmetric about the y-axis. Hypothesis: the sum of two even functions is even.\n\n**(b)** Proof: if $f(-x) = f(x)$ and $g(-x) = g(x)$ for all $x$, then $h(-x) = f(-x) + g(-x) = f(x) + g(x) = h(x)$, so $h$ is even.\n\n**(c)** Second pair (verification): $f(x) = x^4 - 3$, $g(x) = \\dfrac{1}{x^2 + 1}$: $h(-x) = (-x)^4 - 3 + \\dfrac{1}{(-x)^2 + 1} = h(x)$. ✓\n\n**(d)** If $f$ and $g$ are odd, $h(-x) = -f(x) - g(x) = -h(x)$, so the sum is odd. (An even plus an odd function, e.g. $x^2 + x$, is generally neither.)",
+      "rubric": [
+        {
+          "point": "Chooses two even functions of different types and tests numerically or graphically",
+          "marks": 1
+        },
+        {
+          "point": "States a clear hypothesis",
+          "marks": 1
+        },
+        {
+          "point": "Gives a correct general algebraic proof",
+          "marks": 2
+        },
+        {
+          "point": "Verifies with a second pair of functions",
+          "marks": 1
+        },
+        {
+          "point": "Correct conclusion for two odd functions (or even + odd)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = \\sin x$ and $g(x) = \\log x$ (radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the domain of $y = f(x) + g(x)$ and $y = f(x) - g(x)$."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate $(f+g)({{k}})$ and $(f-g)({{k}})$ to three significant digits.",
+          "answer": {
+            "expr": "sin(k)+log(k)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the shape of the graph of $y = f(x) + g(x)$ near $x = 0$ and for large $x$."
+        }
+      ],
+      "modelAnswer": "**(a)** $\\sin x$ is defined for all real $x$; $\\log x$ only for $x > 0$. The domain of $f + g$ and $f - g$ is $\\{x \\in \\mathbb{R}, x > 0\\}$.\n\n**(b)** $(f+g)({{k}}) = \\sin {{k}} + \\log {{k}} \\approx {{sin(k):3}} + {{log(k):3}} = {{sin(k)+log(k):3}}$.\n$(f-g)({{k}}) \\approx {{sin(k):3}} - {{log(k):3}} = {{sin(k)-log(k):3}}$.\n\n**(c)** As $x \\to 0^+$, $\\log x \\to -\\infty$, so $f + g \\to -\\infty$ and $f - g \\to +\\infty$: there is a vertical asymptote at $x = 0$. For large $x$, $\\log x$ keeps increasing slowly, so $f + g$ oscillates with amplitude 1 about the rising curve $y = \\log x$ (variable vertical translation of the sine wave).",
+      "rubric": [
+        {
+          "point": "Correct common domain with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of (f + g)(k)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of (f − g)(k)",
+          "marks": 1
+        },
+        {
+          "point": "Describes asymptote at x = 0 for both",
+          "marks": 1
+        },
+        {
+          "point": "Describes oscillation about the log curve",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-1-q18",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 8,
+          "max": 12,
+          "step": 1
+        },
+        "b": {
+          "choices": [
+            0.5,
+            1
+          ]
+        },
+        "F": {
+          "min": 4,
+          "max": 8,
+          "step": 1
+        },
+        "v": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "A company's weekly revenue is $R(n) = {{a}}n - {{b}}n^2$ and its cost is $C(n) = {{F}} + {{v}}n$, where $n$ is the number of units (hundreds) and $R$, $C$ are in thousands of dollars.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the profit function $P(n)$."
+        },
+        {
+          "label": "b",
+          "text": "Find the break-even quantities.",
+          "answer": {
+            "expr": "((a-v)+sqrt((a-v)^2-4*b*F))/(2*b)",
+            "unit": "hundred units (larger)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the number of units that maximizes profit, and the maximum profit.",
+          "answer": {
+            "expr": "(a-v)^2/(4*b)-F",
+            "unit": "thousand $",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain why the company makes a profit only between the break-even quantities."
+        }
+      ],
+      "modelAnswer": "**(a)** $P(n) = R(n) - C(n) = {{a}}n - {{b}}n^2 - {{F}} - {{v}}n = -{{b}}n^2 + {{a-v}}n - {{F}}$.\n\n**(b)** Break-even: $-{{b}}n^2 + {{a-v}}n - {{F}} = 0$, or (multiplying by −1) ${{b}}n^2 - {{a-v}}n + {{F}} = 0$.\n$n = \\dfrac{ {{a-v}} \\pm \\sqrt{ {{(a-v)^2}} - 4({{b}})({{F}}) } }{ 2({{b}}) }$, so $n \\approx {{((a-v)-sqrt((a-v)^2-4*b*F))/(2*b):3}}$ or $n \\approx {{((a-v)+sqrt((a-v)^2-4*b*F))/(2*b):3}}$ hundred units.\n\n**(c)** The parabola opens down, so the maximum is at the vertex, midway between the zeros: $n = \\dfrac{ {{a-v}} }{ 2({{b}}) } = {{(a-v)/(2*b):3}}$.\n$P_{max} = -{{b}}({{(a-v)/(2*b):3}})^2 + {{a-v}}({{(a-v)/(2*b):3}}) - {{F}} \\approx {{(a-v)^2/(4*b)-F:3}}$ thousand dollars.\n\n**(d)** Profit is positive between the two break-even quantities: producing too few units does not cover fixed costs; producing too many lowers revenue per unit (the $-{{b}}n^2$ term) so costs exceed revenue.",
+      "rubric": [
+        {
+          "point": "Correct profit function by subtracting C from R",
+          "marks": 1
+        },
+        {
+          "point": "Uses the quadratic formula correctly for both break-even values",
+          "marks": 2
+        },
+        {
+          "point": "Correct optimum quantity from the vertex",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum profit",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the interval of profitability",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

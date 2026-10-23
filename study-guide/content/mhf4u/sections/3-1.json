@@ -1,0 +1,1221 @@
+{
+  "id": "3-1",
+  "number": "3.1",
+  "title": "Reciprocal of a Linear Function",
+  "estimatedMinutes": 75,
+  "overview": "What happens when you divide 1 by a linear function? You get a graph with two separate branches that race toward infinity beside a **vertical asymptote** and flatten toward a **horizontal asymptote**. In this section you will learn to predict every key feature of $f(x) = \\dfrac{1}{kx - c}$ without a calculator, and use it to model inverse variation.",
+  "objectives": [
+    "Explain what a rational function is and why division by zero creates restrictions.",
+    "Find the vertical and horizontal asymptotes of $f(x) = \\dfrac{1}{kx - c}$.",
+    "Describe the behaviour of the function near its vertical asymptote and as $x \\to \\pm\\infty$.",
+    "State the domain, range and intercepts.",
+    "Describe where the graph is increasing or decreasing and how its slope changes, and estimate rates of change.",
+    "Write the equation of a reciprocal linear function from its features or graph.",
+    "Model inverse-variation situations."
+  ],
+  "lessons": [
+    {
+      "id": "what",
+      "title": "What is a rational function?",
+      "body": "When you **add, subtract or multiply** two polynomials you always get another polynomial. When you **divide** one polynomial by another, you get something new: a **rational function**\n\n$$f(x) = \\dfrac{P(x)}{Q(x)}, \\quad Q(x) \\ne 0$$\n\nwhere $P(x)$ and $Q(x)$ are polynomials. The simplest rational functions are **reciprocal functions** – you take a function and \"flip\" it: the reciprocal of $y = g(x)$ is $y = \\dfrac{1}{g(x)}$.\n\nIn this section we flip **linear** functions:\n\n$$f(x) = \\dfrac{1}{kx - c}$$\n\nThink of a pizza shared among $n$ friends: each person gets $\\frac{1}{n}$ of it. The more friends, the smaller the slice – but you can never share among **zero** friends. That \"you can't divide by zero\" rule is what gives rational functions their dramatic shapes.\n\n### The base function $f(x) = \\dfrac{1}{x}$\n\n| $x$ | −10 | −1 | −0.1 | −0.01 | 0 | 0.01 | 0.1 | 1 | 10 |\n|---|---|---|---|---|---|---|---|---|---|\n| $\\frac{1}{x}$ | −0.1 | −1 | −10 | −100 | undefined | 100 | 10 | 1 | 0.1 |\n\n```plot\ntitle: The reciprocal function y = 1/x\nf: 1/x | label=y = 1/x\ndomain: -6, 6\nrange: -6, 6\npoints: (1,1), (-1,-1)\nasymptote x: 0\nasymptote y: 0\n```\n\n* Small denominators give **huge** outputs; huge denominators give outputs **close to 0**.\n* The graph has two separate pieces called **branches**.\n* The points $(1, 1)$ and $(-1, -1)$ are **invariant**: the reciprocal of 1 is 1 and the reciprocal of −1 is −1.\n"
+    },
+    {
+      "id": "va",
+      "title": "The vertical asymptote: what happens near the restriction",
+      "body": "For $f(x) = \\dfrac{1}{kx - c}$ the denominator is zero when $kx - c = 0$, i.e. $x = \\dfrac{c}{k}$. That value is **excluded from the domain**:\n\n$$\\text{Domain: } \\left\\{x \\in \\mathbb{R} \\mid x \\ne \\tfrac{c}{k}\\right\\}$$\n\nNear this value the denominator is a tiny number, so the function value is **huge** (positive or negative). The graph shoots up or down beside the line $x = \\frac{c}{k}$, getting closer and closer to it without ever touching. This line is a **vertical asymptote**.\n\n### One-sided behaviour\n\nWe write $x \\to a^-$ for \"$x$ approaches $a$ from the **left**\" (values just less than $a$) and $x \\to a^+$ for \"from the **right**\".\n\n**Example:** $f(x) = \\dfrac{1}{2x - 1}$ has a vertical asymptote at $x = 0.5$.\n\n| $x$ | 0.4 | 0.49 | 0.499 | 0.5 | 0.501 | 0.51 | 0.6 |\n|---|---|---|---|---|---|---|---|\n| $2x-1$ | −0.2 | −0.02 | −0.002 | 0 | 0.002 | 0.02 | 0.2 |\n| $f(x)$ | −5 | −50 | −500 | undefined | 500 | 50 | 5 |\n\nSo as $x \\to 0.5^-$, $f(x) \\to -\\infty$ and as $x \\to 0.5^+$, $f(x) \\to +\\infty$.\n\n```plot\ntitle: f(x) = 1/(2x − 1): vertical asymptote x = 0.5\nf: 1/(2*x-1) | label=y = 1/(2x − 1)\ndomain: -4, 4\nrange: -6, 6\npoints: (0,-1)\nasymptote x: 0.5\nasymptote y: 0\n```\n\n> **Quick test for the sign:** pick a number just to each side of the asymptote and check whether the denominator is positive or negative. The numerator (1) is positive, so the sign of $f$ is the sign of the denominator.\n"
+    },
+    {
+      "id": "ha",
+      "title": "The horizontal asymptote, end behaviour and range",
+      "body": "What happens when $x$ gets very large? For $f(x) = \\dfrac{1}{2x-1}$:\n\n| $x$ | 10 | 100 | 1000 | −10 | −100 | −1000 |\n|---|---|---|---|---|---|---|\n| $f(x)$ | 0.0526 | 0.00503 | 0.0005 | −0.0476 | −0.00499 | −0.0005 |\n\nAs $x \\to \\pm\\infty$ the denominator becomes enormous, so $f(x) \\to 0$. The graph flattens out toward the line $y = 0$ (the $x$-axis), which is a **horizontal asymptote**.\n\n* As $x \\to +\\infty$, $f(x) \\to 0$ from **above** (values are small positives) when $k > 0$.\n* As $x \\to -\\infty$, $f(x) \\to 0$ from **below** when $k > 0$.\n\nBecause the numerator is the constant 1, **$f(x)$ can never equal 0**. So:\n\n$$\\text{Range: } \\{y \\in \\mathbb{R} \\mid y \\ne 0\\}$$\n\nand the graph has **no $x$-intercept**. The **$y$-intercept** is $f(0) = \\dfrac{1}{-c} = -\\dfrac{1}{c}$ (provided $c \\ne 0$).\n\n### Summary for $f(x) = \\dfrac{1}{kx-c}$\n\n| Feature | Result |\n|---|---|\n| Vertical asymptote | $x = \\dfrac{c}{k}$ |\n| Horizontal asymptote | $y = 0$ |\n| Domain | $x \\ne \\dfrac{c}{k}$ |\n| Range | $y \\ne 0$ |\n| $x$-intercept | none |\n| $y$-intercept | $-\\dfrac{1}{c}$ |\n"
+    },
+    {
+      "id": "slope",
+      "title": "Slope and rate of change of the branches",
+      "body": "Because you studied secants and tangents in Chapter 1, you can describe how **steep** each branch is.\n\nFor $f(x) = \\dfrac{1}{x}$ (here $k = 1 > 0$):\n\n| Point | slope of tangent (approx.) |\n|---|---|\n| $x = 0.1$ | −100 |\n| $x = 1$ | −1 |\n| $x = 10$ | −0.01 |\n| $x = -0.1$ | −100 |\n| $x = -1$ | −1 |\n| $x = -10$ | −0.01 |\n\n* Every slope is **negative**: both branches are **decreasing** when $k > 0$.\n* **Left branch** (left of the asymptote): the slope is negative and **decreasing** (getting steeper and steeper downward) as $x$ approaches the asymptote.\n* **Right branch**: the slope is negative and **increasing** (getting less steep, toward 0) as $x$ moves away from the asymptote.\n\nIf $k < 0$ the graph is reflected, so both branches are **increasing**: the left branch has positive, increasing slope and the right branch has positive, decreasing slope.\n\n### Estimating an instantaneous rate of change\nUse a secant through two very close points, e.g. for $f(x) = \\dfrac{1}{x-3}$ at $x = 4$:\n\n$$m \\approx \\frac{f(4.001) - f(4)}{4.001 - 4} = \\frac{0.999\\,000\\,9 - 1}{0.001} \\approx -1.00$$\n\nThe closer the second point, the better the estimate.\n"
+    },
+    {
+      "id": "transform",
+      "title": "Using transformations and writing equations",
+      "body": "Every function $f(x) = \\dfrac{1}{kx - c}$ is a transformation of $y = \\dfrac{1}{x}$. Factor out $k$:\n\n$$f(x) = \\frac{1}{k\\left(x - \\frac{c}{k}\\right)} = \\frac{1}{k}\\cdot\\frac{1}{x - \\frac{c}{k}}$$\n\n* a **horizontal translation** of $\\frac{c}{k}$ units (this moves the vertical asymptote to $x = \\frac{c}{k}$);\n* a **vertical stretch or compression** by the factor $\\left|\\frac{1}{k}\\right|$;\n* a **reflection in the $x$-axis** if $k < 0$.\n\n**Examples**\n\n| Function | Transformations of $y=\\frac{1}{x}$ | Vertical asymptote |\n|---|---|---|\n| $\\dfrac{1}{x-3}$ | right 3 | $x = 3$ |\n| $-\\dfrac{1}{x+4}$ | reflect in $x$-axis, left 4 | $x = -4$ |\n| $\\dfrac{1}{2x-10} = \\dfrac{1}{2(x-5)}$ | vertical compression by $\\frac{1}{2}$, right 5 | $x = 5$ |\n\n### Working backwards\nTo find $f(x) = \\dfrac{1}{kx - c}$ from its features:\n1. The $y$-intercept is $-\\frac{1}{c}$, which gives $c$.\n2. The asymptote $x = \\frac{c}{k}$ then gives $k$.\n\n**Example:** vertical asymptote $x = -1$ and $y$-intercept $-0.25$. Then $-\\frac{1}{c} = -0.25$, so $c = 4$; and $\\frac{4}{k} = -1$, so $k = -4$. The function is $f(x) = \\dfrac{1}{-4x - 4}$.\n"
+    },
+    {
+      "id": "apps",
+      "title": "Inverse variation: where reciprocal functions appear",
+      "body": "Two quantities **vary inversely** when their product is constant: $xy = k$, or $y = \\dfrac{k}{x}$. Double one and the other halves.\n\n* **Travel time and speed:** for a fixed distance $d$, time $t = \\dfrac{d}{v}$.\n* **Levers:** the force needed to lift an object is inversely proportional to the distance from the fulcrum, $F = \\dfrac{k}{d}$.\n* **Sharing:** cost per person when a fixed bill is shared.\n\nIn real contexts the domain is usually restricted (speed and distance must be positive), so only **one branch** of the graph has meaning.\n\n```plot\ntitle: Flight time (h) for a 1200 km trip vs average speed (km/h)\nf: 1200/x | label=t = 1200/v\ndomain: 0, 1000\nrange: 0, 20\nticks: 100, 2\n```\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "rational function",
+      "definition": "A function of the form $f(x) = \\dfrac{P(x)}{Q(x)}$ where $P$ and $Q$ are polynomials and $Q(x) \\ne 0$."
+    },
+    {
+      "term": "reciprocal function",
+      "definition": "The function $\\dfrac{1}{g(x)}$ formed by taking the reciprocal of each output of $g(x)$."
+    },
+    {
+      "term": "asymptote",
+      "definition": "A line that a curve approaches more and more closely but never reaches."
+    },
+    {
+      "term": "vertical asymptote",
+      "definition": "A vertical line $x = a$ near which $|f(x)|$ grows without bound; it occurs where the denominator is 0 (and the numerator is not)."
+    },
+    {
+      "term": "horizontal asymptote",
+      "definition": "A horizontal line $y = b$ that the graph approaches as $x \\to \\pm\\infty$."
+    },
+    {
+      "term": "branch",
+      "definition": "One of the separate, continuous pieces of a graph separated by a vertical asymptote."
+    },
+    {
+      "term": "$x \\to a^-$, $x \\to a^+$",
+      "definition": "$x$ approaches $a$ from the left (values less than $a$) or from the right (values greater than $a$)."
+    },
+    {
+      "term": "inverse variation",
+      "definition": "A relationship $y = \\dfrac{k}{x}$ in which the product $xy$ is constant."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Reciprocal of a linear function",
+      "latex": "f(x) = \\frac{1}{kx - c}",
+      "meaning": "Vertical asymptote $x = \\frac{c}{k}$, horizontal asymptote $y = 0$."
+    },
+    {
+      "name": "y-intercept",
+      "latex": "f(0) = -\\frac{1}{c}",
+      "meaning": "Substitute $x = 0$."
+    },
+    {
+      "name": "Average rate of change",
+      "latex": "\\frac{f(x_2) - f(x_1)}{x_2 - x_1}",
+      "meaning": "Slope of the secant; use two very close points to estimate an instantaneous rate."
+    },
+    {
+      "name": "Inverse variation",
+      "latex": "y = \\frac{k}{x}",
+      "meaning": "The product $xy = k$ is constant."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Domain, range and asymptotes",
+      "problem": "Consider $f(x) = \\dfrac{1}{2x - 1}$. State the domain, describe the behaviour near the vertical asymptote and the end behaviour, and state the range.",
+      "steps": [
+        "**Restriction:** $2x - 1 = 0 \\Rightarrow x = \\frac{1}{2}$. Domain $\\{x \\in \\mathbb{R} \\mid x \\ne \\frac{1}{2}\\}$. Vertical asymptote $x = \\frac{1}{2}$.",
+        "**Left of the asymptote** ($x \\to \\frac{1}{2}^-$): e.g. $x = 0.49$ gives $2x - 1 = -0.02$, so $f(x) = -50$. The function goes to $-\\infty$.",
+        "**Right of the asymptote** ($x \\to \\frac{1}{2}^+$): $x = 0.51$ gives $f(x) = 50$, so $f(x) \\to +\\infty$.",
+        "**End behaviour:** as $x \\to \\pm\\infty$, $2x - 1$ grows without bound, so $f(x) \\to 0$. Horizontal asymptote $y = 0$; approached from above on the right and from below on the left.",
+        "**Range:** the numerator is 1, so $f(x)$ is never 0: $\\{y \\in \\mathbb{R} \\mid y \\ne 0\\}$. The $y$-intercept is $f(0) = -1$."
+      ],
+      "answer": "Domain $x \\ne \\frac{1}{2}$, range $y \\ne 0$, asymptotes $x = \\frac{1}{2}$ and $y = 0$, $y$-intercept $-1$."
+    },
+    {
+      "title": "Finding intercepts",
+      "problem": "Determine the $x$- and $y$-intercepts of $f(x) = \\dfrac{1}{x + 5}$.",
+      "steps": [
+        "$y$-intercept: $f(0) = \\dfrac{1}{0 + 5} = 0.2$.",
+        "$x$-intercept: we would need $\\dfrac{1}{x+5} = 0$. A fraction is zero only when its **numerator** is zero, and the numerator is 1. So there is **no** $x$-intercept."
+      ],
+      "answer": "$y$-intercept $0.2$; no $x$-intercept (the $x$-axis is the horizontal asymptote)."
+    },
+    {
+      "title": "Rate of change on each branch",
+      "problem": "For $f(x) = \\dfrac{1}{x + 3}$, estimate the instantaneous rate of change at $x = -2$ and at $x = -4$. Interpret the results.",
+      "steps": [
+        "At $x = -2$: use $x = -2$ and $x = -1.999$. $f(-2) = 1$, $f(-1.999) = \\frac{1}{1.001} = 0.999\\,001$. Slope $\\approx \\frac{0.999\\,001 - 1}{0.001} = -0.999 \\approx -1$.",
+        "At $x = -4$: $f(-4) = -1$, $f(-3.999) = \\frac{1}{-0.999} = -1.001\\,001$. Slope $\\approx \\frac{-1.001\\,001 - (-1)}{0.001} \\approx -1.00$.",
+        "Both slopes are $-1$: the points are the same distance (1 unit) from the asymptote $x = -3$, and the graph is symmetric about the point where the asymptotes cross."
+      ],
+      "answer": "Both rates are about $-1$; the function is decreasing on both branches."
+    },
+    {
+      "title": "Writing an equation from features",
+      "problem": "Determine $f(x) = \\dfrac{1}{kx - c}$ with a vertical asymptote at $x = 1$ and a $y$-intercept of $-1$.",
+      "steps": [
+        "$y$-intercept: $f(0) = -\\frac{1}{c} = -1 \\Rightarrow c = 1$.",
+        "Vertical asymptote: $\\frac{c}{k} = 1 \\Rightarrow k = 1$.",
+        "Check: $f(x) = \\frac{1}{x - 1}$, $f(0) = -1$ ✓, undefined at $x = 1$ ✓."
+      ],
+      "answer": "$f(x) = \\dfrac{1}{x - 1}$"
+    },
+    {
+      "title": "Inverse variation: flight time",
+      "problem": "A flight takes 3 h at an average speed of 400 km/h. Time varies inversely with speed. (a) Write the equation. (b) How long does the trip take at 600 km/h?",
+      "steps": [
+        "$t = \\frac{k}{v}$ with $3 = \\frac{k}{400}$, so $k = 1200$ (this is the distance, 1200 km).",
+        "$t = \\frac{1200}{v}$, $v > 0$.",
+        "At $v = 600$: $t = \\frac{1200}{600} = 2$ h."
+      ],
+      "answer": "$t = \\dfrac{1200}{v}$; the trip takes 2 h at 600 km/h."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The graph crosses the vertical asymptote at some point.",
+      "fact": "The function is **undefined** at $x = \\frac{c}{k}$, so the graph can never touch or cross a vertical asymptote."
+    },
+    {
+      "myth": "$f(x) = \\dfrac{1}{x-3}$ has an $x$-intercept at $x = 3$.",
+      "fact": "$x = 3$ makes the **denominator** zero, which gives an asymptote, not an intercept. A reciprocal of a linear function has **no** $x$-intercepts."
+    },
+    {
+      "myth": "The vertical asymptote of $\\dfrac{1}{2x - 6}$ is $x = 6$.",
+      "fact": "Solve $2x - 6 = 0$: the asymptote is $x = 3$. Always solve the denominator equal to zero."
+    },
+    {
+      "myth": "As $x \\to \\infty$ the function eventually reaches 0.",
+      "fact": "It gets as close as you like to 0 but never equals 0, because the numerator is a non-zero constant."
+    },
+    {
+      "myth": "A bigger number in the denominator makes the graph steeper.",
+      "fact": "$\\frac{1}{kx-c} = \\frac{1}{k}\\cdot\\frac{1}{x - c/k}$, so a larger $|k|$ **compresses** the graph vertically (by the factor $\\frac{1}{|k|}$)."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Levers and see-saws",
+      "body": "The force needed to lift a load is $F = \\frac{k}{d}$. Moving your hands twice as far from the pivot halves the force needed – that is why a long crowbar makes heavy lifting easier."
+    },
+    {
+      "title": "Travel planning",
+      "body": "For a fixed distance, travel time is the reciprocal of speed times the distance. A small speed increase saves a lot of time when you are slow, but very little when you are already fast – the curve flattens."
+    },
+    {
+      "title": "Sharing costs",
+      "body": "A $\\$600$ cabin shared by $n$ people costs $\\frac{600}{n}$ each. Adding a 2nd person halves your cost; adding a 20th barely changes it."
+    },
+    {
+      "title": "Electronics",
+      "body": "In a circuit with fixed voltage, current varies inversely with resistance, $I = \\frac{V}{R}$ – a reciprocal model used every day by electricians."
+    }
+  ],
+  "practice": [
+    {
+      "question": "State the vertical and horizontal asymptotes of $f(x) = \\dfrac{1}{x - 6}$.",
+      "hint": "Set the denominator equal to zero.",
+      "solution": "Vertical asymptote $x = 6$; horizontal asymptote $y = 0$."
+    },
+    {
+      "question": "State the domain, range and $y$-intercept of $g(x) = -\\dfrac{1}{x + 4}$.",
+      "hint": "Find $g(0)$.",
+      "solution": "Domain $\\{x \\in \\mathbb{R} \\mid x \\ne -4\\}$, range $\\{y \\in \\mathbb{R} \\mid y \\ne 0\\}$, $y$-intercept $g(0) = -\\frac{1}{4} = -0.25$."
+    },
+    {
+      "question": "Describe the behaviour of $h(x) = \\dfrac{1}{3x - 6}$ as $x \\to 2^-$ and $x \\to 2^+$.",
+      "hint": "Test $x = 1.99$ and $x = 2.01$.",
+      "solution": "$h(1.99) = \\frac{1}{-0.03} \\approx -33.3$ so as $x \\to 2^-$, $h(x) \\to -\\infty$. $h(2.01) \\approx 33.3$, so as $x \\to 2^+$, $h(x) \\to +\\infty$."
+    },
+    {
+      "question": "Determine $f(x) = \\dfrac{1}{kx - c}$ with a vertical asymptote at $x = -1$ and a $y$-intercept of $-0.25$.",
+      "hint": "Use the $y$-intercept to find $c$ first.",
+      "solution": "$-\\frac{1}{c} = -0.25 \\Rightarrow c = 4$. $\\frac{c}{k} = -1 \\Rightarrow k = -4$. $f(x) = \\dfrac{1}{-4x - 4}$."
+    },
+    {
+      "question": "Describe the transformations that map $y = \\dfrac{1}{x}$ onto $y = \\dfrac{1}{2x - 10}$.",
+      "hint": "Factor the denominator.",
+      "solution": "$\\frac{1}{2(x - 5)} = \\frac{1}{2}\\cdot\\frac{1}{x-5}$: vertical compression by a factor of $\\frac{1}{2}$ and a translation 5 units right."
+    },
+    {
+      "question": "Estimate the instantaneous rate of change of $f(x) = \\dfrac{1}{x}$ at $x = 2$.",
+      "hint": "Use $x = 2$ and $x = 2.001$.",
+      "solution": "$\\frac{\\frac{1}{2.001} - \\frac{1}{2}}{0.001} = \\frac{0.499\\,750 - 0.5}{0.001} \\approx -0.25$."
+    },
+    {
+      "question": "A force of 200 N is needed 3 m from the fulcrum of a lever. Find the force needed at 4 m.",
+      "hint": "Force varies inversely with distance.",
+      "solution": "$k = 200 \\times 3 = 600$, so $F = \\frac{600}{4} = 150$ N."
+    },
+    {
+      "question": "For $f(x) = -\\dfrac{1}{x - 2}$, describe the slope on each branch.",
+      "hint": "$k < 0$ reflects the graph.",
+      "solution": "Both branches are increasing. On the left branch the slope is positive and increasing as $x \\to 2^-$; on the right branch the slope is positive and decreasing as $x$ moves away from 2."
+    }
+  ],
+  "summary": [
+    "A rational function is a quotient of polynomials; the reciprocal of a linear function has the form $f(x) = \\dfrac{1}{kx - c}$.",
+    "The vertical asymptote is where the denominator is zero: $x = \\frac{c}{k}$. The horizontal asymptote is $y = 0$.",
+    "Domain $x \\ne \\frac{c}{k}$; range $y \\ne 0$; no $x$-intercept; $y$-intercept $-\\frac{1}{c}$.",
+    "If $k > 0$ both branches decrease (left: slope negative and decreasing; right: slope negative and increasing). If $k < 0$ both branches increase.",
+    "Near the vertical asymptote $|f(x)|$ grows without bound; as $x \\to \\pm\\infty$, $f(x) \\to 0$.",
+    "Inverse variation $y = \\frac{k}{x}$ models travel time, levers and many other situations."
+  ],
+  "questions": [
+    {
+      "id": "3-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = \\dfrac{1}{x - {{h}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation of the vertical asymptote.",
+          "answer": {
+            "expr": "h",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "-1/h",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain, range and the equation of the horizontal asymptote."
+        },
+        {
+          "label": "d",
+          "text": "Describe the behaviour of $f(x)$ as $x \\to {{h}}^-$ and as $x \\to {{h}}^+$."
+        }
+      ],
+      "modelAnswer": "(a) The denominator is zero when $x - {{h}} = 0$, so the vertical asymptote is $x = {{h}}$.\n\n(b) $f(0) = \\dfrac{1}{0 - {{h}}} = -\\dfrac{1}{ {{h}} } \\approx {{-1/h:3}}$.\n\n(c) Domain $\\{x \\in \\mathbb{R} \\mid x \\ne {{h}}\\}$. The numerator is 1, so $f(x) \\ne 0$: range $\\{y \\in \\mathbb{R} \\mid y \\ne 0\\}$. The horizontal asymptote is $y = 0$ because $f(x) \\to 0$ as $x \\to \\pm\\infty$.\n\n(d) As $x \\to {{h}}^-$ the denominator is a small negative number, so $f(x) \\to -\\infty$; as $x \\to {{h}}^+$ it is a small positive number, so $f(x) \\to +\\infty$.",
+      "rubric": [
+        {
+          "point": "Correct vertical asymptote with reason (denominator = 0)",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and range in set notation",
+          "marks": 2
+        },
+        {
+          "point": "Horizontal asymptote y = 0 with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct one-sided behaviour on both sides of the asymptote",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $g(x) = \\dfrac{1}{ {{k}}x - {{c}} }$:",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the equation of the vertical asymptote.",
+          "answer": {
+            "expr": "c/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "-1/c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain, range and horizontal asymptote, and explain whether the graph has an $x$-intercept."
+        }
+      ],
+      "modelAnswer": "(a) ${{k}}x - {{c}} = 0 \\Rightarrow x = \\dfrac{ {{c}} }{ {{k}} } \\approx {{c/k:3}}$. Vertical asymptote $x = {{c/k:3}}$.\n\n(b) $g(0) = \\dfrac{1}{-{{c}}} \\approx {{-1/c:3}}$.\n\n(c) Domain $\\{x \\in \\mathbb{R} \\mid x \\ne {{c/k:3}}\\}$, range $\\{y \\in \\mathbb{R} \\mid y \\ne 0\\}$, horizontal asymptote $y = 0$, no $x$-intercept (the numerator is never 0).",
+      "rubric": [
+        {
+          "point": "Solves denominator = 0 for the vertical asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 2
+        },
+        {
+          "point": "States there is no x-intercept with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q03",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Analyse $f(x) = -\\dfrac{1}{x + {{h}}}$ without technology. Describe (a) the asymptotes, (b) the behaviour near the vertical asymptote, (c) the end behaviour, (d) the intervals where the function is increasing or decreasing and how the slope changes on each branch.",
+      "modelAnswer": "(a) Vertical asymptote $x = -{{h}}$ (denominator zero); horizontal asymptote $y = 0$.\n\n(b) As $x \\to -{{h}}^-$, $x + {{h}}$ is a small negative number, so $\\frac{1}{x+{{h}}} \\to -\\infty$ and, with the negative sign, $f(x) \\to +\\infty$. As $x \\to -{{h}}^+$, $f(x) \\to -\\infty$.\n\n(c) As $x \\to +\\infty$, $f(x) \\to 0$ from below (values are small negatives); as $x \\to -\\infty$, $f(x) \\to 0$ from above.\n\n(d) The negative sign reflects $y = \\frac{1}{x+{{h}}}$ in the $x$-axis, so $f$ is **increasing** on $x < -{{h}}$ and on $x > -{{h}}$. On the left branch the slope is positive and increasing as $x \\to -{{h}}^-$; on the right branch the slope is positive and decreasing as $x$ moves away from the asymptote.",
+      "rubric": [
+        {
+          "point": "Both asymptotes correct",
+          "marks": 2
+        },
+        {
+          "point": "Correct behaviour on both sides of the vertical asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Correct end behaviour including direction of approach",
+          "marks": 2
+        },
+        {
+          "point": "Identifies increasing on both intervals",
+          "marks": 1
+        },
+        {
+          "point": "Describes change in slope on each branch",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-1-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "h": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c": "k*h"
+      },
+      "text": "A function of the form $f(x) = \\dfrac{1}{kx - c}$ has a vertical asymptote at $x = {{h}}$ and a $y$-intercept of $-\\dfrac{1}{ {{c}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the value of $c$.",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the value of $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write the equation and verify both features."
+        }
+      ],
+      "modelAnswer": "The $y$-intercept is $f(0) = -\\dfrac{1}{c}$, so $c = {{c}}$.\n\nThe vertical asymptote is $x = \\dfrac{c}{k}$, so $\\dfrac{ {{c}} }{k} = {{h}}$ and $k = \\dfrac{ {{c}} }{ {{h}} } = {{k}}$.\n\n$f(x) = \\dfrac{1}{ {{k}}x - {{c}} }$.\n\nCheck: $f(0) = -\\frac{1}{ {{c}} }$ ✓ and ${{k}}({{h}}) - {{c}} = 0$ ✓.",
+      "rubric": [
+        {
+          "point": "Uses y-intercept to find c",
+          "marks": 2
+        },
+        {
+          "point": "Uses asymptote to find k",
+          "marks": 2
+        },
+        {
+          "point": "Writes the correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Verifies both features",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "a": "h+d"
+      },
+      "text": "For $f(x) = \\dfrac{1}{x - {{h}}}$, estimate the instantaneous rate of change at $x = {{a}}$ using a secant from $x = {{a}}$ to $x = {{a}}.001$. Then explain how the slope would change as $x$ moves further from the asymptote.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the instantaneous rate of change.",
+          "answer": {
+            "expr": "-1/(a-h)^2",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain how the slope changes as $x$ increases further."
+        }
+      ],
+      "modelAnswer": "$f({{a}}) = \\dfrac{1}{ {{a-h}} } \\approx {{1/(a-h):5}}$ and $f({{a}}.001) = \\dfrac{1}{ {{a-h+0.001:5}} } \\approx {{1/(a-h+0.001):6}}$.\n\nSlope $\\approx \\dfrac{f({{a}}.001) - f({{a}})}{0.001} \\approx {{-1/(a-h)^2:3}}$.\n\nThe rate of change is negative (the branch is decreasing). As $x$ moves further from the asymptote the slope gets closer to 0 (the curve flattens toward $y = 0$), so its magnitude decreases.",
+      "rubric": [
+        {
+          "point": "Correct function values at both points",
+          "marks": 2
+        },
+        {
+          "point": "Correct secant slope calculation",
+          "marks": 2
+        },
+        {
+          "point": "Correct interpretation of sign",
+          "marks": 1
+        },
+        {
+          "point": "Explains the slope approaches 0 away from the asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "dx": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "x1": "ceil(c/k)+1",
+        "x2": "x1+dx"
+      },
+      "text": "Calculate the average rate of change of $f(x) = \\dfrac{1}{ {{k}}x - {{c}} }$ from $x = {{x1}}$ to $x = {{x2}}$, and explain what the sign tells you.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the average rate of change.",
+          "answer": {
+            "expr": "(1/(k*x2-c)-1/(k*x1-c))/(x2-x1)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f({{x1}}) = \\dfrac{1}{ {{k*x1-c}} } \\approx {{1/(k*x1-c):4}}$, $f({{x2}}) = \\dfrac{1}{ {{k*x2-c}} } \\approx {{1/(k*x2-c):4}}$.\n\nAverage rate of change $= \\dfrac{f({{x2}}) - f({{x1}})}{ {{x2}} - {{x1}} } \\approx {{(1/(k*x2-c)-1/(k*x1-c))/(x2-x1):3}}$.\n\nIt is negative: on this interval (right branch, since both values are to the right of the asymptote $x = {{c/k:3}}$) the function is decreasing.",
+      "rubric": [
+        {
+          "point": "Evaluates both function values",
+          "marks": 2
+        },
+        {
+          "point": "Correct average rate of change",
+          "marks": 2
+        },
+        {
+          "point": "Interprets the sign correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v0": {
+          "min": 400,
+          "max": 800,
+          "step": 50
+        },
+        "t0": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "v1": {
+          "min": 500,
+          "max": 900,
+          "step": 50
+        }
+      },
+      "text": "The time required to fly between two cities is inversely proportional to the average speed. A plane flying at {{v0}} km/h takes {{t0}} h.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for time $t$ in terms of speed $v$.",
+          "answer": {
+            "expr": "t0*v0",
+            "unit": "km (constant k)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long does the trip take at {{v1}} km/h?",
+          "answer": {
+            "expr": "t0*v0/v1",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the graph of this relation in context, including its domain, range and the meaning of each asymptote."
+        }
+      ],
+      "modelAnswer": "(a) $t = \\dfrac{k}{v}$ with ${{t0}} = \\dfrac{k}{ {{v0}} }$, so $k = {{t0*v0}}$ and $t = \\dfrac{ {{t0*v0}} }{v}$. ($k$ is the distance, {{t0*v0}} km.)\n\n(b) $t = \\dfrac{ {{t0*v0}} }{ {{v1}} } \\approx {{t0*v0/v1:3}}$ h.\n\n(c) Only $v > 0$ makes sense, so only the right branch of $y = \\frac{k}{v}$ is used. Domain $v > 0$, range $t > 0$. The vertical asymptote $v = 0$ means the time grows without bound as speed approaches zero; the horizontal asymptote $t = 0$ means time can be made small but never zero.",
+      "rubric": [
+        {
+          "point": "Correct constant of variation and equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct time at new speed",
+          "marks": 2
+        },
+        {
+          "point": "Restricts domain and range to positive values",
+          "marks": 1
+        },
+        {
+          "point": "Interprets both asymptotes in context",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-1-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "F0": {
+          "min": 150,
+          "max": 300,
+          "step": 10
+        },
+        "d0": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d1": {
+          "min": 5,
+          "max": 8,
+          "step": 1
+        },
+        "F1": {
+          "min": 60,
+          "max": 120,
+          "step": 10
+        }
+      },
+      "text": "The force required to lift an object with a lever is inversely proportional to the distance of the force from the fulcrum. A force of {{F0}} N is needed at {{d0}} m from the fulcrum.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for force $F$ in terms of distance $d$."
+        },
+        {
+          "label": "b",
+          "text": "What force is needed at {{d1}} m?",
+          "answer": {
+            "expr": "F0*d0/d1",
+            "unit": "N",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "At what distance is a force of {{F1}} N enough?",
+          "answer": {
+            "expr": "F0*d0/F1",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "What is the effect of doubling the distance? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $F = \\dfrac{k}{d}$, $k = {{F0}} \\times {{d0}} = {{F0*d0}}$, so $F = \\dfrac{ {{F0*d0}} }{d}$.\n\n(b) $F = \\dfrac{ {{F0*d0}} }{ {{d1}} } \\approx {{F0*d0/d1:3}}$ N.\n\n(c) $d = \\dfrac{ {{F0*d0}} }{ {{F1}} } \\approx {{F0*d0/F1:3}}$ m.\n\n(d) Doubling the distance halves the force, because $F \\cdot d$ is constant.",
+      "rubric": [
+        {
+          "point": "Correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct force at new distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance for given force",
+          "marks": 2
+        },
+        {
+          "point": "Explains effect of doubling",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain, using reasoning about numerators and denominators, why the graph of any function of the form $f(x) = \\dfrac{1}{kx - c}$ (with $k \\ne 0$) has (a) no $x$-intercept and (b) the horizontal asymptote $y = 0$.",
+      "modelAnswer": "(a) An $x$-intercept needs $f(x) = 0$. A fraction equals zero only when its numerator is zero. The numerator is 1, which is never zero, so there is no $x$-intercept.\n\n(b) As $x \\to \\pm\\infty$, $|kx - c|$ becomes larger and larger, so $\\frac{1}{kx - c}$ becomes closer and closer to 0 (but never equals it). The graph therefore approaches the line $y = 0$ at both ends.",
+      "rubric": [
+        {
+          "point": "Fraction is zero only if numerator is zero",
+          "marks": 1
+        },
+        {
+          "point": "Numerator 1 is never zero, so no x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Denominator grows without bound as x → ±∞",
+          "marks": 1
+        },
+        {
+          "point": "So f(x) → 0, giving y = 0 as horizontal asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "A student uses a graphing calculator table for $f(x) = \\dfrac{1}{x - {{h}}}$ and sees ERROR beside $x = {{h}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain why the error appears."
+        },
+        {
+          "label": "b",
+          "text": "For the reciprocal of any linear function, what happens to the function value as the denominator increases?"
+        },
+        {
+          "label": "c",
+          "text": "What happens to the function value as the denominator approaches zero?"
+        }
+      ],
+      "modelAnswer": "(a) At $x = {{h}}$ the denominator is ${{h}} - {{h}} = 0$ and division by zero is undefined, so the calculator reports an error. The graph has a vertical asymptote there.\n\n(b) As the denominator increases (gets larger in size), the value of the function gets closer to 0.\n\n(c) As the denominator approaches 0, the absolute value of the function grows without bound: it approaches $+\\infty$ if the denominator is a small positive number and $-\\infty$ if it is a small negative number.",
+      "rubric": [
+        {
+          "point": "Explains division by zero at the restriction",
+          "marks": 1
+        },
+        {
+          "point": "Links to vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Large denominator ⇒ value approaches 0",
+          "marks": 1
+        },
+        {
+          "point": "Denominator → 0 ⇒ |f(x)| grows without bound, with sign discussion",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-1-q11",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Is there a linear function whose reciprocal has no restriction on its domain? If yes, give an example and describe the graph of the reciprocal, including its range. If no, explain why not.",
+      "modelAnswer": "A linear function $y = kx - c$ with $k \\ne 0$ always has exactly one zero ($x = \\frac{c}{k}$), so its reciprocal always has one restriction.\n\nThe only exception is a **constant** linear function (slope 0), such as $y = 4$. Its reciprocal $y = \\frac{1}{4}$ has domain $\\{x \\in \\mathbb{R}\\}$ with no restriction. Its range is the single value $\\{\\frac{1}{4}\\}$, and the graph is a horizontal line – it has no asymptotes at all. (The constant function $y = 0$ does not work, because $\\frac{1}{0}$ is undefined everywhere.)\n\nSo: yes, but only for a non-zero constant function; every non-constant linear function produces a vertical asymptote.",
+      "rubric": [
+        {
+          "point": "Explains non-constant linear functions always have a zero",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the non-zero constant function as the exception",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain/range/graph of the reciprocal of a constant",
+          "marks": 1
+        },
+        {
+          "point": "Notes y = 0 is excluded",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "h": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c": "k*h"
+      },
+      "text": "Describe the transformations that map $y = \\dfrac{1}{x}$ onto $f(x) = \\dfrac{1}{ {{k}}x - {{c}} }$. State the vertical asymptote and the image of the point $(1, 1)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations."
+        },
+        {
+          "label": "b",
+          "text": "State the vertical asymptote.",
+          "answer": {
+            "expr": "h",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Find the $y$-coordinate of the image of $(1, 1)$.",
+          "answer": {
+            "expr": "1/k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Factor: $f(x) = \\dfrac{1}{ {{k}}\\left(x - {{h}}\\right)} = \\dfrac{1}{ {{k}} } \\cdot \\dfrac{1}{x - {{h}}}$.\n\n* vertical compression by a factor of $\\frac{1}{ {{k}} }$;\n* horizontal translation {{h}} units right.\n\nVertical asymptote $x = {{h}}$. The point $(1, 1)$ maps to $(1 + {{h}}, \\frac{1}{ {{k}} }) = ({{1+h}}, {{1/k:3}})$.",
+      "rubric": [
+        {
+          "point": "Factors out k correctly",
+          "marks": 1
+        },
+        {
+          "point": "Identifies vertical compression by 1/k",
+          "marks": 1
+        },
+        {
+          "point": "Identifies horizontal translation",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct image point",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-1-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            1,
+            2,
+            4
+          ]
+        },
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The graph shows a function of the form $f(x) = \\dfrac{1}{kx - c}$ passing through the marked point.\n\n```plot\nf: 1/({{k}}*(x-{{h}}))\ndomain: -8, 10\nrange: -4, 4\npoints: ({{h+1}},{{1/k}})\nasymptote x: {{h}}\nasymptote y: 0\n```\n\nThe marked point is $({{h+1}}, {{1/k:3}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation of the vertical asymptote.",
+          "answer": {
+            "expr": "h",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write the equation of the function and check it."
+        }
+      ],
+      "modelAnswer": "(a) The graph approaches the vertical line $x = {{h}}$, so the vertical asymptote is $x = {{h}}$, and $\\frac{c}{k} = {{h}}$.\n\n(b) Write $f(x) = \\dfrac{1}{k(x - {{h}})}$. At $x = {{h+1}}$: $\\dfrac{1}{k(1)} = {{1/k:3}}$, so $k = {{k}}$.\n\n(c) $c = k \\cdot {{h}} = {{k*h}}$, so $f(x) = \\dfrac{1}{ {{k}}x - {{k*h}} }$. The $y$-intercept is $-\\frac{1}{ {{k*h}} }$, which matches the graph crossing just below the origin.",
+      "rubric": [
+        {
+          "point": "Reads the vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Uses the point to find k",
+          "marks": 2
+        },
+        {
+          "point": "Finds c and writes the equation",
+          "marks": 2
+        },
+        {
+          "point": "Checks with another feature",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Compare the graphs of $f(x) = \\dfrac{1}{ {{k}}x - {{c}} }$ and $g(x) = -\\dfrac{1}{ {{k}}x - {{c}} }$. For each, describe the sign of the slope and how the slope changes on each branch.",
+      "modelAnswer": "Both have vertical asymptote $x = {{c/k:3}}$ and horizontal asymptote $y = 0$.\n\n**$f$** ($k > 0$): decreasing on both branches. Left branch: slope negative and decreasing (getting steeper) as $x \\to {{c/k:3}}^-$. Right branch: slope negative and increasing toward 0 as $x$ moves right.\n\n**$g$** is the reflection of $f$ in the $x$-axis: increasing on both branches. Left branch: slope positive and increasing as $x \\to {{c/k:3}}^-$. Right branch: slope positive and decreasing toward 0.\n\nOn the left branch $f < 0$ and $g > 0$; on the right branch $f > 0$ and $g < 0$.",
+      "rubric": [
+        {
+          "point": "Shared asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Correct slope sign and change for f on each branch",
+          "marks": 2
+        },
+        {
+          "point": "Correct slope sign and change for g on each branch",
+          "marks": 2
+        },
+        {
+          "point": "Links g to a reflection of f",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "d": {
+          "choices": [
+            1,
+            2
+          ]
+        }
+      },
+      "text": "For $f(x) = \\dfrac{1}{x - {{h}}}$, show numerically that the slopes of the tangents at $x = {{h+d}}$ and $x = {{h-d}}$ are equal. Explain this using the shape of the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the slope at $x = {{h+d}}$.",
+          "answer": {
+            "expr": "-1/d^2",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Estimate the slope at $x = {{h-d}}$.",
+          "answer": {
+            "expr": "-1/d^2",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why they are equal."
+        }
+      ],
+      "modelAnswer": "Use secants with a step of 0.001.\n\nAt $x = {{h+d}}$: $\\dfrac{f({{h+d}}.001) - f({{h+d}})}{0.001} \\approx {{-1/d^2:3}}$.\n\nAt $x = {{h-d}}$: $\\dfrac{f({{h-d}}.001) - f({{h-d}})}{0.001} \\approx {{-1/d^2:3}}$.\n\nBoth slopes are $\\approx -\\frac{1}{ {{d}}^2} = {{-1/d^2:3}}$. The two points are the same distance from the vertical asymptote. The graph of $y = \\frac{1}{x - {{h}}}$ is symmetric about the point $({{h}}, 0)$ where the asymptotes meet (a half-turn about that point maps each branch onto the other), so points equidistant from the asymptote have equal slopes.",
+      "rubric": [
+        {
+          "point": "Correct secant estimate at first point",
+          "marks": 2
+        },
+        {
+          "point": "Correct secant estimate at second point",
+          "marks": 2
+        },
+        {
+          "point": "States slopes are equal",
+          "marks": 1
+        },
+        {
+          "point": "Explains with point symmetry about the intersection of asymptotes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-1-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{1}{x - {{h}}}$, evaluate $f$ at $x = {{h}}.1$, $x = {{h}}.01$ and at $x = {{h-1}}.99$. Use your results to describe the behaviour of the function near $x = {{h}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $f({{h}}.01)$.",
+          "answer": {
+            "expr": "100",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find $f({{h-1}}.99)$.",
+          "answer": {
+            "expr": "-100",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the behaviour near $x = {{h}}$."
+        }
+      ],
+      "modelAnswer": "$f({{h}}.1) = \\dfrac{1}{0.1} = 10$, $f({{h}}.01) = \\dfrac{1}{0.01} = 100$, $f({{h-1}}.99) = \\dfrac{1}{-0.01} = -100$.\n\nAs $x \\to {{h}}^+$ the values grow without bound ($f(x) \\to +\\infty$); as $x \\to {{h}}^-$, $f(x) \\to -\\infty$. So $x = {{h}}$ is a vertical asymptote.",
+      "rubric": [
+        {
+          "point": "Correct three values",
+          "marks": 3
+        },
+        {
+          "point": "Describes behaviour from each side",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the vertical asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q17",
+      "type": "design",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Graph the line $y = {{m}}x - {{b}}$ and find its $x$-intercept. Then analyse the reciprocals of the $y$-coordinates on either side of the $x$-intercept. Explain how these numbers relate to the key features of $f(x) = \\dfrac{1}{ {{m}}x - {{b}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the $x$-intercept of the line.",
+          "answer": {
+            "expr": "b/m",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain the connection to the features of $f(x)$."
+        }
+      ],
+      "modelAnswer": "The $x$-intercept of the line is $x = \\dfrac{ {{b}} }{ {{m}} } \\approx {{b/m:3}}$.\n\nClose to the intercept the line's $y$-values are small (e.g. ±0.1, ±0.01), so their reciprocals are large (±10, ±100): the reciprocal function has a **vertical asymptote** at $x = {{b/m:3}}$. To the left the line is negative, so $f \\to -\\infty$; to the right it is positive, so $f \\to +\\infty$.\n\nFar from the intercept the line's $y$-values are large, so the reciprocals are close to 0: horizontal asymptote $y = 0$.\n\nWhere the line has $y = 1$ or $y = -1$ the reciprocal is the same (invariant points). The line is increasing, so the reciprocal is decreasing on each branch. The $y$-intercept of the line, $-{{b}}$, becomes $-\\frac{1}{ {{b}} }$.",
+      "rubric": [
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Small y-values ⇒ large reciprocals ⇒ vertical asymptote, with signs",
+          "marks": 2
+        },
+        {
+          "point": "Large y-values ⇒ reciprocals near 0 ⇒ horizontal asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Invariant points y = ±1",
+          "marks": 1
+        },
+        {
+          "point": "Increasing line ⇒ decreasing reciprocal; y-intercept connection",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-1-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $k(x) = -\\dfrac{1}{ {{k}}x + {{c}} }$, determine the vertical asymptote, the $y$-intercept, the domain and range, and describe the end behaviour.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical asymptote.",
+          "answer": {
+            "expr": "-c/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-intercept.",
+          "answer": {
+            "expr": "-1/c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Domain, range and end behaviour."
+        }
+      ],
+      "modelAnswer": "Vertical asymptote: ${{k}}x + {{c}} = 0 \\Rightarrow x = -\\dfrac{ {{c}} }{ {{k}} } \\approx {{-c/k:3}}$.\n\n$y$-intercept: $k(0) = -\\dfrac{1}{ {{c}} } \\approx {{-1/c:3}}$.\n\nDomain $\\{x \\in \\mathbb{R} \\mid x \\ne {{-c/k:3}}\\}$; range $\\{y \\in \\mathbb{R} \\mid y \\ne 0\\}$; horizontal asymptote $y = 0$.\n\nEnd behaviour: as $x \\to +\\infty$ the denominator is large and positive, so $k(x) \\to 0$ from below; as $x \\to -\\infty$, $k(x) \\to 0$ from above.",
+      "rubric": [
+        {
+          "point": "Vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 2
+        },
+        {
+          "point": "End behaviour with direction",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

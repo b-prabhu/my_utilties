@@ -1,0 +1,934 @@
+{
+  "id": "4-2",
+  "number": "4.2",
+  "title": "Trigonometric Ratios and Special Angles",
+  "estimatedMinutes": 75,
+  "overview": "With radian measure in hand, you can now evaluate all six trigonometric ratios for angles in radians — with a calculator for any angle, and **exactly** for the special angles $\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$ and their multiples up to $2\\pi$, using the unit circle, special triangles and the CAST rule.",
+  "objectives": [
+    "Evaluate primary and reciprocal trig ratios of angles in radians with a calculator.",
+    "Use the unit circle to state $\\sin\\theta$, $\\cos\\theta$ and $\\tan\\theta$ as coordinates.",
+    "Recall exact values for $0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$.",
+    "Use reference angles and CAST for multiples of special angles up to $2\\pi$.",
+    "Evaluate expressions exactly and write exact expressions in applied problems."
+  ],
+  "lessons": [
+    {
+      "id": "radian-mode",
+      "title": "Trig ratios of angles in radians",
+      "body": "The six trigonometric ratios work exactly the same way whether an angle is in degrees or radians — only the calculator mode changes.\n\n**Primary ratios** (right triangle, or point $(x, y)$ on a circle of radius $r$):\n\n$$\\sin\\theta = \\frac{y}{r} = \\frac{\\text{opp}}{\\text{hyp}},\\quad \\cos\\theta = \\frac{x}{r} = \\frac{\\text{adj}}{\\text{hyp}},\\quad \\tan\\theta = \\frac{y}{x} = \\frac{\\text{opp}}{\\text{adj}}$$\n\n**Reciprocal ratios** (flip the primary ratio):\n\n$$\\csc\\theta = \\frac{1}{\\sin\\theta},\\qquad \\sec\\theta = \\frac{1}{\\cos\\theta},\\qquad \\cot\\theta = \\frac{1}{\\tan\\theta}$$\n\nA memory aid: each reciprocal pair has exactly one \"co\": **s**in ↔ **c**sc, **c**os ↔ **s**ec, tan ↔ cot.\n\n**Calculator routine** for $\\csc\\frac{4\\pi}{11}$:\n1. Set the mode to **RAD**.\n2. Evaluate $\\sin\\left(\\frac{4\\pi}{11}\\right) \\approx 0.9096$ (use brackets!).\n3. Take the reciprocal: $\\csc\\frac{4\\pi}{11} = \\frac{1}{0.9096} \\approx 1.0994$.\n\nCalculators have no csc/sec/cot keys — always go through the primary ratio. Do **not** use $\\sin^{-1}$; that is the inverse function (it finds an angle), not the reciprocal."
+    },
+    {
+      "id": "unit-circle",
+      "title": "The unit circle",
+      "body": "The **unit circle** is the circle of radius 1 centred at the origin. Draw an angle $\\theta$ in **standard position** (vertex at the origin, initial arm on the positive $x$-axis, rotating counterclockwise). The terminal arm meets the circle at a point $P(x, y)$. Because $r = 1$:\n\n$$\\cos\\theta = x,\\qquad \\sin\\theta = y,\\qquad \\tan\\theta = \\frac{y}{x}$$\n\nSo **every point on the unit circle is $(\\cos\\theta, \\sin\\theta)$**.\n\n```plot\ntitle: The unit circle with θ = π/6, π/4 and π/3\nf: sqrt(1-x^2)\nf: -sqrt(1-x^2)\ndomain: -1.3, 1.3\nrange: -1.15, 1.15\nticks: 0.5, 0.5\npoints: (0.866,0.5), (0.7071,0.7071), (0.5,0.866), (1,0), (0,1), (-1,0), (0,-1)\n```\n\n**Quadrantal angles** (terminal arm on an axis) read straight off the circle:\n\n| $\\theta$ | $0$ | $\\frac{\\pi}{2}$ | $\\pi$ | $\\frac{3\\pi}{2}$ | $2\\pi$ |\n|---|---|---|---|---|---|\n| point | $(1, 0)$ | $(0, 1)$ | $(-1, 0)$ | $(0, -1)$ | $(1, 0)$ |\n| $\\sin\\theta$ | 0 | 1 | 0 | −1 | 0 |\n| $\\cos\\theta$ | 1 | 0 | −1 | 0 | 1 |\n| $\\tan\\theta$ | 0 | undefined | 0 | undefined | 0 |\n\n$\\tan\\frac{\\pi}{2}$ is **undefined** because it would require dividing by $x = 0$. Likewise $\\csc 0$, $\\cot 0$, $\\sec\\frac{\\pi}{2}$ are undefined."
+    },
+    {
+      "id": "special-triangles",
+      "title": "Special triangles and the special angles",
+      "body": "Two triangles give exact values for $\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}$.\n\n**The isosceles right triangle** (angles $\\frac{\\pi}{4}, \\frac{\\pi}{4}, \\frac{\\pi}{2}$): legs 1 and 1, hypotenuse $\\sqrt{2}$.\n\n**Half an equilateral triangle** (angles $\\frac{\\pi}{6}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$): short leg 1 (opposite $\\frac{\\pi}{6}$), long leg $\\sqrt{3}$, hypotenuse 2.\n\n| $\\theta$ | $\\sin\\theta$ | $\\cos\\theta$ | $\\tan\\theta$ | $\\csc\\theta$ | $\\sec\\theta$ | $\\cot\\theta$ |\n|---|---|---|---|---|---|---|\n| $\\frac{\\pi}{6}$ (30°) | $\\frac{1}{2}$ | $\\frac{\\sqrt{3}}{2}$ | $\\frac{1}{\\sqrt{3}}$ | 2 | $\\frac{2}{\\sqrt{3}}$ | $\\sqrt{3}$ |\n| $\\frac{\\pi}{4}$ (45°) | $\\frac{1}{\\sqrt{2}}$ | $\\frac{1}{\\sqrt{2}}$ | 1 | $\\sqrt{2}$ | $\\sqrt{2}$ | 1 |\n| $\\frac{\\pi}{3}$ (60°) | $\\frac{\\sqrt{3}}{2}$ | $\\frac{1}{2}$ | $\\sqrt{3}$ | $\\frac{2}{\\sqrt{3}}$ | 2 | $\\frac{1}{\\sqrt{3}}$ |\n\n(Rationalised forms are also fine: $\\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$, $\\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}$.)\n\n**Pattern to remember:** reading down the sine column for $\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}$ gives $\\frac{\\sqrt1}{2}, \\frac{\\sqrt2}{2}, \\frac{\\sqrt3}{2}$; cosine is the same list in reverse."
+    },
+    {
+      "id": "cast",
+      "title": "Multiples of special angles: reference angles and CAST",
+      "body": "To find exact ratios of angles such as $\\frac{5\\pi}{6}$, $\\frac{5\\pi}{4}$ or $\\frac{5\\pi}{3}$:\n\n1. **Sketch** the angle in standard position and find its quadrant.\n2. Find the **reference angle** — the acute angle between the terminal arm and the $x$-axis.\n3. Use the special triangle for the reference angle to get the **size** of the ratio.\n4. Use the **CAST rule** for the **sign**.\n\n**CAST rule** (which ratios are positive), starting in quadrant IV and going counterclockwise: **C**os, **A**ll, **S**in, **T**an.\n\n| Quadrant | Angle range | Positive ratios | Reference angle for $\\theta$ |\n|---|---|---|---|\n| I | $0 < \\theta < \\frac{\\pi}{2}$ | All | $\\theta$ |\n| II | $\\frac{\\pi}{2} < \\theta < \\pi$ | Sin (and csc) | $\\pi - \\theta$ |\n| III | $\\pi < \\theta < \\frac{3\\pi}{2}$ | Tan (and cot) | $\\theta - \\pi$ |\n| IV | $\\frac{3\\pi}{2} < \\theta < 2\\pi$ | Cos (and sec) | $2\\pi - \\theta$ |\n\n**Example:** $\\frac{3\\pi}{4}$ is in quadrant II with reference angle $\\frac{\\pi}{4}$. The point on the unit circle is $\\left(-\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right)$, so $\\sin\\frac{3\\pi}{4} = \\frac{1}{\\sqrt{2}}$, $\\cos\\frac{3\\pi}{4} = -\\frac{1}{\\sqrt{2}}$, $\\tan\\frac{3\\pi}{4} = -1$, $\\csc = \\sqrt2$, $\\sec = -\\sqrt2$, $\\cot = -1$.\n\n**Quick denominators:** angles with denominator 6 have reference angle $\\frac{\\pi}{6}$; denominator 4 → $\\frac{\\pi}{4}$; denominator 3 → $\\frac{\\pi}{3}$."
+    },
+    {
+      "id": "applications",
+      "title": "Using exact values in problems",
+      "body": "Exact values let you write **exact expressions** for lengths, which avoids rounding errors that pile up across steps.\n\n**Kite example.** A 50 m kite string makes angle $\\frac{\\pi}{6}$ with the ground, then rises to $\\frac{\\pi}{3}$. The horizontal distance from the flyer is $x = 50\\cos\\theta$:\n\n* $x_1 = 50\\cos\\frac{\\pi}{6} = 50\\cdot\\frac{\\sqrt3}{2} = 25\\sqrt3$\n* $x_2 = 50\\cos\\frac{\\pi}{3} = 50\\cdot\\frac{1}{2} = 25$\n\nThe kite's shadow moves $25\\sqrt3 - 25 = 25(\\sqrt3 - 1)\\approx 18.3$ m.\n\n**Evaluating expressions exactly.** Substitute exact values, then simplify fractions and radicals:\n\n$$\\sin\\frac{\\pi}{6}\\cos\\frac{\\pi}{3} + \\tan\\frac{\\pi}{4} = \\frac{1}{2}\\cdot\\frac{1}{2} + 1 = \\frac{5}{4}$$\n\nCheck with a calculator in RAD mode: $1.25$ ✓."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "unit circle",
+      "definition": "A circle of radius 1 centred at the origin; a point on it at angle θ is (cos θ, sin θ)."
+    },
+    {
+      "term": "standard position",
+      "definition": "An angle with its vertex at the origin and initial arm on the positive x-axis; counterclockwise rotation is positive."
+    },
+    {
+      "term": "terminal arm",
+      "definition": "The arm of an angle in standard position after rotation."
+    },
+    {
+      "term": "reference angle",
+      "definition": "The acute angle between the terminal arm and the x-axis."
+    },
+    {
+      "term": "CAST rule",
+      "definition": "A memory aid for the signs of trig ratios in quadrants IV, I, II, III: Cos, All, Sin, Tan positive."
+    },
+    {
+      "term": "reciprocal trigonometric ratios",
+      "definition": "$\\csc\\theta = \\frac{1}{\\sin\\theta}$, $\\sec\\theta = \\frac{1}{\\cos\\theta}$, $\\cot\\theta = \\frac{1}{\\tan\\theta}$."
+    },
+    {
+      "term": "special angles",
+      "definition": "$0, \\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{\\pi}{2}$ and their multiples, whose ratios have exact values."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Unit-circle definitions",
+      "latex": "\\cos\\theta = x,\\quad \\sin\\theta = y,\\quad \\tan\\theta = \\frac{y}{x}",
+      "meaning": "For the point P(x, y) on the unit circle."
+    },
+    {
+      "name": "General circle",
+      "latex": "\\sin\\theta = \\frac{y}{r},\\ \\cos\\theta = \\frac{x}{r},\\ \\tan\\theta = \\frac{y}{x},\\ r = \\sqrt{x^2+y^2}",
+      "meaning": "For any point on the terminal arm."
+    },
+    {
+      "name": "Reciprocal ratios",
+      "latex": "\\csc\\theta = \\frac{1}{\\sin\\theta},\\ \\sec\\theta = \\frac{1}{\\cos\\theta},\\ \\cot\\theta = \\frac{1}{\\tan\\theta}",
+      "meaning": ""
+    },
+    {
+      "name": "Reference angles",
+      "latex": "\\text{QII: } \\pi-\\theta,\\quad \\text{QIII: } \\theta-\\pi,\\quad \\text{QIV: } 2\\pi-\\theta",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Six ratios with a calculator",
+      "problem": "Determine the six trigonometric ratios of $\\frac{4\\pi}{11}$ to four decimal places.",
+      "steps": [
+        "Set the calculator to **radian** mode.",
+        "$\\sin\\frac{4\\pi}{11}\\approx 0.9096$, $\\cos\\frac{4\\pi}{11}\\approx 0.4154$, $\\tan\\frac{4\\pi}{11}\\approx 2.1897$.",
+        "Reciprocals: $\\csc\\approx \\frac{1}{0.9096}\\approx 1.0994$, $\\sec\\approx\\frac{1}{0.4154}\\approx 2.4072$, $\\cot\\approx\\frac{1}{2.1897}\\approx 0.4567$.",
+        "Check: $\\frac{4\\pi}{11}$ is in quadrant I, so all six are positive ✓"
+      ],
+      "answer": "sin 0.9096, cos 0.4154, tan 2.1897, csc 1.0994, sec 2.4072, cot 0.4567"
+    },
+    {
+      "title": "Six exact ratios of 5π/3",
+      "problem": "Use the unit circle to find exact values of the six trigonometric ratios of $\\frac{5\\pi}{3}$.",
+      "steps": [
+        "$\\frac{5\\pi}{3}$ is between $\\frac{3\\pi}{2}$ and $2\\pi$: quadrant IV.",
+        "Reference angle: $2\\pi - \\frac{5\\pi}{3} = \\frac{\\pi}{3}$.",
+        "The $\\frac{\\pi}{3}$ point is $\\left(\\frac12, \\frac{\\sqrt3}{2}\\right)$; in quadrant IV $y$ is negative: $P\\left(\\frac12, -\\frac{\\sqrt3}{2}\\right)$.",
+        "$\\sin\\frac{5\\pi}{3} = -\\frac{\\sqrt3}{2}$, $\\cos\\frac{5\\pi}{3} = \\frac12$, $\\tan\\frac{5\\pi}{3} = -\\sqrt3$.",
+        "$\\csc = -\\frac{2}{\\sqrt3}$, $\\sec = 2$, $\\cot = -\\frac{1}{\\sqrt3}$. Only cos and sec are positive — matches CAST ✓"
+      ],
+      "answer": "$-\\frac{\\sqrt3}{2}, \\frac12, -\\sqrt3, -\\frac{2}{\\sqrt3}, 2, -\\frac{1}{\\sqrt3}$"
+    },
+    {
+      "title": "Exact value of an expression",
+      "problem": "Find the exact value of $\\dfrac{\\sin\\frac{\\pi}{4}\\tan\\frac{\\pi}{3}}{\\cos\\frac{\\pi}{6}}$.",
+      "steps": [
+        "Substitute: $\\dfrac{\\frac{1}{\\sqrt2}\\cdot\\sqrt3}{\\frac{\\sqrt3}{2}}$.",
+        "Divide by a fraction = multiply by its reciprocal: $\\frac{\\sqrt3}{\\sqrt2}\\cdot\\frac{2}{\\sqrt3}$.",
+        "Cancel $\\sqrt3$: $\\frac{2}{\\sqrt2} = \\sqrt2$.",
+        "Calculator check (RAD): $1.4142$ ✓"
+      ],
+      "answer": "$\\sqrt2$"
+    },
+    {
+      "title": "The kite problem",
+      "problem": "A kite on a 40 m string is at angle $\\frac{\\pi}{4}$ with the ground, then rises to $\\frac{\\pi}{3}$. Find exact expressions for the horizontal and vertical distances the kite moves.",
+      "steps": [
+        "Horizontal positions: $x_1 = 40\\cos\\frac{\\pi}{4} = \\frac{40}{\\sqrt2} = 20\\sqrt2$, $x_2 = 40\\cos\\frac{\\pi}{3} = 20$.",
+        "Horizontal move: $20\\sqrt2 - 20 = 20(\\sqrt2-1)\\approx 8.3$ m (toward the flyer).",
+        "Heights: $y_1 = 40\\sin\\frac{\\pi}{4} = 20\\sqrt2$, $y_2 = 40\\sin\\frac{\\pi}{3} = 20\\sqrt3$.",
+        "Vertical move: $20\\sqrt3 - 20\\sqrt2 = 20(\\sqrt3-\\sqrt2)\\approx 6.4$ m (upward)."
+      ],
+      "answer": "Horizontal $20(\\sqrt2-1)\\approx 8.3$ m; vertical $20(\\sqrt3-\\sqrt2)\\approx 6.4$ m"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\csc x$ is the same as $\\sin^{-1}x$.",
+      "fact": "$\\csc x = \\frac{1}{\\sin x}$ (a reciprocal). $\\sin^{-1}x$ is the inverse function that returns an angle."
+    },
+    {
+      "myth": "$\\sin\\frac{\\pi}{6} = 0.0091$ — I typed it into my calculator!",
+      "fact": "That is $\\sin(\\frac{\\pi}{6}$ **degrees**$)$. In radian mode $\\sin\\frac{\\pi}{6} = 0.5$. Always check the mode."
+    },
+    {
+      "myth": "The reference angle of $\\frac{5\\pi}{4}$ is $\\frac{5\\pi}{4} - \\frac{\\pi}{2}$.",
+      "fact": "Reference angles are always measured to the **x-axis**: $\\frac{5\\pi}{4} - \\pi = \\frac{\\pi}{4}$."
+    },
+    {
+      "myth": "$\\tan\\frac{\\pi}{2} = 0$ because $\\sin$ or $\\cos$ is 0.",
+      "fact": "$\\tan\\frac{\\pi}{2} = \\frac{1}{0}$, which is **undefined**. $\\tan\\theta = 0$ only when $\\sin\\theta = 0$."
+    },
+    {
+      "myth": "Signs come from the reference angle.",
+      "fact": "The reference angle gives only the size; the **quadrant** (CAST) gives the sign."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Electronic music",
+      "body": "Synthesisers build sounds from sine waves; programs evaluate $\\sin$ of angles measured in radians thousands of times per second."
+    },
+    {
+      "title": "Surveying lots",
+      "body": "Exact expressions such as $60\\cos\\frac{\\pi}{6} = 30\\sqrt3$ m let surveyors combine several triangles without rounding errors."
+    },
+    {
+      "title": "Computer graphics",
+      "body": "Rotating a point by θ uses $(x\\cos\\theta - y\\sin\\theta,\\ x\\sin\\theta + y\\cos\\theta)$, with θ in radians in every programming language."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Use a calculator to find (to four decimal places) $\\sin 1.2$, $\\sec\\frac{5\\pi}{7}$ and $\\cot 4$.",
+      "hint": "Radian mode; reciprocals via the primary ratio.",
+      "solution": "$\\sin 1.2\\approx 0.9320$; $\\cos\\frac{5\\pi}{7}\\approx -0.6235$ so $\\sec\\approx -1.6039$; $\\tan 4\\approx 1.1578$ so $\\cot 4\\approx 0.8637$."
+    },
+    {
+      "question": "Find exact values of $\\sin$, $\\cos$ and $\\tan$ for (a) $\\frac{2\\pi}{3}$ (b) $\\frac{7\\pi}{6}$ (c) $\\frac{7\\pi}{4}$.",
+      "hint": "Reference angles $\\frac{\\pi}{3}, \\frac{\\pi}{6}, \\frac{\\pi}{4}$.",
+      "solution": "(a) $\\frac{\\sqrt3}{2}, -\\frac12, -\\sqrt3$ (b) $-\\frac12, -\\frac{\\sqrt3}{2}, \\frac{1}{\\sqrt3}$ (c) $-\\frac{1}{\\sqrt2}, \\frac{1}{\\sqrt2}, -1$"
+    },
+    {
+      "question": "Find the exact value of $\\cot\\frac{\\pi}{6}\\cos\\frac{\\pi}{3}\\csc\\frac{\\pi}{4}$.",
+      "hint": "$\\cot\\frac{\\pi}{6} = \\sqrt3$, $\\csc\\frac{\\pi}{4} = \\sqrt2$.",
+      "solution": "$\\sqrt3\\cdot\\frac12\\cdot\\sqrt2 = \\frac{\\sqrt6}{2}$"
+    },
+    {
+      "question": "Find the exact value of $\\tan\\frac{\\pi}{4} - \\tan\\frac{\\pi}{6}\\tan\\frac{\\pi}{3}$.",
+      "hint": "$\\tan\\frac{\\pi}{6}\\tan\\frac{\\pi}{3} = \\frac{1}{\\sqrt3}\\cdot\\sqrt3$.",
+      "solution": "$1 - 1 = 0$"
+    },
+    {
+      "question": "Find the exact values of all six ratios of $\\frac{3\\pi}{2}$.",
+      "hint": "The point is $(0, -1)$.",
+      "solution": "$\\sin = -1$, $\\cos = 0$, $\\tan$ undefined, $\\csc = -1$, $\\sec$ undefined, $\\cot = 0$."
+    },
+    {
+      "question": "In a right triangle the side opposite an angle of $\\frac{\\pi}{3}$ is 15 m. Find the exact length of the side adjacent to that angle.",
+      "hint": "$\\tan\\frac{\\pi}{3} = \\frac{\\text{opp}}{\\text{adj}}$.",
+      "solution": "adj $= \\frac{15}{\\sqrt3} = 5\\sqrt3$ m"
+    },
+    {
+      "question": "On a \"radian watch\" the 12 is replaced by 0 and the 6 by π. What should replace the 3 and the 9?",
+      "hint": "The watch numbers mark angles moving clockwise from 12.",
+      "solution": "3 → $\\frac{\\pi}{2}$, 9 → $\\frac{3\\pi}{2}$ (1 → $\\frac{\\pi}{6}$, 2 → $\\frac{\\pi}{3}$, …)."
+    }
+  ],
+  "summary": [
+    "Set calculators to radian mode; find csc, sec and cot as reciprocals of sin, cos and tan.",
+    "On the unit circle, the point at angle θ is $(\\cos\\theta, \\sin\\theta)$.",
+    "Special triangles give exact values for $\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}$; quadrantal angles come straight from the axes.",
+    "For multiples of special angles, use the reference angle for the size and CAST for the sign.",
+    "Exact expressions (with radicals) avoid rounding errors in multi-step problems."
+  ],
+  "questions": [
+    {
+      "id": "m4-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "t": {
+          "choices": [
+            0.85,
+            1.35,
+            2.2,
+            2.75,
+            3.6,
+            4.1,
+            5.0,
+            5.8
+          ]
+        }
+      },
+      "text": "Use a calculator to determine the six trigonometric ratios of $\\theta = {{t}}$ rad, rounded to four decimal places. State the quadrant of the angle and explain how the signs of your answers agree with the CAST rule.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\sin\\theta$",
+          "answer": {
+            "expr": "sin(t)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\cos\\theta$",
+          "answer": {
+            "expr": "cos(t)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\csc\\theta$",
+          "answer": {
+            "expr": "1/sin(t)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\cot\\theta$",
+          "answer": {
+            "expr": "1/tan(t)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "In radian mode:\n\n$\\sin {{t}}\\approx {{sin(t):4}}$, $\\cos {{t}}\\approx {{cos(t):4}}$, $\\tan {{t}}\\approx {{tan(t):4}}$\n\n$\\csc {{t}} = \\frac{1}{\\sin {{t}}}\\approx {{1/sin(t):4}}$, $\\sec {{t}}\\approx {{1/cos(t):4}}$, $\\cot {{t}}\\approx {{1/tan(t):4}}$.\n\nQuadrant: compare with $\\frac{\\pi}{2}\\approx 1.571$, $\\pi\\approx 3.142$, $\\frac{3\\pi}{2}\\approx 4.712$. The signs match CAST (QI all positive, QII only sin/csc, QIII only tan/cot, QIV only cos/sec).",
+      "rubric": [
+        {
+          "point": "Calculator in radian mode: correct sin, cos, tan",
+          "marks": 2
+        },
+        {
+          "point": "Correct reciprocal ratios",
+          "marks": 2
+        },
+        {
+          "point": "Correct quadrant with explanation using CAST",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q02",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain how to construct the two special triangles and use them to find the exact values of $\\sin$, $\\cos$ and $\\tan$ for $\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$ and $\\frac{\\pi}{3}$. Present your values in a table.",
+      "modelAnswer": "**Isosceles right triangle:** two legs of 1; by Pythagoras the hypotenuse is $\\sqrt2$; both acute angles are $\\frac{\\pi}{4}$. So $\\sin\\frac{\\pi}{4} = \\cos\\frac{\\pi}{4} = \\frac{1}{\\sqrt2}$ and $\\tan\\frac{\\pi}{4} = 1$.\n\n**Half an equilateral triangle:** take an equilateral triangle of side 2 (angles $\\frac{\\pi}{3}$) and cut it in half along an altitude. The halves have hypotenuse 2, short leg 1, and long leg $\\sqrt{2^2-1^2} = \\sqrt3$; the angles are $\\frac{\\pi}{6}$ (opposite the 1) and $\\frac{\\pi}{3}$ (opposite $\\sqrt3$).\n\n| | sin | cos | tan |\n|---|---|---|---|\n| π/6 | 1/2 | √3/2 | 1/√3 |\n| π/4 | 1/√2 | 1/√2 | 1 |\n| π/3 | √3/2 | 1/2 | √3 |",
+      "rubric": [
+        {
+          "point": "Describes the 45-45-90 triangle with sides 1, 1, √2",
+          "marks": 2
+        },
+        {
+          "point": "Describes the 30-60-90 triangle from an equilateral triangle with sides 1, √3, 2",
+          "marks": 2
+        },
+        {
+          "point": "Complete and correct table",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Use the unit circle to determine exact values of the six trigonometric ratios for $\\theta = \\frac{2\\pi}{3}$. Show the quadrant, the reference angle and the coordinates of the point on the unit circle.",
+      "modelAnswer": "$\\frac{2\\pi}{3}$ is in quadrant II; reference angle $\\pi - \\frac{2\\pi}{3} = \\frac{\\pi}{3}$. Point: $P\\left(-\\frac12, \\frac{\\sqrt3}{2}\\right)$.\n\n$\\sin\\frac{2\\pi}{3} = \\frac{\\sqrt3}{2}$, $\\cos\\frac{2\\pi}{3} = -\\frac12$, $\\tan\\frac{2\\pi}{3} = -\\sqrt3$, $\\csc = \\frac{2}{\\sqrt3}$, $\\sec = -2$, $\\cot = -\\frac{1}{\\sqrt3}$.",
+      "rubric": [
+        {
+          "point": "Correct quadrant and reference angle",
+          "marks": 1
+        },
+        {
+          "point": "Correct coordinates of P",
+          "marks": 1
+        },
+        {
+          "point": "Correct primary ratios",
+          "marks": 2
+        },
+        {
+          "point": "Correct reciprocal ratios",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine exact values of the six trigonometric ratios for (a) $\\frac{5\\pi}{4}$ and (b) $\\frac{11\\pi}{6}$. For each, sketch-describe the angle, give the reference angle and use the CAST rule.",
+      "modelAnswer": "(a) Quadrant III, reference $\\frac{\\pi}{4}$, $P\\left(-\\frac{1}{\\sqrt2}, -\\frac{1}{\\sqrt2}\\right)$: $\\sin = -\\frac{1}{\\sqrt2}$, $\\cos = -\\frac{1}{\\sqrt2}$, $\\tan = 1$, $\\csc = -\\sqrt2$, $\\sec = -\\sqrt2$, $\\cot = 1$.\n\n(b) Quadrant IV, reference $2\\pi - \\frac{11\\pi}{6} = \\frac{\\pi}{6}$, $P\\left(\\frac{\\sqrt3}{2}, -\\frac12\\right)$: $\\sin = -\\frac12$, $\\cos = \\frac{\\sqrt3}{2}$, $\\tan = -\\frac{1}{\\sqrt3}$, $\\csc = -2$, $\\sec = \\frac{2}{\\sqrt3}$, $\\cot = -\\sqrt3$.",
+      "rubric": [
+        {
+          "point": "(a) quadrant and reference angle",
+          "marks": 1
+        },
+        {
+          "point": "(a) six correct values",
+          "marks": 2
+        },
+        {
+          "point": "(b) quadrant and reference angle",
+          "marks": 1
+        },
+        {
+          "point": "(b) six correct values",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Determine the exact value of each expression. Show each substitution. Then verify with a calculator.\n\n(a) $\\sin\\frac{\\pi}{6}\\cos\\frac{\\pi}{3} + \\cos\\frac{\\pi}{6}\\sin\\frac{\\pi}{3}$\n\n(b) $\\dfrac{\\tan\\frac{\\pi}{4}}{\\sec\\frac{\\pi}{3}}$\n\n(c) $\\cot\\frac{\\pi}{4}\\,\\csc\\frac{\\pi}{6} - \\sin\\frac{\\pi}{2}$",
+      "modelAnswer": "(a) $\\frac12\\cdot\\frac12 + \\frac{\\sqrt3}{2}\\cdot\\frac{\\sqrt3}{2} = \\frac14 + \\frac34 = 1$.\n\n(b) $\\frac{1}{2} = \\frac12$.\n\n(c) $1\\cdot 2 - 1 = 1$.\n\nCalculator (RAD): 1, 0.5, 1 ✓",
+      "rubric": [
+        {
+          "point": "(a) correct substitution and value",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct substitution and value",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct substitution and value",
+          "marks": 2
+        },
+        {
+          "point": "Calculator verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine the exact value of each expression, simplifying fully.\n\n(a) $\\dfrac{\\cos\\frac{4\\pi}{3}\\tan\\frac{5\\pi}{4}}{\\sin\\frac{3\\pi}{4}}$\n\n(b) $\\cot\\frac{5\\pi}{6} - \\tan\\frac{11\\pi}{6}\\tan\\frac{5\\pi}{3}$",
+      "modelAnswer": "(a) $\\cos\\frac{4\\pi}{3} = -\\frac12$, $\\tan\\frac{5\\pi}{4} = 1$, $\\sin\\frac{3\\pi}{4} = \\frac{1}{\\sqrt2}$. Value $= \\frac{-\\frac12}{\\frac{1}{\\sqrt2}} = -\\frac{\\sqrt2}{2}$.\n\n(b) $\\cot\\frac{5\\pi}{6} = -\\sqrt3$, $\\tan\\frac{11\\pi}{6} = -\\frac{1}{\\sqrt3}$, $\\tan\\frac{5\\pi}{3} = -\\sqrt3$. Value $= -\\sqrt3 - \\left(-\\frac{1}{\\sqrt3}\\right)(-\\sqrt3) = -\\sqrt3 - 1$.",
+      "rubric": [
+        {
+          "point": "Correct exact values with signs for (a)",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies (a) correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact values with signs for (b)",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies (b) correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "L": {
+          "min": 30,
+          "max": 80,
+          "step": 2
+        }
+      },
+      "text": "Ravinder flies a kite on a {{L}} m string. The sun is directly overhead. The string first makes an angle of $\\frac{\\pi}{6}$ with the ground, then the kite rises until the angle is $\\frac{\\pi}{3}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an exact expression for the horizontal distance the kite's shadow moves."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate it to the nearest tenth of a metre.",
+          "answer": {
+            "expr": "L/2*(sqrt(3)-1)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the vertical distance the kite rises. Explain why it equals your answer to (a).",
+          "answer": {
+            "expr": "L/2*(sqrt(3)-1)",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Horizontal distance of the kite (and shadow) from Ravinder: $x = L\\cos\\theta$.\n\n$x_1 = {{L}}\\cos\\frac{\\pi}{6} = \\frac{ {{L}}\\sqrt3}{2}$, $x_2 = {{L}}\\cos\\frac{\\pi}{3} = \\frac{ {{L}} }{2}$.\n\n(a) $d = \\frac{ {{L}}\\sqrt3}{2} - \\frac{ {{L}} }{2} = \\frac{ {{L}} }{2}(\\sqrt3 - 1)$.\n\n(b) $d\\approx {{L/2*(sqrt(3)-1):3}}$ m.\n\n(c) Height change: $\\frac{ {{L}} }{2}(\\sqrt3 - 1)$ as well, $\\approx {{L/2*(sqrt(3)-1):3}}$ m upward — because $\\sin\\frac{\\pi}{3} = \\cos\\frac{\\pi}{6}$ and $\\sin\\frac{\\pi}{6} = \\cos\\frac{\\pi}{3}$.",
+      "rubric": [
+        {
+          "point": "Models horizontal distance as L cos θ",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact values of cos π/6 and cos π/3",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact expression for d",
+          "marks": 1
+        },
+        {
+          "point": "Correct approximation",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical change with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q08",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "L1": {
+          "min": 30,
+          "max": 50,
+          "step": 5
+        },
+        "L2": {
+          "min": 55,
+          "max": 80,
+          "step": 5
+        }
+      },
+      "text": "A kite is on a {{L1}} m string at an angle of $\\frac{\\pi}{4}$ with the ground. The flyer lets out string to {{L2}} m while the angle changes to $\\frac{\\pi}{3}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the horizontal distance the kite moves, exactly and to the nearest tenth. Does it move closer or farther away?",
+          "answer": {
+            "expr": "L2/2 - L1/sqrt(2)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the change in the kite's altitude, exactly and approximately. Does it increase or decrease?",
+          "answer": {
+            "expr": "L2*sqrt(3)/2 - L1/sqrt(2)",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$x_1 = {{L1}}\\cos\\frac{\\pi}{4} = \\frac{ {{L1}} }{\\sqrt2}\\approx {{L1/sqrt(2):4}}$, $x_2 = {{L2}}\\cos\\frac{\\pi}{3} = \\frac{ {{L2}} }{2} = {{L2/2:4}}$.\n\n(a) Horizontal change: $\\frac{ {{L2}} }{2} - \\frac{ {{L1}} }{\\sqrt2}\\approx {{L2/2 - L1/sqrt(2):3}}$ m. A positive value means the kite moved farther away; negative means closer.\n\n(b) $y_1 = \\frac{ {{L1}} }{\\sqrt2}$, $y_2 = \\frac{ {{L2}}\\sqrt3}{2}$; change $= \\frac{ {{L2}}\\sqrt3}{2} - \\frac{ {{L1}} }{\\sqrt2}\\approx {{L2*sqrt(3)/2 - L1/sqrt(2):3}}$ m, an increase in altitude (since $L_2 > L_1$ and $\\sin\\frac{\\pi}{3} > \\sin\\frac{\\pi}{4}$).",
+      "rubric": [
+        {
+          "point": "Correct exact horizontal positions",
+          "marks": 2
+        },
+        {
+          "point": "Correct horizontal change with interpretation of sign",
+          "marks": 2
+        },
+        {
+          "point": "Correct exact vertical change",
+          "marks": 1
+        },
+        {
+          "point": "States and justifies altitude increase",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "min": 40,
+          "max": 120,
+          "step": 4
+        }
+      },
+      "text": "Two triangular building lots ABC and ACD share side AC. $\\angle ABC$ and $\\angle ACD$ are right angles, $\\angle DAC = \\frac{\\pi}{6}$ and $\\angle CAB = \\frac{\\pi}{4}$. Side DA (the hypotenuse of triangle ACD) is {{d}} m.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an exact expression for AC.",
+          "answer": {
+            "expr": "d*sqrt(3)/2",
+            "unit": "m",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine an exact expression for AB.",
+          "answer": {
+            "expr": "d*sqrt(6)/4",
+            "unit": "m",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) In $\\triangle ACD$: $\\cos\\frac{\\pi}{6} = \\frac{AC}{DA}$, so $AC = {{d}}\\cdot\\frac{\\sqrt3}{2} = \\frac{ {{d}}\\sqrt3}{2}\\approx {{d*sqrt(3)/2:4}}$ m.\n\n(b) In $\\triangle ABC$ (right angle at B, AC the hypotenuse): $\\cos\\frac{\\pi}{4} = \\frac{AB}{AC}$, so $AB = \\frac{ {{d}}\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} = \\frac{ {{d}}\\sqrt3}{2\\sqrt2} = \\frac{ {{d}}\\sqrt6}{4}\\approx {{d*sqrt(6)/4:4}}$ m.",
+      "rubric": [
+        {
+          "point": "Identifies the correct ratio in triangle ACD",
+          "marks": 1
+        },
+        {
+          "point": "Exact AC",
+          "marks": 1
+        },
+        {
+          "point": "Identifies AC as hypotenuse of ABC and the correct ratio",
+          "marks": 1
+        },
+        {
+          "point": "Exact AB, simplified",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain why $\\tan\\frac{\\pi}{2}$ and $\\sec\\frac{\\pi}{2}$ are undefined, but $\\cot\\frac{\\pi}{2}$ is defined. Use the unit circle in your explanation. Then list all angles $0\\le\\theta\\le 2\\pi$ for which $\\csc\\theta$ is undefined.",
+      "modelAnswer": "At $\\frac{\\pi}{2}$ the point on the unit circle is $(0, 1)$, so $\\cos\\frac{\\pi}{2} = 0$ and $\\sin\\frac{\\pi}{2} = 1$.\n\n$\\tan\\frac{\\pi}{2} = \\frac{y}{x} = \\frac{1}{0}$ and $\\sec\\frac{\\pi}{2} = \\frac{1}{x} = \\frac10$ — division by zero, so undefined. $\\cot\\frac{\\pi}{2} = \\frac{x}{y} = \\frac01 = 0$, which is defined.\n\n$\\csc\\theta = \\frac{1}{\\sin\\theta}$ is undefined when $\\sin\\theta = 0$, i.e. $y = 0$: $\\theta = 0, \\pi, 2\\pi$.",
+      "rubric": [
+        {
+          "point": "Correct unit-circle point for π/2",
+          "marks": 1
+        },
+        {
+          "point": "Explains division by zero for tan and sec",
+          "marks": 2
+        },
+        {
+          "point": "Explains cot π/2 = 0",
+          "marks": 1
+        },
+        {
+          "point": "Lists 0, π, 2π for csc",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q11",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student evaluates $\\sin\\frac{\\pi}{3}$ on a calculator and gets 0.0183. A second student says $\\sec\\frac{\\pi}{3} = \\cos^{-1}\\left(\\frac{\\pi}{3}\\right)$. Explain each student's mistake and give the correct exact values.",
+      "modelAnswer": "Student 1's calculator is in **degree** mode, so it computed $\\sin(1.047^\\circ)\\approx 0.0183$. In radian mode, $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt3}{2}\\approx 0.8660$.\n\nStudent 2 confused the **reciprocal** ratio with the **inverse** function. $\\sec\\frac{\\pi}{3} = \\frac{1}{\\cos\\frac{\\pi}{3}} = \\frac{1}{\\frac12} = 2$. $\\cos^{-1}$ returns an angle whose cosine is a given number.",
+      "rubric": [
+        {
+          "point": "Identifies degree mode error",
+          "marks": 2
+        },
+        {
+          "point": "Gives √3/2",
+          "marks": 1
+        },
+        {
+          "point": "Distinguishes reciprocal from inverse",
+          "marks": 2
+        },
+        {
+          "point": "Gives sec π/3 = 2",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            3,
+            5,
+            8
+          ]
+        },
+        "b": {
+          "choices": [
+            4,
+            12,
+            15
+          ]
+        },
+        "sx": {
+          "choices": [
+            -1,
+            1
+          ]
+        },
+        "sy": {
+          "choices": [
+            -1,
+            1
+          ]
+        }
+      },
+      "text": "The terminal arm of angle $\\theta$ in standard position passes through the point $P({{sx*a}}, {{sy*b}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the exact values of the six trigonometric ratios of θ."
+        },
+        {
+          "label": "b",
+          "text": "Determine θ in radians, 0 ≤ θ < 2π, to two decimal places.",
+          "answer": {
+            "expr": "th",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$r = \\sqrt{x^2 + y^2} = \\sqrt{ {{a^2}} + {{b^2}} } = {{sqrt(a^2+b^2):4}}$.\n\n(a) $\\sin\\theta = \\frac{y}{r} = \\frac{ {{sy*b}} }{ {{sqrt(a^2+b^2):4}} }\\approx {{sy*b/sqrt(a^2+b^2):4}}$, $\\cos\\theta = \\frac{ {{sx*a}} }{ {{sqrt(a^2+b^2):4}} }\\approx {{sx*a/sqrt(a^2+b^2):4}}$, $\\tan\\theta = \\frac{ {{sy*b}} }{ {{sx*a}} }\\approx {{sy*b/(sx*a):4}}$; the reciprocals follow.\n\n(b) The quadrant follows from the signs of $x$ and $y$; the reference angle is $\\tan^{-1}\\frac{ {{b}} }{ {{a}} }\\approx {{atan(b/a):3}}$ rad, and $\\theta$ is found from it (QII: $\\pi - $ ref, QIII: $\\pi + $ ref, QIV: $2\\pi - $ ref).\n\nHere $\\theta\\approx {{th:3}}$ rad.",
+      "rubric": [
+        {
+          "point": "Computes r",
+          "marks": 1
+        },
+        {
+          "point": "Correct primary ratios as fractions with signs",
+          "marks": 2
+        },
+        {
+          "point": "Correct reciprocal ratios",
+          "marks": 1
+        },
+        {
+          "point": "Correct quadrant and reference angle",
+          "marks": 1
+        },
+        {
+          "point": "Correct θ in radians",
+          "marks": 1
+        }
+      ],
+      "derived": {
+        "ref": "atan(b/a)",
+        "th": "(1+sx)/2*((1+sy)/2*ref + (1-sy)/2*(2*pi-ref)) + (1-sx)/2*((1+sy)/2*(pi-ref) + (1-sy)/2*(pi+ref))"
+      }
+    },
+    {
+      "id": "m4-2-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "On a \"radian watch\" the 12 is replaced by 0 and the 6 by π, and the hands move clockwise as usual. Each hour mark represents an angle measured clockwise from 12.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What exact values should replace 3, 4, 8 and 11?"
+        },
+        {
+          "label": "b",
+          "text": "What angle (in radians) is between the hands at {{h}}:00?",
+          "answer": {
+            "expr": "h*pi/6",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the angular velocity of the minute hand in radians per minute?",
+          "answer": {
+            "expr": "pi/30",
+            "unit": "rad/min",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Each hour mark is $\\frac{2\\pi}{12} = \\frac{\\pi}{6}$.\n\n(a) 3 → $\\frac{\\pi}{2}$, 4 → $\\frac{2\\pi}{3}$, 8 → $\\frac{4\\pi}{3}$, 11 → $\\frac{11\\pi}{6}$.\n\n(b) At {{h}}:00 the hour hand is at $\\frac{ {{h}}\\pi}{6}$ and the minute hand at 0, so the angle between them is $\\frac{ {{h}}\\pi}{6}$ measured clockwise from the minute hand (or $2\\pi$ minus this the other way); $\\approx {{h*pi/6:3}}$ rad.\n\n(c) The minute hand turns $2\\pi$ in 60 min, so its angular velocity is $\\frac{2\\pi}{60} = \\frac{\\pi}{30}$ rad/min.",
+      "rubric": [
+        {
+          "point": "Finds π/6 per hour mark",
+          "marks": 1
+        },
+        {
+          "point": "Correct labels for (a)",
+          "marks": 2
+        },
+        {
+          "point": "Correct angle in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct angular velocity in (c)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q14",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "h": {
+          "min": 9,
+          "max": 24,
+          "step": 3
+        }
+      },
+      "text": "A ski lodge is built with one side along a vertical cliff. Its cross-section is a right triangle: the vertical side along the cliff is {{h}} m high, the floor is the horizontal base $b$, and the sloping roof makes an angle of $\\frac{\\pi}{3}$ with the floor.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an exact expression for the base b of the lodge.",
+          "answer": {
+            "expr": "h/sqrt(3)",
+            "unit": "m",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine an exact expression for the length of the roof.",
+          "answer": {
+            "expr": "2*h/sqrt(3)",
+            "unit": "m",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "The vertical side is opposite the $\\frac{\\pi}{3}$ angle and the base $b$ is adjacent:\n\n$\\tan\\frac{\\pi}{3} = \\frac{ {{h}} }{b}\\ \\Rightarrow\\ b = \\frac{ {{h}} }{\\sqrt3} = \\frac{ {{h}}\\sqrt3}{3}\\approx {{h/sqrt(3):4}}$ m.\n\nRoof length (hypotenuse): $\\frac{ {{h}} }{\\sin\\frac{\\pi}{3}} = \\frac{ 2\\times{{h}} }{\\sqrt3}\\approx {{2*h/sqrt(3):4}}$ m.",
+      "rubric": [
+        {
+          "point": "Chooses tan with correct opposite/adjacent",
+          "marks": 1
+        },
+        {
+          "point": "Uses exact value tan π/3 = √3",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact base, rationalised",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact roof length",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q15",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Without a calculator, explain how you know that $\\sin\\frac{5\\pi}{6} = \\sin\\frac{\\pi}{6}$ but $\\cos\\frac{5\\pi}{6} = -\\cos\\frac{\\pi}{6}$. Then state two other angles in $[0, 2\\pi]$ whose sine equals $-\\frac12$, and justify.",
+      "modelAnswer": "$\\frac{5\\pi}{6}$ is the reflection of $\\frac{\\pi}{6}$ in the $y$-axis. On the unit circle the point $\\left(\\frac{\\sqrt3}{2}, \\frac12\\right)$ becomes $\\left(-\\frac{\\sqrt3}{2}, \\frac12\\right)$: the $y$-coordinate (sine) is unchanged, the $x$-coordinate (cosine) changes sign. This agrees with CAST: sine is positive in QII, cosine negative.\n\n$\\sin\\theta = -\\frac12$ needs reference angle $\\frac{\\pi}{6}$ in quadrants III and IV (where sine is negative): $\\theta = \\pi + \\frac{\\pi}{6} = \\frac{7\\pi}{6}$ and $\\theta = 2\\pi - \\frac{\\pi}{6} = \\frac{11\\pi}{6}$.",
+      "rubric": [
+        {
+          "point": "Explains reflection/same reference angle",
+          "marks": 2
+        },
+        {
+          "point": "Explains sign change of cosine using CAST or coordinates",
+          "marks": 1
+        },
+        {
+          "point": "Finds 7π/6",
+          "marks": 1
+        },
+        {
+          "point": "Finds 11π/6",
+          "marks": 1
+        },
+        {
+          "point": "Justifies using quadrants where sine is negative",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q16",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "i": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "qi": {
+          "choices": [
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "a": "(3+(1.5)*i+(0.5)*i^2)",
+        "b": "(4+(10.5)*i+(-2.5)*i^2)",
+        "c": "(5+(10)*i+(-2)*i^2)",
+        "qq": "qi+1",
+        "sc": "1 - qi*(3-qi)",
+        "ss": "1 - 2*floor(qi/2)"
+      },
+      "text": "Angle $\\theta$ is in quadrant {{qq}} and $\\cos\\theta = \\frac{ {{sc*a}} }{ {{c}} }$ (the quadrant is consistent with this sign).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine exact values of the other five trigonometric ratios.",
+          "answer": {
+            "expr": "ss*b/c",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Use $x = {{sc*a}}$, $r = {{c}}$, so $y = \\pm\\sqrt{r^2 - x^2} = \\pm\\sqrt{ {{c^2}} - {{a^2}} } = \\pm{{b}}$. Choose the sign of $y$ from the quadrant (sine is positive in quadrants I and II, negative in III and IV): $y = {{ss*b}}$.\n\n$\\sin\\theta = \\frac{ {{ss*b}} }{ {{c}} }$, $\\tan\\theta = \\frac{ {{ss*b}} }{ {{sc*a}} }$, $\\csc\\theta = \\frac{ {{c}} }{ {{ss*b}} }$, $\\sec\\theta = \\frac{ {{c}} }{ {{sc*a}} }$, $\\cot\\theta = \\frac{ {{sc*a}} }{ {{ss*b}} }$.\n\nNumerically, $\\sin\\theta\\approx {{ss*b/c:4}}$.",
+      "rubric": [
+        {
+          "point": "Uses x and r from cosine and Pythagoras for y",
+          "marks": 2
+        },
+        {
+          "point": "Chooses the sign of y from the quadrant",
+          "marks": 1
+        },
+        {
+          "point": "Correct sin and tan",
+          "marks": 1
+        },
+        {
+          "point": "Correct reciprocal ratios",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-2-q17",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Design a one-page \"exact values\" study tool (describe it in words and a table) that would help a classmate find the exact sine, cosine and tangent of any multiple of $\\frac{\\pi}{6}$ or $\\frac{\\pi}{4}$ between $0$ and $2\\pi$ without a calculator. Include at least two worked uses of your tool.",
+      "modelAnswer": "A good tool includes:\n* the two special triangles with side lengths;\n* the unit circle with all multiples of $\\frac{\\pi}{6}$ and $\\frac{\\pi}{4}$ marked and their coordinates;\n* a CAST diagram and the reference-angle rules (QII $\\pi-\\theta$, QIII $\\theta-\\pi$, QIV $2\\pi-\\theta$);\n* a procedure: find quadrant → reference angle → special-triangle value → sign.\n\nExample uses: $\\cos\\frac{7\\pi}{6}$: QIII, ref $\\frac{\\pi}{6}$, cos negative → $-\\frac{\\sqrt3}{2}$. $\\tan\\frac{7\\pi}{4}$: QIV, ref $\\frac{\\pi}{4}$, tan negative → $-1$.",
+      "rubric": [
+        {
+          "point": "Includes special triangles or a complete unit circle",
+          "marks": 2
+        },
+        {
+          "point": "Includes CAST and reference-angle rules",
+          "marks": 2
+        },
+        {
+          "point": "Clear step-by-step procedure",
+          "marks": 1
+        },
+        {
+          "point": "Two correct worked uses",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

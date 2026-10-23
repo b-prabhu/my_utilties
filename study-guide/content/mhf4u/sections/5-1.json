@@ -1,0 +1,1228 @@
+{
+  "id": "5-1",
+  "number": "5.1",
+  "title": "Graphs of Sine, Cosine, and Tangent Functions",
+  "estimatedMinutes": 75,
+  "overview": "Trigonometric ratios grow up into **trigonometric functions**. You will graph $y=\\sin x$, $y=\\cos x$ and $y=\\tan x$ using radian measure, describe their key properties, and see how each constant in $y=\\sin x+c$, $y=a\\sin x$, $y=\\sin(x-d)$ and $y=\\sin kx$ changes the graph. These graphs model sound, electricity and theme-park rides.",
+  "objectives": [
+    "Sketch $y=\\sin x$ and $y=\\cos x$ in radians and state their amplitude, period, zeros, domain and range.",
+    "Graph $y=\\tan x$, explain its asymptotes and describe its key properties.",
+    "Describe the effect of $c$, $a$, $d$ and $k$ on the graphs of sine and cosine.",
+    "Use $T=\\frac{2\\pi}{k}$ to move between period and $k$.",
+    "Write equations for sinusoidal functions from a description and model simple periodic situations.",
+    "Classify the trigonometric functions as even or odd."
+  ],
+  "lessons": [
+    {
+      "id": "functions",
+      "title": "From ratios to functions",
+      "body": "In earlier courses you used $\\sin\\theta$, $\\cos\\theta$ and $\\tan\\theta$ as **ratios** of sides in a right triangle. Now we treat them as **functions**: feed in *any* real number $x$ (an angle in **radians**) and get out a value.\n\nThink of a point moving around the **unit circle** (radius 1). After it turns through an angle $x$:\n\n* its $y$-coordinate is $\\sin x$\n* its $x$-coordinate is $\\cos x$\n* the slope of the radius is $\\tan x = \\dfrac{\\sin x}{\\cos x}$\n\nBecause the point returns to the same place every full turn ($2\\pi$ rad), the values repeat. Functions whose values repeat at regular intervals are called **periodic**.\n\n### Special-angle values you should know\n\n| $x$ | $0$ | $\\frac{\\pi}{6}$ | $\\frac{\\pi}{4}$ | $\\frac{\\pi}{3}$ | $\\frac{\\pi}{2}$ | $\\pi$ | $\\frac{3\\pi}{2}$ | $2\\pi$ |\n|---|---|---|---|---|---|---|---|---|\n| $\\sin x$ | $0$ | $\\frac12$ | $\\frac{1}{\\sqrt2}\\approx0.71$ | $\\frac{\\sqrt3}{2}\\approx0.87$ | $1$ | $0$ | $-1$ | $0$ |\n| $\\cos x$ | $1$ | $\\frac{\\sqrt3}{2}$ | $\\frac{1}{\\sqrt2}$ | $\\frac12$ | $0$ | $-1$ | $0$ | $1$ |\n| $\\tan x$ | $0$ | $\\frac{1}{\\sqrt3}\\approx0.58$ | $1$ | $\\sqrt3\\approx1.73$ | undefined | $0$ | undefined | $0$ |\n\n> **Calculator check:** always switch to **Radian mode** in this chapter. $\\sin\\frac{\\pi}{6}$ should give $0.5$."
+    },
+    {
+      "id": "sine",
+      "title": "The graph of y = sin x",
+      "body": "Plot the table values and join them with a smooth wave:\n\n\n```plot\ntitle: y = sin x\nf: sin(x) | label=y = sin x\ndomain: -2*pi, 2*pi\nrange: -1.5, 1.5\nxticks: pi\npoints: (0,0), (pi/2,1), (pi,0), (3*pi/2,-1), (2*pi,0)\n```\n\n\n**Key features of $y=\\sin x$**\n\n| Feature | Value |\n|---|---|\n| Maximum / minimum | $1$ (at $x=\\frac{\\pi}{2}+2n\\pi$) / $-1$ (at $x=\\frac{3\\pi}{2}+2n\\pi$) |\n| Amplitude | $1$ (half the distance from max to min) |\n| Period | $2\\pi$ |\n| Zeros in $[0,2\\pi]$ | $0,\\ \\pi,\\ 2\\pi$ |\n| $y$-intercept | $0$ |\n| Domain / range | $\\{x\\in\\mathbb R\\}$ / $\\{y\\in\\mathbb R \\mid -1\\le y\\le 1\\}$ |\n\n**The five key points.** One cycle of a sine wave always contains: a zero, a maximum, a zero, a minimum and a zero, spaced a **quarter period** apart. Sketching becomes easy once you place these five points."
+    },
+    {
+      "id": "cosine",
+      "title": "The graph of y = cos x",
+      "body": "```plot\ntitle: y = sin x (dashed) and y = cos x\nf: cos(x) | label=y = cos x\nf: sin(x) | dashed; label=y = sin x\ndomain: -2*pi, 2*pi\nrange: -1.5, 1.5\nxticks: pi\npoints: (0,1), (pi/2,0), (pi,-1), (3*pi/2,0), (2*pi,1)\n```\n\n\nThe cosine graph has **exactly the same shape** as the sine graph – it is just shifted.\n\n| Feature | $y=\\cos x$ |\n|---|---|\n| Maximum / minimum | $1$ at $x=0,\\,2\\pi,\\dots$ / $-1$ at $x=\\pi,\\,3\\pi,\\dots$ |\n| Amplitude / period | $1$ / $2\\pi$ |\n| Zeros in $[0,2\\pi]$ | $\\frac{\\pi}{2},\\ \\frac{3\\pi}{2}$ |\n| $y$-intercept | $1$ |\n| Domain / range | $\\{x\\in\\mathbb R\\}$ / $\\{y\\mid -1\\le y\\le1\\}$ |\n\n**Linking the two graphs:** shifting $y=\\sin x$ to the **left** by $\\frac{\\pi}{2}$ gives $y=\\cos x$:\n$$\\cos x=\\sin\\left(x+\\frac{\\pi}{2}\\right) \\qquad\\text{and}\\qquad \\sin x=\\cos\\left(x-\\frac{\\pi}{2}\\right)$$\nBecause both graphs repeat every $2\\pi$, there are infinitely many phase shifts that work (e.g. $\\frac{\\pi}{2}-2\\pi=-\\frac{3\\pi}{2}$ to the right also maps sine onto cosine).\n\n**Even and odd.** $\\cos(-x)=\\cos x$, so cosine is an **even** function (symmetric in the $y$-axis). $\\sin(-x)=-\\sin x$, so sine is **odd** (rotational symmetry about the origin)."
+    },
+    {
+      "id": "tangent",
+      "title": "The graph of y = tan x",
+      "body": "Since $\\tan x=\\dfrac{\\sin x}{\\cos x}$, tangent is **undefined wherever $\\cos x=0$**, that is at $x=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\dots$ (odd multiples of $\\frac{\\pi}{2}$).\n\nWhat happens near $x=\\frac{\\pi}{2}$?\n\n* Just to the **left** ($x\\to\\frac{\\pi}{2}^-$): $\\sin x\\approx1$ and $\\cos x$ is a tiny **positive** number, so $\\tan x\\to+\\infty$.\n* Just to the **right** ($x\\to\\frac{\\pi}{2}^+$): $\\cos x$ is a tiny **negative** number, so $\\tan x\\to-\\infty$.\n\nThe graph therefore has **vertical asymptotes** at these values.\n\n\n```plot\ntitle: y = tan x\nf: tan(x) | label=y = tan x\ndomain: -2*pi, 2*pi\nrange: -6, 6\nxticks: pi\nasymptote x: -3*pi/2, -pi/2, pi/2, 3*pi/2\npoints: (0,0), (pi/4,1), (pi,0), (-pi/4,-1)\n```\n\n\n| Feature | $y=\\tan x$ |\n|---|---|\n| Max / min / amplitude | none – the graph is unbounded, so **no amplitude** |\n| Period | $\\pi$ |\n| Zeros in $[0,2\\pi]$ | $0,\\ \\pi,\\ 2\\pi$ |\n| Asymptotes in $[0,2\\pi]$ | $x=\\frac{\\pi}{2},\\ x=\\frac{3\\pi}{2}$ |\n| Domain | $\\{x\\in\\mathbb R \\mid x\\ne\\frac{\\pi}{2}+n\\pi,\\ n\\in\\mathbb Z\\}$ |\n| Range | $\\{y\\in\\mathbb R\\}$ |\n\nTangent is **odd**: $\\tan(-x)=-\\tan x$. It is still a function – every vertical line meets the graph at most once."
+    },
+    {
+      "id": "transformations",
+      "title": "One transformation at a time",
+      "body": "Each constant in a transformed sine or cosine function does **one job**. Learn them separately first.\n\n| Equation | Effect on $y=\\sin x$ | What changes |\n|---|---|---|\n| $y=\\sin x+c$ | vertical translation $c$ units (up if $c>0$) | max $=1+c$, min $=-1+c$ |\n| $y=a\\sin x$ | vertical stretch by $\\lvert a\\rvert$; reflection in the $x$-axis if $a<0$ | amplitude $=\\lvert a\\rvert$ |\n| $y=\\sin(x-d)$ | horizontal translation (**phase shift**) $d$ units (right if $d>0$) | zeros move to $x=d,\\ d+\\pi,\\dots$ |\n| $y=\\sin kx$ | horizontal compression/stretch by factor $\\frac1k$ | period $=\\dfrac{2\\pi}{k}$ |\n\nThe same rules apply to $y=\\cos x$ (and $c$, $a$, $d$, $k$ act on $y=\\tan x$ the same way, except that tangent has period $\\frac{\\pi}{k}$ and no amplitude).\n\n\n```plot\ntitle: y = sin x, y = 2 sin x and y = sin 2x\nf: sin(x) | dashed; label=y = sin x\nf: 2*sin(x) | label=y = 2 sin x\nf: sin(2*x) | label=y = sin 2x\ndomain: 0, 2*pi\nrange: -2.5, 2.5\nxticks: pi\n```\n\n\n**Watch the sign of $d$.** In $y=\\sin(x-d)$, the zero that used to be at $x=0$ now happens when $x-d=0$, i.e. at $x=d$. So\n* $y=\\sin\\left(x-\\frac{\\pi}{4}\\right)$ shifts **right** $\\frac{\\pi}{4}$\n* $y=\\sin\\left(x+\\frac{\\pi}{6}\\right)=\\sin\\left(x-\\left(-\\frac{\\pi}{6}\\right)\\right)$ shifts **left** $\\frac{\\pi}{6}$\n\n**Period and $k$.** Bigger $k$ means more cycles squeezed into the same space, so a **shorter** period. Solving for $k$: $k=\\dfrac{2\\pi}{\\text{period}}$.\n\n**Frequency.** In physics, the **frequency** $f$ (in hertz, Hz) is the number of cycles per second. It is the reciprocal of the period: $f=\\dfrac{1}{T}$. For $y=\\sin kt$, $k=\\dfrac{2\\pi}{T}=2\\pi f$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "periodic function",
+      "definition": "A function whose values repeat at regular intervals: $f(x+p)=f(x)$ for every $x$, where $p$ is the period."
+    },
+    {
+      "term": "period",
+      "definition": "The horizontal length of one complete cycle. For $y=\\sin kx$ or $y=\\cos kx$ it is $\\frac{2\\pi}{k}$; for $y=\\tan kx$ it is $\\frac{\\pi}{k}$."
+    },
+    {
+      "term": "amplitude",
+      "definition": "Half the distance between the maximum and minimum values: $\\frac{\\max-\\min}{2}$. For $y=a\\sin x$ it is $\\lvert a\\rvert$. Tangent has no amplitude."
+    },
+    {
+      "term": "phase shift",
+      "definition": "A horizontal translation of a sinusoidal graph. In $y=\\sin(x-d)$ the phase shift is $d$ (right if $d>0$, left if $d<0$)."
+    },
+    {
+      "term": "vertical translation",
+      "definition": "The constant $c$ in $y=\\sin x+c$; it moves the whole graph up or down and sets the midline $y=c$."
+    },
+    {
+      "term": "sinusoidal function",
+      "definition": "Any function whose graph is a transformed sine or cosine wave."
+    },
+    {
+      "term": "vertical asymptote",
+      "definition": "A vertical line $x=a$ that the graph approaches but never reaches; $y=\\tan x$ has one wherever $\\cos x=0$."
+    },
+    {
+      "term": "frequency",
+      "definition": "The number of cycles completed per unit of time (cycles per second = hertz). Frequency $=\\frac{1}{\\text{period}}$."
+    },
+    {
+      "term": "even / odd function",
+      "definition": "Even: $f(-x)=f(x)$ (cosine). Odd: $f(-x)=-f(x)$ (sine and tangent)."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Period of sine and cosine",
+      "latex": "T=\\frac{2\\pi}{k}\\quad\\Longleftrightarrow\\quad k=\\frac{2\\pi}{T}",
+      "meaning": "For $y=\\sin kx$ or $y=\\cos kx$ (use $k>0$)."
+    },
+    {
+      "name": "Period of tangent",
+      "latex": "T=\\frac{\\pi}{k}",
+      "meaning": "For $y=\\tan kx$."
+    },
+    {
+      "name": "Amplitude and midline",
+      "latex": "a=\\frac{\\max-\\min}{2},\\qquad c=\\frac{\\max+\\min}{2}",
+      "meaning": "Read straight from the highest and lowest values."
+    },
+    {
+      "name": "Quotient identity",
+      "latex": "\\tan x=\\frac{\\sin x}{\\cos x}",
+      "meaning": "Explains the zeros and asymptotes of the tangent graph."
+    },
+    {
+      "name": "Sine–cosine shift",
+      "latex": "\\cos x=\\sin\\left(x+\\frac{\\pi}{2}\\right)",
+      "meaning": "A phase shift of $\\frac{\\pi}{2}$ maps one graph onto the other."
+    },
+    {
+      "name": "Frequency",
+      "latex": "f=\\frac{1}{T},\\qquad k=2\\pi f",
+      "meaning": "Used for sound and electricity models."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Vertical translations",
+      "problem": "Predict the maximum and minimum values of $y=\\sin x+2$ and $y=\\sin x-3$ and where they occur on $[0,2\\pi]$.",
+      "steps": [
+        "Adding a constant changes every $y$-coordinate by the same amount – a vertical translation.",
+        "$y=\\sin x$ has max $1$ at $x=\\frac{\\pi}{2}$ and min $-1$ at $x=\\frac{3\\pi}{2}$.",
+        "$y=\\sin x+2$: max $1+2=3$ at $x=\\frac{\\pi}{2}$; min $-1+2=1$ at $x=\\frac{3\\pi}{2}$.",
+        "$y=\\sin x-3$: max $-2$ at $x=\\frac{\\pi}{2}$; min $-4$ at $x=\\frac{3\\pi}{2}$.\n\n```plot\nf: sin(x) | dashed; label=y = sin x\nf: sin(x)+2 | label=y = sin x + 2\nf: sin(x)-3 | label=y = sin x − 3\ndomain: 0, 2*pi\nrange: -4.5, 3.5\nxticks: pi\n```\n\n"
+      ],
+      "answer": "The $x$-values of the max and min do not change; only the heights move by $c$."
+    },
+    {
+      "title": "Amplitude and reflection",
+      "problem": "Describe and sketch $y=-3\\sin x$ on $[0,2\\pi]$.",
+      "steps": [
+        "$a=-3$: amplitude $\\lvert -3\\rvert=3$, and the negative sign reflects the graph in the $x$-axis.",
+        "Key points of $y=\\sin x$: $(0,0),(\\frac{\\pi}{2},1),(\\pi,0),(\\frac{3\\pi}{2},-1),(2\\pi,0)$.",
+        "Multiply each $y$-coordinate by $-3$: $(0,0),(\\frac{\\pi}{2},-3),(\\pi,0),(\\frac{3\\pi}{2},3),(2\\pi,0)$.\n\n```plot\nf: sin(x) | dashed; label=y = sin x\nf: -3*sin(x) | label=y = −3 sin x\ndomain: 0, 2*pi\nrange: -3.5, 3.5\nxticks: pi\npoints: (pi/2,-3), (3*pi/2,3)\n```\n\n"
+      ],
+      "answer": "Amplitude 3, max $3$ at $x=\\frac{3\\pi}{2}$, min $-3$ at $x=\\frac{\\pi}{2}$; zeros unchanged."
+    },
+    {
+      "title": "Phase shift",
+      "problem": "Find the zeros of $y=\\sin\\left(x-\\frac{\\pi}{4}\\right)$ in $[0,2\\pi]$.",
+      "steps": [
+        "The graph of $y=\\sin x$ is shifted $\\frac{\\pi}{4}$ to the **right**.",
+        "Zeros of $\\sin x$ are at $0,\\pi,2\\pi$. Add $\\frac{\\pi}{4}$: $\\frac{\\pi}{4},\\ \\frac{5\\pi}{4},\\ \\frac{9\\pi}{4}$.",
+        "$\\frac{9\\pi}{4}>2\\pi$, so discard it. Check the left end: the zero at $-\\pi+\\frac{\\pi}{4}=-\\frac{3\\pi}{4}$ is outside too."
+      ],
+      "answer": "Zeros at $x=\\frac{\\pi}{4}$ and $x=\\frac{5\\pi}{4}$."
+    },
+    {
+      "title": "Changing the period",
+      "problem": "State the period of $y=\\sin 2x$ and $y=\\sin\\frac12 x$.",
+      "steps": [
+        "Use $T=\\frac{2\\pi}{k}$.",
+        "$y=\\sin2x$: $T=\\frac{2\\pi}{2}=\\pi$ – the graph is compressed horizontally (two cycles in $2\\pi$).",
+        "$y=\\sin\\frac12x$: $T=\\frac{2\\pi}{1/2}=4\\pi$ – the graph is stretched horizontally (half a cycle in $2\\pi$)."
+      ],
+      "answer": "Periods $\\pi$ and $4\\pi$."
+    },
+    {
+      "title": "Household electricity",
+      "problem": "The voltage of North American household electricity has a maximum of about $120$ V and a frequency of $60$ Hz. Model it with $V=a\\sin kt$.",
+      "steps": [
+        "Amplitude: $a=120$.",
+        "Period: $T=\\frac{1}{f}=\\frac{1}{60}$ s.",
+        "$k=\\frac{2\\pi}{T}=2\\pi(60)=120\\pi$.",
+        "Model: $V=120\\sin(120\\pi t)$."
+      ],
+      "answer": "$V=120\\sin(120\\pi t)$, with $t$ in seconds."
+    },
+    {
+      "title": "The Octopus ride",
+      "problem": "An Octopus ride completes one revolution every $60$ s. Riders reach a maximum height of $4$ m and a minimum of $1$ m. Find $a$, $c$ and $k$ for $h=a\\sin(kt)+c$.",
+      "steps": [
+        "$a=\\frac{4-1}{2}=1.5$ m.",
+        "$c=\\frac{4+1}{2}=2.5$ m (the height of the midline).",
+        "Period $60$ s, so $k=\\frac{2\\pi}{60}=\\frac{\\pi}{30}$."
+      ],
+      "answer": "$h=1.5\\sin\\left(\\frac{\\pi}{30}t\\right)+2.5$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The calculator gives weird answers, so the formula must be wrong.",
+      "fact": "Check the mode first. In this chapter angles are in **radians**; a calculator in degree mode gives $\\sin\\frac{\\pi}{6}=\\sin(0.5236^\\circ)\\approx0.009$ instead of $0.5$."
+    },
+    {
+      "myth": "$y=\\sin(x+\\frac{\\pi}{3})$ shifts the graph to the right because of the plus sign.",
+      "fact": "A **plus** inside the brackets shifts **left**. Write it as $\\sin(x-(-\\frac{\\pi}{3}))$: $d=-\\frac{\\pi}{3}$."
+    },
+    {
+      "myth": "A larger $k$ gives a longer period.",
+      "fact": "Period $=\\frac{2\\pi}{k}$, so a larger $k$ gives a **shorter** period – more cycles in the same interval."
+    },
+    {
+      "myth": "$y=-2\\sin x$ has an amplitude of $-2$.",
+      "fact": "Amplitude is a distance, so it is always positive: $\\lvert-2\\rvert=2$. The negative sign means a reflection."
+    },
+    {
+      "myth": "The tangent graph has an amplitude of 1 because $\\tan\\frac{\\pi}{4}=1$.",
+      "fact": "Tangent has **no** maximum or minimum, so it has no amplitude at all."
+    },
+    {
+      "myth": "Tangent has the same period as sine and cosine.",
+      "fact": "Tangent repeats every $\\pi$, not $2\\pi$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Sound",
+      "body": "A musical note is a pressure wave. The A above middle C vibrates $440$ times per second (440 Hz), so its period is $\\frac{1}{440}\\approx0.00227$ s and it can be modelled by $y=\\sin(880\\pi t)$. Higher notes have larger $k$ and shorter periods."
+    },
+    {
+      "title": "Electricity",
+      "body": "The alternating current in your home follows $V=120\\sin(120\\pi t)$: the voltage swings between $+120$ V and $-120$ V sixty times every second."
+    },
+    {
+      "title": "Business cycles",
+      "body": "Economists describe periods of expansion and contraction of the economy with a periodic, wave-like model – a use of trigonometric functions that has nothing to do with triangles."
+    },
+    {
+      "title": "Wave pools",
+      "body": "A wave generator pushing back and forth 20 times a minute has a period of $3$ s. The height of the wave from crest to trough is twice the amplitude."
+    }
+  ],
+  "practice": [
+    {
+      "question": "State the maximum and minimum values of $y=\\cos x-5$ and the values of $x$ in $[-2\\pi,2\\pi]$ where they occur.",
+      "hint": "Vertical translation only: subtract 5 from the max and min of $\\cos x$.",
+      "solution": "Max $1-5=-4$ at $x=-2\\pi,0,2\\pi$; min $-1-5=-6$ at $x=-\\pi,\\pi$."
+    },
+    {
+      "question": "Write an equation of a sine function with amplitude $4$ that is reflected in the $x$-axis.",
+      "hint": "Use $y=a\\sin x$ with $a$ negative.",
+      "solution": "$y=-4\\sin x$."
+    },
+    {
+      "question": "Write an equation of a cosine function with a phase shift of $\\frac{5\\pi}{6}$ to the left.",
+      "hint": "Left means $d$ is negative in $\\cos(x-d)$.",
+      "solution": "$y=\\cos\\left(x+\\frac{5\\pi}{6}\\right)$."
+    },
+    {
+      "question": "Write an equation of a cosine function with period $\\frac{3\\pi}{2}$.",
+      "hint": "$k=\\frac{2\\pi}{T}$.",
+      "solution": "$k=\\frac{2\\pi}{3\\pi/2}=\\frac43$, so $y=\\cos\\frac43x$."
+    },
+    {
+      "question": "One cycle of a sine function begins at $x=-\\frac{\\pi}{6}$ and ends at $x=\\frac{\\pi}{3}$. Find the period, the phase shift, and an equation of the form $y=\\sin[k(x-d)]$.",
+      "hint": "Period = end − start. A sine cycle 'begins' at a zero going up.",
+      "solution": "Period $=\\frac{\\pi}{3}-(-\\frac{\\pi}{6})=\\frac{\\pi}{2}$, so $k=\\frac{2\\pi}{\\pi/2}=4$. The cycle starts at $x=-\\frac{\\pi}{6}$, so the phase shift is $\\frac{\\pi}{6}$ left: $y=\\sin\\left[4\\left(x+\\frac{\\pi}{6}\\right)\\right]$."
+    },
+    {
+      "question": "Is $y=\\tan x$ even, odd or neither? Justify.",
+      "hint": "Compare $\\tan(-x)$ with $\\tan x$ using the quotient identity.",
+      "solution": "$\\tan(-x)=\\frac{\\sin(-x)}{\\cos(-x)}=\\frac{-\\sin x}{\\cos x}=-\\tan x$, so tangent is **odd**."
+    },
+    {
+      "question": "A flute note has frequency $440$ Hz. Find its period and the value of $k$ in $y=\\sin kt$.",
+      "hint": "$T=\\frac1f$ and $k=\\frac{2\\pi}{T}$.",
+      "solution": "$T=\\frac{1}{440}\\approx0.002\\,27$ s; $k=2\\pi(440)=880\\pi\\approx2765$."
+    },
+    {
+      "question": "Use the graphs of $y=\\sin x$ and $y=\\cos x$ to explain why $y=\\tan x$ is negative on $\\left(\\frac{\\pi}{2},\\pi\\right)$.",
+      "hint": "Look at the signs of sine and cosine there.",
+      "solution": "On $\\left(\\frac{\\pi}{2},\\pi\\right)$, $\\sin x>0$ but $\\cos x<0$, so the quotient $\\frac{\\sin x}{\\cos x}$ is negative."
+    }
+  ],
+  "summary": [
+    "$y=\\sin x$ and $y=\\cos x$ are periodic with amplitude 1, period $2\\pi$, domain $\\mathbb R$ and range $[-1,1]$.",
+    "$y=\\cos x$ is $y=\\sin x$ shifted $\\frac{\\pi}{2}$ left.",
+    "$y=\\tan x$ has period $\\pi$, no amplitude, zeros at $n\\pi$, and vertical asymptotes at odd multiples of $\\frac{\\pi}{2}$.",
+    "In $y=a\\sin[k(x-d)]+c$: $\\lvert a\\rvert$ = amplitude, $\\frac{2\\pi}{k}$ = period, $d$ = phase shift, $c$ = vertical translation.",
+    "Frequency is the reciprocal of period."
+  ],
+  "questions": [
+    {
+      "id": "5-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "c": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Consider $y=\\sin x+{{c}}$ on the interval $x\\in[-2\\pi,2\\pi]$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the maximum value.",
+          "answer": {
+            "expr": "c+1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the minimum value.",
+          "answer": {
+            "expr": "c-1",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "State all values of $x$ in the interval where the maximum and minimum occur."
+        },
+        {
+          "label": "d",
+          "text": "State the range of the function."
+        }
+      ],
+      "modelAnswer": "(a) Adding {{c}} translates every point up {{c}} units, so the maximum is $1+{{c}}={{c+1}}$.\n\n(b) The minimum is $-1+{{c}}={{c-1}}$.\n\n(c) The maximum occurs where $\\sin x=1$: $x=-\\frac{3\\pi}{2}$ and $x=\\frac{\\pi}{2}$. The minimum occurs where $\\sin x=-1$: $x=-\\frac{\\pi}{2}$ and $x=\\frac{3\\pi}{2}$.\n\n(d) Range: $\\{y\\in\\mathbb R \\mid {{c-1}}\\le y\\le {{c+1}}\\}$.",
+      "rubric": [
+        {
+          "point": "Correct maximum",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-values for max and min (all four)",
+          "marks": 2
+        },
+        {
+          "point": "Correct range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "c": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Consider $y=\\cos x-{{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the maximum value and where it occurs.",
+          "answer": {
+            "expr": "1-c",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the minimum value and where it occurs.",
+          "answer": {
+            "expr": "-1-c",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe how the graph is related to the graph of $y=\\cos x$."
+        }
+      ],
+      "modelAnswer": "(a) Max $=1-{{c}}={{1-c}}$, at $x=0,\\ \\pm2\\pi,\\dots$\n\n(b) Min $=-1-{{c}}={{-1-c}}$, at $x=\\pm\\pi,\\ \\pm3\\pi,\\dots$\n\n(c) Every point of $y=\\cos x$ moves {{c}} units down; the midline is $y=-{{c}}$. The shape, period ($2\\pi$) and amplitude (1) are unchanged.",
+      "rubric": [
+        {
+          "point": "Correct maximum and where it occurs",
+          "marks": 1
+        },
+        {
+          "point": "Correct minimum and where it occurs",
+          "marks": 1
+        },
+        {
+          "point": "Describes the transformation as a vertical translation down",
+          "marks": 1
+        },
+        {
+          "point": "States period and amplitude unchanged",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Write an equation for each function and state its maximum and minimum values. (a) a sine function with amplitude {{a}}, reflected in the $x$-axis; (b) a cosine function with amplitude {{b}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Sine function, amplitude {{a}}, reflected in the $x$-axis."
+        },
+        {
+          "label": "b",
+          "text": "Cosine function, amplitude {{b}}."
+        }
+      ],
+      "modelAnswer": "(a) $y=-{{a}}\\sin x$. Reflection changes the sign of $a$ but the amplitude is still {{a}}: max $={{a}}$ (at $x=\\frac{3\\pi}{2}$), min $=-{{a}}$ (at $x=\\frac{\\pi}{2}$).\n\n(b) $y={{b}}\\cos x$: max $={{b}}$, min $=-{{b}}$.",
+      "rubric": [
+        {
+          "point": "Correct equation (a) with negative coefficient",
+          "marks": 1
+        },
+        {
+          "point": "Correct max/min for (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct max/min for (b)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "choices": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "Write an equation of a sine function with period $\\frac{\\pi}{ {{n}} }$ and amplitude 1. Then state how many complete cycles it makes on $[0,2\\pi]$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $k$.",
+          "answer": {
+            "expr": "2*n",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the equation."
+        },
+        {
+          "label": "c",
+          "text": "How many complete cycles are there on $[0,2\\pi]$?",
+          "answer": {
+            "expr": "2*n",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Use $k=\\frac{2\\pi}{T}=\\dfrac{2\\pi}{\\pi/{{n}}}=2({{n}})={{2*n}}$.\n\nEquation: $y=\\sin {{2*n}}x$.\n\nNumber of cycles in $[0,2\\pi]$: $\\dfrac{2\\pi}{\\pi/{{n}}}={{2*n}}$ cycles.",
+      "rubric": [
+        {
+          "point": "Uses k = 2π/T",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of k",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct number of cycles with reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mx": {
+          "min": 4,
+          "max": 12,
+          "step": 1
+        },
+        "mn": {
+          "min": -6,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "text": "A cosine function has a maximum value of {{mx}} and a minimum value of {{mn}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the amplitude.",
+          "answer": {
+            "expr": "(mx-mn)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the vertical translation.",
+          "answer": {
+            "expr": "(mx+mn)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write a possible equation and describe the location of its maxima and minima over two cycles starting at $x=0$."
+        }
+      ],
+      "modelAnswer": "(a) Amplitude $a=\\dfrac{ {{mx}}-({{mn}}) }{2}={{(mx-mn)/2:3}}$.\n\n(b) Vertical translation $c=\\dfrac{ {{mx}}+({{mn}}) }{2}={{(mx+mn)/2:3}}$.\n\n(c) $y={{(mx-mn)/2:3}}\\cos x+({{(mx+mn)/2:3}})$ (period $2\\pi$, no phase shift). Over two cycles, maxima at $x=0,2\\pi,4\\pi$; minima at $x=\\pi,3\\pi$.",
+      "rubric": [
+        {
+          "point": "Correct amplitude using (max − min)/2",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical translation using (max + min)/2",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Describes key points over two cycles",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        },
+        "m": {
+          "choices": [
+            2,
+            3
+          ]
+        }
+      },
+      "text": "One cycle of a sine function begins at $x=-\\frac{\\pi}{ {{n}} }$ and ends at $x=\\frac{\\pi}{ {{m}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the period.",
+          "answer": {
+            "expr": "pi*(1/m+1/n)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the phase shift."
+        },
+        {
+          "label": "c",
+          "text": "Write the equation in the form $y=\\sin[k(x-d)]$.",
+          "answer": {
+            "expr": "2/(1/m+1/n)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Period $=\\frac{\\pi}{ {{m}} }-\\left(-\\frac{\\pi}{ {{n}} }\\right)=\\pi\\left(\\frac{1}{ {{m}} }+\\frac{1}{ {{n}} }\\right)\\approx{{pi*(1/m+1/n):3}}$.\n\n(b) A sine cycle starts at a zero (going up), so the phase shift is $\\frac{\\pi}{ {{n}} }$ to the left, $d=-\\frac{\\pi}{ {{n}} }$.\n\n(c) $k=\\frac{2\\pi}{T}=\\dfrac{2}{1/{{m}}+1/{{n}}}\\approx{{2/(1/m+1/n):3}}$, so $y=\\sin\\left[{{2/(1/m+1/n):3}}\\left(x+\\frac{\\pi}{ {{n}} }\\right)\\right]$.",
+      "rubric": [
+        {
+          "point": "Correct period",
+          "marks": 1
+        },
+        {
+          "point": "Correct phase shift with direction",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation in the required form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "f": {
+          "choices": [
+            262,
+            294,
+            330,
+            349,
+            392,
+            440,
+            494,
+            523
+          ]
+        }
+      },
+      "text": "A musical note has a frequency of {{f}} Hz (cycles per second). The sound can be modelled by $y=\\sin kt$, where $t$ is in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the period of the note.",
+          "answer": {
+            "expr": "1/f",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $k$.",
+          "answer": {
+            "expr": "2*pi*f",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain how the graph would change for a higher note."
+        }
+      ],
+      "modelAnswer": "(a) Period $T=\\dfrac1f=\\dfrac{1}{ {{f}} }\\approx{{1/f:3}}$ s.\n\n(b) $k=\\dfrac{2\\pi}{T}=2\\pi f=2\\pi({{f}})\\approx{{2*pi*f:4}}$.\n\n(c) A higher note has a larger frequency, so a shorter period and a larger value of $k$; the graph is compressed horizontally.",
+      "rubric": [
+        {
+          "point": "Period as reciprocal of frequency",
+          "marks": 1
+        },
+        {
+          "point": "Correct period value",
+          "marks": 1
+        },
+        {
+          "point": "Correct k = 2πf",
+          "marks": 1
+        },
+        {
+          "point": "Explains effect of higher pitch on period and k",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "V": {
+          "choices": [
+            120,
+            170,
+            220,
+            240
+          ]
+        },
+        "f": {
+          "choices": [
+            50,
+            60
+          ]
+        }
+      },
+      "text": "An electricity supply has a maximum voltage of {{V}} V and a frequency of {{f}} Hz.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the amplitude?",
+          "answer": {
+            "expr": "V",
+            "unit": "V",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the period?",
+          "answer": {
+            "expr": "1/f",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write an equation of the form $V=a\\sin kt$."
+        },
+        {
+          "label": "d",
+          "text": "Describe the location of the maxima, minima and zeros over two cycles."
+        }
+      ],
+      "modelAnswer": "(a) Amplitude $={{V}}$ V.\n\n(b) Period $=\\dfrac{1}{ {{f}} }\\approx{{1/f:3}}$ s.\n\n(c) $k=2\\pi({{f}})={{2*f}}\\pi$, so $V={{V}}\\sin({{2*f}}\\pi t)$.\n\n(d) Two cycles take $\\frac{2}{ {{f}} }$ s; max {{V}} V at $t=\\frac{T}{4}$ and $\\frac{5T}{4}$, min $-{{V}}$ V at $\\frac{3T}{4}$ and $\\frac{7T}{4}$, zeros every half period.",
+      "rubric": [
+        {
+          "point": "Correct amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct period",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Describes key points over two cycles",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "T": {
+          "choices": [
+            20,
+            30,
+            40,
+            45,
+            60
+          ]
+        },
+        "mx": {
+          "min": 4,
+          "max": 9,
+          "step": 1
+        },
+        "mn": {
+          "choices": [
+            0.5,
+            1,
+            1.5
+          ]
+        }
+      },
+      "text": "An amusement-park ride completes one revolution every {{T}} s. Riders reach a maximum height of {{mx}} m and a minimum of {{mn}} m. The height is modelled by $h=a\\sin(kt)+c$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the amplitude.",
+          "answer": {
+            "expr": "(mx-mn)/2",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the vertical translation.",
+          "answer": {
+            "expr": "(mx+mn)/2",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the desired period?",
+          "answer": {
+            "expr": "T",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Determine $k$ and write the model.",
+          "answer": {
+            "expr": "2*pi/T",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a=\\dfrac{ {{mx}}-{{mn}} }{2}={{(mx-mn)/2:3}}$ m.\n\n(b) $c=\\dfrac{ {{mx}}+{{mn}} }{2}={{(mx+mn)/2:3}}$ m.\n\n(c) The period should be {{T}} s (one revolution).\n\n(d) $k=\\dfrac{2\\pi}{ {{T}} }\\approx{{2*pi/T:3}}$, so $h={{(mx-mn)/2:3}}\\sin\\left(\\frac{2\\pi}{ {{T}} }t\\right)+{{(mx+mn)/2:3}}$.",
+      "rubric": [
+        {
+          "point": "Correct amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Identifies period",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Full equation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            10,
+            12,
+            15,
+            20,
+            30
+          ]
+        },
+        "H": {
+          "choices": [
+            0.8,
+            1.0,
+            1.2,
+            1.6
+          ]
+        }
+      },
+      "text": "A wave generator moves back and forth {{n}} complete cycles every minute, producing waves {{H}} m from crest to trough. Model the displacement $d$, in metres, of the water from its mean level at time $t$ seconds, assuming $d=0$ and rising at $t=0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the period.",
+          "answer": {
+            "expr": "60/n",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the amplitude.",
+          "answer": {
+            "expr": "H/2",
+            "unit": "m",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write the model.",
+          "answer": {
+            "expr": "2*pi*n/60",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "How would the model change if the generator completed more cycles per minute?"
+        }
+      ],
+      "modelAnswer": "Period $T=\\dfrac{60}{ {{n}} }={{60/n:3}}$ s, so $k=\\dfrac{2\\pi}{T}=\\dfrac{2\\pi({{n}})}{60}\\approx{{2*pi*n/60:3}}$.\n\nAmplitude $=\\dfrac{ {{H}} }{2}={{H/2:3}}$ m (crest to trough is twice the amplitude).\n\nModel: $d={{H/2:3}}\\sin({{2*pi*n/60:3}}\\,t)$.\n\nIf the generator speeds up, the period becomes shorter (k larger); the amplitude would only change if the wave height changes.",
+      "rubric": [
+        {
+          "point": "Period from cycles per minute",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Amplitude is half the crest-to-trough height",
+          "marks": 1
+        },
+        {
+          "point": "Correct model",
+          "marks": 1
+        },
+        {
+          "point": "Explains effect of increasing speed",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q11",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Compare the graphs of $y=\\sin x$ and $y=\\cos x$. Explain how a phase shift maps the sine function onto the cosine function, and explain why there is more than one phase shift that works.",
+      "modelAnswer": "Both graphs have the same shape, amplitude 1, period $2\\pi$ and range $[-1,1]$. The sine graph starts at $(0,0)$ going up; the cosine graph starts at its maximum $(0,1)$.\n\nShifting $y=\\sin x$ to the **left** by $\\frac{\\pi}{2}$ moves its maximum from $x=\\frac{\\pi}{2}$ to $x=0$, giving $y=\\cos x$: $\\cos x=\\sin\\left(x+\\frac{\\pi}{2}\\right)$.\n\nBecause the graphs repeat every $2\\pi$, adding any multiple of $2\\pi$ to the shift also works, e.g. a shift of $\\frac{3\\pi}{2}$ to the right: $\\cos x=\\sin\\left(x-\\frac{3\\pi}{2}\\right)$.",
+      "rubric": [
+        {
+          "point": "Identifies the common features",
+          "marks": 1
+        },
+        {
+          "point": "Correct shift π/2 left with explanation",
+          "marks": 2
+        },
+        {
+          "point": "Explains periodicity gives other shifts, with an example",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-1-q12",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Use the quotient identity $\\tan x=\\dfrac{\\sin x}{\\cos x}$ and the graphs of sine and cosine to explain (a) where $y=\\tan x$ has zeros, (b) where it has vertical asymptotes, (c) why it is positive on $\\left(0,\\frac{\\pi}{2}\\right)$ and negative on $\\left(\\frac{\\pi}{2},\\pi\\right)$, and (d) why its period is $\\pi$.",
+      "modelAnswer": "(a) A fraction is zero when its numerator is zero: $\\sin x=0$ at $x=0,\\pi,2\\pi,\\dots$, so $\\tan x$ has zeros there.\n\n(b) The fraction is undefined when the denominator is zero: $\\cos x=0$ at $x=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\dots$ As $\\cos x\\to0$ the quotient grows without bound, giving vertical asymptotes.\n\n(c) On $\\left(0,\\frac{\\pi}{2}\\right)$ both sine and cosine are positive, so the quotient is positive. On $\\left(\\frac{\\pi}{2},\\pi\\right)$ sine is positive and cosine negative, so tangent is negative.\n\n(d) After a half-turn ($\\pi$) both sine and cosine change sign: $\\sin(x+\\pi)=-\\sin x$, $\\cos(x+\\pi)=-\\cos x$, so their quotient is unchanged. The pattern of tangent values repeats every $\\pi$.",
+      "rubric": [
+        {
+          "point": "Zeros from numerator",
+          "marks": 1
+        },
+        {
+          "point": "Asymptotes from denominator with explanation of unbounded growth",
+          "marks": 2
+        },
+        {
+          "point": "Sign reasoning in both intervals",
+          "marks": 2
+        },
+        {
+          "point": "Explains period π",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-1-q13",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A function is **even** if $f(-x)=f(x)$ and **odd** if $f(-x)=-f(x)$. Determine whether $y=\\sin x$, $y=\\cos x$ and $y=\\tan x$ are even, odd or neither. Justify each answer using the graphs or the unit circle.",
+      "modelAnswer": "On the unit circle, the angle $-x$ is the reflection of $x$ in the $x$-axis: the $x$-coordinate is unchanged and the $y$-coordinate changes sign.\n\n* $\\sin(-x)=-\\sin x$: **odd**; the graph has rotational symmetry about the origin.\n* $\\cos(-x)=\\cos x$: **even**; the graph is symmetric in the $y$-axis.\n* $\\tan(-x)=\\dfrac{\\sin(-x)}{\\cos(-x)}=\\dfrac{-\\sin x}{\\cos x}=-\\tan x$: **odd**.",
+      "rubric": [
+        {
+          "point": "Correct classification of sine with justification",
+          "marks": 1
+        },
+        {
+          "point": "Correct classification of cosine with justification",
+          "marks": 1
+        },
+        {
+          "point": "Correct classification of tangent with justification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-1-q14",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "State the key features of $y=\\tan x$ on $[0,2\\pi]$: maximum/minimum, amplitude, period, zeros, $y$-intercept, equations of the vertical asymptotes, domain and range. Explain what happens to $\\tan x$ as $x\\to\\frac{\\pi}{2}^-$ and as $x\\to\\frac{\\pi}{2}^+$.",
+      "modelAnswer": "No maximum or minimum, so no amplitude. Period $\\pi$. Zeros $0,\\pi,2\\pi$. $y$-intercept $0$. Asymptotes $x=\\frac{\\pi}{2}$ and $x=\\frac{3\\pi}{2}$. Domain $\\{x\\in\\mathbb R\\mid x\\ne\\frac{\\pi}{2}+n\\pi\\}$, range $\\mathbb R$.\n\nAs $x\\to\\frac{\\pi}{2}^-$, $\\sin x\\to1$ and $\\cos x\\to0$ through positive values, so $\\tan x\\to+\\infty$. As $x\\to\\frac{\\pi}{2}^+$, $\\cos x\\to0$ through negative values, so $\\tan x\\to-\\infty$.",
+      "rubric": [
+        {
+          "point": "No max/min/amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Period, zeros and y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Behaviour near π/2 from both sides with reasons",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-1-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        },
+        "c": {
+          "min": -2,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "The graph of a cosine function is shown.\n\n```plot\nf: {{a}}*cos({{k}}*x)+{{c}}\ndomain: -pi, 2*pi\nxticks: pi\n```\n\n",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the maximum and minimum values.",
+          "answer": {
+            "expr": "a+c",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the amplitude.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the vertical translation.",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Determine the period.",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "What value of $k$ gives this period?",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "f",
+          "text": "Explain why the phase shift can have more than one value, and suggest three possible values."
+        }
+      ],
+      "modelAnswer": "(a) Max $={{a+c}}$, min $={{c-a}}$.\n\n(b) Amplitude $=\\dfrac{ {{a+c}}-({{c-a}}) }{2}={{a}}$.\n\n(c) Vertical translation $=\\dfrac{ {{a+c}}+({{c-a}}) }{2}={{c}}$.\n\n(d) Consecutive maxima are $\\frac{2\\pi}{ {{k}} }$ apart, so the period is $\\frac{2\\pi}{ {{k}} }\\approx{{2*pi/k:3}}$.\n\n(e) $k=\\frac{2\\pi}{T}={{k}}$.\n\n(f) A cosine graph has a maximum at every $x=\\frac{2\\pi n}{ {{k}} }$, so a phase shift of $0$, $\\frac{2\\pi}{ {{k}} }$, or $-\\frac{2\\pi}{ {{k}} }$ (any whole number of periods) all produce the same graph.",
+      "rubric": [
+        {
+          "point": "Correct max and min",
+          "marks": 1
+        },
+        {
+          "point": "Correct amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Correct period",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Explains why phase shift is not unique and gives three values",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-1-q16",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Consider the relation $y=\\lvert\\sin x\\rvert$ on $[-2\\pi,2\\pi]$.\n\n```plot\nf: abs(sin(x))\ndomain: -2*pi, 2*pi\nrange: -1.5, 1.5\nxticks: pi\n```\n\n",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the shape of the graph and how it relates to $y=\\sin x$."
+        },
+        {
+          "label": "b",
+          "text": "State the maximum, minimum and period."
+        },
+        {
+          "label": "c",
+          "text": "Is the relation a function? Justify."
+        },
+        {
+          "label": "d",
+          "text": "Is it even, odd or neither? Justify."
+        }
+      ],
+      "modelAnswer": "(a) Every negative part of the sine curve is reflected above the $x$-axis, giving a series of identical 'arches' that touch the $x$-axis at multiples of $\\pi$.\n\n(b) Maximum 1, minimum 0, period $\\pi$ (one arch).\n\n(c) It is a function: each $x$ gives exactly one $y$ value (any vertical line meets the graph once).\n\n(d) $\\lvert\\sin(-x)\\rvert=\\lvert-\\sin x\\rvert=\\lvert\\sin x\\rvert$, so the relation is **even**.",
+      "rubric": [
+        {
+          "point": "Describes reflection of negative parts",
+          "marks": 1
+        },
+        {
+          "point": "Correct max, min, period",
+          "marks": 2
+        },
+        {
+          "point": "Justifies it is a function",
+          "marks": 1
+        },
+        {
+          "point": "Shows it is even algebraically",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-1-q17",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create your own description of a sinusoidal function that uses exactly one of each transformation from this section: a vertical translation, a change of amplitude, a phase shift, and a change of period – but apply them to **separate** functions $y=\\sin x+c$, $y=a\\sin x$, $y=\\sin(x-d)$ and $y=\\sin kx$. For each, give your equation, a clue a classmate could use to identify it, and the key points of one cycle.",
+      "modelAnswer": "Sample answer:\n\n* $y=\\sin x+3$: clue 'max 4, min 2'. Key points $(0,3),(\\frac{\\pi}{2},4),(\\pi,3),(\\frac{3\\pi}{2},2),(2\\pi,3)$.\n* $y=-2\\sin x$: clue 'amplitude 2, reflected'. Key points $(0,0),(\\frac{\\pi}{2},-2),(\\pi,0),(\\frac{3\\pi}{2},2),(2\\pi,0)$.\n* $y=\\sin(x-\\frac{\\pi}{3})$: clue 'first zero going up at $\\frac{\\pi}{3}$'. Key points shift right $\\frac{\\pi}{3}$.\n* $y=\\sin3x$: clue 'period $\\frac{2\\pi}{3}$'. Key points at $0,\\frac{\\pi}{6},\\frac{\\pi}{3},\\frac{\\pi}{2},\\frac{2\\pi}{3}$.\n\nMarking looks for correct, consistent clues and key points rather than particular numbers.",
+      "rubric": [
+        {
+          "point": "Four correct equations of the stated forms",
+          "marks": 2
+        },
+        {
+          "point": "Clues that uniquely identify each transformation",
+          "marks": 2
+        },
+        {
+          "point": "Correct key points for each",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-1-q18",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "n": {
+          "choices": [
+            5,
+            7,
+            10
+          ]
+        }
+      },
+      "derived": {
+        "tot": "3+4*floor(n/10)"
+      },
+      "text": "Consider the line $y=\\frac{x}{ {{n}} }$ and the curve $y=\\sin x$ graphed on the same axes with no restriction on the domain.\n\n```plot\nf: sin(x)\nf: x/{{n}} | dashed\ndomain: -{{n+1}}, {{n+1}}\nrange: -1.5, 1.5\n```\n\n",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many times do the graphs intersect? Justify your answer.",
+          "answer": {
+            "expr": "tot",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "The sine curve stays between $-1$ and $1$, so intersections can only occur where $-1\\le\\frac{x}{ {{n}} }\\le1$, i.e. $-{{n}}\\le x\\le {{n}}$.\n\nBoth graphs are odd, so intersections are symmetric about the origin, and $(0,0)$ is one of them.\n\nFor $0<x\\le{{n}}$: the line meets the first arch (on $(0,\\pi)$) once. On $(\\pi,2\\pi)$ sine is negative while the line is positive, so there are no intersections. The next positive arch peaks at $x=2\\pi+\\frac{\\pi}{2}\\approx7.85$. The line crosses that arch (twice) only if it is still below 1 there, i.e. only if ${{n}}>7.85$.\n\nTotal: {{tot}} intersections ({{(tot-1)/2}} for $x>0$, the same number for $x<0$, plus the origin).\n\nA good answer explains the bounding argument, the symmetry, and counts carefully using the graph.",
+      "rubric": [
+        {
+          "point": "Uses −1 ≤ sin x ≤ 1 to bound the region of intersection",
+          "marks": 2
+        },
+        {
+          "point": "Uses odd symmetry",
+          "marks": 1
+        },
+        {
+          "point": "Counts intersections correctly for the given line with justification",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

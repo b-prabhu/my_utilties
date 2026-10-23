@@ -1,0 +1,1299 @@
+{
+  "id": "4-1",
+  "number": "4.1",
+  "title": "Radian Measure",
+  "estimatedMinutes": 70,
+  "overview": "Engineers, scientists and programmers rarely measure angles in degrees. They use **radians**, a unit built from the circle itself. In this section you will learn what a radian is, convert between degrees and radians, and use radians to find arc lengths and angular velocities.",
+  "objectives": [
+    "Explain the meaning of a radian as arc length divided by radius.",
+    "Convert between degree and radian measure, exactly (in terms of $\\pi$) and approximately.",
+    "Recognise the radian measures of common angles mentally.",
+    "Calculate arc length using $a = r\\theta$.",
+    "Calculate angular velocity in °/s and rad/s from revolutions per unit time.",
+    "Solve real-world problems involving rotation and circular paths."
+  ],
+  "lessons": [
+    {
+      "id": "what-is-a-radian",
+      "title": "What is a radian?",
+      "body": "Degrees split one full turn into 360 equal pieces — a number chosen by the ancient Babylonians, not by nature. **Radians** measure an angle using the circle itself.\n\n> **One radian** is the angle at the centre of a circle that is subtended by (sits opposite) an arc whose length equals the radius.\n\nPicture a bicycle wheel. Cut a string the same length as the radius and lay it along the rim. The two spokes running to the ends of that string make an angle of exactly **1 radian** — a little less than 60°.\n\n**Vocabulary you will see**\n\n| Word | Meaning |\n|---|---|\n| central angle $\\theta$ | an angle whose vertex is at the centre of the circle |\n| arc length $a$ | the distance along the circle between the two radii |\n| subtend | an arc *subtends* the angle it sits opposite |\n| sector | the \"pizza slice\" made by two radii and the arc |\n\n**The definition as a formula**\n\n$$\\theta = \\frac{a}{r}$$\n\nBecause $a$ and $r$ are both lengths (both in cm, or both in m), the units cancel. A radian is really just a *ratio* — that is why we often write no unit at all."
+    },
+    {
+      "id": "full-turn",
+      "title": "How many radians in a full turn?",
+      "body": "How many radius-length strings fit around the whole wheel? The circumference is $C = 2\\pi r$, so\n\n$$\\theta_{\\text{full turn}} = \\frac{2\\pi r}{r} = 2\\pi \\approx 6.28.$$\n\nAbout six and a quarter strings go around any circle — big or small. So:\n\n$$2\\pi \\text{ rad} = 360^\\circ \\qquad\\Longleftrightarrow\\qquad \\pi \\text{ rad} = 180^\\circ$$\n\nMemorise the second form: **π radians is a straight angle**. Every conversion comes from it.\n\n| Fraction of a turn | Degrees | Radians (exact) | Radians (approx.) |\n|---|---|---|---|\n| full turn | 360° | $2\\pi$ | 6.28 |\n| half turn | 180° | $\\pi$ | 3.14 |\n| quarter turn | 90° | $\\frac{\\pi}{2}$ | 1.57 |\n| eighth of a turn | 45° | $\\frac{\\pi}{4}$ | 0.79 |\n| | 60° | $\\frac{\\pi}{3}$ | 1.05 |\n| | 30° | $\\frac{\\pi}{6}$ | 0.52 |\n\nSo $1 \\text{ rad} = \\left(\\frac{180}{\\pi}\\right)^\\circ \\approx 57.3^\\circ$ and $1^\\circ = \\frac{\\pi}{180} \\text{ rad} \\approx 0.0175$ rad.\n\n**Notation:** an angle written with a degree sign (30°) is in degrees. An angle with *no* symbol (such as 2.5 or $\\frac{3\\pi}{4}$) is understood to be in radians."
+    },
+    {
+      "id": "converting",
+      "title": "Converting between degrees and radians",
+      "body": "Think of it as changing units with a conversion factor that equals 1, since $\\pi$ rad $= 180^\\circ$.\n\n**Degrees → radians:** multiply by $\\dfrac{\\pi}{180}$.\n\n$$150^\\circ = 150 \\times \\frac{\\pi}{180} = \\frac{150\\pi}{180} = \\frac{5\\pi}{6}$$\n\n**Radians → degrees:** multiply by $\\left(\\dfrac{180}{\\pi}\\right)^\\circ$.\n\n$$\\frac{7\\pi}{12} = \\frac{7\\pi}{12} \\times \\frac{180^\\circ}{\\pi} = 7 \\times 15^\\circ = 105^\\circ$$\n\n**Exact vs approximate**\n* *Exact* radian measures are written as a multiple of $\\pi$, as a simplified fraction: $\\frac{5\\pi}{6}$, not $\\frac{150\\pi}{180}$.\n* *Approximate* measures are decimals: $\\frac{5\\pi}{6} \\approx 2.62$.\n* Keep exact forms as long as possible and round only at the end.\n\n**Mental-math shortcut:** learn that $30^\\circ = \\frac{\\pi}{6}$ and $45^\\circ = \\frac{\\pi}{4}$. Then build others: $120^\\circ = 4 \\times 30^\\circ = \\frac{4\\pi}{6} = \\frac{2\\pi}{3}$; $15^\\circ = \\frac{30^\\circ}{2} = \\frac{\\pi}{12}$; $135^\\circ = 3\\times 45^\\circ = \\frac{3\\pi}{4}$.\n\n**Calculator tip:** check the mode (DEG or RAD) every time. Most wrong answers in this chapter come from the wrong mode."
+    },
+    {
+      "id": "arc-length",
+      "title": "Arc length",
+      "body": "Rearranging $\\theta = \\frac{a}{r}$ gives the **arc length formula**\n\n$$a = r\\theta \\qquad (\\theta \\text{ in radians})$$\n\nThis simple formula is the big payoff of radians. In degrees you would need $a = \\frac{\\theta}{360^\\circ}\\times 2\\pi r$.\n\n*Example:* a carousel horse 9 m from the centre turns through $\\frac{5\\pi}{6}$. It travels $a = 9 \\times \\frac{5\\pi}{6} = \\frac{15\\pi}{2} \\approx 23.6$ m.\n\n**Sector area (extension).** A sector is the fraction $\\frac{\\theta}{2\\pi}$ of the whole circle, so\n\n$$A = \\frac{\\theta}{2\\pi}\\times \\pi r^2 = \\frac{1}{2} r^2 \\theta.$$\n\n**Watch out:** $a = r\\theta$ only works with $\\theta$ in **radians**. Convert degrees first."
+    },
+    {
+      "id": "angular-velocity",
+      "title": "Angular velocity",
+      "body": "**Angular velocity** ($\\omega$) is the rate at which the central angle changes:\n\n$$\\omega = \\frac{\\text{angle turned}}{\\text{time}}$$\n\nUnits: degrees per second (°/s) or radians per second (rad/s).\n\n**Revolutions per minute (rpm)** are common for engines, disks and turntables. One revolution is $360^\\circ$ or $2\\pi$ rad.\n\n| Step | 7200 rpm hard drive |\n|---|---|\n| angle per minute (degrees) | $7200 \\times 360^\\circ = 2\\,592\\,000^\\circ$ |\n| per second | $\\frac{2\\,592\\,000^\\circ}{60} = 43\\,200^\\circ/\\text{s}$ |\n| angle per minute (radians) | $7200 \\times 2\\pi = 14\\,400\\pi$ rad |\n| per second | $\\frac{14\\,400\\pi}{60} = 240\\pi \\approx 754$ rad/s |\n\n**Quick rule:** $\\omega \\text{ (rad/s)} = \\text{rpm}\\times \\dfrac{2\\pi}{60}$.\n\nEvery point on a spinning wheel has the **same angular velocity**, but points farther from the centre travel farther (larger arc length), so they move faster. Distance travelled in time $t$: $a = r\\omega t$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "radian",
+      "definition": "The measure of the central angle subtended by an arc equal in length to the radius; $\\theta = \\frac{a}{r}$."
+    },
+    {
+      "term": "central angle",
+      "definition": "An angle whose vertex is at the centre of a circle and whose arms are radii."
+    },
+    {
+      "term": "subtend",
+      "definition": "To be opposite to; an arc subtends the central angle formed by the radii at its ends."
+    },
+    {
+      "term": "sector",
+      "definition": "The region bounded by two radii of a circle and the arc between them."
+    },
+    {
+      "term": "arc length",
+      "definition": "The distance along a circle between two points; $a = r\\theta$ with $\\theta$ in radians."
+    },
+    {
+      "term": "angular velocity",
+      "definition": "The rate of change of the central angle with respect to time, e.g. in rad/s or °/s."
+    },
+    {
+      "term": "exact radian measure",
+      "definition": "A radian measure written as a rational multiple of $\\pi$, such as $\\frac{5\\pi}{6}$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Definition of radian measure",
+      "latex": "\\theta = \\frac{a}{r}",
+      "meaning": "Angle (rad) = arc length ÷ radius."
+    },
+    {
+      "name": "Straight angle",
+      "latex": "\\pi \\text{ rad} = 180^\\circ",
+      "meaning": "The key conversion fact; also $2\\pi$ rad $=360^\\circ$."
+    },
+    {
+      "name": "Degrees to radians",
+      "latex": "\\theta_{\\text{rad}} = \\theta^\\circ \\times \\frac{\\pi}{180}",
+      "meaning": "Multiply by π/180."
+    },
+    {
+      "name": "Radians to degrees",
+      "latex": "\\theta^\\circ = \\theta_{\\text{rad}} \\times \\frac{180^\\circ}{\\pi}",
+      "meaning": "Multiply by 180/π."
+    },
+    {
+      "name": "Arc length",
+      "latex": "a = r\\theta",
+      "meaning": "θ must be in radians."
+    },
+    {
+      "name": "Sector area (extension)",
+      "latex": "A = \\tfrac{1}{2}r^2\\theta",
+      "meaning": "θ in radians."
+    },
+    {
+      "name": "Angular velocity",
+      "latex": "\\omega = \\frac{\\Delta\\theta}{\\Delta t}",
+      "meaning": "Angle turned per unit time; 1 rev = 2π rad."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Degrees to radians",
+      "problem": "Determine the exact radian measure and an approximation to the nearest hundredth for $210^\\circ$.",
+      "steps": [
+        "Multiply by $\\frac{\\pi}{180}$: $210^\\circ = 210\\times\\frac{\\pi}{180} = \\frac{210\\pi}{180}$.",
+        "Simplify the fraction (divide by 30): $\\frac{210\\pi}{180} = \\frac{7\\pi}{6}$.",
+        "Approximate: $\\frac{7\\pi}{6} \\approx 3.665\\ldots \\approx 3.67$."
+      ],
+      "answer": "$210^\\circ = \\frac{7\\pi}{6} \\approx 3.67$ rad."
+    },
+    {
+      "title": "Radians to degrees",
+      "problem": "Convert (a) $\\frac{11\\pi}{18}$ exactly and (b) 4.78 rad to the nearest tenth of a degree.",
+      "steps": [
+        "(a) $\\frac{11\\pi}{18}\\times\\frac{180^\\circ}{\\pi} = 11\\times 10^\\circ = 110^\\circ$. The $\\pi$ cancels.",
+        "(b) $4.78\\times\\frac{180^\\circ}{\\pi} = \\frac{860.4^\\circ}{\\pi} \\approx 273.87^\\circ$.",
+        "Round: $\\approx 273.9^\\circ$."
+      ],
+      "answer": "(a) $110^\\circ$ (b) $\\approx 273.9^\\circ$"
+    },
+    {
+      "title": "Arc length on a carousel",
+      "problem": "A camel on a carousel is 9 m from the centre. The carousel turns through $\\frac{5\\pi}{6}$. How far does the camel travel?",
+      "steps": [
+        "**Given:** $r = 9$ m, $\\theta = \\frac{5\\pi}{6}$ (already in radians).",
+        "**Formula:** $a = r\\theta$.",
+        "**Substitute:** $a = 9\\times\\frac{5\\pi}{6} = \\frac{45\\pi}{6} = \\frac{15\\pi}{2}$.",
+        "**Evaluate:** $\\frac{15\\pi}{2}\\approx 23.6$ m."
+      ],
+      "answer": "The camel travels $\\frac{15\\pi}{2}\\approx 23.6$ m."
+    },
+    {
+      "title": "Angular velocity from rpm",
+      "problem": "A microwave turntable rotates 12 times per minute. Find its angular velocity in (a) °/s and (b) rad/s.",
+      "steps": [
+        "Angle per minute: $12\\times 360^\\circ = 4320^\\circ$, or $12\\times 2\\pi = 24\\pi$ rad.",
+        "(a) $\\omega = \\frac{4320^\\circ}{60\\text{ s}} = 72^\\circ/\\text{s}$.",
+        "(b) $\\omega = \\frac{24\\pi}{60} = \\frac{2\\pi}{5}\\approx 1.26$ rad/s."
+      ],
+      "answer": "(a) $72^\\circ$/s (b) $\\frac{2\\pi}{5}\\approx 1.26$ rad/s"
+    },
+    {
+      "title": "Angles of a special triangle",
+      "problem": "In an isosceles triangle each equal angle is twice the third angle. Find the three angles exactly in radians.",
+      "steps": [
+        "Let the third angle be $x$; the equal angles are $2x$ each.",
+        "Angles in a triangle add to $\\pi$: $x + 2x + 2x = \\pi$, so $5x = \\pi$.",
+        "$x = \\frac{\\pi}{5}$, and each equal angle is $\\frac{2\\pi}{5}$.",
+        "Check: $\\frac{\\pi}{5}+\\frac{2\\pi}{5}+\\frac{2\\pi}{5} = \\pi$ ✓"
+      ],
+      "answer": "$\\frac{\\pi}{5}, \\frac{2\\pi}{5}, \\frac{2\\pi}{5}$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "\"1 radian is about 1 degree.\"",
+      "fact": "1 rad $\\approx 57.3^\\circ$. A radian is big — about the angle of one slice when a pizza is cut into just over 6 slices."
+    },
+    {
+      "myth": "\"$a = r\\theta$ works with degrees too.\"",
+      "fact": "Only with radians. With degrees, $a = r\\theta$ gives a wildly wrong number (e.g. $r = 2$, $\\theta = 90^\\circ$ would give 180 instead of $\\pi \\approx 3.14$)."
+    },
+    {
+      "myth": "\"$\\pi = 180$.\"",
+      "fact": "$\\pi$ is the number 3.14159…. It is $\\pi$ **radians** that equals 180°."
+    },
+    {
+      "myth": "\"Points on the rim and near the hub of a wheel have different angular velocities.\"",
+      "fact": "They turn through the same angle in the same time, so $\\omega$ is the same. The rim point moves faster (greater linear speed) because its radius is larger."
+    },
+    {
+      "myth": "\"Exact answers can be decimals.\"",
+      "fact": "An exact radian answer keeps $\\pi$: $\\frac{3\\pi}{4}$. A decimal like 2.36 is an approximation."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Engines and hard drives",
+      "body": "Rotating machinery is rated in rpm; engineers convert to rad/s because formulas such as $a = r\\omega t$ and $v = r\\omega$ (linear speed) are simplest in radians."
+    },
+    {
+      "title": "Road design",
+      "body": "A highway on-ramp shaped as a circular arc of radius 80 m turning through $\\frac{\\pi}{4}$ has length $80\\times\\frac{\\pi}{4} = 20\\pi\\approx 62.8$ m."
+    },
+    {
+      "title": "Navigation",
+      "body": "The old nautical mile was one minute of arc ($\\frac{1}{60}$ of a degree) along Earth's surface: $a = 6400\\text{ km}\\times\\frac{\\pi}{10\\,800}\\approx 1.862$ km."
+    },
+    {
+      "title": "Targeting and astronomy",
+      "body": "Small angles are measured in milliradians: an object 1 m wide at 1 km subtends about 1 mrad, because $\\theta \\approx \\frac{a}{r} = \\frac{1}{1000}$."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Determine the exact radian measure of (a) $75^\\circ$ (b) $20^\\circ$ (c) $12^\\circ$ (d) $9^\\circ$.",
+      "hint": "Multiply by $\\frac{\\pi}{180}$ and simplify.",
+      "solution": "(a) $\\frac{5\\pi}{12}$ (b) $\\frac{\\pi}{9}$ (c) $\\frac{\\pi}{15}$ (d) $\\frac{\\pi}{20}$"
+    },
+    {
+      "question": "Determine the exact degree measure of (a) $\\frac{2\\pi}{3}$ (b) $\\frac{4\\pi}{9}$ (c) $\\frac{7\\pi}{12}$ (d) $\\frac{11\\pi}{18}$.",
+      "hint": "Replace $\\pi$ with 180°.",
+      "solution": "(a) 120° (b) 80° (c) 105° (d) 110°"
+    },
+    {
+      "question": "Convert to the nearest hundredth of a radian: (a) $33^\\circ$ (b) $138^\\circ$ (c) $252^\\circ$ (d) $347^\\circ$.",
+      "hint": "Multiply by $\\pi/180$ with a calculator.",
+      "solution": "(a) 0.58 (b) 2.41 (c) 4.40 (d) 6.06"
+    },
+    {
+      "question": "A circle of radius 25 cm has a central angle of 4.75 rad. Find the arc length.",
+      "hint": "$a = r\\theta$.",
+      "solution": "$a = 25\\times 4.75 = 118.75$ cm $\\approx 118.8$ cm."
+    },
+    {
+      "question": "A bicycle wheel turns 10 times in 5 s. Find its angular velocity in °/s and rad/s.",
+      "hint": "Find the angle in one second first.",
+      "solution": "2 rev/s: $720^\\circ$/s and $4\\pi\\approx 12.57$ rad/s."
+    },
+    {
+      "question": "Sarah's swing has ropes 2.4 m long and she swings through an arc of 1.2 m. Find the angle in radians and degrees.",
+      "hint": "$\\theta = a/r$.",
+      "solution": "$\\theta = \\frac{1.2}{2.4} = 0.5$ rad $\\approx 28.6^\\circ$."
+    },
+    {
+      "question": "The London Eye has diameter 135 m and turns once every 30 min. (a) Through what exact angle does a passenger turn in 5 min? (b) How far do they travel?",
+      "hint": "5 min is $\\frac{1}{6}$ of a turn. The radius is 67.5 m.",
+      "solution": "(a) $\\frac{2\\pi}{6} = \\frac{\\pi}{3}$ (b) $a = 67.5\\times\\frac{\\pi}{3} = 22.5\\pi\\approx 70.7$ m."
+    },
+    {
+      "question": "An engine turns at 12 000 rpm. Find its angular velocity exactly and approximately in rad/s.",
+      "hint": "$\\omega = \\text{rpm}\\times\\frac{2\\pi}{60}$.",
+      "solution": "$\\omega = 12\\,000\\times\\frac{2\\pi}{60} = 400\\pi\\approx 1257$ rad/s."
+    }
+  ],
+  "summary": [
+    "A radian is the angle subtended by an arc equal to the radius: $\\theta = \\frac{a}{r}$.",
+    "$\\pi$ rad $= 180^\\circ$; multiply by $\\frac{\\pi}{180}$ to get radians and by $\\frac{180^\\circ}{\\pi}$ to get degrees.",
+    "Exact radian measures are simplified multiples of $\\pi$; 1 rad $\\approx 57.3^\\circ$.",
+    "Arc length: $a = r\\theta$ (θ in radians).",
+    "Angular velocity is angle turned per unit time; one revolution is $2\\pi$ rad."
+  ],
+  "questions": [
+    {
+      "id": "m4-1-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n1": {
+          "choices": [
+            1,
+            5,
+            7,
+            11,
+            13,
+            17,
+            19,
+            23
+          ]
+        },
+        "n2": {
+          "choices": [
+            1,
+            3,
+            5,
+            7
+          ]
+        },
+        "n3": {
+          "choices": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            8,
+            10,
+            11
+          ]
+        }
+      },
+      "text": "Convert each angle to an exact radian measure in simplest form, and then give an approximation to the nearest hundredth.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{15*n1}}^\\circ$",
+          "answer": {
+            "expr": "n1*pi/12",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{45*n2}}^\\circ$",
+          "answer": {
+            "expr": "n2*pi/4",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "${{20*n3}}^\\circ$",
+          "answer": {
+            "expr": "n3*pi/9",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Multiply by $\\frac{\\pi}{180}$ and reduce the fraction.\n\n(a) ${{15*n1}}^\\circ = \\frac{ {{15*n1}}\\pi}{180} = \\frac{ {{n1}}\\pi}{12}\\approx {{n1*pi/12:3}}$ (divide top and bottom by 15).\n\n(b) ${{45*n2}}^\\circ = \\frac{ {{45*n2}}\\pi}{180} = \\frac{ {{n2}}\\pi}{4}\\approx {{n2*pi/4:3}}$ (divide by 45).\n\n(c) ${{20*n3}}^\\circ = \\frac{ {{20*n3}}\\pi}{180} = \\frac{ {{n3}}\\pi}{9}\\approx {{n3*pi/9:3}}$ (divide by 20).",
+      "rubric": [
+        {
+          "point": "Uses the conversion factor π/180 correctly",
+          "marks": 1
+        },
+        {
+          "point": "Exact answer for (a) in simplest form",
+          "marks": 1
+        },
+        {
+          "point": "Exact answer for (b) in simplest form",
+          "marks": 1
+        },
+        {
+          "point": "Exact answer for (c) in simplest form",
+          "marks": 1
+        },
+        {
+          "point": "All three approximations correct to the nearest hundredth",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "choices": [
+            5,
+            7,
+            11
+          ]
+        },
+        "k": {
+          "choices": [
+            12,
+            18,
+            36
+          ]
+        },
+        "r": {
+          "min": 0.5,
+          "max": 6.9,
+          "step": 0.01
+        }
+      },
+      "text": "Convert each radian measure to degrees. Give (a) an exact answer and (b) an answer to the nearest tenth of a degree.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\frac{ {{n}}\\pi}{ {{k}} }$",
+          "answer": {
+            "expr": "n*180/k",
+            "unit": "°",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{r}}$ rad",
+          "answer": {
+            "expr": "r*180/pi",
+            "unit": "°",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) Replace $\\pi$ by $180^\\circ$: $\\frac{ {{n}}\\pi}{ {{k}} } = \\frac{ {{n}}\\times 180^\\circ}{ {{k}} } = {{n*180/k:3}}^\\circ$.\n\n(b) ${{r}}\\times\\frac{180^\\circ}{\\pi} \\approx {{r*180/pi:4}}^\\circ$.",
+      "rubric": [
+        {
+          "point": "Correct method for exact conversion",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact degree value",
+          "marks": 1
+        },
+        {
+          "point": "Correct method using 180/π for the decimal",
+          "marks": 1
+        },
+        {
+          "point": "Correct answer to the nearest tenth",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "r": {
+          "min": 5,
+          "max": 40,
+          "step": 1
+        },
+        "t": {
+          "min": 0.8,
+          "max": 5.5,
+          "step": 0.05
+        }
+      },
+      "text": "A circle has radius {{r}} cm. A central angle of {{t}} rad is drawn.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the length of the arc that subtends this angle.",
+          "answer": {
+            "expr": "r*t",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Express the angle in degrees and state what fraction (as a percent) of the full circle the sector is.",
+          "answer": {
+            "expr": "t*180/pi",
+            "unit": "°",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a = r\\theta = ({{r}})({{t}}) = {{r*t:3}}$ cm.\n\n(b) In degrees: ${{t}}\\times\\frac{180^\\circ}{\\pi}\\approx {{t*180/pi:3}}^\\circ$, which is ${{t/(2*pi):2}}$ of a full turn, so the sector is about {{100*t/(2*pi):2}}% of the circle.",
+      "rubric": [
+        {
+          "point": "States a = rθ with θ in radians",
+          "marks": 1
+        },
+        {
+          "point": "Correct arc length with units",
+          "marks": 1
+        },
+        {
+          "point": "Converts angle to degrees correctly",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the fraction of the circle correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "L": {
+          "min": 1.8,
+          "max": 3.2,
+          "step": 0.1
+        },
+        "a": {
+          "min": 0.8,
+          "max": 2.0,
+          "step": 0.1
+        }
+      },
+      "text": "A swing has ropes {{L}} m long. A child swings through an arc of length {{a}} m.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the angle through which the child swings, in radians.",
+          "answer": {
+            "expr": "a/L",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Express this angle in degrees.",
+          "answer": {
+            "expr": "a/L*180/pi",
+            "unit": "°",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "If the ropes were shorter but the arc length stayed the same, how would the angle change? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $\\theta = \\frac{a}{r} = \\frac{ {{a}} }{ {{L}} } \\approx {{a/L:3}}$ rad.\n\n(b) ${{a/L:4}}\\times\\frac{180^\\circ}{\\pi}\\approx {{a/L*180/pi:3}}^\\circ$.\n\n(c) The angle is the arc length divided by the radius; with shorter ropes the same arc gives a **larger** angle because $\\theta = a/r$ increases as $r$ decreases.",
+      "rubric": [
+        {
+          "point": "Uses θ = a/r",
+          "marks": 1
+        },
+        {
+          "point": "Correct angle in radians",
+          "marks": 1
+        },
+        {
+          "point": "Correct conversion to degrees",
+          "marks": 1
+        },
+        {
+          "point": "Explains effect of shorter ropes using θ = a/r",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "rpm": {
+          "choices": [
+            16,
+            33.3,
+            45,
+            78,
+            12,
+            20,
+            30
+          ]
+        }
+      },
+      "text": "A turntable spins at {{rpm}} revolutions per minute.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the angular velocity in degrees per second.",
+          "answer": {
+            "expr": "rpm*6",
+            "unit": "°/s",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the angular velocity in radians per second.",
+          "answer": {
+            "expr": "rpm*2*pi/60",
+            "unit": "rad/s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Angle per minute: ${{rpm}}\\times 360^\\circ = {{rpm*360:5}}^\\circ$, or ${{rpm}}\\times 2\\pi$ rad.\n\n(a) $\\omega = \\frac{ {{rpm*360:5}}^\\circ}{60\\text{ s}} = {{rpm*6:4}}^\\circ/\\text{s}$.\n\n(b) $\\omega = \\frac{ {{rpm}}\\times 2\\pi}{60} = \\frac{ {{rpm}}\\pi}{30}\\approx {{rpm*2*pi/60:3}}$ rad/s.",
+      "rubric": [
+        {
+          "point": "Finds the angle turned in one minute (degrees)",
+          "marks": 1
+        },
+        {
+          "point": "Divides by 60 s to get °/s",
+          "marks": 1
+        },
+        {
+          "point": "Correct °/s",
+          "marks": 1
+        },
+        {
+          "point": "Uses 2π rad per revolution",
+          "marks": 1
+        },
+        {
+          "point": "Correct rad/s (exact or approximate)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "rpm": {
+          "choices": [
+            5400,
+            7200,
+            10000
+          ]
+        },
+        "r": {
+          "min": 2.0,
+          "max": 4.5,
+          "step": 0.1
+        }
+      },
+      "text": "A computer hard drive spins at {{rpm}} rpm. A data point on the disk is {{r}} cm from the centre.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the angular velocity of the disk in radians per second.",
+          "answer": {
+            "expr": "rpm*2*pi/60",
+            "unit": "rad/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How far does the data point travel in one second?",
+          "answer": {
+            "expr": "r*rpm*2*pi/60",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the angular velocity and the distance travelled for a point closer to the centre."
+        }
+      ],
+      "modelAnswer": "(a) $\\omega = {{rpm}}\\times\\frac{2\\pi}{60} = \\frac{ {{rpm}}\\pi}{30} \\approx {{rpm*2*pi/60:4}}$ rad/s.\n\n(b) In 1 s the point turns through ${{rpm*2*pi/60:4}}$ rad, so it travels $a = r\\theta = {{r}}\\times {{rpm*2*pi/60:4}} \\approx {{r*rpm*2*pi/60:3}}$ cm.\n\n(c) A point closer to the centre has the **same angular velocity** (the whole disk turns together) but travels a **shorter distance** each second because $a = r\\theta$ and $r$ is smaller.",
+      "rubric": [
+        {
+          "point": "Converts rpm to rad/s correctly",
+          "marks": 2
+        },
+        {
+          "point": "Uses a = rθ for distance in 1 s",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance",
+          "marks": 1
+        },
+        {
+          "point": "Explains same ω but smaller distance for inner point",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "D": {
+          "min": 60,
+          "max": 140,
+          "step": 5
+        },
+        "T": {
+          "min": 10,
+          "max": 30,
+          "step": 1
+        },
+        "t": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "A Ferris wheel has a diameter of {{D}} m and completes one revolution every {{T}} minutes. A passenger boards at the bottom.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the angle, in radians, the passenger turns through in {{t}} min.",
+          "answer": {
+            "expr": "t/T*2*pi",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How far does the passenger travel in that time?",
+          "answer": {
+            "expr": "D/2*t/T*2*pi",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the angular velocity of the wheel in rad/s.",
+          "answer": {
+            "expr": "2*pi/(T*60)",
+            "unit": "rad/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "How long does it take a passenger to turn through 2 rad?",
+          "answer": {
+            "expr": "2/(2*pi/(T*60))",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Radius $r = \\frac{ {{D}} }{2} = {{D/2:4}}$ m.\n\n(a) In {{t}} min the wheel turns $\\frac{ {{t}} }{ {{T}} }$ of a turn: $\\theta = \\frac{ {{t}} }{ {{T}} }\\times 2\\pi \\approx {{t/T*2*pi:4}}$ rad.\n\n(b) $a = r\\theta = {{D/2:4}}\\times {{t/T*2*pi:4}}\\approx {{D/2*t/T*2*pi:3}}$ m.\n\n(c) $\\omega = \\frac{2\\pi}{ {{T}}\\times 60\\text{ s}}\\approx {{2*pi/(T*60):3}}$ rad/s.\n\n(d) Time for 2 rad: $t = \\frac{2}{\\omega} \\approx {{2/(2*pi/(T*60)):3}}$ s.",
+      "rubric": [
+        {
+          "point": "Uses the radius, not the diameter",
+          "marks": 1
+        },
+        {
+          "point": "Correct angle turned",
+          "marks": 1
+        },
+        {
+          "point": "Correct arc length",
+          "marks": 1
+        },
+        {
+          "point": "Correct angular velocity in rad/s",
+          "marks": 1
+        },
+        {
+          "point": "Correct time for 2 rad",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            3,
+            4,
+            6,
+            8
+          ]
+        },
+        "r": {
+          "min": 50,
+          "max": 150,
+          "step": 10
+        }
+      },
+      "text": "Two highways meet so that the turn between them is $\\frac{\\pi}{ {{k}} }$ rad. A curved on-ramp in the shape of a circular arc of radius {{r}} m joins them, turning through this same angle.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an exact expression for the length of the on-ramp."
+        },
+        {
+          "label": "b",
+          "text": "Determine its length to the nearest tenth of a metre.",
+          "answer": {
+            "expr": "r*pi/k",
+            "unit": "m",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "What happens to the length if the radius is doubled? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $a = r\\theta = {{r}}\\times\\frac{\\pi}{ {{k}} } = \\frac{ {{r}}\\pi}{ {{k}} }$ m (simplify if possible).\n\n(b) $\\approx {{r*pi/k:4}}$ m.\n\n(c) Doubling the radius doubles the arc length because $a = r\\theta$ is directly proportional to $r$ for a fixed angle.",
+      "rubric": [
+        {
+          "point": "Uses a = rθ with θ in radians",
+          "marks": 1
+        },
+        {
+          "point": "Exact expression",
+          "marks": 1
+        },
+        {
+          "point": "Approximation to the nearest tenth",
+          "marks": 1
+        },
+        {
+          "point": "Explains direct proportionality to r",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain, in your own words and with a labelled sketch description, what **one radian** means. Then explain why there are exactly $2\\pi$ radians in one revolution for a circle of *any* size.",
+      "modelAnswer": "One radian is the central angle subtended by an arc whose length equals the radius of the circle. If you lay a string equal to the radius along the circle, the radii to the ends of the string form an angle of 1 rad (about 57.3°).\n\nThe radian measure of any angle is $\\theta = \\frac{a}{r}$. For a full turn the arc is the whole circumference, $2\\pi r$, so $\\theta = \\frac{2\\pi r}{r} = 2\\pi$. The radius cancels, so the result is the same for every circle — angle measure in radians depends only on the shape, not the size.",
+      "rubric": [
+        {
+          "point": "Correct definition: arc length equal to radius",
+          "marks": 2
+        },
+        {
+          "point": "Describes or sketches the central angle, radii and arc",
+          "marks": 1
+        },
+        {
+          "point": "Uses θ = a/r with circumference 2πr",
+          "marks": 1
+        },
+        {
+          "point": "Explains that r cancels so result is independent of size",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Radian measure is said to be a more natural way to measure angles than degree measure. Give two reasons that support this claim, using a formula or example for each.",
+      "modelAnswer": "1. **It is based on the circle itself.** The degree comes from an arbitrary choice (360 parts, from Babylonian astronomy). A radian is defined by arc length/radius, so it needs no arbitrary number.\n2. **Formulas become simpler.** Arc length is $a = r\\theta$ in radians, compared with $a = \\frac{\\theta}{360^\\circ}(2\\pi r)$ in degrees; sector area is $\\frac{1}{2}r^2\\theta$. Angular velocity in rad/s converts directly to distance with $a = r\\omega t$.\n3. (Also acceptable) A radian is a ratio of two lengths, so it is a pure number — useful in science and engineering.",
+      "rubric": [
+        {
+          "point": "First valid reason",
+          "marks": 2
+        },
+        {
+          "point": "Second valid reason",
+          "marks": 2
+        },
+        {
+          "point": "Supports with a correct formula or example",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "The equal angles of an isosceles triangle are each {{m}} times the third angle.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the exact radian measure of the third angle.",
+          "answer": {
+            "expr": "pi/(1+2*m)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the exact radian measure of each equal angle.",
+          "answer": {
+            "expr": "m*pi/(1+2*m)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Let the third angle be $x$. Then $x + {{m}}x + {{m}}x = \\pi$, so $(1 + 2\\times{{m}})x = \\pi$ and $x = \\frac{\\pi}{ {{1+2*m}} }$.\n\nEach equal angle is $\\frac{ {{m}}\\pi}{ {{1+2*m}} }$.\n\n(a) Third angle $\\approx {{pi/(1+2*m):3}}$ rad; (b) each equal angle $\\approx {{m*pi/(1+2*m):3}}$ rad. Check: the sum is $\\pi$.",
+      "rubric": [
+        {
+          "point": "Sets up equation using angle sum π",
+          "marks": 2
+        },
+        {
+          "point": "Solves for the third angle exactly",
+          "marks": 1
+        },
+        {
+          "point": "Finds the equal angles exactly",
+          "marks": 1
+        },
+        {
+          "point": "Checks the sum",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "R": {
+          "choices": [
+            6370,
+            6371,
+            6378,
+            6400
+          ]
+        }
+      },
+      "text": "At one time a nautical mile was defined as one minute of arc ($\\frac{1}{60}$ of a degree) along Earth's surface. Use an Earth radius of {{R}} km.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the radian measure of one minute of arc to six decimal places.",
+          "answer": {
+            "expr": "pi/10800",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the length of this nautical mile in metres.",
+          "answer": {
+            "expr": "R*pi/10800*1000",
+            "unit": "m",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Suggest why a definition based on Earth's radius is not ideal."
+        }
+      ],
+      "modelAnswer": "(a) $1' = \\frac{1^\\circ}{60} = \\frac{1}{60}\\times\\frac{\\pi}{180} = \\frac{\\pi}{10\\,800}\\approx 0.000291$ rad.\n\n(b) $a = R\\theta = {{R}}\\times\\frac{\\pi}{10\\,800}\\approx {{R*pi/10800:4}}$ km $\\approx {{R*pi/10800*1000:4}}$ m.\n\n(c) Earth is not a perfect sphere and its radius varies with latitude, so a definition based on Earth's radius would give different lengths in different places. A fixed standard (1852 m) is the same everywhere.",
+      "rubric": [
+        {
+          "point": "Converts one minute of arc to radians",
+          "marks": 2
+        },
+        {
+          "point": "Uses a = rθ with correct units",
+          "marks": 1
+        },
+        {
+          "point": "Correct length of nautical mile",
+          "marks": 1
+        },
+        {
+          "point": "Gives a sensible reason (Earth not a perfect sphere / need for a fixed standard)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "h": {
+          "min": 1.5,
+          "max": 3.0,
+          "step": 0.1
+        },
+        "m": {
+          "min": 0.2,
+          "max": 2.0,
+          "step": 0.05
+        }
+      },
+      "text": "A milliradian (mrad) is $\\frac{1}{1000}$ rad. A target scope shows that a target known to be {{h}} m tall subtends an angle of {{m}} mrad.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that an object 1 m tall subtends an angle of about 1 mrad at a distance of 1 km."
+        },
+        {
+          "label": "b",
+          "text": "How far away is the target, in kilometres?",
+          "answer": {
+            "expr": "h/m",
+            "unit": "km",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) For an arc of 1 m at a distance of 1000 m: $\\theta = \\frac{a}{r} = \\frac{1}{1000}$ rad $= 1$ mrad. For small angles the straight height of the target is almost the same as the arc length.\n\n(b) $r = \\frac{a}{\\theta} = \\frac{ {{h}} }{ {{m}}\\times 10^{-3} }\\approx {{h/(m/1000):3}}$ m $\\approx {{h/m:3}}$ km.",
+      "rubric": [
+        {
+          "point": "Shows 1 m at 1 km subtends 1 mrad using θ = a/r",
+          "marks": 2
+        },
+        {
+          "point": "Converts mrad to rad",
+          "marks": 1
+        },
+        {
+          "point": "Rearranges to r = a/θ",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q14",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "d": {
+          "choices": [
+            3474,
+            3480
+          ]
+        },
+        "D": {
+          "min": 363000,
+          "max": 405000,
+          "step": 1000
+        }
+      },
+      "text": "The Moon has a diameter of about {{d}} km and is about {{D}} km from the observer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the angle subtended at the observer's eye by the Moon's diameter, in radians.",
+          "answer": {
+            "expr": "d/D",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Express it in degrees.",
+          "answer": {
+            "expr": "d/D*180/pi",
+            "unit": "°",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why using the arc length formula is a good approximation here."
+        }
+      ],
+      "modelAnswer": "Treat the Moon's diameter as a short arc of a circle of radius {{D}} km centred at the observer.\n\n(a) $\\theta = \\frac{a}{r} = \\frac{ {{d}} }{ {{D}} }\\approx {{d/D:3}}$ rad.\n\n(b) ${{d/D:4}}\\times\\frac{180^\\circ}{\\pi}\\approx {{d/D*180/pi:3}}^\\circ$ — about half a degree.\n\n(c) The diameter is a straight segment, not an arc, but because the angle is tiny the arc and the chord are almost identical, so the error is negligible.",
+      "rubric": [
+        {
+          "point": "Models the diameter as an arc and uses θ = a/r",
+          "marks": 2
+        },
+        {
+          "point": "Correct radian measure",
+          "marks": 1
+        },
+        {
+          "point": "Correct degrees",
+          "marks": 1
+        },
+        {
+          "point": "Justifies the approximation for small angles",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "h": {
+          "choices": [
+            35800,
+            35900,
+            36000
+          ]
+        }
+      },
+      "text": "A geostationary satellite orbits {{h}} km above Earth's surface and stays above the same point on Earth. Earth's radius is 6400 km.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain how the satellite can remain above the same point on Earth."
+        },
+        {
+          "label": "b",
+          "text": "How long does one revolution take?"
+        },
+        {
+          "label": "c",
+          "text": "Determine its angular velocity in rad/s.",
+          "answer": {
+            "expr": "2*pi/86400",
+            "unit": "rad/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Determine its orbital speed in km/s.",
+          "answer": {
+            "expr": "(6400+h)*2*pi/86400",
+            "unit": "km/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "Compare its angular velocity to that of the point on Earth below it."
+        }
+      ],
+      "modelAnswer": "(a) It must orbit in the same direction as Earth rotates and complete one orbit in the same time as Earth's rotation, so it keeps pace with the point below it.\n\n(b) One revolution takes 24 h (one day).\n\n(c) $\\omega = \\frac{2\\pi}{24\\times 3600\\text{ s}}\\approx {{2*pi/86400:3}}$ rad/s.\n\n(d) The orbital radius is $6400 + {{h}} = {{6400+h}}$ km; in one day it travels $a = r\\theta = {{6400+h}}\\times 2\\pi\\approx {{(6400+h)*2*pi:3}}$ km, so its speed is about ${{(6400+h)*2*pi/86400:3}}$ km/s.\n\n(e) Its angular velocity equals that of the point on Earth below it (same angle in the same time), even though its linear speed is far larger.",
+      "rubric": [
+        {
+          "point": "Explains matching Earth's rotation",
+          "marks": 1
+        },
+        {
+          "point": "Period of one day",
+          "marks": 1
+        },
+        {
+          "point": "Correct angular velocity",
+          "marks": 1
+        },
+        {
+          "point": "Uses r = Earth radius + altitude for distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct speed",
+          "marks": 1
+        },
+        {
+          "point": "Compares angular velocities with justification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 4,
+          "max": 20,
+          "step": 1
+        },
+        "n": {
+          "choices": [
+            1,
+            2,
+            3,
+            5
+          ]
+        },
+        "k": {
+          "choices": [
+            6,
+            8,
+            12
+          ]
+        }
+      },
+      "text": "A sector of a circle of radius {{r}} cm has a central angle of $\\frac{ {{n}}\\pi}{ {{k}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the arc length.",
+          "answer": {
+            "expr": "r*n*pi/k",
+            "unit": "cm",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Use the proportion sector area : circle area = θ : 2π to find the area of the sector.",
+          "answer": {
+            "expr": "0.5*r^2*n*pi/k",
+            "unit": "cm²",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Find the perimeter of the sector.",
+          "answer": {
+            "expr": "2*r + r*n*pi/k",
+            "unit": "cm",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a = r\\theta = {{r}}\\times\\frac{ {{n}}\\pi}{ {{k}} }\\approx {{r*n*pi/k:4}}$ cm.\n\n(b) The sector is the fraction $\\frac{\\theta}{2\\pi}$ of the circle, so $A = \\frac{\\theta}{2\\pi}\\pi r^2 = \\frac{1}{2}r^2\\theta = \\frac{1}{2}({{r}})^2\\left(\\frac{ {{n}}\\pi}{ {{k}} }\\right)\\approx {{0.5*r^2*n*pi/k:4}}$ cm².\n\n(c) Perimeter $= 2r + a\\approx {{2*r + r*n*pi/k:4}}$ cm.",
+      "rubric": [
+        {
+          "point": "Correct arc length",
+          "marks": 1
+        },
+        {
+          "point": "Derives or states A = ½r²θ from the proportion",
+          "marks": 2
+        },
+        {
+          "point": "Correct area",
+          "marks": 1
+        },
+        {
+          "point": "Correct perimeter including both radii",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q17",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student says: \"Since $\\pi \\approx 3.14$, an angle of $\\pi$ is about 3.14 degrees.\" Another student says: \"To convert $\\frac{2\\pi}{3}$ to degrees, multiply by $\\frac{\\pi}{180}$.\" Identify and correct each error, showing the correct conversion of $\\frac{2\\pi}{3}$.",
+      "modelAnswer": "**Student 1:** An angle of $\\pi$ means $\\pi$ **radians**, which is $180^\\circ$ — not 3.14°. The number $\\pi$ is about 3.14, so the angle is about 3.14 rad.\n\n**Student 2:** Multiplying by $\\frac{\\pi}{180}$ converts degrees to radians. To convert radians to degrees, multiply by $\\frac{180^\\circ}{\\pi}$: $\\frac{2\\pi}{3}\\times\\frac{180^\\circ}{\\pi} = 120^\\circ$.",
+      "rubric": [
+        {
+          "point": "Identifies first error (π rad = 180°)",
+          "marks": 2
+        },
+        {
+          "point": "Identifies second error (wrong conversion factor)",
+          "marks": 1
+        },
+        {
+          "point": "Correct conversion to 120°",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-1-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 28,
+          "max": 38,
+          "step": 1
+        },
+        "rpm": {
+          "min": 500,
+          "max": 1100,
+          "step": 50
+        }
+      },
+      "text": "A car tire has a radius of {{r}} cm and turns at {{rpm}} rpm.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the angular velocity of the tire in rad/s.",
+          "answer": {
+            "expr": "rpm*2*pi/60",
+            "unit": "rad/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the speed of the car in km/h.",
+          "answer": {
+            "expr": "r/100*rpm*2*pi/60*3.6",
+            "unit": "km/h",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\omega = {{rpm}}\\times\\frac{2\\pi}{60}\\approx {{rpm*2*pi/60:4}}$ rad/s.\n\n(b) In one second a point on the tread travels $a = r\\theta = {{r/100:3}}\\text{ m}\\times {{rpm*2*pi/60:4}}\\approx {{r/100*rpm*2*pi/60:3}}$ m, so the car moves at about ${{r/100*rpm*2*pi/60:3}}$ m/s $\\approx {{r/100*rpm*2*pi/60*3.6:3}}$ km/h (the tire rolls without slipping).",
+      "rubric": [
+        {
+          "point": "Correct angular velocity",
+          "marks": 2
+        },
+        {
+          "point": "Converts radius to metres and uses a = rθ",
+          "marks": 1
+        },
+        {
+          "point": "Correct speed in m/s",
+          "marks": 1
+        },
+        {
+          "point": "Correct km/h",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}
