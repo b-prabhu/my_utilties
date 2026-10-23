@@ -179,11 +179,20 @@ function fill(text, scope) {
   });
 }
 
-// Pull the first number out of a student's typed final answer, e.g.
-// "4.9 N [up]" -> 4.9, "1.2e3" -> 1200, "6 000 N" -> 6000.
+// Read a student's typed final answer. Exact forms such as "3/4", "-√3/2",
+// "2π/3" or "sqrt(2)/2" are evaluated; otherwise the first number is used, so
+// "4.9 N [up]" -> 4.9, "1.2e3" -> 1200 and "6 000 N" -> 6000.
 function parseNumber(input) {
   if (input == null) return null;
-  const s = String(input).replace(/(\d)[\s,](?=\d{3}\b)/g, '$1').replace(/×\s*10\^?\s*(-?\d+)/, 'e$1');
+  const s = String(input).trim().replace(/(\d)[\s,](?=\d{3}\b)/g, '$1').replace(/×\s*10\^?\s*(-?\d+)/, 'e$1');
+  const exact = s.replace(/[−–]/g, '-').replace(/√\s*\(?([0-9.]+)\)?/g, 'sqrt($1)').replace(/π/g, 'pi')
+    .replace(/(\d|\))\s*(pi|sqrt)/g, '$1*$2').replace(/×|·/g, '*').replace(/\s+/g, '');
+  if (/^[-+*/^().\d]*(?:(?:pi|sqrt)[-+*/^().\d]*)*$/.test(exact) && /\d|pi/.test(exact)) {
+    try {
+      const v = evaluate(exact);
+      if (Number.isFinite(v)) return v;
+    } catch { /* fall through to first number */ }
+  }
   const m = /-?\d*\.?\d+(?:e[+-]?\d+)?/i.exec(s);
   return m ? parseFloat(m[0]) : null;
 }

@@ -1,0 +1,1258 @@
+{
+  "id": "4-review",
+  "number": "Review",
+  "title": "Chapter 4 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "Bring the whole chapter together: radian measure, exact trig values, equivalent expressions, compound angle formulas and identity proofs. Use the formula sheet and strategy notes, then test yourself on review and practice-test style problems — all written as full-solution questions.",
+  "objectives": [
+    "Convert between degrees and radians and solve arc length and angular velocity problems.",
+    "Evaluate trig ratios exactly and with technology.",
+    "Use equivalent expressions and compound/double angle formulas to evaluate and simplify.",
+    "Prove identities and disprove non-identities.",
+    "Solve multi-step applied problems combining the chapter's ideas."
+  ],
+  "lessons": [
+    {
+      "id": "map",
+      "title": "Chapter 4 at a glance",
+      "body": "| Section | Big idea | Key tools |\n|---|---|---|\n| 4.1 Radian Measure | Angles measured by arc length ÷ radius | $\\pi = 180^\\circ$, $a = r\\theta$, $\\omega = \\frac{\\Delta\\theta}{\\Delta t}$ |\n| 4.2 Trig Ratios and Special Angles | Exact values from the unit circle | special triangles, reference angles, CAST |\n| 4.3 Equivalent Expressions | Same values, different forms | cofunction identities, $\\pi\\pm x$, $\\frac{3\\pi}{2}\\pm x$, $2\\pi - x$ |\n| 4.4 Compound Angle Formulas | $\\sin(x\\pm y)$, $\\cos(x\\pm y)$ | exact values for $\\frac{\\pi}{12}$-type angles, double angles |\n| 4.5 Prove Identities | Show equality for all $x$ | L.S./R.S. method, counterexamples |\n\n**How the ideas connect:** radians (4.1) make the unit circle natural (4.2); symmetry on the unit circle produces equivalent expressions (4.3); the distance formula on the unit circle produces the compound angle formulas (4.4); and all of these are the toolkit for proofs (4.5)."
+    },
+    {
+      "id": "strategy",
+      "title": "Review strategy",
+      "body": "1. **Rebuild the unit circle from memory** — the special triangles and CAST give every exact value you need.\n2. **Classify each question:** convert? evaluate exactly? find an angle? simplify/prove?\n3. **Exact means exact:** keep $\\pi$ and radicals; round only when asked.\n4. **Signs:** before finishing, ask \"which quadrant, and is this ratio positive there?\"\n5. **For proofs:** pick the messier side, convert to sine and cosine, combine fractions, use $\\sin^2 + \\cos^2 = 1$.\n6. **Check** numerical answers with a calculator in **radian mode**.\n\n**Common traps to review:** degree mode on the calculator; $\\csc x$ vs $\\sin^{-1}x$; sign errors in $\\cos(x\\pm y)$; $\\sin(x + y)\\ne\\sin x + \\sin y$; operating on both sides of an identity."
+    },
+    {
+      "id": "formula-sheet",
+      "title": "Formula sheet",
+      "body": "**Radians:** $\\theta = \\frac{a}{r}$, $\\pi$ rad $= 180^\\circ$, $a = r\\theta$, $\\omega = \\frac{\\text{angle}}{\\text{time}}$ (1 rev $= 2\\pi$ rad).\n\n**Special values**\n\n| | $0$ | $\\frac{\\pi}{6}$ | $\\frac{\\pi}{4}$ | $\\frac{\\pi}{3}$ | $\\frac{\\pi}{2}$ |\n|---|---|---|---|---|---|\n| sin | 0 | $\\frac12$ | $\\frac{1}{\\sqrt2}$ | $\\frac{\\sqrt3}{2}$ | 1 |\n| cos | 1 | $\\frac{\\sqrt3}{2}$ | $\\frac{1}{\\sqrt2}$ | $\\frac12$ | 0 |\n| tan | 0 | $\\frac{1}{\\sqrt3}$ | 1 | $\\sqrt3$ | undefined |\n\n**Equivalent expressions:** $\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$, $\\cos x = \\sin\\left(\\frac{\\pi}{2} - x\\right)$, $\\sin(\\pi - x) = \\sin x$, $\\cos(\\pi - x) = -\\cos x$, $\\sin(\\pi + x) = -\\sin x$, $\\cos(2\\pi - x) = \\cos x$.\n\n**Compound angles:** $\\sin(x\\pm y) = \\sin x\\cos y\\pm\\cos x\\sin y$, $\\cos(x\\pm y) = \\cos x\\cos y\\mp\\sin x\\sin y$.\n\n**Double angles:** $\\sin 2x = 2\\sin x\\cos x$, $\\cos 2x = \\cos^2x - \\sin^2x = 1 - 2\\sin^2x = 2\\cos^2x - 1$.\n\n**Pythagorean:** $\\sin^2x + \\cos^2x = 1$, $1 + \\tan^2x = \\sec^2x$, $1 + \\cot^2x = \\csc^2x$."
+    },
+    {
+      "id": "problem-wrapup",
+      "title": "Chapter problem: transportation engineering",
+      "body": "Many chapter questions used transportation contexts. Two summary problems:\n\n**Bypass road.** A highway runs east 2 km, then turns southward through $\\frac{\\pi}{12}$ and runs another 2 km. An arc-shaped bypass is centred at the bend with radius 2 km, joining the two ends. The two highway segments are radii of the arc, and the angle between them is $\\pi - \\frac{\\pi}{12} = \\frac{11\\pi}{12}$, so the bypass length is $a = r\\theta = 2\\times\\frac{11\\pi}{12} = \\frac{11\\pi}{6}\\approx 5.76$ km.\n\n**Suspension bridge.** A 50 m tower has two cables on each side, at inclinations $x$ and $2x$. Their total length is\n$$l = \\frac{50}{\\sin x} + \\frac{50}{\\sin 2x} = \\frac{50(2\\cos x)}{\\sin 2x} + \\frac{50}{\\sin 2x} = \\frac{50(1 + 2\\cos x)}{\\sin 2x}.$$"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "radian",
+      "definition": "Central angle subtended by an arc equal in length to the radius."
+    },
+    {
+      "term": "angular velocity",
+      "definition": "Rate of change of angle with respect to time."
+    },
+    {
+      "term": "reference angle",
+      "definition": "Acute angle between the terminal arm and the x-axis."
+    },
+    {
+      "term": "CAST rule",
+      "definition": "Signs of trig ratios by quadrant: QIV cos, QI all, QII sin, QIII tan positive."
+    },
+    {
+      "term": "cofunction identities",
+      "definition": "$\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$ and similar."
+    },
+    {
+      "term": "compound angle formula",
+      "definition": "Formula expressing a trig function of x ± y in terms of functions of x and y."
+    },
+    {
+      "term": "double angle formula",
+      "definition": "Formula for sin 2x or cos 2x in terms of x."
+    },
+    {
+      "term": "trigonometric identity",
+      "definition": "Equation true for every angle in its domain."
+    },
+    {
+      "term": "counterexample",
+      "definition": "A value that shows an equation is not an identity."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Arc length",
+      "latex": "a = r\\theta",
+      "meaning": "θ in radians"
+    },
+    {
+      "name": "Conversion",
+      "latex": "\\pi\\text{ rad} = 180^\\circ",
+      "meaning": ""
+    },
+    {
+      "name": "Compound angles",
+      "latex": "\\sin(x\\pm y)=\\sin x\\cos y\\pm\\cos x\\sin y,\\ \\cos(x\\pm y)=\\cos x\\cos y\\mp\\sin x\\sin y",
+      "meaning": ""
+    },
+    {
+      "name": "Double angles",
+      "latex": "\\sin2x=2\\sin x\\cos x,\\ \\cos2x=1-2\\sin^2x=2\\cos^2x-1",
+      "meaning": ""
+    },
+    {
+      "name": "Pythagorean",
+      "latex": "\\sin^2x+\\cos^2x=1",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Mixed review: angle from an equivalent expression",
+      "problem": "If $\\sin y = \\cos 3y$, determine an exact value for the acute angle $y$.",
+      "steps": [
+        "Cofunction identity: $\\cos 3y = \\sin\\left(\\frac{\\pi}{2} - 3y\\right)$.",
+        "So $y = \\frac{\\pi}{2} - 3y$, giving $4y = \\frac{\\pi}{2}$.",
+        "$y = \\frac{\\pi}{8}$. Check: $\\sin\\frac{\\pi}{8}\\approx 0.3827$, $\\cos\\frac{3\\pi}{8}\\approx 0.3827$ ✓"
+      ],
+      "answer": "$y = \\frac{\\pi}{8}$"
+    },
+    {
+      "title": "Compound angle with quadrant information",
+      "problem": "$\\sin a = \\frac{12}{13}$ with $a$ in QII; $\\cos b = -\\frac35$ with $b$ in QIII. Find $\\sin(a + b)$.",
+      "steps": [
+        "$\\cos a = -\\frac{5}{13}$ (QII); $\\sin b = -\\frac45$ (QIII).",
+        "$\\sin(a + b) = \\sin a\\cos b + \\cos a\\sin b = \\frac{12}{13}\\left(-\\frac35\\right) + \\left(-\\frac{5}{13}\\right)\\left(-\\frac45\\right)$.",
+        "$= -\\frac{36}{65} + \\frac{20}{65} = -\\frac{16}{65}$."
+      ],
+      "answer": "$-\\frac{16}{65}$"
+    },
+    {
+      "title": "Using an equivalent expression to evaluate",
+      "problem": "Given $\\cos\\frac{7\\pi}{15}\\approx 0.1045$, find $\\sin\\frac{29\\pi}{30}$.",
+      "steps": [
+        "$\\frac{29\\pi}{30} = \\frac{\\pi}{2} + \\frac{14\\pi}{30} = \\frac{\\pi}{2} + \\frac{7\\pi}{15}$.",
+        "$\\sin\\left(\\frac{\\pi}{2} + x\\right) = \\cos x$.",
+        "$\\sin\\frac{29\\pi}{30} = \\cos\\frac{7\\pi}{15}\\approx 0.1045$ (positive in QII ✓)."
+      ],
+      "answer": "$\\approx 0.1045$"
+    },
+    {
+      "title": "A-frame chalet",
+      "problem": "A chalet's height is made of a 5 m length rising at angle $c$ and a 5 m length rising at angle $2c$. Show that the height $5\\sin c + 5\\sin 2c$ equals $5\\sin c(1 + 2\\cos c)$.",
+      "steps": [
+        "$5\\sin 2c = 5(2\\sin c\\cos c) = 10\\sin c\\cos c$.",
+        "$5\\sin c + 10\\sin c\\cos c = 5\\sin c(1 + 2\\cos c)$."
+      ],
+      "answer": "$h = 5\\sin c(1 + 2\\cos c)$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Exact answers can be rounded decimals.",
+      "fact": "Exact answers keep $\\pi$ and radicals: $\\frac{5\\pi}{12}$, $\\frac{\\sqrt3 - 1}{2\\sqrt2}$."
+    },
+    {
+      "myth": "$\\cos(x + y) = \\cos x\\cos y + \\sin x\\sin y$.",
+      "fact": "The sum formula for cosine has a minus sign."
+    },
+    {
+      "myth": "A graph proves an identity.",
+      "fact": "Graphs give evidence; algebraic L.S./R.S. work gives proof."
+    },
+    {
+      "myth": "Reference angle signs are always positive, so the answer is positive.",
+      "fact": "Use CAST for the sign in the actual quadrant."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Careers",
+      "body": "Computer hardware engineers, game developers, surveyors and aerospace engineers use radian measure and identities every day."
+    },
+    {
+      "title": "Transportation",
+      "body": "On-ramps, bypasses and bank angles of aircraft are all designed using arc length and trig identities."
+    },
+    {
+      "title": "Astronomy",
+      "body": "The Moon orbits Earth every 27.3 days: its angular velocity is $\\frac{2\\pi}{27.3}\\approx 0.230$ rad/day, so it moves about $384\\,400\\times 0.230\\approx 88\\,500$ km along its orbit each day."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Determine the exact radian measure of $105^\\circ$ and the exact degree measure of $\\frac{13\\pi}{24}$.",
+      "hint": "Multiply by $\\frac{\\pi}{180}$ or $\\frac{180}{\\pi}$.",
+      "solution": "$\\frac{7\\pi}{12}$; $97.5^\\circ$"
+    },
+    {
+      "question": "Given $\\cot\\theta = -1$ and $\\theta$ in QII, find $\\sec\\theta$.",
+      "hint": "Reference angle $\\frac{\\pi}{4}$.",
+      "solution": "$\\theta = \\frac{3\\pi}{4}$; $\\sec\\theta = -\\sqrt2$."
+    },
+    {
+      "question": "Simplify $\\cos\\frac{\\pi}{5}\\cos\\frac{\\pi}{6} - \\sin\\frac{\\pi}{5}\\sin\\frac{\\pi}{6}$.",
+      "hint": "cos(x + y).",
+      "solution": "$\\cos\\frac{11\\pi}{30}$"
+    },
+    {
+      "question": "Which expression is equivalent to $\\sin x$: $\\cos\\left(x - \\frac{\\pi}{2}\\right)$ or $\\cos\\left(\\frac{\\pi}{2} + x\\right)$? Explain.",
+      "hint": "Expand both.",
+      "solution": "$\\cos\\left(x - \\frac{\\pi}{2}\\right) = \\cos x\\cdot 0 + \\sin x\\cdot 1 = \\sin x$; the other equals $-\\sin x$."
+    },
+    {
+      "question": "A runner runs 60 m along a circular track of radius 20 m. What is the sector angle?",
+      "hint": "$\\theta = \\frac{a}{r}$.",
+      "solution": "$3$ rad"
+    },
+    {
+      "question": "Determine the exact value of $\\sin\\frac{3\\pi}{4} + \\tan\\frac{5\\pi}{4}$.",
+      "hint": "Reference angles $\\frac{\\pi}{4}$.",
+      "solution": "$\\frac{1}{\\sqrt2} + 1$"
+    }
+  ],
+  "summary": [
+    "Radians: $\\theta = \\frac{a}{r}$, $\\pi$ rad = 180°, arc length $a = r\\theta$, angular velocity in rad/s.",
+    "Exact values of special angles and their multiples come from the unit circle, special triangles and CAST.",
+    "Equivalent expressions and cofunction identities relate $f(x)$ to functions of $\\frac{\\pi}{2}\\pm x$, $\\pi\\pm x$, etc.",
+    "Compound and double angle formulas give exact values and simplify expressions.",
+    "Identities are proved by transforming each side independently; one counterexample disproves."
+  ],
+  "questions": [
+    {
+      "id": "m4-r-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "d": {
+          "min": 20,
+          "max": 350,
+          "step": 1
+        },
+        "r": {
+          "min": 1.0,
+          "max": 6.9,
+          "step": 0.01
+        },
+        "n": {
+          "choices": [
+            1,
+            5,
+            7,
+            11,
+            13
+          ]
+        },
+        "m": {
+          "choices": [
+            1,
+            5,
+            7,
+            11,
+            13,
+            17
+          ]
+        }
+      },
+      "text": "Convert as indicated.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{d}}^\\circ$ to radians (nearest hundredth)",
+          "answer": {
+            "expr": "d*pi/180",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{r}}$ rad to degrees (nearest tenth)",
+          "answer": {
+            "expr": "r*180/pi",
+            "unit": "°",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "${{15*n}}^\\circ$ to exact radians"
+        },
+        {
+          "label": "d",
+          "text": "$\\frac{ {{m}}\\pi}{18}$ to exact degrees",
+          "answer": {
+            "expr": "10*m",
+            "unit": "°",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{d}}^\\circ\\times\\frac{\\pi}{180}\\approx {{d*pi/180:3}}$ rad.\n\n(b) ${{r}}\\times\\frac{180^\\circ}{\\pi}\\approx {{r*180/pi:4}}^\\circ$.\n\n(c) ${{15*n}}^\\circ = \\frac{ {{15*n}}\\pi}{180} = \\frac{ {{n}}\\pi}{12}$.\n\n(d) $\\frac{ {{m}}\\pi}{18} = {{m}}\\times 10^\\circ = {{10*m}}^\\circ$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) exact and simplified",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "t": {
+          "min": 5,
+          "max": 15,
+          "step": 1
+        }
+      },
+      "text": "Turntables for vinyl records have speeds of 16, 33⅓, 45 and 78 rpm. A microwave turntable turns {{t}} times per minute.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Summarise the angular velocity of each record speed in °/s and rad/s in a table."
+        },
+        {
+          "label": "b",
+          "text": "Find the microwave turntable's angular velocity in rad/s.",
+          "answer": {
+            "expr": "t*pi/30",
+            "unit": "rad/s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Use $\\omega(°/s) = \\text{rpm}\\times 6$ and $\\omega(\\text{rad/s}) = \\text{rpm}\\times\\frac{2\\pi}{60} = \\frac{\\text{rpm}\\cdot\\pi}{30}$.\n\n| rpm | °/s | rad/s |\n|---|---|---|\n| 16 | 96 | $\\frac{8\\pi}{15}\\approx 1.68$ |\n| 33⅓ | 200 | $\\frac{10\\pi}{9}\\approx 3.49$ |\n| 45 | 270 | $\\frac{3\\pi}{2}\\approx 4.71$ |\n| 78 | 468 | $\\frac{13\\pi}{5}\\approx 8.17$ |\n\nMicrowave: ${{t*6}}^\\circ$/s and $\\frac{ {{t}}\\pi}{30}\\approx {{t*pi/30:3}}$ rad/s.",
+      "rubric": [
+        {
+          "point": "Correct method converting rpm to °/s",
+          "marks": 1
+        },
+        {
+          "point": "Correct method converting rpm to rad/s",
+          "marks": 1
+        },
+        {
+          "point": "Table complete and correct",
+          "marks": 2
+        },
+        {
+          "point": "Microwave values correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "R": {
+          "min": 380000,
+          "max": 390000,
+          "step": 500
+        }
+      },
+      "text": "The Moon orbits Earth once every 27.3 days at an orbital radius of about {{R}} km.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the angular velocity of the Moon in degrees per day and radians per day.",
+          "answer": {
+            "expr": "2*pi/27.3",
+            "unit": "rad/day",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How far does the Moon travel along its orbit each day?",
+          "answer": {
+            "expr": "R*2*pi/27.3",
+            "unit": "km",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\omega = \\frac{360^\\circ}{27.3}\\approx 13.2^\\circ$/day $= \\frac{2\\pi}{27.3}\\approx 0.230$ rad/day.\n\n(b) $a = r\\theta = {{R}}\\times\\frac{2\\pi}{27.3}\\approx {{R*2*pi/27.3:3}}$ km per day.",
+      "rubric": [
+        {
+          "point": "Angular velocity in degrees per day",
+          "marks": 1
+        },
+        {
+          "point": "Angular velocity in radians per day",
+          "marks": 1
+        },
+        {
+          "point": "Uses a = rθ",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "r": {
+          "min": 15,
+          "max": 30,
+          "step": 1
+        },
+        "a": {
+          "min": 30,
+          "max": 120,
+          "step": 5
+        }
+      },
+      "text": "A gymnasium has a circular running track of radius {{r}} m. A runner runs {{a}} m along the track.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the sector angle in radians.",
+          "answer": {
+            "expr": "a/r",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Express it in degrees.",
+          "answer": {
+            "expr": "a/r*180/pi",
+            "unit": "°",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\theta = \\frac{a}{r} = \\frac{ {{a}} }{ {{r}} }\\approx {{a/r:3}}$ rad $\\approx {{a/r*180/pi:3}}^\\circ$.",
+      "rubric": [
+        {
+          "point": "Uses θ = a/r",
+          "marks": 1
+        },
+        {
+          "point": "Correct radians",
+          "marks": 1
+        },
+        {
+          "point": "Correct degrees",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "k": {
+          "choices": [
+            7,
+            11,
+            13
+          ]
+        }
+      },
+      "text": "Use a calculator to determine the six trigonometric ratios of $\\frac{ {{n}}\\pi}{ {{k}} }$, to four decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\sin\\theta$",
+          "answer": {
+            "expr": "sin(n*pi/k)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\sec\\theta$",
+          "answer": {
+            "expr": "1/cos(n*pi/k)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "Radian mode: $\\theta = \\frac{ {{n}}\\pi}{ {{k}} }\\approx {{n*pi/k:4}}$.\n\n$\\sin\\theta\\approx {{sin(n*pi/k):4}}$, $\\cos\\theta\\approx {{cos(n*pi/k):4}}$, $\\tan\\theta\\approx {{tan(n*pi/k):4}}$, $\\csc\\theta\\approx {{1/sin(n*pi/k):4}}$, $\\sec\\theta\\approx {{1/cos(n*pi/k):4}}$, $\\cot\\theta\\approx {{1/tan(n*pi/k):4}}$.",
+      "rubric": [
+        {
+          "point": "Radian mode, primary ratios correct",
+          "marks": 2
+        },
+        {
+          "point": "Reciprocal ratios correct",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine an exact value for each expression.\n\n(a) $\\cot\\frac{\\pi}{4}\\cos\\frac{\\pi}{6}\\csc\\frac{\\pi}{3}$\n\n(b) $\\cos\\frac{\\pi}{3}\\csc\\frac{\\pi}{6} - \\sin\\frac{\\pi}{2}$\n\n(c) $\\dfrac{\\sin\\frac{\\pi}{6} + \\cos\\frac{5\\pi}{3}}{1 + \\tan\\frac{3\\pi}{4}\\cot\\frac{\\pi}{4}}$ (if the expression is undefined, explain why)",
+      "modelAnswer": "(a) $1\\cdot\\frac{\\sqrt3}{2}\\cdot\\frac{2}{\\sqrt3} = 1$.\n\n(b) $\\frac12\\cdot 2 - 1 = 0$.\n\n(c) Numerator $= \\frac12 + \\frac12 = 1$; denominator $= 1 + (-1)(1) = 0$. Division by zero: the expression is **undefined**.",
+      "rubric": [
+        {
+          "point": "(a) correct exact values and result",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) evaluates numerator and denominator",
+          "marks": 1
+        },
+        {
+          "point": "(c) recognises undefined",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 20,
+          "max": 40,
+          "step": 1
+        }
+      },
+      "text": "Two guy wires are attached to the top of a radio antenna {{h}} m high. They make angles of $\\frac{\\pi}{3}$ and $\\frac{\\pi}{4}$ with the ground, on opposite sides of the antenna.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an exact expression for the distance between the two anchor points A and B."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate it to the nearest tenth.",
+          "answer": {
+            "expr": "h*(1+1/sqrt(3))",
+            "unit": "m",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "What would the distance be if both wires were on the same side of the antenna?",
+          "answer": {
+            "expr": "h*(1-1/sqrt(3))",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Horizontal distance from the base to each anchor: $d = \\frac{h}{\\tan\\theta}$.\n\n$d_1 = \\frac{ {{h}} }{\\tan\\frac{\\pi}{3}} = \\frac{ {{h}} }{\\sqrt3}$, $d_2 = \\frac{ {{h}} }{\\tan\\frac{\\pi}{4}} = {{h}}$.\n\n(a) $AB = {{h}} + \\frac{ {{h}} }{\\sqrt3} = {{h}}\\left(1 + \\frac{1}{\\sqrt3}\\right)$ m.\n\n(b) $\\approx {{h*(1+1/sqrt(3)):4}}$ m.\n\n(c) If both wires were on the same side, $AB = {{h}} - \\frac{ {{h}} }{\\sqrt3}\\approx {{h*(1-1/sqrt(3)):3}}$ m.",
+      "rubric": [
+        {
+          "point": "Uses tan with exact values",
+          "marks": 2
+        },
+        {
+          "point": "Correct exact AB",
+          "marks": 1
+        },
+        {
+          "point": "Correct approximation",
+          "marks": 1
+        },
+        {
+          "point": "Correct same-side distance",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "(a) Given $\\cot\\frac{2\\pi}{5} = \\tan z$, express $\\frac{2\\pi}{5}$ as a difference between $\\frac{\\pi}{2}$ and an angle, and apply a cofunction identity to find $z$. (b) Given $\\cos\\frac{5\\pi}{8} = -\\sin y$, express $\\frac{5\\pi}{8}$ as a sum of $\\frac{\\pi}{2}$ and an angle and find $y$.",
+      "modelAnswer": "(a) $\\frac{2\\pi}{5} = \\frac{\\pi}{2} - \\frac{\\pi}{10}$. $\\cot\\left(\\frac{\\pi}{2} - x\\right) = \\tan x$, so $z = \\frac{\\pi}{10}$.\n\n(b) $\\frac{5\\pi}{8} = \\frac{\\pi}{2} + \\frac{\\pi}{8}$. $\\cos\\left(\\frac{\\pi}{2} + x\\right) = -\\sin x$, so $y = \\frac{\\pi}{8}$.",
+      "rubric": [
+        {
+          "point": "(a) correct decomposition",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct identity and z",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct decomposition",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct identity and y",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Given that $\\tan\\frac{4\\pi}{9}\\approx 5.6713$, determine, to four decimal places and without a calculator, (a) $\\cot\\frac{\\pi}{18}$ and (b) $\\tan\\frac{13\\pi}{9}$. Justify each answer. (c) Given $\\cos\\frac{7\\pi}{15}\\approx 0.1045$, determine $\\sin\\frac{29\\pi}{30}$.",
+      "modelAnswer": "(a) $\\frac{\\pi}{18} = \\frac{\\pi}{2} - \\frac{4\\pi}{9}$: $\\cot\\left(\\frac{\\pi}{2} - x\\right) = \\tan x$, so $5.6713$.\n\n(b) $\\frac{13\\pi}{9} = \\pi + \\frac{4\\pi}{9}$: $\\tan(\\pi + x) = \\tan x$, so $5.6713$.\n\n(c) $\\frac{29\\pi}{30} = \\frac{\\pi}{2} + \\frac{7\\pi}{15}$: $\\sin\\left(\\frac{\\pi}{2} + x\\right) = \\cos x$, so $0.1045$.",
+      "rubric": [
+        {
+          "point": "(a) with identity",
+          "marks": 2
+        },
+        {
+          "point": "(b) with identity",
+          "marks": 2
+        },
+        {
+          "point": "(c) with identity",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Given $\\sin x = \\cos\\frac{3\\pi}{11}$ and that $x$ lies in the second quadrant, determine $x$ exactly. Also determine an exact acute angle $y$ such that $\\sin y = \\cos {{m}}y$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "x (decimal)",
+          "answer": {
+            "expr": "17*pi/22",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "y (decimal)",
+          "answer": {
+            "expr": "pi/(2*(m+1))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cos\\frac{3\\pi}{11} = \\sin\\left(\\frac{\\pi}{2} - \\frac{3\\pi}{11}\\right) = \\sin\\frac{5\\pi}{22}$. In QII, $x = \\pi - \\frac{5\\pi}{22} = \\frac{17\\pi}{22}$.\n\n$\\sin y = \\cos {{m}}y = \\sin\\left(\\frac{\\pi}{2} - {{m}}y\\right)$, so $y + {{m}}y = \\frac{\\pi}{2}$ and $y = \\frac{\\pi}{ {{2*(m+1)}} }\\approx {{pi/(2*(m+1)):4}}$.",
+      "rubric": [
+        {
+          "point": "Cofunction to get 5π/22",
+          "marks": 1
+        },
+        {
+          "point": "Quadrant II angle 17π/22",
+          "marks": 2
+        },
+        {
+          "point": "Sets up y + my = π/2",
+          "marks": 1
+        },
+        {
+          "point": "Correct y",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Use an appropriate compound angle formula to express each as a single trigonometric function, and then determine an exact value.\n\n(a) $\\sin\\frac{5\\pi}{12}\\cos\\frac{\\pi}{4} - \\cos\\frac{5\\pi}{12}\\sin\\frac{\\pi}{4}$\n\n(b) $\\sin\\frac{5\\pi}{12}\\cos\\frac{\\pi}{4} + \\cos\\frac{5\\pi}{12}\\sin\\frac{\\pi}{4}$\n\n(c) $\\cos\\frac{5\\pi}{12}\\cos\\frac{\\pi}{4} + \\sin\\frac{5\\pi}{12}\\sin\\frac{\\pi}{4}$\n\n(d) $\\cos\\frac{5\\pi}{12}\\cos\\frac{\\pi}{4} - \\sin\\frac{5\\pi}{12}\\sin\\frac{\\pi}{4}$",
+      "modelAnswer": "(a) $\\sin\\left(\\frac{5\\pi}{12} - \\frac{3\\pi}{12}\\right) = \\sin\\frac{\\pi}{6} = \\frac12$.\n\n(b) $\\sin\\frac{8\\pi}{12} = \\sin\\frac{2\\pi}{3} = \\frac{\\sqrt3}{2}$.\n\n(c) $\\cos\\frac{\\pi}{6} = \\frac{\\sqrt3}{2}$.\n\n(d) $\\cos\\frac{2\\pi}{3} = -\\frac12$.",
+      "rubric": [
+        {
+          "point": "(a)",
+          "marks": 1
+        },
+        {
+          "point": "(b)",
+          "marks": 1
+        },
+        {
+          "point": "(c)",
+          "marks": 1
+        },
+        {
+          "point": "(d) including sign",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "i": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "j": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "A1": "(3+(1.5)*i+(0.5)*i^2)",
+        "B1": "(4+(10.5)*i+(-2.5)*i^2)",
+        "C1": "(5+(10)*i+(-2)*i^2)",
+        "A2": "(3+(1.5)*j+(0.5)*j^2)",
+        "B2": "(4+(10.5)*j+(-2.5)*j^2)",
+        "C2": "(5+(10)*j+(-2)*j^2)"
+      },
+      "text": "Angles $x$ and $y$ are in the first quadrant with $\\sin x = \\frac{ {{A1}} }{ {{C1}} }$ and $\\cos y = \\frac{ {{A2}} }{ {{C2}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "cos x"
+        },
+        {
+          "label": "b",
+          "text": "sin y"
+        },
+        {
+          "label": "c",
+          "text": "sin(x + y)",
+          "answer": {
+            "expr": "(A1*A2+B1*B2)/(C1*C2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\cos x = \\frac{ {{B1}} }{ {{C1}} }$. (b) $\\sin y = \\frac{ {{B2}} }{ {{C2}} }$.\n\n(c) $\\sin(x + y) = \\frac{ {{A1}} }{ {{C1}} }\\cdot\\frac{ {{A2}} }{ {{C2}} } + \\frac{ {{B1}} }{ {{C1}} }\\cdot\\frac{ {{B2}} }{ {{C2}} } = \\frac{ {{A1*A2 + B1*B2}} }{ {{C1*C2}} }\\approx {{(A1*A2+B1*B2)/(C1*C2):4}}$.",
+      "rubric": [
+        {
+          "point": "Correct cos x",
+          "marks": 1
+        },
+        {
+          "point": "Correct sin y",
+          "marks": 1
+        },
+        {
+          "point": "Correct formula for sin(x + y)",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact value",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Angle $a$ is in the second quadrant with $\\sin a = \\frac{12}{13}$. Angle $b$ is in the third quadrant with $\\cos b = -\\frac35$. Determine exact values of $\\sin(a + b)$ and $\\cos(a - b)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "sin(a + b)",
+          "answer": {
+            "expr": "-16/65",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "cos(a − b)",
+          "answer": {
+            "expr": "-33/65",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cos a = -\\frac{5}{13}$, $\\sin b = -\\frac45$.\n\n$\\sin(a + b) = \\frac{12}{13}\\left(-\\frac35\\right) + \\left(-\\frac{5}{13}\\right)\\left(-\\frac45\\right) = \\frac{-36 + 20}{65} = -\\frac{16}{65}$.\n\n$\\cos(a - b) = \\left(-\\frac{5}{13}\\right)\\left(-\\frac35\\right) + \\frac{12}{13}\\left(-\\frac45\\right) = \\frac{15 - 48}{65} = -\\frac{33}{65}$.",
+      "rubric": [
+        {
+          "point": "cos a and sin b with correct signs",
+          "marks": 2
+        },
+        {
+          "point": "Correct sin(a + b)",
+          "marks": 2
+        },
+        {
+          "point": "Correct cos(a − b)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Angle $x$ lies in the third quadrant and $\\tan x = \\frac{7}{24}$. Determine exact values for $\\cos 2x$ and $\\sin 2x$. Use your answers to decide in which quadrant the terminal arm of $2x$ lies.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "cos 2x",
+          "answer": {
+            "expr": "527/625",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "sin 2x",
+          "answer": {
+            "expr": "336/625",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Reference triangle 7-24-25; in QIII $\\sin x = -\\frac{7}{25}$, $\\cos x = -\\frac{24}{25}$.\n\n$\\cos 2x = \\cos^2 x - \\sin^2 x = \\frac{576 - 49}{625} = \\frac{527}{625}$.\n\n$\\sin 2x = 2\\left(-\\frac{7}{25}\\right)\\left(-\\frac{24}{25}\\right) = \\frac{336}{625}$.\n\nBoth positive, so $2x$ has its terminal arm in quadrant I (here $2\\pi < 2x < 3\\pi$ wraps around to QI).",
+      "rubric": [
+        {
+          "point": "Correct sin x and cos x with signs",
+          "marks": 2
+        },
+        {
+          "point": "Correct cos 2x",
+          "marks": 1
+        },
+        {
+          "point": "Correct sin 2x",
+          "marks": 1
+        },
+        {
+          "point": "Quadrant of 2x reasoned from signs",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine an exact value for $\\cos\\frac{13\\pi}{12}$ in two different ways, and show that they agree.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Decimal value",
+          "answer": {
+            "expr": "cos(13*pi/12)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "Method 1: $\\frac{13\\pi}{12} = \\pi + \\frac{\\pi}{12}$ so $\\cos\\frac{13\\pi}{12} = -\\cos\\frac{\\pi}{12} = -\\cos\\left(\\frac{\\pi}{3} - \\frac{\\pi}{4}\\right) = -\\left(\\frac12\\cdot\\frac{1}{\\sqrt2} + \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2}\\right) = -\\frac{1 + \\sqrt3}{2\\sqrt2}$.\n\nMethod 2: $\\frac{13\\pi}{12} = \\frac{3\\pi}{4} + \\frac{\\pi}{3}$: $\\cos\\frac{3\\pi}{4}\\cos\\frac{\\pi}{3} - \\sin\\frac{3\\pi}{4}\\sin\\frac{\\pi}{3} = -\\frac{1}{2\\sqrt2} - \\frac{\\sqrt3}{2\\sqrt2} = -\\frac{1 + \\sqrt3}{2\\sqrt2}$.\n\nBoth $\\approx -0.9659$ ✓",
+      "rubric": [
+        {
+          "point": "First valid method",
+          "marks": 2
+        },
+        {
+          "point": "Second valid method",
+          "marks": 2
+        },
+        {
+          "point": "Shows agreement",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q16",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Prove that $\\sin(2\\pi - x) = -\\sin x$.",
+      "modelAnswer": "L.S. $= \\sin 2\\pi\\cos x - \\cos 2\\pi\\sin x = 0 - \\sin x = -\\sin x =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "L.S./R.S. worked independently",
+          "marks": 1
+        },
+        {
+          "point": "Correct identities applied",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebra",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q17",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $2\\sin x\\cos y = \\sin(x + y) + \\sin(x - y)$.",
+      "modelAnswer": "R.S. $= (\\sin x\\cos y + \\cos x\\sin y) + (\\sin x\\cos y - \\cos x\\sin y) = 2\\sin x\\cos y =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "L.S./R.S. worked independently",
+          "marks": 1
+        },
+        {
+          "point": "Correct identities applied",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebra",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q18",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $(\\sin 2x)(\\tan x + \\cot x) = 2$.",
+      "modelAnswer": "L.S. $= 2\\sin x\\cos x\\cdot\\frac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = 2 =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "L.S./R.S. worked independently",
+          "marks": 1
+        },
+        {
+          "point": "Correct identities applied",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebra",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q19",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $\\dfrac{\\sin 2x}{\\sec x} = \\dfrac{2\\cos^2 x}{\\csc x}$.",
+      "modelAnswer": "L.S. $= 2\\sin x\\cos x\\cdot\\cos x = 2\\sin x\\cos^2 x$. R.S. $= 2\\cos^2 x\\cdot\\sin x = 2\\sin x\\cos^2 x$. L.S. = R.S. ∎",
+      "rubric": [
+        {
+          "point": "L.S./R.S. worked independently",
+          "marks": 1
+        },
+        {
+          "point": "Correct identities applied",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebra",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q20",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $\\dfrac{\\sin(x + y)}{\\cos x\\cos y} = \\tan x + \\tan y$.",
+      "modelAnswer": "L.S. $= \\frac{\\sin x\\cos y + \\cos x\\sin y}{\\cos x\\cos y} = \\frac{\\sin x}{\\cos x} + \\frac{\\sin y}{\\cos y} = \\tan x + \\tan y =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "L.S./R.S. worked independently",
+          "marks": 1
+        },
+        {
+          "point": "Correct identities applied",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebra",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q21",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Consider the equation $\\cos 2x = 2\\sin x\\sec x$. Either prove that it is an identity or determine a counterexample. Then explain how you could have predicted the result from the graphs of the two sides.",
+      "modelAnswer": "R.S. $= \\frac{2\\sin x}{\\cos x} = 2\\tan x$, which is not $\\cos 2x$. Counterexample $x = \\frac{\\pi}{4}$: L.S. $= \\cos\\frac{\\pi}{2} = 0$, R.S. $= 2\\tan\\frac{\\pi}{4} = 2$. Not an identity.\n\nThe graph of $2\\tan x$ has vertical asymptotes and an unbounded range, while $\\cos 2x$ stays between −1 and 1, so the graphs clearly differ.",
+      "rubric": [
+        {
+          "point": "Simplifies or tests",
+          "marks": 1
+        },
+        {
+          "point": "Valid counterexample",
+          "marks": 2
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        },
+        {
+          "point": "Graphical reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q22",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "x": {
+          "min": 0.2,
+          "max": 1.4,
+          "step": 0.1
+        }
+      },
+      "text": "(a) Describe how graphing technology could be used to decide whether it is reasonable to conjecture that $\\cos 3x = \\cos^3 x - 3\\cos x\\sin^2 x$. (b) Develop a formula for $\\cos 3x$ in terms of $\\sin x$ and $\\cos x$ to prove the conjecture. (c) Check at $x = {{x}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Technology method"
+        },
+        {
+          "label": "b",
+          "text": "Proof"
+        },
+        {
+          "label": "c",
+          "text": "Value of cos 3x at x = {{x}}",
+          "answer": {
+            "expr": "cos(3*x)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) Graph $Y_1 = \\cos 3x$ and $Y_2 = \\cos^3 x - 3\\cos x\\sin^2 x$ in radian mode; if the curves coincide, the conjecture is reasonable.\n\n(b) $\\cos 3x = \\cos(2x + x) = \\cos 2x\\cos x - \\sin 2x\\sin x = (\\cos^2 x - \\sin^2 x)\\cos x - 2\\sin x\\cos x\\sin x = \\cos^3 x - \\cos x\\sin^2 x - 2\\cos x\\sin^2 x = \\cos^3 x - 3\\cos x\\sin^2 x$ ∎\n\n(c) $\\cos({{3*x}})\\approx {{cos(3*x):4}}$ and $\\cos^3 {{x}} - 3\\cos {{x}}\\sin^2 {{x}}\\approx {{cos(x)^3 - 3*cos(x)*sin(x)^2:4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Technology method described",
+          "marks": 1
+        },
+        {
+          "point": "Writes 3x = 2x + x and expands",
+          "marks": 1
+        },
+        {
+          "point": "Uses double angle formulas correctly",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies to the target",
+          "marks": 1
+        },
+        {
+          "point": "Numerical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q23",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "d": {
+          "choices": [
+            1.5,
+            2,
+            2.5,
+            3
+          ]
+        }
+      },
+      "text": "A highway enters a city and runs east for {{d}} km. It then turns southward through an angle of $\\frac{\\pi}{12}$ and runs another {{d}} km before leaving the city. Engineers design an arc-shaped bypass with its centre at the bend and radius {{d}} km, joining the point where the highway enters the city to the point where it leaves.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe a sketch of the old highway and the bypass and find the central angle of the bypass arc."
+        },
+        {
+          "label": "b",
+          "text": "Determine the length of the bypass to the nearest hundredth of a kilometre.",
+          "answer": {
+            "expr": "d*11*pi/12",
+            "unit": "km",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the length of the bypass with the route through the city."
+        }
+      ],
+      "modelAnswer": "(i) The two straight segments are radii of the bypass circle (both {{d}} km from the bend). The highway turns through $\\frac{\\pi}{12}$, so the angle between the two segments at the bend is $\\pi - \\frac{\\pi}{12} = \\frac{11\\pi}{12}$.\n\n(ii) Bypass length $a = r\\theta = {{d}}\\times\\frac{11\\pi}{12}\\approx {{d*11*pi/12:3}}$ km.\n\n(iii) The highway route through the city is $2\\times{{d}} = {{2*d}}$ km, and bypass − highway $\\approx {{d*11*pi/12 - 2*d:3}}$ km.",
+      "rubric": [
+        {
+          "point": "Describes or sketches the diagram with radii and angle",
+          "marks": 1
+        },
+        {
+          "point": "Finds the central angle 11π/12 with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Uses a = rθ",
+          "marks": 1
+        },
+        {
+          "point": "Correct bypass length",
+          "marks": 1
+        },
+        {
+          "point": "Compares with the highway route",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q24",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "k": {
+          "choices": [
+            5,
+            6,
+            8,
+            9
+          ]
+        }
+      },
+      "text": "An A-frame ski chalet has a front face formed by two sloping sides. Its extension shed is attached so that the total height is made up of a 5 m length rising at angle $c$ and a 5 m length rising at angle $2c$ (measured from the horizontal).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $h = 5\\sin c(1 + 2\\cos c)$."
+        },
+        {
+          "label": "b",
+          "text": "Determine $h$ when $c = \\frac{\\pi}{ {{k}} }$.",
+          "answer": {
+            "expr": "5*sin(pi/k)*(1+2*cos(pi/k))",
+            "unit": "m",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $h = 5\\sin c + 5\\sin 2c = 5\\sin c + 5(2\\sin c\\cos c) = 5\\sin c(1 + 2\\cos c)$.\n\n(b) With $c = \\frac{\\pi}{ {{k}} }$: $h = 5\\sin\\frac{\\pi}{ {{k}} }\\left(1 + 2\\cos\\frac{\\pi}{ {{k}} }\\right)\\approx {{5*sin(pi/k)*(1+2*cos(pi/k)):4}}$ m.",
+      "rubric": [
+        {
+          "point": "Expresses h as sum of vertical components",
+          "marks": 2
+        },
+        {
+          "point": "Applies double angle formula",
+          "marks": 1
+        },
+        {
+          "point": "Factors to required form",
+          "marks": 1
+        },
+        {
+          "point": "Correct numerical h",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q25",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Several Practice Test items ask you to pick an expression equivalent to $\\sin x$. Without a list of options, write **three** different expressions equivalent to $\\sin x$ that use cosine or a shifted sine, and **two** expressions that look similar but are *not* equivalent. Justify each one.",
+      "modelAnswer": "Equivalent: $\\cos\\left(\\frac{\\pi}{2} - x\\right)$ (cofunction); $\\cos\\left(x - \\frac{\\pi}{2}\\right)$ (cosine is even, same as previous); $\\sin(\\pi - x)$ (reflection in the $y$-axis); $-\\cos\\left(x + \\frac{\\pi}{2}\\right)$.\n\nNot equivalent: $\\cos\\left(x + \\frac{\\pi}{2}\\right) = -\\sin x$; $\\sin(\\pi + x) = -\\sin x$; $\\cos(\\pi - x) = -\\cos x$. Each can be justified by expanding with a compound angle formula, e.g. $\\cos\\left(x + \\frac{\\pi}{2}\\right) = \\cos x\\cdot 0 - \\sin x\\cdot 1 = -\\sin x$.",
+      "rubric": [
+        {
+          "point": "Three correct equivalent expressions",
+          "marks": 3
+        },
+        {
+          "point": "Two correct non-equivalent expressions",
+          "marks": 2
+        },
+        {
+          "point": "Valid justification (compound angle or unit circle)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-r-q26",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Correct and justify each statement (each one is false as written):\n\n(a) \"$\\frac{13\\pi}{24}$ rad is less than a right angle.\"\n\n(b) \"$\\sin\\frac{15\\pi}{17}$ is negative because $\\frac{15\\pi}{17}$ is close to $\\pi$.\"\n\n(c) \"If $\\cot\\theta = -1$ and $\\theta$ is in quadrant II, then $\\sec\\theta = \\sqrt2$.\"",
+      "modelAnswer": "(a) $\\frac{13\\pi}{24} = 97.5^\\circ$, which is **greater** than a right angle ($\\frac{\\pi}{2} = \\frac{12\\pi}{24}$).\n\n(b) $\\frac{15\\pi}{17}$ is less than $\\pi$, so it is in quadrant II where sine is **positive**: $\\sin\\frac{15\\pi}{17}\\approx 0.3612$.\n\n(c) $\\theta = \\frac{3\\pi}{4}$; $\\cos\\theta = -\\frac{1}{\\sqrt2}$, so $\\sec\\theta = -\\sqrt2$ (negative in QII).",
+      "rubric": [
+        {
+          "point": "(a) corrected with justification",
+          "marks": 2
+        },
+        {
+          "point": "(b) corrected with justification",
+          "marks": 2
+        },
+        {
+          "point": "(c) corrected with justification",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

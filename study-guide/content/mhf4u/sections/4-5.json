@@ -1,0 +1,818 @@
+{
+  "id": "4-5",
+  "number": "4.5",
+  "title": "Prove Trigonometric Identities",
+  "estimatedMinutes": 80,
+  "overview": "A trigonometric identity is an equation that is true for **every** angle where it is defined. In this section you will learn to tell identities from ordinary equations, disprove false identities with counterexamples, and write clear **proofs** using the reciprocal, quotient, Pythagorean, compound angle and double angle identities.",
+  "objectives": [
+    "Distinguish between a trigonometric equation and an identity.",
+    "Use a counterexample to show an equation is not an identity.",
+    "Prove identities by transforming each side independently.",
+    "Use reciprocal, quotient, Pythagorean, compound angle and double angle identities in proofs.",
+    "Use graphing technology to investigate and verify identities."
+  ],
+  "lessons": [
+    {
+      "id": "identity-vs-equation",
+      "title": "Identity or equation?",
+      "body": "Compare these two statements:\n\n* $\\sin x = \\frac12$ — true only for some angles ($\\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\ldots$). This is an **equation** to *solve*.\n* $\\sin^2 x + \\cos^2 x = 1$ — true for **every** angle. This is an **identity** to *prove*.\n\n> A **trigonometric identity** is an equation that is true for all angles in the domain of the expressions on both sides.\n\n**Showing something is NOT an identity is easy:** find one **counterexample** — a single value where the two sides differ.\n\n*Example:* Is $\\sin x = \\sqrt{1 - \\cos^2 x}$ an identity? Try $x = \\frac{3\\pi}{2}$: L.S. $= -1$, R.S. $= \\sqrt{1 - 0} = 1$. Not equal, so it is **not** an identity (the square root is never negative, but sine can be).\n\n**Showing something IS an identity needs a proof** that works for all $x$. Checking a few values, or seeing two graphs overlap, is evidence — not proof.\n\n```plot\ntitle: Graphs suggest sin 2x = 2 sin x cos x (they coincide)\nf: sin(2*x) | label=y = sin 2x\nf: 2*sin(x)*cos(x) | dashed; label=y = 2 sin x cos x\ndomain: -6.3, 6.3\nrange: -1.5, 1.5\nxticks: pi\n```"
+    },
+    {
+      "id": "toolkit",
+      "title": "Your identity toolkit",
+      "body": "Every proof in this course is built from these **basic identities**:\n\n| Family | Identities |\n|---|---|\n| Reciprocal | $\\csc x = \\frac{1}{\\sin x}$, $\\sec x = \\frac{1}{\\cos x}$, $\\cot x = \\frac{1}{\\tan x}$ |\n| Quotient | $\\tan x = \\frac{\\sin x}{\\cos x}$, $\\cot x = \\frac{\\cos x}{\\sin x}$ |\n| Pythagorean | $\\sin^2 x + \\cos^2 x = 1$ (also $\\sin^2 x = 1 - \\cos^2 x$, $\\cos^2 x = 1 - \\sin^2 x$) |\n| Pythagorean (derived) | $1 + \\tan^2 x = \\sec^2 x$, $1 + \\cot^2 x = \\csc^2 x$ |\n| Compound angle | $\\sin(x\\pm y)$, $\\cos(x\\pm y)$ formulas |\n| Double angle | $\\sin 2x = 2\\sin x\\cos x$; $\\cos 2x = \\cos^2x - \\sin^2x = 1 - 2\\sin^2x = 2\\cos^2x - 1$ |\n| Equivalent expressions | e.g. $\\sin\\left(\\frac{\\pi}{2} - x\\right) = \\cos x$, $\\cos(\\pi - x) = -\\cos x$ |\n\nThe derived Pythagorean identities come from dividing $\\sin^2 x + \\cos^2 x = 1$ by $\\cos^2 x$ or by $\\sin^2 x$."
+    },
+    {
+      "id": "method",
+      "title": "How to write a proof: the L.S./R.S. method",
+      "body": "**Rule:** work on each side **separately**. Never move terms across the equals sign or multiply both sides — that assumes what you are trying to prove.\n\n**Layout**\n\n| L.S. | R.S. |\n|---|---|\n| $= \\ldots$ | $= \\ldots$ |\n| $= \\ldots$ | |\n\nFinish with **\"L.S. = R.S., therefore the identity is true.\"**\n\n**Example:** prove $\\cos x = \\sin x\\cot x$.\n\nL.S. $= \\cos x$.\n\nR.S. $= \\sin x\\cot x = \\sin x\\cdot\\frac{\\cos x}{\\sin x} = \\cos x$.\n\nL.S. = R.S. ∎\n\n**Strategies when you are stuck**\n1. Start with the **more complicated** side.\n2. Rewrite everything in terms of **sine and cosine**.\n3. **Combine fractions** using a common denominator.\n4. **Factor** (common factors, difference of squares $1 - \\sin^2 x = (1 - \\sin x)(1 + \\sin x)$).\n5. Look for **$\\sin^2 + \\cos^2$** patterns to replace by 1.\n6. **Expand** compound or double angles.\n7. Keep an eye on the **other side** — it tells you what form you are aiming for."
+    },
+    {
+      "id": "examples",
+      "title": "Proof patterns",
+      "body": "**Pattern 1 — double angle:** prove $\\cos 2x = 2\\cos^2 x - 1$.\n\nL.S. $= \\cos^2 x - \\sin^2 x = \\cos^2 x - (1 - \\cos^2 x) = 2\\cos^2 x - 1 =$ R.S. ∎\n\n**Pattern 2 — compound angle:** prove $\\sin(x + \\pi) = -\\sin x$.\n\nL.S. $= \\sin x\\cos\\pi + \\cos x\\sin\\pi = \\sin x(-1) + \\cos x(0) = -\\sin x =$ R.S. ∎\n\n**Pattern 3 — fractions:** prove $\\tan x + \\cot x = \\sec x\\csc x$.\n\nL.S. $= \\frac{\\sin x}{\\cos x} + \\frac{\\cos x}{\\sin x} = \\frac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = \\frac{1}{\\sin x\\cos x}$.\n\nR.S. $= \\frac{1}{\\cos x}\\cdot\\frac{1}{\\sin x} = \\frac{1}{\\sin x\\cos x}$.\n\nL.S. = R.S. ∎\n\n**Pattern 4 — Pythagorean substitution:** prove $\\frac{1 - \\sin^2 x}{\\cos x} = \\cos x$.\n\nL.S. $= \\frac{\\cos^2 x}{\\cos x} = \\cos x =$ R.S. ∎\n\n**Pattern 5 — more complex:** prove $\\frac{\\sin 2x}{1 + \\cos 2x} = \\tan x$.\n\nL.S. $= \\frac{2\\sin x\\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x\\cos x}{2\\cos^2 x} = \\frac{\\sin x}{\\cos x} = \\tan x =$ R.S. ∎\n\nChoosing $\\cos 2x = 2\\cos^2 x - 1$ was deliberate: it cancels the 1 in the denominator."
+    },
+    {
+      "id": "why-identities",
+      "title": "Why identities matter",
+      "body": "Identities let you **replace a complicated expression by a simpler one**. In computer graphics, rendering 3-D scenes evaluates trig expressions millions of times; replacing $2\\sin x\\cos x$ by $\\sin 2x$ (one function call instead of two plus a multiplication) speeds up the software.\n\nThey also appear in physics and engineering whenever two equivalent forms of a model are needed, for example $h = 6\\sin x(1 + 2\\cos x)$ for a double-dihedral aircraft wing, or a cable length $l = \\frac{50(1 + 2\\cos x)}{\\sin 2x}$ in a bridge design.\n\n**Using technology:** graph each side separately (radian mode). If the graphs do not coincide, you have found a counterexample; if they do, attempt a proof."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "trigonometric identity",
+      "definition": "An equation with trigonometric expressions that is true for all angles in the domain of the expressions on both sides."
+    },
+    {
+      "term": "counterexample",
+      "definition": "A single value of the variable for which the two sides of a proposed identity are not equal; it shows the equation is not an identity."
+    },
+    {
+      "term": "L.S./R.S. method",
+      "definition": "Proving an identity by simplifying the left side and right side independently until they are identical."
+    },
+    {
+      "term": "Pythagorean identity",
+      "definition": "$\\sin^2 x + \\cos^2 x = 1$, with related forms $1 + \\tan^2 x = \\sec^2 x$ and $1 + \\cot^2 x = \\csc^2 x$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Pythagorean identities",
+      "latex": "\\sin^2x+\\cos^2x=1,\\quad 1+\\tan^2x=\\sec^2x,\\quad 1+\\cot^2x=\\csc^2x",
+      "meaning": ""
+    },
+    {
+      "name": "Quotient identities",
+      "latex": "\\tan x=\\frac{\\sin x}{\\cos x},\\quad \\cot x=\\frac{\\cos x}{\\sin x}",
+      "meaning": ""
+    },
+    {
+      "name": "Reciprocal identities",
+      "latex": "\\csc x=\\frac{1}{\\sin x},\\ \\sec x=\\frac{1}{\\cos x},\\ \\cot x=\\frac{1}{\\tan x}",
+      "meaning": ""
+    },
+    {
+      "name": "Double angle",
+      "latex": "\\sin 2x = 2\\sin x\\cos x,\\quad \\cos 2x = 1-2\\sin^2x = 2\\cos^2x-1",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Prove using a Pythagorean identity",
+      "problem": "Prove $\\csc^2 x - 1 = \\cot^2 x$.",
+      "steps": [
+        "L.S. $= \\frac{1}{\\sin^2 x} - 1 = \\frac{1 - \\sin^2 x}{\\sin^2 x}$ (common denominator).",
+        "$= \\frac{\\cos^2 x}{\\sin^2 x}$ (Pythagorean identity).",
+        "$= \\cot^2 x =$ R.S. ∎"
+      ],
+      "answer": "Identity proved."
+    },
+    {
+      "title": "Prove with compound angles",
+      "problem": "Prove $\\cos\\left(\\frac{3\\pi}{2} - x\\right) = -\\sin x$.",
+      "steps": [
+        "L.S. $= \\cos\\frac{3\\pi}{2}\\cos x + \\sin\\frac{3\\pi}{2}\\sin x$.",
+        "$= 0\\cdot\\cos x + (-1)\\sin x = -\\sin x =$ R.S. ∎"
+      ],
+      "answer": "Identity proved."
+    },
+    {
+      "title": "Factoring and a reciprocal",
+      "problem": "Prove $1 + \\sin x = \\sin x(1 + \\csc x)$.",
+      "steps": [
+        "L.S. $= 1 + \\sin x$.",
+        "R.S. $= \\sin x + \\sin x\\csc x = \\sin x + \\sin x\\cdot\\frac{1}{\\sin x} = \\sin x + 1$.",
+        "L.S. = R.S. ∎"
+      ],
+      "answer": "Identity proved."
+    },
+    {
+      "title": "A more complex identity",
+      "problem": "Prove $1 - 2\\cos^2 x = \\sin x\\cos x(\\tan x - \\cot x)$.",
+      "steps": [
+        "R.S. $= \\sin x\\cos x\\left(\\frac{\\sin x}{\\cos x} - \\frac{\\cos x}{\\sin x}\\right) = \\sin^2 x - \\cos^2 x$.",
+        "$= (1 - \\cos^2 x) - \\cos^2 x = 1 - 2\\cos^2 x$.",
+        "L.S. $= 1 - 2\\cos^2 x$. L.S. = R.S. ∎"
+      ],
+      "answer": "Identity proved."
+    },
+    {
+      "title": "Counterexample",
+      "problem": "Show that $\\cos 2x = 2\\cos x$ is not an identity.",
+      "steps": [
+        "Try $x = 0$: L.S. $= \\cos 0 = 1$; R.S. $= 2\\cos 0 = 2$.",
+        "L.S. ≠ R.S., so one counterexample shows it is not an identity."
+      ],
+      "answer": "Not an identity."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "I can prove an identity by doing the same thing to both sides.",
+      "fact": "That assumes the identity is true. Work on each side independently and show they reach the same expression."
+    },
+    {
+      "myth": "If the identity works for $x = \\frac{\\pi}{6}$ and $x = \\frac{\\pi}{4}$, it is proved.",
+      "fact": "Checking values can only *disprove* (with a counterexample) — a proof must hold for all $x$."
+    },
+    {
+      "myth": "$\\sin^2 x$ means $\\sin(x^2)$.",
+      "fact": "$\\sin^2 x = (\\sin x)^2$."
+    },
+    {
+      "myth": "$\\frac{\\sin 2x}{2} = \\sin x$.",
+      "fact": "You cannot cancel inside a function: $\\frac{\\sin 2x}{2} = \\sin x\\cos x$."
+    },
+    {
+      "myth": "$\\sqrt{1 - \\cos^2 x} = \\sin x$ always.",
+      "fact": "$\\sqrt{1 - \\cos^2 x} = |\\sin x|$; it is wrong where $\\sin x < 0$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "3-D graphics",
+      "body": "Software that projects 3-D objects onto a 2-D screen uses identities to replace expensive expressions with cheaper equivalent ones, making motion smoother."
+    },
+    {
+      "title": "Engineering formulas",
+      "body": "Simplifying $6\\sin x + 6\\sin 2x$ to $6\\sin x(1 + 2\\cos x)$ makes a wing-design formula easier to analyse."
+    },
+    {
+      "title": "Science",
+      "body": "Identities convert between forms of wave models — e.g. $\\sin^2 x = \\frac{1 - \\cos 2x}{2}$ in physics and signal processing."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Prove $\\cos 2x = 1 - 2\\sin^2 x$.",
+      "hint": "Start from $\\cos^2 x - \\sin^2 x$.",
+      "solution": "L.S. $= (1 - \\sin^2 x) - \\sin^2 x = 1 - 2\\sin^2 x =$ R.S. ∎"
+    },
+    {
+      "question": "Prove $\\sin(x - \\pi) = -\\sin x$.",
+      "hint": "Compound angle formula.",
+      "solution": "$\\sin x\\cos\\pi - \\cos x\\sin\\pi = -\\sin x$ ∎"
+    },
+    {
+      "question": "Prove $\\cos(\\pi - x) = -\\cos x$.",
+      "hint": "Compound angle formula.",
+      "solution": "$\\cos\\pi\\cos x + \\sin\\pi\\sin x = -\\cos x$ ∎"
+    },
+    {
+      "question": "Prove $\\sec^2 x - 1 = \\tan^2 x$.",
+      "hint": "Write in sine and cosine.",
+      "solution": "$\\frac{1 - \\cos^2 x}{\\cos^2 x} = \\frac{\\sin^2 x}{\\cos^2 x} = \\tan^2 x$ ∎"
+    },
+    {
+      "question": "Prove $\\csc x\\cos x = \\cot x$.",
+      "hint": "Reciprocal and quotient identities.",
+      "solution": "$\\frac{1}{\\sin x}\\cos x = \\frac{\\cos x}{\\sin x} = \\cot x$ ∎"
+    },
+    {
+      "question": "Show that $\\sin x = \\sqrt{1 - \\cos^2 x}$ is not an identity, and explain why it cannot be.",
+      "hint": "Try an angle where sine is negative.",
+      "solution": "At $x = \\frac{3\\pi}{2}$ L.S. $= -1$, R.S. $= 1$. The square root is never negative but $\\sin x$ can be."
+    },
+    {
+      "question": "Prove $\\frac{1 - \\sin^2 x}{\\cos x} = \\frac{\\sin 2x}{2\\sin x}$.",
+      "hint": "Simplify each side to $\\cos x$.",
+      "solution": "L.S. $= \\frac{\\cos^2 x}{\\cos x} = \\cos x$; R.S. $= \\frac{2\\sin x\\cos x}{2\\sin x} = \\cos x$ ∎"
+    },
+    {
+      "question": "Prove $(\\sin 2x)(\\tan x + \\cot x) = 2$.",
+      "hint": "$\\tan x + \\cot x = \\frac{1}{\\sin x\\cos x}$.",
+      "solution": "$2\\sin x\\cos x\\cdot\\frac{1}{\\sin x\\cos x} = 2$ ∎"
+    }
+  ],
+  "summary": [
+    "An identity is true for all angles in its domain; an equation may be true only for some.",
+    "One counterexample proves an equation is not an identity.",
+    "Prove identities by transforming each side separately until both are identical (L.S. = R.S.).",
+    "Tools: reciprocal, quotient, Pythagorean, compound angle and double angle identities.",
+    "Strategies: start with the more complex side, convert to sin/cos, combine fractions, factor, use $\\sin^2 + \\cos^2 = 1$.",
+    "Graphs and numerical checks support conjectures but do not prove identities."
+  ],
+  "questions": [
+    {
+      "id": "m4-5-q01",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Prove that $\\cos 2x = 2\\cos^2 x - 1$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= \\cos^2 x - \\sin^2 x$ (double angle) $= \\cos^2 x - (1 - \\cos^2 x)$ (Pythagorean) $= 2\\cos^2 x - 1 =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q02",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Prove that $\\sin\\left(\\frac{3\\pi}{2} + x\\right) = -\\cos x$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= \\sin\\frac{3\\pi}{2}\\cos x + \\cos\\frac{3\\pi}{2}\\sin x = (-1)\\cos x + 0\\cdot\\sin x = -\\cos x =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q03",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Prove that $\\cos\\left(\\frac{\\pi}{2} + x\\right) = -\\sin x$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= \\cos\\frac{\\pi}{2}\\cos x - \\sin\\frac{\\pi}{2}\\sin x = 0 - \\sin x = -\\sin x =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q04",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Prove that $\\cos x = \\sin x\\cot x$. Show each step and name the identities you use.",
+      "modelAnswer": "R.S. $= \\sin x\\cdot\\frac{\\cos x}{\\sin x}$ (quotient identity) $= \\cos x =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $1 - 2\\cos^2 x = \\sin x\\cos x(\\tan x - \\cot x)$. Show each step and name the identities you use. Then describe how you would illustrate the identity with graphing technology.",
+      "modelAnswer": "R.S. $= \\sin x\\cos x\\cdot\\frac{\\sin x}{\\cos x} - \\sin x\\cos x\\cdot\\frac{\\cos x}{\\sin x} = \\sin^2 x - \\cos^2 x = (1 - \\cos^2 x) - \\cos^2 x = 1 - 2\\cos^2 x =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        },
+        {
+          "point": "Describes graphing both sides in radian mode and observing they coincide",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q06",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $\\csc^2 x = 1 + \\cot^2 x$ and $\\sec^2 x = 1 + \\tan^2 x$. Show each step and name the identities you use.",
+      "modelAnswer": "(i) R.S. $= 1 + \\frac{\\cos^2 x}{\\sin^2 x} = \\frac{\\sin^2 x + \\cos^2 x}{\\sin^2 x} = \\frac{1}{\\sin^2 x} = \\csc^2 x =$ L.S. ∎\n\n(ii) R.S. $= 1 + \\frac{\\sin^2 x}{\\cos^2 x} = \\frac{\\cos^2 x + \\sin^2 x}{\\cos^2 x} = \\frac{1}{\\cos^2 x} = \\sec^2 x =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "Rewrites cot² / tan² as quotient",
+          "marks": 1
+        },
+        {
+          "point": "Common denominator",
+          "marks": 1
+        },
+        {
+          "point": "Applies Pythagorean identity",
+          "marks": 1
+        },
+        {
+          "point": "Reciprocal identity to finish (i)",
+          "marks": 1
+        },
+        {
+          "point": "Completes (ii) correctly",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $\\dfrac{1 - \\sin^2 x}{\\cos x} = \\dfrac{\\sin 2x}{2\\sin x}$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= \\frac{\\cos^2 x}{\\cos x} = \\cos x$. R.S. $= \\frac{2\\sin x\\cos x}{2\\sin x} = \\cos x$. L.S. = R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q08",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $\\dfrac{\\csc^2 x - 1}{\\csc^2 x} = \\cos^2 x$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= \\frac{\\cot^2 x}{\\csc^2 x}$ (Pythagorean) $= \\frac{\\cos^2 x}{\\sin^2 x}\\cdot\\sin^2 x = \\cos^2 x =$ R.S. ∎ (Alternatively: L.S. $= 1 - \\frac{1}{\\csc^2 x} = 1 - \\sin^2 x = \\cos^2 x$.)",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q09",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $\\csc x\\sec x = \\tan x + \\cot x$. Show each step and name the identities you use.",
+      "modelAnswer": "R.S. $= \\frac{\\sin x}{\\cos x} + \\frac{\\cos x}{\\sin x} = \\frac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = \\frac{1}{\\sin x\\cos x}$. L.S. $= \\frac{1}{\\sin x}\\cdot\\frac{1}{\\cos x} = \\frac{1}{\\sin x\\cos x}$. L.S. = R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $2\\sin x\\sin y = \\cos(x - y) - \\cos(x + y)$. Show each step and name the identities you use.",
+      "modelAnswer": "R.S. $= (\\cos x\\cos y + \\sin x\\sin y) - (\\cos x\\cos y - \\sin x\\sin y) = 2\\sin x\\sin y =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q11",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Prove that $\\sin 2x - \\sin 2y = 2\\sin(x - y)\\cos(x + y)$. Show each step and name the identities you use.",
+      "modelAnswer": "R.S. $= 2(\\sin x\\cos y - \\cos x\\sin y)(\\cos x\\cos y - \\sin x\\sin y)$\n\n$= 2[\\sin x\\cos x\\cos^2 y - \\sin^2 x\\sin y\\cos y - \\cos^2 x\\sin y\\cos y + \\sin x\\cos x\\sin^2 y]$\n\n$= 2[\\sin x\\cos x(\\cos^2 y + \\sin^2 y) - \\sin y\\cos y(\\sin^2 x + \\cos^2 x)]$\n\n$= 2\\sin x\\cos x - 2\\sin y\\cos y = \\sin 2x - \\sin 2y =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "Expands both compound angles correctly",
+          "marks": 2
+        },
+        {
+          "point": "Multiplies out fully",
+          "marks": 1
+        },
+        {
+          "point": "Groups terms to use Pythagorean identity twice",
+          "marks": 2
+        },
+        {
+          "point": "Uses double angle to finish, with conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q12",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Prove that $\\cos^4 x - \\sin^4 x = \\cos 2x$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= (\\cos^2 x - \\sin^2 x)(\\cos^2 x + \\sin^2 x)$ (difference of squares) $= (\\cos^2 x - \\sin^2 x)(1) = \\cos 2x =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove that $(\\sin 2x)(\\tan x + \\cot x) = 2$. Show each step and name the identities you use.",
+      "modelAnswer": "L.S. $= 2\\sin x\\cos x\\left(\\frac{\\sin x}{\\cos x} + \\frac{\\cos x}{\\sin x}\\right) = 2\\sin^2 x + 2\\cos^2 x = 2(\\sin^2 x + \\cos^2 x) = 2 =$ R.S. ∎",
+      "rubric": [
+        {
+          "point": "Works on each side independently (L.S./R.S. layout)",
+          "marks": 1
+        },
+        {
+          "point": "Uses appropriate identities with each step justified",
+          "marks": 2
+        },
+        {
+          "point": "Algebra is correct and complete",
+          "marks": 1
+        },
+        {
+          "point": "Clear concluding statement L.S. = R.S.",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q14",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Prove that $\\sec x = \\dfrac{2(\\cos x\\sin 2x - \\sin x\\cos 2x)}{\\sin 2x}$. Show each step and name the identities you use.",
+      "modelAnswer": "R.S. numerator: $\\cos x\\sin 2x - \\sin x\\cos 2x = \\sin(2x - x) = \\sin x$ (compound angle, read backwards). So R.S. $= \\frac{2\\sin x}{2\\sin x\\cos x} = \\frac{1}{\\cos x} = \\sec x =$ L.S. ∎",
+      "rubric": [
+        {
+          "point": "Recognises sin(2x − x) pattern (or expands fully)",
+          "marks": 2
+        },
+        {
+          "point": "Uses sin 2x = 2 sin x cos x in denominator",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies to 1/cos x",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Consider the equation $\\cos 2x = 2\\sin x\\sec x$. Either prove that it is an identity, or find a counterexample to show that it is not. Explain how a graph could help you decide.",
+      "modelAnswer": "R.S. $= 2\\sin x\\cdot\\frac{1}{\\cos x} = 2\\tan x$. This is not the same as $\\cos 2x$.\n\nCounterexample: $x = 0$: L.S. $= \\cos 0 = 1$; R.S. $= 2(0)(1) = 0$. Since $1\\ne 0$, it is **not** an identity.\n\nGraphing $y = \\cos 2x$ and $y = 2\\sin x\\sec x$ in radian mode shows two different curves, suggesting a counterexample to test.",
+      "rubric": [
+        {
+          "point": "Simplifies the right side or tests values",
+          "marks": 1
+        },
+        {
+          "point": "Valid counterexample with both sides evaluated",
+          "marks": 2
+        },
+        {
+          "point": "Correct conclusion",
+          "marks": 1
+        },
+        {
+          "point": "Explains graphing check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q16",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "x": {
+          "min": 0.2,
+          "max": 1.3,
+          "step": 0.1
+        }
+      },
+      "text": "(a) Use graphing technology (describe what you would see) to decide whether it is reasonable to conjecture that $\\cos 2x = \\dfrac{1 - \\tan^2 x}{1 + \\tan^2 x}$. (b) If it is an identity, prove it; if not, give a counterexample. (c) Check numerically at $x = {{x}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Graph comparison"
+        },
+        {
+          "label": "b",
+          "text": "Proof or counterexample"
+        },
+        {
+          "label": "c",
+          "text": "Value of the left side at x = {{x}}",
+          "answer": {
+            "expr": "cos(2*x)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) The graphs coincide (apart from points where $\\tan x$ is undefined), so the conjecture is reasonable.\n\n(b) R.S. $= \\frac{1 - \\frac{\\sin^2 x}{\\cos^2 x}}{1 + \\frac{\\sin^2 x}{\\cos^2 x}} = \\frac{\\frac{\\cos^2 x - \\sin^2 x}{\\cos^2 x}}{\\frac{\\cos^2 x + \\sin^2 x}{\\cos^2 x}} = \\frac{\\cos^2 x - \\sin^2 x}{1} = \\cos 2x =$ L.S. ∎\n\n(c) At $x = {{x}}$: L.S. $= \\cos({{2*x}})\\approx {{cos(2*x):4}}$; R.S. $= \\frac{1 - \\tan^2 {{x}}}{1 + \\tan^2 {{x}}}\\approx {{(1-tan(x)^2)/(1+tan(x)^2):4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Reasonable graphing conclusion",
+          "marks": 1
+        },
+        {
+          "point": "Rewrites tan in terms of sin and cos",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies complex fraction correctly",
+          "marks": 2
+        },
+        {
+          "point": "Uses Pythagorean and double angle identities to conclude",
+          "marks": 1
+        },
+        {
+          "point": "Numerical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q17",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "x": {
+          "min": 0.3,
+          "max": 1.2,
+          "step": 0.1
+        }
+      },
+      "text": "Use an appropriate compound angle formula to develop an expression for $\\sin 3x$ in terms of $\\sin x$ alone.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write 3x as a sum of two terms involving x."
+        },
+        {
+          "label": "b",
+          "text": "Substitute and expand with a compound angle formula."
+        },
+        {
+          "label": "c",
+          "text": "Use double angle formulas and simplify to an expression in sin x."
+        },
+        {
+          "label": "d",
+          "text": "Verify your expression numerically for x = {{x}} (enter sin 3x).",
+          "answer": {
+            "expr": "sin(3*x)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $3x = 2x + x$.\n\n(b)–(c) $\\sin 3x = \\sin(2x + x) = \\sin 2x\\cos x + \\cos 2x\\sin x$.\n\n(d) $= (2\\sin x\\cos x)\\cos x + (1 - 2\\sin^2 x)\\sin x = 2\\sin x\\cos^2 x + \\sin x - 2\\sin^3 x$\n\n$= 2\\sin x(1 - \\sin^2 x) + \\sin x - 2\\sin^3 x = 3\\sin x - 4\\sin^3 x$.\n\n(e) At $x = {{x}}$: $\\sin({{3*x}})\\approx {{sin(3*x):4}}$ and $3\\sin {{x}} - 4\\sin^3 {{x}}\\approx {{3*sin(x)-4*sin(x)^3:4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Writes 3x = 2x + x and applies the sine addition formula",
+          "marks": 1
+        },
+        {
+          "point": "Expands sin 2x and chooses a suitable cos 2x form",
+          "marks": 2
+        },
+        {
+          "point": "Uses Pythagorean identity to reach 3 sin x − 4 sin³x",
+          "marks": 2
+        },
+        {
+          "point": "Numerical verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain the difference between a trigonometric **equation** and a trigonometric **identity**. Explain why one counterexample is enough to show an equation is not an identity, but checking many values is not enough to prove an identity. Give an example of each.",
+      "modelAnswer": "An equation such as $\\sin x = \\frac12$ is true for some values only (here $\\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\ldots$). An identity such as $\\sin^2 x + \\cos^2 x = 1$ is true for every value in the domain.\n\nAn identity claims equality for **all** $x$; one value where the sides differ contradicts that claim. Checking values, however many, only covers those values — infinitely many others remain unchecked, so a general algebraic proof is needed.\n\nExample counterexample: $\\cos 2x = 2\\cos x$ fails at $x = 0$ (1 ≠ 2).",
+      "rubric": [
+        {
+          "point": "Correct distinction with example of each",
+          "marks": 2
+        },
+        {
+          "point": "Explains why one counterexample suffices",
+          "marks": 1
+        },
+        {
+          "point": "Explains why checking values is not a proof",
+          "marks": 1
+        },
+        {
+          "point": "Provides a valid counterexample",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "H": {
+          "choices": [
+            40,
+            50,
+            60
+          ]
+        },
+        "k": {
+          "choices": [
+            6,
+            8,
+            9
+          ]
+        }
+      },
+      "text": "A cable suspension bridge has a central tower {{H}} m high. On one side, one cable runs from the top of the tower to the bridge deck at an angle of inclination $x$, and a second cable runs from the top of the tower to the deck at an angle $2x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that the total length of the two cables is $l = \\dfrac{ {{H}}(1 + 2\\cos x)}{\\sin 2x}$."
+        },
+        {
+          "label": "b",
+          "text": "Determine the total length when $x = \\frac{\\pi}{ {{k}} }$.",
+          "answer": {
+            "expr": "H*(1+2*cos(pi/k))/sin(2*pi/k)",
+            "unit": "m",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "Each cable is the hypotenuse of a right triangle with opposite side {{H}} m:\n\ncable 1: $l_1 = \\frac{ {{H}} }{\\sin x}$; cable 2: $l_2 = \\frac{ {{H}} }{\\sin 2x}$.\n\n(a) $l = \\frac{ {{H}} }{\\sin x} + \\frac{ {{H}} }{\\sin 2x} = \\frac{ {{H}}\\cdot 2\\cos x}{2\\sin x\\cos x} + \\frac{ {{H}} }{\\sin 2x} = \\frac{ {{H}}(2\\cos x) + {{H}} }{\\sin 2x} = \\frac{ {{H}}(1 + 2\\cos x)}{\\sin 2x}$.\n\n(b) With $x = \\frac{\\pi}{ {{k}} }$: $l\\approx {{H*(1+2*cos(pi/k))/sin(2*pi/k):4}}$ m.",
+      "rubric": [
+        {
+          "point": "Expresses each cable length using sine",
+          "marks": 2
+        },
+        {
+          "point": "Uses sin 2x = 2 sin x cos x to get a common denominator",
+          "marks": 2
+        },
+        {
+          "point": "Reaches the required expression",
+          "marks": 1
+        },
+        {
+          "point": "Correct numerical value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-5-q20",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student's attempted proof of $\\tan x + \\cot x = \\sec x\\csc x$ is:\n\n$\\tan x + \\cot x = \\sec x\\csc x$\n\n$\\left(\\frac{\\sin x}{\\cos x} + \\frac{\\cos x}{\\sin x}\\right)\\sin x\\cos x = \\frac{1}{\\cos x\\sin x}\\cdot\\sin x\\cos x$\n\n$\\sin^2 x + \\cos^2 x = 1$, which is true, so the identity is proved.\n\nExplain what is wrong with this method and write a correct proof.",
+      "modelAnswer": "The student multiplied **both sides** by $\\sin x\\cos x$, treating the statement as an equation already known to be true. A proof must not assume the result; each side should be simplified independently. (Working backwards from what you want to a true statement does not by itself prove the original.)\n\nCorrect proof: L.S. $= \\frac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x} = \\frac{1}{\\sin x\\cos x}$; R.S. $= \\frac{1}{\\cos x}\\cdot\\frac{1}{\\sin x} = \\frac{1}{\\sin x\\cos x}$. L.S. = R.S. ∎",
+      "rubric": [
+        {
+          "point": "Identifies the error of operating on both sides / assuming the result",
+          "marks": 2
+        },
+        {
+          "point": "Correct L.S. simplification",
+          "marks": 1
+        },
+        {
+          "point": "Correct R.S. simplification",
+          "marks": 1
+        },
+        {
+          "point": "Conclusion",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

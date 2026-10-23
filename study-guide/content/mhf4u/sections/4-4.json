@@ -1,0 +1,939 @@
+{
+  "id": "4-4",
+  "number": "4.4",
+  "title": "Compound Angle Formulas",
+  "estimatedMinutes": 80,
+  "overview": "How do you find the exact value of $\\sin\\frac{\\pi}{12}$ when $\\frac{\\pi}{12}$ isn't a special angle? The **compound angle formulas** express $\\sin(x \\pm y)$ and $\\cos(x \\pm y)$ in terms of the sines and cosines of $x$ and $y$. You will derive them, use them for exact values, and obtain the **double angle formulas**.",
+  "objectives": [
+    "Explain why $\\sin(x + y)\\ne\\sin x + \\sin y$.",
+    "Derive $\\cos(a + b)$ using the unit circle and the distance formula, and derive the other formulas from it.",
+    "Use compound angle formulas to find exact values of angles that are sums or differences of special angles.",
+    "Combine given ratios with quadrant information to evaluate $\\sin(x\\pm y)$ and $\\cos(x\\pm y)$.",
+    "Derive and apply the double angle formulas."
+  ],
+  "lessons": [
+    {
+      "id": "why",
+      "title": "Compound angles: why we need formulas",
+      "body": "A **compound angle** is a sum or difference of two angles, such as $x + y$ or $\\frac{\\pi}{4} - \\frac{\\pi}{6}$.\n\nIt is tempting to think $\\cos(x + y) = \\cos x + \\cos y$. Test it with $x = \\frac{\\pi}{3}$ and $y = \\frac{\\pi}{6}$:\n\n* $\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{6}\\right) = \\cos\\frac{\\pi}{2} = 0$\n* $\\cos\\frac{\\pi}{3} + \\cos\\frac{\\pi}{6} = \\frac12 + \\frac{\\sqrt3}{2}\\approx 1.37$\n\nNot equal! Trig functions are **not linear**, so we need special **compound angle formulas**. They let us find exact values of angles like $\\frac{\\pi}{12}$ (15°) and $\\frac{5\\pi}{12}$ (75°) that are not special angles themselves but are sums or differences of special angles."
+    },
+    {
+      "id": "derive-cos",
+      "title": "Deriving the formula for cos(a − b)",
+      "body": "Put $A(\\cos a, \\sin a)$ on the unit circle at angle $a$, and $B(\\cos b, -\\sin b)$ at angle $-b$ (the same position as $2\\pi - b$). The angle between $OA$ and $OB$ is $a + b$.\n\nNow rotate both points counterclockwise about the origin through angle $b$:\n\n* $B$ moves to $B'(1, 0)$ on the positive $x$-axis;\n* $A$ moves to $A'(\\cos(a + b), \\sin(a + b))$.\n\n**Rotation preserves length**, so the chord $A'B'$ equals the chord $AB$.\n\nUsing the distance formula and squaring:\n\n$$[\\cos(a+b) - 1]^2 + \\sin^2(a+b) = (\\cos a - \\cos b)^2 + (\\sin a + \\sin b)^2$$\n\nExpand and use $\\sin^2 + \\cos^2 = 1$ on each side:\n\n$$2 - 2\\cos(a+b) = 2 - 2\\cos a\\cos b + 2\\sin a\\sin b$$\n\nso\n\n$$\\boxed{\\cos(a + b) = \\cos a\\cos b - \\sin a\\sin b}$$\n\nThe other three formulas come from equivalent expressions:\n* Replace $b$ with $-b$ (using $\\cos(-b) = \\cos b$, $\\sin(-b) = -\\sin b$): $\\cos(a - b) = \\cos a\\cos b + \\sin a\\sin b$.\n* Use $\\sin\\theta = \\cos\\left(\\frac{\\pi}{2} - \\theta\\right)$: $\\sin(a + b) = \\cos\\left[\\left(\\frac{\\pi}{2} - a\\right) - b\\right] = \\sin a\\cos b + \\cos a\\sin b$.\n* Replace $b$ with $-b$ again: $\\sin(a - b) = \\sin a\\cos b - \\cos a\\sin b$."
+    },
+    {
+      "id": "formulas",
+      "title": "The four compound angle formulas",
+      "body": "| Formula | Memory hook |\n|---|---|\n| $\\sin(x + y) = \\sin x\\cos y + \\cos x\\sin y$ | sine: **mixed** products, **same** sign |\n| $\\sin(x - y) = \\sin x\\cos y - \\cos x\\sin y$ | |\n| $\\cos(x + y) = \\cos x\\cos y - \\sin x\\sin y$ | cosine: **matched** products, **opposite** sign |\n| $\\cos(x - y) = \\cos x\\cos y + \\sin x\\sin y$ | |\n\n**Reading them backwards** is just as useful:\n\n$$\\sin\\frac{5\\pi}{12}\\cos\\frac{\\pi}{12} - \\cos\\frac{5\\pi}{12}\\sin\\frac{\\pi}{12} = \\sin\\left(\\frac{5\\pi}{12} - \\frac{\\pi}{12}\\right) = \\sin\\frac{\\pi}{3} = \\frac{\\sqrt3}{2}.$$\n\n**Exact values of new angles.** Write the angle as a sum/difference of special angles:\n\n| Angle | As special angles |\n|---|---|\n| $\\frac{\\pi}{12}$ | $\\frac{\\pi}{3} - \\frac{\\pi}{4}$ or $\\frac{\\pi}{4} - \\frac{\\pi}{6}$ |\n| $\\frac{5\\pi}{12}$ | $\\frac{\\pi}{4} + \\frac{\\pi}{6}$ |\n| $\\frac{7\\pi}{12}$ | $\\frac{\\pi}{3} + \\frac{\\pi}{4}$ |\n| $\\frac{13\\pi}{12}$ | $\\pi + \\frac{\\pi}{12}$, or $\\frac{3\\pi}{4} + \\frac{\\pi}{3}$ |\n\n$$\\sin\\frac{\\pi}{12} = \\sin\\left(\\frac{\\pi}{3} - \\frac{\\pi}{4}\\right) = \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} - \\frac12\\cdot\\frac{1}{\\sqrt2} = \\frac{\\sqrt3 - 1}{2\\sqrt2}\\approx 0.2588$$"
+    },
+    {
+      "id": "double",
+      "title": "Double angle formulas",
+      "body": "Put $y = x$ in the addition formulas:\n\n$$\\sin 2x = \\sin(x + x) = 2\\sin x\\cos x$$\n\n$$\\cos 2x = \\cos^2 x - \\sin^2 x$$\n\nUsing $\\sin^2 x + \\cos^2 x = 1$ gives two more forms of $\\cos 2x$:\n\n$$\\cos 2x = 1 - 2\\sin^2 x = 2\\cos^2 x - 1$$\n\nChoose the form that uses the information you have.\n\n**Example.** $\\theta$ is in quadrant II and $\\sin\\theta = \\frac{7}{25}$. Then $\\cos\\theta = -\\sqrt{1 - \\frac{49}{625}} = -\\frac{24}{25}$ (negative in QII), so\n\n* $\\cos 2\\theta = 1 - 2\\left(\\frac{7}{25}\\right)^2 = \\frac{527}{625}$\n* $\\sin 2\\theta = 2\\left(\\frac{7}{25}\\right)\\left(-\\frac{24}{25}\\right) = -\\frac{336}{625}$\n\n**Finding the other ratios from one ratio:** draw the reference triangle, use the Pythagorean theorem for the third side, and use the quadrant for signs. Pythagorean triples like 3-4-5, 5-12-13, 8-15-17, 7-24-25 appear often."
+    },
+    {
+      "id": "tan-ext",
+      "title": "Extension: tangent formulas",
+      "body": "Using $\\tan = \\frac{\\sin}{\\cos}$ and dividing numerator and denominator by $\\cos x\\cos y$:\n\n$$\\tan(x + y) = \\frac{\\tan x + \\tan y}{1 - \\tan x\\tan y},\\qquad \\tan(x - y) = \\frac{\\tan x - \\tan y}{1 + \\tan x\\tan y}$$\n\nand with $y = x$: $\\tan 2x = \\dfrac{2\\tan x}{1 - \\tan^2 x}$.\n\nCheck: $\\tan\\left(\\frac{\\pi}{4} + \\frac{\\pi}{4}\\right) = \\frac{1 + 1}{1 - 1}$ is undefined — and indeed $\\tan\\frac{\\pi}{2}$ is undefined ✓"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "compound angle",
+      "definition": "An angle formed by adding or subtracting two or more angles."
+    },
+    {
+      "term": "compound angle formulas",
+      "definition": "Formulas for sin(x ± y) and cos(x ± y) in terms of sines and cosines of x and y; also called addition and subtraction formulas."
+    },
+    {
+      "term": "double angle formulas",
+      "definition": "$\\sin 2x = 2\\sin x\\cos x$ and $\\cos 2x = \\cos^2x - \\sin^2x = 1 - 2\\sin^2x = 2\\cos^2x - 1$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Sine of a sum",
+      "latex": "\\sin(x+y) = \\sin x\\cos y + \\cos x\\sin y",
+      "meaning": ""
+    },
+    {
+      "name": "Sine of a difference",
+      "latex": "\\sin(x-y) = \\sin x\\cos y - \\cos x\\sin y",
+      "meaning": ""
+    },
+    {
+      "name": "Cosine of a sum",
+      "latex": "\\cos(x+y) = \\cos x\\cos y - \\sin x\\sin y",
+      "meaning": ""
+    },
+    {
+      "name": "Cosine of a difference",
+      "latex": "\\cos(x-y) = \\cos x\\cos y + \\sin x\\sin y",
+      "meaning": ""
+    },
+    {
+      "name": "Double angle (sine)",
+      "latex": "\\sin 2x = 2\\sin x\\cos x",
+      "meaning": ""
+    },
+    {
+      "name": "Double angle (cosine)",
+      "latex": "\\cos 2x = \\cos^2x-\\sin^2x = 1-2\\sin^2x = 2\\cos^2x-1",
+      "meaning": ""
+    },
+    {
+      "name": "Tangent (extension)",
+      "latex": "\\tan(x\\pm y) = \\frac{\\tan x\\pm\\tan y}{1\\mp\\tan x\\tan y}",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Test a formula",
+      "problem": "Verify $\\cos(x - y) = \\cos x\\cos y + \\sin x\\sin y$ for $x = \\frac{\\pi}{2}$, $y = \\frac{\\pi}{6}$.",
+      "steps": [
+        "L.S. $= \\cos\\left(\\frac{\\pi}{2} - \\frac{\\pi}{6}\\right) = \\cos\\frac{\\pi}{3} = \\frac12$.",
+        "R.S. $= \\cos\\frac{\\pi}{2}\\cos\\frac{\\pi}{6} + \\sin\\frac{\\pi}{2}\\sin\\frac{\\pi}{6} = 0\\cdot\\frac{\\sqrt3}{2} + 1\\cdot\\frac12 = \\frac12$.",
+        "L.S. = R.S. ✓"
+      ],
+      "answer": "Verified."
+    },
+    {
+      "title": "Exact value of cos(7π/12)",
+      "problem": "Determine an exact value for $\\cos\\frac{7\\pi}{12}$.",
+      "steps": [
+        "$\\frac{7\\pi}{12} = \\frac{4\\pi}{12} + \\frac{3\\pi}{12} = \\frac{\\pi}{3} + \\frac{\\pi}{4}$.",
+        "$\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{4}\\right) = \\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} - \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4}$.",
+        "$= \\frac12\\cdot\\frac{1}{\\sqrt2} - \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} = \\frac{1 - \\sqrt3}{2\\sqrt2}$.",
+        "Check: $\\approx -0.2588$; $\\frac{7\\pi}{12}$ is in QII so cosine is negative ✓"
+      ],
+      "answer": "$\\frac{1-\\sqrt3}{2\\sqrt2}$"
+    },
+    {
+      "title": "Two angles from given ratios",
+      "problem": "Angles $x$ and $y$ are in quadrant I with $\\sin x = \\frac35$ and $\\cos y = \\frac{5}{13}$. Find $\\sin(x + y)$ exactly.",
+      "steps": [
+        "Reference triangles: $\\cos x = \\frac45$ (3-4-5) and $\\sin y = \\frac{12}{13}$ (5-12-13), both positive in QI.",
+        "$\\sin(x + y) = \\sin x\\cos y + \\cos x\\sin y = \\frac35\\cdot\\frac{5}{13} + \\frac45\\cdot\\frac{12}{13}$.",
+        "$= \\frac{15}{65} + \\frac{48}{65} = \\frac{63}{65}$."
+      ],
+      "answer": "$\\frac{63}{65}$"
+    },
+    {
+      "title": "Single trig function",
+      "problem": "Write $\\cos\\frac{5\\pi}{12}\\cos\\frac{\\pi}{4} + \\sin\\frac{5\\pi}{12}\\sin\\frac{\\pi}{4}$ as a single trig function and evaluate exactly.",
+      "steps": [
+        "Pattern: $\\cos x\\cos y + \\sin x\\sin y = \\cos(x - y)$.",
+        "$= \\cos\\left(\\frac{5\\pi}{12} - \\frac{3\\pi}{12}\\right) = \\cos\\frac{\\pi}{6} = \\frac{\\sqrt3}{2}$."
+      ],
+      "answer": "$\\frac{\\sqrt3}{2}$"
+    },
+    {
+      "title": "Double angle in context",
+      "problem": "An aircraft wing has a double dihedral: the first 6 ft rises at angle $x$ and the next 6 ft at angle $2x$ to the horizontal. Show that the total rise is $h = 6\\sin x(1 + 2\\cos x)$.",
+      "steps": [
+        "Rise of the first section: $6\\sin x$. Rise of the second: $6\\sin 2x$.",
+        "$h = 6\\sin x + 6\\sin 2x = 6\\sin x + 6(2\\sin x\\cos x)$.",
+        "Factor: $h = 6\\sin x(1 + 2\\cos x)$."
+      ],
+      "answer": "$h = 6\\sin x(1 + 2\\cos x)$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\sin(x + y) = \\sin x + \\sin y$.",
+      "fact": "False in general: $\\sin\\left(\\frac{\\pi}{2} + \\frac{\\pi}{2}\\right) = 0$ but $\\sin\\frac{\\pi}{2} + \\sin\\frac{\\pi}{2} = 2$."
+    },
+    {
+      "myth": "In $\\cos(x + y)$ the middle sign is +.",
+      "fact": "Cosine formulas flip the sign: $\\cos(x + y)$ has a **minus**, $\\cos(x - y)$ has a **plus**."
+    },
+    {
+      "myth": "$\\sin 2x = 2\\sin x$.",
+      "fact": "$\\sin 2x = 2\\sin x\\cos x$. Try $x = \\frac{\\pi}{2}$: $\\sin\\pi = 0$, not 2."
+    },
+    {
+      "myth": "Signs of the other ratios don't matter when using triples.",
+      "fact": "The quadrant decides each sign; a wrong sign changes the final answer completely."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Aircraft design",
+      "body": "Wing dihedral angles: the rise of a double-dihedral wing is $6\\sin x(1 + 2\\cos x)$, found with a double angle formula."
+    },
+    {
+      "title": "Solar power",
+      "body": "The noon solar power at latitude $x$ on the winter solstice can be modelled by $P = 1000\\sin(x + 113.5^\\circ)$ W/m²; it drops to 0 when $x + 113.5^\\circ = 180^\\circ$, at $x = 66.5^\\circ$ — the Arctic Circle."
+    },
+    {
+      "title": "Computer graphics",
+      "body": "Rotating a point by $\\theta$ uses $\\cos(\\alpha + \\theta)$ and $\\sin(\\alpha + \\theta)$ — exactly the compound angle formulas."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Find exact values of $\\sin\\frac{5\\pi}{12}$ and $\\cos\\frac{\\pi}{12}$.",
+      "hint": "$\\frac{5\\pi}{12} = \\frac{\\pi}{4} + \\frac{\\pi}{6}$; $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$.",
+      "solution": "Both equal $\\frac{\\sqrt3 + 1}{2\\sqrt2}$ (they are cofunctions)."
+    },
+    {
+      "question": "Express $\\sin\\frac{5\\pi}{12}\\cos\\frac{\\pi}{4} - \\cos\\frac{5\\pi}{12}\\sin\\frac{\\pi}{4}$ as a single function and evaluate.",
+      "hint": "sin(x − y).",
+      "solution": "$\\sin\\frac{\\pi}{6} = \\frac12$"
+    },
+    {
+      "question": "Find the exact value of $\\cos\\frac{13\\pi}{12}$.",
+      "hint": "$\\frac{13\\pi}{12} = \\pi + \\frac{\\pi}{12}$.",
+      "solution": "$-\\cos\\frac{\\pi}{12} = -\\frac{\\sqrt3 + 1}{2\\sqrt2}$"
+    },
+    {
+      "question": "Angle $x$ is in quadrant III with $\\tan x = \\frac{7}{24}$. Find $\\cos 2x$ and $\\sin 2x$.",
+      "hint": "$\\sin x = -\\frac{7}{25}$, $\\cos x = -\\frac{24}{25}$.",
+      "solution": "$\\cos 2x = \\frac{576 - 49}{625} = \\frac{527}{625}$; $\\sin 2x = 2\\cdot\\frac{-7}{25}\\cdot\\frac{-24}{25} = \\frac{336}{625}$"
+    },
+    {
+      "question": "Show that $\\cos 2x = 2\\cos^2 x - 1$ starting from $\\cos 2x = \\cos^2 x - \\sin^2 x$.",
+      "hint": "Replace $\\sin^2 x$ with $1 - \\cos^2 x$.",
+      "solution": "$\\cos^2 x - (1 - \\cos^2 x) = 2\\cos^2 x - 1$ ✓"
+    },
+    {
+      "question": "Show that $\\sin(x - y) \\ne \\sin x - \\sin y$ by choosing values.",
+      "hint": "Try $x = \\frac{\\pi}{2}$, $y = \\frac{\\pi}{6}$.",
+      "solution": "$\\sin\\frac{\\pi}{3} = \\frac{\\sqrt3}{2}\\approx 0.87$ but $1 - \\frac12 = 0.5$."
+    },
+    {
+      "question": "$2x$ is in quadrant IV and $\\cos 2x = \\frac{8}{17}$. Which quadrant contains $x$ (for $0 < x < \\pi$)? Find $\\cos x$ exactly.",
+      "hint": "$\\frac{3\\pi}{2} < 2x < 2\\pi$; use $\\cos 2x = 2\\cos^2 x - 1$.",
+      "solution": "$\\frac{3\\pi}{4} < x < \\pi$: QII. $\\cos^2 x = \\frac{25}{34}$, $\\cos x = -\\frac{5}{\\sqrt{34}}$."
+    }
+  ],
+  "summary": [
+    "Trig functions do not distribute: $\\sin(x + y) \\ne \\sin x + \\sin y$.",
+    "$\\sin(x\\pm y) = \\sin x\\cos y \\pm \\cos x\\sin y$; $\\cos(x\\pm y) = \\cos x\\cos y \\mp \\sin x\\sin y$.",
+    "The cosine formula is derived from the unit circle and the distance formula; the others follow from equivalent expressions.",
+    "Write non-special angles as sums or differences of special angles to find exact values.",
+    "Double angle formulas: $\\sin 2x = 2\\sin x\\cos x$, $\\cos 2x = \\cos^2x - \\sin^2x = 1 - 2\\sin^2x = 2\\cos^2x - 1$."
+  ],
+  "questions": [
+    {
+      "id": "m4-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Use an appropriate compound angle formula to express each as a single trigonometric function, then determine its exact value.\n\n(a) $\\sin\\frac{\\pi}{4}\\cos\\frac{\\pi}{12} + \\cos\\frac{\\pi}{4}\\sin\\frac{\\pi}{12}$\n\n(b) $\\cos\\frac{5\\pi}{12}\\cos\\frac{\\pi}{12} + \\sin\\frac{5\\pi}{12}\\sin\\frac{\\pi}{12}$\n\n(c) $\\cos\\frac{2\\pi}{9}\\cos\\frac{\\pi}{9} - \\sin\\frac{2\\pi}{9}\\sin\\frac{\\pi}{9}$",
+      "modelAnswer": "(a) $\\sin\\left(\\frac{\\pi}{4} + \\frac{\\pi}{12}\\right) = \\sin\\frac{\\pi}{3} = \\frac{\\sqrt3}{2}$.\n\n(b) $\\cos\\left(\\frac{5\\pi}{12} - \\frac{\\pi}{12}\\right) = \\cos\\frac{\\pi}{3} = \\frac12$.\n\n(c) $\\cos\\left(\\frac{2\\pi}{9} + \\frac{\\pi}{9}\\right) = \\cos\\frac{\\pi}{3} = \\frac12$.",
+      "rubric": [
+        {
+          "point": "(a) recognises sin(x + y) and evaluates",
+          "marks": 2
+        },
+        {
+          "point": "(b) recognises cos(x − y) and evaluates",
+          "marks": 2
+        },
+        {
+          "point": "(c) recognises cos(x + y) and evaluates",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Use a compound angle formula to determine an exact value for (a) $\\sin\\frac{\\pi}{12}$ and (b) $\\cos\\frac{5\\pi}{12}$. Check each with a calculator.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\sin\\frac{\\pi}{12}$ (decimal check)",
+          "answer": {
+            "expr": "sin(pi/12)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\cos\\frac{5\\pi}{12}$ (decimal check)",
+          "answer": {
+            "expr": "cos(5*pi/12)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\sin\\left(\\frac{\\pi}{3} - \\frac{\\pi}{4}\\right) = \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} - \\frac12\\cdot\\frac{1}{\\sqrt2} = \\frac{\\sqrt3 - 1}{2\\sqrt2}\\approx 0.2588$ ✓\n\n(b) $\\cos\\left(\\frac{\\pi}{4} + \\frac{\\pi}{6}\\right) = \\frac{1}{\\sqrt2}\\cdot\\frac{\\sqrt3}{2} - \\frac{1}{\\sqrt2}\\cdot\\frac12 = \\frac{\\sqrt3 - 1}{2\\sqrt2}\\approx 0.2588$ ✓ (equal to (a) because $\\frac{\\pi}{12}$ and $\\frac{5\\pi}{12}$ are complementary).",
+      "rubric": [
+        {
+          "point": "(a) correct decomposition into special angles",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct formula and simplification",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct decomposition",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct formula and simplification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "i": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "j": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "sx": {
+          "choices": [
+            1,
+            -1
+          ]
+        },
+        "sy": {
+          "choices": [
+            1,
+            -1
+          ]
+        }
+      },
+      "derived": {
+        "A1": "(3+(1.5)*i+(0.5)*i^2)",
+        "B1": "(4+(10.5)*i+(-2.5)*i^2)",
+        "C1": "(5+(10)*i+(-2)*i^2)",
+        "A2": "(3+(1.5)*j+(0.5)*j^2)",
+        "B2": "(4+(10.5)*j+(-2.5)*j^2)",
+        "C2": "(5+(10)*j+(-2)*j^2)",
+        "qx": "(3-sx)/2",
+        "qy": "1+3*(1-sy)/2"
+      },
+      "text": "Angle $x$ is in quadrant {{qx}} with $\\sin x = \\frac{ {{A1}} }{ {{C1}} }$, and angle $y$ is in quadrant {{qy}} with $\\cos y = \\frac{ {{A2}} }{ {{C2}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an exact value for cos x."
+        },
+        {
+          "label": "b",
+          "text": "Determine an exact value for sin y."
+        },
+        {
+          "label": "c",
+          "text": "Determine an exact value for sin(x + y).",
+          "answer": {
+            "expr": "(A1*A2 + sx*sy*B1*B2)/(C1*C2)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Determine an exact value for cos(x − y).",
+          "answer": {
+            "expr": "(sx*B1*A2 + A1*sy*B2)/(C1*C2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Use the reference triangles and the quadrant signs.\n\nThe missing sides: $\\sqrt{ {{C1}}^2 - {{A1}}^2} = {{B1}}$ and $\\sqrt{ {{C2}}^2 - {{A2}}^2} = {{B2}}$. Cosine is negative in QII and positive in QI; sine is negative in QIV and positive in QI. So\n\n$\\cos x = \\frac{ {{sx*B1}} }{ {{C1}} }$ and $\\sin y = \\frac{ {{sy*B2}} }{ {{C2}} }$.\n\n(c) $\\sin(x + y) = \\sin x\\cos y + \\cos x\\sin y = \\frac{ {{A1}}\\cdot{{A2}} + ({{sx*B1}})({{sy*B2}}) }{ {{C1*C2}} } = \\frac{ {{A1*A2 + sx*sy*B1*B2}} }{ {{C1*C2}} }\\approx {{(A1*A2 + sx*sy*B1*B2)/(C1*C2):4}}$.\n\n(d) $\\cos(x - y) = \\cos x\\cos y + \\sin x\\sin y = \\frac{ ({{sx*B1}})({{A2}}) + ({{A1}})({{sy*B2}}) }{ {{C1*C2}} } = \\frac{ {{sx*B1*A2 + A1*sy*B2}} }{ {{C1*C2}} }\\approx {{(sx*B1*A2 + A1*sy*B2)/(C1*C2):4}}$.",
+      "rubric": [
+        {
+          "point": "Correct exact cos x with sign from quadrant",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact sin y with sign from quadrant",
+          "marks": 1
+        },
+        {
+          "point": "Correct formula for sin(x + y)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of sin(x + y)",
+          "marks": 1
+        },
+        {
+          "point": "Correct formula for cos(x − y)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of cos(x − y)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "i": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "A": "(3+(1.5)*i+(0.5)*i^2)",
+        "B": "(4+(10.5)*i+(-2.5)*i^2)",
+        "Cc": "(5+(10)*i+(-2)*i^2)"
+      },
+      "text": "Angle $\\theta$ lies in the second quadrant and $\\sin\\theta = \\frac{ {{A}} }{ {{Cc}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an exact value for $\\cos 2\\theta$.",
+          "answer": {
+            "expr": "(Cc^2-2*A^2)/Cc^2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine an exact value for $\\sin 2\\theta$.",
+          "answer": {
+            "expr": "-2*A*B/Cc^2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use a calculator to find $\\theta$ in radians and check (a) and (b).",
+          "answer": {
+            "expr": "pi - asin(A/Cc)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cos\\theta = -\\frac{ {{B}} }{ {{Cc}} }$ (Pythagoras; negative in QII).\n\n(a) $\\cos 2\\theta = 1 - 2\\sin^2\\theta = 1 - \\frac{2({{A^2}})}{ {{Cc^2}} } = \\frac{ {{Cc^2 - 2*A^2}} }{ {{Cc^2}} }\\approx {{(Cc^2-2*A^2)/Cc^2:4}}$.\n\n(b) $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta = 2\\cdot\\frac{ {{A}} }{ {{Cc}} }\\cdot\\left(-\\frac{ {{B}} }{ {{Cc}} }\\right) = -\\frac{ {{2*A*B}} }{ {{Cc^2}} }\\approx {{-2*A*B/Cc^2:4}}$.\n\n(c) $\\theta = \\pi - \\sin^{-1}\\frac{ {{A}} }{ {{Cc}} }\\approx {{pi - asin(A/Cc):4}}$; a calculator confirms $\\cos 2\\theta$ and $\\sin 2\\theta$.",
+      "rubric": [
+        {
+          "point": "Finds cos θ with correct sign",
+          "marks": 1
+        },
+        {
+          "point": "Correct cos 2θ using a double angle formula",
+          "marks": 2
+        },
+        {
+          "point": "Correct sin 2θ including sign",
+          "marks": 2
+        },
+        {
+          "point": "Correct θ and calculator check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q05",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Use the compound angle formula for sine to show that $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$, and the formula for cosine to show that $\\cos 2x = \\cos^2 x - \\sin^2 x$. Then use the Pythagorean identity to obtain the two other forms of $\\cos 2x$.",
+      "modelAnswer": "$\\sin 2\\theta = \\sin(\\theta + \\theta) = \\sin\\theta\\cos\\theta + \\cos\\theta\\sin\\theta = 2\\sin\\theta\\cos\\theta$.\n\n$\\cos 2x = \\cos(x + x) = \\cos x\\cos x - \\sin x\\sin x = \\cos^2 x - \\sin^2 x$.\n\nWith $\\cos^2 x = 1 - \\sin^2 x$: $\\cos 2x = 1 - 2\\sin^2 x$.\n\nWith $\\sin^2 x = 1 - \\cos^2 x$: $\\cos 2x = 2\\cos^2 x - 1$.",
+      "rubric": [
+        {
+          "point": "Derives sin 2θ",
+          "marks": 1
+        },
+        {
+          "point": "Derives cos 2x = cos²x − sin²x",
+          "marks": 1
+        },
+        {
+          "point": "Derives 1 − 2sin²x",
+          "marks": 1
+        },
+        {
+          "point": "Derives 2cos²x − 1",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q06",
+      "type": "explain",
+      "difficulty": 3,
+      "text": "Outline the unit-circle proof of $\\cos(a + b) = \\cos a\\cos b - \\sin a\\sin b$. Your outline should name the four points used, explain why two distances are equal, and show the key algebraic steps.",
+      "modelAnswer": "* $A(\\cos a, \\sin a)$ on the terminal arm of $a$, and $B(\\cos b, -\\sin b)$ on the terminal arm of $2\\pi - b$ (equivalently $-b$).\n* Rotate both by $b$ counterclockwise: $A' = (\\cos(a + b), \\sin(a + b))$ and $B' = (1, 0)$.\n* Rotations preserve length, so $A'B' = AB$.\n* Distance formula, squared: $[\\cos(a + b) - 1]^2 + \\sin^2(a + b) = (\\cos a - \\cos b)^2 + (\\sin a + \\sin b)^2$.\n* Expand: $\\cos^2(a+b) + \\sin^2(a+b) - 2\\cos(a+b) + 1 = \\cos^2a + \\sin^2a + \\cos^2b + \\sin^2b - 2\\cos a\\cos b + 2\\sin a\\sin b$.\n* Pythagorean identity: $2 - 2\\cos(a + b) = 2 - 2\\cos a\\cos b + 2\\sin a\\sin b$.\n* Divide by $-2$: $\\cos(a + b) = \\cos a\\cos b - \\sin a\\sin b$.",
+      "rubric": [
+        {
+          "point": "Correct points A and B",
+          "marks": 1
+        },
+        {
+          "point": "Correct images A′ and B′",
+          "marks": 1
+        },
+        {
+          "point": "Justifies equal distances (rotation preserves length)",
+          "marks": 1
+        },
+        {
+          "point": "Sets up distance equation",
+          "marks": 1
+        },
+        {
+          "point": "Expands and uses Pythagorean identity",
+          "marks": 2
+        },
+        {
+          "point": "Reaches the formula",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q07",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "It is tempting to conclude that $\\sin(x + y) = \\sin x + \\sin y$. (a) Identify a pair of angles that shows this is not generally true. (b) Explain why it is not true. (c) Show that it *is* true for at least one pair of angles, and explain why that pair works.",
+      "modelAnswer": "(a) $x = y = \\frac{\\pi}{2}$: L.S. $= \\sin\\pi = 0$; R.S. $= 1 + 1 = 2$. Not equal.\n\n(b) The correct formula is $\\sin(x + y) = \\sin x\\cos y + \\cos x\\sin y$; sine is not linear, so it does not distribute over addition.\n\n(c) $x = 0$, $y$ anything (e.g. $y = \\frac{\\pi}{6}$): L.S. $= \\sin\\frac{\\pi}{6} = \\frac12$, R.S. $= 0 + \\frac12$ ✓. It works because $\\sin 0 = 0$ and $\\cos 0 = 1$, so the formula reduces to $\\sin y$. Similarly $x = y = 0$, or $x = 2\\pi$.",
+      "rubric": [
+        {
+          "point": "Valid counterexample with both sides evaluated",
+          "marks": 2
+        },
+        {
+          "point": "Explanation using the correct formula",
+          "marks": 1
+        },
+        {
+          "point": "Valid example where it holds, verified",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the example works",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "L": {
+          "choices": [
+            10,
+            12,
+            14,
+            16
+          ]
+        },
+        "xd": {
+          "min": 3,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "An aircraft wing is {{L}} ft long with a dihedral angle $x$ (the angle the wing rises above horizontal).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an expression for the vertical rise $h_1$ of the wing tip in terms of $x$."
+        },
+        {
+          "label": "b",
+          "text": "A double-dihedral wing rises at angle $x$ for its first half and at angle $2x$ for its second half. Show that its rise is $h_2 = \\frac{ {{L}} }{2}\\sin x(1 + 2\\cos x)$."
+        },
+        {
+          "label": "c",
+          "text": "Evaluate $h_2$ when $x = {{xd}}^\\circ$.",
+          "answer": {
+            "expr": "L/2*sin(xd*pi/180)*(1+2*cos(xd*pi/180))",
+            "unit": "ft",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $h_1 = {{L}}\\sin x$.\n\n(b) For a double dihedral, the first $\\frac{ {{L}} }{2}$ ft rises at angle $x$ and the next $\\frac{ {{L}} }{2}$ ft at angle $2x$:\n\n$h_2 = \\frac{ {{L}} }{2}\\sin x + \\frac{ {{L}} }{2}\\sin 2x = \\frac{ {{L}} }{2}\\sin x + \\frac{ {{L}} }{2}(2\\sin x\\cos x) = \\frac{ {{L}} }{2}\\sin x(1 + 2\\cos x)$.\n\n(c) With $x = {{xd}}^\\circ$: $h_1 = {{L}}\\sin {{xd}}^\\circ\\approx {{L*sin(xd*pi/180):3}}$ ft and $h_2\\approx {{L/2*sin(xd*pi/180)*(1+2*cos(xd*pi/180)):3}}$ ft.",
+      "rubric": [
+        {
+          "point": "Correct h₁",
+          "marks": 1
+        },
+        {
+          "point": "Sets up h₂ as sum of two rises",
+          "marks": 1
+        },
+        {
+          "point": "Applies sin 2x = 2 sin x cos x",
+          "marks": 1
+        },
+        {
+          "point": "Factors to the required form",
+          "marks": 1
+        },
+        {
+          "point": "Correct numerical values",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q09",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "lat": {
+          "min": 40,
+          "max": 60,
+          "step": 1
+        }
+      },
+      "text": "At the winter solstice, the noon solar power received per square metre at latitude $x$ (degrees north) is modelled by $P = 1000\\sin(x + 113.5^\\circ)$ W/m².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Use a compound angle formula to write P in terms of sin x and cos x."
+        },
+        {
+          "label": "b",
+          "text": "Determine the latitude at which P = 0 and suggest why this happens."
+        },
+        {
+          "label": "c",
+          "text": "Determine the latitude at which P is a maximum, and explain the meaning of the negative sign."
+        },
+        {
+          "label": "d",
+          "text": "Find P at latitude {{lat}}°N.",
+          "answer": {
+            "expr": "1000*sin((lat+113.5)*pi/180)",
+            "unit": "W/m²",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Expand: $P = 1000(\\sin x\\cos 113.5^\\circ + \\cos x\\sin 113.5^\\circ)\\approx 1000(-0.3987\\sin x + 0.9171\\cos x)$.\n\n(b) $P = 0$ when $\\sin(x + 113.5^\\circ) = 0$, i.e. $x + 113.5^\\circ = 180^\\circ$, so $x = 66.5^\\circ$ — the Arctic Circle. North of it the Sun does not rise on the winter solstice.\n\n(c) $P$ is maximum when $x + 113.5^\\circ = 90^\\circ$: $x = -23.5^\\circ$. The negative sign means 23.5° **south** (the Tropic of Capricorn), where the Sun is directly overhead at the December solstice.\n\n(d) At ${{lat}}^\\circ$N: $P = 1000\\sin({{lat}}^\\circ + 113.5^\\circ)\\approx {{1000*sin((lat+113.5)*pi/180):3}}$ W/m².",
+      "rubric": [
+        {
+          "point": "Correct expansion with compound angle formula",
+          "marks": 1
+        },
+        {
+          "point": "Finds 66.5° and explains (Arctic Circle / no sunlight)",
+          "marks": 2
+        },
+        {
+          "point": "Finds −23.5° and interprets the negative sign",
+          "marks": 2
+        },
+        {
+          "point": "Correct power at the given latitude",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine an exact value for (a) $\\cos\\frac{13\\pi}{12}$ and (b) $\\sin\\frac{7\\pi}{12}$. Show the decomposition into special angles and check the sign using the quadrant.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\cos\\frac{13\\pi}{12}$ (decimal check)",
+          "answer": {
+            "expr": "cos(13*pi/12)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\sin\\frac{7\\pi}{12}$ (decimal check)",
+          "answer": {
+            "expr": "sin(7*pi/12)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\frac{13\\pi}{12} = \\frac{3\\pi}{4} + \\frac{\\pi}{3}$: $\\cos\\frac{3\\pi}{4}\\cos\\frac{\\pi}{3} - \\sin\\frac{3\\pi}{4}\\sin\\frac{\\pi}{3} = -\\frac{1}{\\sqrt2}\\cdot\\frac12 - \\frac{1}{\\sqrt2}\\cdot\\frac{\\sqrt3}{2} = -\\frac{1 + \\sqrt3}{2\\sqrt2}\\approx -0.9659$. QIII → cos negative ✓\n\n(b) $\\frac{7\\pi}{12} = \\frac{\\pi}{3} + \\frac{\\pi}{4}$: $\\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} + \\frac12\\cdot\\frac{1}{\\sqrt2} = \\frac{\\sqrt3 + 1}{2\\sqrt2}\\approx 0.9659$. QII → sin positive ✓",
+      "rubric": [
+        {
+          "point": "(a) valid decomposition",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct exact value",
+          "marks": 2
+        },
+        {
+          "point": "(b) valid decomposition",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct exact value",
+          "marks": 1
+        },
+        {
+          "point": "Sign checks",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "i": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "A": "(3+(1.5)*i+(0.5)*i^2)",
+        "Cc": "(5+(10)*i+(-2)*i^2)"
+      },
+      "text": "The angle $2x$ lies in the fourth quadrant (with $\\frac{3\\pi}{2} < 2x < 2\\pi$) and $\\cos 2x = \\frac{ {{A}} }{ {{Cc}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Which quadrant contains x? Explain."
+        },
+        {
+          "label": "b",
+          "text": "Determine an exact value for cos x.",
+          "answer": {
+            "expr": "-sqrt((Cc+A)/(2*Cc))",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use a calculator to find x in radians and verify (b).",
+          "answer": {
+            "expr": "(2*pi - acos(A/Cc))/2",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Dividing $\\frac{3\\pi}{2} < 2x < 2\\pi$ by 2: $\\frac{3\\pi}{4} < x < \\pi$, so $x$ is in quadrant II.\n\n(b) $\\cos 2x = 2\\cos^2 x - 1\\Rightarrow \\cos^2 x = \\frac{1 + \\frac{ {{A}} }{ {{Cc}} }}{2} = \\frac{ {{Cc+A}} }{ {{2*Cc}} }$ (simplify the fraction if possible). Cosine is negative in QII: $\\cos x = -\\sqrt{\\frac{ {{Cc+A}} }{ {{2*Cc}} }}\\approx {{-sqrt((Cc+A)/(2*Cc)):4}}$.\n\n(c) $2x = 2\\pi - \\cos^{-1}\\frac{ {{A}} }{ {{Cc}} }$, so $x\\approx {{(2*pi - acos(A/Cc))/2:4}}$; $\\cos({{(2*pi - acos(A/Cc))/2:4}})\\approx {{cos((2*pi - acos(A/Cc))/2):4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Determines quadrant of x with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Uses cos 2x = 2cos²x − 1 correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact cos x with negative sign",
+          "marks": 1
+        },
+        {
+          "point": "Finds x with a calculator and verifies",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Use the compound angle formulas to show that (a) $\\sin\\left(x + \\frac{\\pi}{2}\\right) = \\cos x$, (b) $\\cos(\\pi - x) = -\\cos x$ and (c) $\\sin\\left(\\frac{3\\pi}{2} + x\\right) = -\\cos x$.",
+      "modelAnswer": "(a) $\\sin x\\cos\\frac{\\pi}{2} + \\cos x\\sin\\frac{\\pi}{2} = \\sin x(0) + \\cos x(1) = \\cos x$.\n\n(b) $\\cos\\pi\\cos x + \\sin\\pi\\sin x = (-1)\\cos x + 0 = -\\cos x$.\n\n(c) $\\sin\\frac{3\\pi}{2}\\cos x + \\cos\\frac{3\\pi}{2}\\sin x = (-1)\\cos x + 0 = -\\cos x$.",
+      "rubric": [
+        {
+          "point": "(a) correct expansion and simplification",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 2
+        },
+        {
+          "point": "(c) correct",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "(Extension) Use $\\tan x = \\frac{\\sin x}{\\cos x}$ and the compound angle formulas to derive $\\tan(x + y) = \\frac{\\tan x + \\tan y}{1 - \\tan x\\tan y}$. Then use it to find an exact value of $\\tan\\frac{5\\pi}{12}$ and verify numerically.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $\\tan\\frac{5\\pi}{12}$ (decimal)",
+          "answer": {
+            "expr": "tan(5*pi/12)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "$\\tan(x + y) = \\frac{\\sin x\\cos y + \\cos x\\sin y}{\\cos x\\cos y - \\sin x\\sin y}$. Divide every term by $\\cos x\\cos y$:\n\n$= \\frac{\\frac{\\sin x}{\\cos x} + \\frac{\\sin y}{\\cos y}}{1 - \\frac{\\sin x\\sin y}{\\cos x\\cos y}} = \\frac{\\tan x + \\tan y}{1 - \\tan x\\tan y}$.\n\n$\\tan\\frac{5\\pi}{12} = \\tan\\left(\\frac{\\pi}{4} + \\frac{\\pi}{6}\\right) = \\frac{1 + \\frac{1}{\\sqrt3}}{1 - \\frac{1}{\\sqrt3}} = \\frac{\\sqrt3 + 1}{\\sqrt3 - 1} = 2 + \\sqrt3\\approx 3.7321$ ✓",
+      "rubric": [
+        {
+          "point": "Writes tan(x + y) as a quotient using compound formulas",
+          "marks": 1
+        },
+        {
+          "point": "Divides by cos x cos y correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct decomposition and substitution",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies to 2 + √3 (or equivalent) and verifies",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student is asked for $\\cos\\left(\\frac{\\pi}{3} + \\frac{\\pi}{4}\\right)$ and writes:\n\n$\\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\frac12\\cdot\\frac{1}{\\sqrt2} + \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} = \\frac{1 + \\sqrt3}{2\\sqrt2}$\n\nIdentify the error, correct the work, and describe a quick check that would have caught it.",
+      "modelAnswer": "The student used the **subtraction** formula pattern (+) for a **sum**. Correct: $\\cos(x + y) = \\cos x\\cos y - \\sin x\\sin y$:\n\n$\\frac12\\cdot\\frac{1}{\\sqrt2} - \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} = \\frac{1 - \\sqrt3}{2\\sqrt2}\\approx -0.259$.\n\nCheck: $\\frac{\\pi}{3} + \\frac{\\pi}{4} = \\frac{7\\pi}{12}$ is in quadrant II, where cosine is negative, but the student's answer is positive. A calculator check $\\cos\\frac{7\\pi}{12}\\approx -0.2588$ also catches it.",
+      "rubric": [
+        {
+          "point": "Identifies wrong sign / formula",
+          "marks": 2
+        },
+        {
+          "point": "Correct working and answer",
+          "marks": 2
+        },
+        {
+          "point": "Describes a valid check (quadrant sign or calculator)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "i": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        },
+        "j": {
+          "choices": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "A1": "(3+(1.5)*i+(0.5)*i^2)",
+        "B1": "(4+(10.5)*i+(-2.5)*i^2)",
+        "C1": "(5+(10)*i+(-2)*i^2)",
+        "A2": "(3+(1.5)*j+(0.5)*j^2)",
+        "B2": "(4+(10.5)*j+(-2.5)*j^2)",
+        "C2": "(5+(10)*j+(-2)*j^2)"
+      },
+      "text": "Angles $x$ and $y$ are in quadrant I with $\\tan x = \\frac{ {{A1}} }{ {{B1}} }$ and $\\sin y = \\frac{ {{A2}} }{ {{C2}} }$. Find exact values of $\\cos(x + y)$ and $\\sin 2x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "cos(x + y)",
+          "answer": {
+            "expr": "(B1*B2-A1*A2)/(C1*C2)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "sin 2x",
+          "answer": {
+            "expr": "2*A1*B1/C1^2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "From the triangles: $\\sin x = \\frac{ {{A1}} }{ {{C1}} }$, $\\cos x = \\frac{ {{B1}} }{ {{C1}} }$, $\\cos y = \\frac{ {{B2}} }{ {{C2}} }$.\n\n$\\cos(x + y) = \\cos x\\cos y - \\sin x\\sin y = \\frac{ {{B1*B2}} - {{A1*A2}} }{ {{C1*C2}} } = \\frac{ {{B1*B2 - A1*A2}} }{ {{C1*C2}} }\\approx {{(B1*B2-A1*A2)/(C1*C2):4}}$.\n\n$\\sin 2x = 2\\sin x\\cos x = \\frac{ {{2*A1*B1}} }{ {{C1^2}} }\\approx {{2*A1*B1/C1^2:4}}$.",
+      "rubric": [
+        {
+          "point": "Finds sin x, cos x from tan x",
+          "marks": 1
+        },
+        {
+          "point": "Finds cos y",
+          "marks": 1
+        },
+        {
+          "point": "Correct cos(x + y)",
+          "marks": 2
+        },
+        {
+          "point": "Correct sin 2x",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-4-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain how you can determine exact trigonometric values for angles that are not special angles, such as $\\frac{\\pi}{12}$, $\\frac{5\\pi}{12}$ and $\\frac{11\\pi}{12}$. Include at least one fully worked example and explain how you would choose which formula to use.",
+      "modelAnswer": "Write the angle as a sum or difference of special angles (multiples of $\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}$), e.g. $\\frac{\\pi}{12} = \\frac{\\pi}{3} - \\frac{\\pi}{4}$, $\\frac{5\\pi}{12} = \\frac{\\pi}{4} + \\frac{\\pi}{6}$, $\\frac{11\\pi}{12} = \\frac{2\\pi}{3} + \\frac{\\pi}{4}$. Choose the sine or cosine formula matching the function asked for, and the sum or difference version matching the decomposition.\n\nExample: $\\cos\\frac{11\\pi}{12} = \\cos\\left(\\frac{2\\pi}{3} + \\frac{\\pi}{4}\\right) = \\left(-\\frac12\\right)\\frac{1}{\\sqrt2} - \\frac{\\sqrt3}{2}\\cdot\\frac{1}{\\sqrt2} = -\\frac{1 + \\sqrt3}{2\\sqrt2}\\approx -0.9659$ (negative in QII ✓).",
+      "rubric": [
+        {
+          "point": "Explains decomposition into special angles",
+          "marks": 2
+        },
+        {
+          "point": "Explains choice of formula",
+          "marks": 1
+        },
+        {
+          "point": "Correct worked example",
+          "marks": 2
+        },
+        {
+          "point": "Includes a check",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

@@ -87,7 +87,8 @@ true/false or fill-in-the-blank.
 * Expressions support `+ - * / ^ ( )`, numbers, variable names and
   `sqrt abs min max round`.
 * `parts[].answer` (optional) lets the app auto-check a final numeric
-  answer (±2 % by default, override with `"tol": 0.05`). Working and
+  answer (±2 % by default, override with `"tol": 0.05`). Students may type a
+  decimal or an exact form such as `3/4`, `-√3/2`, `2π/3` or `sqrt(2)/2`. Working and
   explanations are graded against the `rubric` by the AI grader (if
   configured) or by the admin.
 * Total marks for a question = sum of rubric marks.

@@ -1,0 +1,833 @@
+{
+  "id": "4-3",
+  "number": "4.3",
+  "title": "Equivalent Trigonometric Expressions",
+  "estimatedMinutes": 75,
+  "overview": "Different-looking trigonometric expressions can have exactly the same value for every angle. In this section you will discover the **cofunction identities** using right triangles and further identities using rotations and reflections on the unit circle, then use them to evaluate expressions, find angles and simplify formulas.",
+  "objectives": [
+    "Derive the cofunction identities from a right triangle.",
+    "Use transformations of the unit circle to derive identities for $\\frac{\\pi}{2}\\pm x$, $\\pi\\pm x$, $\\frac{3\\pi}{2}\\pm x$ and $2\\pi - x$.",
+    "Use equivalent expressions to evaluate trig ratios and determine unknown angles.",
+    "Verify equivalence with graphing technology and explain why graphs are not proof.",
+    "Apply equivalent expressions to simplify formulas in applications."
+  ],
+  "lessons": [
+    {
+      "id": "what-is-identity",
+      "title": "Equivalent expressions and identities",
+      "body": "Two trigonometric expressions are **equivalent** if they give the same value for every angle where both are defined. An equation stating that two expressions are equivalent is a **trigonometric identity**.\n\nYou already know some identities:\n\n| Type | Identities |\n|---|---|\n| Reciprocal | $\\csc x = \\frac{1}{\\sin x}$, $\\sec x = \\frac{1}{\\cos x}$, $\\cot x = \\frac{1}{\\tan x}$ |\n| Quotient | $\\tan x = \\frac{\\sin x}{\\cos x}$, $\\cot x = \\frac{\\cos x}{\\sin x}$ |\n| Pythagorean | $\\sin^2 x + \\cos^2 x = 1$ |\n\nThe Pythagorean identity comes from the unit circle: the point $(\\cos x, \\sin x)$ is 1 unit from the origin, so $x^2 + y^2 = 1$.\n\nIn this section you will build a new family: identities that relate trig functions of $x$ to trig functions of $\\frac{\\pi}{2} \\pm x$, $\\pi \\pm x$, $\\frac{3\\pi}{2} \\pm x$ and $2\\pi - x$.\n\n**Seeing equivalence on a graph:** if two expressions are equivalent, their graphs lie exactly on top of each other.\n\n```plot\ntitle: y = sin x (solid) and y = cos(π/2 − x) (dashed) are the same curve\nf: sin(x) | label=y = sin x\nf: cos(pi/2 - x) | dashed; label=y = cos(π/2 − x)\ndomain: -6.3, 6.3\nrange: -1.5, 1.5\nxticks: pi\n```"
+    },
+    {
+      "id": "cofunction",
+      "title": "Cofunction identities (complementary angles)",
+      "body": "In right triangle $ABC$ with the right angle at $B$, if $\\angle A = x$ then $\\angle C = \\frac{\\pi}{2} - x$ (the angles add to $\\pi$). The two acute angles are **complementary**.\n\nThe side opposite $A$ is adjacent to $C$, so\n\n$$\\sin x = \\frac{a}{b} = \\cos\\left(\\frac{\\pi}{2} - x\\right).$$\n\nDoing this for all six ratios gives the **cofunction identities**:\n\n| | | |\n|---|---|---|\n| $\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$ | $\\cos x = \\sin\\left(\\frac{\\pi}{2} - x\\right)$ | $\\tan x = \\cot\\left(\\frac{\\pi}{2} - x\\right)$ |\n| $\\csc x = \\sec\\left(\\frac{\\pi}{2} - x\\right)$ | $\\sec x = \\csc\\left(\\frac{\\pi}{2} - x\\right)$ | $\\cot x = \\tan\\left(\\frac{\\pi}{2} - x\\right)$ |\n\n**Why \"co\"?** *Co*sine is the sine of the *co*mplementary angle. Each function is paired with its co-function: sin–cos, tan–cot, sec–csc.\n\n**Quick test:** $\\sin\\frac{\\pi}{6} = \\frac12$ and $\\cos\\frac{\\pi}{3} = \\frac12$. Indeed $\\frac{\\pi}{3} = \\frac{\\pi}{2} - \\frac{\\pi}{6}$."
+    },
+    {
+      "id": "rotations",
+      "title": "Identities from the unit circle: rotating by π/2",
+      "body": "Put $P(\\cos x, \\sin x)$ on the unit circle. Rotating $P$ by $\\frac{\\pi}{2}$ counterclockwise sends a point $(a, b)$ to $(-b, a)$. The new point $P'$ is at angle $x + \\frac{\\pi}{2}$:\n\n$$P' = \\left(\\cos\\left(x + \\tfrac{\\pi}{2}\\right), \\sin\\left(x + \\tfrac{\\pi}{2}\\right)\\right) = (-\\sin x, \\cos x).$$\n\nMatching coordinates gives\n\n$$\\cos\\left(x + \\frac{\\pi}{2}\\right) = -\\sin x,\\qquad \\sin\\left(x + \\frac{\\pi}{2}\\right) = \\cos x,\\qquad \\tan\\left(x + \\frac{\\pi}{2}\\right) = -\\cot x.$$\n\nThe textbook also writes these as $\\sin\\left(x - \\frac{\\pi}{2}\\right) = -\\cos x$ and $\\cos\\left(x - \\frac{\\pi}{2}\\right) = \\sin x$ (rotate clockwise instead)."
+    },
+    {
+      "id": "pi-identities",
+      "title": "Identities with π, 3π/2 and 2π",
+      "body": "Use symmetry on the unit circle, with $x$ a first-quadrant angle and $P(\\cos x, \\sin x)$.\n\n| Angle | Geometry | Point | Resulting identities |\n|---|---|---|---|\n| $\\pi - x$ | reflect $P$ in the $y$-axis | $(-\\cos x, \\sin x)$ | $\\sin(\\pi - x) = \\sin x$, $\\cos(\\pi - x) = -\\cos x$, $\\tan(\\pi - x) = -\\tan x$ |\n| $\\pi + x$ | rotate $P$ by $\\pi$ | $(-\\cos x, -\\sin x)$ | $\\sin(\\pi + x) = -\\sin x$, $\\cos(\\pi + x) = -\\cos x$, $\\tan(\\pi + x) = \\tan x$ |\n| $2\\pi - x$ | reflect $P$ in the $x$-axis | $(\\cos x, -\\sin x)$ | $\\sin(2\\pi - x) = -\\sin x$, $\\cos(2\\pi - x) = \\cos x$, $\\tan(2\\pi - x) = -\\tan x$ |\n| $\\frac{3\\pi}{2} - x$ | | $(-\\sin x, -\\cos x)$ | $\\sin\\left(\\frac{3\\pi}{2} - x\\right) = -\\cos x$, $\\cos\\left(\\frac{3\\pi}{2} - x\\right) = -\\sin x$ |\n| $\\frac{3\\pi}{2} + x$ | | $(\\sin x, -\\cos x)$ | $\\sin\\left(\\frac{3\\pi}{2} + x\\right) = -\\cos x$, $\\cos\\left(\\frac{3\\pi}{2} + x\\right) = \\sin x$ |\n\n**A memory strategy (no table needed):**\n1. With $\\pi$ or $2\\pi$, the function **stays the same** (sin stays sin). With $\\frac{\\pi}{2}$ or $\\frac{3\\pi}{2}$, it **switches to the cofunction**.\n2. The **sign** is the sign of the *original* function in the quadrant where the angle lands, pretending $x$ is a small first-quadrant angle.\n\n*Example:* $\\cos\\left(\\frac{3\\pi}{2} - x\\right)$: $\\frac{3\\pi}{2}$ → switch to sine. The angle $\\frac{3\\pi}{2} - x$ lands in quadrant III, where cosine is negative. So $\\cos\\left(\\frac{3\\pi}{2} - x\\right) = -\\sin x$.\n\nThe reciprocal functions follow the same pattern as their partners."
+    },
+    {
+      "id": "using-them",
+      "title": "Using equivalent expressions",
+      "body": "**1. Evaluate one ratio from another.** Given $\\sin\\frac{\\pi}{5}\\approx 0.5878$, find $\\cos\\frac{3\\pi}{10}$:\n\n$\\frac{3\\pi}{10} = \\frac{\\pi}{2} - \\frac{\\pi}{5}$, so $\\cos\\frac{3\\pi}{10} = \\sin\\frac{\\pi}{5}\\approx 0.5878$.\n\nAnd $\\cos\\frac{7\\pi}{10}$: $\\frac{7\\pi}{10} = \\frac{\\pi}{2} + \\frac{\\pi}{5}$, so $\\cos\\frac{7\\pi}{10} = -\\sin\\frac{\\pi}{5}\\approx -0.5878$.\n\n**2. Find an unknown angle.** If $\\csc a = \\sec 1.45$ with $a$ in quadrant I, the cofunction identity $\\csc a = \\sec\\left(\\frac{\\pi}{2} - a\\right)$ tells us $\\frac{\\pi}{2} - a = 1.45$, so $a = \\frac{\\pi}{2} - 1.45\\approx 0.12$.\n\n**3. Solve for angles in arguments.** If $\\sec a = \\csc 3a$, the arguments of a cofunction pair add to $\\frac{\\pi}{2}$: $a + 3a = \\frac{\\pi}{2}$, so $a = \\frac{\\pi}{8}$.\n\n**4. Simplify formulas.** The banking-turn formula $r = \\frac{v^2}{g}\\tan\\left(\\frac{\\pi}{2} - \\theta\\right)$ becomes $r = \\frac{v^2}{g}\\cot\\theta = \\frac{v^2}{g\\tan\\theta}$.\n\n**5. Check with technology.** Graph both sides; identical graphs support (but do not prove) equivalence."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "equivalent trigonometric expressions",
+      "definition": "Expressions that have equal values for every angle at which both are defined."
+    },
+    {
+      "term": "trigonometric identity",
+      "definition": "An equation involving trigonometric expressions that is true for all values of the variable for which both sides are defined."
+    },
+    {
+      "term": "cofunction identities",
+      "definition": "Identities relating a function of $x$ to its cofunction of $\\frac{\\pi}{2} - x$, e.g. $\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$."
+    },
+    {
+      "term": "complementary angles",
+      "definition": "Two angles whose sum is $\\frac{\\pi}{2}$."
+    },
+    {
+      "term": "cofunction",
+      "definition": "The paired function: sine–cosine, tangent–cotangent, secant–cosecant."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Cofunction identities",
+      "latex": "\\sin x = \\cos\\left(\\tfrac{\\pi}{2}-x\\right),\\ \\cos x = \\sin\\left(\\tfrac{\\pi}{2}-x\\right),\\ \\tan x = \\cot\\left(\\tfrac{\\pi}{2}-x\\right)",
+      "meaning": "Also csc x = sec(π/2 − x), sec x = csc(π/2 − x), cot x = tan(π/2 − x)."
+    },
+    {
+      "name": "Shift by π/2",
+      "latex": "\\sin\\left(x+\\tfrac{\\pi}{2}\\right) = \\cos x,\\quad \\cos\\left(x+\\tfrac{\\pi}{2}\\right) = -\\sin x",
+      "meaning": ""
+    },
+    {
+      "name": "Supplementary angles",
+      "latex": "\\sin(\\pi-x) = \\sin x,\\quad \\cos(\\pi-x) = -\\cos x,\\quad \\tan(\\pi-x) = -\\tan x",
+      "meaning": ""
+    },
+    {
+      "name": "Half-turn",
+      "latex": "\\sin(\\pi+x) = -\\sin x,\\quad \\cos(\\pi+x) = -\\cos x,\\quad \\tan(\\pi+x) = \\tan x",
+      "meaning": ""
+    },
+    {
+      "name": "Reflection in x-axis",
+      "latex": "\\sin(2\\pi-x) = -\\sin x,\\quad \\cos(2\\pi-x) = \\cos x",
+      "meaning": ""
+    },
+    {
+      "name": "Pythagorean and quotient",
+      "latex": "\\sin^2x+\\cos^2x = 1,\\quad \\tan x = \\frac{\\sin x}{\\cos x}",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Cofunction evaluation",
+      "problem": "Given $\\csc\\frac{2\\pi}{7}\\approx 1.2790$, determine $\\sec\\frac{3\\pi}{14}$.",
+      "steps": [
+        "$\\frac{3\\pi}{14}$ is in quadrant I. Write it as $\\frac{\\pi}{2} - a$: $a = \\frac{7\\pi}{14} - \\frac{3\\pi}{14} = \\frac{4\\pi}{14} = \\frac{2\\pi}{7}$.",
+        "Cofunction identity: $\\sec\\left(\\frac{\\pi}{2} - a\\right) = \\csc a$.",
+        "So $\\sec\\frac{3\\pi}{14} = \\csc\\frac{2\\pi}{7}\\approx 1.2790$."
+      ],
+      "answer": "$\\approx 1.2790$"
+    },
+    {
+      "title": "Using a π-identity",
+      "problem": "Given $\\cos\\frac{\\pi}{9}\\approx 0.9397$, find $\\cos\\frac{10\\pi}{9}$ and $\\sin\\frac{11\\pi}{18}$.",
+      "steps": [
+        "$\\frac{10\\pi}{9} = \\pi + \\frac{\\pi}{9}$, and $\\cos(\\pi + x) = -\\cos x$, so $\\cos\\frac{10\\pi}{9}\\approx -0.9397$.",
+        "$\\frac{11\\pi}{18} = \\frac{\\pi}{2} + \\frac{\\pi}{9}$, and $\\sin\\left(\\frac{\\pi}{2} + x\\right) = \\cos x$, so $\\sin\\frac{11\\pi}{18}\\approx 0.9397$.",
+        "Check signs: $\\frac{10\\pi}{9}$ is in QIII (cos negative ✓); $\\frac{11\\pi}{18}$ is in QII (sin positive ✓)."
+      ],
+      "answer": "$-0.9397$ and $0.9397$"
+    },
+    {
+      "title": "Finding an angle",
+      "problem": "Given $\\csc a = \\sec 0.75$ and $a$ in the second quadrant, find $a$.",
+      "steps": [
+        "The quadrant I solution is $a_1 = \\frac{\\pi}{2} - 0.75\\approx 0.8208$.",
+        "$\\csc$ is positive in quadrant II, and $\\csc(\\pi - a_1) = \\csc a_1$.",
+        "$a = \\pi - 0.8208\\approx 2.32$."
+      ],
+      "answer": "$a\\approx 2.32$"
+    },
+    {
+      "title": "Deriving an identity with the unit circle",
+      "problem": "Show that $\\tan(\\pi - x) = -\\tan x$ for $x$ in quadrant I.",
+      "steps": [
+        "$P(\\cos x, \\sin x)$; reflect in the $y$-axis to get the point at angle $\\pi - x$: $(-\\cos x, \\sin x)$.",
+        "$\\tan(\\pi - x) = \\frac{y}{x} = \\frac{\\sin x}{-\\cos x} = -\\tan x$."
+      ],
+      "answer": "$\\tan(\\pi-x) = -\\tan x$"
+    },
+    {
+      "title": "Solving with arguments",
+      "problem": "Find an exact $a$ such that $\\sec a = \\csc 3a$.",
+      "steps": [
+        "Cofunction identity: $\\sec a = \\csc\\left(\\frac{\\pi}{2} - a\\right)$.",
+        "So $3a = \\frac{\\pi}{2} - a$, i.e. $4a = \\frac{\\pi}{2}$.",
+        "$a = \\frac{\\pi}{8}$. Check: $\\sec\\frac{\\pi}{8}\\approx 1.0824$ and $\\csc\\frac{3\\pi}{8}\\approx 1.0824$ ✓"
+      ],
+      "answer": "$a = \\frac{\\pi}{8}$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\cos(\\pi - x) = \\cos\\pi - \\cos x$.",
+      "fact": "Trig functions do not distribute over subtraction. $\\cos(\\pi - x) = -\\cos x$; e.g. $x = \\frac{\\pi}{3}$: $\\cos\\frac{2\\pi}{3} = -\\frac12$, but $\\cos\\pi - \\cos\\frac{\\pi}{3} = -\\frac32$."
+    },
+    {
+      "myth": "$\\cos(x - \\pi) = \\cos x$ because cosine is symmetric.",
+      "fact": "$\\cos(x - \\pi) = -\\cos x$ — subtracting a half turn flips the point to the opposite side of the circle."
+    },
+    {
+      "myth": "Graphs that look the same prove an identity.",
+      "fact": "Graphs can *suggest* or *verify* equivalence over a window, but a proof needs algebra or geometry valid for all $x$."
+    },
+    {
+      "myth": "Shifts by π change sin to cos.",
+      "fact": "Only $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$ switch to the cofunction. $\\pi$ and $2\\pi$ keep the same function."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Aviation",
+      "body": "The radius of a banked turn is $r = \\frac{v^2}{g\\tan\\theta}$: at 50 m/s and a bank of $\\frac{\\pi}{6}$, $r = \\frac{2500}{9.8\\tan\\frac{\\pi}{6}}\\approx 442$ m."
+    },
+    {
+      "title": "Computer hardware",
+      "body": "Graphics chips save time by replacing a calculation like $\\cos\\left(\\frac{\\pi}{2} - x\\right)$ with the already-computed $\\sin x$."
+    },
+    {
+      "title": "A broken calculator key",
+      "body": "If the sin key fails, $\\sin\\frac{9\\pi}{13} = \\cos\\left(\\frac{9\\pi}{13} - \\frac{\\pi}{2}\\right) = \\cos\\frac{5\\pi}{26}$ can be found with the cos key."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Given $\\sin\\frac{\\pi}{8}\\approx 0.3827$, find $\\cos\\frac{3\\pi}{8}$ and $\\cos\\frac{5\\pi}{8}$.",
+      "hint": "$\\frac{3\\pi}{8} = \\frac{\\pi}{2} - \\frac{\\pi}{8}$; $\\frac{5\\pi}{8} = \\frac{\\pi}{2} + \\frac{\\pi}{8}$.",
+      "solution": "$0.3827$ and $-0.3827$"
+    },
+    {
+      "question": "Given $\\tan\\frac{4\\pi}{9}\\approx 5.6713$, find $\\cot\\frac{\\pi}{18}$ and $\\tan\\frac{13\\pi}{9}$.",
+      "hint": "$\\frac{\\pi}{18} = \\frac{\\pi}{2} - \\frac{4\\pi}{9}$; $\\frac{13\\pi}{9} = \\pi + \\frac{4\\pi}{9}$.",
+      "solution": "Both $\\approx 5.6713$."
+    },
+    {
+      "question": "Given $\\cot\\frac{2\\pi}{5} = \\tan z$, express $\\frac{2\\pi}{5}$ as $\\frac{\\pi}{2}$ minus an angle and find $z$.",
+      "hint": "Cofunction identity for cot.",
+      "solution": "$\\frac{2\\pi}{5} = \\frac{\\pi}{2} - \\frac{\\pi}{10}$, so $z = \\frac{\\pi}{10}$."
+    },
+    {
+      "question": "If $\\sin x = \\cos\\frac{3\\pi}{11}$ and $x$ is in the second quadrant, find $x$.",
+      "hint": "First-quadrant solution, then use $\\sin(\\pi - x) = \\sin x$.",
+      "solution": "QI: $\\frac{\\pi}{2} - \\frac{3\\pi}{11} = \\frac{5\\pi}{22}$; QII: $\\pi - \\frac{5\\pi}{22} = \\frac{17\\pi}{22}$."
+    },
+    {
+      "question": "Simplify $\\sin(\\pi + x) + \\cos\\left(\\frac{\\pi}{2} - x\\right)$.",
+      "hint": "Use two identities.",
+      "solution": "$-\\sin x + \\sin x = 0$"
+    },
+    {
+      "question": "Use the unit circle to write $\\sec(2\\pi - x)$ and $\\csc(\\pi + x)$ in terms of $x$.",
+      "hint": "Reciprocals follow cos and sin.",
+      "solution": "$\\sec(2\\pi - x) = \\sec x$; $\\csc(\\pi + x) = -\\csc x$."
+    },
+    {
+      "question": "Find exact $b$ if $\\csc\\left(6b + \\frac{\\pi}{8}\\right) = \\sec\\left(2b + \\frac{\\pi}{8}\\right)$.",
+      "hint": "Arguments of a cofunction pair add to $\\frac{\\pi}{2}$.",
+      "solution": "$8b + \\frac{\\pi}{4} = \\frac{\\pi}{2}$, so $b = \\frac{\\pi}{32}$."
+    }
+  ],
+  "summary": [
+    "Equivalent expressions have equal values for all defined angles; an identity states this equality.",
+    "Cofunction identities: a function of $x$ equals its cofunction of $\\frac{\\pi}{2} - x$.",
+    "Unit-circle symmetries give identities for $\\frac{\\pi}{2} \\pm x$, $\\pi \\pm x$, $\\frac{3\\pi}{2} \\pm x$, $2\\pi - x$.",
+    "Rule of thumb: $\\pi$ and $2\\pi$ keep the function, $\\frac{\\pi}{2}$ and $\\frac{3\\pi}{2}$ switch to the cofunction; the quadrant decides the sign.",
+    "Use these identities to evaluate ratios, find unknown angles, and simplify formulas; use graphs to verify."
+  ],
+  "questions": [
+    {
+      "id": "m4-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "choices": [
+            5,
+            7,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      },
+      "text": "You are given $\\sin\\frac{\\pi}{ {{n}} }\\approx {{sin(pi/n):4}}$. Without evaluating any other trig function on a calculator, determine the following to four decimal places. Show the equivalent expression you use for each.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\cos\\frac{ {{n-2}}\\pi}{ {{2*n}} }$",
+          "answer": {
+            "expr": "sin(pi/n)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\cos\\frac{ {{n+2}}\\pi}{ {{2*n}} }$",
+          "answer": {
+            "expr": "-sin(pi/n)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\sin\\frac{ {{n+1}}\\pi}{ {{n}} }$",
+          "answer": {
+            "expr": "-sin(pi/n)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\sin\\frac{ {{n-1}}\\pi}{ {{n}} }$",
+          "answer": {
+            "expr": "sin(pi/n)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\frac{\\pi}{2} - \\frac{\\pi}{ {{n}} } = \\frac{ ({{n}}-2)\\pi}{ {{2*n}} }$, so $\\cos\\frac{ {{n-2}}\\pi}{ {{2*n}} } = \\sin\\frac{\\pi}{ {{n}} }\\approx {{sin(pi/n):4}}$ (cofunction identity).\n\n(b) $\\frac{ {{n+2}}\\pi}{ {{2*n}} } = \\frac{\\pi}{2} + \\frac{\\pi}{ {{n}} }$ and $\\cos\\left(\\frac{\\pi}{2} + x\\right) = -\\sin x$, so the value is $\\approx {{-sin(pi/n):4}}$.\n\n(c) $\\frac{ {{n+1}}\\pi}{ {{n}} } = \\pi + \\frac{\\pi}{ {{n}} }$ and $\\sin(\\pi + x) = -\\sin x$: $\\approx {{-sin(pi/n):4}}$.\n\n(d) $\\frac{ {{n-1}}\\pi}{ {{n}} } = \\pi - \\frac{\\pi}{ {{n}} }$ and $\\sin(\\pi - x) = \\sin x$: $\\approx {{sin(pi/n):4}}$.",
+      "rubric": [
+        {
+          "point": "(a) correct identity and value",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct identity and value",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct identity and value",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct identity and value",
+          "marks": 1
+        },
+        {
+          "point": "Signs justified by quadrant",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "min": 0.3,
+          "max": 1.45,
+          "step": 0.05
+        }
+      },
+      "text": "Given that $\\csc a = \\sec {{b}}$ and that $a$ lies in the first quadrant, use a cofunction identity to determine $a$ to two decimal places. Then find the second-quadrant angle with the same cosecant.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "First-quadrant value of a",
+          "answer": {
+            "expr": "pi/2-b",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Second-quadrant angle",
+          "answer": {
+            "expr": "pi/2+b",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Cofunction identity: $\\sec b = \\csc\\left(\\frac{\\pi}{2} - b\\right)$. So $a = \\frac{\\pi}{2} - {{b}}\\approx {{pi/2-b:3}}$.\n\nCosecant (like sine) is positive in quadrant II and $\\csc(\\pi - a) = \\csc a$, so the second angle is $\\pi - {{pi/2-b:4}}\\approx {{pi/2+b:3}}$.",
+      "rubric": [
+        {
+          "point": "States the cofunction identity",
+          "marks": 1
+        },
+        {
+          "point": "Correct first-quadrant a",
+          "marks": 2
+        },
+        {
+          "point": "Uses csc(π − a) = csc a",
+          "marks": 1
+        },
+        {
+          "point": "Correct second-quadrant angle",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q03",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Use a right triangle $ABC$ with $\\angle B = \\frac{\\pi}{2}$ and $\\angle A = x$ to derive the cofunction identities $\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$ and $\\tan x = \\cot\\left(\\frac{\\pi}{2} - x\\right)$. Explain why they are called cofunction identities.",
+      "modelAnswer": "The angles add to $\\pi$, so $\\angle C = \\pi - \\frac{\\pi}{2} - x = \\frac{\\pi}{2} - x$.\n\nLabel sides $a$ (opposite A), $c$ (opposite C) and hypotenuse $b$.\n\n$\\sin x = \\frac{a}{b}$, and for angle C the side $a$ is adjacent: $\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\frac{a}{b}$. So $\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$.\n\n$\\tan x = \\frac{a}{c}$ and $\\cot C = \\frac{\\text{adj}}{\\text{opp}} = \\frac{a}{c}$, so $\\tan x = \\cot\\left(\\frac{\\pi}{2} - x\\right)$.\n\nThey relate a function of an angle to its **co**function (cosine = \"complement's sine\") of the **co**mplementary angle.",
+      "rubric": [
+        {
+          "point": "Shows ∠C = π/2 − x",
+          "marks": 1
+        },
+        {
+          "point": "Correct side ratios for sin x and cos C",
+          "marks": 2
+        },
+        {
+          "point": "Correct ratios for tan x and cot C",
+          "marks": 1
+        },
+        {
+          "point": "Explains the name",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q04",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Use the unit circle and a rotation of $\\frac{\\pi}{2}$ to show that $\\cos\\left(x + \\frac{\\pi}{2}\\right) = -\\sin x$ and $\\sin\\left(x + \\frac{\\pi}{2}\\right) = \\cos x$, where $x$ is in the first quadrant. Then deduce an expression for $\\tan\\left(x + \\frac{\\pi}{2}\\right)$.",
+      "modelAnswer": "$P(\\cos x, \\sin x)$ is on the unit circle. A counterclockwise rotation of $\\frac{\\pi}{2}$ about the origin maps $(a, b)\\to(-b, a)$, so $P' = (-\\sin x, \\cos x)$. The triangles formed with the $x$-axis are congruent, so the coordinates swap with a sign change.\n\n$P'$ is on the terminal arm of $x + \\frac{\\pi}{2}$, so $\\cos\\left(x + \\frac{\\pi}{2}\\right) = -\\sin x$ and $\\sin\\left(x + \\frac{\\pi}{2}\\right) = \\cos x$.\n\n$\\tan\\left(x + \\frac{\\pi}{2}\\right) = \\frac{\\cos x}{-\\sin x} = -\\cot x$.",
+      "rubric": [
+        {
+          "point": "Correct coordinates of P",
+          "marks": 1
+        },
+        {
+          "point": "Correct image under rotation with justification",
+          "marks": 2
+        },
+        {
+          "point": "Matches coordinates to conclude both identities",
+          "marks": 1
+        },
+        {
+          "point": "Correct tan result",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Write each expression in terms of a trig function of $x$ alone, and justify each with the unit circle or the memory strategy (function switch + quadrant sign).\n\n(a) $\\cos(2\\pi - x)$ (b) $\\tan(\\pi + x)$ (c) $\\sin\\left(\\frac{3\\pi}{2} - x\\right)$ (d) $\\sec(\\pi - x)$ (e) $\\cot\\left(\\frac{\\pi}{2} + x\\right)$",
+      "modelAnswer": "(a) $2\\pi$ keeps cos; $2\\pi - x$ is in QIV where cos is positive: $\\cos x$.\n\n(b) $\\pi$ keeps tan; QIII, tan positive: $\\tan x$.\n\n(c) $\\frac{3\\pi}{2}$ switches sin→cos; QIII, sin negative: $-\\cos x$.\n\n(d) keeps sec; QII, sec negative: $-\\sec x$.\n\n(e) switches cot→tan; QII, cot negative: $-\\tan x$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        },
+        {
+          "point": "(e) correct",
+          "marks": 1
+        },
+        {
+          "point": "Justification shown",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Given $\\tan\\frac{4\\pi}{9}\\approx 5.6713$, determine each value to four decimal places without using a calculator. Justify with an identity.\n\n(a) $\\cot\\frac{\\pi}{18}$ (b) $\\tan\\frac{13\\pi}{9}$ (c) $\\tan\\frac{5\\pi}{9}$",
+      "modelAnswer": "(a) $\\frac{\\pi}{18} = \\frac{\\pi}{2} - \\frac{4\\pi}{9}$, and $\\cot\\left(\\frac{\\pi}{2} - x\\right) = \\tan x$: $5.6713$.\n\n(b) $\\frac{13\\pi}{9} = \\pi + \\frac{4\\pi}{9}$, $\\tan(\\pi + x) = \\tan x$: $5.6713$.\n\n(c) $\\frac{5\\pi}{9} = \\pi - \\frac{4\\pi}{9}$, $\\tan(\\pi - x) = -\\tan x$: $-5.6713$.",
+      "rubric": [
+        {
+          "point": "(a) identity and value",
+          "marks": 2
+        },
+        {
+          "point": "(b) identity and value",
+          "marks": 2
+        },
+        {
+          "point": "(c) identity and value with correct sign",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v": {
+          "min": 40,
+          "max": 90,
+          "step": 5
+        },
+        "k": {
+          "choices": [
+            3,
+            4,
+            6,
+            8
+          ]
+        }
+      },
+      "text": "A pilot flying at {{v}} m/s banks the aircraft at an angle $\\theta$. The radius of the turn is $r = \\frac{v^2}{g}\\tan\\left(\\frac{\\pi}{2} - \\theta\\right)$, where $g = 9.8$ m/s².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that the formula simplifies to $r = \\frac{v^2}{g\\tan\\theta}$."
+        },
+        {
+          "label": "b",
+          "text": "Determine the radius of the turn when $\\theta = \\frac{\\pi}{ {{k}} }$, to the nearest metre.",
+          "answer": {
+            "expr": "v^2/(9.8*tan(pi/k))",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How does increasing the bank angle affect the radius? Explain."
+        }
+      ],
+      "modelAnswer": "(a) By the cofunction identity, $\\tan\\left(\\frac{\\pi}{2} - \\theta\\right) = \\cot\\theta = \\frac{1}{\\tan\\theta}$, so $r = \\frac{v^2}{g\\tan\\theta}$.\n\n(b) $r = \\frac{ {{v}}^2}{9.8\\tan\\frac{\\pi}{ {{k}} }}\\approx {{v^2/(9.8*tan(pi/k)):3}}$ m.\n\n(c) A steeper bank (larger $\\theta$) makes $\\tan\\theta$ larger, so $r$ is smaller — a tighter turn.",
+      "rubric": [
+        {
+          "point": "Applies the cofunction identity correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct radius",
+          "marks": 2
+        },
+        {
+          "point": "Explains effect of larger bank angle",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Determine an exact value of $a$ such that $\\sec a = \\csc({{m}}a)$, where both angles are acute. Explain your reasoning and check your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of a (exact; enter a decimal approximation here)",
+          "answer": {
+            "expr": "pi/(2*(m+1))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Cofunction identity: $\\csc y = \\sec\\left(\\frac{\\pi}{2} - y\\right)$, so the arguments of a sec–csc pair add to $\\frac{\\pi}{2}$:\n\n$a + {{m}}a = \\frac{\\pi}{2}\\ \\Rightarrow\\ {{m+1}}a = \\frac{\\pi}{2}\\ \\Rightarrow\\ a = \\frac{\\pi}{ {{2*(m+1)}} }$.\n\nCheck: $\\sec\\frac{\\pi}{ {{2*(m+1)}} }\\approx {{1/cos(pi/(2*(m+1))):4}}$ and $\\csc\\frac{ {{m}}\\pi}{ {{2*(m+1)}} }\\approx {{1/sin(m*pi/(2*(m+1))):4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Writes the relevant cofunction identity",
+          "marks": 1
+        },
+        {
+          "point": "Sets sum of arguments equal to π/2",
+          "marks": 2
+        },
+        {
+          "point": "Correct exact a",
+          "marks": 1
+        },
+        {
+          "point": "Numerical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q09",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "p": {
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        },
+        "q": {
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "text": "Determine an exact value of $b$ such that $\\csc\\left({{p}}b - \\frac{\\pi}{8}\\right) = \\sec\\left({{q}}b + \\frac{\\pi}{8}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "b (decimal approximation)",
+          "answer": {
+            "expr": "pi/(2*(p+q))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "For the cofunction pair, the arguments add to $\\frac{\\pi}{2}$:\n\n$\\left({{p}}b - \\frac{\\pi}{8}\\right) + \\left({{q}}b + \\frac{\\pi}{8}\\right) = \\frac{\\pi}{2}\\ \\Rightarrow\\ {{p+q}}b = \\frac{\\pi}{2}\\ \\Rightarrow\\ b = \\frac{\\pi}{ {{2*(p+q)}} }\\approx {{pi/(2*(p+q)):4}}$.\n\nCheck: LS $= \\csc\\left({{p}}b - \\frac{\\pi}{8}\\right)\\approx {{1/sin(p*pi/(2*(p+q)) - pi/8):4}}$, RS $= \\sec\\left({{q}}b + \\frac{\\pi}{8}\\right)\\approx {{1/cos(q*pi/(2*(p+q)) + pi/8):4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Recognises arguments must sum to π/2",
+          "marks": 2
+        },
+        {
+          "point": "Solves the linear equation",
+          "marks": 1
+        },
+        {
+          "point": "Exact answer",
+          "marks": 1
+        },
+        {
+          "point": "Checks both sides",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Charmaine's sine key is broken. Describe two different methods she could use to evaluate $\\sin\\frac{9\\pi}{13}$ using only the cos key (and arithmetic). Show that both give the same value.",
+      "modelAnswer": "**Method 1:** $\\sin x = \\cos\\left(\\frac{\\pi}{2} - x\\right)$: $\\sin\\frac{9\\pi}{13} = \\cos\\left(\\frac{\\pi}{2} - \\frac{9\\pi}{13}\\right) = \\cos\\left(-\\frac{5\\pi}{26}\\right) = \\cos\\frac{5\\pi}{26}$ (cosine is even).\n\n**Method 2:** $\\sin\\left(x + \\frac{\\pi}{2}\\right) = \\cos x$ with $x = \\frac{9\\pi}{13} - \\frac{\\pi}{2} = \\frac{5\\pi}{26}$, giving $\\cos\\frac{5\\pi}{26}$ again; or use $\\sin(\\pi - x) = \\sin x$ to get $\\sin\\frac{4\\pi}{13}$, then $\\cos\\left(\\frac{\\pi}{2} - \\frac{4\\pi}{13}\\right) = \\cos\\frac{5\\pi}{26}$.\n\nAlso possible: $\\sin x = \\sqrt{1 - \\cos^2 x}$ (positive since $\\frac{9\\pi}{13}$ is in QII).\n\nValue: $\\cos\\frac{5\\pi}{26}\\approx 0.8230$.",
+      "rubric": [
+        {
+          "point": "First valid method with identity",
+          "marks": 2
+        },
+        {
+          "point": "Second distinct valid method",
+          "marks": 2
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        },
+        {
+          "point": "Explains sign/quadrant where needed",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q11",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A student claims that $\\cos(x - \\pi) = \\cos x$ for all $x$. Use the unit circle to decide whether the claim is true. If it is false, give a counterexample and state the correct identity.",
+      "modelAnswer": "Subtracting $\\pi$ rotates the point $(\\cos x, \\sin x)$ by a half turn to $(-\\cos x, -\\sin x)$. So $\\cos(x - \\pi) = -\\cos x$ — the claim is false (except where $\\cos x = 0$).\n\nCounterexample: $x = 0$: $\\cos(-\\pi) = -1$ but $\\cos 0 = 1$.",
+      "rubric": [
+        {
+          "point": "Uses the half-turn on the unit circle",
+          "marks": 2
+        },
+        {
+          "point": "Valid counterexample",
+          "marks": 2
+        },
+        {
+          "point": "States correct identity",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        },
+        "n": {
+          "choices": [
+            11,
+            13,
+            17
+          ]
+        }
+      },
+      "text": "Given $\\sin x = \\cos\\frac{ {{k}}\\pi}{ {{n}} }$ where $x$ lies in the second quadrant, determine $x$ exactly.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "x (decimal approximation)",
+          "answer": {
+            "expr": "pi/2 + k*pi/n",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The first-quadrant solution is $\\frac{\\pi}{2} - \\frac{ {{k}}\\pi}{ {{n}} }$ (cofunction identity). Since $\\sin(\\pi - y) = \\sin y$ and sine is positive in quadrant II,\n\n$x = \\pi - \\left(\\frac{\\pi}{2} - \\frac{ {{k}}\\pi}{ {{n}} }\\right) = \\frac{\\pi}{2} + \\frac{ {{k}}\\pi}{ {{n}} } = \\frac{ ({{n}} + {{2*k}})\\pi}{ {{2*n}} }\\approx {{pi/2 + k*pi/n:4}}$.",
+      "rubric": [
+        {
+          "point": "First-quadrant angle from cofunction identity",
+          "marks": 2
+        },
+        {
+          "point": "Uses sin(π − y) = sin y for quadrant II",
+          "marks": 2
+        },
+        {
+          "point": "Correct exact x",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Simplify each expression fully. State each identity you use.\n\n(a) $\\sin(\\pi - x) + \\sin(\\pi + x)$\n\n(b) $\\cos\\left(\\frac{\\pi}{2} - x\\right)\\csc x$\n\n(c) $\\tan(2\\pi - x)\\cot(\\pi - x)$\n\n(d) $\\sin\\left(\\frac{\\pi}{2} + x\\right) - \\cos(\\pi - x)$",
+      "modelAnswer": "(a) $\\sin x + (-\\sin x) = 0$.\n\n(b) $\\sin x\\cdot\\frac{1}{\\sin x} = 1$.\n\n(c) $(-\\tan x)(-\\cot x) = \\tan x\\cot x = 1$.\n\n(d) $\\cos x - (-\\cos x) = 2\\cos x$.",
+      "rubric": [
+        {
+          "point": "(a) correct with identities",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct, including both sign changes",
+          "marks": 2
+        },
+        {
+          "point": "(d) correct",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q14",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Describe how you would use graphing technology to *verify* that $\\cos\\left(\\frac{3\\pi}{2} - x\\right) = -\\sin x$. Explain what you would expect to see, why the graphs alone do not *prove* the identity, and how the unit circle could be used to prove it.",
+      "modelAnswer": "Set the calculator to radian mode. Enter $Y_1 = \\cos(3\\pi/2 - x)$ and $Y_2 = -\\sin x$ with a heavier line style; use a window such as $-2\\pi\\le x\\le 2\\pi$, $-1.5\\le y\\le 1.5$. If equivalent, $Y_2$ traces exactly over $Y_1$. A table of values should also match.\n\n```plot\nf: cos(3*pi/2 - x)\nf: -sin(x) | dashed\ndomain: -6.3, 6.3\nrange: -1.5, 1.5\nxticks: pi\n```\n\nThe graph shows only a finite window and limited precision, so it cannot show equality for **all** $x$. A proof: for $P(\\cos x, \\sin x)$, the angle $\\frac{3\\pi}{2} - x$ gives the point $(-\\sin x, -\\cos x)$ (reflect $P$ in the line $y = x$ to get $(\\sin x, \\cos x)$, then rotate by $\\pi$). Its $x$-coordinate is $-\\sin x$, so $\\cos\\left(\\frac{3\\pi}{2} - x\\right) = -\\sin x$.",
+      "rubric": [
+        {
+          "point": "Correct technology procedure (radian mode, two functions, suitable window)",
+          "marks": 2
+        },
+        {
+          "point": "Describes expected overlapping graphs",
+          "marks": 1
+        },
+        {
+          "point": "Explains why graphs are not a proof",
+          "marks": 1
+        },
+        {
+          "point": "Valid unit-circle argument",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "p": {
+          "choices": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "q": {
+          "choices": [
+            1,
+            2
+          ]
+        }
+      },
+      "text": "Determine an exact value of $c$ such that $\\cot\\left({{p}}c - \\frac{\\pi}{4}\\right) - \\tan\\left({{q}}c + \\frac{\\pi}{4}\\right) = 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "c (decimal approximation)",
+          "answer": {
+            "expr": "pi/(2*(p+q))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cot A = \\tan B$ when $A + B = \\frac{\\pi}{2}$ (cofunction identity). So\n\n${{p}}c - \\frac{\\pi}{4} + {{q}}c + \\frac{\\pi}{4} = \\frac{\\pi}{2}\\ \\Rightarrow\\ {{p+q}}c = \\frac{\\pi}{2}\\ \\Rightarrow\\ c = \\frac{\\pi}{ {{2*(p+q)}} }\\approx {{pi/(2*(p+q)):4}}$.\n\nCheck: $\\cot\\left({{p}}c - \\frac{\\pi}{4}\\right)\\approx {{1/tan(p*pi/(2*(p+q)) - pi/4):4}}$ and $\\tan\\left({{q}}c + \\frac{\\pi}{4}\\right)\\approx {{tan(q*pi/(2*(p+q)) + pi/4):4}}$ ✓",
+      "rubric": [
+        {
+          "point": "Rewrites as cot A = tan B",
+          "marks": 1
+        },
+        {
+          "point": "Uses A + B = π/2",
+          "marks": 2
+        },
+        {
+          "point": "Correct exact c",
+          "marks": 1
+        },
+        {
+          "point": "Check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "m4-3-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain a reliable strategy for writing any expression of the form $f\\left(\\frac{k\\pi}{2} \\pm x\\right)$ (where $f$ is one of the six trig functions and $k$ is 1, 2, 3 or 4) in terms of a function of $x$. Illustrate your strategy with $\\sec\\left(\\frac{3\\pi}{2} + x\\right)$ and $\\cot(\\pi - x)$.",
+      "modelAnswer": "1. If $k$ is even ($\\pi$, $2\\pi$), keep the same function; if $k$ is odd ($\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$), change to the cofunction.\n2. Treat $x$ as a small positive angle, find the quadrant of $\\frac{k\\pi}{2}\\pm x$, and attach the sign that the **original** function has in that quadrant (CAST).\n\n$\\sec\\left(\\frac{3\\pi}{2} + x\\right)$: odd → csc; angle in QIV where sec (like cos) is positive: $\\csc x$.\n\n$\\cot(\\pi - x)$: even → cot; QII where cot is negative: $-\\cot x$.",
+      "rubric": [
+        {
+          "point": "Rule for keeping/switching function",
+          "marks": 2
+        },
+        {
+          "point": "Rule for the sign using quadrant of original function",
+          "marks": 2
+        },
+        {
+          "point": "Correct first example",
+          "marks": 1
+        },
+        {
+          "point": "Correct second example",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}
