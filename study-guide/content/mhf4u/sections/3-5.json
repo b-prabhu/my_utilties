@@ -1,0 +1,1291 @@
+{
+  "id": "3-5",
+  "number": "3.5",
+  "title": "Making Connections With Rational Functions and Equations",
+  "estimatedMinutes": 90,
+  "overview": "Rational functions are the language of many scientific laws – from how loud a concert is to how deep a diver can go. In this section you will model real situations, decide whether to analyse a function or solve an equation, and handle two special cases: **holes** and **oblique asymptotes**.",
+  "objectives": [
+    "Model inverse-variation and inverse-square situations and solve related problems.",
+    "Decide whether a problem requires analysing a function or solving an equation or inequality.",
+    "Identify holes and find their coordinates.",
+    "Find oblique asymptotes using long division.",
+    "Interpret rates of change and average values in context.",
+    "Carry out a full numeric, algebraic, graphical and verbal analysis."
+  ],
+  "lessons": [
+    {
+      "id": "variation",
+      "title": "Inverse variation and the inverse square law",
+      "body": "Many laws of science are rational functions.\n\n| Relationship | Formula | Example |\n|---|---|---|\n| inverse variation | $y = \\dfrac{k}{x}$ | Boyle's law: gas volume $V = \\frac{k}{P}$ at constant temperature |\n| inverse square | $y = \\dfrac{k}{x^2}$ | sound or light intensity $I = \\frac{k}{d^2}$; gravity |\n| joint variation | $y = \\dfrac{kx}{z^2}$ | wire resistance $R = \\frac{kl}{d^2}$ |\n\n**Finding $k$:** substitute one known pair of values.\n\n**Example – sound.** The intensity of sound from a speaker is 0.001 W/m² at 2 m. Then $0.001 = \\frac{k}{2^2}$, so $k = 0.004$ and $I = \\dfrac{0.004}{d^2}$, $d > 0$.\n\n**Halving the distance:** $I\\left(\\frac{d}{2}\\right) = \\dfrac{0.004}{d^2/4} = 4 \\times \\dfrac{0.004}{d^2}$ – the sound is **four times** as intense. This is why moving closer at a concert is so much louder.\n\n```plot\ntitle: I = 0.004/d² (W/m²) against distance d (m)\nf: 0.004/x^2\ndomain: 0, 8\nrange: 0, 0.005\npoints: (2,0.001)\nticks: 1, 0.001\n```\n"
+    },
+    {
+      "id": "solve",
+      "title": "Modelling and solving: read the question carefully",
+      "body": "In a problem, first decide whether you are asked to **analyse a function** (describe features, sketch, rates of change) or to **solve an equation or inequality** (find values).\n\n**Example – diving.** The maximum time $T$ (min) a scuba diver can stay at depth $d$ (m) and rise without decompression stops is $T(d) = \\dfrac{525}{d - 10}$, $d > 10$. For what depths is this time less than 30 min?\n\n$$\\frac{525}{d - 10} < 30$$\n\nBecause $d > 10$, the denominator is positive, so there is only **one case** and we may multiply without flipping:\n\n$525 < 30(d - 10) \\Rightarrow 17.5 < d - 10 \\Rightarrow d > 27.5$\n\nDeeper than 27.5 m, the no-stop time is under 30 min.\n\n```plot\ntitle: T(d) = 525/(d − 10)\nf: 525/(x-10)\nf: 30 | dashed\ndomain: 10, 90\nrange: 0, 100\npoints: (27.5,30)\nasymptote x: 10\nticks: 10, 10\n```\n"
+    },
+    {
+      "id": "holes",
+      "title": "Special case 1: holes",
+      "body": "If the numerator and denominator share a factor, the function **simplifies** – but the original restriction remains.\n\n$$f(x) = \\frac{x^2 + x - 6}{x - 2} = \\frac{(x + 3)(x - 2)}{x - 2} = x + 3, \\quad x \\ne 2$$\n\nThe graph is the line $y = x + 3$ with a **hole** at $(2, 5)$: as $x \\to 2$, $f(x) \\to 5$, but $f(2)$ is undefined. A hole is a **discontinuity that is not an asymptote**.\n\n```plot\ntitle: f(x) = (x² + x − 6)/(x − 2): a line with a hole at (2, 5)\nf: (x^2+x-6)/(x-2)\ndomain: -6, 6\nrange: -4, 9\npoints: (2,5)\n```\n\nA function can have both: $g(x) = \\dfrac{2x^2 + 7x - 4}{2x^2 - 5x + 2} = \\dfrac{(2x - 1)(x + 4)}{(2x - 1)(x - 2)} = \\dfrac{x + 4}{x - 2}$, $x \\ne \\frac{1}{2}$, has a vertical asymptote $x = 2$, a horizontal asymptote $y = 1$, **and** a hole at $\\left(\\frac{1}{2}, \\frac{4.5}{-1.5}\\right) = \\left(\\frac{1}{2}, -3\\right)$.\n\n> To find the hole's $y$-coordinate, substitute the cancelled $x$-value into the **simplified** function.\n"
+    },
+    {
+      "id": "oblique",
+      "title": "Special case 2: oblique (slant) asymptotes",
+      "body": "When the degree of the numerator is **one more** than the degree of the denominator, the graph has an **oblique (slant) asymptote** – a line that is neither horizontal nor vertical.\n\nUse **long division** to rewrite the function:\n\n$$f(x) = \\frac{x^2 + 2x + 5}{x + 1} = x + 1 + \\frac{4}{x + 1}$$\n\nAs $x \\to \\pm\\infty$, $\\frac{4}{x + 1} \\to 0$, so the graph approaches the line $y = x + 1$. There is still a vertical asymptote $x = -1$.\n\n```plot\ntitle: Oblique asymptote y = x + 1\nf: (x^2+2*x+5)/(x+1)\nf: x+1 | dashed; label=y = x + 1\ndomain: -8, 6\nrange: -12, 12\nasymptote x: -1\n```\n\n**Summary of asymptote rules for $\\frac{P(x)}{Q(x)}$** (after cancelling common factors):\n* degree $P$ < degree $Q$: horizontal asymptote $y = 0$;\n* degree $P$ = degree $Q$: horizontal asymptote $y = $ ratio of leading coefficients;\n* degree $P$ = degree $Q$ + 1: oblique asymptote = the quotient from division.\n"
+    },
+    {
+      "id": "rates",
+      "title": "Rates of change in context",
+      "body": "Rates of change answer \"how fast is it changing?\" questions.\n\n* **Average rate of change** over an interval = slope of the secant: $\\dfrac{f(b) - f(a)}{b - a}$.\n* **Instantaneous rate** at a point ≈ slope of a secant over a very small interval.\n* **Average value per unit**, such as average profit per kilogram $\\frac{P(x)}{x}$, is the slope of the secant from the **origin** to $(x, P(x))$.\n\n**Example – fertilizer profit.** $P(x) = \\dfrac{600x - 15\\,000}{x + 100}$ (thousands of dollars, $x$ in tonnes).\n* Break-even: $P(x) = 0 \\Rightarrow x = 25$ t.\n* Long run: horizontal asymptote $P = 600$ – profit levels off at 600 thousand dollars.\n* Rate at $x = 100$: $\\frac{P(100.01) - P(100)}{0.01} \\approx 1.875$ thousand dollars per tonne; at $x = 500$ it is only about 0.208. Extra sales add less and less profit.\n\n### A full analysis has four components\n**numeric** (tables, calculations), **algebraic** (formulas, solving), **graphical** and **verbal** (describing what it means in context).\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "inverse square law",
+      "definition": "A relationship $y = \\frac{k}{x^2}$; doubling $x$ divides $y$ by 4."
+    },
+    {
+      "term": "hole",
+      "definition": "A point discontinuity that appears when a factor cancels from the numerator and denominator."
+    },
+    {
+      "term": "discontinuity",
+      "definition": "A value of x where a function is not continuous: a vertical asymptote or a hole."
+    },
+    {
+      "term": "oblique (slant) asymptote",
+      "definition": "A non-horizontal, non-vertical line that the graph approaches as x → ±∞; it occurs when the numerator's degree is one more than the denominator's."
+    },
+    {
+      "term": "escape velocity",
+      "definition": "In the rocket model, the velocity at the vertical asymptote, where the maximum height becomes unbounded."
+    },
+    {
+      "term": "average rate of change",
+      "definition": "The slope of a secant line between two points of a function."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Inverse variation",
+      "latex": "y = \\frac{k}{x}",
+      "meaning": "Find k from one data point."
+    },
+    {
+      "name": "Inverse square law",
+      "latex": "I = \\frac{k}{d^2}",
+      "meaning": "Halving d multiplies I by 4."
+    },
+    {
+      "name": "Oblique asymptote by division",
+      "latex": "\\frac{P(x)}{Q(x)} = q(x) + \\frac{r(x)}{Q(x)} \\Rightarrow y = q(x)",
+      "meaning": "When deg P = deg Q + 1, the linear quotient is the slant asymptote."
+    },
+    {
+      "name": "Parallel resistors",
+      "latex": "R = \\frac{R_1 R_2}{R_1 + R_2}",
+      "meaning": "With R₂ = 1 Ω: R(x) = x/(x + 1)."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Intensity of sound",
+      "problem": "Sound intensity varies inversely as the square of the distance. It is 0.001 W/m² at 2 m. (a) Find the equation. (b) What happens when you halve the distance?",
+      "steps": [
+        "$I = \\frac{k}{d^2}$; $0.001 = \\frac{k}{4} \\Rightarrow k = 0.004$, so $I = \\frac{0.004}{d^2}$, $d > 0$.",
+        "Replace $d$ by $\\frac{d}{2}$: $\\frac{0.004}{(d/2)^2} = \\frac{0.004 \\times 4}{d^2}$."
+      ],
+      "answer": "$I = \\dfrac{0.004}{d^2}$; halving the distance makes the sound 4 times as intense."
+    },
+    {
+      "title": "Diving time",
+      "problem": "$T(d) = \\dfrac{525}{d - 10}$, $d > 10$. For what depths is $T < 30$ min?",
+      "steps": [
+        "$d - 10 > 0$, so multiply without flipping: $525 < 30(d - 10)$.",
+        "$17.5 < d - 10 \\Rightarrow d > 27.5$."
+      ],
+      "answer": "Depths greater than 27.5 m."
+    },
+    {
+      "title": "Special cases",
+      "problem": "Sketch $g(x) = \\dfrac{2x^2 + 7x - 4}{2x^2 - 5x + 2}$ and explain why it is a special case.",
+      "steps": [
+        "Factor: $\\frac{(2x - 1)(x + 4)}{(2x - 1)(x - 2)}$; restrictions $x \\ne \\frac{1}{2}, 2$.",
+        "Simplify: $g(x) = \\frac{x + 4}{x - 2}$, $x \\ne \\frac{1}{2}$.",
+        "Vertical asymptote $x = 2$, horizontal asymptote $y = 1$, $x$-intercept $-4$, $y$-intercept $-2$.",
+        "Hole: $\\frac{0.5 + 4}{0.5 - 2} = -3$, so a hole at $(0.5, -3)$."
+      ],
+      "answer": "A linear-over-linear graph with an extra hole at $(\\frac{1}{2}, -3)$."
+    },
+    {
+      "title": "Oblique asymptote",
+      "problem": "Find all asymptotes of $f(x) = \\dfrac{x^2 - 5x + 2}{x - 3}$.",
+      "steps": [
+        "Divide: $x^2 - 5x + 2 = (x - 3)(x - 2) - 4$.",
+        "So $f(x) = x - 2 - \\frac{4}{x - 3}$.",
+        "Vertical asymptote $x = 3$; oblique asymptote $y = x - 2$; no horizontal asymptote."
+      ],
+      "answer": "$x = 3$ and $y = x - 2$."
+    },
+    {
+      "title": "Parallel resistance",
+      "problem": "A resistor of $x$ Ω in parallel with a 1 Ω resistor gives $R(x) = \\dfrac{x}{x + 1}$. For what $x$ is $R < 0.25$ Ω?",
+      "steps": [
+        "$x > 0$, so $x + 1 > 0$: $x < 0.25(x + 1)$.",
+        "$0.75x < 0.25 \\Rightarrow x < \\frac{1}{3}$."
+      ],
+      "answer": "$0 < x < \\frac{1}{3}$ Ω."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\dfrac{x^2 + x - 6}{x - 2}$ has a vertical asymptote at $x = 2$.",
+      "fact": "The factor $(x - 2)$ cancels, so there is a **hole** at $(2, 5)$, not an asymptote."
+    },
+    {
+      "myth": "A rational function always has a horizontal asymptote.",
+      "fact": "If the numerator's degree is one more than the denominator's, the graph has an **oblique** asymptote instead."
+    },
+    {
+      "myth": "Halving the distance doubles the intensity.",
+      "fact": "In an inverse square law it **quadruples** the intensity."
+    },
+    {
+      "myth": "A model is valid for every real number.",
+      "fact": "Context restricts the domain: distances, times and amounts are usually positive, so only part of the graph applies."
+    },
+    {
+      "myth": "The hole's $y$-coordinate is found by substituting into the original function.",
+      "fact": "The original is undefined there; substitute into the **simplified** function."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Concert safety",
+      "body": "Inverse-square sound laws are used to set safe distances from speakers; standing twice as close means four times the intensity."
+    },
+    {
+      "title": "Space travel",
+      "body": "In the model $h = \\frac{6400v^2}{125\\,440 - v^2}$, the vertical asymptote at $v = \\sqrt{125\\,440} \\approx 354$ is the escape velocity: the speed at which the rocket never comes back down."
+    },
+    {
+      "title": "Electronics",
+      "body": "Resistors in parallel combine as $\\frac{R_1R_2}{R_1 + R_2}$, a rational function that engineers solve to hit a target resistance."
+    },
+    {
+      "title": "Food safety",
+      "body": "A freezer's temperature after a power failure, $T = \\frac{2t^2}{t + 1} - 15$, tells a plant manager how long food stays frozen – a model with an oblique asymptote."
+    },
+    {
+      "title": "Medicine",
+      "body": "Drug concentration models like $C(t) = \\frac{0.16t}{t^2 + t + 2}$ rise to a peak and then decay toward 0 as the drug leaves the bloodstream."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Light intensity is 6 lux at 50 m. Write the inverse-square model and find the intensity at 10 m.",
+      "hint": "Find $k$ first.",
+      "solution": "$k = 6 \\times 2500 = 15\\,000$; $I = \\frac{15\\,000}{d^2}$; $I(10) = 150$ lux."
+    },
+    {
+      "question": "A tank holds 10 L of gas at 500 kPa. Using Boyle's law $V = \\frac{k}{P}$, find the volume at 800 kPa.",
+      "hint": "$k = PV$.",
+      "solution": "$k = 5000$; $V = \\frac{5000}{800} = 6.25$ L."
+    },
+    {
+      "question": "Find the hole in $f(x) = \\dfrac{x^2 - 4}{x + 2}$.",
+      "hint": "Factor and cancel.",
+      "solution": "$f(x) = x - 2$, $x \\ne -2$; hole at $(-2, -4)$."
+    },
+    {
+      "question": "Find the oblique asymptote of $f(x) = \\dfrac{x^2 + 3x + 1}{x + 1}$.",
+      "hint": "Divide.",
+      "solution": "$x^2 + 3x + 1 = (x + 1)(x + 2) - 1$, so the slant asymptote is $y = x + 2$."
+    },
+    {
+      "question": "For $R(x) = \\dfrac{x}{x + 1}$, find $x$ when $R = 0.5$.",
+      "hint": "Cross-multiply.",
+      "solution": "$x = 0.5x + 0.5 \\Rightarrow x = 1$ Ω."
+    },
+    {
+      "question": "A cylindrical tank has volume 100 000 cm³. Write $h$ in terms of $r$.",
+      "hint": "$V = \\pi r^2 h$.",
+      "solution": "$h = \\frac{100\\,000}{\\pi r^2}$, $r > 0$."
+    },
+    {
+      "question": "For $x > 0$, what value of $x$ gives the least value of $x + \\frac{1}{x}$?",
+      "hint": "Try a table: 0.5, 1, 2.",
+      "solution": "$x = 1$ gives 2; values on either side are larger (0.5 → 2.5, 2 → 2.5)."
+    }
+  ],
+  "summary": [
+    "Inverse variation $y = \\frac{k}{x}$ and inverse-square laws $y = \\frac{k}{x^2}$ model many physical situations; find $k$ from known data.",
+    "Decide whether a problem asks you to analyse a function or to solve an equation or inequality.",
+    "Common factors cause **holes**; find their $y$-values from the simplified function.",
+    "When the numerator's degree is one more than the denominator's, long division gives an **oblique asymptote**.",
+    "Rates of change in context come from secant slopes; average value per unit is the slope of a secant from the origin.",
+    "A full analysis is numeric, algebraic, graphical and verbal."
+  ],
+  "questions": [
+    {
+      "id": "3-5-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "d0": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "I0": {
+          "choices": [
+            0.001,
+            0.002,
+            0.004,
+            0.005
+          ]
+        },
+        "d1": {
+          "min": 6,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "The intensity of sound varies inversely as the square of the distance from the source. At {{d0}} m from a speaker the intensity is {{I0}} W/m².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation."
+        },
+        {
+          "label": "b",
+          "text": "Find the intensity at {{d1}} m.",
+          "answer": {
+            "expr": "I0*d0^2/d1^2",
+            "unit": "W/m²",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the effect of halving the distance? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $I = \\dfrac{k}{d^2}$; $k = {{I0}} \\times {{d0}}^2 = {{I0*d0^2:4}}$. So $I = \\dfrac{ {{I0*d0^2:4}} }{d^2}$, $d > 0$.\n\n(b) $I({{d1}}) = \\dfrac{ {{I0*d0^2:4}} }{ {{d1^2}} } \\approx {{I0*d0^2/d1^2:3}}$ W/m².\n\n(c) Halving the distance: $\\dfrac{k}{(d/2)^2} = \\dfrac{4k}{d^2}$ – four times as intense.",
+      "rubric": [
+        {
+          "point": "Correct constant and equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct intensity at new distance",
+          "marks": 1
+        },
+        {
+          "point": "Halving distance ⇒ 4 times with algebraic reason",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "V0": {
+          "min": 5,
+          "max": 20,
+          "step": 1
+        },
+        "P0": {
+          "min": 200,
+          "max": 600,
+          "step": 50
+        },
+        "P1": {
+          "min": 300,
+          "max": 900,
+          "step": 50
+        }
+      },
+      "text": "According to Boyle's law, at constant temperature the volume of a gas varies inversely with pressure. A tank holds {{V0}} L of hydrogen at {{P0}} kPa.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the function."
+        },
+        {
+          "label": "b",
+          "text": "Find the volume at {{P1}} kPa.",
+          "answer": {
+            "expr": "V0*P0/P1",
+            "unit": "L",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the effect of doubling the pressure?"
+        },
+        {
+          "label": "d",
+          "text": "Describe the graph."
+        }
+      ],
+      "modelAnswer": "(a) $V = \\dfrac{k}{P}$, $k = {{V0}} \\times {{P0}} = {{V0*P0}}$: $V = \\dfrac{ {{V0*P0}} }{P}$, $P > 0$.\n\n(b) $V({{P1}}) = \\dfrac{ {{V0*P0}} }{ {{P1}} } \\approx {{V0*P0/P1:3}}$ L.\n\n(c) Doubling the pressure halves the volume, because $PV$ is constant.\n\n(d) The graph is the first-quadrant branch of a reciprocal function: decreasing, approaching $V = 0$ as $P$ grows and growing without bound as $P \\to 0^+$.",
+      "rubric": [
+        {
+          "point": "Equation",
+          "marks": 2
+        },
+        {
+          "point": "Volume at new pressure",
+          "marks": 1
+        },
+        {
+          "point": "Effect of doubling",
+          "marks": 1
+        },
+        {
+          "point": "Graph description in context",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "choices": [
+            0.2,
+            0.25,
+            0.4,
+            0.5,
+            0.6,
+            0.75
+          ]
+        }
+      },
+      "text": "A resistor of $x$ ohms connected in parallel with a 1 Ω resistor gives a total resistance of $R(x) = \\dfrac{x}{x + 1}$ ohms, $x > 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $x$ for a total resistance of {{r}} Ω.",
+          "answer": {
+            "expr": "r/(1-r)",
+            "unit": "Ω",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "For what $x$ is the total resistance less than {{r}} Ω?"
+        },
+        {
+          "label": "c",
+          "text": "Interpret the horizontal asymptote."
+        }
+      ],
+      "modelAnswer": "(a) $\\dfrac{x}{x + 1} = {{r}}$: $x = {{r}}x + {{r}}$, so ${{1-r}}x = {{r}}$ and $x = \\dfrac{ {{r}} }{ {{1-r}} } \\approx {{r/(1-r):3}}$ Ω.\n\n(b) Since $x > 0$, $x + 1 > 0$, so $\\dfrac{x}{x+1} < {{r}} \\Rightarrow x < {{r}}(x + 1) \\Rightarrow {{1-r}}x < {{r}} \\Rightarrow x < {{r/(1-r):3}}$. Solution: $0 < x < {{r/(1-r):3}}$ Ω.\n\n(c) Horizontal asymptote $R = 1$: however large $x$ is, the total resistance is always less than 1 Ω (the smaller resistor).",
+      "rubric": [
+        {
+          "point": "Solves the equation",
+          "marks": 2
+        },
+        {
+          "point": "Solves the inequality using x > 0",
+          "marks": 2
+        },
+        {
+          "point": "Correct interval including x > 0",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "T0": {
+          "choices": [
+            15,
+            20,
+            25,
+            30,
+            35
+          ]
+        }
+      },
+      "text": "The maximum time $T$, in minutes, a scuba diver can stay at depth $d$ metres and rise without decompression stops is $T(d) = \\dfrac{525}{d - 10}$, $d > 10$. For the maximum time to be less than {{T0}} min, how deep must the diver be?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the boundary depth.",
+          "answer": {
+            "expr": "10+525/T0",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain your solution."
+        }
+      ],
+      "modelAnswer": "Solve $\\dfrac{525}{d - 10} < {{T0}}$. Because $d > 10$, $d - 10 > 0$: only one case, multiply without flipping.\n\n$525 < {{T0}}(d - 10) \\Rightarrow d - 10 > \\dfrac{525}{ {{T0}} } \\approx {{525/T0:4}} \\Rightarrow d > {{10+525/T0:4}}$.\n\nAt depths greater than about {{10+525/T0:3}} m the no-stop time is under {{T0}} min. Graphically, this is where the curve lies below the line $T = {{T0}}$.",
+      "rubric": [
+        {
+          "point": "Sets up the inequality",
+          "marks": 1
+        },
+        {
+          "point": "Justifies a single case using d > 10",
+          "marks": 2
+        },
+        {
+          "point": "Solves correctly",
+          "marks": 2
+        },
+        {
+          "point": "Interprets in context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Sketch (by describing) the graph of $f(x) = \\dfrac{x^2 + {{a-b}}x - {{a*b}}}{x - {{b}}}$ and explain why it is a special case.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the $y$-coordinate of the hole.",
+          "answer": {
+            "expr": "a+b",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph and explain."
+        }
+      ],
+      "modelAnswer": "Factor the numerator: $x^2 + ({{a}} - {{b}})x - {{a*b}} = (x + {{a}})(x - {{b}})$.\n\nSo $f(x) = \\dfrac{(x + {{a}})(x - {{b}})}{x - {{b}}} = x + {{a}}$, $x \\ne {{b}}$.\n\nThe graph is the line $y = x + {{a}}$ (slope 1, $y$-intercept {{a}}, $x$-intercept $-{{a}}$) with a **hole** at $({{b}}, {{a+b}})$. It is a special case because the zero of the denominator does not produce a vertical asymptote – the common factor cancels, leaving a discontinuity that is a single missing point.",
+      "rubric": [
+        {
+          "point": "Factors the numerator",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies with restriction",
+          "marks": 1
+        },
+        {
+          "point": "Describes the line",
+          "marks": 1
+        },
+        {
+          "point": "Correct hole coordinates",
+          "marks": 2
+        },
+        {
+          "point": "Explains why it is a special case",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q06",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Analyse $g(x) = \\dfrac{2x^2 + 7x - 4}{2x^2 - 5x + 2}$: find all asymptotes, intercepts and any holes, and describe the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical asymptote $x = ?$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-coordinate of the hole.",
+          "answer": {
+            "expr": "-3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Complete the analysis."
+        }
+      ],
+      "modelAnswer": "Factor: $g(x) = \\dfrac{(2x - 1)(x + 4)}{(2x - 1)(x - 2)}$. Restrictions $x \\ne \\frac{1}{2}$, $x \\ne 2$.\n\nSimplified: $g(x) = \\dfrac{x + 4}{x - 2}$, $x \\ne \\frac{1}{2}$.\n\n* Vertical asymptote $x = 2$ (the factor $x - 2$ does not cancel).\n* Horizontal asymptote $y = 1$.\n* $x$-intercept $-4$; $y$-intercept $g(0) = -2$.\n* Hole: $\\frac{0.5 + 4}{0.5 - 2} = -3$, so a hole at $(0.5, -3)$.\n\nThe graph is the linear-over-linear curve $y = \\frac{x + 4}{x - 2}$ (decreasing on both branches) with one point removed at $(0.5, -3)$ on its left branch.",
+      "rubric": [
+        {
+          "point": "Factors numerator and denominator",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Intercepts",
+          "marks": 1
+        },
+        {
+          "point": "Correct hole",
+          "marks": 2
+        },
+        {
+          "point": "Describes the graph",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "b": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 6,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "The function $f(x) = \\dfrac{x^2 + {{b}}x + {{c}}}{x + 1}$ has an oblique asymptote. Use long division to find it, and state the vertical asymptote.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The oblique asymptote is $y = x + k$. Find $k$.",
+          "answer": {
+            "expr": "b-1",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show the division and state the vertical asymptote."
+        }
+      ],
+      "modelAnswer": "Divide $x^2 + {{b}}x + {{c}}$ by $x + 1$:\n\n$x^2 + {{b}}x + {{c}} = (x + 1)(x + {{b-1}}) + {{c-b+1}}$.\n\nSo $f(x) = x + {{b-1}} + \\dfrac{ {{c-b+1}} }{x + 1}$.\n\nAs $x \\to \\pm\\infty$, $\\dfrac{ {{c-b+1}} }{x + 1} \\to 0$, so the oblique asymptote is $y = x + {{b-1}}$. The vertical asymptote is $x = -1$ (the remainder {{c-b+1}} is not zero, so nothing cancels).",
+      "rubric": [
+        {
+          "point": "Correct quotient",
+          "marks": 2
+        },
+        {
+          "point": "Correct remainder",
+          "marks": 1
+        },
+        {
+          "point": "Identifies slant asymptote with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Vertical asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "After a power failure, the temperature in a freezer is modelled by $T(t) = \\dfrac{2t^2}{t + 1} - 15$, where $T$ is in °C and $t$ is in hours.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long until the temperature reaches 0 °C?",
+          "answer": {
+            "expr": "(15+sqrt(345))/4",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "A generator starts at −5 °C. When does this happen?",
+          "answer": {
+            "expr": "(5+sqrt(45))/2",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Comment on the long-run behaviour of the model."
+        }
+      ],
+      "modelAnswer": "(a) Set $T = 0$: $\\dfrac{2t^2}{t + 1} = 15 \\Rightarrow 2t^2 = 15t + 15 \\Rightarrow 2t^2 - 15t - 15 = 0$.\n\n$t = \\dfrac{15 + \\sqrt{225 + 120}}{4} = \\dfrac{15 + \\sqrt{345}}{4} \\approx 8.39$ h (the negative root is rejected).\n\n(b) Set $T = -5$: $\\dfrac{2t^2}{t + 1} = 10 \\Rightarrow t^2 - 5t - 5 = 0 \\Rightarrow t = \\dfrac{5 + \\sqrt{45}}{2} \\approx 5.85$ h.\n\n(c) Dividing, $\\frac{2t^2}{t+1} = 2t - 2 + \\frac{2}{t + 1}$, so $T \\approx 2t - 17$ for large $t$: an oblique asymptote. In reality the temperature would level off at room temperature, so the model is only reasonable for the first several hours.",
+      "rubric": [
+        {
+          "point": "Equation for 0 °C",
+          "marks": 1
+        },
+        {
+          "point": "Solves and rejects negative root",
+          "marks": 2
+        },
+        {
+          "point": "Correct time for −5 °C",
+          "marks": 2
+        },
+        {
+          "point": "Comments on long-run behaviour/limits of the model",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "V": {
+          "min": 50000,
+          "max": 150000,
+          "step": 10000
+        },
+        "r1": {
+          "min": 20,
+          "max": 40,
+          "step": 5
+        },
+        "h1": {
+          "min": 50,
+          "max": 120,
+          "step": 10
+        }
+      },
+      "text": "A cylindrical tank is to have a volume of {{V}} cm³.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write $h$ in terms of $r$."
+        },
+        {
+          "label": "b",
+          "text": "Find the height when the radius is {{r1}} cm.",
+          "answer": {
+            "expr": "V/(pi*r1^2)",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Find the radius when the height is {{h1}} cm.",
+          "answer": {
+            "expr": "sqrt(V/(pi*h1))",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe the graph."
+        }
+      ],
+      "modelAnswer": "(a) $V = \\pi r^2 h$, so $h = \\dfrac{ {{V}} }{\\pi r^2}$, $r > 0$.\n\n(b) $h({{r1}}) = \\dfrac{ {{V}} }{\\pi ({{r1}})^2} \\approx {{V/(pi*r1^2):3}}$ cm.\n\n(c) $r = \\sqrt{\\dfrac{ {{V}} }{\\pi ({{h1}})}} \\approx {{sqrt(V/(pi*h1)):3}}$ cm.\n\n(d) The graph is a decreasing curve in the first quadrant: as $r \\to 0^+$, $h$ grows without bound (vertical asymptote $r = 0$); as $r$ increases, $h \\to 0$ (horizontal asymptote $h = 0$). It is an inverse-square relationship.",
+      "rubric": [
+        {
+          "point": "Formula for h",
+          "marks": 2
+        },
+        {
+          "point": "Correct h",
+          "marks": 1
+        },
+        {
+          "point": "Correct r",
+          "marks": 2
+        },
+        {
+          "point": "Describes the graph and asymptotes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "x1": {
+          "min": 5,
+          "max": 30,
+          "step": 5
+        }
+      },
+      "text": "A bus company models its cost per person for a charter trip by $C(x) = \\dfrac{10\\,000}{10 + x}$ dollars, where $x$ is the number of passengers over its minimum of 10. Describe how each change alters the model and its graph: (a) $C(x) = \\dfrac{10\\,000}{8 + x}$ (b) $C(x) = \\dfrac{20\\,000}{10 + x}$ (c) $C(x) = \\dfrac{15\\,000}{12 + x}$. Also find the cost per person in the original model when $x = {{x1}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Cost per person in the original model when $x = {{x1}}$.",
+          "answer": {
+            "expr": "10000/(10+x1)",
+            "unit": "dollars",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe each change."
+        }
+      ],
+      "modelAnswer": "Original: $C({{x1}}) = \\dfrac{10\\,000}{ {{10+x1}} } \\approx {{10000/(10+x1):4}}$ dollars per person. (Total cost 10 000 dollars shared among $10 + x$ people.)\n\n(a) Vertical asymptote moves from $x = -10$ to $x = -8$: the minimum group is now 8, and the graph shifts 2 units right; at $x = 0$ each person pays 1250 instead of 1000.\n\n(b) Vertical stretch by a factor of 2: the total charter cost doubles to 20 000 dollars, so every per-person cost doubles.\n\n(c) Total cost 15 000 dollars and a minimum of 12 people: stretched by 1.5 and shifted 2 units left; $C(0) = 1250$.\n\nIn all cases the horizontal asymptote is $C = 0$: with more passengers the per-person cost keeps falling toward 0.",
+      "rubric": [
+        {
+          "point": "Original cost correct",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct",
+          "marks": 2
+        },
+        {
+          "point": "(c) correct",
+          "marks": 2
+        },
+        {
+          "point": "Horizontal asymptote interpreted",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "The electric power $P$, in watts, delivered by a battery is $P = \\dfrac{100R}{(2 + R)^2}$, where $R$ is the resistance in ohms.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the power when $R = 2$ Ω.",
+          "answer": {
+            "expr": "12.5",
+            "unit": "W",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show that the rate of change is 0 at $R = 2$."
+        },
+        {
+          "label": "c",
+          "text": "What does this indicate? Describe the power as $R$ increases from 0 to 20 Ω."
+        }
+      ],
+      "modelAnswer": "(a) $P(2) = \\dfrac{200}{16} = 12.5$ W.\n\n(b) Secant from $R = 1.99$ to $R = 2.01$: $P(1.99) = \\dfrac{199}{15.9201} \\approx 12.49992$ and $P(2.01) = \\dfrac{201}{16.0801} \\approx 12.49992$, so the slope $\\approx \\dfrac{0}{0.02} = 0$. The rate of change is 0 at $R = 2$.\n\n(c) Rate 0 at the top of the curve means the power is at its **maximum**, 12.5 W, when $R = 2$ Ω. For $0 < R < 2$ the power increases; for $R > 2$ it decreases toward 0 (horizontal asymptote $P = 0$, since the denominator has the higher degree).",
+      "rubric": [
+        {
+          "point": "Correct P(2)",
+          "marks": 1
+        },
+        {
+          "point": "Secant computation showing rate ≈ 0",
+          "marks": 2
+        },
+        {
+          "point": "Interprets as maximum power",
+          "marks": 2
+        },
+        {
+          "point": "Describes behaviour from 0 to 20 Ω with asymptote",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a1": {
+          "choices": [
+            4.0,
+            5.0,
+            6.0,
+            7.0
+          ]
+        }
+      },
+      "text": "The acceleration due to gravity is inversely proportional to the square of the distance from the centre of Earth. For a satellite 7000 km from the centre of Earth it is 8.2 m/s².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the formula."
+        },
+        {
+          "label": "b",
+          "text": "At what distance from Earth's centre is the acceleration {{a1}} m/s²?",
+          "answer": {
+            "expr": "sqrt(8.2*7000^2/a1)",
+            "unit": "km",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How high above the surface is that (Earth's radius is 6400 km)?",
+          "answer": {
+            "expr": "sqrt(8.2*7000^2/a1)-6400",
+            "unit": "km",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $g = \\dfrac{k}{d^2}$; $k = 8.2 \\times 7000^2 = 4.018 \\times 10^8$. So $g = \\dfrac{4.018 \\times 10^8}{d^2}$.\n\n(b) $d = \\sqrt{\\dfrac{4.018 \\times 10^8}{ {{a1}} }} \\approx {{sqrt(8.2*7000^2/a1):4}}$ km from the centre.\n\n(c) Above the surface (radius 6400 km): about {{sqrt(8.2*7000^2/a1)-6400:3}} km.",
+      "rubric": [
+        {
+          "point": "Constant and equation",
+          "marks": 2
+        },
+        {
+          "point": "Distance from centre",
+          "marks": 2
+        },
+        {
+          "point": "Height above surface",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "A manufacturer predicts profit $P$, in thousands of dollars, from selling $x$ tonnes of fertilizer: $P(x) = \\dfrac{600x - 15\\,000}{x + 100}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Break-even sales.",
+          "answer": {
+            "expr": "25",
+            "unit": "t",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the predicted profit as sales increase."
+        },
+        {
+          "label": "c",
+          "text": "Estimate the rate of change of profit at 100 t.",
+          "answer": {
+            "expr": "1.875",
+            "unit": "thousand dollars per tonne",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Estimate the rate at 500 t and compare.",
+          "answer": {
+            "expr": "75000/600^2",
+            "unit": "thousand dollars per tonne",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $P(x) = 0 \\Rightarrow 600x = 15\\,000 \\Rightarrow x = 25$ t (break-even).\n\n(b) Horizontal asymptote $P = 600$: profit approaches 600 thousand dollars as sales grow, but never exceeds it.\n\n(c) Secant estimates: at 100 t, $\\frac{P(100.01) - P(100)}{0.01} \\approx 1.875$; at 500 t, $\\approx 0.208$ (thousand dollars per tonne). Profit grows much more slowly at higher sales.",
+      "rubric": [
+        {
+          "point": "Break-even",
+          "marks": 1
+        },
+        {
+          "point": "Long-run profit",
+          "marks": 2
+        },
+        {
+          "point": "Rate at 100 t",
+          "marks": 1
+        },
+        {
+          "point": "Rate at 500 t",
+          "marks": 1
+        },
+        {
+          "point": "Comparison in context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q14",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "v1": {
+          "min": 100,
+          "max": 300,
+          "step": 25
+        }
+      },
+      "text": "The maximum height $h$, in kilometres, of a rocket launched with initial velocity $v$ is $h = \\dfrac{6400v^2}{125\\,440 - v^2}$, ignoring air resistance.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the maximum height for $v = {{v1}}$.",
+          "answer": {
+            "expr": "6400*v1^2/(125440-v1^2)",
+            "unit": "km",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why the velocity at the vertical asymptote is the escape velocity."
+        }
+      ],
+      "modelAnswer": "(a) $h({{v1}}) = \\dfrac{6400({{v1}})^2}{125\\,440 - {{v1^2}} } \\approx {{6400*v1^2/(125440-v1^2):3}}$ km.\n\n(b) The vertical asymptote is where $125\\,440 - v^2 = 0$: $v = \\sqrt{125\\,440} \\approx 354.2$. As $v$ approaches this value from below, the maximum height grows without bound – the rocket never falls back. That is the meaning of escape velocity: the speed needed to break free of Earth's gravity. For speeds above it the formula gives negative heights, which have no meaning.",
+      "rubric": [
+        {
+          "point": "Correct height",
+          "marks": 1
+        },
+        {
+          "point": "Finds the asymptote value",
+          "marks": 1
+        },
+        {
+          "point": "Explains unbounded height ⇒ escape",
+          "marks": 2
+        },
+        {
+          "point": "Comments on the domain beyond the asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q15",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "x1": {
+          "min": 50,
+          "max": 400,
+          "step": 50
+        }
+      },
+      "text": "For the profit model $P(x) = \\dfrac{600x - 15\\,000}{x + 100}$ (thousands of dollars, $x$ tonnes), the average profit per tonne at sales level $x$ is $\\dfrac{P(x)}{x}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain the connection to secants."
+        },
+        {
+          "label": "b",
+          "text": "Find the average profit per tonne at {{x1}} t.",
+          "answer": {
+            "expr": "(600*x1-15000)/(x1+100)/x1",
+            "unit": "thousand dollars per tonne",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Where is the average profit greatest? Explain."
+        }
+      ],
+      "modelAnswer": "(a) The secant from the origin $(0, 0)$ to $(x, P(x))$ has slope $\\frac{P(x) - 0}{x - 0} = \\frac{P(x)}{x}$ – the average profit per tonne.\n\n(b) At $x = {{x1}}$: $\\dfrac{P({{x1}})}{ {{x1}} } \\approx \\dfrac{ {{(600*x1-15000)/(x1+100):4}} }{ {{x1}} } \\approx {{(600*x1-15000)/(x1+100)/x1:3}}$ thousand dollars per tonne.\n\n(c) The average profit is greatest where the secant from the origin is steepest, i.e. where it just touches the curve (is tangent to it). A table of $\\frac{P(x)}{x}$ shows the largest value near $x \\approx 81$ t (about 2.29 thousand dollars per tonne).",
+      "rubric": [
+        {
+          "point": "Explains secant slope as average profit",
+          "marks": 2
+        },
+        {
+          "point": "Correct average profit",
+          "marks": 2
+        },
+        {
+          "point": "Explains where the maximum occurs (tangent from origin)",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable estimate with evidence",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q16",
+      "type": "design",
+      "difficulty": 3,
+      "text": "The concentration of a drug in the bloodstream is $C(t) = \\dfrac{0.16t}{t^2 + t + 2}$ mg/cm³, $t$ in minutes. Give a full analysis: numeric, algebraic, graphical and verbal.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the time of maximum concentration.",
+          "answer": {
+            "expr": "sqrt(2)",
+            "unit": "min",
+            "sig": 3,
+            "tol": 0.07
+          }
+        },
+        {
+          "label": "b",
+          "text": "Give the full analysis."
+        }
+      ],
+      "modelAnswer": "**Algebraic:** $t^2 + t + 2$ has discriminant $1 - 8 < 0$, so no vertical asymptotes. Degree of the denominator > degree of the numerator, so horizontal asymptote $C = 0$. $C(0) = 0$.\n\n**Numeric:** $C(1) = 0.04$, $C(1.4) \\approx 0.0418$, $C(1.5) \\approx 0.0417$, $C(2) = 0.04$, $C(5) \\approx 0.025$, $C(20) \\approx 0.0075$. The maximum is about 0.042 mg/cm³ near $t \\approx 1.4$ min.\n\n**Graphical:** starts at the origin, rises quickly to a peak at about $(1.4, 0.042)$, then decreases gradually toward 0.\n\n**Verbal:** the drug enters the bloodstream and the concentration peaks after about 1.4 minutes; afterwards the body removes it, and the concentration approaches 0 but the model never reaches exactly 0.",
+      "rubric": [
+        {
+          "point": "Algebraic features (asymptotes, intercept)",
+          "marks": 2
+        },
+        {
+          "point": "Numeric table and maximum estimate",
+          "marks": 2
+        },
+        {
+          "point": "Graph description",
+          "marks": 1
+        },
+        {
+          "point": "Verbal interpretation in context",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q17",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Other than at vertical asymptotes, describe when a discontinuity can occur in a rational function. Give an example and explain how to find the exact location of the discontinuity.",
+      "modelAnswer": "A discontinuity also occurs where the numerator and denominator share a factor that cancels: the function is undefined there, but its values approach a finite number, giving a **hole**.\n\nExample: $f(x) = \\dfrac{x^2 - 9}{x - 3} = x + 3$, $x \\ne 3$. To locate the hole, factor, cancel, and substitute the excluded value into the simplified expression: $3 + 3 = 6$, so the hole is at $(3, 6)$.",
+      "rubric": [
+        {
+          "point": "Identifies holes from common factors",
+          "marks": 2
+        },
+        {
+          "point": "Valid example",
+          "marks": 1
+        },
+        {
+          "point": "Explains how to find the hole's coordinates",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-5-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "L0": {
+          "min": 500,
+          "max": 1500,
+          "step": 100
+        },
+        "d0": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "R0": {
+          "min": 20,
+          "max": 60,
+          "step": 5
+        },
+        "d1": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The electrical resistance $R$ (Ω) of a wire varies directly with its length $l$ (m) and inversely with the square of its diameter $d$ (mm): $R = \\dfrac{kl}{d^2}$. A {{L0}} m wire of diameter {{d0}} mm has resistance {{R0}} Ω.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the equation."
+        },
+        {
+          "label": "b",
+          "text": "Find the resistance of {{L0}} m of {{d1}}-mm wire.",
+          "answer": {
+            "expr": "R0*d0^2/d1^2",
+            "unit": "Ω",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the graph of resistance against diameter."
+        }
+      ],
+      "modelAnswer": "(a) ${{R0}} = \\dfrac{k({{L0}})}{ {{d0}}^2}$, so $k = \\dfrac{ {{R0}} \\times {{d0^2}} }{ {{L0}} } = {{R0*d0^2/L0:4}}$. $R = \\dfrac{ {{R0*d0^2/L0:4}}\\,l}{d^2}$.\n\n(b) For $l = {{L0}}$: $R = \\dfrac{ {{R0*d0^2}} }{d^2}$. At $d = {{d1}}$ mm: $R \\approx {{R0*d0^2/d1^2:3}}$ Ω.\n\n(c) The graph of $R$ against $d$ for fixed length is a decreasing inverse-square curve: thicker wire, much less resistance.",
+      "rubric": [
+        {
+          "point": "Correct k and equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct resistance for new diameter",
+          "marks": 2
+        },
+        {
+          "point": "Graph description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q19",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "For $x > 0$, what value of $x$ gives the least sum of $x$ and its reciprocal? Justify numerically and explain using the graph of $y = x + \\dfrac{1}{x}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $x$.",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Least sum.",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Justify."
+        }
+      ],
+      "modelAnswer": "Table: $x = 0.5 \\to 2.5$; $0.8 \\to 2.05$; $1 \\to 2$; $1.25 \\to 2.05$; $2 \\to 2.5$. The least value is 2 at $x = 1$.\n\nAlgebraic support: $x + \\frac{1}{x} - 2 = \\frac{x^2 - 2x + 1}{x} = \\frac{(x - 1)^2}{x} \\ge 0$ for $x > 0$, with equality only at $x = 1$.\n\nGraph: vertical asymptote $x = 0$ and oblique asymptote $y = x$; the right branch comes down from $+\\infty$, reaches a minimum $(1, 2)$, then rises along the slant asymptote.",
+      "rubric": [
+        {
+          "point": "Numeric table",
+          "marks": 1
+        },
+        {
+          "point": "Identifies x = 1 with sum 2",
+          "marks": 2
+        },
+        {
+          "point": "Algebraic or graphical justification",
+          "marks": 2
+        },
+        {
+          "point": "Describes the graph",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-5-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d0": {
+          "min": 20,
+          "max": 60,
+          "step": 10
+        },
+        "I0": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "I1": {
+          "min": 10,
+          "max": 50,
+          "step": 5
+        }
+      },
+      "text": "The intensity of illumination from a light source is $I = \\dfrac{k}{d^2}$ lux. At {{d0}} m the intensity is {{I0}} lux.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the model."
+        },
+        {
+          "label": "b",
+          "text": "At what distance is the intensity {{I1}} lux?",
+          "answer": {
+            "expr": "sqrt(I0*d0^2/I1)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the behaviour for large $d$ and comment on the model near $d = 0$."
+        }
+      ],
+      "modelAnswer": "(a) $k = {{I0}} \\times {{d0^2}} = {{I0*d0^2}}$, so $I = \\dfrac{ {{I0*d0^2}} }{d^2}$.\n\n(b) $d = \\sqrt{\\dfrac{ {{I0*d0^2}} }{ {{I1}} }} \\approx {{sqrt(I0*d0^2/I1):3}}$ m.\n\n(c) As $d$ increases the intensity decreases toward 0 (but never reaches it). For $d$ close to 0 the model gives enormous intensities, which is unrealistic – a real light source has a size, so the model only applies at distances that are large compared with the source.",
+      "rubric": [
+        {
+          "point": "Constant and equation",
+          "marks": 2
+        },
+        {
+          "point": "Distance for given intensity",
+          "marks": 2
+        },
+        {
+          "point": "Large-distance behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Comments on the model near d = 0",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

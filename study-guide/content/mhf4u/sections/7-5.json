@@ -1,0 +1,1270 @@
+{
+  "id": "7-5",
+  "number": "7.5",
+  "title": "Making Connections: Mathematical Modelling With Exponential and Logarithmic Equations",
+  "estimatedMinutes": 80,
+  "overview": "As an urban planner for the town of Decimal Point, you will use technology to fit curves to data, decide which model really makes sense, and solve exponential and logarithmic equations to make decisions about populations, investments and concert sound.",
+  "objectives": [
+    "Use technology (regression or sliders) to create linear, quadratic and exponential models of data",
+    "Distinguish between curve fitting and mathematical modelling, and judge a model by its extrapolations",
+    "Convert exponential models between growth-factor, doubling-period and half-life forms",
+    "Solve compound-interest problems, including doubling times and penalties",
+    "Pose and solve real-world problems with exponential and logarithmic equations",
+    "State the assumptions and limitations of a model"
+  ],
+  "lessons": [
+    {
+      "id": "fit-vs-model",
+      "title": "Curve fitting versus modelling",
+      "body": "\nYou are an urban planner in **Decimal Point**, a (fictional) northern Ontario town. Its population since 1920:\n\n| Years since 1920, $t$ | 0 | 5 | 10 | 15 | 20 | 25 | 30 |\n|---|---|---|---|---|---|---|---|\n| Population, $P$ | 1000 | 1100 | 1180 | 1250 | 1380 | 1500 | 1600 |\n\nRegression on a graphing calculator (QuadReg and ExpReg) gives two models that fit the data almost perfectly ($r^2 \\approx 0.99$ for both):\n\n* Quadratic: $P \\approx 0.15t^2 + 15.4t + 1006$\n* Exponential: $P \\approx 1006(1.016)^t$\n\n```plot\ntitle: Both models fit 1920–1950… but look what happens before t = 0\nf: 0.15*x^2 + 15.4*x + 1006 | label=quadratic\nf: 1006*1.016^x | dashed; label=exponential\ndomain: -120, 60\nrange: 0, 2800\nticks: 20, 400\npoints: (0,1000), (5,1100), (10,1180), (15,1250), (20,1380), (25,1500), (30,1600)\n```\n\nInside the data range they are indistinguishable. Extrapolating **backwards**, the quadratic model has the population falling to a minimum about 50 years before 1920 and then *rising* again further back in time. That contradicts the fact that the town had been growing steadily. The exponential model keeps decreasing smoothly into the past, which matches the story.\n\n> **Curve fitting** finds a curve that passes close to the data — useful for *interpolating*. A good **mathematical model** also makes sense *beyond* the data (extrapolation) and fits what we know about how the situation behaves.\n"
+    },
+    {
+      "id": "forms",
+      "title": "Many forms of one exponential model",
+      "body": "\nAn exponential model can be written with any base. Choose the form that makes the meaning clear.\n\n| Form | Meaning of the parameter |\n|---|---|\n| $P = a\\,b^t$ | $b$ = growth factor per unit of time ($b > 1$ growth, $0 < b < 1$ decay) |\n| $P = P_0\\,(2)^{\\frac td}$ | $d$ = **doubling period** |\n| $A = A_0\\left(\\frac12\\right)^{\\frac th}$ | $h$ = **half-life** |\n| $A = P(1 + i)^n$ | compound interest: $i$ per period, $n$ periods |\n\n**Converting.** Decimal Point's model $P = 1006(1.016)^t$ has doubling period\n\n$$2 = 1.016^d \\;\\Rightarrow\\; d = \\frac{\\log 2}{\\log 1.016} \\approx 43.7 \\text{ years}$$\n\nwhich agrees with the alternative model $P = 1000\\times2^{\\frac{t}{43.5}}$ found with dynamic sliders in Fathom®.\n\nIn reverse, a half-life $h$ gives a decay factor per unit time of $b = 0.5^{\\frac1h}$.\n"
+    },
+    {
+      "id": "using-models",
+      "title": "Using a model to make decisions",
+      "body": "\nA recreation centre will be built when Decimal Point reaches 5000 people. When?\n\n$$5000 = 1006(1.016)^t \\;\\Rightarrow\\; \\frac{5000}{1006} = 1.016^t \\;\\Rightarrow\\; t = \\frac{\\log\\left(\\frac{5000}{1006}\\right)}{\\log 1.016} \\approx 101$$\n\nUsing the other model, $5 = 2^{\\frac{t}{43.5}}$ gives $t = \\frac{43.5\\log 5}{\\log 2} \\approx 101$ too. Both say about 101 years after 1920 — around **2021**.\n\n> Different reasonable models can give slightly different predictions, especially far from the data. State which model you used, and treat long-range predictions with caution.\n"
+    },
+    {
+      "id": "investments",
+      "title": "Compound interest and comparing investments",
+      "body": "\n$$A = P(1 + i)^n$$\n\n* $P$ — principal (initial amount)\n* $i$ — interest rate **per compounding period**, as a decimal\n* $n$ — number of compounding periods\n\n| Option | Rate | $i$ | $n$ after $t$ years | Model |\n|---|---|---|---|---|\n| Lakeland Savings Bond | $6\\frac14\\%$ compounded annually | 0.0625 | $t$ | $A = 50\\,000(1.0625)^t$ |\n| Northern Equity Mutual Fund | 6% compounded semi-annually | 0.03 | $2t$ | $A = 50\\,000(1.03)^{2t}$ |\n\n**Doubling time.** Lakeland: $2 = 1.0625^t \\Rightarrow t = \\frac{\\log2}{\\log1.0625} \\approx 11.4$ years. Northern: $2 = 1.03^{2t} \\Rightarrow t = \\frac{\\log2}{2\\log1.03} \\approx 11.7$ years.\n\n**Penalties shift the graph.** Lakeland charges 2% of the principal (1000 dollars) if the money is withdrawn before 10 years. The adjusted model $A = 50\\,000(1.0625)^t - 1000$ is a **vertical translation down 1000**. To reach 80 000 dollars:\n\n* Lakeland: $81\\,000 = 50\\,000(1.0625)^t \\Rightarrow t = \\frac{\\log 1.62}{\\log 1.0625} \\approx 7.96$ years\n* Northern: $1.6 = 1.03^{2t} \\Rightarrow t = \\frac{\\log1.6}{2\\log1.03} \\approx 7.95$ years\n\nThey are practically equal, so other factors — such as Northern's flexibility to withdraw without penalty — can decide.\n"
+    },
+    {
+      "id": "choosing",
+      "title": "Choosing and judging a model",
+      "body": "\nAsk these questions about any model:\n\n1. **Shape:** does the scatter plot curve up with a roughly constant *ratio* between equal time steps (exponential), or with constant *second differences* (quadratic)?\n2. **Story:** does the situation grow by a percentage (populations, investments, viral spread), decay by a percentage (radioactivity, depreciation), or depend on area (a spill spreading equally in all directions has area $\\propto r^2$, and if $r$ grows steadily the area is quadratic in time)?\n3. **Extrapolation:** what does the model predict before and after the data? Is it realistic?\n4. **Limits:** will the trend continue forever? Real growth is usually limited by space, food or money. Some growth is better modelled by a *logistic* (S-shaped) curve that levels off.\n5. **Assumptions:** state them (constant rate, no outside changes, room temperature stays fixed, …).\n\n> A cooling cup of tea fits an exponential curve well over the first few minutes, but the model $T = ab^t$ approaches 0 °C, while real tea approaches **room temperature**. Good modellers notice and state this limitation.\n"
+    },
+    {
+      "id": "sound",
+      "title": "Comparing sound levels",
+      "body": "\nThe difference between two sound levels $\\beta_1$ and $\\beta_2$ in decibels is\n\n$$\\beta_2 - \\beta_1 = 10\\log\\left(\\frac{I_2}{I_1}\\right)$$\n\nwhere $\\frac{I_2}{I_1}$ is the ratio of their intensities.\n\n**Example:** a drum kit at 150 dB and a guitar amplifier at 120 dB:\n\n$$150 - 120 = 10\\log\\frac{I_2}{I_1} \\;\\Rightarrow\\; 3 = \\log\\frac{I_2}{I_1} \\;\\Rightarrow\\; \\frac{I_2}{I_1} = 10^3 = 1000$$\n\nThe drums are 1000 times as intense, so the guitar needs a concert amplifier to be heard in balance.\n\nEvery 10 dB is a factor of 10 in intensity; every 20 dB is a factor of 100.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "mathematical model",
+      "definition": "An equation or function that describes a real situation and can be used to interpolate, extrapolate and make decisions."
+    },
+    {
+      "term": "curve of best fit",
+      "definition": "The curve of a chosen type (linear, quadratic, exponential, …) that lies closest to a set of data points, usually found by regression."
+    },
+    {
+      "term": "interpolate",
+      "definition": "Estimate a value **within** the range of the data."
+    },
+    {
+      "term": "extrapolate",
+      "definition": "Predict a value **outside** the range of the data."
+    },
+    {
+      "term": "coefficient of determination ($r^2$)",
+      "definition": "A number from 0 to 1 that measures how close the data lie to a regression curve. Values near 1 indicate a close fit."
+    },
+    {
+      "term": "doubling period",
+      "definition": "The time required for a quantity to double; $d$ in $P = P_0(2)^{\\frac td}$."
+    },
+    {
+      "term": "compound interest",
+      "definition": "Interest earned on both the principal and previous interest: $A = P(1+i)^n$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Exponential model",
+      "latex": "y = a\\,b^{t}",
+      "meaning": "$a$ initial value, $b$ growth or decay factor per unit time."
+    },
+    {
+      "name": "Doubling and half-life forms",
+      "latex": "P = P_0(2)^{\\frac{t}{d}} \\qquad A = A_0\\left(\\tfrac{1}{2}\\right)^{\\frac{t}{h}}",
+      "meaning": "$d$ doubling period, $h$ half-life."
+    },
+    {
+      "name": "Doubling period from growth factor",
+      "latex": "d = \\frac{\\log 2}{\\log b}",
+      "meaning": "Solve $2 = b^d$."
+    },
+    {
+      "name": "Compound interest",
+      "latex": "A = P(1+i)^n",
+      "meaning": "$i$ rate per period (decimal), $n$ number of periods."
+    },
+    {
+      "name": "Difference in sound levels",
+      "latex": "\\beta_2 - \\beta_1 = 10\\log\\left(\\frac{I_2}{I_1}\\right)",
+      "meaning": "In decibels; $\\frac{I_2}{I_1}$ is the ratio of intensities."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "When will the town reach 6500?",
+      "problem": "Using $P = 1006(1.016)^t$ ($t$ in years since 1920), when should a highway off-ramp be built if it is needed at a population of 6500?",
+      "steps": [
+        "$6500 = 1006(1.016)^t$, so $\\dfrac{6500}{1006} = 1.016^t$.",
+        "$\\log\\left(\\dfrac{6500}{1006}\\right) = t\\log 1.016$.",
+        "$t = \\dfrac{\\log(6500/1006)}{\\log 1.016} \\approx 117.6$.",
+        "$1920 + 117.6 \\approx 2037.6$."
+      ],
+      "answer": "Around 2038."
+    },
+    {
+      "title": "Doubling time of an investment",
+      "problem": "1000 dollars earns 8% interest compounded quarterly. How long will it take to double?",
+      "steps": [
+        "$i = \\frac{0.08}{4} = 0.02$ per quarter, $n = 4t$: $A = 1000(1.02)^{4t}$.",
+        "$2000 = 1000(1.02)^{4t}$, so $2 = 1.02^{4t}$.",
+        "$\\log 2 = 4t\\log 1.02$, so $t = \\dfrac{\\log 2}{4\\log 1.02} \\approx 8.75$."
+      ],
+      "answer": "About 8.75 years."
+    },
+    {
+      "title": "Comparing two investments with a penalty",
+      "problem": "50 000 dollars is invested at Lakeland (6¼% compounded annually, 1000-dollar penalty before 10 years) or Northern (6% compounded semi-annually, no penalty). Which reaches 80 000 dollars first?",
+      "steps": [
+        "Lakeland: $80\\,000 = 50\\,000(1.0625)^t - 1000 \\Rightarrow 1.62 = 1.0625^t \\Rightarrow t \\approx 7.96$.",
+        "Northern: $80\\,000 = 50\\,000(1.03)^{2t} \\Rightarrow 1.6 = 1.03^{2t} \\Rightarrow t \\approx 7.95$.",
+        "The difference is about 0.01 years (a few days), so the choice depends on other factors."
+      ],
+      "answer": "Practically a tie (≈ 7.95 years); Northern offers more flexibility."
+    },
+    {
+      "title": "Sound level balance",
+      "problem": "Rocco's acoustic guitar is one ten-thousandth as intense as his amplified electric guitar. By how many decibels must the drums be reduced to stay balanced?",
+      "steps": [
+        "Intensity ratio $\\frac{I_2}{I_1} = \\frac{1}{10\\,000} = 10^{-4}$.",
+        "$\\beta_2 - \\beta_1 = 10\\log 10^{-4} = -40$ dB.",
+        "The drums must be reduced by 40 dB — a factor of 10 000 in intensity."
+      ],
+      "answer": "Reduce by 40 dB (factor of 10 000)."
+    },
+    {
+      "title": "A model from two data points",
+      "problem": "A bacteria culture has 500 cells at $t = 0$ and 1800 cells after 4 h. Build an exponential model and predict when it reaches 10 000 cells.",
+      "steps": [
+        "$P = 500b^t$ and $1800 = 500b^4$, so $b^4 = 3.6$ and $b = 3.6^{\\frac14} \\approx 1.377$.",
+        "$10\\,000 = 500(1.377)^t \\Rightarrow 20 = 1.377^t$.",
+        "$t = \\dfrac{\\log 20}{\\log 1.377} \\approx 9.4$ h."
+      ],
+      "answer": "$P \\approx 500(1.377)^t$; about 9.4 h."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "A high $r^2$ means the model is correct.",
+      "fact": "A high $r^2$ only shows a close fit to the given data. Two very different models can both have $r^2 \\approx 0.99$ and disagree completely when extrapolated."
+    },
+    {
+      "myth": "If a curve fits the data, it can be used for any prediction.",
+      "fact": "Extrapolating far beyond the data is risky. Check that the model's behaviour makes sense in the real situation."
+    },
+    {
+      "myth": "Exponential growth continues forever.",
+      "fact": "Real populations run out of space or food; growth often slows (logistic behaviour). State the limits of your model."
+    },
+    {
+      "myth": "Compounding semi-annually at 6% is the same as 6% compounded annually.",
+      "fact": "Semi-annual compounding uses $i = 0.03$ twice a year: $(1.03)^2 = 1.0609$, slightly better than 1.06."
+    },
+    {
+      "myth": "A penalty changes the growth rate.",
+      "fact": "A fixed penalty subtracts a constant: it **translates** the graph down; the growth factor is unchanged."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Urban planning",
+      "body": "Planners use population models to decide when to build schools, recreation centres and highway ramps — and must judge how reliable long-range predictions are."
+    },
+    {
+      "title": "Municipal investing",
+      "body": "Towns with a surplus compare savings bonds and mutual funds using compound interest models, weighing penalties, flexibility and risk."
+    },
+    {
+      "title": "Environmental response",
+      "body": "Responders model the area of an oil spill to plan containment. Because a spill spreads in all directions, a quadratic model of area is often more realistic than an exponential one."
+    },
+    {
+      "title": "Concert sound",
+      "body": "Sound crews balance instruments using decibel differences: a 30 dB gap means one source is 1000 times as intense."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Using $P = 1006(1.016)^t$, estimate when Decimal Point's population was 100.",
+      "hint": "Solve $100 = 1006(1.016)^t$; expect a negative $t$.",
+      "solution": "$t = \\frac{\\log(100/1006)}{\\log1.016} \\approx -145.4$, so around 1775. This is a long extrapolation, so it is unreliable."
+    },
+    {
+      "question": "Use $P = 1000\\times2^{\\frac{t}{43.5}}$ to predict the population after 100 years.",
+      "hint": "Substitute $t = 100$.",
+      "solution": "$P = 1000\\times2^{\\frac{100}{43.5}} \\approx 4920$."
+    },
+    {
+      "question": "How long will it take a population modelled by $P = 1006(1.016)^t$ to reach 20 000?",
+      "hint": "Divide by 1006 first.",
+      "solution": "$t = \\frac{\\log(20000/1006)}{\\log 1.016} \\approx 188.3$ years."
+    },
+    {
+      "question": "Write a model for 1000 dollars at 8% compounded quarterly and find its value after 4 years.",
+      "hint": "$i = 0.02$, $n = 4t$.",
+      "solution": "$A = 1000(1.02)^{4t}$; after 4 years $A = 1000(1.02)^{16} \\approx 1372.79$ dollars."
+    },
+    {
+      "question": "Find the doubling period for a growth factor of 1.05 per year.",
+      "hint": "$d = \\frac{\\log 2}{\\log b}$.",
+      "solution": "$d = \\frac{\\log2}{\\log1.05} \\approx 14.2$ years."
+    },
+    {
+      "question": "Two sounds differ by 20 dB. What is the ratio of their intensities?",
+      "hint": "$20 = 10\\log r$.",
+      "solution": "$\\log r = 2$, so $r = 100$."
+    },
+    {
+      "question": "Explain the difference between interpolation and extrapolation.",
+      "hint": "Inside vs outside the data.",
+      "solution": "Interpolation estimates values within the range of the data; extrapolation predicts beyond it and is less reliable."
+    }
+  ],
+  "summary": [
+    "Technology (regression, sliders) produces curves of best fit; a good model must also make sense beyond the data.",
+    "Curve fitting is for interpolation; modelling also supports reasonable extrapolation and decisions.",
+    "Exponential models can be written as $ab^t$, $P_0(2)^{\\frac td}$ or $A_0\\left(\\frac12\\right)^{\\frac th}$; convert using logarithms.",
+    "Compound interest: $A = P(1+i)^n$; solve for time with logarithms. Fixed penalties or bonuses are vertical translations.",
+    "Exponential and logarithmic equations appear wherever there is steady percentage growth or decay.",
+    "Always state the assumptions and limitations of a model."
+  ],
+  "questions": [
+    {
+      "id": "7-5-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "N": {
+          "choices": [
+            4000,
+            5000,
+            6500,
+            8000
+          ]
+        }
+      },
+      "text": "Decimal Point's population is modelled by $P = 1006(1.016)^t$, where $t$ is the number of years since 1920. A new facility will be needed when the population reaches {{N}}. In what year should it be built?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $t$.",
+          "answer": {
+            "expr": "log(N/1006)/log(1.016)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "${{N}} = 1006(1.016)^t \\Rightarrow \\frac{ {{N}} }{1006} = 1.016^t$.\n\n$t = \\dfrac{\\log\\left(\\frac{ {{N}} }{1006}\\right)}{\\log 1.016} \\approx {{log(N/1006)/log(1.016):4}}$.\n\nYear: $1920 + {{log(N/1006)/log(1.016):4}} \\approx {{1920+log(N/1006)/log(1.016):4}}$, so about {{round(1920+log(N/1006)/log(1.016))}}.",
+      "rubric": [
+        {
+          "point": "Substitutes and isolates the power",
+          "marks": 1
+        },
+        {
+          "point": "Takes logarithms and solves for t",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of t",
+          "marks": 1
+        },
+        {
+          "point": "Converts to a calendar year",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q02",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "N": {
+          "choices": [
+            100,
+            200,
+            300,
+            500
+          ]
+        }
+      },
+      "text": "The town historian wants to know when Decimal Point's population was only {{N}}. Use $P = 1006(1.016)^t$ ($t$ in years since 1920) to estimate the year, then comment on how reliable the estimate is.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $t$.",
+          "answer": {
+            "expr": "log(N/1006)/log(1.016)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "${{N}} = 1006(1.016)^t \\Rightarrow t = \\dfrac{\\log({{N}}/1006)}{\\log 1.016} \\approx {{log(N/1006)/log(1.016):4}}$.\n\nYear $\\approx 1920 + ({{log(N/1006)/log(1.016):4}}) \\approx {{1920+log(N/1006)/log(1.016):4}}$.\n\nThis is a long **extrapolation** (decades before the first data point). The town may not have grown at the same rate — or even existed — so the estimate is unreliable.",
+      "rubric": [
+        {
+          "point": "Correct equation and solution for t (negative)",
+          "marks": 2
+        },
+        {
+          "point": "Correct year",
+          "marks": 1
+        },
+        {
+          "point": "Comments on extrapolation and reliability",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-5-q03",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "T": {
+          "choices": [
+            50,
+            100,
+            150
+          ]
+        }
+      },
+      "text": "Two exponential models were built for Decimal Point: $P_1 = 1006(1.016)^t$ and $P_2 = 1000\\times2^{\\frac{t}{43.5}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Population after {{T}} years using $P_1$.",
+          "answer": {
+            "expr": "1006*1.016^T",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Time to reach 20 000 using $P_2$.",
+          "answer": {
+            "expr": "43.5*log(20)/log(2)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Are the predictions identical, close or completely different? Account for any discrepancies."
+        }
+      ],
+      "modelAnswer": "(a) $P_1({{T}}) = 1006(1.016)^{ {{T}} } \\approx {{1006*1.016^T:4}}$; $P_2({{T}}) = 1000\\times2^{\\frac{ {{T}} }{43.5}} \\approx {{1000*2^(T/43.5):4}}$.\n\n(b) $P_1$: $t = \\frac{\\log(20000/1006)}{\\log1.016} \\approx {{log(20000/1006)/log(1.016):4}}$. $P_2$: $t = \\frac{43.5\\log 20}{\\log 2} \\approx {{43.5*log(20)/log(2):4}}$.\n\n(c) The predictions are close but not identical. The models have slightly different initial values (1006 vs 1000) and growth factors ($1.016$ vs $2^{1/43.5} \\approx {{2^(1/43.5):5}}$). Small differences in the growth factor compound over long times.",
+      "rubric": [
+        {
+          "point": "Correct populations from both models",
+          "marks": 2
+        },
+        {
+          "point": "Correct times from both models",
+          "marks": 2
+        },
+        {
+          "point": "Explains the discrepancy",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "P": {
+          "min": 500,
+          "max": 5000,
+          "step": 500
+        },
+        "r": {
+          "choices": [
+            4,
+            5,
+            6,
+            8
+          ]
+        },
+        "m": {
+          "choices": [
+            2,
+            4,
+            12
+          ]
+        },
+        "y": {
+          "choices": [
+            4,
+            5,
+            10
+          ]
+        }
+      },
+      "text": "{{P}} dollars is invested at {{r}}% per year, compounded $m = {{m}}$ times per year.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the value $A$ of the investment after $t$ years."
+        },
+        {
+          "label": "b",
+          "text": "Determine the value after {{y}} years.",
+          "answer": {
+            "expr": "P*(1+r/100/m)^(m*y)",
+            "unit": "dollars",
+            "sig": 5,
+            "tol": 0.002
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long will it take for the investment to double?",
+          "answer": {
+            "expr": "log(2)/(m*log(1+r/100/m))",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $i = \\frac{ {{r/100}} }{ {{m}} }$ per period and $n = {{m}}t$: $A = {{P}}\\left(1 + \\frac{ {{r/100}} }{ {{m}} }\\right)^{ {{m}}t}$.\n\n(b) $A({{y}}) = {{P}}(1 + {{r/100/m:4}})^{ {{m*y}} } \\approx {{P*(1+r/100/m)^(m*y):6}}$ dollars.\n\n(c) $2 = (1 + {{r/100/m:4}})^{ {{m}}t} \\Rightarrow t = \\dfrac{\\log 2}{ {{m}}\\log(1 + {{r/100/m:4}})} \\approx {{log(2)/(m*log(1+r/100/m)):4}}$ years.",
+      "rubric": [
+        {
+          "point": "Correct i and n",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct value in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Sets up the doubling equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct doubling time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "1000 dollars earns 8% interest compounded quarterly. A penalty of 5% of the initial investment applies if the money is withdrawn within the first 4 years.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the adjusted value of the investment."
+        },
+        {
+          "label": "b",
+          "text": "Describe the effect of the penalty on the graph of the original function."
+        },
+        {
+          "label": "c",
+          "text": "What would you receive if you withdrew after 3 years?",
+          "answer": {
+            "expr": "1000*1.02^12-50",
+            "unit": "dollars",
+            "sig": 5,
+            "tol": 0.002
+          }
+        }
+      ],
+      "modelAnswer": "(a) Without penalty, $A = 1000(1.02)^{4t}$. With the penalty (for $0 \\le t < 4$): $A = 1000(1.02)^{4t} - 50$.\n\n(b) The penalty is a constant, so the graph is the original graph **translated down 50 units** for $0 \\le t < 4$. At $t = 4$ the graph jumps back up to the original curve. The growth rate (shape) is unchanged.\n\n(c) At $t = 3$: $A = 1000(1.02)^{12} - 50 \\approx 1268.24 - 50 = 1218.24$ dollars.",
+      "rubric": [
+        {
+          "point": "Writes the adjusted equation",
+          "marks": 1
+        },
+        {
+          "point": "Identifies a vertical translation down 50",
+          "marks": 1
+        },
+        {
+          "point": "Explains that the penalty applies only in the first 4 years",
+          "marks": 1
+        },
+        {
+          "point": "Correct value in (c)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q06",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "T": {
+          "choices": [
+            70000,
+            80000,
+            90000
+          ]
+        }
+      },
+      "text": "Decimal Point has 50 000 dollars to invest. **Lakeland Savings Bond:** $6\\frac14\\%$ compounded annually, with a penalty of 2% of the principal if withdrawn before 10 years. **Northern Equity Mutual Fund:** 6% compounded semi-annually, no penalty. The town needs {{T}} dollars to begin building.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write a model for each option, including the penalty."
+        },
+        {
+          "label": "b",
+          "text": "How long until the Lakeland bond is worth {{T}} dollars after the penalty?",
+          "answer": {
+            "expr": "log((T+1000)/50000)/log(1.0625)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long until the Northern fund is worth {{T}} dollars?",
+          "answer": {
+            "expr": "log(T/50000)/(2*log(1.03))",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Which option would you recommend? Justify your answer."
+        }
+      ],
+      "modelAnswer": "(a) Lakeland (with penalty): $A = 50\\,000(1.0625)^t - 1000$. Northern: $A = 50\\,000(1.03)^{2t}$.\n\n(b) Lakeland: ${{T+1000}} = 50\\,000(1.0625)^t \\Rightarrow t = \\dfrac{\\log({{(T+1000)/50000:4}})}{\\log 1.0625} \\approx {{log((T+1000)/50000)/log(1.0625):4}}$ years.\n\n(c) Northern: ${{T/50000:4}} = 1.03^{2t} \\Rightarrow t = \\dfrac{\\log {{T/50000:4}} }{2\\log 1.03} \\approx {{log(T/50000)/(2*log(1.03)):4}}$ years.\n\n(d) Compare the two times; the faster one reaches the target first. When the times are nearly equal, flexibility (no penalty at Northern) or risk can decide. A reasoned recommendation earns full credit.",
+      "rubric": [
+        {
+          "point": "Correct models including the penalty",
+          "marks": 2
+        },
+        {
+          "point": "Correct Lakeland time",
+          "marks": 1
+        },
+        {
+          "point": "Correct Northern time",
+          "marks": 1
+        },
+        {
+          "point": "Reasoned recommendation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Two more investment options are available for the town's 50 000 dollars: **Rural Ontario Investment Group**, $6\\frac12\\%$ compounded semi-annually with no penalty, and **Muskoka Guaranteed Certificate**, 6% compounded monthly with a penalty of 1% of the principal if withdrawn before 10 years. Should either be considered instead of Lakeland (doubling time ≈ 11.4 years)? Justify your answer using doubling times.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Doubling time for Rural Ontario.",
+          "answer": {
+            "expr": "log(2)/(2*log(1.0325))",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Doubling time for Muskoka.",
+          "answer": {
+            "expr": "log(2)/(12*log(1.005))",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Rural: $2 = 1.0325^{2t} \\Rightarrow t = \\frac{\\log2}{2\\log1.0325} \\approx 10.84$ years.\n\nMuskoka: $2 = 1.005^{12t} \\Rightarrow t = \\frac{\\log2}{12\\log1.005} \\approx 11.58$ years (and the penalty makes early withdrawal worse).\n\nRural doubles fastest and has no penalty, so it should be considered — it beats both Lakeland (≈ 11.4 years) and Northern (≈ 11.7 years). Muskoka is slower and has a penalty, so it is not attractive.",
+      "rubric": [
+        {
+          "point": "Correct model and doubling time for Rural",
+          "marks": 2
+        },
+        {
+          "point": "Correct model and doubling time for Muskoka",
+          "marks": 2
+        },
+        {
+          "point": "Justified recommendation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A0": {
+          "choices": [
+            40,
+            50,
+            60,
+            80
+          ]
+        },
+        "f": {
+          "min": 0.78,
+          "max": 0.9,
+          "step": 0.02
+        },
+        "t": {
+          "choices": [
+            5,
+            10,
+            15
+          ]
+        }
+      },
+      "derived": {
+        "A1": "A0*f"
+      },
+      "text": "A technician places {{A0}} mg of a radioactive substance into a laboratory chamber. After {{t}} min, {{A1:3}} mg remain.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the half-life.",
+          "answer": {
+            "expr": "t*log(0.5)/log(f)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until 1% of the initial amount remains?",
+          "answer": {
+            "expr": "t*log(0.5)/log(f)*log(0.01)/log(0.5)",
+            "unit": "min",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{A1/A0:3}} = 0.5^{\\frac{ {{t}} }{h}} \\Rightarrow h = \\dfrac{ {{t}}\\log 0.5}{\\log {{A1/A0:3}} } \\approx {{t*log(0.5)/log(A1/A0):4}}$ min.\n\n(b) $0.01 = 0.5^{\\frac{t}{h}} \\Rightarrow t = \\dfrac{h\\log 0.01}{\\log 0.5} \\approx {{t*log(0.5)/log(A1/A0)*log(0.01)/log(0.5):4}}$ min.",
+      "rubric": [
+        {
+          "point": "Sets up the half-life equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-life",
+          "marks": 1
+        },
+        {
+          "point": "Sets up the 1% equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "choices": [
+            10,
+            20,
+            25
+          ]
+        },
+        "t": {
+          "choices": [
+            30,
+            33,
+            40
+          ]
+        }
+      },
+      "text": "In the carbon fusion cycle that fuels some stars, nitrogen-13 decays into carbon-13. In a laboratory simulation, a sample of nitrogen-13 is {{p}}% of its initial amount after about {{t}} min. Determine the half-life of nitrogen-13.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Half-life.",
+          "answer": {
+            "expr": "t*log(0.5)/log(p/100)",
+            "unit": "min",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\frac{ {{p}} }{100} = 0.5^{\\frac{ {{t}} }{h}}$\n\n$\\log({{p/100}}) = \\frac{ {{t}} }{h}\\log0.5 \\Rightarrow h = \\dfrac{ {{t}}\\log 0.5}{\\log {{p/100}} } \\approx {{t*log(0.5)/log(p/100):4}}$ min.",
+      "rubric": [
+        {
+          "point": "Uses the fraction p/100 in the half-life model",
+          "marks": 1
+        },
+        {
+          "point": "Takes logarithms and isolates h",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-life",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "B": {
+          "choices": [
+            140,
+            150
+          ]
+        },
+        "G": {
+          "choices": [
+            110,
+            120
+          ]
+        }
+      },
+      "text": "**Chapter problem.** The difference in two sound levels is $\\beta_2 - \\beta_1 = 10\\log\\left(\\frac{I_2}{I_1}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Biff's drums produce {{B}} dB; Rocco's electric guitar amplifier produces {{G}} dB. What is the ratio of their intensities?",
+          "answer": {
+            "expr": "10^((B-G)/10)",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Rocco's acoustic guitar is one ten-thousandth as intense as his amplified electric guitar. By how many decibels should the drums be reduced to balance them?",
+          "answer": {
+            "expr": "40",
+            "unit": "dB",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{B}} - {{G}} = 10\\log\\frac{I_2}{I_1} \\Rightarrow \\frac{I_2}{I_1} = 10^{ {{(B-G)/10}} } = {{10^((B-G)/10)}}$. The drums are {{10^((B-G)/10)}} times as intense as the guitar amplifier, so the guitar must be boosted by a concert amplifier to be heard in balance.\n\n(b) $\\frac{I_2}{I_1} = \\frac{1}{10\\,000}$: $\\beta_2 - \\beta_1 = 10\\log 10^{-4} = -40$ dB. The drums must be reduced by 40 dB, a factor of 10 000 in intensity.",
+      "rubric": [
+        {
+          "point": "(a) sets up the equation",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct ratio",
+          "marks": 1
+        },
+        {
+          "point": "(a) explains why the guitar needs boosting",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct decibel reduction and factor",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-5-q11",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "The table shows the number of rabbits living in a warren.\n\n| Time (months) | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n|---|---|---|---|---|---|---|---|---|\n| Rabbits | 16 | 18 | 21 | 24 | 32 | 37 | 41 | 50 |\n\nRegression gives these models: linear $N = 4.87t + 12.8$; quadratic $N = 0.399t^2 + 2.08t + 15.6$; exponential $N = 15.4(1.18)^t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Assuming the population had been growing steadily for several months before data collection began, which model best fits the situation? Why?"
+        },
+        {
+          "label": "b",
+          "text": "Use your model to predict when the population will reach 100.",
+          "answer": {
+            "expr": "log(100/15.4)/log(1.18)",
+            "unit": "months",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Will this trend continue indefinitely? Explain."
+        }
+      ],
+      "modelAnswer": "(a) If the population had been growing steadily for months before the data, the model must keep decreasing (but stay positive) as we go back in time. The linear model reaches 0 at $t \\approx -2.6$ (impossible); the quadratic has a minimum near $t \\approx -2.6$ and *increases* going further back, which contradicts steady growth. The exponential model decreases smoothly and stays positive, so it fits the situation best. Rabbit populations also grow by a percentage (births proportional to population).\n\n(b) $100 = 15.4(1.18)^t \\Rightarrow t = \\dfrac{\\log(100/15.4)}{\\log 1.18} \\approx 11.3$ months.\n\n(c) No. Food, space and predators limit growth; eventually the population will level off (logistic growth) or decline.",
+      "rubric": [
+        {
+          "point": "Rejects the linear and quadratic models with reasons about past behaviour",
+          "marks": 2
+        },
+        {
+          "point": "Chooses the exponential model with a contextual reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct prediction for 100 rabbits",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the trend cannot continue indefinitely",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q12",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The surface area covered by an oil spill is shown.\n\n| Time (min) | 0 | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|---|\n| Area (m²) | 0 | 2 | 4 | 7 | 11 | 14 | 29 |\n\nRegression gives: linear $A = 4.21t - 3.07$; quadratic $A = 0.857t^2 - 0.929t + 1.21$; exponential (omitting $t = 0$) $A = 1.37(1.65)^t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Which model makes the most sense for $t \\ge 0$? Explain."
+        },
+        {
+          "label": "b",
+          "text": "Use your model to predict the area after 10 min.",
+          "answer": {
+            "expr": "0.857*100-0.929*10+1.21",
+            "unit": "m²",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long until the spill reaches a diameter of 30 m?",
+          "answer": {
+            "expr": "(0.929+sqrt(0.929^2+4*0.857*(706.858-1.21)))/(2*0.857)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe any assumptions you must make."
+        }
+      ],
+      "modelAnswer": "(a) If the spill spreads equally in all directions, its radius grows roughly steadily, and area $= \\pi r^2$ is then quadratic in time. The quadratic model also passes close to $(0, 0)$, while the exponential model can never be 0 and the linear model gives a negative area at $t = 0$. So the quadratic model makes the most sense.\n\n(b) $A(10) = 0.857(100) - 0.929(10) + 1.21 \\approx 77.6$ m².\n\n(c) Diameter 30 m → radius 15 m → $A = \\pi(15)^2 \\approx 706.9$ m². Solve $0.857t^2 - 0.929t + 1.21 = 706.9$ with the quadratic formula: $t \\approx 29.2$ min.\n\n(d) Assumptions: the spill spreads equally in all directions, at a steady rate, with no wind, currents or containment.",
+      "rubric": [
+        {
+          "point": "Chooses the quadratic model with a geometric reason",
+          "marks": 2
+        },
+        {
+          "point": "Correct area after 10 min",
+          "marks": 1
+        },
+        {
+          "point": "Converts diameter to area",
+          "marks": 1
+        },
+        {
+          "point": "Solves for time correctly",
+          "marks": 1
+        },
+        {
+          "point": "States assumptions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q13",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "A cup of tea cools on a counter.\n\n| Time (min) | 0 | 2 | 4 | 6 | 8 | 10 | 12 |\n|---|---|---|---|---|---|---|---|\n| Temperature (°C) | 98 | 88 | 79 | 72 | 66 | 62 | 58 |\n\nRegression gives a quadratic model $T = 0.170t^2 - 5.34t + 97.9$ and an exponential model $T = 95.7(0.957)^t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Which model is better, and why?"
+        },
+        {
+          "label": "b",
+          "text": "Use the better model to predict the temperature after 15 min.",
+          "answer": {
+            "expr": "95.7*0.957^15",
+            "unit": "°C",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use the better model to predict when the tea reaches 38 °C.",
+          "answer": {
+            "expr": "log(38/95.7)/log(0.957)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe any assumptions you must make and any limitations of the model."
+        }
+      ],
+      "modelAnswer": "(a) The quadratic has its minimum at $t = \\frac{5.34}{2(0.170)} \\approx 15.7$ min and then predicts the tea **heats up** again — impossible. The exponential model keeps decreasing, so it is better.\n\n(b) $T(15) = 95.7(0.957)^{15} \\approx 49.5$ °C.\n\n(c) $38 = 95.7(0.957)^t \\Rightarrow t = \\dfrac{\\log(38/95.7)}{\\log 0.957} \\approx 21.0$ min.\n\n(d) The model assumes the tea keeps cooling by the same percentage each minute and approaches 0 °C. Real tea approaches **room temperature** (about 20 °C), so predictions far into the future (especially below room temperature) are unrealistic. We also assume room conditions stay constant.",
+      "rubric": [
+        {
+          "point": "Explains why the quadratic model fails",
+          "marks": 1
+        },
+        {
+          "point": "Correct prediction at 15 min",
+          "marks": 1
+        },
+        {
+          "point": "Correct time to reach 38 °C",
+          "marks": 2
+        },
+        {
+          "point": "States assumptions and the room-temperature limitation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-5-q14",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain the difference between **curve fitting** and **mathematical modelling**. Identify an advantage of each, and use the Decimal Point population example (quadratic vs exponential models) to illustrate.",
+      "modelAnswer": "Curve fitting finds a curve that lies close to given data; it is quick and good for **interpolation**. Mathematical modelling chooses a function that also reflects how the situation behaves, so it is useful for **extrapolation** and decision-making.\n\nFor Decimal Point, both the quadratic and exponential curves fit 1920–1950 almost perfectly (both $r^2 \\approx 0.99$), so either is fine for interpolating. But the quadratic predicts the population once *increased* as we go back in time, contradicting the steady growth — so only the exponential is a good model.\n\nAdvantage of curve fitting: simple, and any curve type can be tried. Advantage of modelling: predictions beyond the data are more trustworthy.",
+      "rubric": [
+        {
+          "point": "Defines curve fitting",
+          "marks": 1
+        },
+        {
+          "point": "Defines modelling, including extrapolation",
+          "marks": 1
+        },
+        {
+          "point": "Illustrates with the Decimal Point example",
+          "marks": 2
+        },
+        {
+          "point": "Identifies an advantage of each",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q15",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A scatter plot shows points that curve upward, with each $y$-value increasing faster than the last.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Could a quadratic curve of best fit be drawn through such points? Explain."
+        },
+        {
+          "label": "b",
+          "text": "Could an exponential curve of best fit be drawn? Explain."
+        },
+        {
+          "label": "c",
+          "text": "Describe a scenario these data might fit in which the better model is (i) exponential and (ii) quadratic. Justify each."
+        }
+      ],
+      "modelAnswer": "(a) Yes. A quadratic curve opening upward could pass close to the points, because over a limited interval it also increases at an increasing rate.\n\n(b) Yes. An exponential curve could also fit, since it increases by a constant ratio.\n\n(c)(i) Exponential: money in a savings account with compound interest, or a bacteria culture — growth is proportional to the current amount.\n\n(ii) Quadratic: the area of a circular puddle whose radius grows steadily, or the distance fallen by a dropped object — the quantity depends on the square of time.\n\nIn each case the better model is decided by **how the situation works**, not just by the shape of the plotted points.",
+      "rubric": [
+        {
+          "point": "(a) justified",
+          "marks": 1
+        },
+        {
+          "point": "(b) justified",
+          "marks": 1
+        },
+        {
+          "point": "(c)(i) appropriate exponential scenario with reason",
+          "marks": 1
+        },
+        {
+          "point": "(c)(ii) appropriate quadratic scenario with reason",
+          "marks": 1
+        },
+        {
+          "point": "Explains that context decides the model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "P0": {
+          "choices": [
+            200,
+            400,
+            500
+          ]
+        },
+        "P1": {
+          "choices": [
+            1200,
+            1500,
+            1800
+          ]
+        },
+        "t1": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        },
+        "t2": {
+          "choices": [
+            6,
+            8
+          ]
+        }
+      },
+      "text": "A bacteria culture has {{P0}} cells at $t = 0$ and {{P1}} cells after {{t1}} h.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Build an exponential model $P = ab^t$."
+        },
+        {
+          "label": "b",
+          "text": "Predict the number of cells after {{t2}} h.",
+          "answer": {
+            "expr": "P0*(P1/P0)^(t2/t1)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "When will there be 10 000 cells?",
+          "answer": {
+            "expr": "log(10000/P0)/log((P1/P0)^(1/t1))",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "What is the doubling period?",
+          "answer": {
+            "expr": "log(2)/log((P1/P0)^(1/t1))",
+            "unit": "h",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $P = {{P0}}b^t$; ${{P1}} = {{P0}}b^{ {{t1}} }$, so $b = \\left(\\frac{ {{P1}} }{ {{P0}} }\\right)^{\\frac{1}{ {{t1}} }} \\approx {{(P1/P0)^(1/t1):4}}$. Model: $P = {{P0}}({{(P1/P0)^(1/t1):4}})^t$.\n\n(b) $P({{t2}}) \\approx {{P0*(P1/P0)^(t2/t1):4}}$ cells.\n\n(c) $10\\,000 = {{P0}}b^t \\Rightarrow t = \\dfrac{\\log(10\\,000/{{P0}})}{\\log b} \\approx {{log(10000/P0)/log((P1/P0)^(1/t1)):4}}$ h.\n\n(d) Doubling period $d = \\frac{\\log 2}{\\log b} \\approx {{log(2)/log((P1/P0)^(1/t1)):4}}$ h.",
+      "rubric": [
+        {
+          "point": "Finds the growth factor b",
+          "marks": 1
+        },
+        {
+          "point": "Writes the model",
+          "marks": 1
+        },
+        {
+          "point": "Correct prediction in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct time in (c)",
+          "marks": 1
+        },
+        {
+          "point": "Correct doubling period",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            1.02,
+            1.03,
+            1.04,
+            1.05,
+            1.06,
+            1.08
+          ]
+        },
+        "h": {
+          "choices": [
+            5,
+            8,
+            10,
+            12,
+            20
+          ]
+        }
+      },
+      "text": "Convert between forms of exponential models.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "A population grows according to $P = P_0({{b}})^t$, with $t$ in years. Find the doubling period and rewrite the model in the form $P = P_0(2)^{\\frac td}$.",
+          "answer": {
+            "expr": "log(2)/log(b)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "A substance has a half-life of {{h}} years. Write its model in the form $A = A_0b^t$ and state the percent that decays each year.",
+          "answer": {
+            "expr": "0.5^(1/h)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.002
+          }
+        }
+      ],
+      "modelAnswer": "(a) $d = \\dfrac{\\log 2}{\\log {{b}} } \\approx {{log(2)/log(b):4}}$, so $P = P_0(2)^{\\frac{t}{ {{log(2)/log(b):3}} }}$.\n\n(b) The decay factor per unit time is $0.5^{\\frac{1}{ {{h}} }} \\approx {{0.5^(1/h):4}}$, so $A = A_0({{0.5^(1/h):4}})^t$. Each year about {{100*(1-0.5^(1/h)):3}}% decays.",
+      "rubric": [
+        {
+          "point": "(a) correct doubling period",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct rewritten model",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct decay factor",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct percent decay",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Suppose an investment agency, instead of charging an early withdrawal penalty, gives a **bonus** of 2% of the principal if the money is **not** withdrawn before 10 years. For an investment of $P$ dollars at 6% compounded semi-annually, describe how this could be reflected in the model and on its graph, and state when the bonus applies.",
+      "modelAnswer": "For $0 \\le t < 10$: $A = P(1.03)^{2t}$. For $t \\ge 10$: $A = P(1.03)^{2t} + 0.02P$.\n\nOn the graph, the curve for $t \\ge 10$ is the original curve **translated up** by $0.02P$; at $t = 10$ there is a jump. The growth factor (shape) is unchanged. The bonus applies only if the money stays invested for at least 10 years.",
+      "rubric": [
+        {
+          "point": "Writes a correct model for t ≥ 10",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the vertical translation up 0.02P",
+          "marks": 1
+        },
+        {
+          "point": "States the time condition and the jump at t = 10",
+          "marks": 1
+        },
+        {
+          "point": "Notes the growth factor is unchanged",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q19",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Design your own modelling task. Choose a real situation (for example, a population, an investment, the value of a car, or the brightness of a fading light) for which you can obtain or invent at least six data points. Then: (a) explain which type of model (linear, quadratic or exponential) you expect to be best **before** fitting, and why; (b) describe how you would find a curve of best fit with technology; (c) pose and solve **two** problems using your model — one interpolation and one extrapolation that requires solving an exponential or logarithmic equation; (d) discuss the limitations of your model.",
+      "modelAnswer": "Sample: a car bought for 30 000 dollars losing 15% of its value per year; data $(0, 30000), (1, 25500), (2, 21675), \\ldots$\n\n(a) Exponential, because the car loses a constant **percentage** each year.\n\n(b) Enter the data in lists and use ExpReg (or sliders in Fathom) to get $V \\approx 30\\,000(0.85)^t$; check $r^2$ is near 1.\n\n(c) Interpolation: value at 2.5 years: $30\\,000(0.85)^{2.5} \\approx 19\\,980$ dollars. Extrapolation: when is it worth 5000 dollars? $\\frac16 = 0.85^t \\Rightarrow t = \\frac{\\log(1/6)}{\\log0.85} \\approx 11.0$ years.\n\n(d) Real cars depreciate faster in the first year and value depends on condition and mileage; very old cars can even gain value as collectibles.",
+      "rubric": [
+        {
+          "point": "Chooses a model type with a contextual justification",
+          "marks": 1
+        },
+        {
+          "point": "Describes regression or slider fitting with technology",
+          "marks": 1
+        },
+        {
+          "point": "Poses and solves an interpolation problem",
+          "marks": 1
+        },
+        {
+          "point": "Poses and solves an extrapolation problem using logarithms",
+          "marks": 2
+        },
+        {
+          "point": "Discusses limitations",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-5-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Using $P = 1006(1.016)^t$, determine the number of years it takes Decimal Point's population to grow by a factor of {{k}}. Show that the answer does not depend on the starting year, and explain why this is a property of every exponential model.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Time to grow by a factor of {{k}}.",
+          "answer": {
+            "expr": "log(k)/log(1.016)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Starting from any value $P_s$ at time $s$: $kP_s = P_s(1.016)^{\\Delta t} \\Rightarrow {{k}} = 1.016^{\\Delta t}$, so $\\Delta t = \\dfrac{\\log {{k}} }{\\log 1.016} \\approx {{log(k)/log(1.016):4}}$ years.\n\nThe starting amount cancels, so the time to multiply by {{k}} is always the same. This is true for every exponential model $ab^t$, because multiplying by $b^{\\Delta t}$ depends only on $\\Delta t$, not on where you start — the same reason the half-life or doubling period is constant.",
+      "rubric": [
+        {
+          "point": "Sets up an equation in which the starting value cancels",
+          "marks": 1
+        },
+        {
+          "point": "Correct time",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the time is independent of the start",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

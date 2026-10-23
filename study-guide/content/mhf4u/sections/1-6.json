@@ -1,0 +1,975 @@
+{
+  "id": "1-6",
+  "number": "1.6",
+  "title": "Slopes of Tangents and Instantaneous Rate of Change",
+  "estimatedMinutes": 70,
+  "overview": "An average rate of change tells you what happened over an interval; an **instantaneous rate of change** tells you what is happening at a single moment — like the reading on a speedometer. Geometrically it is the slope of the **tangent** to the curve. In this section you will estimate instantaneous rates of change from graphs, tables and equations by using secants over smaller and smaller intervals.",
+  "objectives": [
+    "Distinguish between average and instantaneous rates of change.",
+    "Estimate the slope of a tangent from a graph using a nearby secant or a sketched tangent.",
+    "Estimate an instantaneous rate of change from a table using nearby (preferably centred) points.",
+    "Estimate an instantaneous rate of change from an equation using very short intervals and the difference quotient.",
+    "Interpret instantaneous rates of change, including zero rates at local maximum and minimum points."
+  ],
+  "lessons": [
+    {
+      "id": "instantaneous",
+      "title": "From average to instantaneous rate of change",
+      "body": "\nA car's trip computer may say your **average** speed was 72 km/h, but the **speedometer** shows how fast you are going *right now*. That \"right now\" rate is an **instantaneous rate of change**.\n\n* An average rate of change describes an **interval** and is the slope of a **secant**.\n* An instantaneous rate of change describes a single **point** and is the slope of the **tangent** line at that point.\n\nA **tangent** to a curve at a point touches the curve at that point and has the same \"direction\" as the curve there.\n\n```plot\ntitle: Secants PQ getting closer to the tangent at P(2, 20) on d = 5t²\nf: 5*x^2 | label=d = 5t²\nf: 25*x - 30 | dashed; label=secant to Q(3, 45)\nf: 20*x - 20 | label=tangent at P, slope 20\ndomain: 0, 4\nrange: -5, 60\npoints: (2,20), (3,45)\n```\n\nAs the second point $Q$ slides towards $P$, the secant swings round and gets closer and closer to the tangent. The secant slopes **approach** the tangent slope.\n"
+    },
+    {
+      "id": "from-graph",
+      "title": "Estimating from a graph",
+      "body": "\nTwo graphical methods:\n\n**Method 1 – a nearby secant.** Choose a point $Q$ on the curve close to $P$ and easy to read, then compute $m_{PQ} = \\dfrac{\\Delta y}{\\Delta x}$.\n\n**Method 2 – sketch the tangent.** Draw a line through $P$ that just touches the curve, choose a second point on *that line*, and compute its slope.\n\nParachutist example (distance $d$ in metres, time $t$ in seconds), at $P(2, 20)$:\n\n* Secant to $Q(3, 45)$: $\\dfrac{45 - 20}{3 - 2} = 25$ m/s.\n* Tangent through $S(3, 40)$: $\\dfrac{40 - 20}{3 - 2} = 20$ m/s.\n\nBoth are estimates. Accuracy depends on how well you read the coordinates and, for Method 2, how accurately you drew the tangent. The closer $Q$ is to $P$, the better the secant estimate.\n"
+    },
+    {
+      "id": "from-table",
+      "title": "Estimating from a table of values",
+      "body": "\nUse the tabulated points **closest to** the point of interest.\n\n| $t$ (s) | 1.0 | 1.5 | 2.0 | 2.5 | 3.0 |\n|---|---|---|---|---|---|\n| $d$ (m) | 5 | 11.25 | 20 | 31.25 | 45 |\n\n* Forward: $\\dfrac{31.25 - 20}{2.5 - 2} = 22.5$ m/s.\n* Backward: $\\dfrac{20 - 11.25}{2 - 1.5} = 17.5$ m/s.\n* **Centred** (using the points on both sides): $\\dfrac{31.25 - 11.25}{2.5 - 1.5} = 20$ m/s.\n\nFor a smooth curve, the centred interval is usually the best estimate because the errors on the two sides partly cancel — it is also the average of the forward and backward estimates.\n"
+    },
+    {
+      "id": "from-equation",
+      "title": "Estimating from an equation: shrinking the interval",
+      "body": "\nWith an equation you can make the interval as small as you like. For $d(t) = 5t^2$ at $t = 2$:\n\n| Interval | $\\Delta d$ | $\\Delta t$ | $\\dfrac{\\Delta d}{\\Delta t}$ |\n|---|---|---|---|\n| $2 \\le t \\le 3$ | $45 - 20 = 25$ | 1 | 25 |\n| $2 \\le t \\le 2.5$ | $31.25 - 20 = 11.25$ | 0.5 | 22.5 |\n| $2 \\le t \\le 2.1$ | $22.05 - 20 = 2.05$ | 0.1 | 20.5 |\n| $2 \\le t \\le 2.01$ | $20.2005 - 20 = 0.2005$ | 0.01 | 20.05 |\n| $2 \\le t \\le 2.001$ | $0.020005$ | 0.001 | 20.005 |\n\nThe secant slopes approach **20**, so the velocity at 2 s is 20 m/s.\n\n**General form.** The slope of the secant from $x = a$ to $x = a + h$ is the **difference quotient**\n\n$$\\frac{f(a + h) - f(a)}{h}$$\n\nAs $h$ gets very close to 0, this approaches the instantaneous rate of change at $x = a$.\n\n> **Example.** For $f(x) = x^2$ at $x = 3$: $\\dfrac{(3 + h)^2 - 9}{h} = \\dfrac{6h + h^2}{h} = 6 + h$, which approaches **6** as $h \\to 0$.\n"
+    },
+    {
+      "id": "interpreting",
+      "title": "Interpreting instantaneous rates and turning points",
+      "body": "\n* A **positive** instantaneous rate of change means the function is increasing at that point (the tangent rises to the right).\n* A **negative** value means it is decreasing there.\n* A value of **zero** means the tangent is horizontal — this happens at **local maximum and minimum points**.\n\n```plot\ntitle: Tangent slopes on y = x³ − 3x\nf: x^3 - 3*x | label=y = x³ − 3x\nf: 2 | dashed; label=tangent at (−1, 2): slope 0\nf: 9*x - 16 | dashed; label=tangent at (2, 2): slope 9\ndomain: -2.5, 3\nrange: -5, 8\npoints: (-1,2), (1,-2), (2,2)\n```\n\nIf the instantaneous rate of change is negative at one point and positive at a later point, the graph must have turned around in between — a **local minimum** lies between them (and a local maximum if it goes from positive to negative).\n\nAlways include units: the instantaneous rate of change of distance (m) with respect to time (s) is a velocity in m/s.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "instantaneous rate of change",
+      "definition": "The rate of change at a single point; the slope of the tangent there."
+    },
+    {
+      "term": "tangent",
+      "definition": "A line that touches a curve at a point and matches the curve's direction at that point."
+    },
+    {
+      "term": "tangent point",
+      "definition": "The point at which a tangent touches the curve."
+    },
+    {
+      "term": "difference quotient",
+      "definition": "$\\dfrac{f(a+h) - f(a)}{h}$, the slope of the secant from $x = a$ to $x = a+h$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Difference quotient",
+      "latex": "\\frac{f(a + h) - f(a)}{h}",
+      "meaning": "Approaches the instantaneous rate of change at $x = a$ as $h$ gets close to 0."
+    },
+    {
+      "name": "Centred estimate",
+      "latex": "\\frac{f(a + h) - f(a - h)}{2h}",
+      "meaning": "Uses points on both sides of $a$; usually a better estimate for small $h$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Shrinking intervals",
+      "problem": "Estimate the instantaneous rate of change of $f(x) = x^3$ at $x = 2$.",
+      "steps": [
+        "$h = 0.1$: $\\dfrac{2.1^3 - 8}{0.1} = \\dfrac{9.261 - 8}{0.1} = 12.61$",
+        "$h = 0.01$: $\\dfrac{2.01^3 - 8}{0.01} = \\dfrac{8.120601 - 8}{0.01} = 12.0601$",
+        "$h = 0.001$: $\\dfrac{2.001^3 - 8}{0.001} \\approx 12.006$",
+        "The values approach 12."
+      ],
+      "answer": "About 12."
+    },
+    {
+      "title": "Difference quotient algebra",
+      "problem": "Use the difference quotient to find the instantaneous rate of change of $f(x) = x^2 + 4x$ at $x = 1$.",
+      "steps": [
+        "$f(1 + h) = (1 + h)^2 + 4(1 + h) = 1 + 2h + h^2 + 4 + 4h = 5 + 6h + h^2$",
+        "$f(1) = 5$",
+        "$\\dfrac{f(1+h) - f(1)}{h} = \\dfrac{6h + h^2}{h} = 6 + h$",
+        "As $h$ approaches 0, $6 + h$ approaches 6."
+      ],
+      "answer": "6"
+    },
+    {
+      "title": "Tangent line equation",
+      "problem": "Estimate the slope of the tangent to $y = 2x^2 - 3$ at $x = 1$ and write the equation of the tangent line.",
+      "steps": [
+        "Difference quotient: $\\dfrac{2(1+h)^2 - 3 - (-1)}{h} = \\dfrac{4h + 2h^2}{h} = 4 + 2h \\to 4$.",
+        "Tangent point: $(1, -1)$.",
+        "$y - (-1) = 4(x - 1) \\Rightarrow y = 4x - 5$."
+      ],
+      "answer": "$y = 4x - 5$"
+    },
+    {
+      "title": "Turning point between two tangents",
+      "problem": "For $f(x) = x^3 - 5x^2 + 4x - 5$, the instantaneous rate of change is about $-4$ at $x = 2$ and about $12$ at $x = 4$. What happens between $x = 2$ and $x = 4$?",
+      "steps": [
+        "At $x = 2$ the function is decreasing; at $x = 4$ it is increasing.",
+        "To change from decreasing to increasing, the graph must turn: the tangent is horizontal (slope 0) somewhere between.",
+        "That point is a local minimum."
+      ],
+      "answer": "There is a local minimum between $x = 2$ and $x = 4$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The instantaneous rate of change can be calculated exactly by plugging the same point in twice.",
+      "fact": "With one point, $\\Delta x = 0$ and the quotient is undefined; instead use very close points and see what the slopes approach."
+    },
+    {
+      "myth": "Any nearby secant gives the exact tangent slope.",
+      "fact": "Secants only approximate; the approximation improves as the interval shrinks."
+    },
+    {
+      "myth": "A speedometer shows average speed.",
+      "fact": "It shows instantaneous speed — the rate at that moment."
+    },
+    {
+      "myth": "A zero instantaneous rate means the function is zero.",
+      "fact": "It means the tangent is horizontal (often a local max or min); the function value can be anything."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Driving",
+      "body": "Speedometers and police radar measure instantaneous speed; trip computers report average speed."
+    },
+    {
+      "title": "Medicine",
+      "body": "'Five seconds after the spray, the bacteria population is decreasing at 60 bacteria per second' is an instantaneous rate of change."
+    },
+    {
+      "title": "Environment",
+      "body": "Forest-fire crews track how fast a fire is spreading right now (ha/h) to decide where to send resources."
+    },
+    {
+      "title": "Amusement rides",
+      "body": "Engineers check the steepness (instantaneous slope) of a roller-coaster track at every point to keep forces safe."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Estimate the instantaneous rate of change of $f(x) = 3x^2$ at $x = 1$ using $h = 0.01$.",
+      "hint": "$\\dfrac{f(1.01) - f(1)}{0.01}$",
+      "solution": "$f(1.01) = 3.0603$, so $\\dfrac{3.0603 - 3}{0.01} = 6.03$. The exact value is 6."
+    },
+    {
+      "question": "Classify each as average or instantaneous: (a) at 3 p.m. the plane was travelling at 850 km/h (b) the train averaged 130 km/h over the 10-h trip (c) he lost 4 kg per month over 5 months.",
+      "hint": "One moment or an interval?",
+      "solution": "(a) instantaneous (b) average (c) average."
+    },
+    {
+      "question": "Use the difference quotient to find the instantaneous rate of change of $f(x) = x^2 - 2x$ at $x = 3$.",
+      "hint": "Expand $(3+h)^2 - 2(3+h)$.",
+      "solution": "$f(3 + h) = 9 + 6h + h^2 - 6 - 2h = 3 + 4h + h^2$, $f(3) = 3$. Quotient $= 4 + h \\to 4$."
+    },
+    {
+      "question": "When are the instantaneous and average speeds the same?",
+      "hint": "Think constant speed.",
+      "solution": "When the speed is constant over the interval (distance–time graph is a straight line): every secant and tangent has the same slope."
+    },
+    {
+      "question": "Why is a centred interval usually better than a one-sided interval for estimating from a table?",
+      "hint": "Errors on both sides.",
+      "solution": "For a smoothly curving graph, a forward secant overestimates (or underestimates) and a backward secant does the opposite; using points on both sides balances these errors."
+    },
+    {
+      "question": "The height of a ball is $h(t) = -4.9t^2 + 19.6t + 1$. Estimate its velocity at $t = 2$ s and interpret.",
+      "hint": "Try $t = 2$ to $t = 2.001$.",
+      "solution": "$\\dfrac{h(2.001) - h(2)}{0.001} \\approx -0.0049 \\approx 0$ m/s. The ball is momentarily at rest — at its maximum height."
+    }
+  ],
+  "summary": [
+    "The instantaneous rate of change at a point is the slope of the tangent at that point.",
+    "Estimate it from a graph (nearby secant or sketched tangent), from a table (closest points, preferably on both sides), or from an equation (very short intervals).",
+    "The difference quotient $\\dfrac{f(a+h) - f(a)}{h}$ approaches the instantaneous rate of change as $h$ approaches 0.",
+    "A zero instantaneous rate of change means a horizontal tangent, often at a local maximum or minimum.",
+    "Instantaneous rates have units and a sign that tells whether the function is increasing or decreasing at that moment."
+  ],
+  "questions": [
+    {
+      "id": "1-6-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Estimate the instantaneous rate of change of $f(x) = {{a}}x^2$ at $x = {{p}}$ by computing the slopes of secants from $x = {{p}}$ to $x = {{p}} + h$ for $h = 0.1$, $0.01$ and $0.001$. Then state your estimate.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Your estimate of the instantaneous rate of change",
+          "answer": {
+            "expr": "2*a*p",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f({{p}}) = {{a*p^2}}$.\n\n* $h = 0.1$: $\\dfrac{ {{a}}({{p + 0.1}})^2 - {{a*p^2}} }{0.1} = {{2*a*p + 0.1*a}}$\n* $h = 0.01$: $\\dfrac{ {{a}}({{p + 0.01}})^2 - {{a*p^2}} }{0.01} = {{2*a*p + 0.01*a}}$\n* $h = 0.001$: $\\dfrac{ {{a}}({{p + 0.001}})^2 - {{a*p^2}} }{0.001} = {{2*a*p + 0.001*a}}$\n\nThe secant slopes approach **{{2*a*p}}**, so the instantaneous rate of change at $x = {{p}}$ is approximately {{2*a*p}}.",
+      "rubric": [
+        {
+          "point": "Correct f(p)",
+          "marks": 1
+        },
+        {
+          "point": "Three correct secant slopes",
+          "marks": 3
+        },
+        {
+          "point": "States the limiting value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "t0": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The distance a parachutist has fallen is modelled by $d(t) = 5t^2$, where $d$ is in metres and $t$ in seconds. Estimate the parachutist's velocity at $t = {{t0}}$ s using an interval of 0.01 s. Explain why this is a velocity at an instant rather than an average.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimated velocity",
+          "answer": {
+            "expr": "10*t0",
+            "unit": "m/s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$d({{t0}}) = 5({{t0}})^2 = {{5*t0^2}}$ m and $d({{t0 + 0.01}}) = 5({{t0 + 0.01}})^2 = {{5*(t0+0.01)^2}}$ m.\n\n$$\\frac{\\Delta d}{\\Delta t} = \\frac{ {{5*(t0+0.01)^2}} - {{5*t0^2}} }{0.01} = {{10*t0 + 0.05}} \\text{ m/s}$$\n\nSo the velocity at {{t0}} s is about **{{10*t0}} m/s**. Strictly, 0.01 s is a very short interval, so this is an average over a tiny interval; as the interval shrinks the values approach {{10*t0}}, which is the instantaneous velocity (the slope of the tangent at $t = {{t0}}$).",
+      "rubric": [
+        {
+          "point": "Correct function values",
+          "marks": 1
+        },
+        {
+          "point": "Correct secant slope with units",
+          "marks": 2
+        },
+        {
+          "point": "Estimate of instantaneous velocity",
+          "marks": 1
+        },
+        {
+          "point": "Explains shrinking intervals approach tangent slope",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "t0": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The distance, $d$ (m), fallen by an object is recorded every 0.5 s.\n\n| $t$ (s) | {{t0 - 1}} | {{t0 - 0.5}} | {{t0}} | {{t0 + 0.5}} | {{t0 + 1}} |\n|---|---|---|---|---|---|\n| $d$ (m) | {{4.9*(t0-1)^2}} | {{4.9*(t0-0.5)^2}} | {{4.9*t0^2}} | {{4.9*(t0+0.5)^2}} | {{4.9*(t0+1)^2}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the velocity at $t = {{t0}}$ s using the next point in the table."
+        },
+        {
+          "label": "b",
+          "text": "Estimate it using the previous point."
+        },
+        {
+          "label": "c",
+          "text": "Estimate it using the points on both sides, and explain which estimate is best.",
+          "answer": {
+            "expr": "9.8*t0",
+            "unit": "m/s",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) Forward: $\\dfrac{ {{4.9*(t0+0.5)^2}} - {{4.9*t0^2}} }{0.5} = {{9.8*t0 + 2.45:4}}$ m/s.\n\n(b) Backward: $\\dfrac{ {{4.9*t0^2}} - {{4.9*(t0-0.5)^2}} }{0.5} = {{9.8*t0 - 2.45:4}}$ m/s.\n\n(c) Centred: $\\dfrac{ {{4.9*(t0+0.5)^2}} - {{4.9*(t0-0.5)^2}} }{1} = {{9.8*t0:4}}$ m/s.\n\nThe centred estimate is the best: the curve bends upward, so the forward secant overestimates and the backward secant underestimates; using points on both sides of {{t0}} s balances the two errors. (It equals the average of the forward and backward estimates.)",
+      "rubric": [
+        {
+          "point": "Correct forward estimate",
+          "marks": 1
+        },
+        {
+          "point": "Correct backward estimate",
+          "marks": 1
+        },
+        {
+          "point": "Correct centred estimate",
+          "marks": 2
+        },
+        {
+          "point": "Justifies which is best",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q04",
+      "type": "analysis",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The graph shows $f(x) = 0.5x^2$ and a tangent line at the point $P$.\n\n```plot\nf: 0.5*x^2\nf: {{p}}*x - {{p^2/2}} | dashed\ndomain: -1, {{p+3}}\npoints: ({{p}},{{p^2/2}}), ({{p+2}},{{p^2/2+2*p}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the coordinates of the tangent point."
+        },
+        {
+          "label": "b",
+          "text": "State the coordinates of another point on the tangent line."
+        },
+        {
+          "label": "c",
+          "text": "Determine the slope of the tangent.",
+          "answer": {
+            "expr": "p",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "What does this slope represent?"
+        }
+      ],
+      "modelAnswer": "(a) The tangent point is $P({{p}}, {{p^2/2}})$.\n\n(b) Another point on the tangent line is $({{p+2}}, {{p^2/2 + 2*p}})$.\n\n(c) Slope $= \\dfrac{ {{p^2/2 + 2*p}} - {{p^2/2}} }{ {{p+2}} - {{p}} } = \\dfrac{ {{2*p}} }{2} = {{p}}$.\n\n(d) This is the instantaneous rate of change of $f$ at $x = {{p}}$: at that point, $y$ is increasing at {{p}} units per unit of $x$.",
+      "rubric": [
+        {
+          "point": "Tangent point",
+          "marks": 1
+        },
+        {
+          "point": "Second point on the tangent",
+          "marks": 1
+        },
+        {
+          "point": "Correct slope",
+          "marks": 2
+        },
+        {
+          "point": "Interprets as instantaneous rate of change",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q05",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "For each statement, decide whether it describes an average rate of change or an instantaneous rate of change. Give a reason.\n\n(a) At 3 p.m., the plane was travelling at 850 km/h.\n(b) The average speed of the train during the 10-h trip was 130 km/h.\n(c) The fire was spreading at a rate of 2 ha/h.\n(d) Five seconds after an antiseptic spray is applied, the bacteria population is decreasing at a rate of 60 bacteria per second.\n(e) He lost 4 kg per month over a 5-month period.\n(f) After being heated for 2 min, the water temperature was rising at 1°C/min.",
+      "modelAnswer": "* (a) Instantaneous — a speed at one moment (3 p.m.).\n* (b) Average — over a 10-h interval.\n* (c) Instantaneous (as worded, the rate *right now*); it would be average if a time interval were given.\n* (d) Instantaneous — at the moment $t = 5$ s.\n* (e) Average — over a 5-month interval.\n* (f) Instantaneous — at the moment $t = 2$ min.",
+      "rubric": [
+        {
+          "point": "(a) and (d) correct with reasons",
+          "marks": 2
+        },
+        {
+          "point": "(b) and (e) correct with reasons",
+          "marks": 2
+        },
+        {
+          "point": "(c) and (f) correct with reasons",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Consider $f(x) = x^3 - 5x^2 + 4x - 5$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the instantaneous rate of change at $x = 2$.",
+          "answer": {
+            "expr": "-4",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the instantaneous rate of change at $x = 4$.",
+          "answer": {
+            "expr": "12",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "c",
+          "text": "What special kind of point occurs between these two points? Explain."
+        }
+      ],
+      "modelAnswer": "Use a short interval (e.g. $h = 0.001$) or, better, a centred interval.\n\n(a) At $x = 2$: $\\dfrac{f(2.001) - f(1.999)}{0.002} \\approx -4.000$. The instantaneous rate of change is about $-4$ (decreasing).\n\n(b) At $x = 4$: $\\dfrac{f(4.001) - f(3.999)}{0.002} \\approx 12.000$. About $12$ (increasing).\n\n(c) The function changes from decreasing to increasing between $x = 2$ and $x = 4$, so the tangent must be horizontal somewhere in between: there is a **local minimum** point between $x = 2$ and $x = 4$ (in fact near $x \\approx 2.87$).",
+      "rubric": [
+        {
+          "point": "Correct method for estimating",
+          "marks": 1
+        },
+        {
+          "point": "IROC at x = 2 ≈ −4",
+          "marks": 2
+        },
+        {
+          "point": "IROC at x = 4 ≈ 12",
+          "marks": 2
+        },
+        {
+          "point": "Identifies local minimum with reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2 + {{b}}x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that the slope of the secant from $x = a$ to $x = a + h$ is $2a + h + {{b}}$."
+        },
+        {
+          "label": "b",
+          "text": "What does this expression approach as $h$ gets very close to 0?"
+        },
+        {
+          "label": "c",
+          "text": "Determine the instantaneous rate of change at $x = {{p}}$.",
+          "answer": {
+            "expr": "2*p + b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $f(a + h) = (a + h)^2 + {{b}}(a + h) = a^2 + 2ah + h^2 + {{b}}a + {{b}}h$.\n\n$f(a + h) - f(a) = 2ah + h^2 + {{b}}h$, so\n\n$$\\frac{f(a+h) - f(a)}{h} = 2a + h + {{b}}.$$\n\n(b) As $h$ approaches 0, the expression approaches $2a + {{b}}$.\n\n(c) At $x = {{p}}$: $2({{p}}) + {{b}} = {{2*p + b}}$.",
+      "rubric": [
+        {
+          "point": "Expands f(a + h) correctly",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies the difference quotient to 2a + h + b",
+          "marks": 2
+        },
+        {
+          "point": "States the limit 2a + b",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates at x = p",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q08",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = x^3 - {{3*m^2}}x$, estimate the instantaneous rate of change at $x = {{m}}$ and at $x = -{{m}}$ using centred intervals with $h = 0.001$. Explain the significance of your answers.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Instantaneous rate of change at $x = {{m}}$",
+          "answer": {
+            "expr": "0",
+            "unit": "",
+            "sig": 1,
+            "tol": 0.05
+          }
+        }
+      ],
+      "modelAnswer": "$$\\frac{f({{m}} + 0.001) - f({{m}} - 0.001)}{0.002} \\approx 0.000 \\qquad \\frac{f(-{{m}} + 0.001) - f(-{{m}} - 0.001)}{0.002} \\approx 0.000$$\n\n(Exact values are $3({{m}})^2 - {{3*m^2}} = 0$.)\n\nAn instantaneous rate of change of 0 means the tangent is **horizontal**. These are the turning points: $f(-{{m}}) = {{2*m^3}}$ is a local maximum and $f({{m}}) = -{{2*m^3}}$ is a local minimum (the cubic rises, turns down at $x = -{{m}}$, and turns back up at $x = {{m}}$).",
+      "rubric": [
+        {
+          "point": "Correct estimates near 0",
+          "marks": 2
+        },
+        {
+          "point": "Interprets zero slope as horizontal tangent",
+          "marks": 1
+        },
+        {
+          "point": "Identifies local max and min with coordinates",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "x0": {
+          "choices": [
+            2,
+            4,
+            6,
+            10,
+            12,
+            14,
+            20,
+            22,
+            26,
+            30
+          ]
+        }
+      },
+      "text": "A section of roller coaster is modelled by $h(x) = 0.0025x(x - 8)(x - 16)(x - 32)$, $0 \\le x \\le 32$, where $x$ is horizontal distance and $h$ is height relative to the platform, in metres. Estimate the instantaneous rate of change (steepness) of the track at $x = {{x0}}$ m, and describe what it means.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Instantaneous rate of change",
+          "answer": {
+            "expr": "(0.0025*(x0+0.001)*(x0+0.001-8)*(x0+0.001-16)*(x0+0.001-32) - 0.0025*(x0-0.001)*(x0-0.001-8)*(x0-0.001-16)*(x0-0.001-32))/0.002",
+            "unit": "m/m",
+            "sig": 3,
+            "tol": 0.05
+          }
+        }
+      ],
+      "modelAnswer": "Using a centred interval with $h = 0.001$:\n$$\\frac{h({{x0}} + 0.001) - h({{x0}} - 0.001)}{0.002} \\approx {{(0.0025*(x0+0.001)*(x0+0.001-8)*(x0+0.001-16)*(x0+0.001-32) - 0.0025*(x0-0.001)*(x0-0.001-8)*(x0-0.001-16)*(x0-0.001-32))/0.002:3}}$$\n\nAt $x = {{x0}}$ m the track rises (if positive) or falls (if negative) about {{abs((0.0025*(x0+0.001)*(x0+0.001-8)*(x0+0.001-16)*(x0+0.001-32) - 0.0025*(x0-0.001)*(x0-0.001-8)*(x0-0.001-16)*(x0-0.001-32))/0.002):3}} m vertically for each metre horizontally — the slope of the track at that point.",
+      "rubric": [
+        {
+          "point": "Uses a short (preferably centred) interval",
+          "marks": 2
+        },
+        {
+          "point": "Correct estimate",
+          "marks": 2
+        },
+        {
+          "point": "Interprets as slope of track",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "t0": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "A bacteria population is modelled by $P(t) = -2t^3 - 2t^2 + 3t + 800$, where $t$ is in minutes after a spray is applied. Estimate the rate at which the population is changing at $t = {{t0}}$ min, and interpret your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Rate of change at $t = {{t0}}$ min",
+          "answer": {
+            "expr": "-6*t0^2 - 4*t0 + 3",
+            "unit": "bacteria/min",
+            "sig": 4,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Centred interval, $h = 0.001$:\n$$\\frac{P({{t0}} + 0.001) - P({{t0}} - 0.001)}{0.002} \\approx {{-6*t0^2 - 4*t0 + 3:4}}$$\n\nAt {{t0}} min, the population is **decreasing** at about {{abs(-6*t0^2 - 4*t0 + 3):4}} bacteria per minute.",
+      "rubric": [
+        {
+          "point": "Appropriate short-interval method",
+          "marks": 2
+        },
+        {
+          "point": "Correct estimate",
+          "marks": 2
+        },
+        {
+          "point": "Interpretation with units and direction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q11",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "(a) Does a car's speedometer measure average speed or instantaneous speed? Explain. (b) Describe a situation in which the instantaneous speed and the average speed over an interval are the same, and explain why using the idea of secants and tangents.",
+      "modelAnswer": "(a) A speedometer measures **instantaneous** speed — how fast the car is going at that moment.\n\n(b) If a car travels at a constant speed (cruise control on a flat highway), the distance–time graph is a straight line. Every secant on a straight line *is* the line itself, and so is every tangent, so all slopes are equal: the instantaneous speed at any moment equals the average speed over any interval.",
+      "rubric": [
+        {
+          "point": "Speedometer is instantaneous",
+          "marks": 1
+        },
+        {
+          "point": "Valid constant-speed situation",
+          "marks": 1
+        },
+        {
+          "point": "Explains with secant and tangent slopes on a straight line",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "C": {
+          "min": 400,
+          "max": 900,
+          "step": 50
+        },
+        "t0": {
+          "min": 5,
+          "max": 30,
+          "step": 5
+        }
+      },
+      "text": "Water drains from a tank so that the volume, in litres, after $t$ minutes is $V(t) = {{C}}\\left(1 - \\dfrac{t}{40}\\right)^2$. Estimate how fast the water is draining at $t = {{t0}}$ min.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Instantaneous rate of change of the volume",
+          "answer": {
+            "expr": "-C*(1 - t0/40)/20",
+            "unit": "L/min",
+            "sig": 4,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Centred interval, $h = 0.001$:\n$$\\frac{V({{t0}} + 0.001) - V({{t0}} - 0.001)}{0.002} \\approx {{-C*(1 - t0/40)/20:4}} \\text{ L/min}$$\n\nThe water is draining at about {{C*(1 - t0/40)/20:4}} L/min at $t = {{t0}}$ min (negative because the volume is decreasing).",
+      "rubric": [
+        {
+          "point": "Uses short interval / difference quotient",
+          "marks": 2
+        },
+        {
+          "point": "Correct estimate",
+          "marks": 2
+        },
+        {
+          "point": "Interpretation with sign and units",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p1": {
+          "min": 6,
+          "max": 10,
+          "step": 1
+        },
+        "d1": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        },
+        "d2": {
+          "min": 5,
+          "max": 7,
+          "step": 1
+        },
+        "d3": {
+          "min": 7,
+          "max": 9,
+          "step": 1
+        },
+        "d4": {
+          "min": 8,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "The table shows the percent of Canadian households using the Internet for electronic banking (sample data).\n\n| Year | 1999 | 2000 | 2001 | 2002 | 2003 |\n|---|---|---|---|---|---|\n| Households (%) | {{p1}} | {{p1 + d1}} | {{p1 + d1 + d2}} | {{p1 + d1 + d2 + d3}} | {{p1 + d1 + d2 + d3 + d4}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change from 1999 to 2003",
+          "answer": {
+            "expr": "(d1+d2+d3+d4)/4",
+            "unit": "% per year",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Estimate the instantaneous rate of change in 2000 and in 2002. Give the 2002 estimate.",
+          "answer": {
+            "expr": "(d3+d4)/2",
+            "unit": "% per year",
+            "sig": 3,
+            "tol": 0.15
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare your answers to (a) and (b)."
+        }
+      ],
+      "modelAnswer": "(a) $\\dfrac{ {{p1+d1+d2+d3+d4}} - {{p1}} }{4} = {{(d1+d2+d3+d4)/4:3}}$ percentage points per year.\n\n(b) Using centred intervals: 2000: $\\dfrac{ {{p1+d1+d2}} - {{p1}} }{2001 - 1999} = {{(d1+d2)/2:3}}$ per year. 2002: $\\dfrac{ {{p1+d1+d2+d3+d4}} - {{p1+d1+d2}} }{2} = {{(d3+d4)/2:3}}$ per year.\n\n(c) The average over 1999–2003 lies between the two instantaneous estimates: adoption was slower in 2000 and faster in 2002 than the four-year average suggests. The instantaneous estimates show the rate itself was increasing.",
+      "rubric": [
+        {
+          "point": "Correct average rate",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable instantaneous estimate for 2000 (method shown)",
+          "marks": 2
+        },
+        {
+          "point": "Reasonable instantaneous estimate for 2002",
+          "marks": 1
+        },
+        {
+          "point": "Compares average and instantaneous values",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Estimate the slope of the tangent to $f(x) = {{a}}x^2 - {{b}}$ at $x = 1$, then write the equation of the tangent line.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Slope of the tangent",
+          "answer": {
+            "expr": "2*a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-intercept of the tangent line",
+          "answer": {
+            "expr": "-a - b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Difference quotient:\n$$\\frac{f(1 + h) - f(1)}{h} = \\frac{ {{a}}(1 + 2h + h^2) - {{b}} - ({{a}} - {{b}}) }{h} = \\frac{ {{2*a}}h + {{a}}h^2}{h} = {{2*a}} + {{a}}h \\to {{2*a}}$$\n\nTangent point: $(1, {{a - b}})$.\n\n$y - ({{a - b}}) = {{2*a}}(x - 1)$, so $y = {{2*a}}x - {{a + b}}$.",
+      "rubric": [
+        {
+          "point": "Correct slope with method",
+          "marks": 2
+        },
+        {
+          "point": "Correct tangent point",
+          "marks": 1
+        },
+        {
+          "point": "Correct tangent equation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v": {
+          "min": 15,
+          "max": 30,
+          "step": 1
+        }
+      },
+      "text": "A ball is thrown upward with height $h(t) = -4.9t^2 + {{v}}t + 1$ (m) after $t$ seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the velocity at $t = 1$ s.",
+          "answer": {
+            "expr": "v - 9.8",
+            "unit": "m/s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why the velocity is 0 at the highest point, and estimate when this happens.",
+          "answer": {
+            "expr": "v/9.8",
+            "unit": "s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine the maximum height.",
+          "answer": {
+            "expr": "-4.9*(v/9.8)^2 + v*(v/9.8) + 1",
+            "unit": "m",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) Centred interval at $t = 1$: $\\dfrac{h(1.001) - h(0.999)}{0.002} \\approx {{v - 9.8:4}}$ m/s (upward).\n\n(b) The velocity is 0 at the top. For any $t$, a centred estimate gives $v - 9.8t$ m/s; setting $ {{v}} - 9.8t = 0$ gives $t = \\dfrac{ {{v}} }{9.8} \\approx {{v/9.8:3}}$ s. (Check: estimates just before this time are positive, just after are negative.)\n\n(c) Maximum height $h({{v/9.8:3}}) \\approx {{-4.9*(v/9.8)^2 + v*(v/9.8) + 1:3}}$ m.",
+      "rubric": [
+        {
+          "point": "Velocity at t = 1 with method",
+          "marks": 2
+        },
+        {
+          "point": "Explains velocity is zero at the top",
+          "marks": 1
+        },
+        {
+          "point": "Finds the time of maximum height",
+          "marks": 1
+        },
+        {
+          "point": "Maximum height",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-6-q16",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Describe how you would estimate the instantaneous speed of a cyclist at exactly 10 s into a ride, given (a) a distance–time graph, (b) a table of distance readings every 0.5 s, and (c) an equation $d(t)$ for the distance. For each method, state one source of error and how to reduce it.",
+      "modelAnswer": "(a) **Graph:** draw the tangent at $t = 10$ s, choose a second point on the tangent, and compute its slope (or use a secant to a nearby point on the curve). Error: inaccurate tangent or misread coordinates — use a large, accurate graph and choose points far apart *on the tangent line*.\n\n(b) **Table:** use the readings at 9.5 s and 10.5 s (a centred interval): $\\dfrac{d(10.5) - d(9.5)}{1}$. Error: the interval is not infinitely small — use the closest readings, on both sides.\n\n(c) **Equation:** compute $\\dfrac{d(10 + h) - d(10)}{h}$ (or centred) for $h = 0.1, 0.01, 0.001$ and see what value the results approach. Error: rounding in calculations — carry extra digits.",
+      "rubric": [
+        {
+          "point": "Graph method and error",
+          "marks": 2
+        },
+        {
+          "point": "Table method with centred interval and error",
+          "marks": 2
+        },
+        {
+          "point": "Equation method with shrinking h and error",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-6-q17",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Use the difference quotient to show that, for $f(x) = x^2$, the instantaneous rate of change at $x = a$ is $2a$. Then use your result to find the point on the graph where the tangent has slope {{2*m}}, and write the equation of that tangent.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x$-coordinate of the point",
+          "answer": {
+            "expr": "m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-intercept of the tangent",
+          "answer": {
+            "expr": "-m^2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$$\\frac{f(a + h) - f(a)}{h} = \\frac{(a + h)^2 - a^2}{h} = \\frac{2ah + h^2}{h} = 2a + h$$\n\nAs $h$ approaches 0, this approaches $2a$.\n\nSlope {{2*m}}: $2a = {{2*m}} \\Rightarrow a = {{m}}$, so the point is $({{m}}, {{m^2}})$.\n\nTangent: $y - {{m^2}} = {{2*m}}(x - {{m}})$, i.e. $y = {{2*m}}x - {{m^2}}$.",
+      "rubric": [
+        {
+          "point": "Correct difference quotient simplification",
+          "marks": 2
+        },
+        {
+          "point": "Concludes 2a",
+          "marks": 1
+        },
+        {
+          "point": "Finds the point",
+          "marks": 1
+        },
+        {
+          "point": "Correct tangent equation",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

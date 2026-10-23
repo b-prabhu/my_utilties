@@ -1,0 +1,1099 @@
+{
+  "id": "3-2",
+  "number": "3.2",
+  "title": "Reciprocal of a Quadratic Function",
+  "estimatedMinutes": 80,
+  "overview": "Flip a parabola upside-down-and-inside-out and you get the reciprocal of a quadratic. Depending on whether the parabola crosses the $x$-axis twice, touches it once or misses it, the reciprocal has two, one or no vertical asymptotes. Learn to predict every feature – including the turning point – from the quadratic itself.",
+  "objectives": [
+    "Find the vertical and horizontal asymptotes of $f(x) = \\dfrac{1}{ax^2 + bx + c}$.",
+    "Classify the graph by the number of real zeros of the quadratic.",
+    "Locate local maximum or minimum points and state domain and range.",
+    "Build and read summary tables of sign, slope and change in slope.",
+    "Estimate instantaneous rates of change.",
+    "Sketch a reciprocal from the graph of the quadratic and apply inverse-square laws."
+  ],
+  "lessons": [
+    {
+      "id": "cases",
+      "title": "Three families: it all depends on the zeros of the quadratic",
+      "body": "For $f(x) = \\dfrac{1}{ax^2 + bx + c}$ the **vertical asymptotes come from the zeros of the quadratic** in the denominator. A quadratic can have two, one or no real zeros, so there are three families of graphs.\n\n| Zeros of the quadratic | Example | Vertical asymptotes | Shape |\n|---|---|---|---|\n| two distinct | $\\dfrac{1}{(x-2)(x+1)}$ | two | three pieces; the middle piece is a \"hump\" with a local max or min |\n| one double zero | $\\dfrac{1}{(x-3)^2}$ | one | two pieces, **both on the same side** of the $x$-axis |\n| none | $\\dfrac{1}{x^2+4}$ | none | one smooth \"bell\" shape with a maximum |\n\nIn every case the **horizontal asymptote is $y = 0$**: as $x \\to \\pm\\infty$ the quadratic becomes enormous, so its reciprocal goes to 0.\n\n> **Tip:** the discriminant $b^2 - 4ac$ tells you the family at a glance: positive → two asymptotes, zero → one, negative → none.\n\n```plot\ntitle: Reciprocals of quadratics\nf: 1/((x-2)*(x+1)) | label=two zeros\nf: 1/(x^2+1) | dashed; label=no zeros\ndomain: -5, 5\nrange: -4, 4\nasymptote x: 2\nasymptote x: -1\nasymptote y: 0\n```\n"
+    },
+    {
+      "id": "two",
+      "title": "Two distinct zeros: the middle hump",
+      "body": "Take $g(x) = \\dfrac{1}{(x - 2)(x + 1)}$.\n\n**Restrictions:** $x \\ne 2$ and $x \\ne -1$, so there are vertical asymptotes $x = 2$ and $x = -1$.\n\n**Signs in each interval** (use test points):\n\n| Interval | $x < -1$ | $-1 < x < 2$ | $x > 2$ |\n|---|---|---|---|\n| test $x$ | −2 | 0 | 3 |\n| $(x-2)(x+1)$ | $(-)(-) = +$ | $(-)(+) = -$ | $(+)(+) = +$ |\n| sign of $g(x)$ | + | − | + |\n\n**The turning point:** the quadratic $y = (x-2)(x+1)$ has its vertex halfway between its zeros, at $x = \\frac{2 + (-1)}{2} = 0.5$, where $y = (0.5-2)(0.5+1) = -2.25$. The reciprocal turns at the **same $x$-value**: local maximum $\\left(0.5, \\frac{1}{-2.25}\\right) = (0.5, -0.4)$ (approximately $-0.444$).\n\n$y$-intercept: $g(0) = \\dfrac{1}{-2} = -0.5$.\n\n```plot\ntitle: g(x) = 1/((x − 2)(x + 1))\nf: 1/((x-2)*(x+1))\ndomain: -5, 5\nrange: -4, 4\npoints: (0.5,-0.4444), (0,-0.5)\nasymptote x: 2\nasymptote x: -1\nasymptote y: 0\n```\n\nThe middle branch is **symmetric** about the vertical line $x = 0.5$, halfway between the asymptotes.\n"
+    },
+    {
+      "id": "one",
+      "title": "A double zero and no zeros",
+      "body": "### One double zero: $f(x) = \\dfrac{1}{(x - 3)^2}$\nThe denominator is a perfect square, so it is **never negative**. The function is positive everywhere it exists.\n* One vertical asymptote $x = 3$; $f(x) \\to +\\infty$ from **both** sides.\n* Increasing for $x < 3$, decreasing for $x > 3$.\n* Range $\\{y \\in \\mathbb{R} \\mid y > 0\\}$.\n\n### No real zeros: $f(x) = \\dfrac{1}{x^2 + 4}$\nThe denominator is always at least 4, so the function is defined for every $x$ and its values are between 0 and $\\frac{1}{4}$.\n* **No vertical asymptote.** Domain $\\{x \\in \\mathbb{R}\\}$.\n* Maximum point $(0, 0.25)$ – the reciprocal of the quadratic's minimum value 4.\n* Range $\\{y \\in \\mathbb{R} \\mid 0 < y \\le 0.25\\}$.\n* Increasing for $x < 0$, decreasing for $x > 0$.\n\n```plot\nf: 1/(x-3)^2 | label=1/(x − 3)²\nf: 1/(x^2+4) | label=1/(x² + 4)\ndomain: -5, 7\nrange: -0.5, 3\npoints: (0,0.25)\nasymptote x: 3\nasymptote y: 0\nticks: 1, 0.5\n```\n"
+    },
+    {
+      "id": "slope",
+      "title": "Slope and change in slope: reading a summary table",
+      "body": "A **summary table** organises everything you know about the graph, interval by interval. For the reciprocal of a quadratic with two zeros, e.g. $f(x) = \\dfrac{1}{(x+3)(x-5)}$:\n\n| Interval | $x < -3$ | $-3 < x < 1$ | $x = 1$ | $1 < x < 5$ | $x > 5$ |\n|---|---|---|---|---|---|\n| sign of $f(x)$ | + | − | − | − | + |\n| sign of slope | + | + | 0 | − | − |\n| change in slope | + | − | − | − | + |\n\nHow to read it:\n* **Sign of slope** + means the function is increasing; − means decreasing; 0 marks the turning point (here a local maximum at $x = 1$, the midpoint of −3 and 5).\n* **Change in slope** + means the slope is increasing (the curve bends upward, like a cup); − means the slope is decreasing (bends downward, like a cap).\n\n### Rate of change\nBecause the slope changes continuously, use secants to estimate the instantaneous rate of change. For $f(x) = \\dfrac{1}{x^2 + 4}$ at $x = 1$:\n\n$$\\frac{f(1.001) - f(1)}{0.001} = \\frac{0.199\\,920 - 0.2}{0.001} \\approx -0.08$$\n"
+    },
+    {
+      "id": "method",
+      "title": "A sketching method: take reciprocals of key points",
+      "body": "You can sketch $y = \\dfrac{1}{q(x)}$ directly from the graph of the quadratic $y = q(x)$:\n\n1. **Zeros** of $q$ become **vertical asymptotes**.\n2. Where $q(x) = 1$ or $q(x) = -1$ the reciprocal is the same: these are **invariant points**.\n3. The **vertex** of $q$ becomes the **turning point** of the reciprocal: if $q$ has minimum $m$ at $x = h$, then $\\frac{1}{q}$ has a turning point $\\left(h, \\frac{1}{m}\\right)$. A minimum of $q$ becomes a maximum of $\\frac{1}{q}$ (when $m > 0$) and vice versa.\n4. Where $q$ is large, $\\frac{1}{q}$ is close to 0; where $q$ is close to 0, $\\frac{1}{q}$ is huge.\n5. Where $q$ is **increasing**, $\\frac{1}{q}$ is **decreasing**, and vice versa. The **sign** is the same.\n\n```plot\nf: x^2-4 | dashed; label=y = x² − 4\nf: 1/(x^2-4) | label=y = 1/(x² − 4)\ndomain: -5, 5\nrange: -5, 5\npoints: (0,-4), (0,-0.25)\nasymptote x: -2\nasymptote x: 2\nasymptote y: 0\n```\n\n**Transformations** still apply: $f(x) = \\dfrac{1}{x^2} + 3$ is $y = \\frac{1}{x^2}$ shifted up 3, so its horizontal asymptote is $y = 3$ and its range is $y > 3$.\n"
+    },
+    {
+      "id": "apps",
+      "title": "Inverse-square laws",
+      "body": "Many physical quantities are **inversely proportional to the square of a distance**:\n\n$$I = \\frac{k}{d^2}$$\n\nThis is the reciprocal of a quadratic function. Examples: the intensity of light, sound or radiation from a source, and the force of gravity.\n\n* **Doubling the distance** makes the intensity $\\frac{1}{2^2} = \\frac{1}{4}$ as strong.\n* **Tripling** the distance makes it $\\frac{1}{9}$ as strong.\n\n**Weight above Earth.** A person's weight at height $h$ km above the surface is $W(h) = W_0\\dfrac{6400^2}{(6400 + h)^2}$ where $W_0$ is the weight on the surface and 6400 km is Earth's radius. This is why astronauts \"feel lighter\" (although they are mostly experiencing free fall).\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "reciprocal of a quadratic function",
+      "definition": "A function of the form $f(x) = \\dfrac{1}{ax^2 + bx + c}$, $a \\ne 0$."
+    },
+    {
+      "term": "local maximum / minimum",
+      "definition": "A point that is higher (or lower) than all nearby points on the graph."
+    },
+    {
+      "term": "summary table",
+      "definition": "A table listing, for each interval between key x-values, the sign of the function, the sign of the slope and the change in slope."
+    },
+    {
+      "term": "invariant point",
+      "definition": "A point that is unchanged by a transformation; for reciprocals, points where $y = 1$ or $y = -1$."
+    },
+    {
+      "term": "inverse-square relationship",
+      "definition": "A relationship of the form $y = \\dfrac{k}{x^2}$."
+    },
+    {
+      "term": "discriminant",
+      "definition": "$b^2 - 4ac$; it tells how many real zeros a quadratic has, and so how many vertical asymptotes its reciprocal has."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Reciprocal of a quadratic",
+      "latex": "f(x) = \\frac{1}{ax^2+bx+c}",
+      "meaning": "Vertical asymptotes at the real zeros of the quadratic; horizontal asymptote $y = 0$."
+    },
+    {
+      "name": "Turning point",
+      "latex": "x = \\frac{r_1 + r_2}{2}",
+      "meaning": "For two zeros $r_1, r_2$, the local max/min of the reciprocal is midway between them."
+    },
+    {
+      "name": "Discriminant",
+      "latex": "D = b^2 - 4ac",
+      "meaning": "$D>0$: two vertical asymptotes, $D=0$: one, $D<0$: none."
+    },
+    {
+      "name": "Inverse-square law",
+      "latex": "I = \\frac{k}{d^2}",
+      "meaning": "Doubling $d$ divides $I$ by 4."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Domain, range and asymptotes",
+      "problem": "For $f(x) = \\dfrac{1}{x^2 - 4}$, find the asymptotes, intercepts, domain and range.",
+      "steps": [
+        "Factor: $x^2 - 4 = (x - 2)(x + 2)$. Vertical asymptotes $x = -2$ and $x = 2$. Horizontal asymptote $y = 0$.",
+        "$y$-intercept $f(0) = -\\frac{1}{4}$. No $x$-intercept (numerator 1).",
+        "The quadratic's vertex is $(0, -4)$, so $f$ has a local maximum at $(0, -0.25)$.",
+        "Signs: $x < -2$: $+$; $-2 < x < 2$: $-$; $x > 2$: $+$.",
+        "Domain $\\{x \\mid x \\ne \\pm 2\\}$. Range: the middle branch gives $y \\le -0.25$ and the outer branches give $y > 0$, so the range is $\\{y \\mid y \\le -0.25 \\text{ or } y > 0\\}$."
+      ],
+      "answer": "Asymptotes $x = \\pm2$, $y = 0$; local max $(0, -0.25)$; range $y \\le -0.25$ or $y > 0$."
+    },
+    {
+      "title": "Rate of change",
+      "problem": "Estimate the instantaneous rate of change of $f(x) = \\dfrac{1}{x^2 - 4}$ at $x = 1$ and at $x = -1$.",
+      "steps": [
+        "$f(1) = -\\frac{1}{3} = -0.333\\,333$ and $f(1.001) = \\frac{1}{1.002\\,001 - 4} = -0.333\\,556$.",
+        "Slope $\\approx \\frac{-0.333\\,556 + 0.333\\,333}{0.001} \\approx -0.222$.",
+        "By symmetry about $x = 0$, the slope at $x = -1$ is $+0.222$."
+      ],
+      "answer": "About $-0.22$ at $x = 1$ (decreasing) and $+0.22$ at $x = -1$ (increasing)."
+    },
+    {
+      "title": "Describe the key features of a function with no asymptote",
+      "problem": "Describe the key features of $f(x) = \\dfrac{1}{x^2 + 2x + 5}$.",
+      "steps": [
+        "Discriminant $2^2 - 4(1)(5) = -16 < 0$: no real zeros, so no vertical asymptote. Domain $\\{x \\in \\mathbb{R}\\}$.",
+        "Complete the square: $x^2 + 2x + 5 = (x + 1)^2 + 4$. Minimum value 4 at $x = -1$.",
+        "So $f$ has a maximum $(-1, 0.25)$. Range $\\{y \\mid 0 < y \\le 0.25\\}$.",
+        "Increasing for $x < -1$, decreasing for $x > -1$. $y$-intercept $f(0) = 0.2$. Horizontal asymptote $y = 0$."
+      ],
+      "answer": "Maximum $(-1, 0.25)$, no vertical asymptotes, range $0 < y \\le 0.25$."
+    },
+    {
+      "title": "Double zero",
+      "problem": "Sketch $f(x) = -\\dfrac{1}{(x+1)^2}$ by describing its features.",
+      "steps": [
+        "One vertical asymptote $x = -1$; horizontal asymptote $y = 0$.",
+        "$(x+1)^2 > 0$, so with the negative sign $f(x) < 0$ for all $x \\ne -1$.",
+        "As $x \\to -1$ from either side, $f(x) \\to -\\infty$.",
+        "Decreasing for $x < -1$ and increasing for $x > -1$. $y$-intercept $-1$. Range $y < 0$."
+      ],
+      "answer": "Both branches lie below the $x$-axis and plunge to $-\\infty$ at $x = -1$."
+    },
+    {
+      "title": "Inverse-square law",
+      "problem": "Radiation intensity from a source is 80 units at 2 m. How intense is it at 5 m?",
+      "steps": [
+        "$I = \\frac{k}{d^2}$, so $80 = \\frac{k}{4}$ and $k = 320$.",
+        "$I(5) = \\frac{320}{25} = 12.8$ units."
+      ],
+      "answer": "12.8 units – moving 2.5 times farther cuts the intensity to $\\frac{1}{6.25}$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Every reciprocal of a quadratic has two vertical asymptotes.",
+      "fact": "It has as many vertical asymptotes as the quadratic has **real zeros**: two, one or none."
+    },
+    {
+      "myth": "The local maximum of $\\dfrac{1}{(x-2)(x+1)}$ is at the vertical asymptote.",
+      "fact": "It is **midway** between the asymptotes, at the same $x$ as the quadratic's vertex, $x = 0.5$."
+    },
+    {
+      "myth": "The range of $\\dfrac{1}{x^2+4}$ is $y > 0$.",
+      "fact": "The denominator is at least 4, so the largest value is $\\frac{1}{4}$. Range: $0 < y \\le 0.25$."
+    },
+    {
+      "myth": "If the quadratic is increasing, its reciprocal is increasing too.",
+      "fact": "Reciprocals reverse the direction: where $q$ increases (and keeps its sign), $\\frac{1}{q}$ decreases."
+    },
+    {
+      "myth": "Doubling the distance halves the intensity in an inverse-square law.",
+      "fact": "It divides the intensity by $2^2 = 4$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Sun safety",
+      "body": "Radiation intensity follows $I = \\frac{k}{d^2}$, which is why intensity falls off quickly with distance from a lamp or source – a key idea in designing tanning-bed and medical-imaging safety rules."
+    },
+    {
+      "title": "Astronaut weight",
+      "body": "At the International Space Station (about 400 km up) the factor $\\frac{6400^2}{6800^2} \\approx 0.89$, so an astronaut still has about 89% of their surface weight."
+    },
+    {
+      "title": "Lighting design",
+      "body": "Lighting designers use the inverse-square law to place lamps: moving a light twice as far away needs four times the power for the same brightness."
+    },
+    {
+      "title": "Sound at concerts",
+      "body": "Standing 10 m from a speaker instead of 20 m means four times the sound intensity – a real risk for hearing."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Determine the vertical asymptotes and domain of $f(x) = \\dfrac{1}{(x-3)(x+4)}$.",
+      "hint": "Each factor gives one asymptote.",
+      "solution": "$x = 3$ and $x = -4$. Domain $\\{x \\mid x \\ne -4, 3\\}$."
+    },
+    {
+      "question": "Does $g(x) = \\dfrac{1}{x^2 + 8x + 12}$ have a local maximum or minimum? Where?",
+      "hint": "Factor and find the midpoint of the zeros.",
+      "solution": "$(x+2)(x+6)$, zeros −6 and −2, midpoint $x = -4$. $q(-4) = 16 - 32 + 12 = -4$, so $g$ has a local maximum $(-4, -0.25)$."
+    },
+    {
+      "question": "State the range of $h(x) = \\dfrac{1}{x^2 + 9}$.",
+      "hint": "What is the smallest value of the denominator?",
+      "solution": "The denominator is at least 9, so $0 < h(x) \\le \\frac{1}{9}$."
+    },
+    {
+      "question": "Describe where $f(x) = \\dfrac{1}{(x - 4)^2}$ is increasing and decreasing.",
+      "hint": "Think about $(x-4)^2$ first.",
+      "solution": "$(x-4)^2$ decreases for $x < 4$ and increases for $x > 4$, so $f$ increases for $x < 4$ and decreases for $x > 4$."
+    },
+    {
+      "question": "Estimate the rate of change of $f(x) = \\dfrac{1}{x^2 + 1}$ at $x = 1$.",
+      "hint": "Use $x = 1$ and $x = 1.001$.",
+      "solution": "$\\frac{\\frac{1}{2.002001} - 0.5}{0.001} \\approx -0.5$."
+    },
+    {
+      "question": "Write an equation for the reciprocal of a quadratic with vertical asymptotes $x = -4$ and $x = 5$ that is negative for $x < -4$ and $x > 5$.",
+      "hint": "Start with $\\frac{1}{(x+4)(x-5)}$ and check the signs.",
+      "solution": "$\\frac{1}{(x+4)(x-5)}$ is positive outside the asymptotes, so reflect: $f(x) = -\\dfrac{1}{(x+4)(x-5)}$."
+    },
+    {
+      "question": "Light intensity is 6 lux at 50 m from a source. What is it at 25 m?",
+      "hint": "Halving the distance multiplies intensity by 4.",
+      "solution": "$6 \\times 4 = 24$ lux."
+    }
+  ],
+  "summary": [
+    "$f(x) = \\dfrac{1}{ax^2 + bx + c}$ has vertical asymptotes at the real zeros of the quadratic and horizontal asymptote $y = 0$.",
+    "Two zeros: three branches; the middle one has a local max/min midway between the asymptotes. One double zero: both branches on the same side of the $x$-axis. No zeros: no vertical asymptote and a single maximum.",
+    "The reciprocal has the same sign as the quadratic, turns at the same $x$-value, and increases where the quadratic decreases (and vice versa).",
+    "Summary tables record the sign of $f$, the sign of the slope and the change in slope on each interval.",
+    "Inverse-square laws $I = \\frac{k}{d^2}$ are reciprocals of quadratics."
+  ],
+  "questions": [
+    {
+      "id": "3-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{1}{(x - {{p}})(x + {{q}})}$:",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the vertical asymptotes and state the domain."
+        },
+        {
+          "label": "b",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "-1/(p*q)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the horizontal asymptote."
+        },
+        {
+          "label": "d",
+          "text": "Determine the sign of $f(x)$ on each interval."
+        }
+      ],
+      "modelAnswer": "(a) The denominator is zero when $x = {{p}}$ or $x = -{{q}}$: vertical asymptotes $x = {{p}}$ and $x = -{{q}}$. Domain $\\{x \\in \\mathbb{R} \\mid x \\ne -{{q}}, {{p}}\\}$.\n\n(b) $f(0) = \\dfrac{1}{(-{{p}})({{q}})} = -\\dfrac{1}{ {{p*q}} } \\approx {{-1/(p*q):3}}$.\n\n(c) Horizontal asymptote $y = 0$ because the denominator grows without bound as $x \\to \\pm\\infty$.\n\n(d) Test points: for $x < -{{q}}$ both factors are negative → $f > 0$; between the asymptotes one factor is negative → $f < 0$; for $x > {{p}}$ → $f > 0$.",
+      "rubric": [
+        {
+          "point": "Both vertical asymptotes and domain",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal asymptote with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct signs on all three intervals with test points",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "id": "3-2-q02",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Analyse $g(x) = \\dfrac{1}{x^2 - {{n*n}}}$: asymptotes, the local maximum or minimum, intervals of increase and decrease, and the range.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the $y$-coordinate of the local maximum.",
+          "answer": {
+            "expr": "-1/(n*n)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Give the asymptotes, intervals of increase/decrease and the range."
+        }
+      ],
+      "modelAnswer": "$x^2 - {{n*n}} = (x - {{n}})(x + {{n}})$: vertical asymptotes $x = \\pm{{n}}$; horizontal asymptote $y = 0$.\n\nThe quadratic has its vertex at $(0, -{{n*n}})$, so $g$ has a **local maximum** at $\\left(0, -\\dfrac{1}{ {{n*n}} }\\right) \\approx (0, {{-1/(n*n):3}})$.\n\nIncreasing: $x < -{{n}}$ and $-{{n}} < x < 0$. Decreasing: $0 < x < {{n}}$ and $x > {{n}}$.\n\nSigns: positive outside the asymptotes, negative between them. Range $\\{y \\mid y \\le -\\frac{1}{ {{n*n}} } \\text{ or } y > 0\\}$.",
+      "rubric": [
+        {
+          "point": "Factors and finds both vertical asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Local maximum point correct",
+          "marks": 2
+        },
+        {
+          "point": "Correct increasing/decreasing intervals",
+          "marks": 2
+        },
+        {
+          "point": "Correct range",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Describe the key features of $f(x) = \\dfrac{1}{x^2 + {{n}}}$: domain, asymptotes, maximum or minimum point, range, intervals of increase and decrease, and symmetry.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the maximum value of $f$.",
+          "answer": {
+            "expr": "1/n",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the remaining key features."
+        }
+      ],
+      "modelAnswer": "$x^2 + {{n}} \\ge {{n}} > 0$, so there are no real zeros and **no vertical asymptote**. Domain $\\{x \\in \\mathbb{R}\\}$.\n\nHorizontal asymptote $y = 0$.\n\nThe denominator is smallest (${{n}}$) at $x = 0$, so $f$ has a **maximum** $\\left(0, \\frac{1}{ {{n}} }\\right) \\approx (0, {{1/n:3}})$.\n\nRange $\\{y \\mid 0 < y \\le \\frac{1}{ {{n}} }\\}$. Increasing for $x < 0$, decreasing for $x > 0$. The graph is symmetric about the $y$-axis because $f(-x) = f(x)$.",
+      "rubric": [
+        {
+          "point": "No vertical asymptote with reason",
+          "marks": 2
+        },
+        {
+          "point": "Maximum point correct",
+          "marks": 2
+        },
+        {
+          "point": "Range correct",
+          "marks": 1
+        },
+        {
+          "point": "Increase/decrease intervals",
+          "marks": 1
+        },
+        {
+          "point": "Symmetry about the y-axis justified",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q04",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "For $h(x) = \\dfrac{1}{(x - {{h}})^2}$ describe the asymptotes, the behaviour near the vertical asymptote, the intervals of increase and decrease, the $y$-intercept and the range. How does this graph differ from that of $\\dfrac{1}{x - {{h}}}$?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the $y$-intercept.",
+          "answer": {
+            "expr": "1/(h*h)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the other features and compare the graphs."
+        }
+      ],
+      "modelAnswer": "Vertical asymptote $x = {{h}}$, horizontal asymptote $y = 0$.\n\n$(x - {{h}})^2 > 0$ for $x \\ne {{h}}$, so $h(x) > 0$: as $x \\to {{h}}^-$ and as $x \\to {{h}}^+$, $h(x) \\to +\\infty$.\n\nIncreasing for $x < {{h}}$; decreasing for $x > {{h}}$. $y$-intercept $h(0) = \\frac{1}{ {{h*h}} } \\approx {{1/(h*h):3}}$. Range $\\{y \\mid y > 0\\}$.\n\nFor $\\frac{1}{x - {{h}}}$ the two branches go in **opposite** directions (to $-\\infty$ on the left, $+\\infty$ on the right) and the left branch is negative; here both branches are positive and both go to $+\\infty$. The graph of $h$ is symmetric about $x = {{h}}$.",
+      "rubric": [
+        {
+          "point": "Asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Both branches → +∞ with reason (square is positive)",
+          "marks": 2
+        },
+        {
+          "point": "Increase/decrease intervals",
+          "marks": 1
+        },
+        {
+          "point": "y-intercept and range",
+          "marks": 2
+        },
+        {
+          "point": "Clear comparison with reciprocal of linear",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{1}{(x + {{a}})(x - {{b}})}$, determine the location and value of the local maximum or minimum, and state which it is.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the $x$-coordinate of the turning point.",
+          "answer": {
+            "expr": "(b-a)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find its $y$-coordinate.",
+          "answer": {
+            "expr": "-4/(a+b)^2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Is it a local maximum or minimum? Explain."
+        }
+      ],
+      "modelAnswer": "The zeros of the quadratic are $-{{a}}$ and ${{b}}$; the turning point is midway: $x = \\dfrac{-{{a}} + {{b}}}{2} = {{(b-a)/2:3}}$.\n\nAt this $x$: $({{(b-a)/2:3}} + {{a}})({{(b-a)/2:3}} - {{b}}) = ({{(a+b)/2:3}})(-{{(a+b)/2:3}}) = -{{(a+b)^2/4:4}}$.\n\nSo $f$ has a **local maximum** at $\\left({{(b-a)/2:3}}, -\\dfrac{1}{ {{(a+b)^2/4:4}} }\\right) \\approx ({{(b-a)/2:3}}, {{-4/(a+b)^2:3}})$. It is a maximum because the middle branch is negative and the quadratic has a minimum there (a minimum of a negative quadratic becomes a maximum of its reciprocal).",
+      "rubric": [
+        {
+          "point": "Midpoint of zeros",
+          "marks": 2
+        },
+        {
+          "point": "Correct value of the quadratic there",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-value of the turning point",
+          "marks": 2
+        },
+        {
+          "point": "Identifies local maximum with justification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q06",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "A reciprocal of a quadratic function has this summary table.\n\n| Interval | $x < -3$ | $-3 < x < 1$ | $x = 1$ | $1 < x < 5$ | $x > 5$ |\n|---|---|---|---|---|---|\n| sign of $f(x)$ | + | − | − | − | + |\n| sign of slope | + | + | 0 | − | − |\n| change in slope | + | − | − | − | + |\n\nDescribe the shape of the graph in words, and determine a possible equation for the function. Justify your equation using the table.",
+      "modelAnswer": "The function changes sign at $x = -3$ and $x = 5$ and is undefined there (the table skips them), so these are vertical asymptotes. Between them $f$ is negative, increasing up to $x = 1$ (slope 0) and then decreasing: a local maximum at $x = 1$, the midpoint of −3 and 5. Outside, the branches are positive: the left branch increases toward $+\\infty$ as $x \\to -3^-$ (slope increasing, concave up), and the right branch decreases from $+\\infty$ toward 0 (concave up).\n\nA possible equation: $f(x) = \\dfrac{1}{(x + 3)(x - 5)}$. Check: the quadratic is positive for $x < -3$ and $x > 5$ and negative between ✓; its vertex is at $x = 1$ ✓; $f(1) = \\frac{1}{(4)(-4)} = -\\frac{1}{16}$, negative ✓. (Any positive multiple $\\frac{k}{(x+3)(x-5)}$, $k > 0$, would also fit.)",
+      "rubric": [
+        {
+          "point": "Identifies vertical asymptotes x = −3 and x = 5",
+          "marks": 2
+        },
+        {
+          "point": "Identifies local maximum at x = 1",
+          "marks": 1
+        },
+        {
+          "point": "Describes branches using slope and change in slope",
+          "marks": 2
+        },
+        {
+          "point": "Gives a correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Justifies equation against table entries",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "q": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Estimate the instantaneous rate of change of $f(x) = \\dfrac{1}{x^2 + {{p}}x + {{q}}}$ at its $y$-intercept, using a secant from $x = 0$ to $x = 0.001$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the rate of change at the $y$-intercept.",
+          "answer": {
+            "expr": "-p/q^2",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "$f(0) = \\dfrac{1}{ {{q}} } \\approx {{1/q:5}}$.\n\n$f(0.001) = \\dfrac{1}{0.000\\,001 + {{p}}(0.001) + {{q}}} \\approx {{1/(0.000001+p*0.001+q):6}}$.\n\nRate $\\approx \\dfrac{f(0.001) - f(0)}{0.001} \\approx {{-p/q^2:3}}$.\n\nThe rate is negative, so the function is decreasing as it crosses the $y$-axis.",
+      "rubric": [
+        {
+          "point": "Correct f(0)",
+          "marks": 1
+        },
+        {
+          "point": "Correct f(0.001)",
+          "marks": 1
+        },
+        {
+          "point": "Correct secant slope",
+          "marks": 2
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d0": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "I0": {
+          "min": 20,
+          "max": 90,
+          "step": 5
+        },
+        "d1": {
+          "min": 6,
+          "max": 10,
+          "step": 1
+        },
+        "I1": {
+          "min": 2,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "The intensity of radiation from a source is inversely proportional to the square of the distance from the source. At {{d0}} m the intensity is {{I0}} units.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for $I$ in terms of $d$."
+        },
+        {
+          "label": "b",
+          "text": "Find the intensity at {{d1}} m.",
+          "answer": {
+            "expr": "I0*d0^2/d1^2",
+            "unit": "units",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "At what distance is the intensity {{I1}} units?",
+          "answer": {
+            "expr": "sqrt(I0*d0^2/I1)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain the effect of doubling the distance and describe the graph in context."
+        }
+      ],
+      "modelAnswer": "(a) $I = \\dfrac{k}{d^2}$; $k = {{I0}} \\times {{d0}}^2 = {{I0*d0^2}}$, so $I = \\dfrac{ {{I0*d0^2}} }{d^2}$.\n\n(b) $I({{d1}}) = \\dfrac{ {{I0*d0^2}} }{ {{d1^2}} } \\approx {{I0*d0^2/d1^2:3}}$ units.\n\n(c) $d = \\sqrt{\\dfrac{ {{I0*d0^2}} }{ {{I1}} }} \\approx {{sqrt(I0*d0^2/I1):3}}$ m.\n\n(d) Doubling $d$ multiplies $d^2$ by 4, so the intensity becomes $\\frac{1}{4}$ of its value. Only $d > 0$ is meaningful, so only the right branch of the graph is used; the intensity approaches 0 but never reaches it.",
+      "rubric": [
+        {
+          "point": "Correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Intensity at new distance",
+          "marks": 1
+        },
+        {
+          "point": "Distance for given intensity",
+          "marks": 2
+        },
+        {
+          "point": "Effect of doubling with reason",
+          "marks": 1
+        },
+        {
+          "point": "Domain restriction/graph interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q09",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "W0": {
+          "min": 600,
+          "max": 900,
+          "step": 25
+        },
+        "h1": {
+          "min": 300,
+          "max": 2000,
+          "step": 100
+        }
+      },
+      "text": "An astronaut weighs {{W0}} N on Earth's surface. At a height of $h$ km above the surface, weight is $W(h) = {{W0}}\\dfrac{6400^2}{(6400 + h)^2}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the weight at {{h1}} km.",
+          "answer": {
+            "expr": "W0*6400^2/(6400+h1)^2",
+            "unit": "N",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "At what height is the weight half of the surface weight?",
+          "answer": {
+            "expr": "6400*(sqrt(2)-1)",
+            "unit": "km",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the asymptotes of the model in context."
+        }
+      ],
+      "modelAnswer": "(a) $W({{h1}}) = {{W0}}\\dfrac{6400^2}{ {{6400+h1}}^2} \\approx {{W0*6400^2/(6400+h1)^2:3}}$ N.\n\n(b) Set $\\dfrac{6400^2}{(6400+h)^2} = \\dfrac{1}{2}$: $(6400 + h)^2 = 2(6400)^2$, so $6400 + h = 6400\\sqrt{2}$ and $h = 6400(\\sqrt{2} - 1) \\approx {{6400*(sqrt(2)-1):3}}$ km.\n\n(c) As $h \\to \\infty$, $W(h) \\to 0$: horizontal asymptote $W = 0$. The vertical asymptote $h = -6400$ (Earth's centre) is outside the domain $h \\ge 0$, so the model only uses part of one branch.",
+      "rubric": [
+        {
+          "point": "Correct weight at given height",
+          "marks": 2
+        },
+        {
+          "point": "Sets up equation for half weight",
+          "marks": 1
+        },
+        {
+          "point": "Solves correctly",
+          "marks": 2
+        },
+        {
+          "point": "Interprets asymptotes and domain",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Without graphing, describe the similarities and differences between the graphs of $f(x) = \\dfrac{1}{x^2}$ and $g(x) = \\dfrac{1}{x^2 + 1}$.",
+      "modelAnswer": "**Similarities:** both are positive for all $x$ in their domains, symmetric about the $y$-axis, increasing for $x < 0$ and decreasing for $x > 0$, and have horizontal asymptote $y = 0$.\n\n**Differences:** $f$ has a vertical asymptote $x = 0$ (the denominator is zero there) and its values grow without bound near $x = 0$; range $y > 0$. $g$ has no vertical asymptote because $x^2 + 1 \\ge 1$; it has a maximum point $(0, 1)$ and range $0 < y \\le 1$. $g$ has a $y$-intercept of 1; $f$ has none.",
+      "rubric": [
+        {
+          "point": "At least three correct similarities",
+          "marks": 2
+        },
+        {
+          "point": "Vertical asymptote difference with reason",
+          "marks": 2
+        },
+        {
+          "point": "Maximum point and range of g",
+          "marks": 2
+        },
+        {
+          "point": "y-intercept difference",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q11",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain why the turning point of $f(x) = \\dfrac{1}{q(x)}$, where $q(x)$ is a quadratic with two real zeros, occurs at the same $x$-value as the vertex of $q(x)$. Explain also why a minimum of $q$ between its zeros becomes a maximum of $f$.",
+      "modelAnswer": "Between its zeros, $q(x)$ is negative (if it opens up) and reaches its most negative value, the minimum $m < 0$, at the vertex. Taking reciprocals reverses the order of numbers with the same sign: the further a negative number is from 0, the closer its reciprocal is to 0. So where $q$ is lowest (most negative), $\\frac{1}{q}$ is **closest to zero** – which on the negative middle branch is its **highest** point. Therefore $f$ has a local maximum at the same $x$ as the vertex, with value $\\frac{1}{m}$. Moving away from the vertex toward a zero, $q \\to 0^-$, so $f \\to -\\infty$.",
+      "rubric": [
+        {
+          "point": "q is negative between zeros with minimum at the vertex",
+          "marks": 1
+        },
+        {
+          "point": "Reciprocal reverses order for same-sign values",
+          "marks": 2
+        },
+        {
+          "point": "Concludes the turning point is at the vertex x",
+          "marks": 1
+        },
+        {
+          "point": "Explains why minimum becomes maximum",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q12",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Determine whether each graph is symmetric about the $y$-axis, about another vertical line, or neither. Justify algebraically or with key features. (a) $f(x) = \\dfrac{1}{x^2 - {{n*n}}}$ (b) $g(x) = \\dfrac{1}{(x - {{h}})^2}$ (c) $k(x) = \\dfrac{1}{x - {{h}}}$",
+      "modelAnswer": "(a) $f(-x) = \\dfrac{1}{(-x)^2 - {{n*n}}} = f(x)$, so $f$ is **even** and symmetric about the $y$-axis.\n\n(b) The only asymptote is $x = {{h}}$ and $g({{h}} + t) = \\frac{1}{t^2} = g({{h}} - t)$, so $g$ is symmetric about the vertical line $x = {{h}}$ (but not about the $y$-axis).\n\n(c) $k({{h}} + t) = \\frac{1}{t}$ and $k({{h}} - t) = -\\frac{1}{t}$: values are opposite, not equal, so there is **no** line of symmetry. Instead the graph has **point symmetry** about $({{h}}, 0)$, where the asymptotes meet.",
+      "rubric": [
+        {
+          "point": "(a) shows f(−x) = f(x)",
+          "marks": 2
+        },
+        {
+          "point": "(b) symmetry about x = h justified",
+          "marks": 2
+        },
+        {
+          "point": "(c) no line symmetry, point symmetry identified",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "n": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "A reciprocal of a quadratic function has vertical asymptotes $x = -{{m}}$ and $x = {{n}}$ and a $y$-intercept of $-\\dfrac{1}{ {{m*n}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation of the function and verify it."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate $f({{n+1}})$.",
+          "answer": {
+            "expr": "1/(n+1+m)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Try $f(x) = \\dfrac{1}{(x + {{m}})(x - {{n}})}$. Then $f(0) = \\dfrac{1}{({{m}})(-{{n}})} = -\\dfrac{1}{ {{m*n}} }$ ✓, and the asymptotes are $x = -{{m}}$ and $x = {{n}}$ ✓.\n\n$f({{n+1}}) = \\dfrac{1}{({{n+1+m}})(1)} \\approx {{1/(n+1+m):3}}$ – positive, as expected to the right of both asymptotes.",
+      "rubric": [
+        {
+          "point": "Correct factored equation",
+          "marks": 2
+        },
+        {
+          "point": "Verifies the y-intercept and asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Correct value f(n+1)",
+          "marks": 1
+        },
+        {
+          "point": "Comments on sign",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Use transformations to describe the graph of $f(x) = \\dfrac{1}{x^2} + {{k}}$. State its asymptotes, domain, range and intervals of increase and decrease.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Equation of the horizontal asymptote ($y = ?$).",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and intervals of increase and decrease."
+        }
+      ],
+      "modelAnswer": "Start with $y = \\dfrac{1}{x^2}$ (vertical asymptote $x = 0$, horizontal asymptote $y = 0$, both branches positive). Translate up {{k}} units.\n\nAsymptotes: $x = 0$ and $y = {{k}}$. Domain $\\{x \\mid x \\ne 0\\}$. Range $\\{y \\mid y > {{k}}\\}$. Increasing for $x < 0$, decreasing for $x > 0$. No $x$- or $y$-intercepts (the graph stays above $y = {{k}}$).",
+      "rubric": [
+        {
+          "point": "Identifies vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Both asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Domain and range",
+          "marks": 2
+        },
+        {
+          "point": "Intervals of increase/decrease",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q15",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Use the reciprocal-of-key-points method to describe how to sketch $f(x) = \\dfrac{1}{x^2 - {{n}}}$ from the graph of $y = x^2 - {{n}}$. Find the invariant points.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Positive $x$-coordinate of the invariant point with $y = 1$.",
+          "answer": {
+            "expr": "sqrt(n+1)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the rest of the sketch."
+        }
+      ],
+      "modelAnswer": "Zeros of $y = x^2 - {{n}}$: $x = \\pm\\sqrt{ {{n}} } \\approx \\pm{{sqrt(n):3}}$ → vertical asymptotes of $f$.\n\nVertex $(0, -{{n}})$ → local maximum of $f$ at $(0, -\\frac{1}{ {{n}} })$.\n\nInvariant points where $x^2 - {{n}} = \\pm 1$: $x^2 = {{n+1}}$ gives $x = \\pm{{sqrt(n+1):3}}$ (point $y = 1$) and $x^2 = {{n-1}}$ gives $x = \\pm{{sqrt(n-1):3}}$ (point $y = -1$).\n\nWhere the parabola is large, $f$ is near 0 (horizontal asymptote $y = 0$). Where the parabola increases ($x > 0$), $f$ decreases, and vice versa; the signs of $f$ match the parabola.",
+      "rubric": [
+        {
+          "point": "Zeros → vertical asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Vertex → local max with value",
+          "marks": 2
+        },
+        {
+          "point": "Invariant points found correctly",
+          "marks": 2
+        },
+        {
+          "point": "Large values → near 0; direction reversal; signs",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q16",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Analyse $f(x) = -\\dfrac{1}{x^2 - {{2*h}}x + {{h*h}}}$: factor the denominator, then state the asymptotes, intervals of increase and decrease, $y$-intercept and range.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the $y$-intercept.",
+          "answer": {
+            "expr": "-1/(h*h)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Give the remaining features."
+        }
+      ],
+      "modelAnswer": "$x^2 - {{2*h}}x + {{h*h}} = (x - {{h}})^2$, so $f(x) = -\\dfrac{1}{(x - {{h}})^2}$.\n\nVertical asymptote $x = {{h}}$, horizontal asymptote $y = 0$. Since $(x - {{h}})^2 > 0$, $f(x) < 0$ everywhere; $f(x) \\to -\\infty$ as $x \\to {{h}}$ from either side.\n\nDecreasing for $x < {{h}}$, increasing for $x > {{h}}$. $y$-intercept $-\\frac{1}{ {{h*h}} } \\approx {{-1/(h*h):3}}$. Range $\\{y \\mid y < 0\\}$.",
+      "rubric": [
+        {
+          "point": "Factors as a perfect square",
+          "marks": 1
+        },
+        {
+          "point": "Asymptotes",
+          "marks": 1
+        },
+        {
+          "point": "Sign and behaviour near asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Intervals of increase/decrease",
+          "marks": 1
+        },
+        {
+          "point": "y-intercept and range",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-2-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{1}{x^2 - {{a*a}}}$, find the average rate of change from $x = {{a+1}}$ to $x = {{a+2}}$. Is the function increasing or decreasing on this interval?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change.",
+          "answer": {
+            "expr": "1/((a+2)^2-a*a)-1/((a+1)^2-a*a)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f({{a+1}}) = \\dfrac{1}{ {{(a+1)^2-a*a}} } \\approx {{1/((a+1)^2-a*a):4}}$, $f({{a+2}}) = \\dfrac{1}{ {{(a+2)^2-a*a}} } \\approx {{1/((a+2)^2-a*a):4}}$.\n\nAverage rate $= \\dfrac{f({{a+2}}) - f({{a+1}})}{1} \\approx {{1/((a+2)^2-a*a)-1/((a+1)^2-a*a):3}}$.\n\nNegative, so $f$ is decreasing on this interval (the right branch, beyond the asymptote $x = {{a}}$).",
+      "rubric": [
+        {
+          "point": "Both function values",
+          "marks": 2
+        },
+        {
+          "point": "Correct average rate",
+          "marks": 2
+        },
+        {
+          "point": "Correct conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-2-q18",
+      "type": "design",
+      "difficulty": 3,
+      "vars": {
+        "b": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{1}{x^2 + {{b}}x + {{c}}}$, use the discriminant to predict how many vertical asymptotes the graph has. Then explain, with one example of your own for each case, how the discriminant determines the family of graph (two, one or no vertical asymptotes).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Calculate the discriminant.",
+          "answer": {
+            "expr": "b*b-4*c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Predict the number of vertical asymptotes and explain the three cases with examples."
+        }
+      ],
+      "modelAnswer": "Discriminant $D = {{b}}^2 - 4(1)({{c}}) = {{b*b-4*c}}$.\n\n* If $D > 0$ the quadratic has two real zeros → two vertical asymptotes and a middle branch with a local max or min. Example: $\\frac{1}{x^2 - 1}$ ($D = 4$).\n* If $D = 0$ there is one double zero → one vertical asymptote, both branches on the same side of the $x$-axis. Example: $\\frac{1}{x^2 - 4x + 4}$ ($D = 0$).\n* If $D < 0$ there are no real zeros → no vertical asymptote; a single maximum. Example: $\\frac{1}{x^2 + 4}$ ($D = -16$).\n\nFor this function, $D = {{b*b-4*c}}$, so it has the number of vertical asymptotes given by the matching case above.",
+      "rubric": [
+        {
+          "point": "Correct discriminant",
+          "marks": 2
+        },
+        {
+          "point": "Correct prediction for this function",
+          "marks": 1
+        },
+        {
+          "point": "Explains all three cases",
+          "marks": 2
+        },
+        {
+          "point": "Valid example for each case",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1061 @@
+{
+  "id": "3-4",
+  "number": "3.4",
+  "title": "Solve Rational Equations and Inequalities",
+  "estimatedMinutes": 90,
+  "overview": "When is a rational function equal to a value, and when is it bigger or smaller? This section gives you a reliable algebraic routine for rational equations (watch out for **extraneous roots**!) and a sign-table method for rational inequalities – plus technology strategies when algebra gets messy.",
+  "objectives": [
+    "Connect the roots of a rational equation to the zeros of a rational function.",
+    "Solve rational equations algebraically and identify extraneous roots.",
+    "Solve rational equations graphically or numerically with technology.",
+    "Solve rational inequalities with interval tables or the case method, and show solutions on a number line.",
+    "Explain the difference between the solution of an equation and of an inequality.",
+    "Apply rational equations and inequalities to problems."
+  ],
+  "lessons": [
+    {
+      "id": "roots",
+      "title": "Roots of equations and zeros of functions",
+      "body": "Solving the **rational equation** $\\dfrac{P(x)}{Q(x)} = 0$ is the same as finding the **zeros** ($x$-intercepts) of the rational function $f(x) = \\dfrac{P(x)}{Q(x)}$.\n\nA fraction is zero exactly when its **numerator** is zero and its denominator is **not**. So\n\n$$\\frac{x^2 - 9}{x + 1} = 0 \\iff x^2 - 9 = 0 \\text{ and } x \\ne -1 \\iff x = \\pm 3$$\n\nMore generally, to solve $f(x) = g(x)$ you can find where the graphs of $y = f(x)$ and $y = g(x)$ **intersect**, or rearrange to $f(x) - g(x) = 0$ and find the zeros.\n"
+    },
+    {
+      "id": "algebra",
+      "title": "Solving rational equations algebraically",
+      "body": "**Strategy**\n1. **Factor** every numerator and denominator.\n2. State the **restrictions** (values that make any denominator zero).\n3. **Multiply both sides by the lowest common denominator** to clear the fractions.\n4. Solve the resulting polynomial equation (Chapter 2 techniques).\n5. **Reject** any solution that breaks a restriction – these are **extraneous roots** – and check the rest.\n\n**Example:** solve $\\dfrac{x + 4}{x - 2} = \\dfrac{x - 1}{x - 3}$.\n\n* Restrictions: $x \\ne 2$, $x \\ne 3$.\n* Multiply by $(x - 2)(x - 3)$: $(x + 4)(x - 3) = (x - 1)(x - 2)$.\n* Expand: $x^2 + x - 12 = x^2 - 3x + 2$, so $4x = 14$ and $x = 3.5$.\n* Check: left $\\frac{7.5}{1.5} = 5$, right $\\frac{2.5}{0.5} = 5$ ✓.\n\n**Example with an extraneous root:** $\\dfrac{2x}{x - 3} = 1 + \\dfrac{6}{x - 3}$. Multiply by $(x - 3)$: $2x = x - 3 + 6$, so $x = 3$. But $x \\ne 3$! There is **no solution**.\n"
+    },
+    {
+      "id": "tech",
+      "title": "Solving with technology (or a table)",
+      "body": "Some equations, like $\\dfrac{x}{x + 2} = \\dfrac{x + 3}{3x + 1}$ after clearing fractions, lead to polynomials you cannot factor easily. Then:\n\n* **Graph both sides** and find the intersection points, or\n* graph $y = \\text{left} - \\text{right}$ and find its zeros, or\n* use a **table** and narrow down where the sign of left − right changes.\n\nRound answers as asked (often two decimal places) and **remember the restrictions** – a calculator may draw a near-vertical line at an asymptote that is *not* a solution.\n\n**Example:** solve $x - 3 = \\dfrac{1}{x}$. Multiply by $x$: $x^2 - 3x - 1 = 0$, $x = \\dfrac{3 \\pm \\sqrt{13}}{2}$, so $x \\approx 3.30$ or $x \\approx -0.30$. Graphically these are the intersections of the line $y = x - 3$ and the curve $y = \\frac{1}{x}$.\n\n```plot\nf: x-3 | label=y = x − 3\nf: 1/x | label=y = 1/x\ndomain: -5, 6\nrange: -6, 5\npoints: (3.3028,0.3028), (-0.3028,-3.3028)\nasymptote x: 0\n```\n"
+    },
+    {
+      "id": "simple",
+      "title": "Solving a simple rational inequality",
+      "body": "An **equation** has a few solution **values**; an **inequality** has whole **intervals** of solutions.\n\n**Method 1 – rewrite with 0 on one side (recommended).**\n\nSolve $\\dfrac{4}{x - 3} < 1$.\n1. Subtract 1: $\\dfrac{4}{x - 3} - 1 < 0$.\n2. Common denominator: $\\dfrac{4 - (x - 3)}{x - 3} < 0 \\Rightarrow \\dfrac{7 - x}{x - 3} < 0$.\n3. **Critical values**: zeros of the numerator ($x = 7$) and denominator ($x = 3$).\n4. Test each interval:\n\n| Interval | $x < 3$ | $3 < x < 7$ | $x > 7$ |\n|---|---|---|---|\n| test | 0 | 5 | 8 |\n| $\\frac{7-x}{x-3}$ | $\\frac{+}{-} = -$ | $\\frac{+}{+} = +$ | $\\frac{-}{+} = -$ |\n\nSolution: $x < 3$ or $x > 7$.\n\n**Method 2 – cases.** You may multiply by $x - 3$ only if you know its sign. **Case 1** $x > 3$: $4 < x - 3 \\Rightarrow x > 7$. **Case 2** $x < 3$ (the inequality flips): $4 > x - 3 \\Rightarrow x < 7$, combined with $x < 3$ gives $x < 3$. Same answer.\n\n> **Never** multiply both sides by an expression containing $x$ without considering its sign – that is the most common error in this topic.\n"
+    },
+    {
+      "id": "table",
+      "title": "Interval (sign) tables for harder inequalities",
+      "body": "Solve $\\dfrac{x^2 + 5x + 4}{x^2 - 5x + 6} < 0$.\n\nFactor: $\\dfrac{(x + 1)(x + 4)}{(x - 2)(x - 3)} < 0$. Critical values in order: $-4, -1, 2, 3$.\n\n| Interval | $x < -4$ | $-4 < x < -1$ | $-1 < x < 2$ | $2 < x < 3$ | $x > 3$ |\n|---|---|---|---|---|---|\n| $x + 4$ | − | + | + | + | + |\n| $x + 1$ | − | − | + | + | + |\n| $x - 2$ | − | − | − | + | + |\n| $x - 3$ | − | − | − | − | + |\n| quotient | + | − | + | − | + |\n\nSolution: $-4 < x < -1$ or $2 < x < 3$.\n\n**Endpoints:** for $\\le$ or $\\ge$, include zeros of the **numerator** but **never** include zeros of the denominator (the expression is undefined there).\n\n**Number line:** shade the solution intervals; use open dots at excluded values and closed dots at included ones.\n"
+    },
+    {
+      "id": "apps",
+      "title": "Applications",
+      "body": "**Lens equation.** For a camera with focal length 2.0 cm, the object distance $d$ and image distance $I$ satisfy $d = \\dfrac{2.0I}{I - 2.0}$. To focus on an object 10 cm away: $10 = \\dfrac{2.0I}{I - 2.0} \\Rightarrow 10I - 20 = 2I \\Rightarrow I = 2.5$ cm.\n\n**Ratios.** \"The ratio of $x + 2$ to $x - 5$ is greater than 3\" translates to $\\dfrac{x + 2}{x - 5} > 3$, which you solve with an interval table.\n\n**Reading the question carefully:** an *equation* asks \"when exactly?\", an *inequality* asks \"for which values / how long / how many?\"\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "rational equation",
+      "definition": "An equation containing at least one rational expression."
+    },
+    {
+      "term": "extraneous root",
+      "definition": "A value obtained while solving that does not satisfy the original equation – usually because it is a restriction."
+    },
+    {
+      "term": "restriction",
+      "definition": "A value of the variable that makes a denominator zero and is therefore excluded."
+    },
+    {
+      "term": "critical value",
+      "definition": "A zero of the numerator or denominator; the sign of a rational expression can only change at these values."
+    },
+    {
+      "term": "interval (sign) table",
+      "definition": "A table showing the sign of each factor and of the whole expression on each interval between critical values."
+    },
+    {
+      "term": "rational inequality",
+      "definition": "An inequality such as $\\frac{P(x)}{Q(x)} > 0$ whose solution is usually a set of intervals."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Zero of a rational function",
+      "latex": "\\frac{P(x)}{Q(x)} = 0 \\iff P(x) = 0,\\; Q(x) \\ne 0",
+      "meaning": "Only the numerator gives zeros."
+    },
+    {
+      "name": "Clearing fractions",
+      "latex": "\\frac{A}{B} = \\frac{C}{D} \\Rightarrow AD = BC \\quad (B, D \\ne 0)",
+      "meaning": "Multiply both sides by the common denominator."
+    },
+    {
+      "name": "Standard form for inequalities",
+      "latex": "\\frac{P(x)}{Q(x)} > 0",
+      "meaning": "Move everything to one side and combine into a single fraction before testing intervals."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Solve rational equations algebraically",
+      "problem": "Solve $\\dfrac{x}{x + 1} + \\dfrac{2}{x - 1} = 1$.",
+      "steps": [
+        "Restrictions: $x \\ne -1$, $x \\ne 1$.",
+        "Multiply by $(x + 1)(x - 1)$: $x(x - 1) + 2(x + 1) = (x + 1)(x - 1)$.",
+        "$x^2 - x + 2x + 2 = x^2 - 1 \\Rightarrow x + 2 = -1 \\Rightarrow x = -3$.",
+        "Check: $\\frac{-3}{-2} + \\frac{2}{-4} = 1.5 - 0.5 = 1$ ✓."
+      ],
+      "answer": "$x = -3$"
+    },
+    {
+      "title": "Solve using technology",
+      "problem": "Solve $\\dfrac{x}{x + 2} = \\dfrac{x + 3}{3x + 1}$ to two decimal places.",
+      "steps": [
+        "Restrictions $x \\ne -2$, $x \\ne -\\frac{1}{3}$. Cross-multiply: $x(3x + 1) = (x + 3)(x + 2)$.",
+        "$3x^2 + x = x^2 + 5x + 6 \\Rightarrow 2x^2 - 4x - 6 = 0 \\Rightarrow x^2 - 2x - 3 = 0$.",
+        "$(x - 3)(x + 1) = 0$, so $x = 3$ or $x = -1$. (A graph of both sides confirms two intersections.)"
+      ],
+      "answer": "$x = 3$ or $x = -1$ (both allowed)."
+    },
+    {
+      "title": "Solve a simple rational inequality",
+      "problem": "Solve $\\dfrac{6}{x + 5} < 2$.",
+      "steps": [
+        "$\\frac{6}{x+5} - 2 < 0 \\Rightarrow \\frac{6 - 2x - 10}{x + 5} < 0 \\Rightarrow \\frac{-2x - 4}{x + 5} < 0$.",
+        "Multiply by $-1$ (flip): $\\frac{2x + 4}{x + 5} > 0$. Critical values $-5, -2$.",
+        "Test: $x = -6$: $\\frac{-8}{-1} > 0$ ✓; $x = -3$: $\\frac{-2}{2} < 0$ ✗; $x = 0$: $\\frac{4}{5} > 0$ ✓."
+      ],
+      "answer": "$x < -5$ or $x > -2$."
+    },
+    {
+      "title": "Solve an inequality with a sign table",
+      "problem": "Solve $\\dfrac{x}{x + 5} > \\dfrac{x - 1}{x + 7}$.",
+      "steps": [
+        "Bring to one side: $\\frac{x(x + 7) - (x - 1)(x + 5)}{(x + 5)(x + 7)} > 0$.",
+        "Numerator: $x^2 + 7x - (x^2 + 4x - 5) = 3x + 5$. So $\\frac{3x + 5}{(x + 5)(x + 7)} > 0$.",
+        "Critical values: $-7, -5, -\\frac{5}{3}$. Signs: $x < -7$: $-$; $-7 < x < -5$: $+$; $-5 < x < -\\frac{5}{3}$: $-$; $x > -\\frac{5}{3}$: $+$."
+      ],
+      "answer": "$-7 < x < -5$ or $x > -\\frac{5}{3}$."
+    },
+    {
+      "title": "Ratio problem",
+      "problem": "The ratio of $x + 2$ to $x - 5$ is greater than 3. Solve for $x$.",
+      "steps": [
+        "$\\frac{x + 2}{x - 5} - 3 > 0 \\Rightarrow \\frac{x + 2 - 3x + 15}{x - 5} > 0 \\Rightarrow \\frac{17 - 2x}{x - 5} > 0$.",
+        "Critical values 5 and 8.5. Test $x = 0$: $\\frac{17}{-5} < 0$; $x = 6$: $\\frac{5}{1} > 0$; $x = 9$: $\\frac{-1}{4} < 0$."
+      ],
+      "answer": "$5 < x < 8.5$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "To solve $\\dfrac{4}{x - 3} < 1$, multiply both sides by $x - 3$ to get $4 < x - 3$.",
+      "fact": "That is only valid when $x - 3 > 0$. If $x - 3 < 0$ the inequality sign must flip. Use cases, or rewrite with 0 on one side and use a sign table."
+    },
+    {
+      "myth": "Every value I get after clearing fractions is a solution.",
+      "fact": "Values that make an original denominator zero are **extraneous** and must be rejected."
+    },
+    {
+      "myth": "For $\\ge$ inequalities, include all the critical values.",
+      "fact": "Include zeros of the numerator only; zeros of the denominator are never included."
+    },
+    {
+      "myth": "The solution to an inequality is a list of numbers.",
+      "fact": "It is usually one or more **intervals**; the boundary values come from the equation."
+    },
+    {
+      "myth": "$\\dfrac{1}{x^2 + 2x + 9} < 0$ just needs a sign table.",
+      "fact": "The denominator is always positive (its discriminant is negative), so the expression is always positive and the inequality has **no solution**."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Photography",
+      "body": "The lens relation $\\frac{1}{f} = \\frac{1}{d} + \\frac{1}{I}$ rearranges to $d = \\frac{fI}{I - f}$, which camera designers solve to place the sensor for sharp focus."
+    },
+    {
+      "title": "Work rates",
+      "body": "If one pump fills a tank in 6 h and another in $x$ h, together they take $\\frac{6x}{6 + x}$ h. Asking 'how fast must the second pump be to finish in under 4 h?' is a rational inequality."
+    },
+    {
+      "title": "Dosage and concentration",
+      "body": "Deciding how long a medication stays above an effective concentration level means solving a rational inequality."
+    },
+    {
+      "title": "Budgeting",
+      "body": "Questions like 'how many people must share a bus rental so each pays less than 25 dollars?' lead to inequalities such as $\\frac{900}{n} < 25$."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Find the $x$-intercepts of $y = \\dfrac{x^2 - 16}{x + 1}$.",
+      "hint": "Set the numerator equal to zero.",
+      "solution": "$x = \\pm 4$ (neither is a restriction)."
+    },
+    {
+      "question": "Solve $\\dfrac{4}{x - 2} = 3$.",
+      "hint": "Multiply by $x - 2$.",
+      "solution": "$4 = 3x - 6 \\Rightarrow x = \\frac{10}{3}$."
+    },
+    {
+      "question": "Solve $x + \\dfrac{6}{x} = 5$.",
+      "hint": "Multiply by $x$.",
+      "solution": "$x^2 - 5x + 6 = 0 \\Rightarrow x = 2$ or $x = 3$."
+    },
+    {
+      "question": "Solve $\\dfrac{4}{x - 3} > 1$.",
+      "hint": "Rewrite as $\\frac{7 - x}{x - 3} > 0$.",
+      "solution": "$3 < x < 7$."
+    },
+    {
+      "question": "Solve $\\dfrac{3}{x + 2} \\le \\dfrac{4}{x + 3}$.",
+      "hint": "Combine: $\\frac{1 - x}{(x+2)(x+3)} \\le 0$.",
+      "solution": "Critical values −3, −2, 1. Solution: $-3 < x < -2$ or $x \\ge 1$."
+    },
+    {
+      "question": "Explain why $\\dfrac{1}{x^2 + 2x + 9} < 0$ has no solution.",
+      "hint": "Look at the denominator's discriminant.",
+      "solution": "$x^2 + 2x + 9 = (x + 1)^2 + 8 > 0$, so the fraction is always positive."
+    },
+    {
+      "question": "Write a rational equation that cannot have $x = 3$ or $x = -5$ as a solution.",
+      "hint": "Make those values restrictions.",
+      "solution": "For example $\\frac{1}{x - 3} + \\frac{1}{x + 5} = 1$: both values make a denominator zero."
+    },
+    {
+      "question": "For a camera with focal length 2.0 cm, $d = \\dfrac{2.0I}{I - 2.0}$. Find $I$ when $d = 12$ cm.",
+      "hint": "Multiply by $I - 2.0$.",
+      "solution": "$12I - 24 = 2I \\Rightarrow I = 2.4$ cm."
+    }
+  ],
+  "summary": [
+    "The roots of $\\frac{P(x)}{Q(x)} = 0$ are the zeros of $P(x)$ that are not zeros of $Q(x)$ – the $x$-intercepts of the rational function.",
+    "To solve algebraically: factor, state restrictions, multiply by the common denominator, solve, and reject extraneous roots.",
+    "Equations whose polynomial form is hard to factor can be solved by graphing both sides or using tables.",
+    "For inequalities, rewrite with 0 on one side as a single fraction, find the critical values, and test each interval (or use cases).",
+    "Never include zeros of the denominator in a solution; include zeros of the numerator only for $\\le$ or $\\ge$.",
+    "An equation's solution is a set of values; an inequality's solution is a set of intervals."
+  ],
+  "questions": [
+    {
+      "id": "3-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 12,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\dfrac{ {{a}} }{x - {{p}}} = {{q}}$ algebraically. State the restriction and check your solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "p + a/q",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "Restriction: $x \\ne {{p}}$.\n\nMultiply both sides by $x - {{p}}$: ${{a}} = {{q}}(x - {{p}})$, so ${{q}}x = {{a + q*p}}$ and $x = \\dfrac{ {{a+q*p}} }{ {{q}} } \\approx {{p + a/q:4}}$.\n\nCheck: $x - {{p}} \\approx {{a/q:4}}$ and $\\dfrac{ {{a}} }{ {{a/q:4}} } = {{q}}$ ✓. The solution is not the restriction, so it is valid.",
+      "rubric": [
+        {
+          "point": "States the restriction",
+          "marks": 1
+        },
+        {
+          "point": "Clears the fraction correctly",
+          "marks": 1
+        },
+        {
+          "point": "Solves correctly",
+          "marks": 2
+        },
+        {
+          "point": "Checks the solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": 5,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\dfrac{x + {{a}}}{x - {{b}}} = \\dfrac{x - {{c}}}{x - {{b+1}}}$. State the restrictions and check your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "(b*c+a*(b+1))/(a+c-1)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "Restrictions: $x \\ne {{b}}$, $x \\ne {{b+1}}$.\n\nCross-multiply: $(x + {{a}})(x - {{b+1}}) = (x - {{c}})(x - {{b}})$.\n\nExpand: $x^2 + {{a-b-1}}x - {{a*(b+1)}} = x^2 - {{b+c}}x + {{b*c}}$.\n\nThe $x^2$ terms cancel: $({{a-b-1}} + {{b+c}})x = {{b*c}} + {{a*(b+1)}}$, so ${{a+c-1}}x = {{b*c+a*(b+1)}}$ and\n\n$x = \\dfrac{ {{b*c+a*(b+1)}} }{ {{a+c-1}} } \\approx {{(b*c+a*(b+1))/(a+c-1):4}}$.\n\nThis is not a restriction. Check: substitute into both sides; both equal approximately {{((b*c+a*(b+1))/(a+c-1)+a)/((b*c+a*(b+1))/(a+c-1)-b):4}}.",
+      "rubric": [
+        {
+          "point": "States both restrictions",
+          "marks": 1
+        },
+        {
+          "point": "Cross-multiplies correctly",
+          "marks": 1
+        },
+        {
+          "point": "Expands and simplifies to a linear equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        },
+        {
+          "point": "Checks against restrictions/original",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r1": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "r2": {
+          "min": 5,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Solve $x + \\dfrac{ {{r1*r2}} }{x} = {{r1+r2}}$ algebraically and verify your solutions. Explain how the solutions relate to the graphs of $y = x + \\dfrac{ {{r1*r2}} }{x}$ and $y = {{r1+r2}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution.",
+          "answer": {
+            "expr": "r1",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution.",
+          "answer": {
+            "expr": "r2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Verify and interpret graphically."
+        }
+      ],
+      "modelAnswer": "Restriction $x \\ne 0$. Multiply by $x$: $x^2 + {{r1*r2}} = {{r1+r2}}x$, so $x^2 - {{r1+r2}}x + {{r1*r2}} = 0$.\n\nFactor: $(x - {{r1}})(x - {{r2}}) = 0$, so $x = {{r1}}$ or $x = {{r2}}$.\n\nVerify: ${{r1}} + \\frac{ {{r1*r2}} }{ {{r1}} } = {{r1}} + {{r2}} = {{r1+r2}}$ ✓; ${{r2}} + \\frac{ {{r1*r2}} }{ {{r2}} } = {{r1+r2}}$ ✓.\n\nThe solutions are the $x$-coordinates of the points where the curve $y = x + \\frac{ {{r1*r2}} }{x}$ meets the horizontal line $y = {{r1+r2}}$.",
+      "rubric": [
+        {
+          "point": "Restriction stated",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Factors and solves",
+          "marks": 2
+        },
+        {
+          "point": "Verifies both",
+          "marks": 1
+        },
+        {
+          "point": "Graphical interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q04",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "A student solves $\\dfrac{2x}{x - {{h}}} = 1 + \\dfrac{ {{2*h}} }{x - {{h}}}$ and gets $x = {{h}}$. Is the student correct? Explain fully.",
+      "modelAnswer": "Multiply both sides by $x - {{h}}$: $2x = (x - {{h}}) + {{2*h}}$, so $2x = x + {{h}}$ and $x = {{h}}$.\n\nBut $x = {{h}}$ makes both denominators zero, so it is a **restriction**: the original equation is undefined there. $x = {{h}}$ is an **extraneous root**, and the equation has **no solution**.\n\nThe student did the algebra correctly but forgot to check the answer against the restrictions. Graphically, the left side equals $2 + \\frac{ {{2*h}} }{x - {{h}}}$ and the right side equals $1 + \\frac{ {{2*h}} }{x - {{h}}}$; they always differ by 1, so the graphs never meet.",
+      "rubric": [
+        {
+          "point": "Correct algebra to x = h",
+          "marks": 1
+        },
+        {
+          "point": "Identifies x = h as a restriction",
+          "marks": 2
+        },
+        {
+          "point": "Concludes no solution (extraneous root)",
+          "marks": 2
+        },
+        {
+          "point": "Explains the student's error",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 12,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\dfrac{ {{a}} }{x - {{p}}} < {{q}}$ without technology. Show your work with an interval table and illustrate the solution on a number line (describe it in words).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the critical value that comes from the numerator.",
+          "answer": {
+            "expr": "p+a/q",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the full solution and describe the number line."
+        }
+      ],
+      "modelAnswer": "$\\dfrac{ {{a}} }{x - {{p}}} - {{q}} < 0 \\Rightarrow \\dfrac{ {{a}} - {{q}}(x - {{p}})}{x - {{p}}} < 0 \\Rightarrow \\dfrac{ {{a+q*p}} - {{q}}x}{x - {{p}}} < 0$.\n\nCritical values: $x = {{p}}$ (denominator) and $x = \\frac{ {{a+q*p}} }{ {{q}} } \\approx {{p+a/q:3}}$ (numerator).\n\n| Interval | $x < {{p}}$ | ${{p}} < x < {{p+a/q:3}}$ | $x > {{p+a/q:3}}$ |\n|---|---|---|---|\n| numerator | + | + | − |\n| denominator | − | + | + |\n| quotient | − | + | − |\n\nSolution: $x < {{p}}$ or $x > {{p+a/q:3}}$. Number line: open dots at {{p}} and {{p+a/q:3}}, shading to the left of {{p}} and to the right of {{p+a/q:3}}.",
+      "rubric": [
+        {
+          "point": "Rewrites as a single fraction compared with 0",
+          "marks": 2
+        },
+        {
+          "point": "Finds both critical values",
+          "marks": 1
+        },
+        {
+          "point": "Correct interval table",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution with open endpoints",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-4-q06",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{x^2 + 5x + 4}{x^2 - 5x + 6} < 0$ algebraically using an interval table.",
+      "modelAnswer": "Factor: $\\dfrac{(x + 1)(x + 4)}{(x - 2)(x - 3)} < 0$. Critical values: $-4, -1, 2, 3$.\n\n| Interval | $x < -4$ | $-4 < x < -1$ | $-1 < x < 2$ | $2 < x < 3$ | $x > 3$ |\n|---|---|---|---|---|---|\n| $x + 4$ | − | + | + | + | + |\n| $x + 1$ | − | − | + | + | + |\n| $x - 2$ | − | − | − | + | + |\n| $x - 3$ | − | − | − | − | + |\n| quotient | + | − | + | − | + |\n\nSolution: $-4 < x < -1$ or $2 < x < 3$ (all endpoints excluded: −4 and −1 make the expression 0, not less than 0, and 2, 3 are restrictions).",
+      "rubric": [
+        {
+          "point": "Factors numerator and denominator",
+          "marks": 2
+        },
+        {
+          "point": "Correct critical values",
+          "marks": 1
+        },
+        {
+          "point": "Correct signs in the table",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution intervals",
+          "marks": 2
+        },
+        {
+          "point": "Justifies endpoints",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{x}{x + 5} > \\dfrac{x - 1}{x + 7}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the critical value from the numerator.",
+          "answer": {
+            "expr": "-5/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the solution."
+        }
+      ],
+      "modelAnswer": "Move everything to one side: $\\dfrac{x}{x + 5} - \\dfrac{x - 1}{x + 7} > 0$.\n\nCommon denominator: $\\dfrac{x(x + 7) - (x - 1)(x + 5)}{(x + 5)(x + 7)} > 0$.\n\nNumerator: $x^2 + 7x - (x^2 + 4x - 5) = 3x + 5$. So $\\dfrac{3x + 5}{(x + 5)(x + 7)} > 0$.\n\nCritical values: $-7, -5, -\\frac{5}{3}$.\n\n| Interval | $x < -7$ | $-7 < x < -5$ | $-5 < x < -\\frac{5}{3}$ | $x > -\\frac{5}{3}$ |\n|---|---|---|---|---|\n| $3x + 5$ | − | − | − | + |\n| $x + 5$ | − | − | + | + |\n| $x + 7$ | − | + | + | + |\n| quotient | − | + | − | + |\n\nSolution: $-7 < x < -5$ or $x > -\\frac{5}{3}$.",
+      "rubric": [
+        {
+          "point": "Rewrites with 0 on one side",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies the numerator to 3x + 5",
+          "marks": 2
+        },
+        {
+          "point": "Correct critical values",
+          "marks": 1
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q08",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain the difference between the solution to the equation $\\dfrac{4}{x - 3} = 1$ and the solution to the inequality $\\dfrac{4}{x - 3} > 1$. Use a graph or number line description in your explanation.",
+      "modelAnswer": "The **equation** has a single solution: $4 = x - 3$, so $x = 7$ – the one $x$-value where the graph of $y = \\frac{4}{x - 3}$ meets the line $y = 1$.\n\nThe **inequality** asks where the curve is **above** the line. This happens for all $x$ between the vertical asymptote and the intersection: $3 < x < 7$ – an interval with infinitely many values. The equation's solution ($x = 7$) is a boundary of the inequality's solution, and the restriction $x = 3$ is the other boundary (excluded).",
+      "rubric": [
+        {
+          "point": "Solves the equation",
+          "marks": 1
+        },
+        {
+          "point": "Solves the inequality",
+          "marks": 2
+        },
+        {
+          "point": "Explains values vs intervals",
+          "marks": 1
+        },
+        {
+          "point": "Links the boundary to the equation and the restriction",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-4-q09",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 5,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "Explain why $\\dfrac{1}{x^2 + {{b}}x + {{c}}} < 0$ has no solution.",
+      "modelAnswer": "The numerator 1 is positive, so the sign of the expression is the sign of the denominator.\n\nThe discriminant of $x^2 + {{b}}x + {{c}}$ is ${{b}}^2 - 4({{c}}) = {{b*b-4*c}} < 0$, so the quadratic has no real zeros. Since it opens upward and never crosses the $x$-axis, it is **always positive**. (Completing the square: $\\left(x + \\frac{ {{b}} }{2}\\right)^2 + {{c-b*b/4:3}} > 0$.)\n\nTherefore the fraction is always positive and can never be less than 0: no solution.",
+      "rubric": [
+        {
+          "point": "Sign depends on denominator",
+          "marks": 1
+        },
+        {
+          "point": "Shows the quadratic is always positive (discriminant or completing the square)",
+          "marks": 3
+        },
+        {
+          "point": "Concludes no solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The ratio of $x + {{a}}$ to $x - {{b}}$ is greater than {{k}}. Solve for $x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Upper bound of the solution interval.",
+          "answer": {
+            "expr": "(a+k*b)/(k-1)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the solution."
+        }
+      ],
+      "modelAnswer": "$\\dfrac{x + {{a}}}{x - {{b}}} > {{k}} \\Rightarrow \\dfrac{x + {{a}} - {{k}}(x - {{b}})}{x - {{b}}} > 0 \\Rightarrow \\dfrac{ {{a+k*b}} - {{k-1}}x}{x - {{b}}} > 0$.\n\nCritical values: $x = {{b}}$ and $x = \\dfrac{ {{a+k*b}} }{ {{k-1}} } \\approx {{(a+k*b)/(k-1):4}}$.\n\nTest: left of {{b}} the numerator is positive and the denominator negative → negative. Between → both positive → positive. Right of {{(a+k*b)/(k-1):4}} → numerator negative → negative.\n\nSolution: ${{b}} < x < {{(a+k*b)/(k-1):4}}$.",
+      "rubric": [
+        {
+          "point": "Correct inequality from words",
+          "marks": 1
+        },
+        {
+          "point": "Single fraction compared with 0",
+          "marks": 2
+        },
+        {
+          "point": "Critical values",
+          "marks": 1
+        },
+        {
+          "point": "Interval testing",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve $x - {{k}} = \\dfrac{1}{x}$ algebraically and explain how you could verify the solutions graphically. Give answers to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Positive solution.",
+          "answer": {
+            "expr": "(k+sqrt(k*k+4))/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Negative solution.",
+          "answer": {
+            "expr": "(k-sqrt(k*k+4))/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain the graphical check."
+        }
+      ],
+      "modelAnswer": "Restriction $x \\ne 0$. Multiply by $x$: $x^2 - {{k}}x = 1$, so $x^2 - {{k}}x - 1 = 0$.\n\n$x = \\dfrac{ {{k}} \\pm \\sqrt{ {{k*k}} + 4} }{2}$, giving $x \\approx {{(k+sqrt(k*k+4))/2:3}}$ or $x \\approx {{(k-sqrt(k*k+4))/2:3}}$.\n\nNeither is 0, so both are valid. Graphically: plot $y = x - {{k}}$ and $y = \\frac{1}{x}$; they intersect at two points whose $x$-coordinates are these solutions (one on each branch of the hyperbola).",
+      "rubric": [
+        {
+          "point": "Restriction",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Quadratic formula applied correctly",
+          "marks": 2
+        },
+        {
+          "point": "Both solutions to 2 decimals",
+          "marks": 1
+        },
+        {
+          "point": "Graphical verification described",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "min": 5,
+          "max": 40,
+          "step": 5
+        }
+      },
+      "text": "For a camera lens with focal length 2.0 cm, the object distance $d$ and the image distance $I$ (both in cm) are related by $d = \\dfrac{2.0I}{I - 2.0}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $I$ when the object is {{d}} cm away.",
+          "answer": {
+            "expr": "2*d/(d-2)",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Interpret the asymptotes of the relation in context."
+        }
+      ],
+      "modelAnswer": "(a) ${{d}} = \\dfrac{2.0I}{I - 2.0}$: ${{d}}I - {{2*d}} = 2.0I$, so ${{d-2}}I = {{2*d}}$ and $I = \\dfrac{ {{2*d}} }{ {{d-2}} } \\approx {{2*d/(d-2):3}}$ cm.\n\n(b) The vertical asymptote $I = 2.0$: as the image distance approaches the focal length, the object distance grows without bound – objects very far away focus at the focal length. The horizontal asymptote $d = 2.0$: a very large image distance corresponds to an object just beyond the focal length. Only $I > 2.0$ (and $d > 2.0$) are physically meaningful.",
+      "rubric": [
+        {
+          "point": "Clears the fraction",
+          "marks": 1
+        },
+        {
+          "point": "Solves for I correctly",
+          "marks": 2
+        },
+        {
+          "point": "Interprets the vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the horizontal asymptote / domain",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-4-q13",
+      "type": "design",
+      "difficulty": 3,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Write a rational equation that cannot have $x = {{p}}$ or $x = -{{q}}$ as a solution, and that does have at least one solution. Solve your equation and explain why it meets the conditions.",
+      "modelAnswer": "Make ${{p}}$ and $-{{q}}$ restrictions by putting $x - {{p}}$ and $x + {{q}}$ in denominators. Example:\n\n$$\\frac{1}{x - {{p}}} + \\frac{1}{x + {{q}}} = 0$$\n\nMultiply by $(x - {{p}})(x + {{q}})$: $(x + {{q}}) + (x - {{p}}) = 0$, so $2x = {{p-q}}$ and $x = {{(p-q)/2:3}}$.\n\nCheck: $x = {{(p-q)/2:3}}$ is neither {{p}} nor $-{{q}}$, so it is a valid solution. The values {{p}} and $-{{q}}$ make a denominator zero, so they can never be solutions of this equation.",
+      "rubric": [
+        {
+          "point": "Equation with both values as restrictions",
+          "marks": 2
+        },
+        {
+          "point": "Equation has at least one solution",
+          "marks": 1
+        },
+        {
+          "point": "Solves the equation correctly",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the conditions are met",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-4-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\dfrac{ {{a}} }{x - {{p}}} > 1$ using the **case method** (consider the sign of $x - {{p}}$). Then confirm your answer with a test point in each interval.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Upper bound of the solution.",
+          "answer": {
+            "expr": "a+p",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show both cases and the check."
+        }
+      ],
+      "modelAnswer": "**Case 1:** $x - {{p}} > 0$ ($x > {{p}}$). Multiply without flipping: ${{a}} > x - {{p}}$, so $x < {{a+p}}$. Combined: ${{p}} < x < {{a+p}}$.\n\n**Case 2:** $x - {{p}} < 0$ ($x < {{p}}$). Multiply and flip: ${{a}} < x - {{p}}$, so $x > {{a+p}}$. This contradicts $x < {{p}}$: no solutions.\n\nSolution: ${{p}} < x < {{a+p}}$.\n\nTest points: $x = {{p-1}}$: $\\frac{ {{a}} }{-1} = -{{a}} > 1$? No. $x = {{p}}.5$: $\\frac{ {{a}} }{0.5} = {{2*a}} > 1$ ✓. $x = {{a+p+1}}$: $\\frac{ {{a}} }{ {{a+1}} } < 1$ ✗. Confirmed.",
+      "rubric": [
+        {
+          "point": "Case 1 correct",
+          "marks": 2
+        },
+        {
+          "point": "Case 2 correct with flipped inequality and contradiction",
+          "marks": 2
+        },
+        {
+          "point": "Combined solution",
+          "marks": 1
+        },
+        {
+          "point": "Test-point confirmation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{3}{x + 2} \\le \\dfrac{4}{x + 3}$. Illustrate the solution on a number line (describe which dots are open and closed).",
+      "modelAnswer": "$\\dfrac{3}{x + 2} - \\dfrac{4}{x + 3} \\le 0 \\Rightarrow \\dfrac{3(x + 3) - 4(x + 2)}{(x + 2)(x + 3)} \\le 0 \\Rightarrow \\dfrac{1 - x}{(x + 2)(x + 3)} \\le 0$.\n\nCritical values: $-3, -2, 1$.\n\n| Interval | $x < -3$ | $-3 < x < -2$ | $-2 < x < 1$ | $x > 1$ |\n|---|---|---|---|---|\n| $1 - x$ | + | + | + | − |\n| $(x+2)(x+3)$ | + | − | + | + |\n| quotient | + | − | + | − |\n\nAt $x = 1$ the expression equals 0, so it is included. Solution: $-3 < x < -2$ or $x \\ge 1$. Number line: open dots at −3 and −2 (restrictions), closed dot at 1.",
+      "rubric": [
+        {
+          "point": "Single fraction with correct numerator",
+          "marks": 2
+        },
+        {
+          "point": "Critical values",
+          "marks": 1
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution including endpoint 1 only",
+          "marks": 2
+        },
+        {
+          "point": "Number line description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q16",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{x}{x + 1} \\ge \\dfrac{2x}{x - 2}$ algebraically.",
+      "modelAnswer": "$\\dfrac{x}{x+1} - \\dfrac{2x}{x-2} \\ge 0 \\Rightarrow \\dfrac{x(x - 2) - 2x(x + 1)}{(x + 1)(x - 2)} \\ge 0 \\Rightarrow \\dfrac{-x^2 - 4x}{(x + 1)(x - 2)} \\ge 0 \\Rightarrow \\dfrac{-x(x + 4)}{(x + 1)(x - 2)} \\ge 0$.\n\nCritical values $-4, -1, 0, 2$. Test points: $x = -5$: $\\frac{-5}{28} < 0$; $x = -2$: $\\frac{4}{4} > 0$; $x = -0.5$: negative; $x = 1$: $\\frac{-5}{-2} > 0$; $x = 3$: negative.\n\nInclude zeros of the numerator ($-4$ and $0$), exclude restrictions ($-1$, $2$).\n\nSolution: $-4 \\le x < -1$ or $0 \\le x < 2$.",
+      "rubric": [
+        {
+          "point": "Combines into a single fraction",
+          "marks": 2
+        },
+        {
+          "point": "Factors numerator correctly",
+          "marks": 1
+        },
+        {
+          "point": "Sign analysis on all five intervals",
+          "marks": 2
+        },
+        {
+          "point": "Correct endpoints",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-4-q17",
+      "type": "conceptual",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "m": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Determine the $x$-intercepts of $y = \\dfrac{x^2 - {{n*n}}}{x + {{m}}}$. Explain the connection between the roots of a rational equation and the zeros of the corresponding rational function.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Positive $x$-intercept.",
+          "answer": {
+            "expr": "n",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain the connection."
+        }
+      ],
+      "modelAnswer": "Set the numerator equal to zero: $x^2 - {{n*n}} = 0 \\Rightarrow x = \\pm{{n}}$. Neither makes the denominator $x + {{m}}$ zero, so the $x$-intercepts are $({{n}}, 0)$ and $(-{{n}}, 0)$.\n\nThe roots of the equation $\\frac{P(x)}{Q(x)} = 0$ are exactly the zeros of the function $f(x) = \\frac{P(x)}{Q(x)}$: the zeros of the numerator that are not restrictions.",
+      "rubric": [
+        {
+          "point": "Sets numerator to zero",
+          "marks": 1
+        },
+        {
+          "point": "Both intercepts",
+          "marks": 1
+        },
+        {
+          "point": "Checks against the restriction",
+          "marks": 1
+        },
+        {
+          "point": "States the connection",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-4-q18",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "A": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "B": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Decompose $\\dfrac{ {{A+B}}x + {{3*B-A}} }{x^2 + 2x - 3}$ into partial fractions of the form $\\dfrac{A}{x + 3} + \\dfrac{B}{x - 1}$. Check by recombining.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $A$.",
+          "answer": {
+            "expr": "A",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find $B$.",
+          "answer": {
+            "expr": "B",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Check your decomposition."
+        }
+      ],
+      "modelAnswer": "Factor: $x^2 + 2x - 3 = (x + 3)(x - 1)$.\n\nWrite $\\dfrac{ {{A+B}}x + {{3*B-A}} }{(x + 3)(x - 1)} = \\dfrac{A}{x + 3} + \\dfrac{B}{x - 1}$ and multiply by $(x+3)(x-1)$:\n\n${{A+B}}x + {{3*B-A}} = A(x - 1) + B(x + 3)$.\n\nLet $x = 1$: ${{A+B}} + {{3*B-A}} = 4B$, so ${{4*B}} = 4B$ and $B = {{B}}$.\n\nLet $x = -3$: $-{{3*(A+B)}} + {{3*B-A}} = -4A$, so $-{{4*A}} = -4A$ and $A = {{A}}$.\n\nCheck: $\\dfrac{ {{A}} }{x+3} + \\dfrac{ {{B}} }{x-1} = \\dfrac{ {{A}}(x - 1) + {{B}}(x + 3)}{(x+3)(x-1)} = \\dfrac{ {{A+B}}x + {{3*B-A}} }{x^2 + 2x - 3}$ ✓.",
+      "rubric": [
+        {
+          "point": "Factors the denominator",
+          "marks": 1
+        },
+        {
+          "point": "Sets up the identity",
+          "marks": 1
+        },
+        {
+          "point": "Finds B by substituting x = 1",
+          "marks": 1
+        },
+        {
+          "point": "Finds A by substituting x = −3",
+          "marks": 1
+        },
+        {
+          "point": "Checks by recombining",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

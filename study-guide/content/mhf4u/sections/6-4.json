@@ -1,0 +1,1243 @@
+{
+  "id": "6-4",
+  "number": "6.4",
+  "title": "Power Law of Logarithms",
+  "estimatedMinutes": 80,
+  "overview": "How long until an investment doubles? When the unknown is an **exponent**, the **power law of logarithms**, $\\log_b x^n = n\\log_b x$, brings it down where you can solve for it. The same idea gives the **change of base formula**, which lets you evaluate and graph logarithms with any base using the LOG key on your calculator.",
+  "objectives": [
+    "State, prove and apply the power law of logarithms.",
+    "Evaluate logarithms involving powers and radicals.",
+    "Solve equations of the form $b^x = m$ using common logarithms.",
+    "Evaluate and graph logarithms with any base using the change of base formula.",
+    "Solve compound interest, depreciation and other real-world problems with unknown exponents.",
+    "Recognise incorrect uses of the power law."
+  ],
+  "lessons": [
+    {
+      "id": "unknown-exponent",
+      "title": "The problem: an unknown in the exponent",
+      "body": "Suppose you invest 100 dollars at 5% interest, compounded annually. After $t$ years you have\n\n$$A = 100(1.05)^t$$\n\nWhen will the money double? Set $A = 200$:\n\n$$200 = 100(1.05)^t \\quad\\Rightarrow\\quad 2 = 1.05^t$$\n\nYou could guess and check (or read a graph), but you can't \"undo\" the exponent with ordinary algebra. In logarithmic form the answer is $t = \\log_{1.05} 2$ — but most calculators only have **LOG** (base 10). We need two new tools: the **power law** and the **change of base formula**."
+    },
+    {
+      "id": "power-law",
+      "title": "The power law of logarithms",
+      "body": "Look at the pattern:\n\n| $\\log 2$ | $\\log 4 = \\log 2^2$ | $\\log 8 = \\log 2^3$ | $\\log 16 = \\log 2^4$ |\n|---|---|---|---|\n| 0.301 | 0.602 | 0.903 | 1.204 |\n\nEach value is a multiple of $\\log 2$: $\\log 2^n = n\\log 2$. In general:\n\n$$\\boxed{\\log_b x^n = n\\log_b x}\\qquad b > 0,\\ b \\neq 1,\\ x > 0,\\ n \\in \\mathbb{R}$$\n\n**Why it works (proof).** Let $w = \\log_b x$, so $x = b^w$. Raise both sides to the power $n$: $x^n = (b^w)^n = b^{wn}$. In logarithmic form, $\\log_b x^n = wn = n\\log_b x$.\n\n> **In words:** the exponent of the argument can be brought down in front of the logarithm. That is exactly the step that \"frees\" an unknown exponent.\n\n**Using it to evaluate:**\n\n* $\\log_3 9^4 = 4\\log_3 9 = 4(2) = 8$\n* $\\log_2 8^5 = 5\\log_2 8 = 5(3) = 15$\n* $\\log 0.001^2 = 2\\log 10^{-3} = 2(-3) = -6$\n* $\\log_5 \\sqrt{125} = \\log_5 125^{1/2} = \\frac12(3) = \\frac32$ — write radicals as fractional exponents first."
+    },
+    {
+      "id": "solving",
+      "title": "Solving for an unknown exponent",
+      "body": "**Strategy:** isolate the power, take the common logarithm of both sides, apply the power law, then divide.\n\n$$2 = 1.05^t$$\n$$\\log 2 = \\log 1.05^t$$\n$$\\log 2 = t\\log 1.05$$\n$$t = \\frac{\\log 2}{\\log 1.05} \\approx 14.2$$\n\nThe investment doubles in about **14.2 years**.\n\nNote that the starting amount cancelled out: doubling time depends only on the growth rate, not on how much you invest. (The \"rule of 72\" estimate: $72 \\div 5 \\approx 14.4$ years.)\n\n**Careful:** $\\frac{\\log 2}{\\log 1.05}$ is a *quotient* of logs. It is **not** $\\log\\frac{2}{1.05}$ and not $\\log 2 - \\log 1.05$."
+    },
+    {
+      "id": "change-of-base",
+      "title": "The change of base formula",
+      "body": "The same technique evaluates a logarithm with **any** base. Let $x = \\log_b m$. Then $b^x = m$, so $\\log b^x = \\log m$, giving $x\\log b = \\log m$:\n\n$$\\boxed{\\log_b m = \\frac{\\log m}{\\log b}}\\qquad m > 0,\\ b > 0,\\ b \\neq 1$$\n\n* $\\log_5 17 = \\frac{\\log 17}{\\log 5} \\approx 1.760$ — sensible, since $5^1 = 5 < 17 < 25 = 5^2$.\n* $\\log_{1/2} 10 = \\frac{\\log 10}{\\log 0.5} = \\frac{1}{-0.301} \\approx -3.322$.\n\n**Graphing any base.** To graph $f(x) = \\log_5 x$ on a calculator, enter $y = \\frac{\\log x}{\\log 5}$. Or graph the inverse $y = 5^x$ and reflect it in $y = x$.\n\n```plot\ntitle: Graphing log base 5 with the change of base formula\nf: log(x)/log(5) | label=y = log₅ x\nf: 5^x | dashed; label=y = 5^x\nf: x | dashed\ndomain: -3, 8\nrange: -3, 8\npoints: (1,0), (5,1)\n```"
+    },
+    {
+      "id": "common-errors",
+      "title": "What the power law does NOT say",
+      "body": "The power law applies only when the **argument** is raised to a power.\n\n| Statement | True? | Why |\n|---|---|---|\n| $\\log x^3 = 3\\log x$ | ✓ | power law |\n| $(\\log x)^3 = 3\\log x$ | ✗ | the *log* is cubed, not the argument; e.g. $x = 100$: $8 \\neq 6$ |\n| $\\log(3x) = 3\\log x$ | ✗ | e.g. $x = 10$: $\\log 30 \\approx 1.48 \\neq 3$ |\n| $\\log_2 8^{1/3} = \\frac13\\log_2 8 = 1$ | ✓ | fractional exponents are allowed |\n\nAlso remember the restrictions: $x > 0$. For example $\\log x^2$ is defined for all $x \\neq 0$, but $2\\log x$ only for $x > 0$, so the two graphs are not identical."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "power law of logarithms",
+      "definition": "$\\log_b x^n = n\\log_b x$ for $b > 0$, $b \\neq 1$, $x > 0$, $n \\in \\mathbb{R}$."
+    },
+    {
+      "term": "change of base formula",
+      "definition": "$\\log_b m = \\frac{\\log m}{\\log b}$; expresses a logarithm in any base using common logarithms."
+    },
+    {
+      "term": "doubling time",
+      "definition": "The time for an exponentially growing quantity to double; for $A = P(1 + i)^t$ it is $t = \\frac{\\log 2}{\\log(1 + i)}$."
+    },
+    {
+      "term": "compound interest",
+      "definition": "Interest added to the principal each period, giving $A = P(1 + i)^n$ where $i$ is the rate per period."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Power law of logarithms",
+      "latex": "\\log_b x^n = n\\log_b x",
+      "meaning": "$b > 0$, $b \\neq 1$, $x > 0$, $n \\in \\mathbb{R}$."
+    },
+    {
+      "name": "Change of base",
+      "latex": "\\log_b m = \\frac{\\log m}{\\log b}",
+      "meaning": "$m > 0$, $b > 0$, $b \\neq 1$."
+    },
+    {
+      "name": "Solving b^x = m",
+      "latex": "x = \\frac{\\log m}{\\log b}",
+      "meaning": "Take common logs of both sides and apply the power law."
+    },
+    {
+      "name": "Compound interest",
+      "latex": "A = P(1 + i)^n",
+      "meaning": "$P$ principal, $i$ interest rate per compounding period, $n$ number of periods."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Apply the power law",
+      "problem": "Evaluate (a) $\\log_3 9^4$ (b) $\\log_2 8^5$ (c) $\\log 0.001^2$ (d) $\\log_5 \\sqrt{125}$",
+      "steps": [
+        "(a) $\\log_3 9^4 = 4\\log_3 9 = 4(2) = 8$. (Check without the law: $9^4 = 6561 = 3^8$ ✓.)",
+        "(b) $5\\log_2 8 = 5(3) = 15$.",
+        "(c) $2\\log 0.001 = 2\\log 10^{-3} = 2(-3) = -6$.",
+        "(d) $\\log_5 125^{1/2} = \\frac12\\log_5 125 = \\frac12(3) = \\frac32$."
+      ],
+      "answer": "(a) 8 (b) 15 (c) −6 (d) $\\frac32$"
+    },
+    {
+      "title": "Doubling time",
+      "problem": "How long does an investment at 5% compounded annually take to double?",
+      "steps": [
+        "$2 = 1.05^t$ (after dividing $200 = 100(1.05)^t$ by 100).",
+        "$\\log 2 = \\log 1.05^t = t\\log 1.05$.",
+        "$t = \\dfrac{\\log 2}{\\log 1.05} = \\dfrac{0.30103}{0.021189} \\approx 14.2$."
+      ],
+      "answer": "About 14.2 years."
+    },
+    {
+      "title": "Evaluate logarithms with any base",
+      "problem": "Evaluate to three decimal places: (a) $\\log_5 17$ (b) $\\log_{1/2} 10$",
+      "steps": [
+        "(a) $\\log_5 17 = \\dfrac{\\log 17}{\\log 5} \\approx \\dfrac{1.2304}{0.6990} \\approx 1.760$.",
+        "(b) $\\log_{1/2} 10 = \\dfrac{\\log 10}{\\log 0.5} = \\dfrac{1}{-0.30103} \\approx -3.322$."
+      ],
+      "answer": "(a) 1.760 (b) −3.322"
+    },
+    {
+      "title": "Solve exponential equations",
+      "problem": "Solve to two decimal places: (a) $5^t = 250$ (b) $500 = 100(1.06)^t$",
+      "steps": [
+        "(a) $t\\log 5 = \\log 250 \\Rightarrow t = \\dfrac{\\log 250}{\\log 5} \\approx 3.43$.",
+        "(b) Divide by 100: $5 = 1.06^t \\Rightarrow t = \\dfrac{\\log 5}{\\log 1.06} \\approx 27.62$."
+      ],
+      "answer": "(a) 3.43 (b) 27.62"
+    },
+    {
+      "title": "Thickness of sunglasses",
+      "problem": "Light through sunglasses glass $x$ mm thick has intensity $I = I_0(0.8)^x$. How thick must the glass be to block 25% of the light?",
+      "steps": [
+        "Blocking 25% means 75% is transmitted: $0.75I_0 = I_0(0.8)^x \\Rightarrow 0.75 = 0.8^x$.",
+        "$x = \\dfrac{\\log 0.75}{\\log 0.8} = \\dfrac{-0.1249}{-0.0969} \\approx 1.29$."
+      ],
+      "answer": "About 1.29 mm."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$(\\log x)^2 = 2\\log x$.",
+      "fact": "The power law only applies to a power **of the argument**: $\\log x^2 = 2\\log x$. For $x = 1000$: $(\\log 1000)^2 = 9$ but $2\\log 1000 = 6$."
+    },
+    {
+      "myth": "$\\log(5x) = 5\\log x$.",
+      "fact": "The 5 is a factor, not an exponent. $\\log(5x) \\neq 5\\log x$."
+    },
+    {
+      "myth": "$\\dfrac{\\log 2}{\\log 1.05} = \\log\\dfrac{2}{1.05}$.",
+      "fact": "A quotient of logarithms is not the log of a quotient. Evaluate the numerator and denominator separately."
+    },
+    {
+      "myth": "The doubling time depends on how much you invest.",
+      "fact": "In $2P = P(1 + i)^t$ the principal cancels; doubling time depends only on the rate."
+    },
+    {
+      "myth": "$\\log_b m = \\log\\frac{m}{b}$.",
+      "fact": "Change of base gives $\\frac{\\log m}{\\log b}$, a quotient of two logs."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Rule of 72",
+      "body": "Bankers estimate doubling time by dividing 72 by the annual percentage rate. The power law shows where it comes from: $t = \\frac{\\log 2}{\\log(1 + i)}$ is close to $\\frac{72}{100i}$ for small rates."
+    },
+    {
+      "title": "Spacecraft docking",
+      "body": "Braking thrusters reduce the distance to a space station exponentially, so the time to reach docking range is a logarithm, e.g. $t = \\log_{0.5}\\left(\\frac{d}{1000}\\right)$."
+    },
+    {
+      "title": "Car depreciation",
+      "body": "A vehicle losing 25% per year is worth $V = V_0(0.75)^t$; logs tell you when it is worth half the purchase price."
+    },
+    {
+      "title": "Atmospheric pressure",
+      "body": "Air pressure drops exponentially with altitude ($P = 101.3(1.133)^{-d}$), so climbers and pilots use logarithms to work out altitude from a pressure reading."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Evaluate $\\log_2 4^5$.",
+      "hint": "Power law, then $\\log_2 4$.",
+      "solution": "$5\\log_2 4 = 5(2) = 10$."
+    },
+    {
+      "question": "Evaluate $\\log_3 \\sqrt{27}$.",
+      "hint": "$\\sqrt{27} = 27^{1/2}$.",
+      "solution": "$\\frac12\\log_3 27 = \\frac12(3) = \\frac32$."
+    },
+    {
+      "question": "Solve $10 = 4^t$ to two decimal places.",
+      "hint": "Take log of both sides.",
+      "solution": "$t = \\frac{\\log 10}{\\log 4} = \\frac{1}{0.602} \\approx 1.66$."
+    },
+    {
+      "question": "Solve $2 = 1.08^t$.",
+      "hint": "This is a doubling time at 8%.",
+      "solution": "$t = \\frac{\\log 2}{\\log 1.08} \\approx 9.01$."
+    },
+    {
+      "question": "Evaluate $\\log_6 50$ to three decimal places.",
+      "hint": "Change of base.",
+      "solution": "$\\frac{\\log 50}{\\log 6} \\approx \\frac{1.699}{0.778} \\approx 2.183$."
+    },
+    {
+      "question": "Write $\\dfrac{\\log 8}{\\log 5}$ as a single logarithm.",
+      "hint": "Change of base in reverse.",
+      "solution": "$\\log_5 8$."
+    },
+    {
+      "question": "A 500-dollar investment earns 7% compounded annually. How long until it triples?",
+      "hint": "$3 = 1.07^t$.",
+      "solution": "$t = \\frac{\\log 3}{\\log 1.07} \\approx 16.2$ years."
+    },
+    {
+      "question": "Solve $2 = \\log 3x$.",
+      "hint": "Rewrite in exponential form.",
+      "solution": "$3x = 10^2 = 100$, so $x = \\frac{100}{3} \\approx 33.333$."
+    }
+  ],
+  "summary": [
+    "Power law: $\\log_b x^n = n\\log_b x$ — an exponent on the argument can be moved to the front.",
+    "To solve $b^x = m$, take common logs: $x = \\frac{\\log m}{\\log b}$.",
+    "Change of base: $\\log_b m = \\frac{\\log m}{\\log b}$ lets you evaluate or graph a logarithm with any base.",
+    "Doubling and tripling times of investments depend only on the interest rate.",
+    "The power law does not apply to $(\\log x)^n$ or $\\log(nx)$."
+  ],
+  "questions": [
+    {
+      "id": "6-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "n": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Evaluate each expression using the power law of logarithms. Show your steps.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_{ {{b}} } ({{b^2}})^{ {{n}} }$",
+          "answer": {
+            "expr": "2*n",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log 0.01^{ {{m}} }$",
+          "answer": {
+            "expr": "-2*m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_{ {{b}} } \\sqrt{ {{b^3}} }$",
+          "answer": {
+            "expr": "1.5",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log_2 \\sqrt[3]{16}$",
+          "answer": {
+            "expr": "4/3",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_{ {{b}} } ({{b^2}})^{ {{n}} } = {{n}}\\log_{ {{b}} } {{b^2}} = {{n}}(2) = {{2*n}}$.\n\n(b) $\\log 0.01^{ {{m}} } = {{m}}\\log 10^{-2} = {{m}}(-2) = {{-2*m}}$.\n\n(c) $\\log_{ {{b}} } \\sqrt{ {{b^3}} } = \\log_{ {{b}} } ({{b^3}})^{1/2} = \\frac12\\log_{ {{b}} } {{b^3}} = \\frac12(3) = 1.5$.\n\n(d) $\\log_2 \\sqrt[3]{16} = \\frac13\\log_2 16 = \\frac43 \\approx 1.333$.",
+      "rubric": [
+        {
+          "point": "(a) power law applied correctly",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct, including negative",
+          "marks": 1
+        },
+        {
+          "point": "(c) radical written as a fractional exponent",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "m": {
+          "min": 50,
+          "max": 400,
+          "step": 10
+        },
+        "g": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "r": {
+          "choices": [
+            1.04,
+            1.06,
+            1.08,
+            1.12
+          ]
+        },
+        "p": {
+          "choices": [
+            100,
+            200,
+            250
+          ]
+        },
+        "q": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        },
+        "r2": {
+          "choices": [
+            1.05,
+            1.07,
+            1.09
+          ]
+        }
+      },
+      "text": "Solve for $t$, correct to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{b}}^t = {{m}}$",
+          "answer": {
+            "expr": "log(m)/log(b)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{g}} = {{r}}^t$",
+          "answer": {
+            "expr": "log(g)/log(r)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "${{q*p}} = {{p}}({{r2}})^t$",
+          "answer": {
+            "expr": "log(q)/log(r2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{b}}^t = {{m}} \\Rightarrow t\\log {{b}} = \\log {{m}} \\Rightarrow t = \\dfrac{\\log {{m}}}{\\log {{b}}} \\approx {{log(m)/log(b):4}}$.\n\n(b) ${{g}} = {{r}}^t \\Rightarrow t = \\dfrac{\\log {{g}}}{\\log {{r}}} \\approx {{log(g)/log(r):4}}$.\n\n(c) ${{q*p}} = {{p}}({{r2}})^t \\Rightarrow {{q}} = {{r2}}^t \\Rightarrow t = \\dfrac{\\log {{q}}}{\\log {{r2}}} \\approx {{log(q)/log(r2):4}}$.",
+      "rubric": [
+        {
+          "point": "(a) takes logs and applies the power law",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct value",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) isolates the power before taking logs",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 300,
+          "max": 900,
+          "step": 100
+        },
+        "rp": {
+          "choices": [
+            4,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      },
+      "derived": {
+        "g": "1 + rp/100"
+      },
+      "text": "An investment earns {{rp}}% interest, compounded annually. Its value after $t$ years is $A(t) = {{p}}({{g}})^t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the initial value and find the value after 4 years.",
+          "answer": {
+            "expr": "p*(1+rp/100)^4",
+            "unit": "dollars",
+            "sig": 6
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long will it take the investment to double?",
+          "answer": {
+            "expr": "log(2)/log(1+rp/100)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long will it take to triple?",
+          "answer": {
+            "expr": "log(3)/log(1+rp/100)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain why your answers do not depend on the initial principal."
+        }
+      ],
+      "modelAnswer": "(a) $A(0) = {{p}}$ dollars (the coefficient, since ${{g}}^0 = 1$). $A(4) = {{p}}({{g}})^4 \\approx {{p*(1+rp/100)^4:5}}$ dollars.\n\n(b) Double: $2 = ({{g}})^t \\Rightarrow t = \\dfrac{\\log 2}{\\log {{g}}} \\approx {{log(2)/log(1+rp/100):3}}$ years.\n\n(c) Triple: $t = \\dfrac{\\log 3}{\\log {{g}}} \\approx {{log(3)/log(1+rp/100):3}}$ years.\n\n(d) Neither answer depends on {{p}}: dividing both sides by the principal leaves $({{g}})^t = 2$ or $3$. The doubling time depends only on the rate. (Rule of 72 check: $72 \\div {{rp}} \\approx {{72/rp:3}}$ years.)",
+      "rubric": [
+        {
+          "point": "Correct initial value and value after 4 years",
+          "marks": 1
+        },
+        {
+          "point": "Sets up and solves the doubling equation with logs",
+          "marks": 1
+        },
+        {
+          "point": "Correct doubling time",
+          "marks": 1
+        },
+        {
+          "point": "Correct tripling time",
+          "marks": 1
+        },
+        {
+          "point": "Explains independence from the principal",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            6,
+            7,
+            12
+          ]
+        },
+        "m": {
+          "min": 20,
+          "max": 300,
+          "step": 7
+        },
+        "n": {
+          "min": 5,
+          "max": 60,
+          "step": 5
+        },
+        "z": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Evaluate each logarithm, correct to three decimal places, using the change of base formula. Then check that each answer is reasonable.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_{ {{b}} } {{m}}$",
+          "answer": {
+            "expr": "log(m)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_{0.5} {{n}}$",
+          "answer": {
+            "expr": "log(n)/log(0.5)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_{ {{b}} } 0.{{z}}$",
+          "answer": {
+            "expr": "log(z/10)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.01
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_{ {{b}} } {{m}} = \\dfrac{\\log {{m}}}{\\log {{b}}} \\approx {{log(m)/log(b):4}}$. Reasonable: ${{b}}^{ {{floor(log(m)/log(b))}} } = {{b^floor(log(m)/log(b))}} < {{m}} < {{b^(floor(log(m)/log(b))+1)}}$.\n\n(b) $\\log_{0.5} {{n}} = \\dfrac{\\log {{n}}}{\\log 0.5} \\approx {{log(n)/log(0.5):4}}$. Negative, as expected: $0.5$ must be raised to a negative power to give a number greater than 1.\n\n(c) $\\log_{ {{b}} } 0.{{z}} = \\dfrac{\\log 0.{{z}}}{\\log {{b}}} \\approx {{log(z/10)/log(b):4}}$ (negative because the argument is between 0 and 1).",
+      "rubric": [
+        {
+          "point": "(a) correct value",
+          "marks": 1
+        },
+        {
+          "point": "(a) reasonableness check with powers",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct negative value with explanation",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q05",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Prove the power law of logarithms, $\\log_b x^n = n\\log_b x$, and use it to explain why the change of base formula works.",
+      "modelAnswer": "**Power law.** Let $w = \\log_b x$. In exponential form $x = b^w$. Raise both sides to the power $n$: $x^n = (b^w)^n = b^{wn}$ (power law of exponents). Rewrite in logarithmic form: $\\log_b x^n = wn$. Substitute $w = \\log_b x$: $\\log_b x^n = n\\log_b x$. ∎\n\n**Change of base.** Let $y = \\log_b m$, so $b^y = m$. Take the common logarithm of both sides: $\\log b^y = \\log m$. By the power law, $y\\log b = \\log m$, so $y = \\frac{\\log m}{\\log b}$. Therefore $\\log_b m = \\frac{\\log m}{\\log b}$ (valid for $m > 0$, $b > 0$, $b \\neq 1$, since $\\log b \\neq 0$).",
+      "rubric": [
+        {
+          "point": "Introduces w = log_b x and rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Raises to the power n using exponent laws",
+          "marks": 1
+        },
+        {
+          "point": "Converts back and substitutes to complete the proof",
+          "marks": 1
+        },
+        {
+          "point": "Derives change of base using the power law",
+          "marks": 1
+        },
+        {
+          "point": "States restrictions (b ≠ 1 so log b ≠ 0)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q06",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student writes: \"$\\log(mx) = m\\log x$ and $\\log(x^n) = (\\log x)^n$.\" Evaluate both claims.",
+      "modelAnswer": "(a) $\\log(mx) = m\\log x$ is **false** in general. Counter-example: $m = 3$, $x = 10$: $\\log 30 \\approx 1.477$ but $3\\log 10 = 3$. Graphically, $y = \\log(3x)$ is a horizontal compression of $\\log x$ (a vertical shift of about 0.477), while $y = 3\\log x$ is a vertical stretch — different graphs. (They agree only at special points.)\n\n(b) $\\log(x^n) = (\\log x)^n$ is **false** in general. Counter-example: $x = 1000$, $n = 2$: $\\log 10^6 = 6$ but $(\\log 1000)^2 = 9$. The correct statement is the power law $\\log(x^n) = n\\log x$; $(\\log x)^n$ raises the *log* to a power.\n\n(c) The power law applies only when the argument itself is raised to a power.",
+      "rubric": [
+        {
+          "point": "Shows the first claim is false with a numerical counter-example",
+          "marks": 2
+        },
+        {
+          "point": "Shows the second claim is false with a counter-example",
+          "marks": 2
+        },
+        {
+          "point": "States the correct power law and when it applies",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "dk": {
+          "choices": [
+            5,
+            10,
+            20,
+            25,
+            50
+          ]
+        }
+      },
+      "text": "A spacecraft is approaching a space station. When it is 1000 km away, reverse thrusters fire. The time, $t$, in hours, to reach a distance $d$ kilometres from the station is $t = \\log_{0.5}\\left(\\dfrac{d}{1000}\\right)$. Docking can begin once the craft is within {{dk}} km.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long after the thrusters first fire should docking procedures begin?",
+          "answer": {
+            "expr": "log(dk/1000)/log(0.5)",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range of the function and explain what they represent."
+        }
+      ],
+      "modelAnswer": "(a) $t = \\log_{0.5}\\left(\\dfrac{ {{dk}} }{1000}\\right) = \\dfrac{\\log {{dk/1000}}}{\\log 0.5} \\approx {{log(dk/1000)/log(0.5):3}}$ h after the thrusters fire.\n\n(b) Domain: $0 < d \\le 1000$ (the craft starts 1000 km away and the distance stays positive). Range: $t \\ge 0$. As $d \\to 0$, $t \\to \\infty$ — the model says the craft halves its distance every hour, so in theory it never quite arrives. The model only applies during braking.",
+      "rubric": [
+        {
+          "point": "Applies change of base correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct time",
+          "marks": 2
+        },
+        {
+          "point": "Sensible domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Interprets what the domain/range represent",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "rp": {
+          "choices": [
+            4,
+            5,
+            6,
+            8
+          ]
+        }
+      },
+      "text": "An investment pays {{rp}}% interest per year, compounded quarterly.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the amount, $A$, as a function of time, $t$, in years."
+        },
+        {
+          "label": "b",
+          "text": "How long will it take to double?",
+          "answer": {
+            "expr": "log(2)/(4*log(1+rp/400))",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How long will it take to triple?",
+          "answer": {
+            "expr": "log(3)/(4*log(1+rp/400))",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Quarterly rate $i = \\frac{ {{rp}} }{400} = {{rp/400}}$; after $t$ years there are $4t$ periods: $A = P\\left(1 + {{rp/400}}\\right)^{4t}$.\n\n(b) Double: $2 = ({{1 + rp/400}})^{4t} \\Rightarrow 4t = \\dfrac{\\log 2}{\\log {{1 + rp/400}}} \\Rightarrow t \\approx {{log(2)/(4*log(1+rp/400)):3}}$ years.\n\n(c) Triple: $t = \\dfrac{\\log 3}{4\\log {{1 + rp/400}}} \\approx {{log(3)/(4*log(1+rp/400)):3}}$ years.",
+      "rubric": [
+        {
+          "point": "Correct equation with quarterly rate and 4t periods",
+          "marks": 2
+        },
+        {
+          "point": "Correct doubling time",
+          "marks": 1
+        },
+        {
+          "point": "Correct tripling time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "choices": [
+            3,
+            6,
+            7
+          ]
+        },
+        "j": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "choices": [
+            3,
+            7,
+            9
+          ]
+        },
+        "m": {
+          "min": 20,
+          "max": 90,
+          "step": 5
+        }
+      },
+      "text": "Solve for $x$, correct to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{k}} = \\log({{c}}x)$",
+          "answer": {
+            "expr": "10^k/c",
+            "unit": "",
+            "sig": 5
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{j}} = \\log_3 x$",
+          "answer": {
+            "expr": "3^j",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "$x = \\log_{ {{b}} } {{m}}$",
+          "answer": {
+            "expr": "log(m)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "d",
+          "text": "$12 = 2\\log_5 x$",
+          "answer": {
+            "expr": "15625",
+            "unit": "",
+            "sig": 5
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{k}} = \\log({{c}}x) \\Rightarrow {{c}}x = 10^{ {{k}} } \\Rightarrow x = \\dfrac{ {{10^k}} }{ {{c}} } \\approx {{10^k/c:5}}$.\n\n(b) ${{j}} = \\log_3 x \\Rightarrow x = 3^{ {{j}} } = {{3^j}}$.\n\n(c) $x = \\log_{ {{b}} } {{m}} = \\dfrac{\\log {{m}}}{\\log {{b}}} \\approx {{log(m)/log(b):4}}$.\n\n(d) $12 = 2\\log_5 x \\Rightarrow \\log_5 x = 6 \\Rightarrow x = 5^6 = 15\\,625$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct using change of base",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "blk": {
+          "choices": [
+            20,
+            25,
+            30,
+            40,
+            50
+          ]
+        }
+      },
+      "text": "The intensity, $I$, of light passing through sunglasses glass $x$ millimetres thick is $I(x) = I_0(0.8)^x$, where $I_0$ is the intensity entering the glass.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How thick should the glass be to block {{blk}}% of the light?",
+          "answer": {
+            "expr": "log((100-blk)/100)/log(0.8)",
+            "unit": "mm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Does doubling this thickness block twice as much light? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Blocking {{blk}}% means {{100-blk}}% is transmitted: ${{(100-blk)/100}} = 0.8^x$.\n\n$x = \\dfrac{\\log {{(100-blk)/100}}}{\\log 0.8} \\approx {{log((100-blk)/100)/log(0.8):3}}$ mm.\n\n(b) Twice the thickness transmits $0.8^{2x} = ({{(100-blk)/100}})^2 = {{((100-blk)/100)^2:3}}$ of the light, so it blocks ${{100 - 100*((100-blk)/100)^2:3}}\\%$ — not twice as much. Each millimetre removes the same *percentage* of the light remaining, not the same amount.",
+      "rubric": [
+        {
+          "point": "Sets up the equation using the transmitted fraction",
+          "marks": 1
+        },
+        {
+          "point": "Correct thickness",
+          "marks": 2
+        },
+        {
+          "point": "Correct analysis of doubling the thickness",
+          "marks": 1
+        },
+        {
+          "point": "Explains the percentage-of-remaining idea",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "choices": [
+            15,
+            20,
+            25,
+            30
+          ]
+        },
+        "v0": {
+          "min": 20000,
+          "max": 40000,
+          "step": 2000
+        },
+        "v1": {
+          "choices": [
+            5000,
+            8000
+          ]
+        }
+      },
+      "text": "A vehicle depreciates by {{d}}% each year. Its value, in dollars, after $t$ years is $V(t) = {{v0}}({{1 - d/100}})^t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What was the initial value of the vehicle? How do you know?"
+        },
+        {
+          "label": "b",
+          "text": "How long until the vehicle is worth half its initial value?",
+          "answer": {
+            "expr": "log(0.5)/log(1-d/100)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "After how many years is it worth {{v1}} dollars?",
+          "answer": {
+            "expr": "log(v1/v0)/log(1-d/100)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) The initial value is $V(0) = {{v0}}$ dollars, because any base to the power 0 is 1.\n\n(b) Half value: $0.5 = ({{1 - d/100}})^t \\Rightarrow t = \\dfrac{\\log 0.5}{\\log {{1 - d/100}}} \\approx {{log(0.5)/log(1-d/100):3}}$ years.\n\n(c) Value below {{v1}} dollars: $({{1 - d/100}})^t = \\frac{ {{v1}} }{ {{v0}} } \\Rightarrow t = \\dfrac{\\log({{v1}}/{{v0}})}{\\log {{1 - d/100}}} \\approx {{log(v1/v0)/log(1-d/100):3}}$ years.",
+      "rubric": [
+        {
+          "point": "Correct initial value with explanation",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-value time",
+          "marks": 2
+        },
+        {
+          "point": "Correct time to fall to the given value",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-4-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        },
+        "p": {
+          "min": 50,
+          "max": 90,
+          "step": 5
+        }
+      },
+      "text": "Atmospheric pressure, $P$, in kilopascals, at an altitude of $d$ kilometres is modelled by $P = 101.3(1.133)^{-d}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the pressure at an altitude of {{h}} km.",
+          "answer": {
+            "expr": "101.3*1.133^(-h)",
+            "unit": "kPa",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How high is a climber who measures a pressure of {{p}} kPa?",
+          "answer": {
+            "expr": "-log(p/101.3)/log(1.133)",
+            "unit": "km",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "By what percent does the pressure decrease for each kilometre of altitude? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $P({{h}}) = 101.3(1.133)^{-{{h}}} \\approx {{101.3*1.133^(-h):3}}$ kPa.\n\n(b) ${{p}} = 101.3(1.133)^{-d} \\Rightarrow \\dfrac{ {{p}} }{101.3} = 1.133^{-d}$\n\n$\\log\\left(\\dfrac{ {{p}} }{101.3}\\right) = -d\\log 1.133 \\Rightarrow d = -\\dfrac{\\log({{p}}/101.3)}{\\log 1.133} \\approx {{-log(p/101.3)/log(1.133):3}}$ km.\n\n(c) The pressure is multiplied by $1.133^{-1} \\approx 0.883$ for every kilometre climbed, so it falls by about 11.7% of its current value each kilometre — exponential decay.",
+      "rubric": [
+        {
+          "point": "Correct pressure at the given altitude",
+          "marks": 1
+        },
+        {
+          "point": "Isolates the power and takes logs",
+          "marks": 1
+        },
+        {
+          "point": "Correct altitude",
+          "marks": 2
+        },
+        {
+          "point": "Interprets the decay factor",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q13",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "n": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Consider $\\log_2 16^{ {{n}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Evaluate without using the power law.",
+          "answer": {
+            "expr": "4*n",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Evaluate using the power law."
+        },
+        {
+          "label": "c",
+          "text": "Which method do you prefer? Why?"
+        }
+      ],
+      "modelAnswer": "(a) Without the power law: $16^{ {{n}} } = (2^4)^{ {{n}} } = 2^{ {{4*n}} }$, so $\\log_2 16^{ {{n}} } = {{4*n}}$.\n\n(b) With the power law: $\\log_2 16^{ {{n}} } = {{n}}\\log_2 16 = {{n}}(4) = {{4*n}}$.\n\n(c) Both give {{4*n}}. The power law avoids working with very large numbers (here $16^{ {{n}} } = {{16^n}}$), so it is usually quicker and less error-prone.",
+      "rubric": [
+        {
+          "point": "(a) correct without the power law",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct with the power law",
+          "marks": 1
+        },
+        {
+          "point": "(c) sensible comparison of methods",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q14",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "According to the power law, $\\log x^2 = 2\\log x$. Consider the functions $f(x) = \\log x^2$ and $g(x) = 2\\log x$.",
+      "modelAnswer": "(a) $f(x) = \\log x^2$ is defined whenever $x^2 > 0$, i.e. for all $x \\neq 0$. $g(x) = 2\\log x$ is defined only for $x > 0$.\n\n(b) For $x > 0$ the two functions are identical (the power law holds). For $x < 0$, $g$ is undefined but $f$ is defined: $f(-10) = \\log 100 = 2$. The graph of $f$ has two branches symmetric about the $y$-axis (it is an even function); $g$ has only the right branch.\n\n(c) The power law $\\log_b x^n = n\\log_b x$ requires $x > 0$. Using it on $\\log x^2$ for negative $x$ would lose part of the graph, so the restriction matters.",
+      "rubric": [
+        {
+          "point": "Correct domain of f",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain of g",
+          "marks": 1
+        },
+        {
+          "point": "Explains the graphs agree for x > 0 and differ for x < 0",
+          "marks": 2
+        },
+        {
+          "point": "Links to the restriction x > 0 in the power law",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        "m": {
+          "min": 11,
+          "max": 99,
+          "step": 4
+        }
+      },
+      "text": "Use the change of base formula to rewrite each expression, then evaluate or simplify it.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write $\\dfrac{\\log {{m}}}{\\log {{b}}}$ as a single logarithm and evaluate it.",
+          "answer": {
+            "expr": "log(m)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "b",
+          "text": "Express $\\log_3 9$ in terms of base-2 logarithms."
+        },
+        {
+          "label": "c",
+          "text": "Simplify and evaluate $\\dfrac{1}{\\log_3 {{b}}}$.",
+          "answer": {
+            "expr": "log(3)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\dfrac{\\log {{m}}}{\\log {{b}}} = \\log_{ {{b}} } {{m}} \\approx {{log(m)/log(b):4}}$.\n\n(b) $\\log_3 9$ in base 2: $\\log_3 9 = \\dfrac{\\log_2 9}{\\log_2 3}$; its value is 2.\n\n(c) $\\dfrac{1}{\\log_3 {{b}}} = \\dfrac{1}{\\frac{\\log {{b}}}{\\log 3}} = \\dfrac{\\log 3}{\\log {{b}}} = \\log_{ {{b}} } 3 \\approx {{log(3)/log(b):4}}$.",
+      "rubric": [
+        {
+          "point": "(a) correct single logarithm and value",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct expression in base 2",
+          "marks": 1
+        },
+        {
+          "point": "(c) uses change of base to simplify the reciprocal",
+          "marks": 2
+        },
+        {
+          "point": "(c) correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            3,
+            5,
+            6,
+            25
+          ]
+        }
+      },
+      "text": "Describe two different methods for graphing $f(x) = \\log_{ {{b}} } x$ and explain why each works.",
+      "modelAnswer": "**Method 1 — inverse.** Graph $y = {{b}}^x$ (points $(-1, \\tfrac{1}{ {{b}} })$, $(0, 1)$, $(1, {{b}})$), then reflect it in the line $y = x$ to get $(\\tfrac{1}{ {{b}} }, -1)$, $(1, 0)$, $({{b}}, 1)$. It works because $\\log_{ {{b}} } x$ is the inverse of ${{b}}^x$.\n\n**Method 2 — change of base.** Enter $y = \\dfrac{\\log x}{\\log {{b}}}$ into a graphing calculator. It works because $\\log_{ {{b}} } x = \\frac{\\log x}{\\log {{b}}}$ for all $x > 0$; this is just $y = \\log x$ stretched vertically by the factor $\\frac{1}{\\log {{b}}} \\approx {{1/log(b):3}}$.\n\nKey features either way: domain $x > 0$, $x$-intercept 1, asymptote $x = 0$, passes through $({{b}}, 1)$.",
+      "rubric": [
+        {
+          "point": "Describes the inverse/reflection method with points",
+          "marks": 2
+        },
+        {
+          "point": "Describes the change-of-base method",
+          "marks": 1
+        },
+        {
+          "point": "Explains why each works",
+          "marks": 1
+        },
+        {
+          "point": "States key features",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-4-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p0": {
+          "min": 30000,
+          "max": 50000,
+          "step": 2000
+        },
+        "r": {
+          "choices": [
+            5,
+            8,
+            10,
+            12
+          ]
+        }
+      },
+      "derived": {
+        "g": "1 + r/100",
+        "target": "100000"
+      },
+      "text": "The population of a city is {{p0}} and is increasing by {{r}}% per year.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the population as a function of time."
+        },
+        {
+          "label": "b",
+          "text": "How long will it take the population to double?",
+          "answer": {
+            "expr": "log(2)/log(1+r/100)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "After how many years will the population reach 100 000?",
+          "answer": {
+            "expr": "log(target/p0)/log(1+r/100)",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $P(t) = {{p0}}({{g}})^t$ where $t$ is in years. (Growth factor $1 + \\frac{ {{r}} }{100}$.)\n\n(b) Double: $2 = {{g}}^t \\Rightarrow t = \\dfrac{\\log 2}{\\log {{g}}} \\approx {{log(2)/log(1+r/100):3}}$ years.\n\n(c) ${{target}} = {{p0}}({{g}})^t \\Rightarrow t = \\dfrac{\\log({{target}}/{{p0}})}{\\log {{g}}} \\approx {{log(target/p0)/log(1+r/100):3}}$ years.",
+      "rubric": [
+        {
+          "point": "Correct exponential model",
+          "marks": 1
+        },
+        {
+          "point": "Correct doubling time",
+          "marks": 2
+        },
+        {
+          "point": "Correct time to reach the target",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

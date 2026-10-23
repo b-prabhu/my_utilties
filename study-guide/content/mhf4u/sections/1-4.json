@@ -1,0 +1,1050 @@
+{
+  "id": "1-4",
+  "number": "1.4",
+  "title": "Transformations",
+  "estimatedMinutes": 70,
+  "overview": "Every polynomial graph in this section is a familiar power function, $y = x^n$, that has been stretched, compressed, reflected or slid. Learn what each parameter in $y = a[k(x - d)]^n + c$ does, and you can sketch complicated-looking graphs in seconds, write equations from descriptions, and read the vertex, symmetry and range straight from an equation.",
+  "objectives": [
+    "Identify the parameters $a$, $k$, $d$, $c$ and describe the transformation each represents.",
+    "Apply transformations in the correct order to sketch $y = a[k(x - d)]^n + c$.",
+    "Map points using $(x, y) \\to (\\tfrac{x}{k} + d,\\ ay + c)$.",
+    "Write an equation from a description of transformations.",
+    "State the domain and range, and for even powers the vertex and axis of symmetry."
+  ],
+  "lessons": [
+    {
+      "id": "parameters",
+      "title": "The four parameters a, k, d and c",
+      "body": "\nEvery graph in this section starts from a **power function** $y = x^n$ and is moved and reshaped using\n\n$$y = a[k(x - d)]^n + c$$\n\n| Parameter | Effect | Mapping of a point $(x, y)$ |\n|---|---|---|\n| $a$ | vertical stretch by factor $\\lvert a\\rvert$ if $\\lvert a\\rvert > 1$, compression if $0 < \\lvert a\\rvert < 1$; **reflection in the $x$-axis** if $a < 0$ | $y \\to ay$ |\n| $k$ | horizontal compression by factor $\\tfrac{1}{\\lvert k\\rvert}$ if $\\lvert k\\rvert > 1$, stretch if $0 < \\lvert k\\rvert < 1$; **reflection in the $y$-axis** if $k < 0$ | $x \\to \\tfrac{x}{k}$ |\n| $d$ | horizontal translation: right if $d > 0$, left if $d < 0$ | $x \\to x + d$ |\n| $c$ | vertical translation: up if $c > 0$, down if $c < 0$ | $y \\to y + c$ |\n\nAll four together: $(x, y) \\to \\left(\\dfrac{x}{k} + d,\\ ay + c\\right)$.\n\n> **Watch the signs.** In $y = [2(x + 1)]^3$, $d = -1$ (because $x + 1 = x - (-1)$), so the shift is 1 unit **left**.\n\n**Order of transformations.** Apply stretches, compressions and reflections ($a$ and $k$) *before* translations ($c$ and $d$) — the same order as BEDMAS: multiply first, then add.\n"
+    },
+    {
+      "id": "table-method",
+      "title": "Sketching with a table of key points",
+      "body": "\nTransform a handful of easy points on the base function, column by column.\n\n**Example:** $y = -3[2(x + 1)]^3 + 5$ from $y = x^3$, with $a = -3$, $k = 2$, $d = -1$, $c = 5$.\n\n| $y = x^3$ | $y = (2x)^3$: divide $x$ by 2 | $y = -3(2x)^3$: multiply $y$ by $-3$ | $y = -3[2(x+1)]^3 + 5$: left 1, up 5 |\n|---|---|---|---|\n| $(-2, -8)$ | $(-1, -8)$ | $(-1, 24)$ | $(-2, 29)$ |\n| $(-1, -1)$ | $(-0.5, -1)$ | $(-0.5, 3)$ | $(-1.5, 8)$ |\n| $(0, 0)$ | $(0, 0)$ | $(0, 0)$ | $(-1, 5)$ |\n| $(1, 1)$ | $(0.5, 1)$ | $(0.5, -3)$ | $(-0.5, 2)$ |\n| $(2, 8)$ | $(1, 8)$ | $(1, -24)$ | $(0, -19)$ |\n\n```plot\ntitle: y = x³ (blue) and y = −3[2(x + 1)]³ + 5 (red)\nf: x^3 | label=y = x³\nf: -3*(2*(x+1))^3 + 5 | label=y = −3[2(x + 1)]³ + 5\ndomain: -3, 1.5\nrange: -25, 30\npoints: (-2,29), (-1.5,8), (-1,5), (-0.5,2), (0,-19)\n```\n\nDomain $\\{x \\in \\mathbb{R}\\}$ and range $\\{y \\in \\mathbb{R}\\}$: translations and stretches never change this for an odd power.\n"
+    },
+    {
+      "id": "even-powers",
+      "title": "Even powers: vertex, axis of symmetry and range",
+      "body": "\nWhen $n$ is even, $y = a[k(x - d)]^n + c$ looks like a (flatter) parabola:\n\n* the **vertex** is $(d, c)$;\n* the **axis of symmetry** is $x = d$;\n* if $a > 0$ it opens **up**, the vertex is a minimum, and the range is $\\{y \\in \\mathbb{R},\\ y \\ge c\\}$;\n* if $a < 0$ it opens **down**, the vertex is a maximum, and the range is $\\{y \\in \\mathbb{R},\\ y \\le c\\}$.\n\n```plot\ntitle: y = x⁴ and y = −0.5(x − 2)⁴ + 3\nf: x^4 | label=y = x⁴\nf: -0.5*(x-2)^4 + 3 | label=y = −0.5(x − 2)⁴ + 3\ndomain: -2, 4.5\nrange: -5, 6\npoints: (2,3)\nasymptote x: 2\n```\n\n(The dashed line marks the axis of symmetry $x = 2$.)\n\nFor odd $n$ there is no vertex and the domain and range are both all real numbers; the point $(d, c)$ is the centre of point symmetry (where $y = x^3$'s origin moves to).\n"
+    },
+    {
+      "id": "equations-from-descriptions",
+      "title": "Writing equations from descriptions",
+      "body": "\nTranslate each phrase into a parameter, then substitute into $y = a[k(x - d)]^n + c$.\n\n| Phrase | Parameter |\n|---|---|\n| \"vertically stretched by a factor of 5\" | $a = 5$ |\n| \"vertically compressed by a factor of $\\tfrac34$\" | $a = \\tfrac34$ |\n| \"reflected in the $x$-axis\" | make $a$ negative |\n| \"horizontally compressed by a factor of $\\tfrac13$\" | $k = 3$ |\n| \"horizontally stretched by a factor of 2\" | $k = \\tfrac12$ |\n| \"reflected in the $y$-axis\" | make $k$ negative |\n| \"translated 4 units left\" | $d = -4$ |\n| \"translated 7 units up\" | $c = 7$ |\n\n**Example.** $y = x^4$ is compressed vertically by a factor of $\\tfrac13$, stretched horizontally by a factor of 2, reflected in the $y$-axis, and translated 1 unit up and 4 units left.\n\n$a = \\tfrac13$, $k = -\\tfrac12$, $d = -4$, $c = 1$:\n$$y = \\tfrac13\\left[-\\tfrac12(x + 4)\\right]^4 + 1$$\n\nVertex $(-4, 1)$, axis $x = -4$, opens up, range $\\{y \\ge 1\\}$. (Because the power is even, the reflection in the $y$-axis has no visible effect.)\n"
+    },
+    {
+      "id": "factoring-k",
+      "title": "Factor out k before reading d",
+      "body": "\nAn equation like $y = -(2x + 6)^4$ hides the horizontal translation. Factor the coefficient of $x$ out of the bracket first:\n\n$$y = -(2x + 6)^4 = -[2(x + 3)]^4$$\n\nNow read $k = 2$ (horizontal compression by $\\tfrac12$), $d = -3$ (3 units left), $a = -1$ (reflection in the $x$-axis). Vertex $(-3, 0)$.\n\n> A common error is to read \"6 left\" from $(2x + 6)$. The shift is $\\dfrac{6}{2} = 3$.\n\n**Useful identity.** For a power function, a horizontal compression can be rewritten as a vertical stretch: $(kx)^n = k^n x^n$. So $y = (2x)^3$ is the same graph as $y = 8x^3$.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "power function",
+      "definition": "A function of the form $y = ax^n$, where $n$ is a whole number."
+    },
+    {
+      "term": "transformation",
+      "definition": "A change in position, size or orientation of a graph: translation, stretch, compression or reflection."
+    },
+    {
+      "term": "vertical stretch / compression",
+      "definition": "Multiplying every $y$-coordinate by $\\lvert a\\rvert$."
+    },
+    {
+      "term": "horizontal stretch / compression",
+      "definition": "Multiplying every $x$-coordinate by $\\tfrac{1}{\\lvert k\\rvert}$."
+    },
+    {
+      "term": "translation",
+      "definition": "Sliding a graph left/right ($d$) or up/down ($c$) without changing its shape."
+    },
+    {
+      "term": "vertex",
+      "definition": "For even $n$, the turning point $(d, c)$ of $y=a[k(x-d)]^n+c$."
+    },
+    {
+      "term": "axis of symmetry",
+      "definition": "The vertical line $x = d$ through the vertex of an even-power graph."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Transformed power function",
+      "latex": "y = a[k(x - d)]^n + c",
+      "meaning": "Base function $y = x^n$."
+    },
+    {
+      "name": "Point mapping",
+      "latex": "(x, y) \\to \\left(\\frac{x}{k} + d,\\; ay + c\\right)",
+      "meaning": "Where each point of $y = x^n$ moves."
+    },
+    {
+      "name": "Even powers",
+      "latex": "\\text{vertex } (d, c), \\quad \\text{axis } x = d",
+      "meaning": "Range $y \\ge c$ if $a>0$, $y \\le c$ if $a<0$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Describe the transformations",
+      "problem": "Describe how $y = x^4$ is transformed to obtain $y = 4[3(x + 2)]^4$, and state the domain, range, vertex and axis of symmetry.",
+      "steps": [
+        "Compare with $y = a[k(x-d)]^n + c$: $a = 4$, $k = 3$, $d = -2$, $c = 0$.",
+        "$k = 3$: horizontal compression by a factor of $\\tfrac13$. $a = 4$: vertical stretch by a factor of 4.",
+        "$d = -2$: translation 2 units left. No vertical translation.",
+        "Vertex $(-2, 0)$, axis of symmetry $x = -2$. $a > 0$ so it opens up: range $\\{y \\in \\mathbb{R},\\ y \\ge 0\\}$, domain $\\{x \\in \\mathbb{R}\\}$."
+      ],
+      "answer": "Compress horizontally by $\\tfrac13$, stretch vertically by 4, shift 2 left; vertex $(-2,0)$."
+    },
+    {
+      "title": "Map a point",
+      "problem": "Where does the point $(2, 8)$ on $y = x^3$ go under $y = -3[2(x + 1)]^3 + 5$?",
+      "steps": [
+        "Use $(x, y) \\to (\\tfrac{x}{k} + d,\\ ay + c)$ with $a=-3$, $k=2$, $d=-1$, $c=5$.",
+        "$x$: $\\tfrac22 - 1 = 0$.",
+        "$y$: $-3(8) + 5 = -19$."
+      ],
+      "answer": "$(0, -19)$"
+    },
+    {
+      "title": "Equation from a description",
+      "problem": "$y = x^3$ is compressed horizontally by a factor of $\\tfrac13$, stretched vertically by a factor of 5, reflected in the $x$-axis, and translated 2 units left and 7 units up. Write the equation.",
+      "steps": [
+        "Horizontal compression by $\\tfrac13$ → $k = 3$.",
+        "Vertical stretch by 5 with reflection in the $x$-axis → $a = -5$.",
+        "2 left → $d = -2$; 7 up → $c = 7$."
+      ],
+      "answer": "$y = -5[3(x + 2)]^3 + 7$; domain and range are all real numbers."
+    },
+    {
+      "title": "Factor first",
+      "problem": "Describe $y = -(2x + 6)^4$ as a transformation of $y = x^4$.",
+      "steps": [
+        "$2x + 6 = 2(x + 3)$, so $y = -[2(x + 3)]^4$.",
+        "$k = 2$: horizontal compression by $\\tfrac12$. $a = -1$: reflection in the $x$-axis. $d = -3$: 3 units left.",
+        "Vertex $(-3, 0)$, opens down, range $\\{y \\le 0\\}$."
+      ],
+      "answer": "Compress horizontally by ½, reflect in the $x$-axis, shift 3 left."
+    },
+    {
+      "title": "Equation from a graph",
+      "problem": "The graph is a transformation of $y = x^3$. Its centre of symmetry is $(1, 3)$ and it also passes through $(2, 3.5)$. Find its equation in the form $y = a(x - d)^3 + c$.\n\n```plot\nf: 0.5*(x-1)^3 + 3\ndomain: -2, 4\nrange: -6, 10\npoints: (1,3), (2,3.5), (0,2.5)\n```",
+      "steps": [
+        "The point $(0,0)$ of $y = x^3$ has moved to $(1, 3)$: $d = 1$, $c = 3$.",
+        "Substitute $(2, 3.5)$: $3.5 = a(2 - 1)^3 + 3$, so $a = 0.5$."
+      ],
+      "answer": "$y = 0.5(x - 1)^3 + 3$ — a vertical compression by ½, then 1 right and 3 up."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$y = (x + 3)^4$ is shifted 3 units right.",
+      "fact": "$x + 3 = x - (-3)$, so $d = -3$: 3 units **left**."
+    },
+    {
+      "myth": "$k = 2$ stretches the graph horizontally by 2.",
+      "fact": "$k = 2$ **compresses** horizontally by a factor of $\\tfrac12$ (divide $x$-coordinates by 2)."
+    },
+    {
+      "myth": "In $y = (2x + 6)^4$ the shift is 6 left.",
+      "fact": "Factor first: $[2(x + 3)]^4$, so the shift is 3 left."
+    },
+    {
+      "myth": "Translate first, then stretch.",
+      "fact": "Stretches, compressions and reflections ($a$, $k$) come before translations ($c$, $d$)."
+    },
+    {
+      "myth": "Reflecting $y = x^4$ in the $y$-axis changes the graph.",
+      "fact": "$y = x^4$ is symmetric about the $y$-axis, so a reflection in the $y$-axis leaves it unchanged."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Graphic and product design",
+      "body": "Designers build curves for logos, furniture and car bodies by stretching and shifting simple power curves, keeping track of the vertex and symmetry."
+    },
+    {
+      "title": "Animation",
+      "body": "Computer animation moves a shape by applying the same point mapping $(x, y) \\to (x/k + d,\\ ay + c)$ to every vertex."
+    },
+    {
+      "title": "Engineering profiles",
+      "body": "A bowl or lamp-shade cross-section might be modelled by $y = a(x - d)^4 + c$: the vertex gives the depth and $d$ the centre line."
+    }
+  ],
+  "practice": [
+    {
+      "question": "State the parameters and transformations for $y = 2\\left[\\tfrac13(x - 5)\\right]^4$ from $y = x^4$.",
+      "hint": "$k = \\tfrac13$ is a stretch.",
+      "solution": "$a = 2$: vertical stretch by 2. $k = \\tfrac13$: horizontal stretch by 3. $d = 5$: 5 right. Vertex $(5, 0)$, axis $x = 5$, range $y \\ge 0$."
+    },
+    {
+      "question": "Map $(-1, -1)$ on $y = x^3$ under $y = 2[-\\tfrac13(x - 1)]^3 - 4$.",
+      "hint": "$x \\to x/k + d$ with $k = -\\tfrac13$.",
+      "solution": "$x$: $\\dfrac{-1}{-1/3} + 1 = 3 + 1 = 4$; $y$: $2(-1) - 4 = -6$. Image $(4, -6)$."
+    },
+    {
+      "question": "Write the equation: $y = x^4$ stretched vertically by 3, reflected in the $x$-axis, translated 2 right and 5 up. State the range.",
+      "hint": "$a = -3$",
+      "solution": "$y = -3(x - 2)^4 + 5$, vertex $(2, 5)$, range $\\{y \\in \\mathbb{R},\\ y \\le 5\\}$."
+    },
+    {
+      "question": "Rewrite $y = (3x)^3$ as a vertical stretch.",
+      "hint": "$(kx)^n = k^nx^n$",
+      "solution": "$y = 27x^3$: a vertical stretch by a factor of 27."
+    },
+    {
+      "question": "Find the $x$-intercept of $y = 2(x - 1)^3 - 16$.",
+      "hint": "Isolate the cube.",
+      "solution": "$2(x-1)^3 = 16 \\Rightarrow (x-1)^3 = 8 \\Rightarrow x - 1 = 2 \\Rightarrow x = 3$."
+    },
+    {
+      "question": "Explain which parameters change the shape of a graph and which only change its position.",
+      "hint": "Think stretch vs slide.",
+      "solution": "$a$ and $k$ change the shape (stretch, compress) and may reflect it. $c$ and $d$ only slide the graph without changing its shape."
+    }
+  ],
+  "summary": [
+    "$y = a[k(x - d)]^n + c$ transforms $y = x^n$: $a$ vertical stretch/reflection, $k$ horizontal stretch/reflection, $d$ horizontal shift, $c$ vertical shift.",
+    "Points map as $(x, y) \\to (\\tfrac{x}{k} + d,\\ ay + c)$.",
+    "Apply $a$ and $k$ before $c$ and $d$.",
+    "For even $n$: vertex $(d, c)$, axis $x = d$, range $y \\ge c$ ($a>0$) or $y \\le c$ ($a<0$). For odd $n$: domain and range are all real numbers.",
+    "Factor the coefficient of $x$ out of the bracket before reading $d$."
+  ],
+  "questions": [
+    {
+      "id": "1-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "The graph of $y = x^4$ is transformed to obtain $y = {{a}}[{{k}}(x - {{d}})]^4 + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe each transformation."
+        },
+        {
+          "label": "b",
+          "text": "State the vertex and the equation of the axis of symmetry. Give the $x$-coordinate of the vertex.",
+          "answer": {
+            "expr": "d",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range. Give the minimum value.",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a = {{a}}$: vertical stretch by a factor of {{a}}. $k = {{k}}$: horizontal compression by a factor of $\\tfrac{1}{ {{k}} }$. $d = {{d}}$: translation {{d}} units right. $c = {{c}}$: translation {{c}} units up. (Apply the stretch and compression first, then the translations.)\n\n(b) Vertex $({{d}}, {{c}})$; axis of symmetry $x = {{d}}$.\n\n(c) Domain $\\{x \\in \\mathbb{R}\\}$. Since $a > 0$ the graph opens up and the vertex is a minimum: range $\\{y \\in \\mathbb{R},\\ y \\ge {{c}}\\}$.",
+      "rubric": [
+        {
+          "point": "Vertical stretch identified",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal compression by 1/k identified",
+          "marks": 1
+        },
+        {
+          "point": "Both translations correct",
+          "marks": 1
+        },
+        {
+          "point": "Vertex and axis of symmetry",
+          "marks": 2
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            4
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "The point $(2, 8)$ lies on $y = x^3$. Determine the coordinates of its image on $y = {{a}}[{{k}}(x - {{d}})]^3 + {{c}}$, and explain each step.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x$-coordinate of the image",
+          "answer": {
+            "expr": "2/k + d",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-coordinate of the image",
+          "answer": {
+            "expr": "8*a + c",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Use the mapping $(x, y) \\to \\left(\\dfrac{x}{k} + d,\\ ay + c\\right)$.\n\n$x$: $\\dfrac{2}{ {{k}} } + {{d}} = {{2/k + d}}$ (horizontal compression, then shift right).\n\n$y$: ${{a}}(8) + {{c}} = {{8*a + c}}$ (vertical stretch, then shift up).\n\nImage: $\\left({{2/k + d}},\\ {{8*a + c}}\\right)$.",
+      "rubric": [
+        {
+          "point": "Uses the correct mapping rule",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-coordinate",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-coordinate",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-4-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "The function $y = x^3$ is stretched vertically by a factor of {{a}}, reflected in the $x$-axis, compressed horizontally by a factor of $\\tfrac{1}{ {{k}} }$, and translated {{d}} units right and {{c}} units down.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation of the transformed function."
+        },
+        {
+          "label": "b",
+          "text": "Determine the image of the point $(1, 1)$. Give the $y$-coordinate.",
+          "answer": {
+            "expr": "-a - c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range."
+        }
+      ],
+      "modelAnswer": "(a) $a = -{{a}}$, $k = {{k}}$, $d = {{d}}$, $c = -{{c}}$:\n$$y = -{{a}}[{{k}}(x - {{d}})]^3 - {{c}}$$\n\n(b) The point $(1, 1)$ maps to $\\left(\\dfrac{1}{ {{k}} } + {{d}},\\ -{{a}}(1) - {{c}}\\right) = \\left({{1/k + d:3}},\\ {{-a - c}}\\right)$.\n\n(c) Domain $\\{x \\in \\mathbb{R}\\}$, range $\\{y \\in \\mathbb{R}\\}$ — an odd power function's domain and range are unchanged by these transformations.",
+      "rubric": [
+        {
+          "point": "Correct a including reflection",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct d and c",
+          "marks": 1
+        },
+        {
+          "point": "Correct image point",
+          "marks": 2
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q04",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain why, when sketching $y = a[k(x - d)]^n + c$, the stretches, compressions and reflections must be applied before the translations. Use the point $(1, 1)$ on $y = x^3$ and the function $y = 2(x - 3)^3$ to show what goes wrong if the order is reversed.",
+      "modelAnswer": "Every point on the transformed graph is found from a point on $y = x^n$ with the rule $(x, y) \\to \\left(\\tfrac{x}{k} + d,\\ ay + c\\right)$. Like the order of operations (BEDMAS), the multiplications — stretches, compressions and reflections ($a$, $k$) — are done first, and the additions — translations ($c$, $d$) — last.\n\nCorrect for $y = 2(x - 3)^3$: $(1, 1)$ → stretch vertically by 2 → $(1, 2)$ → shift 3 right → $(4, 2)$. Check: $2(4 - 3)^3 = 2$ ✓.\n\nReversed order for $y = 2x^3 + 5$: shifting $(1, 1)$ up 5 gives $(1, 6)$, then stretching by 2 gives $(1, 12)$. But substituting, $2(1)^3 + 5 = 7$, so the correct image is $(1, 7)$ — stretch first, then shift. Translating first wrongly stretches the translation as well.",
+      "rubric": [
+        {
+          "point": "Links order to order of operations",
+          "marks": 1
+        },
+        {
+          "point": "Correct worked image using the right order",
+          "marks": 2
+        },
+        {
+          "point": "Shows a wrong result from reversing the order and checks by substitution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-4-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Describe the function $y = -({{k}}x + {{k*d}})^4$ as a transformation of $y = x^4$. State the vertex, the axis of symmetry and the range.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x$-coordinate of the vertex",
+          "answer": {
+            "expr": "-d",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Factor the bracket: ${{k}}x + {{k*d}} = {{k}}(x + {{d}})$, so $y = -[{{k}}(x + {{d}})]^4$.\n\n* $k = {{k}}$: horizontal compression by a factor of $\\tfrac{1}{ {{k}} }$.\n* $a = -1$: reflection in the $x$-axis.\n* $d = -{{d}}$: translation {{d}} units left (not {{k*d}}!).\n\nVertex $(-{{d}}, 0)$; axis of symmetry $x = -{{d}}$. Opens down: range $\\{y \\in \\mathbb{R},\\ y \\le 0\\}$.",
+      "rubric": [
+        {
+          "point": "Factors k out of the bracket",
+          "marks": 2
+        },
+        {
+          "point": "Correct transformations",
+          "marks": 2
+        },
+        {
+          "point": "Correct vertex and axis",
+          "marks": 1
+        },
+        {
+          "point": "Correct range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = -{{a}}\\left[{{k}}(x + {{d}})\\right]^4 + {{c}}$:",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Does the graph have a maximum or minimum point? State its value.",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "State the equation of the axis of symmetry."
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range."
+        },
+        {
+          "label": "d",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "-a*(k*d)^4 + c",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $n$ is even, $a = -{{a}} < 0$: the graph opens **down**, so the vertex $(-{{d}}, {{c}})$ is a **maximum** point. The maximum value is {{c}}.\n\n(b) Axis of symmetry: $x = -{{d}}$.\n\n(c) Domain $\\{x \\in \\mathbb{R}\\}$; range $\\{y \\in \\mathbb{R},\\ y \\le {{c}}\\}$.\n\n(d) $f(0) = -{{a}}[{{k}}({{d}})]^4 + {{c}} = {{-a*(k*d)^4 + c}}$.",
+      "rubric": [
+        {
+          "point": "Max vs min with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertex/maximum value",
+          "marks": 1
+        },
+        {
+          "point": "Axis of symmetry",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            0.5,
+            2,
+            3
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The graph shown is a transformation of $y = x^3$ of the form $y = a(x - d)^3 + c$. The marked points are the image of the origin and the image of $(1, 1)$.\n\n```plot\nf: {{1*a}}*(x-{{d}})^3 + {{c}}\ndomain: {{d}}-2.5, {{d}}+2.5\npoints: ({{d}},{{c}}), ({{d}}+1,{{a+c}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $a$",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Value of $d$",
+          "answer": {
+            "expr": "d",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Value of $c$",
+          "answer": {
+            "expr": "c",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "The origin of $y = x^3$ (its centre of symmetry) moves to $({{d}}, {{c}})$, so $d = {{d}}$ and $c = {{c}}$.\n\nThe point $(1, 1)$ moves to $(1 + d,\\ a + c) = ({{d+1}}, {{a+c}})$, so $a + {{c}} = {{a+c}}$ and $a = {{1*a}}$.\n\n$$y = {{1*a}}(x - {{d}})^3 + {{c}}$$\n\nTransformations: vertical stretch by a factor of {{1*a}}, then {{d}} units right and {{c}} units up.",
+      "rubric": [
+        {
+          "point": "Identifies d and c from the centre point",
+          "marks": 2
+        },
+        {
+          "point": "Uses second point to find a",
+          "marks": 2
+        },
+        {
+          "point": "Correct equation and description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q08",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Explain why reflecting $y = x^3$ in the $y$-axis gives the same graph as reflecting it in the $x$-axis, but reflecting $y = x^4$ in the $y$-axis leaves it unchanged. Use algebra to support your explanation.",
+      "modelAnswer": "Reflection in the $y$-axis replaces $x$ with $-x$; reflection in the $x$-axis multiplies $y$ by $-1$.\n\n* $y = x^3$: reflecting in the $y$-axis gives $y = (-x)^3 = -x^3$, which is exactly the reflection in the $x$-axis. This happens because $x^3$ is an **odd** function: $f(-x) = -f(x)$.\n* $y = x^4$: reflecting in the $y$-axis gives $y = (-x)^4 = x^4$ — the same function. $x^4$ is an **even** function, symmetric about the $y$-axis, so the mirror image is itself.",
+      "rubric": [
+        {
+          "point": "States what each reflection does algebraically",
+          "marks": 1
+        },
+        {
+          "point": "Shows (−x)³ = −x³",
+          "marks": 2
+        },
+        {
+          "point": "Shows (−x)⁴ = x⁴",
+          "marks": 1
+        },
+        {
+          "point": "Connects to odd/even symmetry",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q09",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Show that $y = ({{k}}x)^4$ can be described either as a horizontal compression or as a vertical stretch of $y = x^4$. State both factors.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical stretch factor",
+          "answer": {
+            "expr": "k^4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "As written, $k = {{k}}$: a **horizontal compression** by a factor of $\\tfrac{1}{ {{k}} }$.\n\nUsing exponent laws, $({{k}}x)^4 = {{k}}^4x^4 = {{k^4}}x^4$, so the same graph is a **vertical stretch** by a factor of {{k^4}}.\n\nCheck with a point: on $y = ({{k}}x)^4$, $x = 1$ gives $y = {{k^4}}$, and on $y = {{k^4}}x^4$, $x = 1$ gives ${{k^4}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Horizontal compression factor 1/k",
+          "marks": 1
+        },
+        {
+          "point": "Uses exponent law (kx)⁴ = k⁴x⁴",
+          "marks": 2
+        },
+        {
+          "point": "Vertical stretch factor k⁴",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 3,
+          "max": 20,
+          "step": 1
+        }
+      },
+      "text": "Determine the $x$-intercept of $g(x) = {{a}}(x - {{d}})^3 - {{c}}$, correct to two decimal places. Explain why a transformed cubic of this form has exactly one $x$-intercept.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x$-intercept",
+          "answer": {
+            "expr": "d + (c/a)^(1/3)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Set $g(x) = 0$:\n$${{a}}(x - {{d}})^3 = {{c}} \\;\\Rightarrow\\; (x - {{d}})^3 = \\frac{ {{c}} }{ {{a}} } \\;\\Rightarrow\\; x = {{d}} + \\sqrt[3]{\\frac{ {{c}} }{ {{a}} }} \\approx {{d + (c/a)^(1/3):3}}$$\n\nExactly one intercept: $y = x^3$ is always increasing, and stretching and translating keep it always increasing (since $a > 0$), so the graph crosses each horizontal line — including the $x$-axis — exactly once.",
+      "rubric": [
+        {
+          "point": "Isolates the cubed expression",
+          "marks": 2
+        },
+        {
+          "point": "Takes cube root correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct intercept",
+          "marks": 1
+        },
+        {
+          "point": "Justifies exactly one intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "The function $y = x^4$ is compressed vertically by a factor of $\\tfrac13$, stretched horizontally by a factor of 2, reflected in the $y$-axis, and translated 1 unit up and 4 units to the left.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation."
+        },
+        {
+          "label": "b",
+          "text": "State the vertex, axis of symmetry, domain and range. Give the minimum value.",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain whether the reflection changes the graph."
+        }
+      ],
+      "modelAnswer": "(a) $a = \\tfrac13$, $k = -\\tfrac12$, $d = -4$, $c = 1$:\n$$y = \\tfrac13\\left[-\\tfrac12(x + 4)\\right]^4 + 1$$\n\n(b) Vertex $(-4, 1)$, axis $x = -4$. $a > 0$: opens up, so range $\\{y \\in \\mathbb{R},\\ y \\ge 1\\}$; domain $\\{x \\in \\mathbb{R}\\}$.\n\n(c) The reflection in the $y$-axis has no visible effect because $[-\\tfrac12(x+4)]^4 = [\\tfrac12(x+4)]^4$ (an even power removes the negative sign).",
+      "rubric": [
+        {
+          "point": "Correct a and k (including the negative k)",
+          "marks": 2
+        },
+        {
+          "point": "Correct d and c",
+          "marks": 1
+        },
+        {
+          "point": "Vertex, axis, domain and range",
+          "marks": 2
+        },
+        {
+          "point": "Explains the y-axis reflection has no effect",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "s": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "d": {
+          "min": 10,
+          "max": 20,
+          "step": 1
+        },
+        "h": {
+          "min": 8,
+          "max": 16,
+          "step": 2
+        }
+      },
+      "text": "A designer models the cross-section of a bowl with $y = a(x - {{d}})^4$, where $a = {{s/100}}$, $x$ and $y$ are in centimetres, and the rim of the bowl is at height $y = {{h}}$ cm.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the vertex and axis of symmetry."
+        },
+        {
+          "label": "b",
+          "text": "Solve for the $x$-values at the rim."
+        },
+        {
+          "label": "c",
+          "text": "Determine the width of the bowl at the rim.",
+          "answer": {
+            "expr": "2*(h/(0.01*s))^(0.25)",
+            "unit": "cm",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Vertex $({{d}}, 0)$: the bottom of the bowl is at $x = {{d}}$ cm, depth measured from $y=0$. The axis of symmetry is $x = {{d}}$.\n\n(b) Set $y = {{h}}$:\n$$(x - {{d}})^4 = \\frac{ {{h}} }{ {{s/100}} } \\Rightarrow x - {{d}} = \\pm\\left(\\frac{ {{h}} }{ {{s/100}} }\\right)^{1/4} \\approx \\pm{{(h/(0.01*s))^(0.25):3}}$$\n\n(c) Width of the rim $= 2 \\times {{(h/(0.01*s))^(0.25):3}} \\approx {{2*(h/(0.01*s))^(0.25):3}}$ cm.",
+      "rubric": [
+        {
+          "point": "Identifies vertex and axis",
+          "marks": 1
+        },
+        {
+          "point": "Sets up equation at rim height",
+          "marks": 1
+        },
+        {
+          "point": "Solves using a fourth root, both signs",
+          "marks": 2
+        },
+        {
+          "point": "Correct width",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Under $y = 2\\left[-\\tfrac13(x - 1)\\right]^3 - 4$, determine the images of the points $(-2, -8)$, $(0, 0)$ and $(3, 27)$ on $y = x^3$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x$-coordinate of the image of $(3, 27)$",
+          "answer": {
+            "expr": "-8",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-coordinate of the image of $(3, 27)$",
+          "answer": {
+            "expr": "50",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Parameters: $a = 2$, $k = -\\tfrac13$, $d = 1$, $c = -4$. Mapping: $(x, y) \\to \\left(\\dfrac{x}{k} + d,\\ ay + c\\right) = (-3x + 1,\\ 2y - 4)$.\n\n* $(-2, -8) \\to (6 + 1,\\ -16 - 4) = (7, -20)$\n* $(0, 0) \\to (1, -4)$\n* $(3, 27) \\to (-9 + 1,\\ 54 - 4) = (-8, 50)$\n\nNote the reflection in the $y$-axis ($k<0$) sends points with negative $x$ to the right side.",
+      "rubric": [
+        {
+          "point": "Correct parameters",
+          "marks": 1
+        },
+        {
+          "point": "Correct mapping rule",
+          "marks": 1
+        },
+        {
+          "point": "Each image correct",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "id": "1-4-q14",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Which parameters in $y = a[k(x - d)]^n + c$ change the **shape** of a power function's graph, and which change only its **position**? Which can produce reflections? Give an example of each.",
+      "modelAnswer": "* **Shape:** $a$ (vertical stretch/compression) and $k$ (horizontal stretch/compression). Example: $y = 3x^4$ is narrower than $y = x^4$; $y = (0.5x)^4$ is wider.\n* **Position only:** $d$ and $c$ slide the graph without changing its shape. Example: $y = (x - 2)^4 + 5$ is $y = x^4$ moved 2 right and 5 up.\n* **Reflections:** $a < 0$ reflects in the $x$-axis (e.g. $y = -x^3$); $k < 0$ reflects in the $y$-axis (e.g. $y = (-x)^3$).",
+      "rubric": [
+        {
+          "point": "a and k change shape",
+          "marks": 1
+        },
+        {
+          "point": "c and d change position only",
+          "marks": 1
+        },
+        {
+          "point": "Reflections from a < 0 and k < 0",
+          "marks": 2
+        },
+        {
+          "point": "Valid examples",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q15",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Write equations for two different transformations of $y = x^4$ that both have vertex $({{d}}, {{c}})$, open **downward**, and are **narrower** than $y = x^4$. Explain how your parameter choices produce each property.",
+      "modelAnswer": "Vertex $(d, c) = ({{d}}, {{c}})$ requires $y = a[k(x - {{d}})]^4 + {{c}}$.\n\nOpening downward requires $a < 0$. Narrower requires a vertical stretch ($|a| > 1$) or a horizontal compression ($|k| > 1$).\n\nExamples:\n1. $y = -3(x - {{d}})^4 + {{c}}$ — vertical stretch by 3 with reflection in the $x$-axis.\n2. $y = -[2(x - {{d}})]^4 + {{c}}$ — horizontal compression by $\\tfrac12$ with reflection in the $x$-axis.\n\nBoth have vertex $({{d}}, {{c}})$, axis $x = {{d}}$, and range $y \\le {{c}}$.",
+      "rubric": [
+        {
+          "point": "Uses correct d and c",
+          "marks": 1
+        },
+        {
+          "point": "a negative for downward opening",
+          "marks": 1
+        },
+        {
+          "point": "Narrower via |a| > 1 or |k| > 1, explained",
+          "marks": 2
+        },
+        {
+          "point": "Two valid, different equations",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "For $y = a[k(x - d)]^n + c$, explain why an even value of $n$ gives a vertex and a restricted range, while an odd value of $n$ gives no vertex and a range of all real numbers. Refer to the graphs of $y = x^2$, $y = x^4$, $y = x^3$ and $y = x^5$.",
+      "modelAnswer": "For even $n$, $x^n \\ge 0$ for all $x$, with the smallest value 0 at $x = 0$. The graphs of $y = x^2$ and $y = x^4$ have a lowest point at the origin. Stretching by $a$ and shifting by $c$ makes the lowest (or, if $a<0$, highest) value $c$, at $x = d$: this point $(d, c)$ is the vertex, and the range is $y \\ge c$ or $y \\le c$.\n\nFor odd $n$, $x^n$ takes every real value: negative for $x<0$ and positive for $x>0$, with no turning point ($y = x^3$, $y = x^5$ always increase). Stretches and translations do not create a highest or lowest point, so the range stays $\\{y \\in \\mathbb{R}\\}$. The point $(d, c)$ is a centre of point symmetry rather than a vertex.",
+      "rubric": [
+        {
+          "point": "Even powers are never negative → minimum at 0",
+          "marks": 2
+        },
+        {
+          "point": "Explains vertex (d, c) and restricted range",
+          "marks": 1
+        },
+        {
+          "point": "Odd powers take all values, no turning point",
+          "marks": 1
+        },
+        {
+          "point": "Range all reals and (d, c) as centre of symmetry",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-4-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The graph of $y = x^3$ is transformed so that the point $(1, 1)$ maps to $({{d+1}}, {{c-a}})$ and the origin maps to $({{d}}, {{c}})$, with no horizontal stretch. Determine the equation of the transformed function and describe the transformations.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $a$",
+          "answer": {
+            "expr": "-a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "With no horizontal stretch, $k = 1$, so $y = a(x - d)^3 + c$.\n\nThe origin maps to $(d, c) = ({{d}}, {{c}})$.\n\nThe point $(1, 1)$ maps to $(1 + d,\\ a + c) = ({{d+1}},\\ {{c-a}})$, so $a + {{c}} = {{c-a}}$ and $a = -{{a}}$.\n\n$$y = -{{a}}(x - {{d}})^3 + {{c}}$$\n\nTransformations: vertical stretch by a factor of {{a}} with a reflection in the $x$-axis, then translation {{d}} units right and {{c}} units up.",
+      "rubric": [
+        {
+          "point": "Uses the origin's image for d and c",
+          "marks": 1
+        },
+        {
+          "point": "Uses (1, 1)'s image to find a",
+          "marks": 2
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Correct description including reflection",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

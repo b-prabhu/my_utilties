@@ -1,0 +1,976 @@
+{
+  "id": "2-2",
+  "number": "2.2",
+  "title": "The Factor Theorem",
+  "estimatedMinutes": 80,
+  "overview": "A remainder of zero is special: it means you have found a **factor**. In this section you will use the **factor theorem** to test binomials, decide which values are worth testing (the integral and rational zero theorems), divide quickly with **synthetic division**, and factor cubic and quartic polynomials completely — including sums and differences of cubes.",
+  "objectives": [
+    "State and explain the factor theorem and its link to the remainder theorem.",
+    "Use the integral zero theorem to decide which integer values to test.",
+    "Use the rational zero theorem when the leading coefficient is not 1.",
+    "Divide by $x - b$ using synthetic division.",
+    "Factor polynomials of degree 3 and 4 completely, combining the factor theorem, division and grouping.",
+    "Factor sums and differences of cubes.",
+    "Solve problems involving unknown coefficients and dimensions."
+  ],
+  "lessons": [
+    {
+      "id": "factor-theorem",
+      "title": "The factor theorem",
+      "body": "In Section 2.1 you saw that a remainder of $0$ means the divisor divides **evenly**. That observation becomes a theorem.\n\n> **Factor theorem:** $x - b$ is a factor of $P(x)$ **if and only if** $P(b) = 0$.\n> Similarly, $ax - b$ is a factor of $P(x)$ if and only if $P\\!\\left(\\tfrac{b}{a}\\right) = 0$.\n\n\"If and only if\" means it works in both directions:\n\n* If $P(b) = 0$, then $x - b$ is a factor.\n* If $x - b$ is a factor, then $P(b) = 0$.\n\n**Why?** From the division statement, $P(x) = (x - b)Q(x) + R$ and $R = P(b)$. If $P(b) = 0$, then $P(x) = (x - b)Q(x)$ — a product, so $x - b$ is a factor.\n\n**Example:** Is $x - 2$ a factor of $P(x) = x^3 - 3x^2 + 4$?\n$P(2) = 8 - 12 + 4 = 0$, so **yes**.\nIs $x + 1$ a factor? $P(-1) = -1 - 3 + 4 = 0$, so **yes** again.\n\n**Connections:** for a polynomial $P(x)$, the following say the same thing:\n\n| Statement | Example with $x - 2$ |\n|---|---|\n| $x - b$ is a factor of $P(x)$ | $x - 2$ is a factor |\n| $P(b) = 0$ | $P(2) = 0$ |\n| $b$ is a **zero** of $P(x)$ | $2$ is a zero |\n| the graph of $y = P(x)$ has an $x$-intercept at $b$ | it crosses or touches the $x$-axis at $2$ |"
+    },
+    {
+      "id": "integral-zero",
+      "title": "Which values should you test? The integral zero theorem",
+      "body": "To factor a polynomial you need a value $b$ with $P(b) = 0$. Guessing at random would take forever, so use this:\n\n> **Integral zero theorem:** if $x - b$ is a factor of a polynomial with **leading coefficient 1** and integer coefficients, then $b$ is a factor of the **constant term**.\n\n**Why it works:** if $P(x) = (x - b)(x^2 + \\dots + c)$, the constant term of the product is $-b \\times c$, so $b$ divides the constant term.\n\n**Example:** factor $P(x) = x^3 - 2x^2 - 5x + 6$.\n\n1. The constant term is $6$. Test $\\pm1, \\pm2, \\pm3, \\pm6$.\n2. $P(1) = 1 - 2 - 5 + 6 = 0$. So $x - 1$ is a factor.\n3. Divide to find the other factor (long division or synthetic division): $x^3 - 2x^2 - 5x + 6 = (x - 1)(x^2 - x - 6)$.\n4. Factor the quadratic: $x^2 - x - 6 = (x - 3)(x + 2)$.\n\n$$x^3 - 2x^2 - 5x + 6 = (x - 1)(x - 3)(x + 2)$$\n\n> **Strategy:** test the easiest values first ($\\pm1$, then $\\pm2$), and remember that a graph or table of values can show you where the zeros are likely to be."
+    },
+    {
+      "id": "synthetic",
+      "title": "Synthetic division: a faster way to divide by x − b",
+      "body": "**Synthetic division** is a shortcut for long division by $x - b$ that works only with the **coefficients**.\n\n**Example:** divide $x^3 - 2x^2 - 5x + 6$ by $x - 1$ (so $b = 1$).\n\n| $b$ | $x^3$ | $x^2$ | $x$ | const |\n|---|---|---|---|---|\n| **1** | $1$ | $-2$ | $-5$ | $6$ |\n|  | ↓ | $1$ | $-1$ | $-6$ |\n|  | $1$ | $-1$ | $-6$ | **$0$** |\n\nHow to fill it in:\n\n1. Write $b$ (the value that makes the divisor zero) on the left and the coefficients across the top. Use $0$ for any missing power.\n2. **Bring down** the first coefficient ($1$).\n3. **Multiply** it by $b$ and write the result under the next coefficient: $1 \\times 1 = 1$.\n4. **Add** down the column: $-2 + 1 = -1$.\n5. Repeat multiply-and-add to the end.\n\nThe bottom row gives the quotient's coefficients, starting one degree lower, followed by the remainder: quotient $x^2 - x - 6$, remainder $0$.\n\n> **Careful:** synthetic division uses $b$, not $-b$. To divide by $x + 3$, use $-3$."
+    },
+    {
+      "id": "grouping",
+      "title": "Factoring by grouping",
+      "body": "Some polynomials with four terms can be factored without testing any values. Group the terms in pairs and take out a common factor from each pair:\n\n$$x^3 + 3x^2 - 4x - 12 = x^2(x + 3) - 4(x + 3) = (x + 3)(x^2 - 4) = (x + 3)(x - 2)(x + 2)$$\n\nGrouping works when the **ratios of coefficients in the pairs match**: here $1:3$ and $-4:-12$ are both $1:3$.\n\nYou can combine methods. For a quartic, find one factor with the factor theorem, divide, and then try grouping on the cubic quotient."
+    },
+    {
+      "id": "rational-zero",
+      "title": "The rational zero theorem: when the leading coefficient isn't 1",
+      "body": "If the leading coefficient is not $1$, a zero might be a fraction.\n\n> **Rational zero theorem:** if $P(x)$ has integer coefficients and $x = \\tfrac{b}{a}$ (in lowest terms) is a rational zero, then\n> * $b$ is a factor of the **constant term**,\n> * $a$ is a factor of the **leading coefficient**,\n> * $ax - b$ is a factor of $P(x)$.\n\n**Example:** factor $P(x) = 2x^3 + x^2 - 13x + 6$.\n\n1. Factors of the constant $6$: $\\pm1, \\pm2, \\pm3, \\pm6$. Factors of the leading coefficient $2$: $\\pm1, \\pm2$.\n2. Possible zeros $\\tfrac{b}{a}$: $\\pm1, \\pm2, \\pm3, \\pm6, \\pm\\tfrac12, \\pm\\tfrac32$.\n3. Test: $P(2) = 16 + 4 - 26 + 6 = 0$, so $x - 2$ is a factor.\n4. Divide: $2x^3 + x^2 - 13x + 6 = (x - 2)(2x^2 + 5x - 3)$.\n5. Factor: $2x^2 + 5x - 3 = (2x - 1)(x + 3)$.\n\n$$2x^3 + x^2 - 13x + 6 = (x - 2)(2x - 1)(x + 3)$$\n\nNotice the zero $\\tfrac12$ appears as the factor $2x - 1$, exactly as the theorem predicts.\n\n> **Link to trinomials:** when you factor $ax^2 + bx + c$ by looking at the product $ac$, you are really using the same idea — the factors must \"share out\" the leading coefficient and the constant term."
+    },
+    {
+      "id": "cubes",
+      "title": "Special patterns: sums and differences of cubes",
+      "body": "Two patterns let you factor some binomials immediately:\n\n$$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$$\n$$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$$\n\nA memory aid for the signs: **SOAP** — **S**ame, **O**pposite, **A**lways **P**ositive.\n\n**Examples**\n\n* $x^3 - 8 = x^3 - 2^3 = (x - 2)(x^2 + 2x + 4)$\n* $27x^3 + 64 = (3x)^3 + 4^3 = (3x + 4)(9x^2 - 12x + 16)$\n\nThe quadratic factor in these patterns has no real zeros, so it cannot be factored further over the real numbers.\n\nYou can confirm the pattern with the factor theorem: for $P(x) = x^3 - 8$, $P(2) = 0$, so $x - 2$ is a factor."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "factor theorem",
+      "definition": "$x - b$ is a factor of $P(x)$ if and only if $P(b) = 0$; $ax - b$ is a factor if and only if $P\\left(\\frac{b}{a}\\right) = 0$."
+    },
+    {
+      "term": "zero of a polynomial",
+      "definition": "A value of $x$ that makes $P(x) = 0$."
+    },
+    {
+      "term": "integral zero theorem",
+      "definition": "For a polynomial with leading coefficient 1 and integer coefficients, any integer zero $b$ is a factor of the constant term."
+    },
+    {
+      "term": "rational zero theorem",
+      "definition": "For a polynomial with integer coefficients, any rational zero $\\frac{b}{a}$ has $b$ a factor of the constant term and $a$ a factor of the leading coefficient."
+    },
+    {
+      "term": "synthetic division",
+      "definition": "A shortcut for dividing by $x - b$ that uses only the coefficients."
+    },
+    {
+      "term": "factoring by grouping",
+      "definition": "Grouping terms in pairs and removing a common binomial factor."
+    },
+    {
+      "term": "sum/difference of cubes",
+      "definition": "$a^3 \\pm b^3 = (a \\pm b)(a^2 \\mp ab + b^2)$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Factor theorem",
+      "latex": "P(b) = 0 \\iff (x - b) \\text{ is a factor}",
+      "meaning": "Test a value; a zero result means you have found a factor."
+    },
+    {
+      "name": "Factor theorem (ax − b)",
+      "latex": "P\\!\\left(\\tfrac{b}{a}\\right) = 0 \\iff (ax - b) \\text{ is a factor}",
+      "meaning": "Use for rational zeros."
+    },
+    {
+      "name": "Possible rational zeros",
+      "latex": "x = \\frac{\\text{factor of constant term}}{\\text{factor of leading coefficient}}",
+      "meaning": "List them, then test."
+    },
+    {
+      "name": "Difference of cubes",
+      "latex": "a^3 - b^3 = (a - b)(a^2 + ab + b^2)",
+      "meaning": ""
+    },
+    {
+      "name": "Sum of cubes",
+      "latex": "a^3 + b^3 = (a + b)(a^2 - ab + b^2)",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Testing possible factors",
+      "problem": "Which of $x + 2$, $x - 2$, $x - 1$ and $2x - 1$ are factors of $P(x) = 2x^3 - 3x^2 - 3x + 2$? Write $P(x)$ in factored form.",
+      "steps": [
+        "$x + 2$: $P(-2) = -16 - 12 + 6 + 2 = -20 \\neq 0$ — not a factor.",
+        "$x - 2$: $P(2) = 16 - 12 - 6 + 2 = 0$ — a factor.",
+        "$x - 1$: $P(1) = 2 - 3 - 3 + 2 = -2 \\neq 0$ — not a factor.",
+        "$2x - 1$: $P\\left(\\tfrac12\\right) = \\tfrac14 - \\tfrac34 - \\tfrac32 + 2 = 0$ — a factor.",
+        "A cubic has three linear factors (at most). With $(x - 2)(2x - 1) = 2x^2 - 5x + 2$, divide: $P(x) \\div (2x^2 - 5x + 2) = x + 1$, or test $P(-1) = -2 - 3 + 3 + 2 = 0$."
+      ],
+      "answer": "$P(x) = (x - 2)(2x - 1)(x + 1)$"
+    },
+    {
+      "title": "Factoring with synthetic division",
+      "problem": "Factor $x^3 + 2x^2 - 5x - 6$ fully.",
+      "steps": [
+        "Constant term $-6$: test $\\pm1, \\pm2, \\pm3, \\pm6$. $P(1) = 1 + 2 - 5 - 6 = -8$. $P(-1) = -1 + 2 + 5 - 6 = 0$ ✓, so $x + 1$ is a factor.",
+        "Synthetic division with $b = -1$: coefficients $1, 2, -5, -6$ → bring down $1$; $1(-1) = -1$, $2 - 1 = 1$; $1(-1) = -1$, $-5 - 1 = -6$; $-6(-1) = 6$, $-6 + 6 = 0$.",
+        "Quotient $x^2 + x - 6$, remainder $0$.",
+        "Factor the quotient: $x^2 + x - 6 = (x + 3)(x - 2)$."
+      ],
+      "answer": "$x^3 + 2x^2 - 5x - 6 = (x + 1)(x + 3)(x - 2)$"
+    },
+    {
+      "title": "Rational zeros",
+      "problem": "Factor $3x^3 + 2x^2 - 7x + 2$.",
+      "steps": [
+        "Possible zeros: $\\pm1, \\pm2, \\pm\\tfrac13, \\pm\\tfrac23$.",
+        "$P(1) = 3 + 2 - 7 + 2 = 0$ ✓, so $x - 1$ is a factor.",
+        "Divide: $3x^3 + 2x^2 - 7x + 2 = (x - 1)(3x^2 + 5x - 2)$.",
+        "Factor: $3x^2 + 5x - 2 = (3x - 1)(x + 2)$. (Check $P\\left(\\tfrac13\\right) = \\tfrac19 + \\tfrac29 - \\tfrac73 + 2 = 0$ ✓.)"
+      ],
+      "answer": "$3x^3 + 2x^2 - 7x + 2 = (x - 1)(3x - 1)(x + 2)$"
+    },
+    {
+      "title": "Factor theorem + grouping on a quartic",
+      "problem": "Factor $x^4 - x^3 - 7x^2 + x + 6$.",
+      "steps": [
+        "Test factors of $6$: $P(1) = 1 - 1 - 7 + 1 + 6 = 0$ ✓, so $x - 1$ is a factor.",
+        "Synthetic division with $1$: $1, -1, -7, 1, 6 \\to 1, 0, -7, -6, \\mathbf{0}$. Quotient $x^3 + 0x^2 - 7x - 6$.",
+        "Factor $x^3 - 7x - 6$: $P(-1) = -1 + 7 - 6 = 0$, so $x + 1$ is a factor. Synthetic division with $-1$: $1, 0, -7, -6 \\to 1, -1, -6, \\mathbf{0}$.",
+        "Quotient $x^2 - x - 6 = (x - 3)(x + 2)$."
+      ],
+      "answer": "$x^4 - x^3 - 7x^2 + x + 6 = (x - 1)(x + 1)(x - 3)(x + 2)$"
+    },
+    {
+      "title": "Finding k so that a binomial is a factor",
+      "problem": "Determine $k$ so that $x + 3$ is a factor of $x^3 + 4x^2 - 2kx + 3$.",
+      "steps": [
+        "By the factor theorem, $P(-3) = 0$.",
+        "$P(-3) = -27 + 36 + 6k + 3 = 12 + 6k$.",
+        "$12 + 6k = 0 \\Rightarrow k = -2$."
+      ],
+      "answer": "$k = -2$"
+    },
+    {
+      "title": "Volume of an ice block",
+      "problem": "The volume, in cubic metres, of a block of ice is $V(x) = 3x^3 + 11x^2 + 8x - 4$. Find possible dimensions in terms of $x$, and the dimensions when $x = 1.5$.",
+      "steps": [
+        "Possible rational zeros: $\\pm1, \\pm2, \\pm4, \\pm\\tfrac13, \\pm\\tfrac23, \\pm\\tfrac43$.",
+        "$V(-2) = -24 + 44 - 16 - 4 = 0$ ✓, so $x + 2$ is a factor. Divide: $V(x) = (x + 2)(3x^2 + 5x - 2)$.",
+        "$3x^2 + 5x - 2 = (3x - 1)(x + 2)$, so $V(x) = (3x - 1)(x + 2)(x + 2)$.",
+        "When $x = 1.5$: $3(1.5) - 1 = 3.5$ and $1.5 + 2 = 3.5$, so the block is $3.5$ m × $3.5$ m × $3.5$ m — a cube!"
+      ],
+      "answer": "$(3x - 1)$ m by $(x + 2)$ m by $(x + 2)$ m; at $x = 1.5$ each edge is $3.5$ m."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "If $P(3) = 0$, then $x + 3$ is a factor.",
+      "fact": "$P(3) = 0$ means $x - 3$ is a factor. The zero and the number in the factor have **opposite** signs."
+    },
+    {
+      "myth": "For $2x^3 + \\dots + 6$ only test $\\pm1, \\pm2, \\pm3, \\pm6$.",
+      "fact": "When the leading coefficient isn't $1$, also test fractions $\\frac{b}{a}$, here $\\pm\\frac12, \\pm\\frac32$."
+    },
+    {
+      "myth": "In synthetic division for $x + 4$, use $4$.",
+      "fact": "Use the value that makes the divisor zero: $-4$."
+    },
+    {
+      "myth": "$x^3 + 8 = (x + 2)(x^2 + 2x + 4)$",
+      "fact": "For a **sum** of cubes the middle sign is opposite: $(x + 2)(x^2 - 2x + 4)$."
+    },
+    {
+      "myth": "Once you find one factor you are finished.",
+      "fact": "Keep going: divide, then factor the quotient until every factor is linear or cannot be factored further."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Designing containers",
+      "body": "Manufacturers who know the volume formula of a mould can factor it to find which length, width and height expressions are possible — and choose $x$ to meet a design target, such as a cube."
+    },
+    {
+      "title": "Engineering and signals",
+      "body": "Engineers factor polynomials that describe how systems such as bridges or audio filters respond. The zeros tell them which frequencies a system cancels or amplifies."
+    },
+    {
+      "title": "Faster computation",
+      "body": "Synthetic division is so efficient (only multiply-and-add) that it is the basis of Horner's method, which computers use to evaluate polynomials quickly."
+    },
+    {
+      "title": "Puzzles with volume",
+      "body": "Packaging problems like \\\"cut equal squares from a sheet and fold it into a box\\\" lead to cubic polynomials. Factoring tells you the possible cut sizes."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Use the factor theorem to decide whether $x - 3$ is a factor of $x^3 - 4x^2 + x + 6$.",
+      "hint": "Evaluate $P(3)$.",
+      "solution": "$P(3) = 27 - 36 + 3 + 6 = 0$, so yes. In fact $x^3 - 4x^2 + x + 6 = (x - 3)(x - 2)(x + 1)$."
+    },
+    {
+      "question": "List the values you would test to factor $x^3 + 3x^2 - 10x - 24$, then factor it.",
+      "hint": "Factors of $-24$.",
+      "solution": "Test $\\pm1, \\pm2, \\pm3, \\pm4, \\pm6, \\pm8, \\pm12, \\pm24$. $P(-2) = -8 + 12 + 20 - 24 = 0$. Divide: $(x + 2)(x^2 + x - 12) = (x + 2)(x + 4)(x - 3)$."
+    },
+    {
+      "question": "Use synthetic division to divide $2x^3 - 5x^2 + x + 2$ by $x - 2$.",
+      "hint": "Write $2$ on the left and the coefficients $2, -5, 1, 2$.",
+      "solution": "$2, -5, 1, 2 \\to 2, -1, -1, \\mathbf{0}$. Quotient $2x^2 - x - 1 = (2x + 1)(x - 1)$, remainder $0$. So $2x^3 - 5x^2 + x + 2 = (x - 2)(2x + 1)(x - 1)$."
+    },
+    {
+      "question": "Factor by grouping: $2x^3 - x^2 - 18x + 9$.",
+      "hint": "Group the first two and last two terms.",
+      "solution": "$x^2(2x - 1) - 9(2x - 1) = (2x - 1)(x^2 - 9) = (2x - 1)(x - 3)(x + 3)$."
+    },
+    {
+      "question": "List the possible rational zeros of $4x^3 - 7x + 3$.",
+      "hint": "Factors of $3$ over factors of $4$.",
+      "solution": "$\\pm1, \\pm3, \\pm\\tfrac12, \\pm\\tfrac32, \\pm\\tfrac14, \\pm\\tfrac34$. (In fact $x = 1$ works: $4x^3 - 7x + 3 = (x - 1)(2x - 1)(2x + 3)$.)"
+    },
+    {
+      "question": "Factor $125x^3 - 1$ and $x^3 + 27$.",
+      "hint": "Write each term as a cube.",
+      "solution": "$125x^3 - 1 = (5x - 1)(25x^2 + 5x + 1)$; $x^3 + 27 = (x + 3)(x^2 - 3x + 9)$."
+    },
+    {
+      "question": "Find $k$ if $2x - 1$ is a factor of $2x^3 + kx^2 - 5x + 2$.",
+      "hint": "Evaluate $P\\left(\\tfrac12\\right)$ and set it to $0$.",
+      "solution": "$P\\left(\\tfrac12\\right) = \\tfrac14 + \\tfrac{k}{4} - \\tfrac52 + 2 = \\tfrac{k}{4} - \\tfrac14 = 0$, so $k = 1$."
+    },
+    {
+      "question": "Explain why $x - 5$ cannot be a factor of $x^3 + 2x^2 - x + 3$.",
+      "hint": "Think about the integral zero theorem.",
+      "solution": "Any integer zero must be a factor of the constant term $3$, so only $\\pm1, \\pm3$ are possible. $5$ is not a factor of $3$. (Also $P(5) = 125 + 50 - 5 + 3 = 173 \\neq 0$.)"
+    }
+  ],
+  "summary": [
+    "**Factor theorem:** $x - b$ is a factor of $P(x)$ exactly when $P(b) = 0$; $ax - b$ is a factor exactly when $P\\left(\\frac{b}{a}\\right) = 0$.",
+    "**Integral zero theorem:** with leading coefficient $1$, test the factors of the constant term.",
+    "**Rational zero theorem:** test $\\frac{b}{a}$, with $b$ a factor of the constant and $a$ a factor of the leading coefficient.",
+    "After finding one factor, divide (long or synthetic division) and factor the quotient.",
+    "Grouping and the sum/difference of cubes patterns can factor some polynomials directly."
+  ],
+  "questions": [
+    {
+      "id": "2-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "q": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 5,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c2": "q + r - 1",
+        "c1": "q*r - q - r",
+        "c0": "q*r"
+      },
+      "text": "Let $P(x) = x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$. Use the factor theorem to decide which of these binomials are factors of $P(x)$: $x - 1$, $x + 1$, $x + {{q}}$, $x - {{q}}$. Show the value of $P$ you calculate for each.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $P(-1)$.",
+          "answer": {
+            "expr": "-1 + c2 - c1 - c0",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find $P({{q}})$.",
+          "answer": {
+            "expr": "q^3 + c2*q^2 + c1*q - c0",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Substitute the value that makes each binomial zero.\n\n* $x - 1$: $P(1) = 1 + {{c2}} + {{c1}} - {{c0}} = 0$ → **factor**.\n* $x + 1$: $P(-1) = -1 + {{c2}} - {{c1}} - {{c0}} = {{-1 + c2 - c1 - c0}}$ → not a factor.\n* $x + {{q}}$: $P(-{{q}}) = {{-q^3}} + {{c2*q^2}} - {{c1*q}} - {{c0}} = 0$ → **factor**.\n* $x - {{q}}$: $P({{q}}) = {{q^3}} + {{c2*q^2}} + {{c1*q}} - {{c0}} = {{q^3 + c2*q^2 + c1*q - c0}}$ → not a factor.\n\n(The remaining factor is $x + {{r}}$: $P(x) = (x - 1)(x + {{q}})(x + {{r}})$.)",
+      "rubric": [
+        {
+          "point": "Uses the factor theorem with the correct substitution for each binomial",
+          "marks": 2
+        },
+        {
+          "point": "Correct values for all four tests",
+          "marks": 2
+        },
+        {
+          "point": "Correct conclusions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "q": {
+          "min": 4,
+          "max": 5,
+          "step": 1
+        },
+        "r": {
+          "min": 6,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c2": "q + r - 2",
+        "c1": "q*r - 2*q - 2*r",
+        "c0": "2*q*r"
+      },
+      "text": "Factor fully: $P(x) = x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$. Explain which values you test and why.",
+      "modelAnswer": "By the integral zero theorem (leading coefficient $1$), any integer zero is a factor of the constant term $-{{c0}}$, so test the factors of ${{c0}}$: $\\pm1, \\pm2, \\dots$\n\n$P(2) = 8 + {{4*c2}} + {{2*c1}} - {{c0}} = 0$, so $x - 2$ is a factor.\n\nSynthetic division with $2$: $1, {{c2}}, {{c1}}, -{{c0}} \\to 1, {{c2 + 2}}, {{c1 + 2*(c2+2)}}, \\mathbf{0}$.\n\nQuotient: $x^2 + {{q+r}}x + {{q*r}} = (x + {{q}})(x + {{r}})$.\n\n$P(x) = (x - 2)(x + {{q}})(x + {{r}})$",
+      "rubric": [
+        {
+          "point": "Uses the integral zero theorem to choose test values",
+          "marks": 1
+        },
+        {
+          "point": "Finds a zero and states the factor",
+          "marks": 1
+        },
+        {
+          "point": "Divides correctly to find the quadratic quotient",
+          "marks": 2
+        },
+        {
+          "point": "Factors the quotient and writes the full factorisation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 5,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c2": "2*q + 2*r - 1",
+        "c1": "2*q*r - q - r",
+        "c0": "q*r"
+      },
+      "text": "Factor $P(x) = 2x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$ fully. List the possible rational zeros before you begin.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the rational zero of $P(x)$ that is between 0 and 1.",
+          "answer": {
+            "expr": "0.5",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**Possible rational zeros** $\\frac{b}{a}$: $b$ divides ${{c0}}$ and $a$ divides $2$, so the list includes $\\pm1, \\pm{{q}}, \\pm{{r}}, \\dots$ and the halves $\\pm\\frac12, \\pm\\frac{ {{q}} }{2}, \\dots$\n\nTest $x = \\tfrac12$: $P\\left(\\tfrac12\\right) = 2\\left(\\tfrac18\\right) + {{c2}}\\left(\\tfrac14\\right) + {{c1}}\\left(\\tfrac12\\right) - {{c0}} = {{0.25 + c2/4 + c1/2 - c0}}$, so $2x - 1$ is a factor.\n\nDivide $P(x)$ by $2x - 1$: quotient $x^2 + {{q+r}}x + {{q*r}}$, remainder $0$.\n\n$x^2 + {{q+r}}x + {{q*r}} = (x + {{q}})(x + {{r}})$\n\n$$P(x) = (2x - 1)(x + {{q}})(x + {{r}})$$\n\nCheck: expanding gives $2x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$ ✓",
+      "rubric": [
+        {
+          "point": "Lists possible rational zeros using the rational zero theorem",
+          "marks": 1
+        },
+        {
+          "point": "Identifies a zero (e.g. $\\frac12$) and the factor $2x - 1$",
+          "marks": 2
+        },
+        {
+          "point": "Divides correctly",
+          "marks": 1
+        },
+        {
+          "point": "Complete factorisation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Factor by grouping: $x^3 + {{a}}x^2 - {{b^2}}x - {{a*b^2}}$. Then verify one of your factors using the factor theorem.",
+      "modelAnswer": "Group in pairs:\n\n$x^3 + {{a}}x^2 - {{b^2}}x - {{a*b^2}} = x^2(x + {{a}}) - {{b^2}}(x + {{a}})$\n\n$= (x + {{a}})(x^2 - {{b^2}})$\n\n$= (x + {{a}})(x - {{b}})(x + {{b}})$ (difference of squares)\n\n**Verify** $x - {{b}}$: $P({{b}}) = {{b^3}} + {{a*b^2}} - {{b^3}} - {{a*b^2}} = 0$ ✓",
+      "rubric": [
+        {
+          "point": "Groups terms and factors each pair",
+          "marks": 2
+        },
+        {
+          "point": "Removes the common binomial factor",
+          "marks": 1
+        },
+        {
+          "point": "Factors the difference of squares",
+          "marks": 1
+        },
+        {
+          "point": "Verifies a factor with the factor theorem",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c": "m^3 + a*m^2 + k*m"
+      },
+      "text": "Determine the value of $k$ so that $x - {{m}}$ is a factor of $P(x) = x^3 + {{a}}x^2 + kx - {{c}}$. Then factor $P(x)$ fully if possible.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "By the factor theorem, $P({{m}}) = 0$:\n\n${{m^3}} + {{a*m^2}} + {{m}}k - {{c}} = 0$\n\n${{m}}k = {{c - m^3 - a*m^2}}$\n\n$k = {{k}}$\n\nSo $P(x) = x^3 + {{a}}x^2 + {{k}}x - {{c}}$. Divide by $x - {{m}}$ (synthetic division with ${{m}}$): $1, {{a}}, {{k}}, -{{c}} \\to 1, {{a + m}}, {{k + m*(a+m)}}, \\mathbf{0}$.\n\nQuotient: $x^2 + {{a+m}}x + {{k + m*(a+m)}}$. Its discriminant is ${{(a+m)^2 - 4*(k + m*(a+m))}}$; if this is a perfect square the quadratic factors into linear factors, otherwise $P(x) = (x - {{m}})(x^2 + {{a+m}}x + {{k + m*(a+m)}})$ is fully factored over the integers.",
+      "rubric": [
+        {
+          "point": "Applies the factor theorem: $P(m) = 0$",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$ correctly",
+          "marks": 2
+        },
+        {
+          "point": "Divides to find the quadratic factor",
+          "marks": 1
+        },
+        {
+          "point": "Decides correctly whether the quadratic factors further",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q06",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "r": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The polynomial $P(x) = x^3 + mx^2 + nx + {{2*r}}$ has $x - 1$ and $x + 2$ as factors. Determine $m$ and $n$, and find the third factor.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $m$.",
+          "answer": {
+            "expr": "1 - r",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find $n$.",
+          "answer": {
+            "expr": "-2 - r",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the third factor and the third zero.",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$P(1) = 0$: $1 + m + n + {{2*r}} = 0$, so $m + n = {{-1 - 2*r}}$.\n\n$P(-2) = 0$: $-8 + 4m - 2n + {{2*r}} = 0$, so $4m - 2n = {{8 - 2*r}}$, i.e. $2m - n = {{4 - r}}$.\n\nAdd: $3m = {{-1 - 2*r + 4 - r}}$, so $m = {{1 - r}}$. Then $n = {{-1 - 2*r}} - ({{1 - r}}) = {{-2 - r}}$.\n\n$P(x) = x^3 + ({{1 - r}})x^2 + ({{-2 - r}})x + {{2*r}}$.\n\nThird factor: $(x - 1)(x + 2) = x^2 + x - 2$, and the constant term ${{2*r}} = (-2)\\times(\\text{constant of third factor})$, so the third factor is $x - {{r}}$. Check: $P({{r}}) = {{r^3}} + ({{1-r}})({{r^2}}) + ({{-2-r}})({{r}}) + {{2*r}} = 0$ ✓",
+      "rubric": [
+        {
+          "point": "Writes the equation from $P(1) = 0$",
+          "marks": 1
+        },
+        {
+          "point": "Writes the equation from $P(-2) = 0$",
+          "marks": 1
+        },
+        {
+          "point": "Solves the system for $m$ and $n$",
+          "marks": 2
+        },
+        {
+          "point": "Finds and checks the third factor",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-2-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            4
+          ]
+        },
+        "b": {
+          "choices": [
+            1,
+            3,
+            5
+          ]
+        }
+      },
+      "text": "Factor each expression and check one of them by expanding: (a) ${{a^3}}x^3 - {{b^3}}$  (b) ${{a^3}}x^3 + {{b^3}}$",
+      "modelAnswer": "(a) ${{a^3}}x^3 - {{b^3}} = ({{a}}x)^3 - ({{b}})^3$. Using $A^3 - B^3 = (A - B)(A^2 + AB + B^2)$:\n\n${{a^3}}x^3 - {{b^3}} = ({{a}}x - {{b}})({{a^2}}x^2 + {{a*b}}x + {{b^2}})$\n\n(b) Using $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$:\n\n${{a^3}}x^3 + {{b^3}} = ({{a}}x + {{b}})({{a^2}}x^2 - {{a*b}}x + {{b^2}})$\n\n**Check (a):** $({{a}}x - {{b}})({{a^2}}x^2 + {{a*b}}x + {{b^2}}) = {{a^3}}x^3 + {{a^2*b}}x^2 + {{a*b^2}}x - {{a^2*b}}x^2 - {{a*b^2}}x - {{b^3}} = {{a^3}}x^3 - {{b^3}}$ ✓",
+      "rubric": [
+        {
+          "point": "Writes each term as a cube",
+          "marks": 1
+        },
+        {
+          "point": "Correct difference of cubes factorisation",
+          "marks": 2
+        },
+        {
+          "point": "Correct sum of cubes factorisation (signs)",
+          "marks": 2
+        },
+        {
+          "point": "Checks by expanding",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "The volume, in cubic metres, of a block of ice is modelled by $V(x) = 3x^3 + 11x^2 + 8x - 4$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine possible dimensions of the block in terms of $x$."
+        },
+        {
+          "label": "b",
+          "text": "Show that the block is a cube when $x = 1.5$ and find its volume.",
+          "answer": {
+            "expr": "42.875",
+            "unit": "m³",
+            "sig": 5
+          }
+        },
+        {
+          "label": "c",
+          "text": "What values of $x$ make sense in this situation? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Possible rational zeros: $\\pm1, \\pm2, \\pm4, \\pm\\tfrac13, \\pm\\tfrac23, \\pm\\tfrac43$. $V(-2) = -24 + 44 - 16 - 4 = 0$, so $x + 2$ is a factor.\n\nDivide: $V(x) = (x + 2)(3x^2 + 5x - 2) = (x + 2)(3x - 1)(x + 2)$.\n\nDimensions: $(3x - 1)$ m by $(x + 2)$ m by $(x + 2)$ m.\n\n(b) $x = 1.5$: $3(1.5) - 1 = 3.5$ m and $1.5 + 2 = 3.5$ m. All three edges are $3.5$ m, so the block is a cube. Volume $= 3.5^3 = 42.875$ m³ (check $V(1.5) = 10.125 + 24.75 + 12 - 4 = 42.875$ ✓).\n\n(c) We need $3x - 1 > 0$, so $x > \\tfrac13$ (and then $x + 2 > 0$ automatically).",
+      "rubric": [
+        {
+          "point": "Uses the rational zero theorem / factor theorem to find a factor",
+          "marks": 1
+        },
+        {
+          "point": "Factors $V(x)$ fully",
+          "marks": 2
+        },
+        {
+          "point": "States dimensions and shows the block is a cube at $x = 1.5$",
+          "marks": 1
+        },
+        {
+          "point": "Correct volume",
+          "marks": 1
+        },
+        {
+          "point": "Correct restriction on $x$ with reasoning",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain the factor theorem in your own words and explain how it follows from the remainder theorem. Include an example of using it to test a possible factor.",
+      "modelAnswer": "The **remainder theorem** says that when $P(x)$ is divided by $x - b$ the remainder is $P(b)$. A binomial is a factor exactly when it divides with **no remainder**. So $x - b$ is a factor if and only if the remainder $P(b)$ equals $0$ — this is the **factor theorem**.\n\nIn the division statement $P(x) = (x - b)Q(x) + P(b)$, if $P(b) = 0$ then $P(x) = (x - b)Q(x)$, a product with $x - b$ as a factor.\n\n**Example:** For $P(x) = x^3 - 4x^2 + x + 6$, $P(2) = 8 - 16 + 2 + 6 = 0$, so $x - 2$ is a factor. But $P(1) = 4 \\neq 0$, so $x - 1$ is not.",
+      "rubric": [
+        {
+          "point": "Clear statement of the factor theorem (both directions)",
+          "marks": 1
+        },
+        {
+          "point": "Explains the link to the remainder theorem (remainder 0)",
+          "marks": 2
+        },
+        {
+          "point": "Correct worked example",
+          "marks": 1
+        },
+        {
+          "point": "Clear communication",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q10",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Consider $P(x) = x^3 - 2x^2 + 5x + 4$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify all the binomials of the form $x - b$ (with $b$ an integer) that could be factors. Explain your reasoning."
+        },
+        {
+          "label": "b",
+          "text": "Test them. What do you conclude?"
+        },
+        {
+          "label": "c",
+          "text": "Explain why $x - 3$ is impossible as a factor, and what the results tell you about the zeros of $P(x)$."
+        }
+      ],
+      "modelAnswer": "(a) The leading coefficient is $1$, so by the integral zero theorem any integer zero must divide the constant term $4$: test $\\pm1, \\pm2, \\pm4$. The possible factors are $x \\pm 1$, $x \\pm 2$, $x \\pm 4$.\n\n(b) $P(1) = 8$, $P(-1) = -1 - 2 - 5 + 4 = -4$, $P(2) = 8 - 8 + 10 + 4 = 14$, $P(-2) = -8 - 8 - 10 + 4 = -22$, $P(4) = 64 - 32 + 20 + 4 = 56$, $P(-4) = -64 - 32 - 20 + 4 = -112$. None is zero, so $P(x)$ has **no** linear factor with integer coefficients.\n\n(c) $x - 3$ cannot be a factor because $3$ does not divide $4$. Since $P(-1) < 0 < P(1)$, the graph crosses the $x$-axis between $-1$ and $1$: the zero there is irrational, so it cannot be found with the integral zero theorem.",
+      "rubric": [
+        {
+          "point": "Lists the possible factors using the integral zero theorem with a reason",
+          "marks": 2
+        },
+        {
+          "point": "Tests the values correctly",
+          "marks": 1
+        },
+        {
+          "point": "Concludes there are no integer zeros",
+          "marks": 1
+        },
+        {
+          "point": "Explains why $x - 3$ cannot be a factor",
+          "marks": 1
+        },
+        {
+          "point": "Notes that a non-integer real zero still exists (sign change)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q11",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A student says the only values worth testing as zeros of $P(x) = 4x^3 + 5x^2 - 23x - 6$ are $\\pm1, \\pm2, \\pm3, \\pm6$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain what is wrong with the student's list and give the complete list."
+        },
+        {
+          "label": "b",
+          "text": "Factor $P(x)$ fully."
+        }
+      ],
+      "modelAnswer": "(a) The leading coefficient is $4$, not $1$, so the integral zero theorem does not cover all possibilities. By the **rational zero theorem**, possible zeros are $\\frac{b}{a}$ with $b \\mid 6$ and $a \\mid 4$:\n\n$\\pm1, \\pm2, \\pm3, \\pm6, \\pm\\tfrac12, \\pm\\tfrac32, \\pm\\tfrac14, \\pm\\tfrac34$.\n\nThe student is missing the fractions.\n\n(b) $P(2) = 32 + 20 - 46 - 6 = 0$, so $x - 2$ is a factor. Dividing: $P(x) = (x - 2)(4x^2 + 13x + 3)$. Factor $4x^2 + 13x + 3 = (4x + 1)(x + 3)$.\n\n$P(x) = (x - 2)(4x + 1)(x + 3)$ — and the zero $-\\tfrac14$ is one the student would never have tested.",
+      "rubric": [
+        {
+          "point": "Explains that the rational zero theorem is needed because the leading coefficient is 4",
+          "marks": 2
+        },
+        {
+          "point": "Correct complete list of possible rational zeros",
+          "marks": 1
+        },
+        {
+          "point": "Factors $P(x)$ fully",
+          "marks": 2
+        },
+        {
+          "point": "Points out the fractional zero $-\\frac14$",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Factor $2x^3 - 5x^2 - 9x + 18$ completely. Use your work to explain which of $2x - 3$, $x + 2$, $x - 2$ and $x - 3$ is **not** a factor.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the remainder when the polynomial is divided by the binomial that is not a factor?",
+          "answer": {
+            "expr": "-4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Test values: $P(2) = 16 - 20 - 18 + 18 = -4 \\neq 0$, so $x - 2$ is **not** a factor.\n\n$P(3) = 54 - 45 - 27 + 18 = 0$, so $x - 3$ is a factor. Divide: $P(x) = (x - 3)(2x^2 + x - 6)$.\n\n$2x^2 + x - 6 = (2x - 3)(x + 2)$.\n\n$P(x) = (x - 3)(2x - 3)(x + 2)$.\n\nA cubic has exactly these three linear factors, so $2x - 3$, $x + 2$ and $x - 3$ are factors and $x - 2$ is not — confirmed by the nonzero remainder $P(2) = -4$.",
+      "rubric": [
+        {
+          "point": "Finds a zero and divides",
+          "marks": 2
+        },
+        {
+          "point": "Complete factorisation",
+          "marks": 1
+        },
+        {
+          "point": "Identifies $x - 2$ as not a factor",
+          "marks": 1
+        },
+        {
+          "point": "Justifies using the factor theorem ($P(2) \\neq 0$)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Factor $x^3 + 2x^2 - 9x - 18$ using **two different methods**. Which method was more efficient here, and why?",
+      "modelAnswer": "**Method 1 – grouping:** $x^2(x + 2) - 9(x + 2) = (x + 2)(x^2 - 9) = (x + 2)(x - 3)(x + 3)$.\n\n**Method 2 – factor theorem:** test factors of $-18$. $P(-2) = -8 + 8 + 18 - 18 = 0$, so $x + 2$ is a factor. Synthetic division with $-2$: $1, 2, -9, -18 \\to 1, 0, -9, \\mathbf{0}$, quotient $x^2 - 9 = (x - 3)(x + 3)$.\n\nBoth give $(x + 2)(x - 3)(x + 3)$. Grouping is faster here because the pairs have the same ratio ($1:2$ and $-9:-18$), so no testing is needed.",
+      "rubric": [
+        {
+          "point": "Correct factorisation by grouping",
+          "marks": 2
+        },
+        {
+          "point": "Correct factorisation by factor theorem and division",
+          "marks": 2
+        },
+        {
+          "point": "Reasoned comparison of efficiency",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q14",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Factor $x^4 - x^3 - 7x^2 + x + 6$ completely. Show each zero you find and how you divide.",
+      "modelAnswer": "Test factors of $6$. $P(1) = 1 - 1 - 7 + 1 + 6 = 0$, so $x - 1$ is a factor.\nSynthetic division with $1$: $1, -1, -7, 1, 6 \\to 1, 0, -7, -6, \\mathbf{0}$. Quotient $x^3 - 7x - 6$.\n\nTest the cubic: $P_1(-1) = -1 + 7 - 6 = 0$, so $x + 1$ is a factor.\nSynthetic division with $-1$: $1, 0, -7, -6 \\to 1, -1, -6, \\mathbf{0}$. Quotient $x^2 - x - 6 = (x - 3)(x + 2)$.\n\n$$x^4 - x^3 - 7x^2 + x + 6 = (x - 1)(x + 1)(x - 3)(x + 2)$$",
+      "rubric": [
+        {
+          "point": "Finds a first zero with the factor theorem",
+          "marks": 1
+        },
+        {
+          "point": "First division correct (including the $0x^2$ term)",
+          "marks": 1
+        },
+        {
+          "point": "Finds a second zero and divides correctly",
+          "marks": 2
+        },
+        {
+          "point": "Factors the remaining quadratic and writes the full factorisation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q15",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create a cubic polynomial with integer coefficients that has $2x - 3$ as a factor and whose other two zeros are integers. Then show how the rational zero theorem would help someone else factor your polynomial.",
+      "modelAnswer": "Example: choose zeros $\\tfrac32$, $1$ and $-2$:\n\n$P(x) = (2x - 3)(x - 1)(x + 2) = (2x - 3)(x^2 + x - 2) = 2x^3 + 2x^2 - 4x - 3x^2 - 3x + 6 = 2x^3 - x^2 - 7x + 6$.\n\nSomeone factoring $2x^3 - x^2 - 7x + 6$ would list $\\frac{b}{a}$ with $b \\mid 6$, $a \\mid 2$: $\\pm1, \\pm2, \\pm3, \\pm6, \\pm\\tfrac12, \\pm\\tfrac32$. Testing $P(1) = 2 - 1 - 7 + 6 = 0$ gives a factor; dividing gives $2x^2 + x - 6 = (2x - 3)(x + 2)$. The zero $\\tfrac32$ is on the list, as the theorem guarantees. (Many answers are possible.)",
+      "rubric": [
+        {
+          "point": "Valid polynomial with the required factor and integer zeros",
+          "marks": 2
+        },
+        {
+          "point": "Correct expansion",
+          "marks": 1
+        },
+        {
+          "point": "Explains how the list of possible rational zeros is formed",
+          "marks": 1
+        },
+        {
+          "point": "Shows the polynomial being factored using the list",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q16",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "When you factor a trinomial $ax^2 + bx + c$ you often look at the product $ac$. Explain how this relates to the rational zero theorem, using $6x^2 + x - 2$ as an example.",
+      "modelAnswer": "For $6x^2 + x - 2$: $ac = -12$. You look for two numbers that multiply to $-12$ and add to $1$: $4$ and $-3$. Then $6x^2 + 4x - 3x - 2 = 2x(3x + 2) - 1(3x + 2) = (3x + 2)(2x - 1)$.\n\nThe factors have the form $(px + q)$ where $p$ divides the leading coefficient $6$ and $q$ divides the constant $-2$. The zeros are $-\\tfrac23$ and $\\tfrac12$: each is $\\frac{\\text{factor of } -2}{\\text{factor of } 6}$ — exactly what the rational zero theorem predicts. Both methods rely on the fact that the leading coefficient and constant term are shared out among the factors.",
+      "rubric": [
+        {
+          "point": "Correct factorisation of the example",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the zeros as ratios of factors of the constant and leading coefficient",
+          "marks": 2
+        },
+        {
+          "point": "Clear explanation of the connection",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q17",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Describe, step by step, how you would factor $2x^3 + 3x^2 - 5x - 6$, and carry out your plan.",
+      "modelAnswer": "**Plan**\n1. List possible rational zeros: $b \\mid 6$, $a \\mid 2$: $\\pm1, \\pm2, \\pm3, \\pm6, \\pm\\tfrac12, \\pm\\tfrac32$.\n2. Test them, easiest first, until $P(b) = 0$.\n3. Divide by the corresponding factor.\n4. Factor the quadratic quotient.\n\n**Carry out:** $P(1) = 2 + 3 - 5 - 6 = -6$; $P(-1) = -2 + 3 + 5 - 6 = 0$ ✓, so $x + 1$ is a factor.\nSynthetic division with $-1$: $2, 3, -5, -6 \\to 2, 1, -6, \\mathbf{0}$. Quotient $2x^2 + x - 6 = (2x - 3)(x + 2)$.\n\n$2x^3 + 3x^2 - 5x - 6 = (x + 1)(2x - 3)(x + 2)$",
+      "rubric": [
+        {
+          "point": "Clear plan naming the rational zero theorem and division",
+          "marks": 2
+        },
+        {
+          "point": "Finds a zero",
+          "marks": 1
+        },
+        {
+          "point": "Divides correctly",
+          "marks": 1
+        },
+        {
+          "point": "Complete factorisation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-2-q18",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "R": "c + k*(b + k*(k - a))"
+      },
+      "text": "Use synthetic division to divide $x^3 - {{a}}x^2 + {{b}}x + {{c}}$ by $x - {{k}}$. State the quotient and remainder, and say whether $x - {{k}}$ is a factor.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the remainder.",
+          "answer": {
+            "expr": "R",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Synthetic division with ${{k}}$:\n\n| ${{k}}$ | $1$ | $-{{a}}$ | ${{b}}$ | ${{c}}$ |\n|---|---|---|---|---|\n|  | ↓ | ${{k}}$ | ${{k*(k - a)}}$ | ${{k*(b + k*(k - a))}}$ |\n|  | $1$ | ${{k - a}}$ | ${{b + k*(k - a)}}$ | ${{c + k*(b + k*(k - a))}}$ |\n\nQuotient: $x^2 + ({{k - a}})x + ({{b + k*(k - a)}})$; remainder ${{R}}$.\n\nSince the remainder is ${{R}}$, $x - {{k}}$ is a factor only if this is $0$. Check with the remainder theorem: $P({{k}}) = {{R}}$.",
+      "rubric": [
+        {
+          "point": "Sets up synthetic division with $k$ and all coefficients",
+          "marks": 1
+        },
+        {
+          "point": "Correct multiply-and-add steps",
+          "marks": 2
+        },
+        {
+          "point": "Correct quotient and remainder",
+          "marks": 1
+        },
+        {
+          "point": "Correct conclusion about the factor",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

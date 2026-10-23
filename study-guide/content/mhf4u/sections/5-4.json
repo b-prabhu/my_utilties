@@ -1,0 +1,1051 @@
+{
+  "id": "5-4",
+  "number": "5.4",
+  "title": "Solve Trigonometric Equations",
+  "estimatedMinutes": 90,
+  "overview": "Many questions about periodic situations come down to solving an equation such as $\\sin x=0.6$ or $2\\sin^2x-\\sin x-1=0$. You will solve linear and quadratic trigonometric equations on $[0,2\\pi]$, exactly when possible and approximately otherwise, using reference angles, the CAST rule, factoring, identities and graphs.",
+  "objectives": [
+    "Solve linear trigonometric equations on $[0,2\\pi]$, exactly for special values and approximately otherwise.",
+    "Solve equations involving reciprocal ratios by converting to primary ratios.",
+    "Solve quadratic trigonometric equations by taking square roots, factoring or the quadratic formula.",
+    "Use identities to rewrite an equation in terms of a single ratio.",
+    "Recognise equations with no solution and avoid dividing by a trigonometric ratio.",
+    "Solve applied problems such as projectile and Ferris-wheel problems."
+  ],
+  "lessons": [
+    {
+      "id": "linear",
+      "title": "Linear trigonometric equations",
+      "body": "A **linear** trigonometric equation contains the ratio to the first power, e.g. $2\\sin x-1=0$.\n\n**Strategy**\n1. Isolate the ratio: $\\sin x=\\frac12$.\n2. Find the **reference angle** (the acute angle with that ratio, ignoring sign): $\\frac{\\pi}{6}$.\n3. Use the **CAST rule** to decide which quadrants give the right sign.\n4. Write each solution in $[0,2\\pi]$:\n\n| Quadrant | Angle with reference angle $\\beta$ |\n|---|---|\n| I | $\\beta$ |\n| II | $\\pi-\\beta$ |\n| III | $\\pi+\\beta$ |\n| IV | $2\\pi-\\beta$ |\n\nSine is positive in I and II, so $x=\\frac{\\pi}{6}$ and $x=\\frac{5\\pi}{6}$.\n\n```plot\ntitle: Solutions of sin x = 1/2 are where the graphs meet\nf: sin(x) | label=y = sin x\nf: 0.5 | dashed; label=y = 1/2\ndomain: 0, 2*pi\nrange: -1.5, 1.5\nxticks: pi\npoints: (pi/6,0.5), (5*pi/6,0.5)\n```\n\n**Exact or approximate?** If the ratio is a special value ($0,\\pm\\frac12,\\pm\\frac{1}{\\sqrt2},\\pm\\frac{\\sqrt3}{2},\\pm1,\\pm\\sqrt3,\\dots$) give exact answers in terms of $\\pi$. Otherwise use the inverse key for the reference angle and round (usually to the nearest hundredth of a radian), and **say** that the answer is approximate.\n\n**Reciprocal ratios.** Rewrite first: $\\sec x=4\\Rightarrow\\cos x=\\frac14$; $3\\cot x+2=0\\Rightarrow\\tan x=-\\frac32$.\n\n**No solution.** $\\sin x=2$ has no solution because $-1\\le\\sin x\\le1$. The same is true for $\\csc x=\\frac12$."
+    },
+    {
+      "id": "quadratic-roots",
+      "title": "Quadratic equations of the form sin²x = k",
+      "body": "Equations like $2\\sin^2x-1=0$ are solved by isolating the square and taking **both** square roots:\n\n$$\\sin^2x=\\tfrac12\\quad\\Rightarrow\\quad\\sin x=\\pm\\tfrac{1}{\\sqrt2}$$\n\n* **Case 1** $\\sin x=\\frac{1}{\\sqrt2}$: $x=\\frac{\\pi}{4},\\ \\frac{3\\pi}{4}$\n* **Case 2** $\\sin x=-\\frac{1}{\\sqrt2}$: $x=\\frac{5\\pi}{4},\\ \\frac{7\\pi}{4}$\n\nSo there are **four** solutions in $[0,2\\pi]$. Forgetting the negative root is the most common error.\n\n**Check** by substitution: $2\\sin^2\\frac{\\pi}{4}-1=2\\left(\\frac12\\right)-1=0$ ✓. Or graph $y=2\\sin^2x-1$ and look for its zeros."
+    },
+    {
+      "id": "factoring",
+      "title": "Factoring quadratic trigonometric equations",
+      "body": "Treat the ratio like a variable. Letting $u=\\cos x$ makes the structure clear:\n\n$$\\cos^2x+\\cos x-2=0\\ \\longrightarrow\\ u^2+u-2=0\\ \\longrightarrow\\ (u+2)(u-1)=0$$\n\nSo $\\cos x=-2$ (**no solution**, since $\\cos x\\ge-1$) or $\\cos x=1$ ($x=0,\\,2\\pi$).\n\nAnother example: $2\\sin^2x-3\\sin x+1=0$ factors as $(2\\sin x-1)(\\sin x-1)=0$:\n* $\\sin x=\\frac12$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6}$\n* $\\sin x=1$: $x=\\frac{\\pi}{2}$\n\n**Never divide by the trig ratio.** In $3\\cos^2x=2\\cos x$, dividing by $\\cos x$ loses the solutions where $\\cos x=0$. Instead bring everything to one side and factor: $\\cos x(3\\cos x-2)=0$.\n\n**When it won't factor**, use the quadratic formula on $u$. For $3\\sin^2x+\\sin x-1=0$:\n$$\\sin x=\\frac{-1\\pm\\sqrt{1+12}}{6}\\approx0.434\\ \\text{or}\\ -0.768$$\nthen solve each linear equation."
+    },
+    {
+      "id": "identities",
+      "title": "Using identities to make an equation factorable",
+      "body": "Sometimes an equation mixes ratios, e.g. $2\\cos^2x+\\sin x-1=0$. It cannot be factored as it stands because it has both $\\cos x$ and $\\sin x$.\n\nUse the Pythagorean identity $\\cos^2x=1-\\sin^2x$ to write everything in terms of sine:\n\n$$2(1-\\sin^2x)+\\sin x-1=0\\ \\Rightarrow\\ -2\\sin^2x+\\sin x+1=0\\ \\Rightarrow\\ 2\\sin^2x-\\sin x-1=0$$\n$$(2\\sin x+1)(\\sin x-1)=0$$\n\n* $\\sin x=-\\frac12$: $x=\\frac{7\\pi}{6},\\frac{11\\pi}{6}$\n* $\\sin x=1$: $x=\\frac{\\pi}{2}$\n\nOther useful identities: $\\sec^2x=1+\\tan^2x$, $\\csc^2x=1+\\cot^2x$, and the double-angle identities from Chapter 4."
+    },
+    {
+      "id": "multiple-angles",
+      "title": "Equations with 2x and applications",
+      "body": "If the equation involves $\\sin2\\theta$, solve for $2\\theta$ first, then divide by 2. Make sure you find **all** values of $2\\theta$ in the doubled interval.\n\n**Archery.** The range of an arrow is $r=100\\sin2\\theta$. To hit a target 80 m away:\n\n* $\\theta$ must be between 0 and $\\frac{\\pi}{2}$, so $2\\theta$ is between 0 and $\\pi$.\n* $\\sin2\\theta=0.8$ gives $2\\theta\\approx0.927$ or $2\\theta\\approx\\pi-0.927\\approx2.214$.\n* So $\\theta\\approx0.46$ or $\\theta\\approx1.11$.\n\nTwo launch angles work – a low, fast, flat shot and a high lob. They are **complementary** ($0.46+1.11\\approx\\frac{\\pi}{2}$). An archer usually chooses the lower angle.\n\n**Ferris wheel times.** To find when a rider reaches a certain height $h=10\\sin\\left(\\frac{\\pi}{15}t-7.5\\right)+12$, set $h$ equal to the height and solve for the argument, then for $t$ – exactly as above, but in time units."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "trigonometric equation",
+      "definition": "An equation involving trigonometric ratios of an unknown angle, true only for certain values of the angle."
+    },
+    {
+      "term": "reference angle",
+      "definition": "The acute angle between the terminal arm and the $x$-axis; used with the CAST rule to find all solutions."
+    },
+    {
+      "term": "CAST rule",
+      "definition": "Shows which ratios are positive in each quadrant: All (I), Sine (II), Tangent (III), Cosine (IV)."
+    },
+    {
+      "term": "exact solution",
+      "definition": "A solution written using $\\pi$ and radicals (e.g. $\\frac{5\\pi}{6}$), possible when the ratio is a special value."
+    },
+    {
+      "term": "approximate solution",
+      "definition": "A rounded decimal solution, found with the inverse key when the ratio is not a special value."
+    },
+    {
+      "term": "quadratic trigonometric equation",
+      "definition": "An equation in which a ratio is squared, e.g. $2\\sin^2x-\\sin x-1=0$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Solutions from a reference angle β",
+      "latex": "\\text{I: }\\beta\\quad\\text{II: }\\pi-\\beta\\quad\\text{III: }\\pi+\\beta\\quad\\text{IV: }2\\pi-\\beta",
+      "meaning": "All in $[0,2\\pi]$."
+    },
+    {
+      "name": "Pythagorean identity",
+      "latex": "\\sin^2x+\\cos^2x=1",
+      "meaning": "Rewrite $\\cos^2x$ as $1-\\sin^2x$ (or the reverse)."
+    },
+    {
+      "name": "Quadratic formula for a ratio",
+      "latex": "\\sin x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}",
+      "meaning": "For $a\\sin^2x+b\\sin x+c=0$."
+    },
+    {
+      "name": "Range of a projectile",
+      "latex": "r=\\frac{v^2}{g}\\sin2\\theta",
+      "meaning": "Gives two complementary launch angles for most ranges."
+    },
+    {
+      "name": "Supplementary-angle identity",
+      "latex": "\\sin x=\\sin(\\pi-x)",
+      "meaning": "Finds the second solution of a sine equation."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "A quadratic with four solutions",
+      "problem": "Find the exact solutions of $2\\sin^2x-1=0$ on $[0,2\\pi]$.",
+      "steps": [
+        "$\\sin^2x=\\frac12$, so $\\sin x=\\pm\\frac{1}{\\sqrt2}$.",
+        "$\\sin x=\\frac{1}{\\sqrt2}$: reference angle $\\frac{\\pi}{4}$; quadrants I and II: $\\frac{\\pi}{4},\\frac{3\\pi}{4}$.",
+        "$\\sin x=-\\frac{1}{\\sqrt2}$: quadrants III and IV: $\\frac{5\\pi}{4},\\frac{7\\pi}{4}$.",
+        "Check $x=\\frac{\\pi}{4}$: $2\\left(\\frac{1}{\\sqrt2}\\right)^2-1=0$ ✓."
+      ],
+      "answer": "$x=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}$."
+    },
+    {
+      "title": "Factoring with no-solution case",
+      "problem": "Solve $\\cos^2x+\\cos x-2=0$ on $[0,2\\pi]$.",
+      "steps": [
+        "Factor: $(\\cos x+2)(\\cos x-1)=0$.",
+        "$\\cos x=-2$: no solution, because $-1\\le\\cos x\\le1$.",
+        "$\\cos x=1$: $x=0$ or $x=2\\pi$.\n\n```plot\nf: cos(x)^2+cos(x)-2\ndomain: 0, 2*pi\nrange: -3, 1\nxticks: pi\npoints: (0,0), (2*pi,0)\n```\n\n"
+      ],
+      "answer": "$x=0,\\ 2\\pi$."
+    },
+    {
+      "title": "Reciprocal ratios",
+      "problem": "Solve $2\\csc^2x-\\csc x-1=0$ on $[0,2\\pi]$.",
+      "steps": [
+        "Factor: $(2\\csc x+1)(\\csc x-1)=0$.",
+        "$\\csc x=-\\frac12\\Rightarrow\\sin x=-2$: no solution.",
+        "$\\csc x=1\\Rightarrow\\sin x=1$: $x=\\frac{\\pi}{2}$."
+      ],
+      "answer": "$x=\\frac{\\pi}{2}$."
+    },
+    {
+      "title": "Using an identity",
+      "problem": "Solve $2\\cos^2x+\\sin x-1=0$ on $[0,2\\pi]$.",
+      "steps": [
+        "Replace $\\cos^2x$ with $1-\\sin^2x$: $2-2\\sin^2x+\\sin x-1=0$.",
+        "Rearrange: $2\\sin^2x-\\sin x-1=0$, so $(2\\sin x+1)(\\sin x-1)=0$.",
+        "$\\sin x=-\\frac12$: $x=\\frac{7\\pi}{6},\\frac{11\\pi}{6}$.",
+        "$\\sin x=1$: $x=\\frac{\\pi}{2}$."
+      ],
+      "answer": "$x=\\frac{\\pi}{2},\\frac{7\\pi}{6},\\frac{11\\pi}{6}$."
+    },
+    {
+      "title": "Approximate solutions",
+      "problem": "Solve $\\tan^2x-\\tan x-6=0$ on $[0,2\\pi]$ to the nearest hundredth.",
+      "steps": [
+        "Factor: $(\\tan x-3)(\\tan x+2)=0$.",
+        "$\\tan x=3$: $\\tan^{-1}3\\approx1.249$; quadrants I and III: $x\\approx1.25,\\ 4.39$.",
+        "$\\tan x=-2$: reference $\\tan^{-1}2\\approx1.107$; quadrants II and IV: $x\\approx\\pi-1.107\\approx2.03$ and $x\\approx2\\pi-1.107\\approx5.18$."
+      ],
+      "answer": "$x\\approx1.25,\\ 2.03,\\ 4.39,\\ 5.18$ (approximate)."
+    },
+    {
+      "title": "Archery",
+      "problem": "An arrow's range is $r=100\\sin2\\theta$. Find the angles that hit a target 80 m away.",
+      "steps": [
+        "Restriction: $0<\\theta<\\frac{\\pi}{2}$, so $0<2\\theta<\\pi$.",
+        "$\\sin2\\theta=0.8\\Rightarrow2\\theta\\approx0.927$ or $2\\theta\\approx\\pi-0.927\\approx2.214$.",
+        "$\\theta\\approx0.46$ or $\\theta\\approx1.11$."
+      ],
+      "answer": "$\\theta\\approx0.46$ rad or $1.11$ rad."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\sin^2x=\\frac14$ means $\\sin x=\\frac12$.",
+      "fact": "Take **both** roots: $\\sin x=\\pm\\frac12$, which doubles the number of solutions."
+    },
+    {
+      "myth": "I can divide both sides of $3\\cos^2x=2\\cos x$ by $\\cos x$.",
+      "fact": "Dividing loses the solutions of $\\cos x=0$. Factor instead: $\\cos x(3\\cos x-2)=0$."
+    },
+    {
+      "myth": "The calculator's answer is the only solution.",
+      "fact": "The inverse key gives one angle. Use CAST (or the graph) to find every solution in the interval."
+    },
+    {
+      "myth": "$\\cos x=-2$ gives $x=\\cos^{-1}(-2)$.",
+      "fact": "The range of cosine is $[-1,1]$; $\\cos x=-2$ has **no** solution (the calculator shows an error)."
+    },
+    {
+      "myth": "For $\\sin2x=0.5$ on $[0,2\\pi]$ there are two solutions.",
+      "fact": "$2x$ runs over $[0,4\\pi]$ – two full cycles – so there are **four** solutions."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Sports and projectiles",
+      "body": "A projectile's range $r=\\frac{v^2}{g}\\sin2\\theta$ explains why two different launch angles can hit the same target, and why $\\frac{\\pi}{4}$ gives the maximum range."
+    },
+    {
+      "title": "Electrical safety",
+      "body": "For a voltage $V=167\\sin(120\\pi t)$, solving $167\\sin(120\\pi t)=120$ tells engineers how long each half-cycle stays above a component's safe limit."
+    },
+    {
+      "title": "Fairground timing",
+      "body": "Ride designers solve sinusoidal equations to find when riders are at a particular height – for example to time a photo at the top of a Ferris wheel."
+    },
+    {
+      "title": "Weather",
+      "body": "Meteorologists use periodic models of temperature and daylight; solving the model's equation predicts on which days a threshold (like frost) is reached."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Solve $\\sin x-\\frac14=0$ on $[0,2\\pi]$ to the nearest hundredth.",
+      "hint": "Sine positive in I and II.",
+      "solution": "$\\sin^{-1}0.25\\approx0.25$; $x\\approx0.25,\\ 2.89$."
+    },
+    {
+      "question": "Solve $\\cos x+0.75=0$ on $[0,2\\pi]$.",
+      "hint": "Reference angle $\\cos^{-1}0.75$; cosine negative in II and III.",
+      "solution": "$\\beta\\approx0.723$; $x\\approx\\pi-0.723\\approx2.42$ and $x\\approx\\pi+0.723\\approx3.86$."
+    },
+    {
+      "question": "Find exact solutions of $\\sin x+\\frac{\\sqrt3}{2}=0$.",
+      "hint": "Reference $\\frac{\\pi}{3}$, quadrants III and IV.",
+      "solution": "$x=\\frac{4\\pi}{3},\\ \\frac{5\\pi}{3}$."
+    },
+    {
+      "question": "Find exact solutions of $\\tan^2x-3=0$.",
+      "hint": "$\\tan x=\\pm\\sqrt3$.",
+      "solution": "$x=\\frac{\\pi}{3},\\frac{2\\pi}{3},\\frac{4\\pi}{3},\\frac{5\\pi}{3}$."
+    },
+    {
+      "question": "Solve $\\sin^2x+2\\sin x-3=0$.",
+      "hint": "Factor as $(\\sin x+3)(\\sin x-1)$.",
+      "solution": "$\\sin x=-3$ has no solution; $\\sin x=1$ gives $x=\\frac{\\pi}{2}$."
+    },
+    {
+      "question": "Solve $2\\sec^2x-\\sec x-1=0$.",
+      "hint": "Factor and convert to cosine.",
+      "solution": "$(2\\sec x+1)(\\sec x-1)=0$: $\\cos x=-2$ (none) or $\\cos x=1$: $x=0,2\\pi$."
+    },
+    {
+      "question": "Solve $6\\cos^2x-5\\cos x-6=0$ (if possible).",
+      "hint": "Factor: $(3\\cos x+2)(2\\cos x-3)$.",
+      "solution": "$\\cos x=\\frac32$: none. $\\cos x=-\\frac23$: $x\\approx\\pi-0.841\\approx2.30$ and $x\\approx\\pi+0.841\\approx3.98$ (approximate)."
+    },
+    {
+      "question": "Explain why $\\sin3x-2=0$ has no solutions.",
+      "hint": "What is the range of $\\sin3x$?",
+      "solution": "$\\sin3x$ is a horizontal compression of $\\sin x$, so its range is still $[-1,1]$; it can never equal 2."
+    },
+    {
+      "question": "Solve $3\\sin^2x+\\sin x-1=0$ on $[0,2\\pi]$.",
+      "hint": "Quadratic formula.",
+      "solution": "$\\sin x=\\frac{-1\\pm\\sqrt{13}}{6}\\approx0.434$ or $-0.768$. $0.434$: $x\\approx0.45,\\ 2.69$. $-0.768$: reference $0.876$; $x\\approx4.02,\\ 5.41$."
+    }
+  ],
+  "summary": [
+    "Isolate the ratio, find the reference angle, and use CAST to find all solutions in $[0,2\\pi]$.",
+    "Give exact answers for special values; otherwise round and label the answers approximate.",
+    "For squared ratios take both $\\pm$ roots.",
+    "Factor quadratic equations (or use the quadratic formula); discard ratios outside $[-1,1]$ for sine and cosine.",
+    "Never divide by a trig ratio – factor it out instead.",
+    "Use identities such as $\\cos^2x=1-\\sin^2x$ to write an equation in one ratio.",
+    "For $\\sin2\\theta$ solve for $2\\theta$ over the doubled interval first."
+  ],
+  "questions": [
+    {
+      "id": "5-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "r": {
+          "min": 0.15,
+          "max": 0.95,
+          "step": 0.05
+        }
+      },
+      "text": "Determine the approximate solutions of $\\sin x-{{r}}=0$ in $[0,2\\pi]$, to the nearest hundredth of a radian. Explain how you know there are two solutions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution",
+          "answer": {
+            "expr": "asin(r)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution",
+          "answer": {
+            "expr": "pi-asin(r)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\sin x={{r}}$. Reference angle $\\beta=\\sin^{-1}({{r}})\\approx{{asin(r):3}}$.\n\nSine is positive in quadrants I and II, so there are two solutions:\n\n$x\\approx{{asin(r):3}}$ and $x=\\pi-\\beta\\approx{{pi-asin(r):3}}$.\n\nGraphically, the horizontal line $y={{r}}$ crosses one cycle of $y=\\sin x$ twice.",
+      "rubric": [
+        {
+          "point": "Isolates sin x and finds the reference angle",
+          "marks": 1
+        },
+        {
+          "point": "Quadrant I solution",
+          "marks": 1
+        },
+        {
+          "point": "Quadrant II solution",
+          "marks": 1
+        },
+        {
+          "point": "Explains why there are two solutions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "r": {
+          "min": 0.1,
+          "max": 0.9,
+          "step": 0.05
+        }
+      },
+      "text": "Determine the approximate solutions of $\\cos x+{{r}}=0$ in $[0,2\\pi]$, to the nearest hundredth of a radian.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution",
+          "answer": {
+            "expr": "pi-acos(r)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution",
+          "answer": {
+            "expr": "pi+acos(r)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cos x=-{{r}}$. Reference angle $\\beta=\\cos^{-1}({{r}})\\approx{{acos(r):3}}$.\n\nCosine is negative in quadrants II and III:\n\n$x=\\pi-\\beta\\approx{{pi-acos(r):3}}$ and $x=\\pi+\\beta\\approx{{pi+acos(r):3}}$.",
+      "rubric": [
+        {
+          "point": "Reference angle",
+          "marks": 1
+        },
+        {
+          "point": "Correct quadrants",
+          "marks": 1
+        },
+        {
+          "point": "Both solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "n": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Determine the approximate solutions of ${{m}}\\cot x-{{n}}=0$ in $[0,2\\pi]$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution",
+          "answer": {
+            "expr": "atan(m/n)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution",
+          "answer": {
+            "expr": "atan(m/n)+pi",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cot x=\\frac{ {{n}} }{ {{m}} }$, so $\\tan x=\\frac{ {{m}} }{ {{n}} }\\approx{{m/n:4}}$.\n\n$x\\approx\\tan^{-1}({{m/n:4}})\\approx{{atan(m/n):3}}$ (quadrant I) and $x\\approx{{atan(m/n):3}}+\\pi\\approx{{atan(m/n)+pi:3}}$ (quadrant III).",
+      "rubric": [
+        {
+          "point": "Converts cot to tan",
+          "marks": 1
+        },
+        {
+          "point": "Quadrant I solution",
+          "marks": 1
+        },
+        {
+          "point": "Quadrant III solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "s": {
+          "choices": [
+            1.5,
+            2.5,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Determine the approximate solutions of $\\sec x={{s}}$ in $[0,2\\pi]$, and explain why $\\sec x=\\frac{1}{ {{s}} }$ has no solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution",
+          "answer": {
+            "expr": "acos(1/s)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution",
+          "answer": {
+            "expr": "2*pi-acos(1/s)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why $\\sec x=\\frac{1}{ {{s}} }$ has no solution."
+        }
+      ],
+      "modelAnswer": "(a) $\\cos x=\\frac{1}{ {{s}} }\\approx{{1/s:4}}$. $x\\approx{{acos(1/s):3}}$ (I) and $x\\approx2\\pi-{{acos(1/s):3}}\\approx{{2*pi-acos(1/s):3}}$ (IV).\n\n(b) $\\sec x=\\frac{1}{ {{s}} }$ would mean $\\cos x={{s}}>1$, which is impossible because $-1\\le\\cos x\\le1$ (equivalently, the range of secant is $y\\le-1$ or $y\\ge1$).",
+      "rubric": [
+        {
+          "point": "Converts to cosine",
+          "marks": 1
+        },
+        {
+          "point": "Both solutions",
+          "marks": 2
+        },
+        {
+          "point": "Explains no solution using range",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Determine the exact solutions in $[0,2\\pi]$ of: (a) $2\\sin x+\\sqrt3=0$; (b) $2\\cos x-1=0$; (c) $\\tan x+1=0$; (d) $\\cot x-1=0$.",
+      "modelAnswer": "(a) $\\sin x=-\\frac{\\sqrt3}{2}$: reference $\\frac{\\pi}{3}$, quadrants III, IV: $x=\\frac{4\\pi}{3},\\frac{5\\pi}{3}$.\n\n(b) $\\cos x=\\frac12$: $x=\\frac{\\pi}{3},\\frac{5\\pi}{3}$.\n\n(c) $\\tan x=-1$: quadrants II, IV: $x=\\frac{3\\pi}{4},\\frac{7\\pi}{4}$.\n\n(d) $\\cot x=1\\Rightarrow\\tan x=1$: $x=\\frac{\\pi}{4},\\frac{5\\pi}{4}$.",
+      "rubric": [
+        {
+          "point": "(a) both solutions",
+          "marks": 1
+        },
+        {
+          "point": "(b) both solutions",
+          "marks": 1
+        },
+        {
+          "point": "(c) both solutions",
+          "marks": 1
+        },
+        {
+          "point": "(d) both solutions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r2": {
+          "choices": [
+            0.09,
+            0.16,
+            0.36,
+            0.49,
+            0.64,
+            0.81
+          ]
+        }
+      },
+      "text": "Determine the approximate solutions of $\\sin^2x-{{r2}}=0$ in $[0,2\\pi]$, to the nearest hundredth of a radian.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smallest solution",
+          "answer": {
+            "expr": "asin(sqrt(r2))",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Largest solution",
+          "answer": {
+            "expr": "2*pi-asin(sqrt(r2))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\sin^2x={{r2}}$, so $\\sin x=\\pm{{sqrt(r2):3}}$.\n\nReference angle $\\beta=\\sin^{-1}({{sqrt(r2):3}})\\approx{{asin(sqrt(r2)):3}}$.\n\n$\\sin x>0$: $x\\approx{{asin(sqrt(r2)):3}},\\ {{pi-asin(sqrt(r2)):3}}$.\n\n$\\sin x<0$: $x\\approx{{pi+asin(sqrt(r2)):3}},\\ {{2*pi-asin(sqrt(r2)):3}}$.\n\nFour solutions in total.",
+      "rubric": [
+        {
+          "point": "Takes both square roots",
+          "marks": 2
+        },
+        {
+          "point": "Reference angle",
+          "marks": 1
+        },
+        {
+          "point": "All four solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine the exact solutions in $[0,2\\pi]$ of (a) $4\\sin^2x-1=0$, (b) $4\\cos^2x-3=0$, (c) $3\\csc^2x-4=0$.",
+      "modelAnswer": "(a) $\\sin x=\\pm\\frac12$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6},\\frac{7\\pi}{6},\\frac{11\\pi}{6}$.\n\n(b) $\\cos x=\\pm\\frac{\\sqrt3}{2}$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6},\\frac{7\\pi}{6},\\frac{11\\pi}{6}$.\n\n(c) $\\csc^2x=\\frac43\\Rightarrow\\sin^2x=\\frac34\\Rightarrow\\sin x=\\pm\\frac{\\sqrt3}{2}$: $x=\\frac{\\pi}{3},\\frac{2\\pi}{3},\\frac{4\\pi}{3},\\frac{5\\pi}{3}$.",
+      "rubric": [
+        {
+          "point": "(a) four solutions",
+          "marks": 2
+        },
+        {
+          "point": "(b) four solutions",
+          "marks": 2
+        },
+        {
+          "point": "(c) converts csc and finds four solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $2\\sin^2x-3\\sin x+1=0$ on $[0,2\\pi]$, giving exact answers. Verify one solution by substitution.",
+      "modelAnswer": "Let $u=\\sin x$: $2u^2-3u+1=(2u-1)(u-1)=0$.\n\n$\\sin x=\\frac12$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6}$. $\\sin x=1$: $x=\\frac{\\pi}{2}$.\n\nCheck $x=\\frac{\\pi}{6}$: $2\\left(\\frac14\\right)-3\\left(\\frac12\\right)+1=\\frac12-\\frac32+1=0$ ✓.",
+      "rubric": [
+        {
+          "point": "Correct factoring",
+          "marks": 2
+        },
+        {
+          "point": "Solutions from sin x = 1/2",
+          "marks": 1
+        },
+        {
+          "point": "Solution from sin x = 1",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $\\csc^2x-\\csc x-2=0$ on $[0,2\\pi]$.",
+      "modelAnswer": "$(\\csc x-2)(\\csc x+1)=0$.\n\n$\\csc x=2\\Rightarrow\\sin x=\\frac12$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6}$.\n\n$\\csc x=-1\\Rightarrow\\sin x=-1$: $x=\\frac{3\\pi}{2}$.",
+      "rubric": [
+        {
+          "point": "Correct factoring",
+          "marks": 2
+        },
+        {
+          "point": "Converts to sine",
+          "marks": 1
+        },
+        {
+          "point": "All three solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "q": {
+          "choices": [
+            5,
+            6
+          ]
+        }
+      },
+      "text": "Solve $\\tan^2x-{{p+q}}\\tan x+{{p*q}}=0$ on $[0,2\\pi]$, to the nearest hundredth of a radian. State whether your answers are exact or approximate.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smallest solution",
+          "answer": {
+            "expr": "atan(p)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Largest solution",
+          "answer": {
+            "expr": "atan(q)+pi",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$(\\tan x-{{p}})(\\tan x-{{q}})=0$.\n\n$\\tan x={{p}}$: $x\\approx{{atan(p):3}}$ and ${{atan(p)+pi:3}}$.\n\n$\\tan x={{q}}$: $x\\approx{{atan(q):3}}$ and ${{atan(q)+pi:3}}$.\n\nThese are approximate (the ratios are not special values).",
+      "rubric": [
+        {
+          "point": "Correct factoring",
+          "marks": 2
+        },
+        {
+          "point": "Solutions for first factor",
+          "marks": 1
+        },
+        {
+          "point": "Solutions for second factor",
+          "marks": 1
+        },
+        {
+          "point": "States approximate",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $3\\sin^2x+\\sin x-1=0$ on $[0,2\\pi]$. (a) Explain why the left side cannot be factored over the integers. (b) Use the quadratic formula. (c) Find all solutions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smallest solution",
+          "answer": {
+            "expr": "asin((-1+sqrt(13))/6)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Largest solution",
+          "answer": {
+            "expr": "2*pi-asin((1+sqrt(13))/6)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) We need two integers with product $3(-1)=-3$ and sum 1 – none exist, so the trinomial does not factor over the integers.\n\n(b) $\\sin x=\\dfrac{-1\\pm\\sqrt{1^2-4(3)(-1)}}{2(3)}=\\dfrac{-1\\pm\\sqrt{13}}{6}$, so $\\sin x\\approx0.4343$ or $\\sin x\\approx-0.7676$.\n\n(c) $\\sin x\\approx0.4343$: $x\\approx0.449$ and $\\pi-0.449\\approx2.69$.\n\n$\\sin x\\approx-0.7676$: reference $\\approx0.876$; $x\\approx\\pi+0.876\\approx4.02$ and $2\\pi-0.876\\approx5.41$.",
+      "rubric": [
+        {
+          "point": "Explains non-factorable",
+          "marks": 1
+        },
+        {
+          "point": "Correct quadratic formula values",
+          "marks": 2
+        },
+        {
+          "point": "Solutions for positive root",
+          "marks": 1
+        },
+        {
+          "point": "Solutions for negative root",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q12",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Consider $2\\cos^2x+\\sin x-1=0$ on $[0,2\\pi]$. (a) Explain why it cannot be factored as written. (b) Suggest an identity that removes the problem. (c) Rewrite and factor the equation. (d) Solve it. (e) Describe how a graph confirms your answer.",
+      "modelAnswer": "(a) It contains two different ratios, $\\cos x$ and $\\sin x$, so it is not a quadratic in a single variable.\n\n(b) $\\cos^2x=1-\\sin^2x$.\n\n(c) $2(1-\\sin^2x)+\\sin x-1=0\\Rightarrow-2\\sin^2x+\\sin x+1=0\\Rightarrow2\\sin^2x-\\sin x-1=0\\Rightarrow(2\\sin x+1)(\\sin x-1)=0$.\n\n(d) $\\sin x=-\\frac12$: $x=\\frac{7\\pi}{6},\\frac{11\\pi}{6}$; $\\sin x=1$: $x=\\frac{\\pi}{2}$.\n\n(e) The graph of $y=2\\cos^2x+\\sin x-1$ has zeros at $x\\approx1.57,\\ 3.67,\\ 5.76$ on $[0,2\\pi]$ (touching the axis at $\\frac{\\pi}{2}$).",
+      "rubric": [
+        {
+          "point": "Explains mixed ratios",
+          "marks": 1
+        },
+        {
+          "point": "Correct identity",
+          "marks": 1
+        },
+        {
+          "point": "Correct rewriting and factoring",
+          "marks": 2
+        },
+        {
+          "point": "All three solutions",
+          "marks": 2
+        },
+        {
+          "point": "Graphical verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q13",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A student solves $3\\cos^2x=2\\cos x$ by dividing both sides by $\\cos x$ to get $\\cos x=\\frac23$. Explain the error, then solve the equation correctly on $[0,2\\pi]$.",
+      "modelAnswer": "Dividing by $\\cos x$ assumes $\\cos x\\ne0$, so all the solutions where $\\cos x=0$ are lost.\n\nCorrect method: $3\\cos^2x-2\\cos x=0\\Rightarrow\\cos x(3\\cos x-2)=0$.\n\n$\\cos x=0$: $x=\\frac{\\pi}{2},\\frac{3\\pi}{2}$ (exact).\n\n$\\cos x=\\frac23$: $x\\approx0.84$ and $2\\pi-0.84\\approx5.44$ (approximate).",
+      "rubric": [
+        {
+          "point": "Explains why dividing loses solutions",
+          "marks": 2
+        },
+        {
+          "point": "Factors correctly",
+          "marks": 1
+        },
+        {
+          "point": "Exact solutions from cos x = 0",
+          "marks": 1
+        },
+        {
+          "point": "Approximate solutions from cos x = 2/3",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "R": {
+          "choices": [
+            100,
+            120,
+            150
+          ]
+        },
+        "D": {
+          "min": 50,
+          "max": 95,
+          "step": 5
+        }
+      },
+      "text": "The range of an arrow is modelled by $r={{R}}\\sin2\\theta$, where $r$ is in metres and $\\theta$ is the launch angle in radians. A target is {{D}} m away.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What are the restrictions on $\\theta$? Justify."
+        },
+        {
+          "label": "b",
+          "text": "Smaller angle",
+          "answer": {
+            "expr": "asin(D/R)/2",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Larger angle",
+          "answer": {
+            "expr": "(pi-asin(D/R))/2",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $0<\\theta<\\frac{\\pi}{2}$ (between horizontal and straight up), so $0<2\\theta<\\pi$.\n\n(b) $\\sin2\\theta=\\frac{ {{D}} }{ {{R}} }={{D/R:3}}$.\n\n$2\\theta\\approx\\sin^{-1}({{D/R:3}})\\approx{{asin(D/R):4}}$, so $\\theta\\approx{{asin(D/R)/2:3}}$.\n\nOr $2\\theta\\approx\\pi-{{asin(D/R):4}}$, so $\\theta\\approx{{(pi-asin(D/R))/2:3}}$.\n\n(c) The angles add to $\\frac{\\pi}{2}$ (they are complementary). The archer would choose the smaller angle: the arrow travels faster and flatter, so it is less affected by wind and easier to aim.",
+      "rubric": [
+        {
+          "point": "States restriction on θ",
+          "marks": 1
+        },
+        {
+          "point": "Sets up sin 2θ = D/R",
+          "marks": 1
+        },
+        {
+          "point": "First angle",
+          "marks": 1
+        },
+        {
+          "point": "Second angle using π − 2θ",
+          "marks": 2
+        },
+        {
+          "point": "Explains choice",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "D": {
+          "min": 15,
+          "max": 22,
+          "step": 1
+        },
+        "v": {
+          "min": 15,
+          "max": 18,
+          "step": 1
+        }
+      },
+      "text": "The range of a human-cannonball act is $r=\\dfrac{v^2}{g}\\sin2\\theta$, with $g=9.8$ m/s². The net is {{D}} m away and the performer is launched at {{v}} m/s. Determine the possible aiming angles.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller angle",
+          "answer": {
+            "expr": "asin(D*9.8/v^2)/2",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger angle",
+          "answer": {
+            "expr": "(pi-asin(D*9.8/v^2))/2",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\sin2\\theta=\\dfrac{rg}{v^2}=\\dfrac{ {{D}}(9.8)}{ {{v}}^2}\\approx{{D*9.8/v^2:4}}$.\n\n$2\\theta\\approx{{asin(D*9.8/v^2):4}}$ or $\\pi-{{asin(D*9.8/v^2):4}}$.\n\n$\\theta\\approx{{asin(D*9.8/v^2)/2:3}}$ rad or $\\theta\\approx{{(pi-asin(D*9.8/v^2))/2:3}}$ rad.",
+      "rubric": [
+        {
+          "point": "Correct rearrangement",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of sin 2θ",
+          "marks": 1
+        },
+        {
+          "point": "First angle",
+          "marks": 1
+        },
+        {
+          "point": "Second angle",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q16",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "H": {
+          "choices": [
+            15,
+            17,
+            18,
+            20
+          ]
+        }
+      },
+      "text": "The height of a rider on a Ferris wheel is $h=10\\sin\\left(\\frac{\\pi}{15}t-\\frac{\\pi}{2}\\right)+12$, where $t$ is in seconds; at $t=0$ the rider is at the lowest point. Determine the first two times that the rider is {{H}} m above the ground.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "First time",
+          "answer": {
+            "expr": "15/pi*(asin((H-12)/10)+pi/2)",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Second time",
+          "answer": {
+            "expr": "15/pi*(pi-asin((H-12)/10)+pi/2)",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$10\\sin\\left(\\frac{\\pi}{15}t-\\frac{\\pi}{2}\\right)+12={{H}}\\Rightarrow\\sin\\left(\\frac{\\pi}{15}t-\\frac{\\pi}{2}\\right)={{(H-12)/10:3}}$.\n\nLet $\\theta=\\frac{\\pi}{15}t-\\frac{\\pi}{2}$, which starts at $-\\frac{\\pi}{2}$ when $t=0$.\n\n$\\theta\\approx\\sin^{-1}({{(H-12)/10:3}})\\approx{{asin((H-12)/10):4}}$ or $\\theta\\approx\\pi-{{asin((H-12)/10):4}}$.\n\n$t=\\frac{15}{\\pi}\\left(\\theta+\\frac{\\pi}{2}\\right)$:\n\n$t_1\\approx{{15/pi*(asin((H-12)/10)+pi/2):4}}$ s, $t_2\\approx{{15/pi*(pi-asin((H-12)/10)+pi/2):4}}$ s.\n\nA graph of $h$ against $t$ with the line $h={{H}}$ shows the two intersections in the first 30-second revolution.",
+      "rubric": [
+        {
+          "point": "Sets up and isolates sine",
+          "marks": 1
+        },
+        {
+          "point": "Finds both values of the argument",
+          "marks": 2
+        },
+        {
+          "point": "Converts to times correctly",
+          "marks": 2
+        },
+        {
+          "point": "Describes graphical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q17",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "L": {
+          "choices": [
+            120,
+            125,
+            130
+          ]
+        }
+      },
+      "text": "The voltage in a circuit is $V=167\\sin(120\\pi t)$, where $t$ is in seconds. A component can safely withstand more than {{L}} V for at most 0.003 s at a time. (a) Determine how long the voltage is above {{L}} V in each positive half-cycle. (b) Is it safe to use the component? Justify.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Time above the limit in each half-cycle",
+          "answer": {
+            "expr": "(pi-2*asin(L/167))/(120*pi)",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $167\\sin(120\\pi t)={{L}}\\Rightarrow\\sin(120\\pi t)={{L/167:4}}$.\n\n$120\\pi t\\approx{{asin(L/167):4}}$ or $\\pi-{{asin(L/167):4}}$.\n\n$t_1\\approx\\frac{ {{asin(L/167):4}} }{120\\pi}\\approx{{asin(L/167)/(120*pi):3}}$ s and $t_2\\approx{{(pi-asin(L/167))/(120*pi):3}}$ s.\n\nTime above {{L}} V: $t_2-t_1\\approx{{(pi-2*asin(L/167))/(120*pi):3}}$ s.\n\n(b) The voltage stays above {{L}} V for about {{(pi-2*asin(L/167))/(120*pi):3}} s in each half-cycle, which is **longer** than the 0.003 s the component can tolerate, so it is **not safe** to use in this circuit.",
+      "rubric": [
+        {
+          "point": "Sets up equation",
+          "marks": 1
+        },
+        {
+          "point": "Finds both times",
+          "marks": 2
+        },
+        {
+          "point": "Correct duration",
+          "marks": 1
+        },
+        {
+          "point": "Correct safety conclusion with justification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-4-q18",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "t": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Without solving, explain how many solutions each equation has in $[0,2\\pi]$: (a) $\\sin x=1$; (b) $4\\cos^2x-1=0$; (c) $\\sin3x-2=0$; (d) $\\tan x={{t}}$.",
+      "modelAnswer": "(a) One: the maximum of sine occurs once per cycle, at $x=\\frac{\\pi}{2}$.\n\n(b) Four: $\\cos x=\\pm\\frac12$, and each value occurs twice per cycle.\n\n(c) None: $\\sin3x$ has range $[-1,1]$ (a horizontal compression does not change the range), so it can never equal 2.\n\n(d) Two: tangent has period $\\pi$, so each value occurs twice in $[0,2\\pi]$ (quadrants I and III for a positive value).",
+      "rubric": [
+        {
+          "point": "(a) with reason",
+          "marks": 1
+        },
+        {
+          "point": "(b) with reason",
+          "marks": 1
+        },
+        {
+          "point": "(c) with reason",
+          "marks": 1
+        },
+        {
+          "point": "(d) with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-4-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\sec^2x-5\\sec x+6=0$ and $2\\tan^2x+5\\tan x+3=0$ on $[0,2\\pi]$. Indicate whether each solution is exact or approximate.",
+      "modelAnswer": "First: $(\\sec x-2)(\\sec x-3)=0$.\n* $\\sec x=2\\Rightarrow\\cos x=\\frac12$: $x=\\frac{\\pi}{3},\\frac{5\\pi}{3}$ (exact).\n* $\\sec x=3\\Rightarrow\\cos x=\\frac13$: $x\\approx1.23,\\ 5.05$ (approximate).\n\nSecond: $(2\\tan x+3)(\\tan x+1)=0$.\n* $\\tan x=-1$: $x=\\frac{3\\pi}{4},\\frac{7\\pi}{4}$ (exact).\n* $\\tan x=-1.5$: reference $\\approx0.983$; $x\\approx2.16,\\ 5.30$ (approximate).",
+      "rubric": [
+        {
+          "point": "Factors first equation",
+          "marks": 1
+        },
+        {
+          "point": "Four solutions to first with labels",
+          "marks": 2
+        },
+        {
+          "point": "Factors second equation",
+          "marks": 1
+        },
+        {
+          "point": "Four solutions to second with labels",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

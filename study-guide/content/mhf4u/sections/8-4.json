@@ -1,0 +1,1152 @@
+{
+  "id": "8-4",
+  "number": "8.4",
+  "title": "Inequalities of Combined Functions",
+  "estimatedMinutes": 80,
+  "overview": "How many houses should a developer build? Which order sizes keep shipping costs down? When will a town outgrow its services? Questions like these have a **range** of answers, found by solving inequalities of combined functions. You will compare functions graphically and algebraically, use difference and quotient functions, and solve inequalities with technology when algebra cannot.",
+  "objectives": [
+    "Determine where $f(x) > g(x)$ by finding intersections and testing intervals.",
+    "Illustrate inequalities visually, with a difference function, and with a quotient function – and know the limits of each.",
+    "Solve inequalities graphically when algebraic methods are not available.",
+    "Solve profit, inventory and planning problems involving inequalities.",
+    "Express solutions in interval notation and interpret them in context."
+  ],
+  "lessons": [
+    {
+      "id": "comparing",
+      "title": "Comparing Two Functions",
+      "body": "\nBusiness and science questions often ask **when** one quantity is bigger than another: when is revenue more than cost? when does the population exceed the services available? These are **inequalities of combined functions**.\n\n> $f(x) > g(x)$ for the $x$-values where the graph of $f$ lies **above** the graph of $g$.\n\n**Strategy**\n1. Find the points of intersection, where $f(x) = g(x)$ (algebraically if possible, otherwise with technology).\n2. The intersections split the x-axis into intervals.\n3. On each interval, one function stays above the other – test one point.\n\n### Example\n$f(x) = x$ and $g(x) = (x - 2)^2$.\n\nIntersections: $x = (x - 2)^2 \\Rightarrow x^2 - 5x + 4 = 0 \\Rightarrow (x - 1)(x - 4) = 0$, so $x = 1$ or $x = 4$: points $(1, 1)$ and $(4, 4)$.\n\n* $f(x) > g(x)$ on $(1, 4)$ (test $x = 2$: $2 > 0$ ✓)\n* $g(x) > f(x)$ on $(-\\infty, 1) \\cup (4, \\infty)$\n\n```plot\ntitle: f(x) = x is above g(x) = (x − 2)² on (1, 4)\nf: x | label=f(x) = x\nf: (x-2)^2 | label=g(x) = (x − 2)²\ndomain: -1, 6\nrange: -1, 8\npoints: (1,1), (4,4)\n```\n\nInterval notation reminder: $(1, 4)$ means $1 < x < 4$; square brackets include endpoints.\n"
+    },
+    {
+      "id": "methods",
+      "title": "Three Ways to Illustrate an Inequality",
+      "body": "\n**Method 1 – Compare the graphs visually.** Graph both functions in different colours and see where one is above the other.\n\n**Method 2 – The difference function.**\n$$f(x) > g(x) \\iff f(x) - g(x) > 0$$\nGraph $y = f(x) - g(x)$ (by superposition or algebra) and find where it is **above the x-axis**. For the example: $f(x) - g(x) = x - (x - 2)^2 = -x^2 + 5x - 4$, positive on $(1, 4)$.\n\n```plot\ntitle: Difference function y = −x² + 5x − 4 is positive on (1, 4)\nf: -x^2 + 5*x - 4\ndomain: -1, 6\nrange: -6, 4\npoints: (1,0), (4,0)\n```\n\n**Method 3 – The quotient function.** If $g(x) > 0$:\n$$f(x) > g(x) \\iff \\frac{f(x)}{g(x)} > 1$$\nGraph $y = \\dfrac{f(x)}{g(x)}$ with the line $y = 1$.\n\n**Cautions for Method 3**\n* It only works where $g(x) > 0$. If $g(x) < 0$, dividing by it **reverses** the inequality.\n* It is undefined where $g(x) = 0$; check such points separately. In the example, $g(2) = 0$ and $f(2) = 2$, so $f(2) > g(2)$ even though the quotient does not exist there.\n\n| Method | Advantage | Disadvantage |\n|---|---|---|\n| Visual | quick, intuitive | hard to read exact intersections |\n| Difference | one graph vs the x-axis; algebra-friendly | requires simplifying |\n| Quotient | shows ratios (\"how many times bigger\") | sign and zero issues with $g$ |\n"
+    },
+    {
+      "id": "technology",
+      "title": "Inequalities That Need Technology",
+      "body": "\nSome inequalities cannot be solved with algebra, for example $\\sin x > \\log x$ (a trig function and a logarithmic function). Solve them **graphically**:\n\n1. Graph $y = \\sin x$ and $y = \\log x$ (radian mode).\n2. Find the intersections with technology: $x \\approx 2.70$, $7.33$ and $8.26$.\n3. $\\log x$ exists only for $x > 0$ (asymptote at $x = 0$).\n4. $\\sin x$ is above $\\log x$ on $(0, 2.70) \\cup (7.33, 8.26)$.\n\n```plot\ntitle: sin x > log x on (0, 2.70) ∪ (7.33, 8.26)\nf: sin(x) | label=sin x\nf: log(x) | label=log x\ndomain: 0.05, 12\nrange: -1.5, 1.5\npoints: (2.696,0.431), (7.328,0.865), (8.264,0.917)\n```\n\n**Why are there no solutions for $x > 10$?** For $x > 10$, $\\log x > 1 \\ge \\sin x$, so the log curve is always above.\n\nOn a graphing calculator, entering an inequality such as $Y_1 > Y_2$ (TEST menu) in Dot mode plots 1 where it is true and 0 where it is false – a quick visual check.\n"
+    },
+    {
+      "id": "business",
+      "title": "Business Applications: When Is It Profitable?",
+      "body": "\nFor a business, **profit occurs where revenue > cost**, i.e. where $P = R - C > 0$. The intersections of $R$ and $C$ are the **break-even points**, and maximum profit occurs where $R$ exceeds $C$ by the greatest amount – the maximum of $P = R - C$.\n\n### Housing developer\nFixed cost &#36;8 million, variable cost &#36;65 000 per house: $C(n) = 8 + 0.065n$ (millions). Revenue $R(n) = 1.6\\sqrt{n}$ (millions).\n\n* Solve $1.6\\sqrt{n} = 8 + 0.065n$. Let $u = \\sqrt n$: $0.065u^2 - 1.6u + 8 = 0$, so $u \\approx 6.98$ or $17.64$, giving $n \\approx 49$ and $n \\approx 311$.\n* The developer makes a profit building between about **49 and 311** houses.\n* $P = 1.6u - 8 - 0.065u^2$ is largest at $u = \\dfrac{1.6}{0.13} \\approx 12.3$, i.e. $n \\approx 151$ houses, with $P \\approx &#36;1.85$ million.\n\n```plot\ntitle: Profit region: R(n) = 1.6√n above C(n) = 8 + 0.065n\nf: 1.6*sqrt(x) | label=R(n)\nf: 8 + 0.065*x | label=C(n)\ndomain: 0, 420\nrange: 0, 40\npoints: (48.7,11.17), (311.3,28.23)\nticks: 50, 5\n```\n\n### Inventory control\nCost of shipping and storing $n$ computers: $C(n) = 1.5n + \\dfrac{200\\,000}{n}$ – a linear part plus a rational part.\n\nTo keep $C(n) < 1500$: multiply by $n > 0$ → $1.5n^2 - 1500n + 200\\,000 < 0$. The quadratic formula gives $n \\approx 158$ and $842$, so orders of **159 to 841** keep costs down (limited to 750 by warehouse size). The minimum cost occurs at about $n = 365$, where $C \\approx &#36;1095$.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "inequality of functions",
+      "definition": "A statement such as $f(x) > g(x)$; its solution is the set of $x$-values where the graph of $f$ is above the graph of $g$."
+    },
+    {
+      "term": "difference function",
+      "definition": "$y = f(x) - g(x)$; $f > g$ exactly where it is positive (above the x-axis)."
+    },
+    {
+      "term": "quotient test",
+      "definition": "Where $g(x) > 0$, $f(x) > g(x)$ exactly where $\\dfrac{f(x)}{g(x)} > 1$."
+    },
+    {
+      "term": "break-even points",
+      "definition": "Intersections of revenue and cost curves; between them (if $R$ is above) the business is profitable."
+    },
+    {
+      "term": "interval notation",
+      "definition": "$(a, b)$ means $a < x < b$; $[a, b]$ includes the endpoints; $\\cup$ joins intervals."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Difference method",
+      "latex": "f(x) > g(x) \\iff f(x) - g(x) > 0",
+      "meaning": "Graph the difference and look above the x-axis."
+    },
+    {
+      "name": "Quotient method",
+      "latex": "f(x) > g(x) \\iff \\frac{f(x)}{g(x)} > 1 \\quad (g(x) > 0)",
+      "meaning": "Reverse the inequality where $g(x) < 0$; check zeros of $g$ separately."
+    },
+    {
+      "name": "Profit condition",
+      "latex": "P(n) = R(n) - C(n) > 0",
+      "meaning": "Maximum profit at the maximum of $P$."
+    },
+    {
+      "name": "Quadratic formula",
+      "latex": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+      "meaning": "Finds break-even points when $P$ is quadratic."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Three methods for one inequality",
+      "problem": "Let $f(x) = x$ and $g(x) = (x - 2)^2$. Find where $f(x) > g(x)$ and where $g(x) > f(x)$.",
+      "steps": [
+        "Intersections: $x^2 - 5x + 4 = 0 \\Rightarrow x = 1, 4$.",
+        "**Visual:** $f$ is above $g$ between the intersections.",
+        "**Difference:** $f - g = -x^2 + 5x - 4 = -(x - 1)(x - 4) > 0$ on $(1, 4)$.",
+        "**Quotient:** $\\dfrac{x}{(x-2)^2} > 1$ on $(1, 4)$ except $x = 2$, where it is undefined; checking directly, $f(2) = 2 > g(2) = 0$.",
+        "So $f > g$ on $(1, 4)$; $g > f$ on $(-\\infty, 1) \\cup (4, \\infty)$."
+      ],
+      "answer": "$f > g$ on $(1, 4)$."
+    },
+    {
+      "title": "Solve graphically: sin x > log x",
+      "problem": "Solve $\\sin x > \\log x$.",
+      "steps": [
+        "No algebraic method combines a trig and a log function, so graph both (radians).",
+        "Domain: $x > 0$ (log).",
+        "Intersections by technology: $x \\approx 2.70, 7.33, 8.26$.",
+        "$\\sin x$ is above on $(0, 2.70)$ and $(7.33, 8.26)$; for $x > 10$, $\\log x > 1$ so there are no more solutions."
+      ],
+      "answer": "$(0, 2.70) \\cup (7.33, 8.26)$ approximately."
+    },
+    {
+      "title": "Inventory control",
+      "problem": "$C(n) = 1.5n + \\dfrac{200\\,000}{n}$, warehouse capacity 750. Find order sizes with $C(n) < 1500$ and the cheapest order size.",
+      "steps": [
+        "$1.5n + \\dfrac{200\\,000}{n} < 1500$; multiply by $n > 0$: $1.5n^2 - 1500n + 200\\,000 < 0$.",
+        "Roots: $n = \\dfrac{1500 \\pm \\sqrt{1500^2 - 4(1.5)(200\\,000)}}{3} = \\dfrac{1500 \\pm \\sqrt{1\\,050\\,000}}{3} \\approx 158.4,\\ 841.6$.",
+        "Upward parabola → negative between the roots: $159 \\le n \\le 841$; with capacity, $159 \\le n \\le 750$.",
+        "Minimum (by graphing): $n \\approx 365$, $C \\approx 1095$."
+      ],
+      "answer": "Order 159 to 750 computers; optimum about 365."
+    },
+    {
+      "title": "Birdhouse profits",
+      "problem": "Claire sells $n$ birdhouses a week at $(45 - n)$ dollars each. Costs: &#36;280 fixed plus &#36;8 per birdhouse. How many should she build to make a profit, and what is the best number?",
+      "steps": [
+        "$C(n) = 280 + 8n$; $R(n) = n(45 - n) = 45n - n^2$.",
+        "Profit condition: $45n - n^2 > 280 + 8n \\iff -n^2 + 37n - 280 > 0 \\iff n^2 - 37n + 280 < 0$.",
+        "Roots: $n = \\dfrac{37 \\pm \\sqrt{1369 - 1120}}{2} = \\dfrac{37 \\pm \\sqrt{249}}{2} \\approx 10.6,\\ 26.4$.",
+        "Profit for $11 \\le n \\le 26$ birdhouses.",
+        "Vertex at $n = 18.5$; $P(18) = P(19) = -324 + 666 - 280 = &#36;62$."
+      ],
+      "answer": "Build 11 to 26; 18 or 19 gives the maximum profit of &#36;62."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "If $\\dfrac{f(x)}{g(x)} > 1$ fails, then $f(x) \\le g(x)$.",
+      "fact": "Only where $g(x) > 0$. Where $g(x) < 0$ the inequality reverses, and where $g(x) = 0$ the quotient is undefined but $f$ and $g$ can still be compared."
+    },
+    {
+      "myth": "Graphical solutions are exact.",
+      "fact": "Intersections found with technology are approximations – state them with appropriate rounding."
+    },
+    {
+      "myth": "Maximum revenue gives maximum profit.",
+      "fact": "Profit is $R - C$. Its maximum generally occurs at a different quantity from the maximum of $R$."
+    },
+    {
+      "myth": "Solving $f(x) = g(x)$ is the whole answer to $f(x) > g(x)$.",
+      "fact": "The equation only gives the boundary points; you must test the intervals between them."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Housing developments",
+      "body": "Building too few houses doesn't cover fixed costs; building too many saturates the market. The profitable range lies between the break-even points of revenue and cost."
+    },
+    {
+      "title": "Inventory",
+      "body": "Storage cost grows with order size, but frequent small orders cost more in shipping. The combined cost function has a 'sweet spot' and a range of acceptable order sizes."
+    },
+    {
+      "title": "Town planning",
+      "body": "When a growing population $P(t)$ exceeds the number of people local services can supply, $N(t) - P(t) < 0$, the town needs new schools, clinics or transit."
+    },
+    {
+      "title": "Movie theatre pricing",
+      "body": "Attendance falls as prices rise. Revenue and cost are combined functions of price, and the profitable price range comes from an inequality."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Solve $x^2 > 2x + 3$.",
+      "hint": "$x^2 - 2x - 3 > 0$.",
+      "solution": "$(x - 3)(x + 1) > 0$: $x < -1$ or $x > 3$, i.e. $(-\\infty, -1) \\cup (3, \\infty)$."
+    },
+    {
+      "question": "Let $u(x) = x + 5$ and $v(x) = 2x$. Where is $u(x) > v(x)$?",
+      "hint": "Intersection first.",
+      "solution": "Equal at $x = 5$. $u > v$ for $x < 5$: $(-\\infty, 5)$."
+    },
+    {
+      "question": "For $u$, $v$ above, a student uses $\\dfrac{u(x)}{v(x)} > 1$ and gets $(0, 5)$. Explain the error.",
+      "hint": "What is the sign of $v(x)$ for $x < 0$?",
+      "solution": "For $x < 0$, $v(x) < 0$, so dividing reverses the inequality; also $v(0) = 0$. The quotient test only finds the part of the solution where $v > 0$. The full answer is $(-\\infty, 5)$."
+    },
+    {
+      "question": "Solve $\\sin x < x$ for $x > 0$ (radians).",
+      "hint": "Compare the graphs near the origin.",
+      "solution": "$y = x$ is tangent to $\\sin x$ at 0 and stays above it for $x > 0$, so the solution is all $x > 0$."
+    },
+    {
+      "question": "A town's population is $P(t) = 2000(1.025)^t$ and services can supply $N(t) = 5000 + 57.5t$ people. When does demand exceed supply?",
+      "hint": "Find the intersection with technology.",
+      "solution": "$N(t) - P(t) < 0$ after $t \\approx 57.7$ years."
+    },
+    {
+      "question": "Revenue $R = -0.2n^2 + 3n$ and cost $C = 0.1n^2 + 0.4n + 2$ (thousands, $n$ thousand units). For what $n$ is there a profit?",
+      "hint": "$P = R - C$.",
+      "solution": "$P = -0.3n^2 + 2.6n - 2 > 0$; roots $n = \\dfrac{2.6 \\pm \\sqrt{4.36}}{0.6} \\approx 0.85, 7.81$. Profit for about 0.85 to 7.81 thousand units."
+    }
+  ],
+  "summary": [
+    "$f(x) > g(x)$ where the graph of $f$ is above the graph of $g$; intersections are the boundaries.",
+    "Three methods: compare graphs; difference $f - g > 0$; quotient $\\dfrac fg > 1$ (only where $g > 0$, check zeros of $g$).",
+    "Inequalities like $\\sin x > \\log x$ are solved graphically or numerically with technology.",
+    "Profit occurs where $R > C$; break-even points bound the profitable region; maximum profit is the maximum of $R - C$.",
+    "Real problems often have a **range** of acceptable answers, given in interval notation and restricted by context."
+  ],
+  "questions": [
+    {
+      "id": "8-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            6,
+            12,
+            20
+          ]
+        }
+      },
+      "derived": {
+        "m": "(sqrt(4*a+1)-1)/2",
+        "r1": "m*m",
+        "r2": "(m+1)*(m+1)"
+      },
+      "text": "Let $f(x) = x$ and $g(x) = (x - {{a}})^2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the points of intersection algebraically. Give the larger x-coordinate.",
+          "answer": {
+            "expr": "r2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Identify the intervals where (i) $f(x) > g(x)$ and (ii) $g(x) > f(x)$."
+        },
+        {
+          "label": "c",
+          "text": "Verify your answer using the difference function $y = f(x) - g(x)$."
+        }
+      ],
+      "modelAnswer": "**(a)** $x = (x - {{a}})^2 \\Rightarrow x^2 - {{2*a+1}}x + {{a*a}} = 0 \\Rightarrow (x - {{r1}})(x - {{r2}}) = 0$.\nIntersections $({{r1}}, {{r1}})$ and $({{r2}}, {{r2}})$.\n\n**(b)** Test $x = {{a}}$ (between them): $f({{a}}) = {{a}} > g({{a}}) = 0$.\n(i) $f(x) > g(x)$ on $({{r1}}, {{r2}})$.\n(ii) $g(x) > f(x)$ on $(-\\infty, {{r1}}) \\cup ({{r2}}, \\infty)$.\n\n**(c)** $f(x) - g(x) = -x^2 + {{2*a+1}}x - {{a*a}} = -(x - {{r1}})(x - {{r2}})$, a downward parabola that is positive exactly on $({{r1}}, {{r2}})$ – confirming (b).",
+      "rubric": [
+        {
+          "point": "Sets f = g and factors correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct intersection points",
+          "marks": 1
+        },
+        {
+          "point": "Correct interval for f > g",
+          "marks": 1
+        },
+        {
+          "point": "Correct intervals for g > f",
+          "marks": 1
+        },
+        {
+          "point": "Confirms using the difference function",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r1": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "r2": {
+          "min": 4,
+          "max": 7,
+          "step": 1
+        },
+        "m": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "B": "r1+r2-m"
+      },
+      "text": "Let $f(x) = x^2 - {{B}}x + {{k+r1*r2}}$ and $g(x) = {{m}}x + {{k}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine and factor the difference function $y = f(x) - g(x)$."
+        },
+        {
+          "label": "b",
+          "text": "Solve $f(x) > g(x)$ and $f(x) < g(x)$. Give the smaller boundary value.",
+          "answer": {
+            "expr": "r1",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the points of intersection of the two graphs."
+        }
+      ],
+      "modelAnswer": "**(a)** $f(x) - g(x) = x^2 - {{B}}x - {{m}}x + {{k+r1*r2}} - {{k}} = x^2 - {{r1+r2}}x + {{r1*r2}}$\n$= (x - {{r1}})(x - {{r2}})$.\n\n**(b)** Zeros $x = {{r1}}$ and $x = {{r2}}$. The difference is an upward parabola, so it is positive outside the zeros:\n$f(x) > g(x)$ on $(-\\infty, {{r1}}) \\cup ({{r2}}, \\infty)$ and $f(x) < g(x)$ on $({{r1}}, {{r2}})$.\n\n**(c)** Intersection points: $({{r1}}, {{m*r1+k}})$ and $({{r2}}, {{m*r2+k}})$ (substitute into $g$).",
+      "rubric": [
+        {
+          "point": "Correct difference function",
+          "marks": 1
+        },
+        {
+          "point": "Factors the difference correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution of f > g in interval notation",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution of f < g",
+          "marks": 1
+        },
+        {
+          "point": "Correct intersection points",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q03",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "There are three ways to illustrate where one function is greater than another: comparing the graphs, analysing the difference function, and analysing the quotient function.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Summarize each method and give one advantage and one disadvantage of each."
+        },
+        {
+          "label": "b",
+          "text": "Explain, with an example, why the quotient method can give a wrong answer."
+        }
+      ],
+      "modelAnswer": "**(a)**\n* **Visual:** graph both; read where one is above the other. + intuitive; − imprecise intersections, hard when curves are close.\n* **Difference** $y = f - g$: solve $f - g > 0$. + one curve against the x-axis, works with algebra; − requires correct simplification.\n* **Quotient** $y = f/g$ compared with 1. + shows relative size; − only valid where $g > 0$; undefined where $g = 0$.\n\n**(b)** If $g(x) < 0$, multiplying both sides of $\\frac{f}{g} > 1$ by $g$ reverses the inequality: $f < g$. Example: $f(x) = -1$, $g(x) = -2$: $f > g$, but $\\frac{f}{g} = 0.5 < 1$. Where $g(x) = 0$ the quotient does not exist, but $f$ and $g$ can still be compared directly.",
+      "rubric": [
+        {
+          "point": "Describes all three methods",
+          "marks": 2
+        },
+        {
+          "point": "Gives a valid advantage and disadvantage for each",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the quotient method fails for g < 0 or g = 0 with an example",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-4-q04",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "min": 3,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Let $u(x) = x + {{c}}$ and $v(x) = 2x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve $u(x) > v(x)$ using the difference function.",
+          "answer": {
+            "expr": "c",
+            "unit": "(boundary)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "A student solves $\\dfrac{u(x)}{v(x)} > 1$ instead. What interval does the student get? Check a value of $x < 0$."
+        },
+        {
+          "label": "c",
+          "text": "Explain the student's error."
+        }
+      ],
+      "modelAnswer": "**(a)** $u(x) = v(x)$ at $x = {{c}}$. $u(x) - v(x) = {{c}} - x > 0$ for $x < {{c}}$. So $u > v$ on $(-\\infty, {{c}})$.\n\n**(b)** $\\dfrac{u(x)}{v(x)} = \\dfrac{x + {{c}}}{2x} > 1$. For $x > 0$ ($v > 0$): $x + {{c}} > 2x \\Rightarrow x < {{c}}$, giving $(0, {{c}})$.\nFor $x < 0$ ($v < 0$): multiplying by $2x$ reverses: $x + {{c}} < 2x \\Rightarrow x > {{c}}$ – impossible, so the quotient is **not** greater than 1 there. Yet $u > v$ for all $x < 0$ (e.g. $x = -1$: $u = {{c-1}} > v = -2$).\n\n**(c)** The quotient test misses $(-\\infty, 0]$ because $v(x) \\le 0$ there: dividing by a negative reverses the inequality, and $v(0) = 0$ makes the quotient undefined. The correct solution is $(-\\infty, {{c}})$.",
+      "rubric": [
+        {
+          "point": "Correct solution using the difference",
+          "marks": 2
+        },
+        {
+          "point": "Correct analysis of the quotient on x > 0",
+          "marks": 1
+        },
+        {
+          "point": "Shows the quotient test fails for x < 0 with a check",
+          "marks": 2
+        },
+        {
+          "point": "States the correct full solution and explains the error",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q05",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "choices": [
+            1.5,
+            2,
+            2.5
+          ]
+        },
+        "b": {
+          "choices": [
+            150000,
+            200000,
+            250000
+          ]
+        },
+        "L": {
+          "choices": [
+            1800,
+            2000
+          ]
+        },
+        "cap": {
+          "choices": [
+            700,
+            750,
+            800
+          ]
+        }
+      },
+      "text": "A store's cost of shipping and storing $n$ units is $C(n) = {{a}}n + \\dfrac{ {{b}} }{n}$ dollars. The warehouse holds at most {{cap}} units.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain the shape of the graph of $C(n)$ and state the domain of interest."
+        },
+        {
+          "label": "b",
+          "text": "Determine the range of order sizes that keeps costs below &#36;{{L}}. Give the smallest order size.",
+          "answer": {
+            "expr": "ceil((L-sqrt(L*L-4*a*b))/(2*a))",
+            "unit": "units",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use technology or reasoning to estimate the order size with the lowest cost.",
+          "answer": {
+            "expr": "sqrt(b/a)",
+            "unit": "units",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "d",
+          "text": "Why might the cheapest order size not be the best number to order?"
+        }
+      ],
+      "modelAnswer": "**(a)** $C$ is the superposition of a linear function ${{a}}n$ (storage grows with order size) and a rational function $\\frac{ {{b}} }{n}$ (shipping cost per order spread over fewer units). Domain of interest: $0 < n \\le {{cap}}$.\n\n**(b)** $C(n) < {{L}}$: multiply by $n > 0$: ${{a}}n^2 - {{L}}n + {{b}} < 0$.\n$n = \\dfrac{ {{L}} \\pm \\sqrt{ {{L}}^2 - 4({{a}})({{b}}) } }{ 2({{a}}) } \\approx {{(L-sqrt(L*L-4*a*b))/(2*a):4}}$ or ${{(L+sqrt(L*L-4*a*b))/(2*a):4}}$.\nThe parabola opens up, so the inequality holds between the roots: about {{ceil((L-sqrt(L*L-4*a*b))/(2*a))}} to {{floor((L+sqrt(L*L-4*a*b))/(2*a))}} units, and no more than {{cap}} because of the warehouse.\n\n**(c)** Optimum (minimum cost) from the graph: $n = \\sqrt{ {{b}}/{{a}} } \\approx {{sqrt(b/a):3}}$ units, cost $\\approx &#36;{{2*sqrt(a*b):4}}$.\n\n**(d)** The cheapest order may not match demand: too few units means lost sales; too many ties up money and space.",
+      "rubric": [
+        {
+          "point": "Explains the shape as linear + rational with domain",
+          "marks": 1
+        },
+        {
+          "point": "Rearranges to a quadratic inequality correctly (n > 0)",
+          "marks": 1
+        },
+        {
+          "point": "Correct roots via the quadratic formula",
+          "marks": 2
+        },
+        {
+          "point": "Correct whole-number range, applying the capacity",
+          "marks": 1
+        },
+        {
+          "point": "Correct optimum order size and cost",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the optimum may not be best",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "P0": {
+          "min": 40,
+          "max": 50,
+          "step": 1
+        },
+        "v": {
+          "min": 5,
+          "max": 10,
+          "step": 1
+        },
+        "F": {
+          "min": 150,
+          "max": 220,
+          "step": 10
+        }
+      },
+      "text": "Claire builds and sells $n$ birdhouses a week for $({{P0}} - n)$ dollars each. Her weekly costs are &#36;{{F}} fixed plus &#36;{{v}} per birdhouse. She sells every birdhouse she makes.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for her total weekly cost."
+        },
+        {
+          "label": "b",
+          "text": "Write an equation for her weekly revenue."
+        },
+        {
+          "label": "c",
+          "text": "Write an inequality for the conditions under which Claire makes a profit."
+        },
+        {
+          "label": "d",
+          "text": "How many birdhouses should she build each week to make a profit?"
+        },
+        {
+          "label": "e",
+          "text": "What is the optimum number to build, and what is the maximum weekly profit?",
+          "answer": {
+            "expr": "-floor((P0-v)/2)^2+(P0-v)*floor((P0-v)/2)-F",
+            "unit": "$",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $C(n) = {{F}} + {{v}}n$.\n\n**(b)** $R(n) = n({{P0}} - n) = {{P0}}n - n^2$.\n\n**(c)** Profit: $R(n) > C(n) \\iff -n^2 + {{P0-v}}n - {{F}} > 0 \\iff n^2 - {{P0-v}}n + {{F}} < 0$.\n\n**(d)** Roots: $n = \\dfrac{ {{P0-v}} \\pm \\sqrt{ {{(P0-v)^2}} - {{4*F}} } }{2} \\approx {{((P0-v)-sqrt((P0-v)^2-4*F))/2:3}}$ and ${{((P0-v)+sqrt((P0-v)^2-4*F))/2:3}}$. Profit for whole numbers $n$ from {{floor(((P0-v)-sqrt((P0-v)^2-4*F))/2)+1}} to {{ceil(((P0-v)+sqrt((P0-v)^2-4*F))/2)-1}}.\n\n**(e)** Vertex at $n = \\dfrac{ {{P0-v}} }{2} = {{(P0-v)/2}}$. Using whole birdhouses, $n = {{floor((P0-v)/2)}}$: $P = -{{floor((P0-v)/2)}}^2 + {{P0-v}}({{floor((P0-v)/2)}}) - {{F}} = &#36;{{-floor((P0-v)/2)^2+(P0-v)*floor((P0-v)/2)-F}}$.",
+      "rubric": [
+        {
+          "point": "Correct cost function",
+          "marks": 1
+        },
+        {
+          "point": "Correct revenue function",
+          "marks": 1
+        },
+        {
+          "point": "Correct profit inequality",
+          "marks": 1
+        },
+        {
+          "point": "Solves the quadratic inequality and gives whole-number range",
+          "marks": 2
+        },
+        {
+          "point": "Correct optimum number and maximum profit",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-4-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "choices": [
+            1.6
+          ]
+        },
+        "F": {
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        },
+        "v": {
+          "choices": [
+            0.058,
+            0.065
+          ]
+        }
+      },
+      "text": "A developer can build up to 500 houses. Revenue is $R(n) = {{a}}\\sqrt{n}$ million dollars and cost is $C(n) = {{F}} + {{v}}n$ million dollars, where $n$ is the number of houses.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the break-even points. Give the larger number of houses.",
+          "answer": {
+            "expr": "((a+sqrt(a*a-4*v*F))/(2*v))^2",
+            "unit": "houses",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "What are the minimum and maximum numbers of houses she should build?"
+        },
+        {
+          "label": "c",
+          "text": "How many houses give the maximum profit, and what is that profit?",
+          "answer": {
+            "expr": "a*a/(4*v)-F",
+            "unit": "million $",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Suggest how the developer could increase her profits. Support your answer with mathematical reasoning."
+        }
+      ],
+      "modelAnswer": "**(a)** Break-even: ${{a}}\\sqrt{n} = {{F}} + {{v}}n$. Let $u = \\sqrt{n}$: ${{v}}u^2 - {{a}}u + {{F}} = 0$.\n$u = \\dfrac{ {{a}} \\pm \\sqrt{ {{a*a}} - 4({{v}})({{F}}) } }{ 2({{v}}) } \\approx {{(a-sqrt(a*a-4*v*F))/(2*v):4}}$ or ${{(a+sqrt(a*a-4*v*F))/(2*v):4}}$.\n$n = u^2 \\approx {{((a-sqrt(a*a-4*v*F))/(2*v))^2:3}}$ or ${{((a+sqrt(a*a-4*v*F))/(2*v))^2:3}}$ houses.\n\n**(b)** $R > C$ between the break-even points: build from about {{ceil(((a-sqrt(a*a-4*v*F))/(2*v))^2)}} to {{floor(((a+sqrt(a*a-4*v*F))/(2*v))^2)}} houses.\n\n**(c)** $P = {{a}}u - {{F}} - {{v}}u^2$ is a downward parabola in $u$ with vertex $u = \\dfrac{ {{a}} }{ 2({{v}}) }$, so $n = \\left(\\dfrac{ {{a}} }{ {{2*v}} }\\right)^2 \\approx {{(a/(2*v))^2:3}}$ houses, $P_{max} = \\dfrac{ {{a*a}} }{ 4({{v}}) } - {{F}} \\approx {{a*a/(4*v)-F:3}}$ million.\n\n**(d)** To increase profits she could reduce fixed or variable costs (lowering the cost line) or increase prices (raising the revenue curve), which widens the profitable range.",
+      "rubric": [
+        {
+          "point": "Sets up the break-even equation and substitutes u = √n",
+          "marks": 1
+        },
+        {
+          "point": "Solves the quadratic correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct profitable range of houses",
+          "marks": 1
+        },
+        {
+          "point": "Correct optimum number of houses and maximum profit",
+          "marks": 2
+        },
+        {
+          "point": "Sensible suggestions linked to the graph",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 14,
+          "max": 18,
+          "step": 1
+        },
+        "p1": {
+          "min": 6,
+          "max": 11,
+          "step": 1
+        }
+      },
+      "text": "The number of people who attend a movie showing is $N(p) = -(p + 7)(p - {{q}})$, where $p$ is the ticket price in dollars (minimum price &#36;5).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "For what prices is $N(p) > 0$? What does this suggest about the maximum ticket price?",
+          "answer": {
+            "expr": "q",
+            "unit": "$",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many people attend at &#36;{{p1}}?",
+          "answer": {
+            "expr": "-(p1+7)*(p1-q)",
+            "unit": "people",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write the revenue function $R(p) = pN(p)$, state where $R(p) > 0$, and find $R({{p1}})$.",
+          "answer": {
+            "expr": "-p1*(p1+7)*(p1-q)",
+            "unit": "$",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "Do the maxima of $N(p)$ and $R(p)$ occur at the same price? Explain."
+        }
+      ],
+      "modelAnswer": "**(a)** $N(p) > 0$ when $-7 < p < {{q}}$. With the minimum price, attendance is positive for $5 \\le p < {{q}}$, so &#36;{{q}} is the maximum realistic price.\n\n**(b)** $N({{p1}}) = -({{p1+7}})({{p1-q}}) = {{-(p1+7)*(p1-q)}}$ people.\n\n**(c)** Revenue $R(p) = pN(p) = -p(p + 7)(p - {{q}})$, a cubic. $R > 0$ on the same interval $5 \\le p < {{q}}$ (since $p > 0$). $R({{p1}}) = &#36;{{-p1*(p1+7)*(p1-q)}}$.\n\n**(d)** The maxima of $N$ and $R$ occur at different prices: $N$ is largest at $p = \\frac{ {{q}} - 7}{2}$, which is below the &#36;5 minimum, while $R$ also depends on the price itself, so its maximum (found by graphing) is at a higher price.",
+      "rubric": [
+        {
+          "point": "Correct interval for N > 0 and maximum realistic price",
+          "marks": 2
+        },
+        {
+          "point": "Correct attendance at the given price",
+          "marks": 1
+        },
+        {
+          "point": "Correct revenue function and value",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the maxima of N and R differ",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q09",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "c0": {
+          "choices": [
+            1.5,
+            2,
+            2.5
+          ]
+        }
+      },
+      "text": "A toy company's projected revenue for a new product is $R = -0.2n^2 + 3n$ and its cost is $C = 0.1n^2 + 0.4n + {{c0}}$, where $n$ is thousands of units and $R$, $C$ are in thousands of dollars.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the points of intersection of $R$ and $C$ and explain their significance.",
+          "answer": {
+            "expr": "(2.6+sqrt(6.76-1.2*c0))/0.6",
+            "unit": "thousand units (larger)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Identify the region where $R > C$. Why is it important?"
+        },
+        {
+          "label": "c",
+          "text": "Use $P = R - C$ to find the optimum number of units and the maximum profit.",
+          "answer": {
+            "expr": "2.6*2.6/1.2-c0",
+            "unit": "thousand $",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Suggest reasons why the revenue and cost curves are not linear."
+        }
+      ],
+      "modelAnswer": "**(a)** Set $R = C$: $-0.3n^2 + 2.6n - {{c0}} = 0$, i.e. $0.3n^2 - 2.6n + {{c0}} = 0$.\n$n = \\dfrac{2.6 \\pm \\sqrt{6.76 - {{1.2*c0:3}} }}{0.6} \\approx {{(2.6-sqrt(6.76-1.2*c0))/0.6:3}}$ or ${{(2.6+sqrt(6.76-1.2*c0))/0.6:3}}$. Two intersection points – the break-even quantities.\n\n**(b)** $R > C$ between them: about {{(2.6-sqrt(6.76-1.2*c0))/0.6:3}} to {{(2.6+sqrt(6.76-1.2*c0))/0.6:3}} thousand units. This is the profitable region.\n\n**(c)** $P = R - C = -0.3n^2 + 2.6n - {{c0}}$. Vertex $n = \\dfrac{2.6}{0.6} \\approx 4.33$ thousand units.\n$P_{max} = -0.3(4.333)^2 + 2.6(4.333) - {{c0}} \\approx {{2.6*2.6/1.2-c0:3}}$ thousand dollars, about ${{(2.6*2.6/1.2-c0)/4.333:3}}$ thousand dollars per thousand units (≈ &#36;{{(2.6*2.6/1.2-c0)/4.333:3}} per unit).\n\n**(d)** Revenue is concave down because the price must drop to sell more units; cost is concave up because producing very large amounts needs overtime, more equipment and storage.",
+      "rubric": [
+        {
+          "point": "Correct break-even equation and both solutions",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the profitable region",
+          "marks": 1
+        },
+        {
+          "point": "Correct profit function and optimum quantity",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum profit (and per unit)",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable explanation of the curve shapes",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A town's projected population is $P(t) = 2000(1.025)^t$, $t$ years from now. Local services can supply $N(t) = 5000 + 57.5t$ people.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = N(t) - P(t)$ and explain what it represents."
+        },
+        {
+          "label": "b",
+          "text": "Describe the trend of this function."
+        },
+        {
+          "label": "c",
+          "text": "When is $N(t) - P(t) < 0$? Explain what this means.",
+          "answer": {
+            "expr": "57.7",
+            "unit": "years",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain what $y = \\dfrac{N(t)}{P(t)}$ represents."
+        }
+      ],
+      "modelAnswer": "**(a)** $y = N(t) - P(t) = 5000 + 57.5t - 2000(1.025)^t$. It is the surplus capacity of services (positive) or the shortfall (negative). At $t = 0$ it is 3000.\n\n**(b)** It increases at first (the linear part grows faster initially), then the exponential term takes over and it decreases, crossing zero.\n\n**(c)** Using technology, $N(t) - P(t) = 0$ at $t \\approx 57.7$. So $N(t) - P(t) < 0$ for $t > 57.7$: after about 58 years the population exceeds what services can supply.\n\n**(d)** $\\dfrac{N(t)}{P(t)}$ is services available per person; it starts at 2.5 and decreases, falling below 1 at $t \\approx 57.7$.",
+      "rubric": [
+        {
+          "point": "Correct difference function and interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Describes the trend",
+          "marks": 1
+        },
+        {
+          "point": "Correct crossing time from technology",
+          "marks": 1
+        },
+        {
+          "point": "Correct interpretation of N/P",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-4-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $x^2 > 2^x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find all points of intersection of $y = x^2$ and $y = 2^x$. Give the negative one to three decimal places.",
+          "answer": {
+            "expr": "-0.767",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.01
+          }
+        },
+        {
+          "label": "b",
+          "text": "Solve the inequality. Show how you tested the intervals."
+        },
+        {
+          "label": "c",
+          "text": "Explain why there are no solutions for $x > 4$."
+        }
+      ],
+      "modelAnswer": "This mixes a polynomial and an exponential, so solve graphically.\n\n**(a)** Intersections: $x = 2$ ($4 = 4$), $x = 4$ ($16 = 16$), and one negative value found with technology, $x \\approx -0.767$.\n\n**(b)** Test each interval:\n* $x = -2$: $4 > 0.25$ ✓\n* $x = 0$: $0 > 1$ ✗\n* $x = 3$: $9 > 8$ ✓\n* $x = 5$: $25 > 32$ ✗\n\nSo $x^2 > 2^x$ on $(-\\infty, -0.767) \\cup (2, 4)$.\n\n**(c)** For $x > 4$, the exponential's rate of change grows in proportion to its value, so $2^x$ outgrows $x^2$ forever.",
+      "rubric": [
+        {
+          "point": "Finds the integer intersections 2 and 4",
+          "marks": 1
+        },
+        {
+          "point": "Finds the negative intersection ≈ −0.767",
+          "marks": 1
+        },
+        {
+          "point": "Tests intervals correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution in interval notation",
+          "marks": 1
+        },
+        {
+          "point": "Explains end behaviour for large x",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Let $f(x) = 1.2^x$ and $g(x) = 0.92^x + 5$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the regions where (i) $f(x) > g(x)$ (ii) $g(x) > f(x)$. Give the boundary to two decimal places.",
+          "answer": {
+            "expr": "9.31",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.01
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe two different ways to illustrate this inequality graphically."
+        },
+        {
+          "label": "c",
+          "text": "Write a real-world scenario that these functions could model."
+        }
+      ],
+      "modelAnswer": "**(a)** Using technology, the graphs intersect at $x \\approx 9.31$ ($y \\approx 5.46$).\n(i) $f(x) > g(x)$ for $x > 9.31$. (ii) $g(x) > f(x)$ for $x < 9.31$.\n\n**(b)** Two ways: (1) graph both and shade between where $f$ is above $g$; (2) graph $y = f(x) - g(x)$ and show it is positive for $x > 9.31$.\n\n**(c)** Scenario: $f$ is the value (thousands) of an investment growing 20%/year; $g$ is a depreciating asset (car, losing 8% a year) plus &#36;5000 savings. The investment overtakes after about 9.3 years.",
+      "rubric": [
+        {
+          "point": "Correct intersection from technology",
+          "marks": 1
+        },
+        {
+          "point": "Correct regions for f > g and g > f",
+          "marks": 2
+        },
+        {
+          "point": "Illustrates the inequality two ways",
+          "marks": 2
+        },
+        {
+          "point": "A reasonable real-world scenario",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Solve $\\sin x > \\log x$ (radians) and explain your method.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Why can't this be solved algebraically?"
+        },
+        {
+          "label": "b",
+          "text": "Solve the inequality. Give the first intersection to two decimal places.",
+          "answer": {
+            "expr": "2.70",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.01
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why there are no solutions for large $x$."
+        }
+      ],
+      "modelAnswer": "**(a)** A trig function and a logarithm cannot be combined algebraically, so use technology: graph $y = \\sin x$ and $y = \\log x$.\n\n**(b)** Intersections: $x \\approx 2.70$, $7.33$, $8.26$. Since $\\log x$ needs $x > 0$:\n$\\sin x > \\log x$ on $(0, 2.70) \\cup (7.33, 8.26)$.\n\n**(c)** For $x \\ge 10$, $\\log x \\ge 1 \\ge \\sin x$ (with equality impossible at the same time beyond 10, since $\\log$ keeps increasing), so there are no further solutions.",
+      "rubric": [
+        {
+          "point": "Explains why technology is needed",
+          "marks": 1
+        },
+        {
+          "point": "Correct intersections",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution including domain restriction",
+          "marks": 2
+        },
+        {
+          "point": "Explains why there are no solutions beyond x = 10",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q14",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Write functions that satisfy each condition and justify each one.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$f(x) > g(x)$ on $(-\\infty, \\infty)$."
+        },
+        {
+          "label": "b",
+          "text": "$f(x) > g(x)$ on regular periodic intervals."
+        },
+        {
+          "label": "c",
+          "text": "$f(x) > g(x)$ only on $(0, 4)$. Give two different solutions."
+        },
+        {
+          "label": "d",
+          "text": "$f(x) < g(x)$ on $(-1, 1)$ and $f(x) > g(x)$ on $(-\\infty, -1) \\cup (1, \\infty)$."
+        }
+      ],
+      "modelAnswer": "**(a)** $f(x) = x^2 + 1$, $g(x) = 0$: $f > g$ for all real $x$ since $x^2 + 1 \\ge 1$.\n\n**(b)** $f(x) = \\sin x$, $g(x) = 0$: $f > g$ on $(2n\\pi, (2n+1)\\pi)$ – regular periodic intervals.\n\n**(c)** Need $f - g$ positive exactly on $(0, 4)$: $f(x) - g(x) = -x(x - 4)$. Choose $g(x) = x$, $f(x) = -x^2 + 5x$. Another solution: $f(x) = 4$, $g(x) = (x - 2)^2$.\n\n**(d)** For $f(x) < g(x)$ on $(-1, 1)$ and $f > g$ outside: $f(x) = x^2$, $g(x) = 1$, since $x^2 - 1 < 0 \\iff -1 < x < 1$.",
+      "rubric": [
+        {
+          "point": "Valid example for all real x",
+          "marks": 1
+        },
+        {
+          "point": "Valid periodic example",
+          "marks": 1
+        },
+        {
+          "point": "Valid example for (0, 4) using a difference with zeros 0 and 4",
+          "marks": 2
+        },
+        {
+          "point": "Second different solution for (0, 4)",
+          "marks": 1
+        },
+        {
+          "point": "Valid example for (d) with verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q15",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "F": {
+          "min": 200,
+          "max": 600,
+          "step": 50
+        },
+        "v": {
+          "min": 3,
+          "max": 8,
+          "step": 1
+        },
+        "p": {
+          "min": 10,
+          "max": 16,
+          "step": 1
+        }
+      },
+      "text": "A business has cost $C(n) = {{F}} + {{v}}n$ and revenue $R(n) = {{p}}n$, where $n$ is the number of units.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the break-even point.",
+          "answer": {
+            "expr": "F/(p-v)",
+            "unit": "units",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Identify the regions where (i) $C > R$ (ii) $R > C$, and interpret each."
+        },
+        {
+          "label": "c",
+          "text": "Describe $y = R - C$, and explain how its graph changes if the slope of the cost function increases or decreases."
+        }
+      ],
+      "modelAnswer": "**(a)** $R = C$: ${{p}}n = {{F}} + {{v}}n \\Rightarrow n = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):3}}$.\n\n**(b)** (i) $C > R$ for $0 \\le n < {{F/(p-v):3}}$ – a loss. (ii) $R > C$ for $n > {{F/(p-v):3}}$ – a profit.\n\n**(c)** $y = R - C = {{p-v}}n - {{F}}$: below the n-axis for losses, above it for profit. Increasing the slope of the cost function (higher variable cost) moves the break-even point right and lowers potential profit; decreasing it does the opposite.",
+      "rubric": [
+        {
+          "point": "Correct break-even point",
+          "marks": 1
+        },
+        {
+          "point": "Correct regions for C > R and R > C with interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Correct difference function",
+          "marks": 1
+        },
+        {
+          "point": "Explains effect of changing the cost slope",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-4-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^3 - {{p}}x$ and $g(x) = {{q}}x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine and factor $y = f(x) - g(x)$. Give its positive zero.",
+          "answer": {
+            "expr": "sqrt(p+q)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Solve $f(x) > g(x)$."
+        },
+        {
+          "label": "c",
+          "text": "Solve $f(x) \\le g(x)$."
+        }
+      ],
+      "modelAnswer": "**(a)** $f(x) - g(x) = x^3 - {{p+q}}x = x(x^2 - {{p+q}}) = x(x - \\sqrt{ {{p+q}} })(x + \\sqrt{ {{p+q}} })$.\nZeros: $0, \\pm\\sqrt{ {{p+q}} } \\approx \\pm{{sqrt(p+q):3}}$.\n\n**(b)** Sign chart (cubic, positive leading coefficient): − on $(-\\infty, -{{sqrt(p+q):3}})$, + on $(-{{sqrt(p+q):3}}, 0)$, − on $(0, {{sqrt(p+q):3}})$, + on $({{sqrt(p+q):3}}, \\infty)$.\n$f(x) > g(x)$ on $(-\\sqrt{ {{p+q}} }, 0) \\cup (\\sqrt{ {{p+q}} }, \\infty)$.\n\n**(c)** $f(x) \\le g(x)$ on $(-\\infty, -\\sqrt{ {{p+q}} }] \\cup [0, \\sqrt{ {{p+q}} }]$.",
+      "rubric": [
+        {
+          "point": "Correct factored difference function",
+          "marks": 2
+        },
+        {
+          "point": "Correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "Correct sign analysis and solution of f > g",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution of f ≤ g with endpoints included",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

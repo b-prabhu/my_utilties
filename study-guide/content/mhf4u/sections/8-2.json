@@ -1,0 +1,1210 @@
+{
+  "id": "8-2",
+  "number": "8.2",
+  "title": "Products and Quotients of Functions",
+  "estimatedMinutes": 80,
+  "overview": "Revenue is price **times** attendance. Food per person is food **divided by** population. A swinging pendulum is a wave **times** a decaying exponential. In this section you will multiply and divide functions, find holes and asymptotes, predict symmetry, and model real situations with products and quotients.",
+  "objectives": [
+    "Determine equations for $f(x)g(x)$ and $\\dfrac{f(x)}{g(x)}$ and sketch their graphs.",
+    "Determine the domain and range of products and quotients, identifying holes and asymptotes.",
+    "Predict and prove the symmetry (even/odd) of products and quotients.",
+    "Explain why multiplication of functions is commutative but division is not.",
+    "Model damped oscillations as a sinusoid times an exponential.",
+    "Solve problems involving revenue, per-capita amounts and probabilities."
+  ],
+  "lessons": [
+    {
+      "id": "products",
+      "title": "Products of Functions",
+      "body": "\n> A combined function of the form $y = f(x)g(x)$ is the **product** of $f$ and $g$: multiply the outputs at each $x$. Notation: $(fg)(x) = f(x)g(x)$.\n\nUnlike sums, there is no simple \"stacking\" picture for products – but your polynomial and factoring skills make products easy to analyse.\n\n### Example\nLet $f(x) = x + 3$ and $g(x) = x^2 + 8x + 15$.\n\n$$y = f(x)g(x) = (x+3)(x^2 + 8x + 15) = x^3 + 11x^2 + 39x + 45$$\n\nTo sketch it, **factor** instead of expanding:\n\n$$y = (x+3)(x+3)(x+5) = (x+3)^2(x+5)$$\n\n* zeros: $-3$ (order 2 – the graph touches the x-axis and turns) and $-5$ (order 1 – it crosses)\n* y-intercept: 45 (constant term)\n* leading coefficient positive, degree 3 → falls to the left, rises to the right\n* domain and range: $\\mathbb{R}$\n\n```plot\ntitle: y = (x + 3)²(x + 5)\nf: (x+3)^2*(x+5)\ndomain: -7, 1\nrange: -10, 50\npoints: (-3,0), (-5,0), (0,45)\nticks: 1, 10\n```\n\n### Quick sign facts for a product\n* $f(x)g(x) = 0$ wherever **either** factor is zero.\n* $f(x)g(x) > 0$ where both have the same sign; $< 0$ where they have opposite signs.\n* Where one factor is a \"slowly changing\" positive function (like $0.95^x$), it **scales** the other factor.\n"
+    },
+    {
+      "id": "quotients",
+      "title": "Quotients of Functions: Holes and Asymptotes",
+      "body": "\n> A combined function $y = \\dfrac{f(x)}{g(x)}$ is the **quotient** of $f$ and $g$, defined only where $g(x) \\ne 0$.\n\n**Domain rule:** the domain of $f/g$ is the domain common to $f$ and $g$, **with all zeros of $g$ removed**.\n\n### Example\nWith $f(x) = x + 3$ and $g(x) = x^2 + 8x + 15$:\n\n$$\\frac{f(x)}{g(x)} = \\frac{x+3}{(x+3)(x+5)} = \\frac{1}{x+5}, \\quad x \\ne -3, -5$$\n\nAlways find the domain from the **original** (unsimplified) form:\n\n| What happens at the excluded value | Feature of the graph |\n|---|---|\n| factor **cancels** ($x = -3$) | a **hole** at $(-3, \\tfrac{1}{-3+5}) = (-3, \\tfrac12)$ |\n| factor **remains** in the denominator ($x = -5$) | a **vertical asymptote** $x = -5$ |\n\nThe graph is $y = \\frac1x$ translated 5 units left, with a hole at $(-3, \\tfrac12)$. Horizontal asymptote $y = 0$, so the range is $\\{y \\in \\mathbb{R}, y \\ne 0, y \\ne \\tfrac12\\}$.\n\n```plot\ntitle: y = (x+3)/((x+3)(x+5)) – hole at (−3, ½)\nf: 1/(x+5)\ndomain: -10, 2\nrange: -4, 4\nasymptote x: -5\nasymptote y: 0\npoints: (-3,0.5)\n```\n\n### Order matters\n$\\dfrac{g(x)}{f(x)}$ is the **reciprocal** of $\\dfrac{f(x)}{g(x)}$, a different function: here $\\dfrac{g(x)}{f(x)} = x + 5$, $x \\ne -3$ – a line with a hole. Multiplication of functions is commutative ($fg = gf$); division is not.\n"
+    },
+    {
+      "id": "symmetry",
+      "title": "Symmetry of Products and Quotients",
+      "body": "\nRecall: $f$ is **even** if $f(-x) = f(x)$ (symmetric about the y-axis) and **odd** if $f(-x) = -f(x)$ (point symmetry about the origin).\n\n| Even functions | Odd functions |\n|---|---|\n| $x^2,\\ x^4,\\ \\cos x,\\ |x|$ | $x,\\ x^3,\\ \\sin x,\\ \\tan x$ |\n\nThe symmetry of a product (or quotient) follows the same pattern as multiplying signs:\n\n| Factors | Product / quotient | Like… |\n|---|---|---|\n| even × even | **even** | (+)(+) = + |\n| odd × odd | **even** | (−)(−) = + |\n| even × odd | **odd** | (+)(−) = − |\n\n**Proof (even × odd).** Let $f$ be even and $g$ odd, $h(x) = f(x)g(x)$. Then\n$$h(-x) = f(-x)g(-x) = f(x)[-g(x)] = -h(x),$$\nso $h$ is odd. The other cases are proved the same way, and quotients behave identically (as long as you exclude the zeros of the denominator).\n\n**Examples:** $x^2\\cos x$ is even; $x\\sin x$ is even; $x^3\\cos x$ is odd; $\\tan x = \\dfrac{\\sin x}{\\cos x}$ is odd ÷ even = odd. ✓\n"
+    },
+    {
+      "id": "damped",
+      "title": "Damped Oscillations: Sinusoid × Exponential",
+      "body": "\nA swing after one push, a released pendulum, or a plucked guitar string all move back and forth with **decreasing amplitude**. This is **damped harmonic motion**, modelled by a product:\n\n$$y(t) = \\underbrace{A\\cos(kt)}_{\\text{periodic part}} \\times \\underbrace{b^t}_{\\text{decay, } 0<b<1}$$\n\n* The trig factor makes it oscillate; its period is $\\dfrac{2\\pi}{k}$.\n* The exponential factor shrinks the amplitude. The curves $y = \\pm A b^t$ form an **envelope** that the graph bounces between.\n* At $t = 0$: $y = A$ – the starting displacement.\n\n```plot\ntitle: x(t) = 10cos(2t)(0.95)^t with envelope ±10(0.95)^t\nf: 10*cos(2*x)*0.95^x | label=x(t)\nf: 10*0.95^x | dashed; label=envelope\nf: -10*0.95^x | dashed\ndomain: 0, 30\nrange: -11, 11\nticks: 5, 5\n```\n\n**When has the amplitude halved?** Solve $b^t = 0.5$: $t = \\dfrac{\\log 0.5}{\\log b}$. For $b = 0.95$: $t \\approx 13.5$ s.\n\n**Effects of changing the model:**\n* Less air resistance → $b$ closer to 1 → slower decay.\n* Longer pendulum → slower swing → longer period → smaller $k$.\n"
+    },
+    {
+      "id": "applications",
+      "title": "Applications: Revenue, Per-Capita Rates and Probability",
+      "body": "\nMany quantities are naturally **products** or **quotients** of other quantities.\n\n| Quantity | Combination |\n|---|---|\n| Revenue | price × number sold, $R = P \\cdot N$ |\n| Food per person (per capita) | food ÷ population, $\\dfrac{F}{P}$ |\n| Probability of a prize | prizes ÷ people, $\\dfrac{C}{N}$ |\n| \"Both events happen\" probability | $p_1 \\times p_2$ |\n\n### Baseball marketing\nTicket price drops as games are played: $P(g) = 25 - 0.1g$ dollars. Attendance (hundreds) rises: $N(g) = 10 + 0.2g$.\n\nRevenue (hundreds of dollars):\n$$R(g) = (25 - 0.1g)(10 + 0.2g) = -0.02g^2 + 4g + 250$$\na parabola opening down with vertex at $g = \\dfrac{-4}{2(-0.02)} = 100$. Revenue grows until game 100, then falls – the strategy works only in the short term.\n\nFree caps given (hundreds): $C(g) = 2 - 0.04g$. The chance a fan gets a cap is\n$$p(g) = \\frac{2 - 0.04g}{10 + 0.2g}, \\qquad p(5) = \\frac{1.8}{11} \\approx 0.16 \\;(16\\%).$$\n\n### Comparing growth and decline\nA quotient $\\dfrac{F(t)}{P(t)} > 1$ means \"more than enough\" (surplus), $< 1$ means \"not enough\" (shortage), and $= 1$ marks the **crisis point** where they are equal.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "product of functions",
+      "definition": "$(fg)(x) = f(x)g(x)$; domain is the common domain of $f$ and $g$."
+    },
+    {
+      "term": "quotient of functions",
+      "definition": "$\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{f(x)}{g(x)}$, defined on the common domain with the zeros of $g$ removed."
+    },
+    {
+      "term": "hole (point discontinuity)",
+      "definition": "A single missing point in a graph, occurring where a factor cancels from the numerator and denominator."
+    },
+    {
+      "term": "even function",
+      "definition": "$f(-x) = f(x)$ for all $x$; the graph has line symmetry about the y-axis."
+    },
+    {
+      "term": "odd function",
+      "definition": "$f(-x) = -f(x)$ for all $x$; the graph has point symmetry about the origin."
+    },
+    {
+      "term": "damped harmonic motion",
+      "definition": "Cyclic motion whose amplitude decreases over time, modelled by a sinusoidal function multiplied by a decaying exponential."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Product",
+      "latex": "(fg)(x) = f(x)\\,g(x)",
+      "meaning": "Commutative: $fg = gf$."
+    },
+    {
+      "name": "Quotient",
+      "latex": "\\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)},\\quad g(x) \\ne 0",
+      "meaning": "Not commutative: $g/f$ is the reciprocal of $f/g$."
+    },
+    {
+      "name": "Symmetry rules",
+      "latex": "E\\cdot E = E,\\quad O\\cdot O = E,\\quad E\\cdot O = O",
+      "meaning": "Also true for quotients."
+    },
+    {
+      "name": "Damped oscillation",
+      "latex": "y(t) = A\\cos(kt)\\cdot b^{t},\\ 0 < b < 1",
+      "meaning": "Period $2\\pi/k$; amplitude halves when $t = \\log 0.5 / \\log b$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Product and quotient of two polynomials",
+      "problem": "Let $f(x) = x + 3$ and $g(x) = x^2 + 8x + 15$. Find, sketch and give the domain and range of (a) $y = f(x)g(x)$ (b) $y = \\dfrac{f(x)}{g(x)}$.",
+      "steps": [
+        "**(a)** Factor $g$: $g(x) = (x+3)(x+5)$, so $y = (x+3)^2(x+5)$.",
+        "Expanded: $y = x^3 + 11x^2 + 39x + 45$. Zeros $-3$ (order 2), $-5$; y-intercept 45; cubic with positive leading coefficient.",
+        "Domain and range: $\\mathbb{R}$.",
+        "**(b)** $\\dfrac{x+3}{(x+3)(x+5)} = \\dfrac{1}{x+5}$ with $x \\ne -3, -5$ (from the original form).",
+        "Hole at $(-3, \\tfrac12)$; vertical asymptote $x = -5$; horizontal asymptote $y = 0$.",
+        "Domain $\\{x \\in \\mathbb{R}, x \\ne -3, -5\\}$; range $\\{y \\in \\mathbb{R}, y \\ne 0, \\tfrac12\\}$."
+      ],
+      "answer": "(a) $y = (x+3)^2(x+5)$; (b) $y = \\frac{1}{x+5}$ with a hole at $(-3, \\frac12)$."
+    },
+    {
+      "title": "Baseball revenue",
+      "problem": "Ticket price $P(g) = 25 - 0.1g$ dollars, attendance $N(g) = 10 + 0.2g$ hundred fans. Model revenue and decide whether the plan increases revenue.",
+      "steps": [
+        "$R(g) = P(g)N(g) = (25 - 0.1g)(10 + 0.2g)$.",
+        "Expand: $250 + 5g - g - 0.02g^2 = -0.02g^2 + 4g + 250$ (hundreds of dollars).",
+        "Vertex: $g = -\\dfrac{4}{2(-0.02)} = 100$. $R(100) = -200 + 400 + 250 = 450$, i.e. &#36;45 000 per game.",
+        "Revenue increases until game 100, then decreases. Only $g \\ge 0$ has meaning."
+      ],
+      "answer": "Revenue rises in the short term, peaking at game 100, then falls."
+    },
+    {
+      "title": "Proving a symmetry rule",
+      "problem": "Prove that the product of two odd functions is even, and classify $y = x\\sin x$.",
+      "steps": [
+        "Let $f$, $g$ be odd: $f(-x) = -f(x)$, $g(-x) = -g(x)$.",
+        "$h(-x) = f(-x)g(-x) = [-f(x)][-g(x)] = f(x)g(x) = h(x)$.",
+        "So $h$ is even.",
+        "$x$ and $\\sin x$ are both odd, so $x\\sin x$ is even – its graph is symmetric about the y-axis."
+      ],
+      "answer": "odd × odd = even; $x\\sin x$ is even."
+    },
+    {
+      "title": "A damped pendulum",
+      "problem": "A pendulum's displacement is $x(t) = 10\\cos(2t)(0.95)^t$ cm. (a) Where was it released? (b) What is the period? (c) When has the amplitude fallen to half?",
+      "steps": [
+        "**(a)** $x(0) = 10\\cos 0 \\cdot 0.95^0 = 10$ cm from rest.",
+        "**(b)** Period of $\\cos(2t)$: $\\dfrac{2\\pi}{2} = \\pi \\approx 3.14$ s.",
+        "**(c)** Amplitude $10(0.95)^t = 5 \\Rightarrow 0.95^t = 0.5$.",
+        "$t = \\dfrac{\\log 0.5}{\\log 0.95} \\approx 13.5$ s."
+      ],
+      "answer": "10 cm; $\\pi$ s; about 13.5 s."
+    },
+    {
+      "title": "Fish pond crisis point",
+      "problem": "Fish: $P(t) = 300(1.05)^t$. Food units: $F(t) = 1000(0.92)^t$. When is food per fish equal to 1 (the crisis point)?",
+      "steps": [
+        "Crisis point: $\\dfrac{F(t)}{P(t)} = 1$, i.e. $1000(0.92)^t = 300(1.05)^t$.",
+        "$\\dfrac{10}{3} = \\left(\\dfrac{1.05}{0.92}\\right)^t$.",
+        "$t = \\dfrac{\\log(10/3)}{\\log(1.05/0.92)} \\approx \\dfrac{0.5229}{0.0574} \\approx 9.11$ years.",
+        "Before then $F/P > 1$ (enough food); after, $F/P < 1$ (shortage)."
+      ],
+      "answer": "About 9.11 years."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The domain of $\\dfrac{f}{g}$ can be read from the simplified form.",
+      "fact": "Use the **original** form. A factor that cancels still makes the function undefined there – it leaves a hole."
+    },
+    {
+      "myth": "$\\dfrac{f}{g}$ and $\\dfrac{g}{f}$ are the same function.",
+      "fact": "They are reciprocals. Division is not commutative."
+    },
+    {
+      "myth": "The product of two odd functions is odd.",
+      "fact": "odd × odd = **even** (like (−)(−) = +). Example: $x \\cdot x^3 = x^4$."
+    },
+    {
+      "myth": "In $y = 10\\cos(2t)(0.95)^t$ the amplitude is always 10.",
+      "fact": "10 is only the starting amplitude. The amplitude at time $t$ is $10(0.95)^t$."
+    },
+    {
+      "myth": "A hole and a vertical asymptote are the same thing.",
+      "fact": "A hole is one missing point (factor cancels); an asymptote is where the function grows without bound (factor stays in the denominator)."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Ticket pricing",
+      "body": "Lowering the price brings in more fans, but revenue = price × attendance can still fall. Writing revenue as a product reveals the best game (or price) for maximum revenue."
+    },
+    {
+      "title": "Per-capita food supply",
+      "body": "Economists compare food production to population with the quotient $F/P$. A value above 1 is a surplus; below 1 is a shortage."
+    },
+    {
+      "title": "Shock absorbers and swings",
+      "body": "Car suspensions are designed so bumps produce damped oscillations that die out quickly – a sinusoid multiplied by a fast-decaying exponential."
+    },
+    {
+      "title": "Chance of a prize",
+      "body": "A probability is a quotient: favourable outcomes ÷ possible outcomes, e.g. caps given away ÷ fans attending."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Let $f(x) = x + 2$ and $g(x) = x^2 + 4$. Find $y = f(x)g(x)$ and state its domain and range.",
+      "hint": "Expand; the result is a cubic.",
+      "solution": "$y = x^3 + 2x^2 + 4x + 8$. Domain and range $\\mathbb{R}$ (odd-degree polynomial)."
+    },
+    {
+      "question": "For the same functions, state the domain of $\\dfrac{f(x)}{g(x)}$ and of $\\dfrac{g(x)}{f(x)}$.",
+      "hint": "Where is each denominator zero?",
+      "solution": "$x^2 + 4 > 0$ always, so $\\dfrac{f}{g}$ has domain $\\mathbb{R}$ (no asymptotes). $\\dfrac{g}{f}$ needs $x \\ne -2$: vertical asymptote $x = -2$."
+    },
+    {
+      "question": "Classify $y = x^2\\sin x$ as even, odd or neither.",
+      "hint": "even × odd",
+      "solution": "$x^2$ even, $\\sin x$ odd → odd. Check: $(-x)^2\\sin(-x) = -x^2\\sin x$."
+    },
+    {
+      "question": "Let $f(x) = x - 2$ and $g(x) = x^2 - 5x + 6$. Simplify $\\dfrac{f(x)}{g(x)}$ and describe its graph.",
+      "hint": "$g(x) = (x-2)(x-3)$.",
+      "solution": "$\\dfrac{1}{x-3}$, $x \\ne 2, 3$. Hole at $(2, -1)$, VA $x = 3$, HA $y = 0$. Range $y \\ne 0, -1$."
+    },
+    {
+      "question": "$x(t) = 8\\cos(\\pi t)(0.9)^t$. Find the period and the time for the amplitude to fall to 4.",
+      "hint": "Period $= 2\\pi/k$; solve $0.9^t = 0.5$.",
+      "solution": "Period $= 2$ s. $t = \\log 0.5 / \\log 0.9 \\approx 6.58$ s."
+    },
+    {
+      "question": "Explain why $\\tan x$ is odd using the symmetry of $\\sin x$ and $\\cos x$.",
+      "hint": "odd ÷ even",
+      "solution": "$\\tan(-x) = \\dfrac{\\sin(-x)}{\\cos(-x)} = \\dfrac{-\\sin x}{\\cos x} = -\\tan x$."
+    },
+    {
+      "question": "With $P(g) = 25 - 0.1g$ and $N(g) = 10 + 0.2g$, compute the revenue at game 20.",
+      "hint": "$R(g) = P(g)N(g)$.",
+      "solution": "$R(20) = (23)(14) = 322$ hundred dollars = &#36;32 200."
+    }
+  ],
+  "summary": [
+    "$(fg)(x) = f(x)g(x)$ and $\\left(\\frac fg\\right)(x) = \\frac{f(x)}{g(x)}$; the domain is the common domain, minus zeros of the denominator.",
+    "Find holes and asymptotes from the **unsimplified** quotient: cancelled factor → hole; remaining factor → vertical asymptote.",
+    "Symmetry: even·even = even, odd·odd = even, even·odd = odd (same for quotients).",
+    "Multiplication of functions is commutative; division is not ($g/f$ is the reciprocal of $f/g$).",
+    "A sinusoid times a decaying exponential models damped harmonic motion; the exponential forms the envelope.",
+    "Products model revenue and joint probability; quotients model per-capita amounts and probabilities."
+  ],
+  "questions": [
+    {
+      "id": "8-2-q01",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "b": "a+r"
+      },
+      "text": "Let $f(x) = x + {{a}}$ and $g(x) = x^2 + {{a+b}}x + {{a*b}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an equation for $y = f(x)g(x)$ in factored and expanded form."
+        },
+        {
+          "label": "b",
+          "text": "Describe the key features needed to sketch $y = f(x)g(x)$. What is its y-intercept?",
+          "answer": {
+            "expr": "a*a*b",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine and simplify an equation for $y = \\dfrac{f(x)}{g(x)}$."
+        },
+        {
+          "label": "d",
+          "text": "Identify any holes and asymptotes and state the domain and range of $y = \\dfrac{f(x)}{g(x)}$. Give the y-coordinate of the hole.",
+          "answer": {
+            "expr": "1/(b-a)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Factor $g$: $g(x) = (x + {{a}})(x + {{b}})$, so\n$y = f(x)g(x) = (x + {{a}})^2(x + {{b}})$.\nExpanded: $y = x^3 + {{2*a+b}}x^2 + {{a*a+2*a*b}}x + {{a*a*b}}$.\n\n**(b)** Zeros: $x = -{{a}}$ (order 2, graph touches and turns) and $x = -{{b}}$ (order 1, graph crosses). y-intercept: ${{a*a*b}}$. Cubic with positive leading coefficient: falls to the left, rises to the right. Domain and range: $\\mathbb{R}$.\n\n**(c)** $\\dfrac{f(x)}{g(x)} = \\dfrac{x + {{a}}}{(x + {{a}})(x + {{b}})} = \\dfrac{1}{x + {{b}}}$, $x \\ne -{{a}}, -{{b}}$.\n\n**(d)** Hole where the factor cancels: $x = -{{a}}$, $y = \\dfrac{1}{ -{{a}} + {{b}} } = {{1/(b-a):3}}$, so the hole is at $(-{{a}}, {{1/(b-a):3}})$.\nVertical asymptote $x = -{{b}}$; horizontal asymptote $y = 0$.\nDomain $\\{x \\in \\mathbb{R}, x \\ne -{{a}}, -{{b}}\\}$; range $\\{y \\in \\mathbb{R}, y \\ne 0, y \\ne {{1/(b-a):3}}\\}$.",
+      "rubric": [
+        {
+          "point": "Factors g(x) correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct product in factored and expanded form",
+          "marks": 2
+        },
+        {
+          "point": "Correct zeros with orders, y-intercept and end behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Correct simplified quotient with both restrictions",
+          "marks": 1
+        },
+        {
+          "point": "Correct hole coordinates",
+          "marks": 1
+        },
+        {
+          "point": "Correct asymptotes, domain and range",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Let $u(x) = x - {{a}}$ and $v(x) = x^2 - {{a*a}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "For which values of $x$ is $y = \\dfrac{u(x)}{v(x)}$ undefined? Explain."
+        },
+        {
+          "label": "b",
+          "text": "Simplify $\\dfrac{u(x)}{v(x)}$, stating restrictions."
+        },
+        {
+          "label": "c",
+          "text": "Describe what happens on the graph at each excluded value. Give the y-coordinate of any hole.",
+          "answer": {
+            "expr": "1/(2*a)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $v(x) = (x - {{a}})(x + {{a}}) = 0$ when $x = \\pm {{a}}$. So $y = \\dfrac{u(x)}{v(x)}$ is undefined for $x = {{a}}$ and $x = -{{a}}$.\n\n**(b)** $\\dfrac{x - {{a}}}{(x - {{a}})(x + {{a}})} = \\dfrac{1}{x + {{a}}}$, $x \\ne \\pm{{a}}$.\n\n**(c)** At $x = {{a}}$ the factor cancels → hole at $\\left({{a}}, \\dfrac{1}{ {{2*a}} }\\right) = ({{a}}, {{1/(2*a):3}})$. At $x = -{{a}}$ the factor remains → vertical asymptote. Horizontal asymptote $y = 0$.",
+      "rubric": [
+        {
+          "point": "Identifies both excluded values ±a",
+          "marks": 1
+        },
+        {
+          "point": "Correct simplified form with restrictions",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the hole and its coordinates",
+          "marks": 2
+        },
+        {
+          "point": "Identifies the vertical and horizontal asymptotes",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q03",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Without graphing, classify each function as even, odd or neither. Justify each answer using the symmetry of its factors, then prove one of them algebraically.\\n\\n(i) $y = x^2\\cos x$  (ii) $y = x\\sin x$  (iii) $y = x^3\\cos x$  (iv) $y = \\dfrac{\\sin x}{x^2}$  (v) $y = x^2 + \\sin x$",
+      "modelAnswer": "(i) even × even = **even**.\n(ii) odd × odd = **even**.\n(iii) odd × even = **odd**.\n(iv) odd ÷ even = **odd** (domain $x \\ne 0$, which is symmetric).\n(v) This is a **sum** of an even and an odd function, so the product rule does not apply: $h(-x) = x^2 - \\sin x$, which is neither $h(x)$ nor $-h(x)$ → **neither**.\n\nProof of (iii): $h(-x) = (-x)^3\\cos(-x) = -x^3\\cos x = -h(x)$, so $h$ is odd.",
+      "rubric": [
+        {
+          "point": "Correct classification of (i) and (ii)",
+          "marks": 1
+        },
+        {
+          "point": "Correct classification of (iii) and (iv)",
+          "marks": 1
+        },
+        {
+          "point": "Recognizes that (v) is a sum and is neither, with justification",
+          "marks": 2
+        },
+        {
+          "point": "Correct algebraic proof using f(−x)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q04",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Let $f$ be an even function and $g$ an odd function, both defined for all real numbers.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Prove that $y = f(x)g(x)$ is odd."
+        },
+        {
+          "label": "b",
+          "text": "Prove that $y = \\dfrac{f(x)}{g(x)}$ is odd where it is defined."
+        },
+        {
+          "label": "c",
+          "text": "Explain why $y = \\dfrac{f(x)}{g(x)}$ must always be undefined at $x = 0$. Illustrate with an example."
+        }
+      ],
+      "modelAnswer": "**(a)** $h(x) = f(x)g(x)$: $h(-x) = f(-x)g(-x) = f(x)[-g(x)] = -h(x)$ → odd.\n\n**(b)** $k(x) = \\dfrac{f(x)}{g(x)}$ (where $g(x) \\ne 0$): $k(-x) = \\dfrac{f(-x)}{g(-x)} = \\dfrac{f(x)}{-g(x)} = -k(x)$ → odd.\n\n**(c)** Example: $f(x) = \\cos x$, $g(x) = x$. $\\dfrac{\\cos x}{x}$ is odd; it is undefined at $x = 0$ because $g(0) = 0$ – every odd function defined at 0 has $g(0) = -g(0)$, so $g(0) = 0$. Hence an odd denominator always creates a restriction (often a vertical asymptote) at $x = 0$.",
+      "rubric": [
+        {
+          "point": "Correct proof that even × odd is odd",
+          "marks": 2
+        },
+        {
+          "point": "Correct proof that even ÷ odd is odd",
+          "marks": 2
+        },
+        {
+          "point": "Explains why an odd denominator causes a restriction at x = 0, with example",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p0": {
+          "min": 20,
+          "max": 30,
+          "step": 1
+        },
+        "n0": {
+          "min": 8,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "A baseball team reduces ticket prices according to $P(g) = {{p0}} - 0.1g$ dollars, where $g$ is the number of games played. Attendance, in hundreds, is modelled by $N(g) = {{n0}} + 0.2g$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Develop an algebraic model for $R(g) = P(g)N(g)$ and explain what it represents."
+        },
+        {
+          "label": "b",
+          "text": "After how many games is revenue a maximum, and what is the maximum revenue?",
+          "answer": {
+            "expr": "(0.2*p0-0.1*n0)/0.04",
+            "unit": "games",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Will the owners increase or decrease their ticket revenue under this plan? Explain."
+        }
+      ],
+      "modelAnswer": "**(a)** $R(g) = P(g)N(g) = ({{p0}} - 0.1g)({{n0}} + 0.2g)$\n$= {{p0*n0}} + {{0.2*p0}}g - {{0.1*n0}}g - 0.02g^2 = -0.02g^2 + {{0.2*p0-0.1*n0:3}}g + {{p0*n0}}$.\n$R$ is revenue from ticket sales in hundreds of dollars.\n\n**(b)** Vertex: $g = -\\dfrac{ {{0.2*p0-0.1*n0:3}} }{2(-0.02)} = {{(0.2*p0-0.1*n0)/0.04:3}}$.\n$R_{max} = ({{p0}} - 0.1({{(0.2*p0-0.1*n0)/0.04:3}}))({{n0}} + 0.2({{(0.2*p0-0.1*n0)/0.04:3}})) \\approx {{(p0-0.1*(0.2*p0-0.1*n0)/0.04)*(n0+0.2*(0.2*p0-0.1*n0)/0.04):4}}$ hundred dollars.\n\n**(c)** Revenue increases until about game {{(0.2*p0-0.1*n0)/0.04:3}} and then decreases, so the plan raises revenue in the short term but eventually the falling price outweighs the extra fans. Only $g \\ge 0$ (and $P > 0$) has meaning.",
+      "rubric": [
+        {
+          "point": "Correct product and expansion of the revenue function",
+          "marks": 2
+        },
+        {
+          "point": "Interprets R(g) as revenue in hundreds of dollars",
+          "marks": 1
+        },
+        {
+          "point": "Correct game number of maximum revenue",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum revenue",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the trend and restricts the domain",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q06",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "c0": {
+          "choices": [
+            1.5,
+            2,
+            2.5
+          ]
+        },
+        "k": {
+          "min": 3,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "At a team's games, the number of free caps given away (hundreds) is $C(g) = {{c0}} - 0.04g$, and attendance (hundreds) is $N(g) = 10 + 0.2g$, where $g$ is the game number.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Develop a model for $p(g) = \\dfrac{C(g)}{N(g)}$ and explain what it represents."
+        },
+        {
+          "label": "b",
+          "text": "What is the probability of receiving a cap at game {{k}}?",
+          "answer": {
+            "expr": "(c0-0.04*k)/(10+0.2*k)",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the trend of $p(g)$. At what game does it reach zero?",
+          "answer": {
+            "expr": "c0/0.04",
+            "unit": "(game number)",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $p(g) = \\dfrac{C(g)}{N(g)} = \\dfrac{ {{c0}} - 0.04g }{10 + 0.2g}$. It is caps ÷ fans, i.e. the probability that a randomly chosen fan receives a cap.\n\n**(b)** $p({{k}}) = \\dfrac{ {{c0}} - 0.04({{k}}) }{10 + 0.2({{k}})} = \\dfrac{ {{c0-0.04*k:3}} }{ {{10+0.2*k:3}} } \\approx {{(c0-0.04*k)/(10+0.2*k):2}}$, about {{100*(c0-0.04*k)/(10+0.2*k):2}}%.\n\n**(c)** Numerator decreases and denominator increases, so $p(g)$ decreases; it reaches 0 when $C(g) = 0$: $g = {{c0/0.04:3}}$. After that no caps are given away.",
+      "rubric": [
+        {
+          "point": "Correct quotient model and interpretation as a probability",
+          "marks": 2
+        },
+        {
+          "point": "Correct probability at game k",
+          "marks": 1
+        },
+        {
+          "point": "Explains the decreasing trend",
+          "marks": 1
+        },
+        {
+          "point": "Finds when the probability becomes zero",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "P0": {
+          "min": 200,
+          "max": 400,
+          "step": 50
+        },
+        "F0": {
+          "min": 900,
+          "max": 1500,
+          "step": 100
+        }
+      },
+      "text": "A fish pond starts with {{P0}} fish. With enough food the population grows as $P(t) = {{P0}}(1.05)^t$ ($t$ in years). The food supply, in units (1 unit feeds 1 fish for 1 year), is $F(t) = {{F0}}(0.92)^t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the nature of $P(t)$ and $F(t)$."
+        },
+        {
+          "label": "b",
+          "text": "Determine the time of the crisis point, when the population equals the number of food units.",
+          "answer": {
+            "expr": "log(F0/P0)/log(1.05/0.92)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine and interpret $y = \\dfrac{F(t)}{P(t)}$."
+        },
+        {
+          "label": "d",
+          "text": "Describe the living conditions of the fish before, at and after the crisis point. Comment on the validity of the model for $P(t)$ after the crisis point."
+        }
+      ],
+      "modelAnswer": "**(a)** $P$ is exponential growth (base 1.05 > 1); $F$ is exponential decay (base 0.92 < 1).\n\n**(b)** The crisis point is where $P(t) = F(t)$:\n${{P0}}(1.05)^t = {{F0}}(0.92)^t \\Rightarrow \\left(\\dfrac{1.05}{0.92}\\right)^t = \\dfrac{ {{F0}} }{ {{P0}} }$\n$t = \\dfrac{\\log({{F0}}/{{P0}})}{\\log(1.05/0.92)} \\approx {{log(F0/P0)/log(1.05/0.92):3}}$ years.\nThen $P \\approx {{P0*1.05^(log(F0/P0)/log(1.05/0.92)):3}}$ fish (= food units).\n\n**(c)** $y = \\dfrac{F(t)}{P(t)} = \\dfrac{ {{F0}} }{ {{P0}} }\\left(\\dfrac{0.92}{1.05}\\right)^t$ is food per fish – an exponential decay function. It equals 1 at the crisis point.\n\n**(d)** Before the crisis point $F/P > 1$: more than enough food. At it, exactly enough. After it, $F/P < 1$: a shortage – the model $P(t) = {{P0}}(1.05)^t$ is no longer valid, because the population would level off or decline.",
+      "rubric": [
+        {
+          "point": "Describes both functions correctly",
+          "marks": 1
+        },
+        {
+          "point": "Sets up P(t) = F(t) correctly",
+          "marks": 1
+        },
+        {
+          "point": "Solves for the crisis time using logarithms",
+          "marks": 2
+        },
+        {
+          "point": "Correct quotient function and interpretation",
+          "marks": 1
+        },
+        {
+          "point": "Explains conditions before/at/after and validity of the model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q08",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 5,
+          "max": 15,
+          "step": 1
+        }
+      },
+      "text": "The population of a country is $P(t) = 6(1.02)^t$ million, $t$ years after 2000. Food production can sustain $F(t) = 8 + 0.04t$ million people for one year.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the trend of each function."
+        },
+        {
+          "label": "b",
+          "text": "What does $y = F(t) - P(t)$ represent? Is there a surplus or a shortage in 2000?"
+        },
+        {
+          "label": "c",
+          "text": "Calculate the food production per capita, $\\dfrac{F(t)}{P(t)}$, at $t = {{k}}$.",
+          "answer": {
+            "expr": "(8+0.04*k)/(6*1.02^k)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain what $\\dfrac{F(t)}{P(t)} > 1$ and $\\dfrac{F(t)}{P(t)} < 1$ mean, and predict the long-term situation."
+        }
+      ],
+      "modelAnswer": "**(a)** $P$ grows exponentially (2% per year); $F$ grows linearly (0.04 million per year).\n\n**(b)** $y = F(t) - P(t)$ is the food surplus (positive) or shortage (negative), in millions of people fed. At $t = 0$: $8 - 6 = 2$, a surplus.\n\n**(c)** Food per capita $= \\dfrac{F(t)}{P(t)}$. At $t = {{k}}$: $\\dfrac{8 + 0.04({{k}})}{6(1.02)^{ {{k}} }} \\approx \\dfrac{ {{8+0.04*k:4}} }{ {{6*1.02^k:4}} } \\approx {{(8+0.04*k)/(6*1.02^k):3}}$.\n\n**(d)** $\\dfrac{F}{P} > 1$ means a surplus, $< 1$ a shortage. Because exponential growth eventually outpaces linear growth, $F/P$ decreases and drops below 1 (around $t \\approx 16$, i.e. 2016, by graphing). Long-term, the country must increase food production or imports.",
+      "rubric": [
+        {
+          "point": "Describes the growth types",
+          "marks": 1
+        },
+        {
+          "point": "Interprets F − P and its initial value",
+          "marks": 1
+        },
+        {
+          "point": "Correct per-capita value at t = k",
+          "marks": 1
+        },
+        {
+          "point": "Explains the meaning of F/P > 1 and < 1",
+          "marks": 1
+        },
+        {
+          "point": "Uses exponential vs linear growth to predict a long-term shortage",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "min": 6,
+          "max": 15,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "b": {
+          "choices": [
+            0.9,
+            0.92,
+            0.95
+          ]
+        },
+        "T": {
+          "min": 5,
+          "max": 20,
+          "step": 5
+        }
+      },
+      "text": "A pendulum's horizontal displacement is $x(t) = {{A}}\\cos({{k}}t)({{b}})^t$, in centimetres, $t$ in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "At what horizontal distance from rest was the pendulum released?",
+          "answer": {
+            "expr": "A",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Which component causes the periodic motion and which causes the decay? Find the period.",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "After what time has the amplitude diminished to 50% of its initial value?",
+          "answer": {
+            "expr": "log(0.5)/log(b)",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find the amplitude after {{T}} s.",
+          "answer": {
+            "expr": "A*b^T",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "Name the type of motion and state the domain and range in context."
+        }
+      ],
+      "modelAnswer": "**(a)** $x(0) = {{A}}\\cos 0 \\cdot {{b}}^0 = {{A}}$ cm.\n\n**(b)** $\\cos({{k}}t)$ produces the periodic motion; period $= \\dfrac{2\\pi}{ {{k}} } \\approx {{2*pi/k:3}}$ s. The factor $({{b}})^t$ makes the amplitude decay.\n\n**(c)** Amplitude $= {{A}}({{b}})^t$. Half: $({{b}})^t = 0.5 \\Rightarrow t = \\dfrac{\\log 0.5}{\\log {{b}}} \\approx {{log(0.5)/log(b):3}}$ s.\n\n**(d)** At $t = {{T}}$ s the amplitude is ${{A}}({{b}})^{ {{T}} } \\approx {{A*b^T:3}}$ cm.\n\n**(e)** The motion is damped harmonic motion; domain $t \\ge 0$, range $-{{A}} \\le x \\le {{A}}$.",
+      "rubric": [
+        {
+          "point": "Correct release displacement",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the role of each factor and the period",
+          "marks": 2
+        },
+        {
+          "point": "Correct half-amplitude time using logarithms",
+          "marks": 2
+        },
+        {
+          "point": "Correct amplitude at t = T",
+          "marks": 1
+        },
+        {
+          "point": "Names the type of motion and gives domain/range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q10",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "The motion of a child on a swing after a single push can be modelled by $y(t) = A\\sin(kt)\\cdot c^t$, where $A$, $k$ and $c$ are constants with $0 < c < 1$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What two component functions are combined? Describe each."
+        },
+        {
+          "label": "b",
+          "text": "Describe the shape of the combined function."
+        },
+        {
+          "label": "c",
+          "text": "How would the constants change if air resistance were reduced, or if the swing's chains were longer? Explain."
+        }
+      ],
+      "modelAnswer": "**(a)** A sinusoidal function $A\\sin(kt)$ (periodic, constant amplitude) and an exponential decay $c^t$ (decreasing, always positive).\n\n**(b)** The graph oscillates between the envelope curves $y = Ac^t$ and $y = -Ac^t$, crossing the t-axis wherever $\\sin(kt) = 0$, with amplitude shrinking toward 0.\n\n**(c)** Less air resistance → slower decay → $c$ closer to 1 (envelope flatter). A longer swing (pendulum) → longer period → smaller $k$ (oscillations more spread out). A bigger push → larger $A$.",
+      "rubric": [
+        {
+          "point": "Identifies both component functions and their shapes",
+          "marks": 2
+        },
+        {
+          "point": "Describes the combined graph and its envelope",
+          "marks": 2
+        },
+        {
+          "point": "Correctly links physical changes to changes in c, k and A",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x + {{c}}$ and $g(x) = x^2 + {{d}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Develop an algebraic model for $y = f(x)g(x)$ and give its domain and range."
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = \\dfrac{f(x)}{g(x)}$, its domain, and any holes or asymptotes."
+        },
+        {
+          "label": "c",
+          "text": "Determine $y = \\dfrac{g(x)}{f(x)}$, its domain, and any holes or asymptotes."
+        },
+        {
+          "label": "d",
+          "text": "Evaluate both quotients at $x = {{k}}$ and comment.",
+          "answer": {
+            "expr": "(k+c)/(k*k+d)",
+            "unit": "(f/g)",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $y = f(x)g(x) = x^3 + {{c}}x^2 + {{d}}x + {{c*d}}$. Cubic: domain and range $\\mathbb{R}$; one real zero $x = -{{c}}$ (since $x^2 + {{d}} > 0$).\n\n**(b)** $y = \\dfrac{f(x)}{g(x)} = \\dfrac{x + {{c}}}{x^2 + {{d}}}$. The denominator is never zero, so the domain is $\\mathbb{R}$; there are no vertical asymptotes or holes. Horizontal asymptote $y = 0$ (degree of denominator is larger).\n\n**(c)** $y = \\dfrac{g(x)}{f(x)} = \\dfrac{x^2 + {{d}}}{x + {{c}}}$: domain $x \\ne -{{c}}$, vertical asymptote $x = -{{c}}$ (numerator is not zero there), no hole.\n\n**(d)** $\\left(\\dfrac{f}{g}\\right)({{k}}) = \\dfrac{ {{k+c}} }{ {{k*k+d}} } \\approx {{(k+c)/(k*k+d):3}}$ and $\\left(\\dfrac{g}{f}\\right)({{k}}) \\approx {{(k*k+d)/(k+c):3}}$ – reciprocals of each other.",
+      "rubric": [
+        {
+          "point": "Correct product with domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain of f/g with reason (no zeros of g)",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the horizontal asymptote of f/g",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and vertical asymptote of g/f",
+          "marks": 1
+        },
+        {
+          "point": "Correct values and the observation that they are reciprocals",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            0.8,
+            0.85,
+            0.9,
+            0.95
+          ]
+        }
+      },
+      "text": "Let $u(x) = \\cos x$ and $v(x) = ({{b}})^x$. Work in radians.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe $y = u(x)v(x)$ and evaluate it at $x = \\pi$.",
+          "answer": {
+            "expr": "-b^pi",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe $y = \\dfrac{u(x)}{v(x)}$ and give its domain."
+        },
+        {
+          "label": "c",
+          "text": "Give the domain of $y = \\dfrac{v(x)}{u(x)}$ and identify any asymptotes."
+        }
+      ],
+      "modelAnswer": "**(a)** $y = u(x)v(x) = ({{b}})^x\\cos x$: oscillates with amplitude $({{b}})^x$; domain $\\mathbb{R}$. Since $0 < {{b}} < 1$, the amplitude decays as $x$ increases and grows as $x$ decreases – damped oscillation. $(uv)(\\pi) = ({{b}})^{\\pi}\\cos\\pi \\approx {{-b^pi:3}}$.\n\n**(b)** $y = \\dfrac{u(x)}{v(x)} = \\dfrac{\\cos x}{ ({{b}})^x }$: $v(x) > 0$ always, so domain $\\mathbb{R}$, no asymptotes; its amplitude **grows** as $x$ increases.\n\n**(c)** $y = \\dfrac{v(x)}{u(x)} = \\dfrac{ ({{b}})^x }{\\cos x}$: undefined where $\\cos x = 0$, i.e. $x = \\dfrac{\\pi}{2} + n\\pi$, $n \\in \\mathbb{Z}$ → vertical asymptotes there. Domain $\\{x \\in \\mathbb{R}, x \\ne \\frac{\\pi}{2} + n\\pi\\}$.",
+      "rubric": [
+        {
+          "point": "Correct description and value of the product",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain/behaviour of u/v",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the vertical asymptotes of v/u with general form",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain of v/u",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q13",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "After a school dance, the probability that Carlos asks Keiko on a date $t$ days later is $p_A(t) = 0.45\\sin t + 0.5$. The probability that Keiko says yes, if asked, is $p_Y(t) = -0.08t(t - 7)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the trend of each function, the domain in context, and the maximum of $p_Y(t)$.",
+          "answer": {
+            "expr": "0.98",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "When is Carlos most likely to ask, to the nearest tenth of a day?",
+          "answer": {
+            "expr": "pi/2",
+            "unit": "days",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the probability that they agree to a date is $y = p_A(t)p_Y(t)$."
+        },
+        {
+          "label": "d",
+          "text": "Evaluate this probability at $t = {{k}}$.",
+          "answer": {
+            "expr": "(0.45*sin(k)+0.5)*(-0.08*k*(k-7))",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.04
+          }
+        },
+        {
+          "label": "e",
+          "text": "When does Carlos have no chance? What advice would you give him?"
+        }
+      ],
+      "modelAnswer": "**(a)** $p_A$ oscillates between 0.05 and 0.95 (period $2\\pi$). $p_Y$ is a downward parabola, $\\ge 0$ only for $0 \\le t \\le 7$, so the context domain is $[0, 7]$. Max of $p_Y$ at $t = 3.5$: $p_Y(3.5) = -0.08(3.5)(-3.5) = 0.98$.\n\n**(b)** $p_A$ is greatest when $\\sin t = 1$: $t = \\dfrac{\\pi}{2} \\approx 1.6$ days.\n\n**(c)** The probability that they agree on a date is the product $y = p_A(t)\\,p_Y(t)$ (Carlos asks **and** Keiko says yes).\n\n**(d)** $y({{k}}) = (0.45\\sin {{k}} + 0.5)(-0.08)({{k}})({{k}} - 7) \\approx ({{0.45*sin(k)+0.5:3}})({{-0.08*k*(k-7):3}}) \\approx {{(0.45*sin(k)+0.5)*(-0.08*k*(k-7)):2}}$.\n\n**(e)** At $t = 0$ and $t = 7$, $p_Y = 0$, so the product is 0 – after 7 days Carlos has no chance. Advice: ask soon – between about day 1.5 and day 3 the product is largest.",
+      "rubric": [
+        {
+          "point": "Describes both functions and the context domain",
+          "marks": 2
+        },
+        {
+          "point": "Finds when Carlos is most likely to ask",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the joint probability is a product",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of the product at t = k",
+          "marks": 1
+        },
+        {
+          "point": "Identifies zero-probability times and gives reasoned advice",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q14",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "A mathematical operation is **commutative** if reversing the order of the operands gives the same result.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Is the product of functions commutative? Use an example and explain why."
+        },
+        {
+          "label": "b",
+          "text": "Is the quotient of functions commutative? Use an example to support your answer."
+        }
+      ],
+      "modelAnswer": "**(a)** Yes. Example $f(x) = x^2$, $g(x) = \\sin x$: $f(x)g(x) = x^2\\sin x = (\\sin x)x^2 = g(x)f(x)$. In general, at every $x$ we multiply two real numbers, and multiplication of real numbers is commutative.\n\n**(b)** No. $\\dfrac{f(x)}{g(x)} = \\dfrac{x^2}{\\sin x}$ but $\\dfrac{g(x)}{f(x)} = \\dfrac{\\sin x}{x^2}$; at $x = \\frac{\\pi}{2}$ these are $\\frac{\\pi^2}{4} \\approx 2.47$ and $\\frac{4}{\\pi^2} \\approx 0.405$. The two quotients are **reciprocals**; they also have different domains (zeros of $\\sin x$ vs. $x = 0$).",
+      "rubric": [
+        {
+          "point": "States products are commutative with example and reason",
+          "marks": 2
+        },
+        {
+          "point": "States quotients are not commutative with a numerical counterexample",
+          "marks": 2
+        },
+        {
+          "point": "Notes the quotients are reciprocals / have different domains",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "r": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = \\sqrt{ {{r*r}} - x^2}$ and $g(x) = \\sin x$ (radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe $f(x)$. Is it even, odd or neither? What about $g(x)$?"
+        },
+        {
+          "label": "b",
+          "text": "Is $y = f(x)g(x)$ even, odd or neither? State its domain."
+        },
+        {
+          "label": "c",
+          "text": "State the symmetry and domain of $y = \\dfrac{g(x)}{f(x)}$ and identify any asymptotes."
+        },
+        {
+          "label": "d",
+          "text": "Evaluate $(fg)(1)$.",
+          "answer": {
+            "expr": "sqrt(r*r-1)*sin(1)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $f$: upper semicircle of radius {{r}}, domain $[-{{r}}, {{r}}]$, **even** ($f(-x) = f(x)$). $g$: odd.\n\n**(b)** $y = f(x)g(x) = \\sqrt{ {{r*r}} - x^2}\\,\\sin x$ is even × odd = **odd**. Domain: common domain $[-{{r}}, {{r}}]$.\n\n**(c)** $y = \\dfrac{g(x)}{f(x)} = \\dfrac{\\sin x}{\\sqrt{ {{r*r}} - x^2}}$: odd ÷ even = odd. Denominator is 0 at $x = \\pm{{r}}$, so the domain is $(-{{r}}, {{r}})$, with vertical asymptotes at $x = \\pm {{r}}$ (since $\\sin {{r}} \\ne 0$).\n\n**(d)** $(fg)(1) = \\sqrt{ {{r*r-1}} }\\sin 1 \\approx {{sqrt(r*r-1)*sin(1):3}}$.",
+      "rubric": [
+        {
+          "point": "Identifies the shape, domain and symmetry of f",
+          "marks": 1
+        },
+        {
+          "point": "Classifies the product as odd and gives its domain",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain and asymptotes of g/f with reasons",
+          "marks": 2
+        },
+        {
+          "point": "Correct value of (fg)(1)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-2-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "derived": {
+        "b": "a+r"
+      },
+      "text": "Let $f(x) = x - {{a}}$ and $g(x) = x^2 - {{a+b}}x + {{a*b}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine (i) $y = f(x)g(x)$ and (ii) $y = \\dfrac{f(x)}{g(x)}$."
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range of $y = \\dfrac{f(x)}{g(x)}$. Give the y-coordinate of its hole.",
+          "answer": {
+            "expr": "1/(a-b)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $g(x) = (x - {{a}})(x - {{b}})$.\n(i) $y = f(x)g(x) = (x - {{a}})^2(x - {{b}})$.\n(ii) $y = \\dfrac{f(x)}{g(x)} = \\dfrac{1}{x - {{b}}}$, $x \\ne {{a}}, {{b}}$.\n\n**(b)** Domain $\\{x \\in \\mathbb{R}, x \\ne {{a}}, x \\ne {{b}}\\}$. Hole at $\\left({{a}}, \\dfrac{1}{ {{a-b}} }\\right)$; VA $x = {{b}}$; HA $y = 0$.\nRange $\\{y \\in \\mathbb{R}, y \\ne 0, y \\ne {{1/(a-b):3}}\\}$.",
+      "rubric": [
+        {
+          "point": "Factors g and writes the product",
+          "marks": 1
+        },
+        {
+          "point": "Correct simplified quotient with restrictions",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct range, excluding 0 and the hole value",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q17",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Create your own combined functions that meet given conditions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write two functions, one even and one odd, whose product is odd. Verify algebraically."
+        },
+        {
+          "label": "b",
+          "text": "Write $f(x)$ and $g(x)$ so that $y = \\dfrac{f(x)}{g(x)}$ has a vertical asymptote at $x = 2$ and a hole at $x = -1$. Give the coordinates of the hole."
+        },
+        {
+          "label": "c",
+          "text": "Write a product function that models an oscillation that starts at 5 units, has period 2 s and slowly loses amplitude. Explain your choices."
+        }
+      ],
+      "modelAnswer": "**(a)** Example: $f(x) = x$ (odd), $g(x) = x^2 + 1$ (even). $y = f(x)g(x) = x^3 + x$ is odd. ✓ (Any odd × even pair works.)\n\n**(b)** Need the denominator zero at $x = 2$ but not the numerator: $\\dfrac{x + 1}{x - 2}$ → VA $x = 2$; and a hole at $x = -1$ needs a common factor: $\\dfrac{(x+1)(x+3)}{(x+1)(x-2)}$ = $\\dfrac{x+3}{x-2}$, $x \\ne -1$: hole at $(-1, -\\tfrac23)$, VA $x = 2$. So $f(x) = (x+1)(x+3)$, $g(x) = (x+1)(x-2)$.\n\n**(c)** A damped wave: $y = 5\\cos(\\pi t)(0.8)^t$ – amplitude 5 at $t = 0$, period 2, decaying. Justification: cosine starts at its maximum; base 0.8 < 1 gives decay.",
+      "rubric": [
+        {
+          "point": "Valid odd product with justification",
+          "marks": 2
+        },
+        {
+          "point": "Valid quotient with the required asymptote and hole, verified",
+          "marks": 2
+        },
+        {
+          "point": "Valid damped oscillation meeting the conditions, justified",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-2-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Let $f(x)$ be an even function and $g(x)$ an odd function.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the symmetry of $[f(x)]^n$ for any positive integer $n$? Prove it."
+        },
+        {
+          "label": "b",
+          "text": "What is the symmetry of $[g(x)]^n$? Explain how it depends on $n$."
+        },
+        {
+          "label": "c",
+          "text": "Illustrate (b) with $g(x) = \\sin x$ for $n = 2$ and $n = 3$."
+        }
+      ],
+      "modelAnswer": "**(a)** $[f(x)]^2$, $[f(x)]^3$, … $[f(x)]^n$ are all **even**: $[f(-x)]^n = [f(x)]^n$.\n\n**(b)** $[g(-x)]^n = [-g(x)]^n = (-1)^n[g(x)]^n$: even when $n$ is even, odd when $n$ is odd. Example: $\\sin^2 x$ is even (period $\\pi$), $\\sin^3 x$ is odd.\n\n**(c)** $y = \\sin^2 x$ is even and its range is $[0, 1]$; $y = \\sin^3 x$ is odd with range $[-1, 1]$.",
+      "rubric": [
+        {
+          "point": "Correct result and proof for powers of an even function",
+          "marks": 2
+        },
+        {
+          "point": "Correct result and proof for powers of an odd function, depending on n",
+          "marks": 2
+        },
+        {
+          "point": "Correct examples with symmetry",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

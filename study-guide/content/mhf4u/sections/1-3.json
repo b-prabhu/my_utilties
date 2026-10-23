@@ -1,0 +1,1090 @@
+{
+  "id": "1-3",
+  "number": "1.3",
+  "title": "Equations and Graphs of Polynomial Functions",
+  "estimatedMinutes": 80,
+  "overview": "A polynomial in **factored form** is like a map: every factor marks a place where the graph meets the $x$-axis, and how many times the factor repeats tells you whether the graph crosses, touches, or flattens there. In this section you will sketch polynomials from their equations, find equations from graphs, decide where a function is positive or negative, and use algebra to detect symmetry.",
+  "objectives": [
+    "Find zeros, $x$-intercepts and the $y$-intercept from a factored polynomial.",
+    "Determine the degree and leading coefficient of a factored polynomial.",
+    "Describe the behaviour of a graph at zeros of order 1, 2 and 3.",
+    "Determine the intervals where a polynomial function is positive or negative.",
+    "Determine an equation from the zeros and one other point.",
+    "Identify even and odd functions algebraically and describe their symmetry."
+  ],
+  "lessons": [
+    {
+      "id": "factored-form",
+      "title": "Factored form: zeros, x-intercepts and roots",
+      "body": "\nWhen a polynomial is written in **factored form**, its zeros can be read off directly.\n\n$$f(x) = (x - 1)(x + 2)(x + 3)$$\n\n* Each factor $(x - r)$ gives a **zero** $x = r$: here $1, -2, -3$.\n* The zeros of $y = f(x)$ are the **$x$-intercepts** of the graph and the **roots** of the equation $f(x) = 0$.\n* The **$y$-intercept** is $f(0) = (0-1)(0+2)(0+3) = -6$.\n* The **degree** is the total number of $x$'s multiplied together: $x \\cdot x \\cdot x = x^3$, so cubic.\n* The **leading coefficient** is the product of the $x$-coefficients (and any constant in front): here $1 \\cdot 1 \\cdot 1 = 1$.\n\n> **Careful with coefficients inside factors.** For $y = -(2x + 1)^3(x - 3)$ the leading coefficient is $-(2)^3(1) = -8$, the zeros are $x = -\\tfrac12$ and $x = 3$, and the degree is $3 + 1 = 4$.\n\n```plot\ntitle: y = (x − 1)(x + 2)(x + 3)\nf: (x-1)*(x+2)*(x+3)\ndomain: -4.5, 2\nrange: -10, 10\npoints: (-3,0), (-2,0), (1,0), (0,-6)\n```"
+    },
+    {
+      "id": "order-of-zeros",
+      "title": "Order of a zero: crossing, touching and flattening",
+      "body": "\nIf a factor $(x - a)$ appears $n$ times, then $x = a$ is a **zero of order $n$** (a double root when $n = 2$, a triple root when $n = 3$).\n\n| Order of zero | What the graph does at the $x$-intercept | Does $f(x)$ change sign? |\n|---|---|---|\n| 1 | passes straight through (like a line) | yes |\n| 2 | touches the axis and turns back (like a parabola) | no |\n| 3 | passes through but flattens out, like $y = x^3$ at the origin | yes |\n\nRule: the graph **changes sign only at zeros of odd order**.\n\n```plot\ntitle: y = (x − 1)²(x + 2): touches at 1, crosses at −2\nf: (x-1)^2*(x+2)\ndomain: -3, 2.5\nrange: -6, 8\npoints: (-2,0), (1,0), (0,2)\n```\n\n**Test values** confirm the sign. For $y = (x-1)^2(x+2)$:\n\n| Interval | test $x$ | value | sign |\n|---|---|---|---|\n| $(-\\infty, -2)$ | $-3$ | $(-4)^2(-1) = -16$ | $-$ |\n| $(-2, 1)$ | $0$ | $(1)(2) = 2$ | $+$ |\n| $(1, \\infty)$ | $2$ | $(1)(4) = 4$ | $+$ |\n\nSo $f(x) > 0$ for $x \\in (-2, 1) \\cup (1, \\infty)$ and $f(x) < 0$ for $x \\in (-\\infty, -2)$.\n"
+    },
+    {
+      "id": "sketching",
+      "title": "Sketching a polynomial from its equation",
+      "body": "\nA reliable four-step routine:\n\n1. **Degree and leading coefficient** → end behaviour.\n2. **Zeros and their orders** → where the graph crosses, touches or flattens.\n3. **$y$-intercept** → $f(0)$.\n4. **Sketch** from left to right: start with the left-hand end behaviour, pass through the intercepts behaving correctly at each, and finish with the right-hand end behaviour.\n\n**Example.** $y = -2(x - 1)^2(x + 2)$\n\n* Degree 3, leading coefficient $-2 \\cdot 1 \\cdot 1 = -2$ → quadrant 2 to quadrant 4.\n* Zeros: $1$ (order 2, touch) and $-2$ (order 1, cross).\n* $y$-intercept: $-2(1)(2) = -4$.\n* Start high on the left, cross down through $-2$, pass through $(0, -4)$, rise to touch the axis at $1$, then fall to $-\\infty$.\n\n```plot\ntitle: y = −2(x − 1)²(x + 2)\nf: -2*(x-1)^2*(x+2)\ndomain: -3, 2.5\nrange: -12, 12\npoints: (-2,0), (1,0), (0,-4)\n```"
+    },
+    {
+      "id": "equation-from-graph",
+      "title": "Finding an equation from zeros and a point",
+      "body": "\nIf you know the zeros (with their orders), the equation must look like\n\n$$y = a(x - r_1)^{m_1}(x - r_2)^{m_2}\\cdots$$\n\nThe value of $a$ is unknown until you substitute **one more point** on the graph (often the $y$-intercept).\n\n**Example.** A quartic has zeros $-3$, $-1$ and $2$ (order 2) and passes through $(1, 4)$.\n\n$y = a(x + 3)(x + 1)(x - 2)^2$\n\nSubstitute $(1, 4)$: $4 = a(4)(2)(-1)^2 = 8a$, so $a = \\tfrac12$.\n\n$$y = \\tfrac12(x + 3)(x + 1)(x - 2)^2$$\n\n**Reading a graph.** Read the $x$-intercepts and decide each order from the shape (cross, touch, flatten). The least possible degree is the sum of the orders. The end behaviour tells you the sign of $a$ — check that your value agrees!\n"
+    },
+    {
+      "id": "symmetry",
+      "title": "Even and odd functions (symmetry)",
+      "body": "\n| | Even function | Odd function |\n|---|---|---|\n| algebraic test | $f(-x) = f(x)$ for all $x$ | $f(-x) = -f(x)$ for all $x$ |\n| symmetry | **line symmetry** about the $y$-axis | **point symmetry** about the origin (180° rotation) |\n| polynomial clue | every exponent is even (constant terms count as $x^0$) | every exponent is odd (no constant term) |\n| example | $f(x) = x^4 - 3x^2 + 1$ | $f(x) = -x^5 + 7x^3 + 2x$ |\n\nTo test algebraically, replace every $x$ with $-x$ and simplify:\n\n$f(x) = -x^5 + 7x^3 + 2x$ → $f(-x) = -(-x)^5 + 7(-x)^3 + 2(-x) = x^5 - 7x^3 - 2x = -f(x)$, so $f$ is **odd**.\n\n$f(x) = 4x^3 - 3x^2 + 8x + 1$ → $f(-x) = -4x^3 - 3x^2 - 8x + 1$, which is neither $f(x)$ nor $-f(x)$: **neither** even nor odd.\n\n> Not every even-*degree* polynomial is an even *function*: $y = x^4 + x$ has degree 4 but no symmetry.\n\n```plot\ntitle: even (blue) and odd (red) functions\nf: 0.25*x^4 - 2*x^2 + 1 | label=even: y = 0.25x⁴ − 2x² + 1\nf: 0.25*x^3 - 2*x | label=odd: y = 0.25x³ − 2x\ndomain: -4, 4\nrange: -6, 6\n```"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "zero of a function",
+      "definition": "A value of $x$ for which $f(x)=0$; an $x$-intercept of the graph."
+    },
+    {
+      "term": "root",
+      "definition": "A solution of the equation $f(x) = 0$."
+    },
+    {
+      "term": "order of a zero",
+      "definition": "The number of times the corresponding factor is repeated. A zero of order 2 is a double root."
+    },
+    {
+      "term": "even function",
+      "definition": "A function with $f(-x) = f(x)$; its graph has line symmetry about the $y$-axis."
+    },
+    {
+      "term": "odd function",
+      "definition": "A function with $f(-x) = -f(x)$; its graph has point symmetry about the origin."
+    },
+    {
+      "term": "interval notation",
+      "definition": "A way to write sets of $x$-values, e.g. $(-\\infty, -5)$ means all $x < -5$; round brackets exclude endpoints."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Factored form",
+      "latex": "f(x) = a(x - r_1)^{m_1}(x - r_2)^{m_2}\\cdots(x - r_k)^{m_k}",
+      "meaning": "Zeros $r_i$ of order $m_i$; degree $= m_1 + m_2 + \\dots + m_k$."
+    },
+    {
+      "name": "Even function",
+      "latex": "f(-x) = f(x)",
+      "meaning": "Symmetric about the $y$-axis."
+    },
+    {
+      "name": "Odd function",
+      "latex": "f(-x) = -f(x)",
+      "meaning": "Rotational (point) symmetry about the origin."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Analyse a factored polynomial",
+      "problem": "For $f(x) = (x - 4)(x + 3)(2x - 1)$ state the degree, leading coefficient, end behaviour, $x$-intercepts and $y$-intercept, and the intervals where $f(x) > 0$.",
+      "steps": [
+        "Degree: three linear factors → 3. Leading coefficient: $1 \\cdot 1 \\cdot 2 = 2$.",
+        "End behaviour: odd degree, $a > 0$ → quadrant 3 to quadrant 1.",
+        "$x$-intercepts: $4$, $-3$, $\\tfrac12$ (each order 1, so the graph crosses each time).",
+        "$y$-intercept: $(-4)(3)(-1) = 12$.",
+        "Signs: starting negative on the far left and changing sign at each zero: $(-\\infty,-3)$ −, $(-3, \\tfrac12)$ +, $(\\tfrac12, 4)$ −, $(4, \\infty)$ +."
+      ],
+      "answer": "$f(x) > 0$ for $x \\in (-3, \\tfrac12) \\cup (4, \\infty)$."
+    },
+    {
+      "title": "Equation from a graph",
+      "problem": "A graph has $x$-intercepts $-2$ and $1$ where it crosses, touches the $x$-axis at $3$, rises on both ends, and passes through $(0, -18)$. Find an equation.\n\n```plot\nf: (x+2)*(x-1)*(x-3)^2\ndomain: -3, 4\nrange: -25, 25\npoints: (-2,0), (1,0), (3,0), (0,-18)\n```",
+      "steps": [
+        "Crossings at $-2$ and $1$ → factors $(x + 2)$, $(x - 1)$. Touch at 3 → $(x - 3)^2$.",
+        "Least possible degree $1 + 1 + 2 = 4$; both ends up → $a > 0$.",
+        "$y = a(x + 2)(x - 1)(x - 3)^2$. Substitute $(0, -18)$: $-18 = a(2)(-1)(9) = -18a$, so $a = 1$."
+      ],
+      "answer": "$y = (x + 2)(x - 1)(x - 3)^2$"
+    },
+    {
+      "title": "Sketch with a triple root",
+      "problem": "Describe the graph of $y = -(2x + 1)^3(x - 3)$.",
+      "steps": [
+        "Degree $3 + 1 = 4$; leading coefficient $-(2^3)(1) = -8$ → both ends down.",
+        "Zeros: $x = -\\tfrac12$ (order 3: passes through and flattens) and $x = 3$ (order 1: crosses).",
+        "$y$-intercept: $-(1)^3(-3) = 3$.",
+        "From the bottom left, rise and flatten through $-\\tfrac12$, go up through $(0, 3)$, turn down and cross at 3, then fall to $-\\infty$."
+      ],
+      "answer": "Q3 → Q4, flattened crossing at $-\\tfrac12$, crossing at 3, $y$-intercept 3."
+    },
+    {
+      "title": "Identify symmetry algebraically",
+      "problem": "Is $f(x) = x^4 + 3x^2 + 1$ even, odd or neither?",
+      "steps": [
+        "$f(-x) = (-x)^4 + 3(-x)^2 + 1 = x^4 + 3x^2 + 1$.",
+        "$f(-x) = f(x)$, so $f$ is even."
+      ],
+      "answer": "Even — symmetric about the $y$-axis."
+    },
+    {
+      "title": "Equation of a quartic through a point",
+      "problem": "Find the quartic with zeros $-3$, $-1$, $2$ (order 2) that passes through $(1, 4)$.",
+      "steps": [
+        "$y = a(x + 3)(x + 1)(x - 2)^2$",
+        "$4 = a(4)(2)(1) = 8a$",
+        "$a = 0.5$"
+      ],
+      "answer": "$y = 0.5(x + 3)(x + 1)(x - 2)^2$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The factor $(x + 3)$ gives a zero at $x = 3$.",
+      "fact": "Solve $x + 3 = 0$: the zero is $x = -3$."
+    },
+    {
+      "myth": "The leading coefficient of $y = (2x - 1)^3$ is 2.",
+      "fact": "Each factor contributes its $x$-coefficient: $2^3 = 8$."
+    },
+    {
+      "myth": "Every even-degree polynomial is an even function.",
+      "fact": "Only if every term has an even exponent. $y = x^4 + x$ is neither even nor odd."
+    },
+    {
+      "myth": "A graph always changes sign at an $x$-intercept.",
+      "fact": "At a zero of even order (e.g. a double root) the graph touches the axis and stays on the same side."
+    },
+    {
+      "myth": "The zeros alone determine the polynomial.",
+      "fact": "Zeros give the factors, but you need another point to find the stretch factor $a$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Roller coasters",
+      "body": "A track section modelled by $h(x) = 0.0025x(x - 8)(x - 16)(x - 32)$ is at platform height where $h = 0$, below it where $h < 0$ and above where $h > 0$ — exactly the sign intervals of the polynomial."
+    },
+    {
+      "title": "Engineering tolerances",
+      "body": "A double root models a beam that just touches a support without crossing it."
+    },
+    {
+      "title": "Architecture and design",
+      "body": "Even functions give left–right symmetric arches; designers use the symmetry to compute only half the shape."
+    }
+  ],
+  "practice": [
+    {
+      "question": "State the zeros, their orders, and the $y$-intercept of $g(x) = -2(x + 2)(x - 2)(x + 1)(x - 1)$.",
+      "hint": "Substitute 0 for the $y$-intercept.",
+      "solution": "Zeros $-2, 2, -1, 1$, each of order 1. $y$-intercept $-2(2)(-2)(1)(-1) = -8$. Degree 4, $a = -2$: both ends down."
+    },
+    {
+      "question": "For $h(x) = (3x + 2)^2(x - 4)(x + 1)(2x - 3)$ find the degree and leading coefficient.",
+      "hint": "Multiply the $x$-coefficients, counting repeats.",
+      "solution": "Degree $2 + 1 + 1 + 1 = 5$, leading coefficient $3^2 \\cdot 1 \\cdot 1 \\cdot 2 = 18$."
+    },
+    {
+      "question": "Write the intervals where $f(x) = x(x - 3)(x + 2)(x + 1)$ is negative.",
+      "hint": "Degree 4 and $a>0$, so the far left is positive.",
+      "solution": "Zeros in order: $-2, -1, 0, 3$. Signs: $+, -, +, -, +$. Negative for $x \\in (-2, -1) \\cup (0, 3)$."
+    },
+    {
+      "question": "Is $f(x) = 4x^3 - 3x^2 + 8x + 1$ even, odd or neither?",
+      "hint": "Find $f(-x)$.",
+      "solution": "$f(-x) = -4x^3 - 3x^2 - 8x + 1$, which is neither $f(x)$ nor $-f(x)$: neither."
+    },
+    {
+      "question": "A cubic has zeros $-1$, $2$ and $4$ and $y$-intercept 16. Find its equation.",
+      "hint": "$y = a(x+1)(x-2)(x-4)$",
+      "solution": "$16 = a(1)(-2)(-4) = 8a$, so $a = 2$: $y = 2(x + 1)(x - 2)(x - 4)$."
+    },
+    {
+      "question": "Explain how you can tell from a graph whether a zero has order 1, 2 or 3.",
+      "hint": "Cross, touch, flatten.",
+      "solution": "Order 1: the graph crosses like a straight line. Order 2: it touches the axis and turns back without crossing. Order 3: it crosses but flattens out (an S-shaped inflection) at the intercept."
+    },
+    {
+      "question": "Describe the graph of $p(x) = -(x + 5)^3(x - 5)^3$ and its symmetry.",
+      "hint": "Compute $p(-x)$.",
+      "solution": "Degree 6, $a = -1$: both ends down. Zeros $\\pm5$ of order 3 (flattened crossings). $y$-intercept $-(125)(-125) = 15\\,625$. $p(-x) = -(-x+5)^3(-x-5)^3 = -(x-5)^3(x+5)^3 = p(x)$, so it is even: symmetric about the $y$-axis."
+    }
+  ],
+  "summary": [
+    "In factored form, each factor $(x - r)$ gives a zero $r$; the zeros are the $x$-intercepts and the roots of $f(x) = 0$.",
+    "The degree is the total number of $x$-factors; the leading coefficient is the product of their coefficients.",
+    "A zero of order $n$ comes from a factor repeated $n$ times. The graph changes sign only at zeros of odd order.",
+    "Sketch using end behaviour, zeros and their orders, and the $y$-intercept.",
+    "Find an equation from the zeros plus one extra point to determine $a$.",
+    "Even functions: $f(-x) = f(x)$, symmetric about the $y$-axis. Odd functions: $f(-x) = -f(x)$, symmetric about the origin."
+  ],
+  "questions": [
+    {
+      "id": "1-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "s": {
+          "min": 4,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = (x + {{p}})(x - {{q}})(x - {{s}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the degree, the leading coefficient and the end behaviour."
+        },
+        {
+          "label": "b",
+          "text": "Determine the $x$-intercepts."
+        },
+        {
+          "label": "c",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "p*q*s",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "State the intervals where $f(x) > 0$ and where $f(x) < 0$."
+        }
+      ],
+      "modelAnswer": "(a) Three linear factors, so the degree is 3; the leading coefficient is $1 \\cdot 1 \\cdot 1 = 1$. Odd degree, positive leading coefficient: quadrant 3 to quadrant 1.\n\n(b) Setting each factor to zero: $x = -{{p}}$, $x = {{q}}$, $x = {{s}}$ (each of order 1).\n\n(c) $f(0) = ({{p}})(-{{q}})(-{{s}}) = {{p*q*s}}$.\n\n(d) The graph starts negative on the left and changes sign at every zero:\n\n| Interval | $(-\\infty, -{{p}})$ | $(-{{p}}, {{q}})$ | $({{q}}, {{s}})$ | $({{s}}, \\infty)$ |\n|---|---|---|---|---|\n| sign | − | + | − | + |\n\n$f(x) > 0$ for $x \\in (-{{p}}, {{q}}) \\cup ({{s}}, \\infty)$; $f(x) < 0$ for $x \\in (-\\infty, -{{p}}) \\cup ({{q}}, {{s}})$.",
+      "rubric": [
+        {
+          "point": "Degree, leading coefficient, end behaviour",
+          "marks": 2
+        },
+        {
+          "point": "Correct x-intercepts",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct positive and negative intervals in interval notation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $g(x) = (x - {{a}})^2(x + {{b}})^3$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the degree and end behaviour."
+        },
+        {
+          "label": "b",
+          "text": "Describe the behaviour of the graph at each $x$-intercept."
+        },
+        {
+          "label": "c",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "a^2*b^3",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "Determine the intervals where $g(x)$ is positive and negative."
+        }
+      ],
+      "modelAnswer": "(a) Degree $2 + 3 = 5$; leading coefficient $1$. Odd degree, positive: quadrant 3 to quadrant 1.\n\n(b) $x = {{a}}$ is a zero of order 2: the graph **touches** the $x$-axis and turns back (no sign change). $x = -{{b}}$ is a zero of order 3: the graph **crosses** but flattens out like $y = x^3$.\n\n(c) $g(0) = (-{{a}})^2({{b}})^3 = {{a^2*b^3}}$.\n\n(d) Far left negative. Crossing at $-{{b}}$ makes it positive; touching at {{a}} keeps it positive. So $g(x) < 0$ on $(-\\infty, -{{b}})$ and $g(x) > 0$ on $(-{{b}}, {{a}}) \\cup ({{a}}, \\infty)$.",
+      "rubric": [
+        {
+          "point": "Degree and end behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Behaviour at each zero linked to its order",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct sign intervals",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "A quartic function has zeros $-3$, $-1$ and $2$ (order 2) and passes through the point $(1, {{8*a}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write equations for two different functions that have these zeros."
+        },
+        {
+          "label": "b",
+          "text": "Determine the equation of the function that passes through the given point. State the value of the leading coefficient.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Any function of the form $y = k(x + 3)(x + 1)(x - 2)^2$, $k \\ne 0$, works; e.g. $y = (x+3)(x+1)(x-2)^2$ and $y = -2(x+3)(x+1)(x-2)^2$.\n\n(b) Substitute $(1, {{8*a}})$: ${{8*a}} = k(4)(2)(1-2)^2 = 8k$, so $k = {{a}}$.\n\n$$y = {{a}}(x + 3)(x + 1)(x - 2)^2$$",
+      "rubric": [
+        {
+          "point": "Correct general form with (x − 2)² factor",
+          "marks": 2
+        },
+        {
+          "point": "Two valid example equations",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes the point correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of k and final equation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q04",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "s": {
+          "min": 3,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The graph of a cubic polynomial function is shown. It crosses the $x$-axis at $-{{p}}$, {{q}} and {{s}} and passes through $(0, {{a*p*q*s}})$.\n\n```plot\nf: {{a}}*(x+{{p}})*(x-{{q}})*(x-{{s}})\ndomain: -{{p}}-1.5, {{s}}+1\npoints: (-{{p}},0), ({{q}},0), ({{s}},0), (0,{{a*p*q*s}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an equation for the function. State the leading coefficient.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "The graph crosses at each intercept, so each zero has order 1 and the factors are $(x + {{p}})$, $(x - {{q}})$, $(x - {{s}})$:\n\n$$y = k(x + {{p}})(x - {{q}})(x - {{s}})$$\n\nSubstitute $(0, {{a*p*q*s}})$: ${{a*p*q*s}} = k({{p}})(-{{q}})(-{{s}}) = {{p*q*s}}k$, so $k = {{a}}$.\n\n$$y = {{a}}(x + {{p}})(x - {{q}})(x - {{s}})$$\n\nCheck: $k > 0$ agrees with the graph rising from quadrant 3 to quadrant 1.",
+      "rubric": [
+        {
+          "point": "Identifies the three factors",
+          "marks": 2
+        },
+        {
+          "point": "Uses the y-intercept to set up an equation for k",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Checks sign of k against end behaviour",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "d": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Determine, algebraically, whether each function is even, odd or neither. Explain what this means for the symmetry of each graph.\n\n(a) $f(x) = -x^5 + {{b}}x^3 + {{c}}x$ (b) $g(x) = x^4 + {{d}}x^2 + 1$ (c) $h(x) = 4x^3 - 3x^2 + {{c}}x + 1$",
+      "modelAnswer": "(a) $f(-x) = -(-x)^5 + {{b}}(-x)^3 + {{c}}(-x) = x^5 - {{b}}x^3 - {{c}}x = -f(x)$: **odd**, point symmetry about the origin.\n\n(b) $g(-x) = (-x)^4 + {{d}}(-x)^2 + 1 = x^4 + {{d}}x^2 + 1 = g(x)$: **even**, line symmetry about the $y$-axis.\n\n(c) $h(-x) = -4x^3 - 3x^2 - {{c}}x + 1$. This is not $h(x)$, and $-h(x) = -4x^3 + 3x^2 - {{c}}x - 1$, which is also different: **neither**, no symmetry of these types.",
+      "rubric": [
+        {
+          "point": "(a) correct substitution and conclusion",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct substitution and conclusion",
+          "marks": 1
+        },
+        {
+          "point": "(c) shows both comparisons and concludes neither",
+          "marks": 2
+        },
+        {
+          "point": "Links even/odd to the type of symmetry",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q06",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A student claims: \"All even-degree polynomial functions are even functions, and all odd-degree polynomial functions are odd functions.\" Explain whether the student is correct, using at least one counterexample, and state the correct test for an even or odd function.",
+      "modelAnswer": "The student is **incorrect**. The degree only tells you the highest exponent; for a function to be even, **every** term must have an even exponent (a constant counts as $x^0$), and for it to be odd, **every** term must have an odd exponent.\n\nCounterexamples: $f(x) = x^4 + x$ has even degree, but $f(-x) = x^4 - x \\ne f(x)$, so it is not even. $g(x) = x^3 + 1$ has odd degree, but $g(-x) = -x^3 + 1 \\ne -g(x)$, so it is not odd.\n\nCorrect test: substitute $-x$. If $f(-x) = f(x)$ for all $x$ the function is even; if $f(-x) = -f(x)$ it is odd; otherwise neither.",
+      "rubric": [
+        {
+          "point": "States the claim is false",
+          "marks": 1
+        },
+        {
+          "point": "Valid counterexample for even degree",
+          "marks": 1
+        },
+        {
+          "point": "Valid counterexample for odd degree",
+          "marks": 1
+        },
+        {
+          "point": "States correct algebraic tests",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "m": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The function $f(x) = {{a}}x^4 - {{a*m^2}}x^2$ is given.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that $f$ is an even function."
+        },
+        {
+          "label": "b",
+          "text": "Factor $f(x)$ fully and state the zeros and their orders. Give the positive zero.",
+          "answer": {
+            "expr": "m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the shape of the graph, including its symmetry and the intervals where $f(x) > 0$."
+        }
+      ],
+      "modelAnswer": "(a) $f(-x) = {{a}}(-x)^4 - {{a*m^2}}(-x)^2 = {{a}}x^4 - {{a*m^2}}x^2 = f(x)$, so $f$ is **even** and symmetric about the $y$-axis.\n\n(b) Factor: $f(x) = {{a}}x^2(x^2 - {{m^2}}) = {{a}}x^2(x - {{m}})(x + {{m}})$.\n\nZeros: $x = 0$ (order 2, touches) and $x = \\pm{{m}}$ (order 1, crosses).\n\n(c) Degree 4 with positive leading coefficient: both ends up. Signs: $(-\\infty, -{{m}})$ +, $(-{{m}}, 0)$ −, $(0, {{m}})$ −, $({{m}}, \\infty)$ +. The graph comes down from quadrant 2, crosses at $-{{m}}$, rises to touch the origin, falls again, and crosses at {{m}} on the way up — a \"W\" shape that is a mirror image across the $y$-axis.",
+      "rubric": [
+        {
+          "point": "Shows f(−x) = f(x)",
+          "marks": 1
+        },
+        {
+          "point": "Factors fully",
+          "marks": 2
+        },
+        {
+          "point": "Correct zeros with orders",
+          "marks": 1
+        },
+        {
+          "point": "Describes graph consistent with symmetry, signs and end behaviour",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Determine the intervals where $f(x) = -(x + {{p}})(x - {{q}})^2$ is positive and where it is negative. Use test values to justify your answer.",
+      "modelAnswer": "Degree 3, leading coefficient $-1$: from quadrant 2 to quadrant 4. Zeros: $-{{p}}$ (order 1, sign change) and {{q}} (order 2, no sign change).\n\nTest values:\n* $x = -{{p}} - 1$: $f = -(-1)({{-p-1-q}})^2 > 0$\n* $x = 0$: $f(0) = -({{p}})({{q}})^2 = -{{p*q^2}} < 0$\n* $x = {{q+1}}$: $f = -({{q+1+p}})(1)^2 < 0$\n\n$f(x) > 0$ for $x \\in (-\\infty, -{{p}})$; $f(x) < 0$ for $x \\in (-{{p}}, {{q}}) \\cup ({{q}}, \\infty)$.",
+      "rubric": [
+        {
+          "point": "Identifies zeros and orders",
+          "marks": 1
+        },
+        {
+          "point": "Uses test values (or order reasoning) on each interval",
+          "marks": 2
+        },
+        {
+          "point": "Correct positive interval",
+          "marks": 1
+        },
+        {
+          "point": "Correct negative intervals, excluding the touch point",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q09",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The graph of a polynomial function is shown. It passes through the point $(1, {{-4*a}})$.\n\n```plot\nf: {{a/2}}*x*(x+1)^2*(x-3)\ndomain: -2, 4\npoints: (-1,0), (0,0), (3,0), (1,{{-4*a}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the least possible degree and the sign of the leading coefficient. Explain."
+        },
+        {
+          "label": "b",
+          "text": "Determine an equation for the function. State the leading coefficient.",
+          "answer": {
+            "expr": "a/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the intervals where the function is positive and negative."
+        }
+      ],
+      "modelAnswer": "(a) The graph crosses at $x = 0$ and $x = 3$ (order 1) and touches at $x = -1$ (order 2). Least possible degree: $1 + 1 + 2 = 4$. Both ends rise, so $a > 0$.\n\n(b) $y = k\\,x(x + 1)^2(x - 3)$. Substitute $(1, {{-4*a}})$: ${{-4*a}} = k(1)(2)^2(-2) = -8k$, so $k = {{a/2}}$.\n\n$$y = {{a/2}}\\,x(x + 1)^2(x - 3)$$\n\n(c) $f(x) > 0$ for $x \\in (-\\infty, -1) \\cup (-1, 0) \\cup (3, \\infty)$; $f(x) < 0$ for $x \\in (0, 3)$.",
+      "rubric": [
+        {
+          "point": "Least possible degree with orders explained",
+          "marks": 2
+        },
+        {
+          "point": "Correct factors including the squared factor",
+          "marks": 1
+        },
+        {
+          "point": "Correct leading coefficient from the point",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign intervals",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "x0": {
+          "choices": [
+            2,
+            4,
+            6,
+            10,
+            12,
+            14,
+            20,
+            24,
+            28
+          ]
+        }
+      },
+      "text": "A section of roller coaster is modelled by $h(x) = 0.0025x(x - 8)(x - 16)(x - 32)$, $0 \\le x \\le 32$, where $x$ is the horizontal distance and $h$ is the height relative to the platform, both in metres.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the zeros of $h$."
+        },
+        {
+          "label": "b",
+          "text": "Determine the intervals where the track is above and below the platform."
+        },
+        {
+          "label": "c",
+          "text": "Determine the height of the track at $x = {{x0}}$ m.",
+          "answer": {
+            "expr": "0.0025*x0*(x0-8)*(x0-16)*(x0-32)",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Degree 4 with $a = 0.0025 > 0$. Zeros: $0, 8, 16, 32$ (all order 1).\n\n(b) Signs: $(0, 8)$: test $x = 4$: $0.0025(4)(-4)(-12)(-28) = -13.44 < 0$ → below the platform. $(8, 16)$: positive → above. $(16, 32)$: negative → below.\n\nThe track is above the platform for $8 < x < 16$ and below it for $0 < x < 8$ and $16 < x < 32$.\n\n(c) $h({{x0}}) = 0.0025({{x0}})({{x0}} - 8)({{x0}} - 16)({{x0}} - 32) \\approx {{0.0025*x0*(x0-8)*(x0-16)*(x0-32):3}}$ m. A positive value means above the platform and a negative value means below it.",
+      "rubric": [
+        {
+          "point": "Zeros identified",
+          "marks": 1
+        },
+        {
+          "point": "Sign analysis with test values",
+          "marks": 2
+        },
+        {
+          "point": "Intervals interpreted as above/below platform",
+          "marks": 2
+        },
+        {
+          "point": "Correct height calculation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q11",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "For $h(x) = (3x + 2)^2(x - 4)(x + 1)(2x - 3)$, state the degree, the leading coefficient, the end behaviour, the $x$-intercepts with their orders, and the $y$-intercept.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Leading coefficient",
+          "answer": {
+            "expr": "18",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-intercept",
+          "answer": {
+            "expr": "48",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "* Degree: $2 + 1 + 1 + 1 = 5$.\n* Leading coefficient: $3^2 \\cdot 1 \\cdot 1 \\cdot 2 = 18$.\n* End behaviour: odd degree, positive → quadrant 3 to quadrant 1.\n* $x$-intercepts: $-\\tfrac23$ (order 2), $4$, $-1$, $\\tfrac32$ (each order 1).\n* $y$-intercept: $(2)^2(-4)(1)(-3) = 48$.",
+      "rubric": [
+        {
+          "point": "Degree",
+          "marks": 1
+        },
+        {
+          "point": "Leading coefficient 18",
+          "marks": 1
+        },
+        {
+          "point": "End behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Intercepts with orders",
+          "marks": 2
+        },
+        {
+          "point": "y-intercept 48",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q12",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Analyse $p(x) = -(x + {{m}})^3(x - {{m}})^3$: degree, leading coefficient, end behaviour, zeros and their orders, $y$-intercept, and symmetry. Prove your symmetry claim algebraically.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "m^6",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "* Degree $3 + 3 = 6$; leading coefficient $-1$; both ends down (Q3 → Q4).\n* Zeros $-{{m}}$ and ${{m}}$, each of order 3: the graph crosses and flattens at each.\n* $y$-intercept: $p(0) = -({{m}})^3(-{{m}})^3 = {{m^6}}$.\n* Symmetry: $p(-x) = -(-x + {{m}})^3(-x - {{m}})^3 = -[-(x - {{m}})]^3[-(x + {{m}})]^3 = -(-1)^3(-1)^3(x - {{m}})^3(x + {{m}})^3 = -(x + {{m}})^3(x - {{m}})^3 = p(x)$.\n\nSo $p$ is **even**: its graph is symmetric about the $y$-axis. It rises from the left, crosses at $-{{m}}$, reaches a maximum of {{m^6}} at $x = 0$, and falls symmetrically.",
+      "rubric": [
+        {
+          "point": "Degree, leading coefficient, end behaviour",
+          "marks": 2
+        },
+        {
+          "point": "Zeros with order 3 behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Algebraic proof that p is even",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q13",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain how the order of a zero affects the graph of a polynomial function at that $x$-intercept, and how the order affects whether $f(x)$ changes sign. Illustrate with $y = (x - 2)$, $y = (x - 2)^2$ and $y = (x - 2)^3$.",
+      "modelAnswer": "* $y = x - 2$: zero of **order 1** — the graph passes straight through $x = 2$, changing from negative to positive.\n* $y = (x - 2)^2$: zero of **order 2** — the graph touches the $x$-axis at 2 and turns back; $f(x) \\ge 0$ on both sides, so there is no sign change.\n* $y = (x - 2)^3$: zero of **order 3** — the graph passes through 2 but flattens out (like $y = x^3$ at the origin), changing sign.\n\nIn general, a zero of odd order produces a sign change (the graph crosses), and a zero of even order does not (the graph touches). Higher orders make the graph flatter near the intercept.",
+      "rubric": [
+        {
+          "point": "Order 1 behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Order 2 behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Order 3 behaviour",
+          "marks": 1
+        },
+        {
+          "point": "General rule about sign change for odd vs even order",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q14",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "k": {
+          "min": 3,
+          "max": 20,
+          "step": 1
+        }
+      },
+      "text": "Suppose $f$ is an **odd** function with $f({{a}}) = {{k}}$, and $g$ is an **even** function with $g({{a}}) = {{k}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $f(-{{a}})$.",
+          "answer": {
+            "expr": "-k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $g(-{{a}})$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the graph of an odd polynomial function must pass through the origin."
+        }
+      ],
+      "modelAnswer": "(a) Odd: $f(-x) = -f(x)$, so $f(-{{a}}) = -f({{a}}) = -{{k}}$.\n\n(b) Even: $g(-x) = g(x)$, so $g(-{{a}}) = g({{a}}) = {{k}}$.\n\n(c) An odd polynomial has only odd powers of $x$ and no constant term, so $f(0) = 0$: the graph must pass through the origin. (Equivalently, $f(0) = -f(0)$ forces $f(0) = 0$.)",
+      "rubric": [
+        {
+          "point": "Correct f(−a) with property used",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(−a) with property used",
+          "marks": 1
+        },
+        {
+          "point": "Explains why odd function passes through origin",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Factor $f(x) = x^3 - {{m^2}}x$ and use the factored form to determine where $f(x) > 0$. Then describe the graph's symmetry.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the largest zero.",
+          "answer": {
+            "expr": "m",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$f(x) = x(x^2 - {{m^2}}) = x(x - {{m}})(x + {{m}})$.\n\nZeros: $-{{m}}, 0, {{m}}$ (each order 1). Degree 3, $a = 1$: far left negative.\n\n| Interval | $(-\\infty, -{{m}})$ | $(-{{m}}, 0)$ | $(0, {{m}})$ | $({{m}}, \\infty)$ |\n|---|---|---|---|---|\n| sign | − | + | − | + |\n\n$f(x) > 0$ for $x \\in (-{{m}}, 0) \\cup ({{m}}, \\infty)$.\n\nEvery exponent (3 and 1) is odd, so $f$ is odd: $f(-x) = -x^3 + {{m^2}}x = -f(x)$, and the graph has point symmetry about the origin.",
+      "rubric": [
+        {
+          "point": "Factors correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "Correct positive intervals",
+          "marks": 2
+        },
+        {
+          "point": "Identifies odd symmetry with justification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q16",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Write the equation of a polynomial function that satisfies **all** of these conditions, and explain how each condition is met:\n* degree 4 and a negative leading coefficient,\n* $x$-intercepts at $-{{p}}$ (where the graph touches the axis) and at $0$ and {{q}} (where it crosses),\n* $y$-intercept consistent with the zeros.\n\nThen state the intervals where your function is positive.",
+      "modelAnswer": "Factors: touch at $-{{p}}$ → $(x + {{p}})^2$; crosses at 0 and {{q}} → $x$ and $(x - {{q}})$. Degree $2 + 1 + 1 = 4$ ✓.\n\nExample: $y = -x(x + {{p}})^2(x - {{q}})$ (any negative constant in front also works).\n\n* Leading coefficient $-1 < 0$ ✓ (both ends down).\n* $y$-intercept: $0$, which is consistent since 0 is a zero ✓.\n\nSigns (start negative at far left): $(-\\infty, -{{p}})$ −, $(-{{p}}, 0)$ − (touch, no change), $(0, {{q}})$ +, $({{q}}, \\infty)$ −.\n\nPositive for $x \\in (0, {{q}})$.",
+      "rubric": [
+        {
+          "point": "Correct factors with squared factor for the touch point",
+          "marks": 2
+        },
+        {
+          "point": "Degree 4 with negative leading coefficient",
+          "marks": 1
+        },
+        {
+          "point": "Explains each condition",
+          "marks": 1
+        },
+        {
+          "point": "Correct positive interval for their function",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-3-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Describe, in words, how to sketch $y = -2(x - {{a}})^2(x + {{b}})$. Include degree, end behaviour, intercepts, behaviour at each zero and the order in which the graph passes through them.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$y$-intercept",
+          "answer": {
+            "expr": "-2*a^2*b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "* Degree 3; leading coefficient $-2$ → from quadrant 2 to quadrant 4.\n* Zeros: {{a}} (order 2, touch) and $-{{b}}$ (order 1, cross).\n* $y$-intercept: $-2({{a}})^2({{b}}) = -{{2*a^2*b}}$.\n* Sketch: start high on the left, come down and cross the axis at $-{{b}}$, continue through $(0, -{{2*a^2*b}})$, rise to touch the axis at {{a}} (a local maximum there), then fall to $-\\infty$.",
+      "rubric": [
+        {
+          "point": "Degree and end behaviour",
+          "marks": 1
+        },
+        {
+          "point": "Zeros with orders and behaviour",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Coherent left-to-right description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-3-q18",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "A quartic function has zeros at $-{{p}}$ and {{q}}, each of order 2, and its graph passes through $(0, -{{k*p^2*q^2}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the equation of the function. State the leading coefficient.",
+          "answer": {
+            "expr": "-k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain why the function is never positive."
+        },
+        {
+          "label": "c",
+          "text": "State the range.",
+          "answer": {
+            "expr": "0",
+            "unit": "",
+            "sig": 1
+          }
+        }
+      ],
+      "modelAnswer": "(a) $y = a(x + {{p}})^2(x - {{q}})^2$. At $(0, -{{k*p^2*q^2}})$: $-{{k*p^2*q^2}} = a({{p}})^2({{q}})^2 = {{p^2*q^2}}a$, so $a = -{{k}}$.\n\n$$y = -{{k}}(x + {{p}})^2(x - {{q}})^2$$\n\n(b) $(x+{{p}})^2(x-{{q}})^2 \\ge 0$ for all $x$, and $a < 0$, so $y \\le 0$ everywhere. The graph touches the $x$-axis at both zeros and is never positive. The maximum value is 0.\n\n(c) Range: $\\{y \\in \\mathbb{R},\\ y \\le 0\\}$. Both ends point down (Q3 → Q4).",
+      "rubric": [
+        {
+          "point": "Correct form with both squared factors",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of a",
+          "marks": 2
+        },
+        {
+          "point": "Explains the function is never positive",
+          "marks": 2
+        },
+        {
+          "point": "Correct range",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

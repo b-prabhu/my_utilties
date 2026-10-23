@@ -1,0 +1,1098 @@
+{
+  "id": "6-5",
+  "number": "6.5",
+  "title": "Making Connections: Logarithmic Scales in the Physical Sciences",
+  "estimatedMinutes": 70,
+  "overview": "The acidity of lemon juice, the loudness of a rock concert, the strength of an earthquake — all are measured on **logarithmic scales**. Because these quantities span many powers of 10, scientists record the exponent instead. In this section you will use the pH, decibel and Richter scales (and a few others) and learn why \"one step\" on these scales means \"ten times as much\".",
+  "objectives": [
+    "Explain why logarithmic scales are used for quantities spanning many orders of magnitude.",
+    "Calculate pH from hydronium ion concentration and vice versa; classify solutions.",
+    "Compare sound levels and intensities with the decibel scale.",
+    "Compare earthquake intensities with the Richter scale.",
+    "Solve problems with other logarithmic scales such as stellar magnitude and welding shade numbers.",
+    "Correct common misinterpretations of logarithmic scales."
+  ],
+  "lessons": [
+    {
+      "id": "why-log-scales",
+      "title": "Why scientists use logarithmic scales",
+      "body": "Some quantities range over **many orders of magnitude** (powers of 10). Hydronium ion concentrations go from about $10^{-15}$ to $0.1$ mol/L; the quietest sound you can hear is a trillion times less intense than a jet engine. On an ordinary (linear) scale the small values would all be squashed against zero.\n\nA **logarithmic scale** records the *exponent* instead of the number itself:\n\n| Quantity | Linear value | Log of value |\n|---|---|---|\n| | 0.001 | −3 |\n| | 1 | 0 |\n| | 1 000 | 3 |\n| | 1 000 000 | 6 |\n\n**The key rule of every log scale:** a step of 1 on the scale means a **factor of 10** in the underlying quantity (or a fixed factor set by the formula's coefficient). Equal *differences* on the scale represent equal *ratios* in reality.\n\n> **Analogy:** a log scale is like describing a number by how many digits it has. Going from 3 digits to 4 digits means the number got about 10 times bigger, not 1 bigger."
+    },
+    {
+      "id": "ph",
+      "title": "The pH scale",
+      "body": "$$\\text{pH} = -\\log[\\text{H}^+]$$\n\nwhere $[\\text{H}^+]$ is the hydronium ion concentration in moles per litre (mol/L).\n\n| pH | below 7 | 7 | above 7 |\n|---|---|---|---|\n| Classification | acidic | neutral | alkaline (basic) |\n| $[\\text{H}^+]$ | more than $10^{-7}$ | $10^{-7}$ | less than $10^{-7}$ |\n\n**Why the minus sign?** Concentrations are tiny (e.g. $10^{-4}$), so their logs are negative. The negative sign makes the pH a convenient positive number (4 instead of −4).\n\n**Two directions:**\n\n* concentration → pH: tomato juice $[\\text{H}^+] = 0.0001 = 10^{-4}$, so pH $= -(-4) = 4$.\n* pH → concentration: rearrange to $[\\text{H}^+] = 10^{-\\text{pH}}$. Orange juice, pH 3: $[\\text{H}^+] = 10^{-3} = 0.001$ mol/L.\n\n**Comparing:** orange juice (pH 3) has $\\frac{10^{-3}}{10^{-4}} = 10$ times the hydronium concentration of tomato juice (pH 4). A **decrease of 1 in pH** means **10 times** more acidic; a decrease of 2 means 100 times."
+    },
+    {
+      "id": "decibels",
+      "title": "The decibel scale for sound",
+      "body": "Our ears respond to sound intensity logarithmically. The **difference** in sound level between two sounds is\n\n$$\\beta_2 - \\beta_1 = 10\\log\\left(\\frac{I_2}{I_1}\\right)$$\n\nwhere $\\beta$ is the sound level in decibels (dB) and $I$ the intensity in W/m².\n\n| Sound | Level (dB) |\n|---|---|\n| Rustle of leaves | 10 |\n| Whisper | 30 |\n| Normal conversation | 60 |\n| Normal city traffic | 85 |\n| Rock concert speaker | 150 |\n| Jet engine | 160 |\n\n**Each increase of 10 dB is a tenfold increase in intensity.** A conversation (60 dB) versus a whisper (30 dB): $30 = 10\\log\\frac{I_2}{I_1} \\Rightarrow \\frac{I_2}{I_1} = 10^3 = 1000$ — a thousand times as intense, not twice!\n\nSound level can also be measured against the threshold of hearing $I_0 = 10^{-12}$ W/m²:\n\n$$\\beta = 10\\log\\left(\\frac{I}{I_0}\\right)$$"
+    },
+    {
+      "id": "richter",
+      "title": "The Richter scale for earthquakes",
+      "body": "$$M = \\log\\left(\\frac{I}{I_0}\\right)$$\n\nwhere $I$ is the intensity of the earthquake and $I_0$ the intensity of a standard, low-level earthquake.\n\n* Magnitude → intensity: $M = 2.4 \\Rightarrow \\frac{I}{I_0} = 10^{2.4} \\approx 251$ times a standard quake.\n* Intensity → magnitude: 1000 times as intense $\\Rightarrow M = \\log 1000 = 3$.\n* **Comparing two quakes:** $\\dfrac{I_2}{I_1} = 10^{M_2 - M_1}$. A magnitude-8 quake is $10^{8 - 4} = 10\\,000$ times as intense as a magnitude-4 quake — not twice."
+    },
+    {
+      "id": "other-scales",
+      "title": "Other logarithmic scales: stars and welding glass",
+      "body": "**Stellar magnitude.** The apparent brightness of stars is compared with\n\n$$m_2 - m_1 = 2.5\\log\\left(\\frac{b_1}{b_2}\\right)$$\n\nwhere $m$ is apparent magnitude and $b$ brightness. **Smaller (even negative) magnitudes mean brighter stars.** Sirius ($m = -1.5$) is the brightest star in our night sky. A difference of 5 magnitudes means a brightness ratio of $10^{5/2.5} = 100$. The same formula with *absolute* magnitudes $M$ compares how bright stars would look from a standard distance of 10 parsecs.\n\n**Welding glass.** The shade number of protective eyewear is\n\n$$n = 1 - \\frac{7\\log T}{3}$$\n\nwhere $T$ is the fraction of visible light transmitted. Higher shade numbers transmit much less light: a #14 lens transmits $T = 10^{-3(13)/7} \\approx 2.7 \\times 10^{-6}$ of the light.\n\n**General problem-solving steps for any log-scale formula:**\n1. Identify which quantity is unknown.\n2. Substitute the known values.\n3. Isolate the logarithm.\n4. Rewrite in exponential form (or evaluate the log with a calculator)."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "logarithmic scale",
+      "definition": "A scale that records the logarithm of a quantity, so each step represents multiplication by a fixed factor (often 10)."
+    },
+    {
+      "term": "order of magnitude",
+      "definition": "A power of 10; values that differ by one order of magnitude differ by a factor of about 10."
+    },
+    {
+      "term": "pH",
+      "definition": "$\\text{pH} = -\\log[\\text{H}^+]$; below 7 is acidic, 7 neutral, above 7 alkaline."
+    },
+    {
+      "term": "hydronium ion concentration",
+      "definition": "$[\\text{H}^+]$, measured in mol/L; $[\\text{H}^+] = 10^{-\\text{pH}}$."
+    },
+    {
+      "term": "decibel (dB)",
+      "definition": "Unit of sound level; a difference of 10 dB corresponds to a tenfold ratio of intensities."
+    },
+    {
+      "term": "Richter scale",
+      "definition": "$M = \\log\\left(\\frac{I}{I_0}\\right)$; each increase of 1 in magnitude is 10 times the intensity."
+    },
+    {
+      "term": "apparent magnitude",
+      "definition": "How bright a star appears from Earth; smaller values mean brighter stars."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "pH",
+      "latex": "\\text{pH} = -\\log[\\text{H}^+],\\qquad [\\text{H}^+] = 10^{-\\text{pH}}",
+      "meaning": "Concentration in mol/L."
+    },
+    {
+      "name": "Difference in sound level",
+      "latex": "\\beta_2 - \\beta_1 = 10\\log\\left(\\frac{I_2}{I_1}\\right)",
+      "meaning": "β in dB, I in W/m²."
+    },
+    {
+      "name": "Sound level",
+      "latex": "\\beta = 10\\log\\left(\\frac{I}{I_0}\\right),\\quad I_0 = 10^{-12}\\ \\text{W/m}^2",
+      "meaning": "Relative to the threshold of hearing."
+    },
+    {
+      "name": "Richter scale",
+      "latex": "M = \\log\\left(\\frac{I}{I_0}\\right),\\qquad \\frac{I_2}{I_1} = 10^{M_2 - M_1}",
+      "meaning": "Compare earthquakes by subtracting magnitudes."
+    },
+    {
+      "name": "Stellar magnitude",
+      "latex": "m_2 - m_1 = 2.5\\log\\left(\\frac{b_1}{b_2}\\right)",
+      "meaning": "Smaller magnitude = brighter."
+    },
+    {
+      "name": "Welding shade number",
+      "latex": "n = 1 - \\frac{7\\log T}{3}",
+      "meaning": "T = fraction of light transmitted."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "pH of household substances",
+      "problem": "(a) Tomato juice has $[\\text{H}^+] \\approx 0.0001$ mol/L. Find its pH. (b) Orange juice has pH 3. Find $[\\text{H}^+]$. (c) How many times as concentrated in hydronium ions is orange juice?",
+      "steps": [
+        "(a) pH $= -\\log 0.0001 = -(-4) = 4$.",
+        "(b) $[\\text{H}^+] = 10^{-3} = 0.001$ mol/L.",
+        "(c) $\\frac{0.001}{0.0001} = 10$. A pH difference of 1 means a tenfold difference in concentration."
+      ],
+      "answer": "(a) pH 4 (b) 0.001 mol/L (c) 10 times"
+    },
+    {
+      "title": "pH with a calculator",
+      "problem": "Ammonia has $[\\text{H}^+] = 3.2 \\times 10^{-12}$ mol/L. Find its pH and classify it.",
+      "steps": [
+        "pH $= -\\log(3.2 \\times 10^{-12}) \\approx -(-11.49) = 11.49$.",
+        "Since 11.5 > 7, ammonia is alkaline."
+      ],
+      "answer": "pH ≈ 11.5, alkaline."
+    },
+    {
+      "title": "Comparing sounds",
+      "problem": "(a) How many times as intense as a whisper (30 dB) is a conversation (60 dB)? (b) City traffic is 85 dB; a snowmobile is 32 times as intense. Find the snowmobile's level.",
+      "steps": [
+        "(a) $60 - 30 = 10\\log\\frac{I_2}{I_1} \\Rightarrow 3 = \\log\\frac{I_2}{I_1} \\Rightarrow \\frac{I_2}{I_1} = 10^3 = 1000$.",
+        "(b) $\\beta_2 - 85 = 10\\log 32 \\approx 15.05 \\Rightarrow \\beta_2 \\approx 100$ dB."
+      ],
+      "answer": "(a) 1000 times (b) about 100 dB"
+    },
+    {
+      "title": "Earthquake intensity",
+      "problem": "(a) How many times as intense as a standard earthquake is a magnitude 2.4 earthquake? (b) What is the magnitude of an earthquake 1000 times as intense as standard?",
+      "steps": [
+        "(a) $2.4 = \\log\\frac{I}{I_0} \\Rightarrow \\frac{I}{I_0} = 10^{2.4} \\approx 251$.",
+        "(b) $M = \\log 1000 = 3$."
+      ],
+      "answer": "(a) about 251 times (b) magnitude 3"
+    },
+    {
+      "title": "Star brightness",
+      "problem": "Sirius has apparent magnitude −1.5 and Betelgeuse 0.12. How many times as bright does Sirius appear?",
+      "steps": [
+        "Let star 1 be Sirius and star 2 Betelgeuse: $0.12 - (-1.5) = 2.5\\log\\frac{b_1}{b_2}$.",
+        "$1.62 = 2.5\\log\\frac{b_1}{b_2} \\Rightarrow \\log\\frac{b_1}{b_2} = 0.648 \\Rightarrow \\frac{b_1}{b_2} = 10^{0.648} \\approx 4.4$."
+      ],
+      "answer": "Sirius appears about 4.4 times as bright as Betelgeuse."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "A magnitude 8 earthquake is twice as intense as a magnitude 4 earthquake.",
+      "fact": "Each step of 1 is a factor of 10: $10^{8-4} = 10\\,000$ times as intense."
+    },
+    {
+      "myth": "60 dB is twice as loud as 30 dB.",
+      "fact": "30 dB more is $10^3 = 1000$ times the intensity."
+    },
+    {
+      "myth": "A higher pH means more acidic.",
+      "fact": "Because of the negative sign, **lower** pH means **more** hydronium ions — more acidic."
+    },
+    {
+      "myth": "A star with magnitude 3 is brighter than one with magnitude 1.",
+      "fact": "On the stellar scale smaller (even negative) magnitudes are brighter."
+    },
+    {
+      "myth": "A whisper (30 dB) is three times as loud as rustling leaves (10 dB).",
+      "fact": "The difference is 20 dB, so the intensity ratio is $10^2 = 100$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Chemistry and health",
+      "body": "Swimming pools are kept near pH 7.4; a drop to 6.4 makes the water 10 times as acidic, irritating eyes and corroding equipment."
+    },
+    {
+      "title": "Hearing protection",
+      "body": "Workplaces require hearing protection above about 85 dB, because each extra 10 dB is ten times the sound energy reaching the ear."
+    },
+    {
+      "title": "Earthquakes in Ontario",
+      "body": "Ontario has small earthquakes, e.g. North Bay (2001) at about magnitude 4, which was 10 000 times as intense as a standard low-level quake."
+    },
+    {
+      "title": "Astronomy",
+      "body": "Astronomers compare star brightness with magnitudes; the Sun's apparent magnitude is about −26.8 because it appears about $1.3 \\times 10^{10}$ times as bright as Sirius."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Find the pH of a solution with $[\\text{H}^+] = 0.000\\,034$ mol/L.",
+      "hint": "Use pH $= -\\log[\\text{H}^+]$.",
+      "solution": "pH $= -\\log 0.000\\,034 \\approx 4.47$ (acidic)."
+    },
+    {
+      "question": "Find $[\\text{H}^+]$ for pH 8.5.",
+      "hint": "$[\\text{H}^+] = 10^{-\\text{pH}}$.",
+      "solution": "$10^{-8.5} \\approx 3.2 \\times 10^{-9}$ mol/L."
+    },
+    {
+      "question": "How many times as intense is a shout (80 dB) as a conversation (60 dB)?",
+      "hint": "Difference 20 dB.",
+      "solution": "$10^{20/10} = 100$ times."
+    },
+    {
+      "question": "A loud car stereo is 110 dB. How many times as intense is a 150 dB rock concert speaker?",
+      "hint": "$\\frac{I_2}{I_1} = 10^{(\\beta_2 - \\beta_1)/10}$.",
+      "solution": "$10^4 = 10\\,000$ times."
+    },
+    {
+      "question": "An earthquake was 10 000 times as intense as $I_0$. What was its magnitude?",
+      "hint": "$M = \\log\\frac{I}{I_0}$.",
+      "solution": "$M = \\log 10\\,000 = 4$."
+    },
+    {
+      "question": "How many times as intense is a magnitude 2.3 earthquake as a magnitude 1.1 earthquake?",
+      "hint": "Subtract magnitudes.",
+      "solution": "$10^{2.3 - 1.1} = 10^{1.2} \\approx 15.8$ times."
+    },
+    {
+      "question": "What shade number of welding glass transmits $\\frac{1}{1000}$ of the light?",
+      "hint": "$n = 1 - \\frac{7\\log T}{3}$.",
+      "solution": "$n = 1 - \\frac{7(-3)}{3} = 1 + 7 = 8$."
+    },
+    {
+      "question": "Why is the pH scale defined with a factor of $-1$?",
+      "hint": "What sign do the logs of tiny concentrations have?",
+      "solution": "Concentrations are less than 1, so their logs are negative; the factor $-1$ makes pH values positive and easy to use."
+    }
+  ],
+  "summary": [
+    "Logarithmic scales compress values spanning many orders of magnitude; each unit step represents a constant ratio.",
+    "pH $= -\\log[\\text{H}^+]$: a decrease of 1 in pH means 10 times the hydronium concentration.",
+    "Sound: $\\beta_2 - \\beta_1 = 10\\log\\frac{I_2}{I_1}$; each 10 dB is a factor of 10 in intensity.",
+    "Richter: $M = \\log\\frac{I}{I_0}$; comparing quakes, $\\frac{I_2}{I_1} = 10^{M_2 - M_1}$.",
+    "Solve log-scale problems by substituting, isolating the log, and rewriting in exponential form."
+  ],
+  "questions": [
+    {
+      "id": "6-5-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m1": {
+          "min": 1.5,
+          "max": 9.5,
+          "step": 0.5
+        },
+        "e1": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "m2": {
+          "min": 1.5,
+          "max": 9.5,
+          "step": 0.5
+        },
+        "e2": {
+          "min": 9,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "Determine the pH of a solution with each hydronium ion concentration, and classify each as acidic, neutral or alkaline.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{m1}} \\times 10^{-{{e1}} }$ mol/L",
+          "answer": {
+            "expr": "-log(m1*10^(-e1))",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{m2}} \\times 10^{-{{e2}} }$ mol/L",
+          "answer": {
+            "expr": "-log(m2*10^(-e2))",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$10^{-7}$ mol/L",
+          "answer": {
+            "expr": "7",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) pH $= -\\log({{m1}} \\times 10^{-{{e1}} }) \\approx {{-log(m1*10^(-e1)):3}}$. Since this is less than 7, the solution is **acidic**.\n\n(b) pH $= -\\log({{m2}} \\times 10^{-{{e2}} }) \\approx {{-log(m2*10^(-e2)):3}}$, which is greater than 7, so the solution is **alkaline**.\n\n(c) pH $= -\\log 10^{-7} = 7$: **neutral**.",
+      "rubric": [
+        {
+          "point": "(a) correct pH",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct classification",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct pH",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct classification",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p1": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "p2": {
+          "choices": [
+            8.3,
+            8.7,
+            9.4,
+            10.2,
+            10.6,
+            11.3
+          ]
+        }
+      },
+      "text": "Determine the hydronium ion concentration, in moles per litre, of a solution with each pH.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "pH {{p1}}",
+          "answer": {
+            "expr": "10^(-p1)",
+            "unit": "mol/L",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "pH {{p2}} (give your answer in scientific notation)"
+        },
+        {
+          "label": "c",
+          "text": "How many times as great is the hydronium ion concentration in (a) as in (b)?",
+          "answer": {
+            "expr": "10^(p2-p1)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Use $[\\text{H}^+] = 10^{-\\text{pH}}$.\n\n(a) $10^{-{{p1}} } = {{10^(-p1)}}$ mol/L.\n\n(b) $10^{-{{p2}} } = 10^{ {{ceil(p2) - p2:2}} } \\times 10^{ {{-ceil(p2)}} } \\approx {{10^(ceil(p2) - p2):3}} \\times 10^{ {{-ceil(p2)}} }$ mol/L.\n\n(c) The solution in (a) has $10^{ {{p2 - p1:3}} } \\approx {{10^(p2-p1):3}}$ times the hydronium concentration of the solution in (b), because their pH values differ by {{p2 - p1:3}}.",
+      "rubric": [
+        {
+          "point": "Rearranges to [H+] = 10^(−pH)",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct ratio with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q03",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "The hydronium ion concentration of most chemicals ranges from about $10^{-15}$ mol/L to $0.1$ mol/L.",
+      "modelAnswer": "(a) On a linear scale from 0 to 0.1, almost every substance (e.g. $10^{-7}$, $10^{-11}$) would be crowded against zero and impossible to tell apart. The logarithm records the exponent, so the whole range becomes a manageable scale from about 1 to 15, with equal spacing for each factor of 10.\n\n(b) The concentrations are less than 1, so their common logarithms are negative (e.g. $\\log 10^{-7} = -7$). Multiplying by $-1$ turns these into positive numbers, which are easier to read and communicate.\n\n(c) Chemical A (pH 6) has $10^{8-6} = 100$ times the hydronium ion concentration of chemical B (pH 8): A is weakly acidic, B is weakly alkaline.",
+      "rubric": [
+        {
+          "point": "Explains why a log scale is used (range of magnitudes)",
+          "marks": 2
+        },
+        {
+          "point": "Explains the factor −1",
+          "marks": 1
+        },
+        {
+          "point": "Correct comparison of the two chemicals",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b1": {
+          "min": 30,
+          "max": 60,
+          "step": 10
+        },
+        "b2": {
+          "min": 80,
+          "max": 120,
+          "step": 10
+        },
+        "r": {
+          "min": 20,
+          "max": 400,
+          "step": 20
+        }
+      },
+      "text": "Use the decibel scale, $\\beta_2 - \\beta_1 = 10\\log\\left(\\dfrac{I_2}{I_1}\\right)$, to answer the following.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many times as intense is a {{b2}} dB sound as a {{b1}} dB sound?",
+          "answer": {
+            "expr": "10^((b2-b1)/10)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "A sound is {{r}} times as intense as a {{b1}} dB sound. What is its sound level?",
+          "answer": {
+            "expr": "b1 + 10*log(r)",
+            "unit": "dB",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{b2}} - {{b1}} = 10\\log\\frac{I_2}{I_1} \\Rightarrow \\log\\frac{I_2}{I_1} = {{(b2-b1)/10}} \\Rightarrow \\frac{I_2}{I_1} = 10^{ {{(b2-b1)/10}} } = {{10^((b2-b1)/10):4}}$.\n\n(b) $\\beta_2 - {{b1}} = 10\\log {{r}} \\approx {{10*log(r):4}} \\Rightarrow \\beta_2 \\approx {{b1 + 10*log(r):4}}$ dB.",
+      "rubric": [
+        {
+          "point": "(a) sets up the equation",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct ratio",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct substitution",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct decibel level",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 200,
+          "max": 400,
+          "step": 5
+        },
+        "saw": {
+          "min": 105,
+          "max": 120,
+          "step": 1
+        }
+      },
+      "text": "The sound as a subway train passes is about {{r}} times as intense as normal city traffic (85 dB). A worker using a power saw hears a sound level of {{saw}} dB.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the sound level of the passing subway train?",
+          "answer": {
+            "expr": "85 + 10*log(r)",
+            "unit": "dB",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many times as intense as city traffic is the power saw?",
+          "answer": {
+            "expr": "10^((saw-85)/10)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Comment on the risk of each sound."
+        }
+      ],
+      "modelAnswer": "(a) $\\beta - 85 = 10\\log {{r}} \\approx {{10*log(r):4}} \\Rightarrow \\beta \\approx {{85 + 10*log(r):4}}$ dB.\n\n(b) ${{saw}} - 85 = 10\\log\\frac{I_2}{I_1} \\Rightarrow \\frac{I_2}{I_1} = 10^{ {{(saw-85)/10}} } \\approx {{10^((saw-85)/10):3}}$ times as intense as city traffic.\n\n(c) Both sounds are above 85 dB, the level at which hearing protection is recommended; the power saw is especially dangerous, since every extra 10 dB is ten times the intensity.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct",
+          "marks": 2
+        },
+        {
+          "point": "(c) sensible safety comment linked to the scale",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1.5,
+          "max": 9.5,
+          "step": 0.25
+        },
+        "e": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "q": {
+          "min": 20,
+          "max": 40,
+          "step": 10
+        }
+      },
+      "text": "The decibel rating of a sound is $\\beta = 10\\log\\left(\\dfrac{I}{I_0}\\right)$, where $I_0 = 10^{-12}$ W/m².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the decibel rating of a rock concert with an intensity of ${{m}} \\times 10^{-{{e}} }$ W/m².",
+          "answer": {
+            "expr": "10*log(m*10^(12-e))",
+            "unit": "dB",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "A radio turned very low has a rating of {{q}} dB. What is its intensity?",
+          "answer": {
+            "expr": "10^(q/10 - 12)",
+            "unit": "W/m²",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\beta = 10\\log\\left(\\dfrac{ {{m}} \\times 10^{-{{e}} } }{10^{-12}}\\right) = 10\\log({{m}} \\times 10^{ {{12-e}} }) \\approx {{10*log(m*10^(12-e)):4}}$ dB.\n\n(b) ${{q}} = 10\\log\\frac{I}{10^{-12}} \\Rightarrow \\log\\frac{I}{10^{-12}} = {{q/10}} \\Rightarrow I = 10^{ {{q/10}} } \\times 10^{-12} = 10^{ {{q/10 - 12}} }$ W/m².",
+      "rubric": [
+        {
+          "point": "(a) correct substitution",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct decibel rating",
+          "marks": 1
+        },
+        {
+          "point": "(b) isolates the log and rewrites in exponential form",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct intensity",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q07",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        },
+        "m1": {
+          "min": 2.1,
+          "max": 3.9,
+          "step": 0.1
+        },
+        "m2": {
+          "min": 0.8,
+          "max": 1.9,
+          "step": 0.1
+        }
+      },
+      "text": "The magnitude of an earthquake is $M = \\log\\left(\\dfrac{I}{I_0}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "An earthquake is {{10^k}} times as intense as $I_0$. What is its magnitude?",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many times as intense as a standard earthquake is one of magnitude {{m1}}?",
+          "answer": {
+            "expr": "10^m1",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "How many times as intense is the magnitude {{m1}} earthquake as one of magnitude {{m2}}?",
+          "answer": {
+            "expr": "10^(m1-m2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $M = \\log {{10^k}} = {{k}}$.\n\n(b) ${{m1}} = \\log\\frac{I}{I_0} \\Rightarrow \\frac{I}{I_0} = 10^{ {{m1}} } \\approx {{10^m1:4}}$ times a standard earthquake.\n\n(c) $\\dfrac{I_2}{I_1} = 10^{ {{m1}} - {{m2}} } = 10^{ {{m1 - m2:3}} } \\approx {{10^(m1-m2):3}}$ times as intense.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) subtracts magnitudes and rewrites as a power of 10",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct ratio",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q08",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "big": {
+          "min": 7,
+          "max": 9,
+          "step": 1
+        },
+        "small": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "A \"great\" earthquake measures about {{big}} on the Richter scale, while a \"light\" earthquake measures about {{small}}. A newspaper headline claims the great earthquake was \"{{big/small:2}} times as strong\".",
+      "modelAnswer": "The claim is wrong. The Richter scale is logarithmic: each increase of 1 in magnitude represents a **tenfold** increase in intensity.\n\n$$\\frac{I_{\\text{great}}}{I_{\\text{light}}} = 10^{ {{big}} - {{small}} } = 10^{ {{big-small}} } = {{10^(big-small)}}$$\n\nSo the great earthquake is {{10^(big-small)}} times as intense, not {{big/small:2}} times. Dividing magnitudes treats the scale as linear, but magnitudes are exponents; the ratio of intensities comes from the *difference* of the exponents.",
+      "rubric": [
+        {
+          "point": "States the claim is incorrect",
+          "marks": 1
+        },
+        {
+          "point": "Explains that each unit is a factor of 10",
+          "marks": 1
+        },
+        {
+          "point": "Calculates the correct intensity ratio",
+          "marks": 2
+        },
+        {
+          "point": "Explains why dividing magnitudes is invalid",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "ma": {
+          "min": -1.5,
+          "max": 1.0,
+          "step": 0.1
+        },
+        "mb": {
+          "min": 2.0,
+          "max": 5.0,
+          "step": 0.1
+        }
+      },
+      "text": "The apparent magnitudes of two stars are compared with $m_2 - m_1 = 2.5\\log\\left(\\dfrac{b_1}{b_2}\\right)$, where $b$ is brightness. Star A has apparent magnitude {{ma}} and star B has apparent magnitude {{mb}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Which star appears brighter? Explain."
+        },
+        {
+          "label": "b",
+          "text": "How many times as bright does the brighter star appear?",
+          "answer": {
+            "expr": "10^((mb-ma)/2.5)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What brightness ratio corresponds to a difference of exactly 5 magnitudes?",
+          "answer": {
+            "expr": "100",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Star A has the smaller magnitude, so it appears brighter.\n\n(b) Let star 1 = A, star 2 = B: ${{mb}} - ({{ma}}) = 2.5\\log\\frac{b_A}{b_B}$\n\n$\\log\\frac{b_A}{b_B} = \\frac{ {{mb - ma:3}} }{2.5} = {{(mb-ma)/2.5:4}} \\Rightarrow \\frac{b_A}{b_B} = 10^{ {{(mb-ma)/2.5:4}} } \\approx {{10^((mb-ma)/2.5):3}}$.\n\n(c) A difference of 5 magnitudes corresponds to $10^{5/2.5} = 100$ times the brightness.",
+      "rubric": [
+        {
+          "point": "Identifies the brighter star with reason",
+          "marks": 1
+        },
+        {
+          "point": "Correct substitution with star order",
+          "marks": 1
+        },
+        {
+          "point": "Correct brightness ratio",
+          "marks": 2
+        },
+        {
+          "point": "Correct result for a 5-magnitude difference",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "s": {
+          "min": 10,
+          "max": 14,
+          "step": 1
+        }
+      },
+      "text": "Welders use a logarithmic scale to choose protective eyewear. The shade number, $n$, is $n = 1 - \\dfrac{7\\log T}{3}$, where $T$ is the fraction of visible light the glass transmits.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What shade number transmits $10^{-{{k}} }$ of the light?",
+          "answer": {
+            "expr": "1 + 7*k/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "What fraction of light does #{{s}} welding glass transmit?",
+          "answer": {
+            "expr": "10^(-3*(s-1)/7)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "How many times as much visible light is transmitted by #2 glasses as by #{{s}} glasses?",
+          "answer": {
+            "expr": "10^(3*(s-2)/7)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) $T = 10^{-{{k}} }$: $n = 1 - \\dfrac{7(-{{k}})}{3} = 1 + \\dfrac{ {{7*k}} }{3} \\approx {{1 + 7*k/3:3}}$.\n\n(b) For #{{s}}: ${{s}} = 1 - \\dfrac{7\\log T}{3} \\Rightarrow \\log T = -\\dfrac{3({{s - 1}})}{7} \\approx {{-3*(s-1)/7:4}} \\Rightarrow T \\approx {{10^(-3*(s-1)/7):3}}$.\n\n(c) #2 glasses: $\\log T = -\\frac{3}{7}$, $T \\approx 0.373$. Ratio: $\\dfrac{10^{-3/7}}{10^{-3({{s-1}})/7}} = 10^{3({{s-2}})/7} \\approx {{10^(3*(s-2)/7):3}}$ times as much light.",
+      "rubric": [
+        {
+          "point": "(a) correct shade number",
+          "marks": 1
+        },
+        {
+          "point": "(b) isolates log T and rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct fraction",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct ratio",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q11",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A student says: \"According to the decibel scale, a whisper (30 dB) is three times as loud as the rustle of leaves (10 dB).\" Correct the statement and justify your correction.",
+      "modelAnswer": "The statement is false. The difference is $30 - 10 = 20$ dB, so\n\n$$20 = 10\\log\\frac{I_2}{I_1} \\Rightarrow \\frac{I_2}{I_1} = 10^2 = 100$$\n\nA whisper is **100 times as intense** as rustling leaves. The decibel scale is logarithmic: each 10 dB increase is a tenfold increase in intensity, so you cannot compare decibel values by dividing them.",
+      "rubric": [
+        {
+          "point": "States the claim is false",
+          "marks": 1
+        },
+        {
+          "point": "Calculates the correct ratio",
+          "marks": 2
+        },
+        {
+          "point": "Explains the logarithmic nature of the scale",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "lo": {
+          "min": 2,
+          "max": 2.6,
+          "step": 0.2
+        },
+        "hi": {
+          "min": 3,
+          "max": 3.6,
+          "step": 0.2
+        }
+      },
+      "text": "The pH of vinegar ranges between {{lo}} and {{hi}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the range of hydronium ion concentration in vinegar. Give the largest value.",
+          "answer": {
+            "expr": "10^(-lo)",
+            "unit": "mol/L",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Classify vinegar as acidic, neutral or alkaline."
+        },
+        {
+          "label": "c",
+          "text": "How many times as concentrated is the strongest vinegar as the weakest?",
+          "answer": {
+            "expr": "10^(hi-lo)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) $[\\text{H}^+] = 10^{-\\text{pH}}$. At pH {{lo}}: $10^{-{{lo}} } \\approx {{10^(-lo):3}}$ mol/L. At pH {{hi}}: $10^{-{{hi}} } \\approx {{10^(-hi):3}}$ mol/L.\n\nSo $[\\text{H}^+]$ ranges from about ${{10^(-hi):3}}$ to ${{10^(-lo):3}}$ mol/L. (Lower pH ↔ higher concentration.)\n\n(b) Vinegar is acidic, because its pH is below 7.\n\n(c) The strongest vinegar has $10^{ {{hi - lo:2}} } \\approx {{10^(hi-lo):3}}$ times the hydronium ion concentration of the weakest.",
+      "rubric": [
+        {
+          "point": "Correct concentration at the lower pH",
+          "marks": 1
+        },
+        {
+          "point": "Correct concentration at the higher pH",
+          "marks": 1
+        },
+        {
+          "point": "Range stated in the correct order",
+          "marks": 1
+        },
+        {
+          "point": "Correct classification",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-5-q13",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Astronauts record the absolute magnitudes of three unknown stars: Cheryl-XI (0.4), Roccolus-III (−1.8) and Biffidus-V (3.2). Absolute magnitudes compare true brightness using $M_2 - M_1 = 2.5\\log\\left(\\dfrac{b_1}{b_2}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many times as bright, in absolute terms, is the brightest star as the least bright star?",
+          "answer": {
+            "expr": "100",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "If the stars have the same apparent brightness, rank them by distance from the astronaut. Explain."
+        }
+      ],
+      "modelAnswer": "(a) Roccolus-III has the smallest absolute magnitude, so it is the brightest.\n\n(i) Compared with Cheryl-XI: $0.4 - (-1.8) = 2.2 = 2.5\\log\\frac{b_1}{b_2} \\Rightarrow \\frac{b_1}{b_2} = 10^{0.88} \\approx 7.6$.\n\n(ii) Compared with Biffidus-V: $3.2 - (-1.8) = 5.0 = 2.5\\log\\frac{b_1}{b_2} \\Rightarrow \\frac{b_1}{b_2} = 10^{2} = 100$.\n\n(b) If the three stars *appear* equally bright, the one that is truly brightest must be farthest away. Ranked from farthest to nearest: Roccolus-III, Cheryl-XI, Biffidus-V.",
+      "rubric": [
+        {
+          "point": "Identifies the brightest star",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio for the second brightest",
+          "marks": 1
+        },
+        {
+          "point": "Correct ratio for the least bright",
+          "marks": 1
+        },
+        {
+          "point": "Correct ranking by distance with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q14",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe the common features of the pH, decibel and Richter scales, and explain why logarithmic scales are useful in the physical sciences.",
+      "modelAnswer": "**Common features:**\n* Each records a **logarithm** of a quantity (concentration, intensity) rather than the quantity itself.\n* Each unit step on the scale represents a constant **ratio** (×10 for pH and Richter, ×10 per 10 dB for sound).\n* Comparisons are made by **subtracting** scale values and rewriting as a power of 10.\n* pH has a negative sign so that values are positive; decibels have a factor of 10 so values are convenient whole numbers.\n\n**Why useful:** the quantities measured vary over many orders of magnitude (e.g. $10^{-15}$ to $10^{-1}$ mol/L, or a trillion-fold range of sound intensity). A log scale compresses this range into small, easy-to-compare numbers and matches how humans perceive some quantities (hearing, brightness).",
+      "rubric": [
+        {
+          "point": "Identifies that each scale uses a logarithm of the quantity",
+          "marks": 1
+        },
+        {
+          "point": "Explains each step represents a constant ratio",
+          "marks": 1
+        },
+        {
+          "point": "Explains comparisons by differences/powers of 10",
+          "marks": 1
+        },
+        {
+          "point": "Explains the usefulness for large ranges",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "w": {
+          "min": 2.0,
+          "max": 2.9,
+          "step": 0.1
+        },
+        "s": {
+          "min": 0.8,
+          "max": 1.5,
+          "step": 0.1
+        }
+      },
+      "text": "Earthquakes in Ontario: an earthquake in Welland measured {{w}} on the Richter scale; one in St. Catharines measured {{s}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many times as intense as a standard earthquake was the Welland earthquake?",
+          "answer": {
+            "expr": "10^w",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How many times as intense was the Welland earthquake as the St. Catharines earthquake?",
+          "answer": {
+            "expr": "10^(w-s)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "The most intense earthquakes measured are about 8.9. Compare them with a standard earthquake.",
+          "answer": {
+            "expr": "10^8.9",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\frac{I}{I_0} = 10^{ {{w}} } \\approx {{10^w:3}}$ times a standard low-level earthquake.\n\n(b) $\\dfrac{I_W}{I_S} = 10^{ {{w}} - {{s}} } = 10^{ {{w - s:2}} } \\approx {{10^(w-s):3}}$ times as intense.\n\n(c) An earthquake of magnitude 8.9 is $10^{8.9} \\approx 7.9 \\times 10^8$ times as intense as a standard earthquake — about $10^{ {{8.9 - w:2}} }$ times the Welland earthquake.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct ratio from the difference of magnitudes",
+          "marks": 2
+        },
+        {
+          "point": "(c) correct comparison",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-5-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 1.5,
+          "max": 6.5,
+          "step": 0.5
+        }
+      },
+      "text": "Ammonia has a hydronium ion concentration of ${{m}} \\times 10^{-12}$ mol/L.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the pH of ammonia?",
+          "answer": {
+            "expr": "-log(m*10^(-12))",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Classify ammonia as acidic, neutral or alkaline."
+        },
+        {
+          "label": "c",
+          "text": "How many times as great is the hydronium ion concentration of pure water?",
+          "answer": {
+            "expr": "10^(-7)/(m*10^(-12))",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) pH $= -\\log({{m}} \\times 10^{-12}) \\approx {{-log(m*10^(-12)):4}}$.\n\n(b) Ammonia is alkaline, because its pH is greater than 7.\n\n(c) Pure water (pH 7) has $10^{-7}$ mol/L, which is about $\\dfrac{10^{-7}}{ {{m}} \\times 10^{-12} } \\approx {{10^(-7)/(m*10^(-12)):3}}$ times the hydronium concentration of ammonia.",
+      "rubric": [
+        {
+          "point": "Correct pH",
+          "marks": 2
+        },
+        {
+          "point": "Correct classification",
+          "marks": 1
+        },
+        {
+          "point": "Correct comparison with water",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

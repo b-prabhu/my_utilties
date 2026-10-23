@@ -1,0 +1,1196 @@
+{
+  "id": "3-3",
+  "number": "3.3",
+  "title": "Rational Functions of the Form f(x) = (ax + b)/(cx + d)",
+  "estimatedMinutes": 80,
+  "overview": "When both the numerator and the denominator are linear, the graph keeps the two-branch shape of $\\frac{1}{x}$ but its horizontal asymptote can be any height. These functions describe real ratios – concentrations, average costs, percentages – and you can read every key feature straight from the coefficients.",
+  "objectives": [
+    "Find the vertical and horizontal asymptotes of $f(x) = \\dfrac{ax+b}{cx+d}$.",
+    "Find the intercepts, domain and range.",
+    "Describe the behaviour near the vertical asymptote and the end behaviour.",
+    "Compare functions and explain the role of each coefficient.",
+    "Write an equation from given key features or a graph.",
+    "Model and solve problems involving ratios such as concentrations and average cost."
+  ],
+  "lessons": [
+    {
+      "id": "form",
+      "title": "Linear over linear",
+      "body": "Now both the numerator and the denominator are linear:\n\n$$f(x) = \\frac{ax + b}{cx + d}$$\n\nThese functions model **ratios that change over time** – a concentration, an average cost, a percentage. Each key feature comes from a different part of the formula:\n\n| Feature | Where it comes from | Result |\n|---|---|---|\n| vertical asymptote | denominator $= 0$ (numerator not also 0) | $x = -\\dfrac{d}{c}$ |\n| horizontal asymptote | behaviour for huge $x$ | $y = \\dfrac{a}{c}$ |\n| $x$-intercept | numerator $= 0$ | $x = -\\dfrac{b}{a}$ |\n| $y$-intercept | $f(0)$ | $y = \\dfrac{b}{d}$ |\n\n**Example:** $f(x) = \\dfrac{x + 3}{x - 2}$: vertical asymptote $x = 2$, horizontal asymptote $y = 1$, $x$-intercept $-3$, $y$-intercept $-1.5$.\n\n```plot\ntitle: f(x) = (x + 3)/(x − 2)\nf: (x+3)/(x-2)\ndomain: -8, 10\nrange: -6, 8\npoints: (-3,0), (0,-1.5)\nasymptote x: 2\nasymptote y: 1\n```\n"
+    },
+    {
+      "id": "ha",
+      "title": "Finding the horizontal asymptote: divide by x",
+      "body": "Why is the horizontal asymptote $y = \\frac{a}{c}$? **Divide every term in the numerator and denominator by $x$:**\n\n$$f(x) = \\frac{ax + b}{cx + d} = \\frac{a + \\frac{b}{x}}{c + \\frac{d}{x}}$$\n\nAs $x \\to \\pm\\infty$, the terms $\\frac{b}{x}$ and $\\frac{d}{x}$ shrink to 0, leaving $\\frac{a}{c}$.\n\n**Example:** $g(x) = \\dfrac{4x - 7}{2x + 1} = \\dfrac{4 - \\frac{7}{x}}{2 + \\frac{1}{x}} \\to \\dfrac{4}{2} = 2$. Horizontal asymptote $y = 2$.\n\n**Which side does it approach from?** Test a large value: $g(1000) = \\frac{3993}{2001} = 1.9955$ – just **below** 2. And $g(-1000) = \\frac{-4007}{-1999} = 2.0045$ – just **above** 2.\n\n> In plain words: for huge $x$, the \"+b\" and \"+d\" are tiny compared with $ax$ and $cx$, so $f(x) \\approx \\frac{ax}{cx} = \\frac{a}{c}$.\n"
+    },
+    {
+      "id": "va",
+      "title": "The vertical asymptote – and the special case of a hole",
+      "body": "Set the denominator to zero: $cx + d = 0 \\Rightarrow x = -\\frac{d}{c}$.\n\n**But check the numerator!** If the numerator is also zero at that $x$, the factor cancels and there is no asymptote. For example\n\n$$\\frac{2x - 6}{x - 3} = \\frac{2(x - 3)}{x - 3} = 2, \\quad x \\ne 3$$\n\nis just the horizontal line $y = 2$ with a single missing point (a **hole**) at $(3, 2)$. You will meet holes again in Section 3.5.\n\n### Behaviour near the vertical asymptote\nTest values on each side. For $f(x) = \\dfrac{x + 3}{x - 2}$: $f(1.99) = \\frac{4.99}{-0.01} = -499$ and $f(2.01) = \\frac{5.01}{0.01} = 501$. So $f(x) \\to -\\infty$ as $x \\to 2^-$ and $f(x) \\to +\\infty$ as $x \\to 2^+$.\n"
+    },
+    {
+      "id": "shape",
+      "title": "Symmetry, slope and the role of each coefficient",
+      "body": "The two branches are **equidistant from the point where the asymptotes cross** – the graph has half-turn symmetry about that point.\n\n**Slope:** on each branch the function is either increasing or decreasing everywhere. Test one point on each side to find out which. For $\\frac{x+3}{x-2}$ both branches are decreasing.\n\n**Rewriting as a transformation of $\\frac{1}{x}$.** Divide (or rearrange) the numerator:\n\n$$\\frac{2x + 3}{x + 1} = \\frac{2(x + 1) + 1}{x + 1} = 2 + \\frac{1}{x + 1}$$\n\nThis is $y = \\frac{1}{x}$ translated 1 unit left and 2 units up: asymptotes $x = -1$ and $y = 2$.\n\n### Comparing functions\n| Function | Vertical asymptote | Horizontal asymptote | $x$-int | $y$-int |\n|---|---|---|---|---|\n| $\\dfrac{2x + 1}{x - 3}$ | $x = 3$ | $y = 2$ | $-0.5$ | $-\\frac{1}{3}$ |\n| $\\dfrac{2x + 5}{x - 3}$ | $x = 3$ | $y = 2$ | $-2.5$ | $-\\frac{5}{3}$ |\n\nChanging $b$ changes the intercepts and how \"stretched\" the curve is, but **not** the asymptotes, domain or range. Changing $d$ shifts the vertical asymptote.\n\n```plot\nf: (2*x+1)/(x-3) | label=(2x + 1)/(x − 3)\nf: (2*x+5)/(x-3) | dashed; label=(2x + 5)/(x − 3)\ndomain: -8, 12\nrange: -8, 12\nasymptote x: 3\nasymptote y: 2\n```\n"
+    },
+    {
+      "id": "equations",
+      "title": "Writing equations from key features",
+      "body": "Work backwards from the table of features.\n\n**Example:** find $f(x) = \\dfrac{ax + b}{cx + d}$ with $x$-intercept $-4$, vertical asymptote $x = 2$ and horizontal asymptote $y = 1$.\n\n* $x$-intercept $-4$ → numerator has the factor $(x + 4)$.\n* vertical asymptote $x = 2$ → denominator has the factor $(x - 2)$.\n* horizontal asymptote $y = 1$ → leading coefficients in the ratio $\\frac{a}{c} = 1$.\n\n$$f(x) = \\frac{x + 4}{x - 2}$$\n\nCheck the $y$-intercept: $f(0) = \\frac{4}{-2} = -2$. If the question also gave a $y$-intercept, this is how you verify it.\n\nIn general, if the $x$-intercept is $p$, the vertical asymptote $x = q$ and the horizontal asymptote $y = r$, then\n\n$$f(x) = \\frac{r(x - p)}{x - q}$$\n"
+    },
+    {
+      "id": "apps",
+      "title": "Applications: concentrations and averages",
+      "body": "Linear-over-linear functions describe how a **ratio** changes.\n\n**Pollutant concentration.** A pond holds 5000 L of clean water. Water carrying 20 g/L of pollutant flows in at 10 L/min. After $t$ minutes the amount of pollutant is $200t$ g and the volume is $5000 + 10t$ L, so\n\n$$C(t) = \\frac{200t}{5000 + 10t} \\text{ g/L}$$\n\nThe horizontal asymptote $C = \\frac{200}{10} = 20$ means the concentration approaches the concentration of the incoming water but never quite reaches it.\n\n```plot\ntitle: C(t) = 200t/(5000 + 10t), t in minutes\nf: 200*x/(5000+10*x)\ndomain: 0, 3000\nrange: 0, 22\nasymptote y: 20\nticks: 500, 5\n```\n\n**Average cost.** If making $x$ items costs a fixed amount $F$ dollars plus $v$ dollars per item, the average cost per item is $A(x) = \\dfrac{vx + F}{x}$, which approaches $v$ as production grows.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "rational function (linear over linear)",
+      "definition": "A function $f(x) = \\dfrac{ax+b}{cx+d}$ with $c \\ne 0$."
+    },
+    {
+      "term": "horizontal asymptote $y = \frac{a}{c}$",
+      "definition": "The value the function approaches as x → ±∞, found by dividing every term by x."
+    },
+    {
+      "term": "hole (point discontinuity)",
+      "definition": "A single missing point on a graph, caused by a factor that cancels from the numerator and denominator."
+    },
+    {
+      "term": "point of symmetry",
+      "definition": "The intersection of the vertical and horizontal asymptotes; the two branches are equidistant from it."
+    },
+    {
+      "term": "end behaviour",
+      "definition": "What the function does as $x \\to \\pm\\infty$, including whether it approaches the horizontal asymptote from above or below."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "General form",
+      "latex": "f(x) = \\frac{ax+b}{cx+d}",
+      "meaning": "Linear numerator and linear denominator."
+    },
+    {
+      "name": "Vertical asymptote",
+      "latex": "x = -\\frac{d}{c}",
+      "meaning": "Provided the numerator is not also zero there."
+    },
+    {
+      "name": "Horizontal asymptote",
+      "latex": "y = \\frac{a}{c}",
+      "meaning": "Ratio of the leading coefficients."
+    },
+    {
+      "name": "Intercepts",
+      "latex": "x = -\\frac{b}{a}, \\quad y = \\frac{b}{d}",
+      "meaning": "Numerator zero; f(0)."
+    },
+    {
+      "name": "Equation from features",
+      "latex": "f(x) = \\frac{r(x-p)}{x-q}",
+      "meaning": "x-intercept p, vertical asymptote x = q, horizontal asymptote y = r."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Determine key features",
+      "problem": "Determine the key features of $f(x) = \\dfrac{x + 3}{x - 2}$ and describe the graph.",
+      "steps": [
+        "**Vertical asymptote:** $x - 2 = 0 \\Rightarrow x = 2$ (the numerator is $5 \\ne 0$ there). Domain $\\{x \\mid x \\ne 2\\}$.",
+        "**Horizontal asymptote:** divide by $x$: $\\frac{1 + 3/x}{1 - 2/x} \\to 1$, so $y = 1$. Range $\\{y \\mid y \\ne 1\\}$.",
+        "**Intercepts:** $x$-intercept $-3$; $y$-intercept $f(0) = -1.5$.",
+        "**Near the asymptote:** $f(1.99) = -499$, $f(2.01) = 501$: $f \\to -\\infty$ as $x \\to 2^-$ and $f \\to +\\infty$ as $x \\to 2^+$.",
+        "**Slope:** test points show the function is decreasing on both branches."
+      ],
+      "answer": "Asymptotes $x = 2$, $y = 1$; intercepts $(-3, 0)$ and $(0, -1.5)$; decreasing on both intervals."
+    },
+    {
+      "title": "Compare rational functions",
+      "problem": "Compare $f(x) = \\dfrac{2x + 1}{x - 3}$ and $g(x) = \\dfrac{2x + 5}{x - 3}$.",
+      "steps": [
+        "Both have vertical asymptote $x = 3$ and horizontal asymptote $y = 2$; same domain and range.",
+        "$x$-intercepts: $f$: $-0.5$; $g$: $-2.5$. $y$-intercepts: $f$: $-\\frac{1}{3}$; $g$: $-\\frac{5}{3}$.",
+        "Rewrite: $f = 2 + \\frac{7}{x-3}$ and $g = 2 + \\frac{11}{x - 3}$, so $g$ is a larger vertical stretch of $\\frac{1}{x-3}$ about $y = 2$."
+      ],
+      "answer": "Same asymptotes, domain and range; different intercepts and stretch."
+    },
+    {
+      "title": "Write an equation from features",
+      "problem": "Write $f(x) = \\dfrac{ax+b}{cx+d}$ with $x$-intercept 3, vertical asymptote $x = -2$ and horizontal asymptote $y = 2$. State the $y$-intercept.",
+      "steps": [
+        "Numerator factor $(x - 3)$, denominator factor $(x + 2)$.",
+        "Horizontal asymptote $\\frac{a}{c} = 2$, so multiply the numerator by 2: $f(x) = \\dfrac{2(x - 3)}{x + 2} = \\dfrac{2x - 6}{x + 2}$.",
+        "$y$-intercept $f(0) = \\frac{-6}{2} = -3$."
+      ],
+      "answer": "$f(x) = \\dfrac{2x - 6}{x + 2}$, $y$-intercept $-3$."
+    },
+    {
+      "title": "Rewrite as a transformation",
+      "problem": "Graph $p(x) = \\dfrac{2x + 3}{x + 1}$ using transformations.",
+      "steps": [
+        "$2x + 3 = 2(x + 1) + 1$, so $p(x) = 2 + \\dfrac{1}{x + 1}$.",
+        "Start with $y = \\frac{1}{x}$, translate 1 left and 2 up.",
+        "Asymptotes $x = -1$, $y = 2$. $x$-intercept $-1.5$, $y$-intercept 3."
+      ],
+      "answer": "$p(x) = 2 + \\dfrac{1}{x+1}$: decreasing on both branches, centre of symmetry $(-1, 2)$."
+    },
+    {
+      "title": "Concentration model",
+      "problem": "$C(t) = \\dfrac{200t}{5000 + 10t}$ g/L. When does the concentration reach 10 g/L?",
+      "steps": [
+        "Solve $\\frac{200t}{5000 + 10t} = 10$: $200t = 50\\,000 + 100t$.",
+        "$100t = 50\\,000$, so $t = 500$ min."
+      ],
+      "answer": "After 500 minutes (about 8.3 h)."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The horizontal asymptote of $\\dfrac{4x - 7}{2x + 1}$ is $y = 4$.",
+      "fact": "It is the **ratio** of the leading coefficients: $y = \\frac{4}{2} = 2$."
+    },
+    {
+      "myth": "The $x$-intercept comes from the denominator.",
+      "fact": "$x$-intercepts come from the **numerator**; the denominator gives the vertical asymptote."
+    },
+    {
+      "myth": "Every zero of the denominator gives a vertical asymptote.",
+      "fact": "Only if the numerator is not also zero there; a common factor gives a **hole** instead."
+    },
+    {
+      "myth": "The graph can never cross its horizontal asymptote, so $y = \\frac{a}{c}$ is excluded from the range.",
+      "fact": "For linear-over-linear functions it is true that $\\frac{a}{c}$ is never reached, but the reason is algebra (solving $f(x) = \\frac{a}{c}$ has no solution), not a rule about asymptotes in general."
+    },
+    {
+      "myth": "Changing the constant $b$ in the numerator moves the asymptotes.",
+      "fact": "$b$ changes the intercepts and the stretch only; $c$ and $d$ fix the vertical asymptote, and $\\frac{a}{c}$ fixes the horizontal one."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Environmental clean-up",
+      "body": "Concentration models like $C(t) = \\frac{200t}{5000+10t}$ help engineers predict how polluted a pond or lake will become after a spill, and how long that will take."
+    },
+    {
+      "title": "Business",
+      "body": "Average cost per item, $\\frac{vx + F}{x}$, falls toward the variable cost $v$ as production grows – the reason large factories can sell more cheaply."
+    },
+    {
+      "title": "Mixing solutions",
+      "body": "Adding $x$ L of pure acid to 10 L of 20% acid gives concentration $\\frac{2 + x}{10 + x}$, which approaches 100% but never reaches it."
+    },
+    {
+      "title": "Sports statistics",
+      "body": "A batting average after $x$ more hits in $x$ more at-bats, $\\frac{h + x}{n + x}$, creeps toward 1.000 – a linear-over-linear function."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Find the vertical asymptote and domain of $f(x) = \\dfrac{3x}{x - 7}$.",
+      "hint": "Denominator equals zero.",
+      "solution": "$x = 7$; domain $\\{x \\mid x \\ne 7\\}$."
+    },
+    {
+      "question": "Find the horizontal asymptote and range of $p(x) = \\dfrac{5x + 1}{x - 6}$.",
+      "hint": "Ratio of leading coefficients.",
+      "solution": "$y = 5$; range $\\{y \\mid y \\ne 5\\}$."
+    },
+    {
+      "question": "Find all intercepts of $h(x) = \\dfrac{x - 2}{x + 4}$.",
+      "hint": "Numerator zero; $h(0)$.",
+      "solution": "$x$-intercept 2, $y$-intercept $-0.5$."
+    },
+    {
+      "question": "Describe the end behaviour of $g(x) = \\dfrac{3 - x}{2 + x}$.",
+      "hint": "Divide by $x$ and test large values.",
+      "solution": "$\\frac{3/x - 1}{2/x + 1} \\to -1$. $g(1000) = -0.995$ (above −1), $g(-1000) = -1.005$ (below −1). So $y \\to -1$ from above as $x \\to \\infty$ and from below as $x \\to -\\infty$."
+    },
+    {
+      "question": "Write an equation for a rational function with $x$-intercept $-4$, $y$-intercept $-2$ and vertical asymptote $x = 2$.",
+      "hint": "Try $\\frac{a(x + 4)}{x - 2}$ and use the $y$-intercept.",
+      "solution": "$f(0) = \\frac{4a}{-2} = -2a = -2$, so $a = 1$: $f(x) = \\dfrac{x + 4}{x - 2}$."
+    },
+    {
+      "question": "Rewrite $q(x) = \\dfrac{3x - 1}{x - 1}$ as a transformation of $\\frac{1}{x}$.",
+      "hint": "Write $3x - 1 = 3(x-1) + 2$.",
+      "solution": "$q(x) = 3 + \\dfrac{2}{x - 1}$: vertical stretch by 2, right 1, up 3."
+    },
+    {
+      "question": "For $k(x) = \\dfrac{6x + 2}{2x - 1}$ list the asymptotes and intercepts.",
+      "hint": "Use the table of features.",
+      "solution": "$x = 0.5$, $y = 3$, $x$-int $-\\frac{1}{3}$, $y$-int $-2$."
+    }
+  ],
+  "summary": [
+    "For $f(x) = \\dfrac{ax+b}{cx+d}$: vertical asymptote $x = -\\frac{d}{c}$ (if the numerator is not also zero there), horizontal asymptote $y = \\frac{a}{c}$.",
+    "The $x$-intercept is $-\\frac{b}{a}$ and the $y$-intercept is $\\frac{b}{d}$.",
+    "Find the horizontal asymptote by dividing every term by $x$ and letting $x \\to \\pm\\infty$.",
+    "The coefficient $b$ stretches the curve but does not change the asymptotes, domain or range; $d$ shifts the vertical asymptote.",
+    "The two branches are equidistant from the intersection of the asymptotes.",
+    "Linear-over-linear functions model concentrations, averages and percentages."
+  ],
+  "questions": [
+    {
+      "id": "3-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{ {{a}}x + {{b}} }{ {{c}}x - {{d}} }$, determine the key features.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical asymptote $x = ?$",
+          "answer": {
+            "expr": "d/c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Horizontal asymptote $y = ?$",
+          "answer": {
+            "expr": "a/c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$x$-intercept.",
+          "answer": {
+            "expr": "-b/a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "$y$-intercept.",
+          "answer": {
+            "expr": "-b/d",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) ${{c}}x - {{d}} = 0 \\Rightarrow x = \\dfrac{ {{d}} }{ {{c}} } \\approx {{d/c:3}}$. (The numerator is not zero there.)\n\n(b) Dividing by $x$: $\\dfrac{ {{a}} + \\frac{ {{b}} }{x} }{ {{c}} - \\frac{ {{d}} }{x} } \\to \\dfrac{ {{a}} }{ {{c}} }$, so $y \\approx {{a/c:3}}$.\n\n(c) $x$-intercept: ${{a}}x + {{b}} = 0 \\Rightarrow x = -\\dfrac{ {{b}} }{ {{a}} } \\approx {{-b/a:3}}$.\n\n(d) $y$-intercept: $f(0) = \\dfrac{ {{b}} }{-{{d}}} \\approx {{-b/d:3}}$.\n\nDomain $\\{x \\mid x \\ne {{d/c:3}}\\}$, range $\\{y \\mid y \\ne {{a/c:3}}\\}$.",
+      "rubric": [
+        {
+          "point": "Vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal asymptote with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q02",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Explain, by dividing each term by $x$, why the horizontal asymptote of $g(x) = \\dfrac{ {{a}}x - {{b}} }{ {{c}}x + {{d}} }$ is $y = \\dfrac{ {{a}} }{ {{c}} }$. Then determine whether the graph approaches the asymptote from above or below as $x \\to +\\infty$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Horizontal asymptote $y = ?$",
+          "answer": {
+            "expr": "a/c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain the reasoning and the direction of approach."
+        }
+      ],
+      "modelAnswer": "$g(x) = \\dfrac{ {{a}} - \\frac{ {{b}} }{x} }{ {{c}} + \\frac{ {{d}} }{x} }$. As $x \\to \\pm\\infty$ the fractions $\\frac{ {{b}} }{x}$ and $\\frac{ {{d}} }{x}$ approach 0, so $g(x) \\to \\frac{ {{a}} }{ {{c}} } \\approx {{a/c:3}}$.\n\nAt $x = 1000$: $g(1000) = \\dfrac{ {{1000*a-b}} }{ {{1000*c+d}} } \\approx {{(1000*a-b)/(1000*c+d):5}}$, which is **less** than {{a/c:4}}, so the graph approaches from **below** as $x \\to +\\infty$.",
+      "rubric": [
+        {
+          "point": "Divides each term by x correctly",
+          "marks": 1
+        },
+        {
+          "point": "Explains terms with x in the denominator → 0",
+          "marks": 1
+        },
+        {
+          "point": "States the asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Tests a large value and concludes direction correctly",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "r": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Write an equation of the form $f(x) = \\dfrac{ax+b}{cx+d}$ whose graph has an $x$-intercept of {{p}}, a vertical asymptote $x = -{{q}}$ and a horizontal asymptote $y = {{r}}$. Then find the $y$-intercept and check all features.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation."
+        },
+        {
+          "label": "b",
+          "text": "Determine the $y$-intercept.",
+          "answer": {
+            "expr": "-r*p/q",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$x$-intercept {{p}} → numerator factor $(x - {{p}})$. Vertical asymptote $x = -{{q}}$ → denominator $(x + {{q}})$. Horizontal asymptote $y = {{r}}$ → ratio of leading coefficients {{r}}.\n\n$f(x) = \\dfrac{ {{r}}(x - {{p}}) }{x + {{q}}} = \\dfrac{ {{r}}x - {{r*p}} }{x + {{q}}}$.\n\n$y$-intercept $f(0) = \\dfrac{-{{r*p}}}{ {{q}} } \\approx {{-r*p/q:3}}$.\n\nCheck: $f({{p}}) = 0$ ✓; denominator zero at $x = -{{q}}$ and numerator $\\ne 0$ there ✓; $\\frac{ {{r}} }{1} = {{r}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Numerator from x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Denominator from vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Leading coefficient from horizontal asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Checks each feature",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q04",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{x + {{b}}}{x - {{d}}}$, determine the intervals on which the function is positive and negative, and whether it is increasing or decreasing on each branch. Use test points.",
+      "modelAnswer": "Key values: $x = -{{b}}$ (zero) and $x = {{d}}$ (vertical asymptote).\n\n| Interval | $x < -{{b}}$ | $-{{b}} < x < {{d}}$ | $x > {{d}}$ |\n|---|---|---|---|\n| test | $x = {{-b-1}}$ | $x = 0$ | $x = {{d+1}}$ |\n| sign | + | − | + |\n\nSlope: $f({{d+1}}) = {{(d+1+b)/1:3}}$ and $f({{d+2}}) = {{(d+2+b)/2:3}}$ – decreasing on the right branch. On the left, $f(-100) \\approx {{(-100+b)/(-100-d):4}}$ and $f(-10) \\approx {{(-10+b)/(-10-d):4}}$ – also decreasing (values fall toward −∞ as $x \\to {{d}}^-$). The function is **decreasing on both branches**.",
+      "rubric": [
+        {
+          "point": "Identifies critical values",
+          "marks": 1
+        },
+        {
+          "point": "Correct sign on each interval with test points",
+          "marks": 3
+        },
+        {
+          "point": "Determines slope on both branches with evidence",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "b2": {
+          "min": 3,
+          "max": 9,
+          "step": 1
+        },
+        "d": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Compare $f(x) = \\dfrac{ {{a}}x + 1}{x - {{d}}}$ and $g(x) = \\dfrac{ {{a}}x + {{b2}} }{x - {{d}}}$. Describe their similarities and differences, and explain the role of the constant in the numerator.",
+      "modelAnswer": "**Same:** vertical asymptote $x = {{d}}$, horizontal asymptote $y = {{a}}$, domain $x \\ne {{d}}$, range $y \\ne {{a}}$, general shape (two branches on opposite corners of the asymptotes).\n\n**Different:** $x$-intercepts $-\\frac{1}{ {{a}} } \\approx {{-1/a:3}}$ and $-\\frac{ {{b2}} }{ {{a}} } \\approx {{-b2/a:3}}$; $y$-intercepts $-\\frac{1}{ {{d}} } \\approx {{-1/d:3}}$ and $-\\frac{ {{b2}} }{ {{d}} } \\approx {{-b2/d:3}}$.\n\nRewriting: $f = {{a}} + \\dfrac{ {{a*d+1}} }{x - {{d}}}$ and $g = {{a}} + \\dfrac{ {{a*d+b2}} }{x - {{d}}}$, so the constant in the numerator acts like a vertical stretch about the asymptote; it does not affect the asymptotes, domain or range.",
+      "rubric": [
+        {
+          "point": "Correct shared features",
+          "marks": 2
+        },
+        {
+          "point": "Correct differing intercepts",
+          "marks": 2
+        },
+        {
+          "point": "Explains the constant as a stretch with no effect on asymptotes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 10,
+          "max": 40,
+          "step": 2
+        },
+        "b": {
+          "min": 200,
+          "max": 900,
+          "step": 50
+        },
+        "t1": {
+          "min": 60,
+          "max": 300,
+          "step": 30
+        }
+      },
+      "text": "After a spill, the concentration of a pollutant in a pond is modelled by $C(t) = \\dfrac{ {{a}}t}{ {{b}} + t}$ grams per litre, where $t$ is the time in minutes.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What concentration does the model approach in the long run?",
+          "answer": {
+            "expr": "a",
+            "unit": "g/L",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the concentration after {{t1}} min.",
+          "answer": {
+            "expr": "a*t1/(b+t1)",
+            "unit": "g/L",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "When does the concentration reach {{a/2}} g/L?",
+          "answer": {
+            "expr": "b",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "State a suitable domain and range and comment on the vertical asymptote."
+        }
+      ],
+      "modelAnswer": "(a) As $t \\to \\infty$, $C(t) = \\dfrac{ {{a}} }{\\frac{ {{b}} }{t} + 1} \\to {{a}}$. The concentration approaches {{a}} g/L in the long run but never reaches it.\n\n(b) $C({{t1}}) = \\dfrac{ {{a}}({{t1}}) }{ {{b}} + {{t1}} } \\approx {{a*t1/(b+t1):3}}$ g/L.\n\n(c) $\\dfrac{ {{a}}t}{ {{b}} + t} = {{a/2}}$ gives ${{a}}t = {{a/2}}({{b}} + t)$, so ${{a/2}}t = {{a*b/2}}$ and $t = {{b}}$ min.\n\n(d) Domain $t \\ge 0$, range $0 \\le C < {{a}}$. The vertical asymptote $t = -{{b}}$ is outside the domain and has no meaning here.",
+      "rubric": [
+        {
+          "point": "Long-run concentration from horizontal asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Correct concentration at given time",
+          "marks": 1
+        },
+        {
+          "point": "Solves for half concentration",
+          "marks": 2
+        },
+        {
+          "point": "Domain/range and asymptote interpretation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "r": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "The graph shows a function of the form $f(x) = \\dfrac{ax + b}{x + d}$ with its asymptotes and $x$-intercept marked.\n\n```plot\nf: {{r}}*(x-{{p}})/(x+{{q}})\ndomain: -12, 12\nrange: -12, 16\npoints: ({{p}},0)\nasymptote x: -{{q}}\nasymptote y: {{r}}\n```\n\nThe marked $x$-intercept is $({{p}}, 0)$, the vertical asymptote is $x = -{{q}}$ and the horizontal asymptote is $y = {{r}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $b$.",
+          "answer": {
+            "expr": "-r*p",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the $y$-intercept to check your equation.",
+          "answer": {
+            "expr": "-r*p/q",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "From the graph: vertical asymptote $x = -{{q}}$ → denominator $x + {{q}}$; horizontal asymptote $y = {{r}}$ → $a = {{r}}$; $x$-intercept {{p}} → numerator $ {{r}}(x - {{p}})$.\n\n$f(x) = \\dfrac{ {{r}}x - {{r*p}} }{x + {{q}}}$, so $a = {{r}}$, $b = -{{r*p}}$, $d = {{q}}$.\n\nCheck: $y$-intercept $f(0) = -\\frac{ {{r*p}} }{ {{q}} } \\approx {{-r*p/q:3}}$, consistent with the graph crossing the $y$-axis below the origin.",
+      "rubric": [
+        {
+          "point": "Reads vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Reads horizontal asymptote and links to a",
+          "marks": 1
+        },
+        {
+          "point": "Uses x-intercept for b",
+          "marks": 2
+        },
+        {
+          "point": "Writes equation and checks y-intercept",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q08",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Rewrite $f(x) = \\dfrac{ {{a}}x + {{b}} }{x + {{d}}}$ in the form $f(x) = {{a}} + \\dfrac{k}{x + {{d}}}$. Use this form to describe the transformations of $y = \\dfrac{1}{x}$, and explain why the two branches are equidistant from the point where the asymptotes meet.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $k$.",
+          "answer": {
+            "expr": "b-a*d",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the transformations and explain the symmetry."
+        }
+      ],
+      "modelAnswer": "${{a}}x + {{b}} = {{a}}(x + {{d}}) + ({{b}} - {{a*d}})$, so\n\n$f(x) = {{a}} + \\dfrac{ {{b-a*d}} }{x + {{d}}}$, i.e. $k = {{b-a*d}}$.\n\nTransformations of $y = \\frac{1}{x}$: vertical stretch by a factor of $|{{b-a*d}}|$ (with a reflection in the $x$-axis if $k < 0$), translation {{d}} units left and {{a}} units up.\n\nSince $y = \\frac{1}{x}$ is symmetric about the origin (a half-turn about $(0,0)$ maps the graph to itself), its image is symmetric about the image of the origin, $(-{{d}}, {{a}})$ – exactly where the asymptotes $x = -{{d}}$ and $y = {{a}}$ intersect.",
+      "rubric": [
+        {
+          "point": "Correct rearrangement and k",
+          "marks": 2
+        },
+        {
+          "point": "Correct transformations including reflection condition",
+          "marks": 2
+        },
+        {
+          "point": "Explains symmetry about intersection of asymptotes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "h": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Explain why $f(x) = \\dfrac{ {{k}}x - {{k*h}} }{x - {{h}}}$ does not have a vertical asymptote at $x = {{h}}$, even though the denominator is zero there. Describe its graph.",
+      "modelAnswer": "Factor the numerator: ${{k}}x - {{k*h}} = {{k}}(x - {{h}})$. So $f(x) = \\dfrac{ {{k}}(x - {{h}}) }{x - {{h}}} = {{k}}$ for $x \\ne {{h}}$.\n\nAt $x = {{h}}$ both the numerator and the denominator are 0, so the function is undefined, but the values near $x = {{h}}$ are all equal to {{k}} – they do not grow without bound. The graph is the horizontal line $y = {{k}}$ with a **hole** at $({{h}}, {{k}})$, not an asymptote.",
+      "rubric": [
+        {
+          "point": "Factors the numerator",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the common factor cancelling",
+          "marks": 1
+        },
+        {
+          "point": "Explains values stay finite near x = h",
+          "marks": 1
+        },
+        {
+          "point": "Describes the line with a hole at the correct point",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{ {{a}}x - 1}{x + {{d}}}$, state the domain and range in set notation. Show algebraically that $f(x)$ can never equal {{a}}.",
+      "modelAnswer": "Domain $\\{x \\in \\mathbb{R} \\mid x \\ne -{{d}}\\}$, range $\\{y \\in \\mathbb{R} \\mid y \\ne {{a}}\\}$.\n\nSuppose $\\dfrac{ {{a}}x - 1}{x + {{d}}} = {{a}}$. Then ${{a}}x - 1 = {{a}}x + {{a*d}}$, so $-1 = {{a*d}}$, which is false. No $x$ gives $f(x) = {{a}}$, confirming that $y = {{a}}$ is excluded from the range (it is the horizontal asymptote).",
+      "rubric": [
+        {
+          "point": "Correct domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct range",
+          "marks": 1
+        },
+        {
+          "point": "Sets up equation f(x) = a",
+          "marks": 1
+        },
+        {
+          "point": "Shows contradiction and concludes",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Estimate the instantaneous rate of change of $f(x) = \\dfrac{x - {{p}}}{x + {{q}}}$ at its $x$-intercept, using a secant from $x = {{p}}$ to $x = {{p}}.001$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the rate of change.",
+          "answer": {
+            "expr": "1/(p+q)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "$x$-intercept: $x = {{p}}$, so $f({{p}}) = 0$.\n\n$f({{p}}.001) = \\dfrac{0.001}{ {{p+q}}.001} \\approx {{0.001/(p+q+0.001):4}}$.\n\nRate $\\approx \\dfrac{ {{0.001/(p+q+0.001):4}} - 0}{0.001} \\approx {{1/(p+q):3}}$.\n\nPositive: the function is increasing as it crosses the $x$-axis.",
+      "rubric": [
+        {
+          "point": "Identifies x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Evaluates second point",
+          "marks": 1
+        },
+        {
+          "point": "Correct secant slope",
+          "marks": 2
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q12",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Describe the end behaviour of $h(x) = \\dfrac{ {{b}} - x}{ {{d}} + x}$ as $x \\to +\\infty$ and as $x \\to -\\infty$, including whether the graph approaches its horizontal asymptote from above or below. Support your answer with calculations.",
+      "modelAnswer": "Divide by $x$: $h(x) = \\dfrac{\\frac{ {{b}} }{x} - 1}{\\frac{ {{d}} }{x} + 1} \\to -1$. Horizontal asymptote $y = -1$.\n\n$h(1000) = \\dfrac{ {{b-1000}} }{ {{d+1000}} } \\approx {{(b-1000)/(d+1000):5}}$, which is **above** −1, so $h \\to -1^+$ (from above) as $x \\to +\\infty$.\n\n$h(-1000) = \\dfrac{ {{b+1000}} }{ {{d-1000}} } \\approx {{(b+1000)/(d-1000):5}}$, which is **below** −1, so $h \\to -1$ from below as $x \\to -\\infty$.",
+      "rubric": [
+        {
+          "point": "Correct horizontal asymptote via division",
+          "marks": 2
+        },
+        {
+          "point": "Correct calculation at a large positive x",
+          "marks": 1
+        },
+        {
+          "point": "Correct calculation at a large negative x",
+          "marks": 1
+        },
+        {
+          "point": "Correct directions of approach",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "F": {
+          "min": 500,
+          "max": 1500,
+          "step": 100
+        },
+        "v": {
+          "min": 20,
+          "max": 40,
+          "step": 5
+        },
+        "x1": {
+          "min": 20,
+          "max": 80,
+          "step": 10
+        },
+        "T": {
+          "min": 50,
+          "max": 70,
+          "step": 5
+        }
+      },
+      "text": "A company's cost to produce $x$ custom jackets is {{F}} dollars in set-up costs plus {{v}} dollars per jacket. The average cost per jacket is $A(x) = \\dfrac{ {{v}}x + {{F}} }{x}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the average cost for {{x1}} jackets.",
+          "answer": {
+            "expr": "(v*x1+F)/x1",
+            "unit": "$",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe the long-run behaviour."
+        },
+        {
+          "label": "c",
+          "text": "How many jackets must be made for the average cost to be at most {{T}} dollars?",
+          "answer": {
+            "expr": "ceil(F/(T-v))",
+            "unit": "jackets",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Interpret the vertical asymptote."
+        }
+      ],
+      "modelAnswer": "(a) $A({{x1}}) = \\dfrac{ {{v}}({{x1}}) + {{F}} }{ {{x1}} } \\approx {{(v*x1+F)/x1:4}}$ dollars.\n\n(b) As $x \\to \\infty$, $A(x) = {{v}} + \\frac{ {{F}} }{x} \\to {{v}}$: horizontal asymptote $A = {{v}}$. The average cost approaches the cost of materials per jacket because the set-up cost is shared among more and more jackets.\n\n(c) ${{v}} + \\dfrac{ {{F}} }{x} \\le {{T}}$ gives $\\dfrac{ {{F}} }{x} \\le {{T-v}}$, so $x \\ge \\dfrac{ {{F}} }{ {{T-v}} } \\approx {{F/(T-v):4}}$. At least {{ceil(F/(T-v))}} jackets are needed.\n\n(d) The vertical asymptote $x = 0$ means the average cost becomes huge for very small orders.",
+      "rubric": [
+        {
+          "point": "Correct average cost",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal asymptote with interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Solves the inequality",
+          "marks": 2
+        },
+        {
+          "point": "Rounds up to whole jackets",
+          "marks": 1
+        },
+        {
+          "point": "Interprets vertical asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q14",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe the roles of the numerator and the denominator in determining the key features of the graph of $f(x) = \\dfrac{ax+b}{cx+d}$.",
+      "modelAnswer": "* **Denominator:** its zero, $x = -\\frac{d}{c}$, gives the vertical asymptote (and so the domain restriction), unless the numerator is also zero there (then there is a hole). The constant $d$ shifts the vertical asymptote.\n* **Numerator:** its zero, $x = -\\frac{b}{a}$, gives the $x$-intercept. The constant $b$ acts like a stretch and changes the intercepts but not the asymptotes.\n* **Both together:** the ratio of the leading coefficients $\\frac{a}{c}$ gives the horizontal asymptote (and the excluded value in the range); the ratio of the constants $\\frac{b}{d}$ gives the $y$-intercept.",
+      "rubric": [
+        {
+          "point": "Denominator → vertical asymptote/domain",
+          "marks": 2
+        },
+        {
+          "point": "Numerator → x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Leading-coefficient ratio → horizontal asymptote/range",
+          "marks": 2
+        },
+        {
+          "point": "Constant ratio → y-intercept; role of b and d",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Summarize all key features of $k(x) = \\dfrac{6x + 2}{2x - 1}$ (asymptotes, intercepts, domain, range, behaviour near the vertical asymptote, end behaviour and intervals of increase or decrease), then describe its graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical asymptote $x = ?$",
+          "answer": {
+            "expr": "0.5",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Horizontal asymptote $y = ?$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$x$-intercept.",
+          "answer": {
+            "expr": "-1/3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Describe the remaining features and the graph."
+        }
+      ],
+      "modelAnswer": "Vertical asymptote $2x - 1 = 0 \\Rightarrow x = 0.5$; horizontal asymptote $y = \\frac{6}{2} = 3$.\n\n$x$-intercept $6x + 2 = 0 \\Rightarrow x = -\\frac{1}{3}$; $y$-intercept $k(0) = -2$.\n\nDomain $x \\ne 0.5$, range $y \\ne 3$.\n\nNear $x = 0.5$: $k(0.49) = \\frac{4.94}{-0.02} = -247$, $k(0.51) = \\frac{5.06}{0.02} = 253$: $k \\to -\\infty$ as $x \\to 0.5^-$ and $k \\to +\\infty$ as $x \\to 0.5^+$.\n\nEnd behaviour: $k(1000) \\approx 3.005$ (above 3), $k(-1000) \\approx 2.995$ (below 3).\n\nRewriting: $k(x) = 3 + \\frac{5}{2x - 1}$, so the function is decreasing on both branches. The branches lie in the top-right and bottom-left regions formed by the asymptotes, symmetric about $(0.5, 3)$.",
+      "rubric": [
+        {
+          "point": "Both asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Both intercepts",
+          "marks": 2
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Behaviour near vertical asymptote",
+          "marks": 1
+        },
+        {
+          "point": "End behaviour direction",
+          "marks": 1
+        },
+        {
+          "point": "Decreasing on both branches with evidence",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p0": {
+          "min": 10,
+          "max": 30,
+          "step": 10
+        },
+        "T": {
+          "min": 50,
+          "max": 80,
+          "step": 10
+        }
+      },
+      "text": "A chemist has 10 L of a solution that is {{p0}}% acid. She adds $x$ litres of pure acid. The concentration of the mixture is $C(x) = \\dfrac{ {{p0/10}} + x}{10 + x}$ (as a decimal).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain why the model is correct."
+        },
+        {
+          "label": "b",
+          "text": "Interpret the horizontal asymptote."
+        },
+        {
+          "label": "c",
+          "text": "How much pure acid gives a {{T}}% solution?",
+          "answer": {
+            "expr": "(T/10-p0/10)/(1-T/100)",
+            "unit": "L",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Acid: ${{p0/10}}$ L in 10 L. After adding $x$ L of pure acid: acid ${{p0/10}} + x$, volume $10 + x$, so $C(x) = \\frac{ {{p0/10}} + x}{10 + x}$.\n\n(b) Horizontal asymptote $C = 1$ (100%): adding more and more acid brings the mixture closer to pure acid but never exactly 100%.\n\n(c) $\\dfrac{ {{p0/10}} + x}{10 + x} = {{T/100}}$: ${{p0/10}} + x = {{T/10}} + {{T/100}}x$, so ${{1-T/100}}x = {{T/10-p0/10}}$ and $x = {{(T/10-p0/10)/(1-T/100):3}}$ L.",
+      "rubric": [
+        {
+          "point": "Explains the model",
+          "marks": 1
+        },
+        {
+          "point": "Horizontal asymptote in context",
+          "marks": 2
+        },
+        {
+          "point": "Sets up and solves the equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct amount",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-3-q17",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "d": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = \\dfrac{x + {{b}}}{x - {{d}}}$, calculate $f({{d}}.01)$ and $f({{d-1}}.99)$ and use them to describe the behaviour of the function near its vertical asymptote.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $f({{d}}.01)$.",
+          "answer": {
+            "expr": "(d+0.01+b)/0.01",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find $f({{d-1}}.99)$.",
+          "answer": {
+            "expr": "(d-0.01+b)/(-0.01)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the behaviour."
+        }
+      ],
+      "modelAnswer": "$f({{d}}.01) = \\dfrac{ {{d+b}}.01}{0.01} \\approx {{(d+0.01+b)/0.01:4}}$.\n\n$f({{d-1}}.99) = \\dfrac{ {{d-1+b}}.99}{-0.01} \\approx {{(d-0.01+b)/(-0.01):4}}$.\n\nSo as $x \\to {{d}}^+$, $f(x) \\to +\\infty$ and as $x \\to {{d}}^-$, $f(x) \\to -\\infty$; the vertical asymptote is $x = {{d}}$.",
+      "rubric": [
+        {
+          "point": "Correct value to the right",
+          "marks": 1
+        },
+        {
+          "point": "Correct value to the left",
+          "marks": 1
+        },
+        {
+          "point": "Correct description of behaviour",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-3-q18",
+      "type": "design",
+      "difficulty": 3,
+      "vars": {
+        "q": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "r": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Design two different rational functions of the form $f(x) = \\dfrac{ax + b}{cx + d}$ that both have vertical asymptote $x = {{q}}$ and horizontal asymptote $y = {{r}}$, but different $x$-intercepts. Give the intercepts of each and explain what is the same and what is different about the graphs.",
+      "modelAnswer": "Any function $\\dfrac{ {{r}}x + b}{x - {{q}}}$ works (with $b \\ne -{{r*q}}$, otherwise there is a hole).\n\nExample 1: $f(x) = \\dfrac{ {{r}}x + {{r}} }{x - {{q}}}$: $x$-intercept $-1$, $y$-intercept $-\\frac{ {{r}} }{ {{q}} } \\approx {{-r/q:3}}$.\n\nExample 2: $g(x) = \\dfrac{ {{r}}x - {{r*(q+2)}} }{x - {{q}}}$: $x$-intercept {{q+2}}, $y$-intercept $\\frac{ {{r*(q+2)}} }{ {{q}} } \\approx {{r*(q+2)/q:3}}$.\n\nSame: asymptotes, domain $x \\ne {{q}}$, range $y \\ne {{r}}$, centre of symmetry $({{q}}, {{r}})$. Different: intercepts and the stretch about the asymptotes; also the branches of $g$ lie in the opposite pair of regions from $f$ (in $g$ the numerator constant makes $k = b + {{r*q}}$ negative), so $g$ increases on each branch while $f$ decreases.",
+      "rubric": [
+        {
+          "point": "Two valid functions with the given asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Correct intercepts for each",
+          "marks": 2
+        },
+        {
+          "point": "Explains what stays the same",
+          "marks": 1
+        },
+        {
+          "point": "Explains differences (intercepts/stretch/branches)",
+          "marks": 1
+        },
+        {
+          "point": "Avoids the hole case or explains it",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

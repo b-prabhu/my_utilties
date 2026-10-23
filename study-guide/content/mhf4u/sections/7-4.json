@@ -1,0 +1,1173 @@
+{
+  "id": "7-4",
+  "number": "7.4",
+  "title": "Techniques for Solving Logarithmic Equations",
+  "estimatedMinutes": 70,
+  "overview": "Now that you can combine logarithms, you can solve equations in which the variable is *inside* a logarithm. The method is always: isolate and combine the logarithms, rewrite in exponential form (or equate arguments), solve — and **check every root** in the original equation.",
+  "objectives": [
+    "Solve simple logarithmic equations by rewriting them in exponential form",
+    "Write any number as a logarithm of a chosen base to equate arguments",
+    "Use the product, quotient and power laws to combine logarithms before solving",
+    "Solve logarithmic equations that lead to quadratic equations",
+    "Identify and reject extraneous roots, and recognise when all roots are valid",
+    "Solve problems involving sound levels and camera f-stops"
+  ],
+  "lessons": [
+    {
+      "id": "two-key-ideas",
+      "title": "Two key ideas",
+      "body": "\nEvery logarithmic equation in this section is solved with one (or both) of these ideas.\n\n**1. Rewrite in exponential form.** By definition,\n\n$$\\log_b x = y \\iff b^y = x$$\n\nSo $\\log(x + 4) = 1$ becomes $x + 4 = 10^1$, giving $x = 6$.\n\n**2. Equal logarithms have equal arguments.** For the same base,\n\n$$\\log_m a = \\log_m b \\;\\Rightarrow\\; a = b$$\n\nbecause a logarithmic function is one-to-one: each output comes from only one input.\n\nAny number can be written as a logarithm, which is what makes idea 2 so useful:\n\n$$2 = \\log_5 25 = \\log 100 = \\log_4 16 = \\log_3 9$$\n\nSo $\\log_5(2x + 3) = 2$ can be written as $\\log_5(2x+3) = \\log_5 25$, giving $2x + 3 = 25$ and $x = 11$.\n"
+    },
+    {
+      "id": "simple-equations",
+      "title": "Simple logarithmic equations",
+      "body": "\n**Steps**\n\n1. **Isolate** the logarithm (move constants, divide by a coefficient).\n2. Rewrite in exponential form (or write the other side as a logarithm with the same base).\n3. Solve the resulting equation.\n4. **Check** that every argument in the original equation is positive.\n\n**Example:** $4 = 2\\log(p - 62)$.\n\n$$2 = \\log(p - 62) \\;\\Rightarrow\\; p - 62 = 10^2 = 100 \\;\\Rightarrow\\; p = 162$$\n\nCheck: $\\log(162 - 62) = \\log 100 = 2$, and $2\\times2 = 4$ ✓.\n\n### Graphical view\n$\\log(x + 4) = 1$ is the $x$-coordinate where $y = \\log(x+4)$ (the graph of $\\log x$ shifted 4 units left) meets the line $y = 1$.\n\n```plot\ntitle: log(x + 4) = 1 has root x = 6\nf: log(x+4) | label=y = log(x + 4)\nf: 1 | dashed; label=y = 1\ndomain: -4, 10\nrange: -2, 2\nticks: 2, 0.5\npoints: (6, 1)\nasymptote x: -4\n```\n"
+    },
+    {
+      "id": "combine-first",
+      "title": "Combine logarithms first",
+      "body": "\nWhen an equation has several logarithms, use the **product, quotient and power laws** to combine them into a single logarithm on each side.\n\n**Example:** $\\log(x - 1) - 1 = -\\log(x + 2)$.\n\n1. Collect the logarithms: $\\log(x - 1) + \\log(x + 2) = 1$.\n2. Product law: $\\log[(x-1)(x+2)] = 1$.\n3. Exponential form: $(x-1)(x+2) = 10$, so $x^2 + x - 2 = 10$.\n4. Standard form: $x^2 + x - 12 = 0$, so $(x + 4)(x - 3) = 0$ and $x = -4$ or $x = 3$.\n5. **Check:** $x = -4$ makes $\\log(x - 1) = \\log(-5)$ undefined, so reject it. $x = 3$ works.\n\nThe only solution is $x = 3$.\n\n> Combining the logs creates the expression $\\log[(x-1)(x+2)]$, which is defined in more places than the original. That is why extraneous roots appear: the original needs **each** argument positive, not just their product.\n"
+    },
+    {
+      "id": "extraneous",
+      "title": "Checking for extraneous roots",
+      "body": "\nA root is **extraneous** if substituting it into the **original** equation makes any argument zero or negative.\n\nIt is **not** true that a quadratic always gives one valid and one extraneous root.\n\n* $\\log\\sqrt[3]{x^2 + 48x} = \\frac23$ gives $x^2 + 48x = 100$, so $x = -50$ or $x = 2$. **Both** are valid, because the only argument is $x^2 + 48x = 100 > 0$ in each case.\n* $2\\log(x - 1) = \\log(x + 1)$ gives $(x-1)^2 = x + 1$, so $x^2 - 3x = 0$ and $x = 0$ or $x = 3$. Only $x = 3$ is valid: $x = 0$ gives $\\log(-1)$.\n\n**A quick checklist**\n\n| For each candidate root | |\n|---|---|\n| Substitute into **every** argument of the **original** equation | All positive? |\n| Evaluate both sides | Equal? |\n| If any argument is $\\le 0$ | Reject: extraneous |\n"
+    },
+    {
+      "id": "applications",
+      "title": "Applications: sound, light and cameras",
+      "body": "\n**Loudness of sound.** In decibels, $L = 10\\log\\dfrac{I}{I_0}$, where $I_0 = 10^{-12}$ W/m² is the quietest sound most people can hear.\n\n* A concert at $I = 0.9$ W/m²: $L = 10\\log\\dfrac{0.9}{10^{-12}} = 10\\log(9\\times10^{11}) \\approx 119.5$ dB.\n* A 20-dB whisper: $20 = 10\\log\\dfrac{I}{10^{-12}} \\Rightarrow \\dfrac{I}{10^{-12}} = 10^2 \\Rightarrow I = 10^{-10}$ W/m².\n\n**Camera f-stops.** Each step of the f-stop doubles the light. The change in setting is $n = \\log_2\\dfrac1p$, where $p$ is the fraction of light available. On a cloudy day with $p = \\frac14$: $n = \\log_2 4 = 2$ stops.\n\n> In each case the method is the same: substitute, **isolate the logarithm**, rewrite in exponential form, solve, and interpret.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "logarithmic equation",
+      "definition": "An equation in which the variable appears in the argument of a logarithm."
+    },
+    {
+      "term": "exponential form",
+      "definition": "The form $b^y = x$ equivalent to $\\log_b x = y$."
+    },
+    {
+      "term": "extraneous root",
+      "definition": "A value found while solving that makes some argument of a logarithm in the original equation zero or negative (or otherwise fails to satisfy it)."
+    },
+    {
+      "term": "argument",
+      "definition": "The expression inside a logarithm. In $\\log(x - 4)$ it is $x - 4$, which must be positive."
+    },
+    {
+      "term": "decibel (dB)",
+      "definition": "A unit of sound level: $L = 10\\log\\frac{I}{I_0}$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Definition of logarithm",
+      "latex": "\\log_b x = y \\iff b^y = x",
+      "meaning": "Switch between logarithmic and exponential form."
+    },
+    {
+      "name": "Equal logarithms",
+      "latex": "\\log_m a = \\log_m b \\;\\Rightarrow\\; a = b",
+      "meaning": "Same base on both sides lets you equate arguments."
+    },
+    {
+      "name": "Product, quotient and power laws",
+      "latex": "\\log(ab) = \\log a + \\log b \\quad \\log\\frac ab = \\log a - \\log b \\quad \\log a^n = n\\log a",
+      "meaning": "Combine terms into a single logarithm before solving."
+    },
+    {
+      "name": "Sound level",
+      "latex": "L = 10\\log\\frac{I}{I_0}, \\quad I_0 = 10^{-12}\\ \\text{W/m}^2",
+      "meaning": "$L$ in decibels, $I$ intensity."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Simple equations",
+      "problem": "Solve (a) $\\log(x - 4) = 1$ (b) $\\log_5(2x + 3) = 2$.",
+      "steps": [
+        "(a) Exponential form: $x - 4 = 10^1$, so $x = 14$. Check: $\\log 10 = 1$ ✓.",
+        "(b) $\\log_5(2x+3) = \\log_5 25$, so $2x + 3 = 25$ and $x = 11$. Check: $\\log_5 25 = 2$ ✓."
+      ],
+      "answer": "(a) $x = 14$ (b) $x = 11$"
+    },
+    {
+      "title": "Combine, factor, reject",
+      "problem": "Solve $\\log(x - 1) - 1 = -\\log(x + 2)$.",
+      "steps": [
+        "$\\log(x-1) + \\log(x+2) = 1$",
+        "$\\log[(x-1)(x+2)] = \\log 10$, so $x^2 + x - 2 = 10$",
+        "$x^2 + x - 12 = 0 \\Rightarrow (x+4)(x-3) = 0$",
+        "$x = -4$ gives $\\log(-5)$: reject. $x = 3$: $\\log 2 - 1 = -0.699$ and $-\\log 5 = -0.699$ ✓."
+      ],
+      "answer": "$x = 3$"
+    },
+    {
+      "title": "Two valid roots",
+      "problem": "Solve $\\log\\sqrt[3]{x^2 + 48x} = \\frac23$.",
+      "steps": [
+        "Power law: $\\frac13\\log(x^2 + 48x) = \\frac23$, so $\\log(x^2 + 48x) = 2$.",
+        "$x^2 + 48x = 100 \\Rightarrow x^2 + 48x - 100 = 0 \\Rightarrow (x + 50)(x - 2) = 0$.",
+        "For $x = -50$: $x^2 + 48x = 2500 - 2400 = 100 > 0$ ✓. For $x = 2$: $4 + 96 = 100 > 0$ ✓."
+      ],
+      "answer": "$x = -50$ or $x = 2$"
+    },
+    {
+      "title": "Investigate: power law then a perfect square",
+      "problem": "Solve $\\log(x + 5) = 2\\log(x - 1)$.",
+      "steps": [
+        "Power law: $\\log(x + 5) = \\log(x - 1)^2$.",
+        "Equate arguments: $x + 5 = x^2 - 2x + 1$, so $x^2 - 3x - 4 = 0$.",
+        "$(x - 4)(x + 1) = 0$, so $x = 4$ or $x = -1$.",
+        "$x = -1$ makes $x - 1 = -2 < 0$: reject. $x = 4$: $\\log 9 = 2\\log 3$ ✓."
+      ],
+      "answer": "$x = 4$"
+    },
+    {
+      "title": "Decibels",
+      "problem": "A car stereo produces 120 dB. What is its sound intensity?",
+      "steps": [
+        "$120 = 10\\log\\dfrac{I}{10^{-12}}$, so $12 = \\log\\dfrac{I}{10^{-12}}$.",
+        "Exponential form: $\\dfrac{I}{10^{-12}} = 10^{12}$.",
+        "$I = 10^{12}\\times10^{-12} = 1$ W/m²."
+      ],
+      "answer": "1 W/m²"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\log(x - 4) = 1$ means $x - 4 = 1$.",
+      "fact": "Rewrite in exponential form: $x - 4 = 10^1 = 10$, so $x = 14$."
+    },
+    {
+      "myth": "A quadratic always gives one valid and one extraneous root.",
+      "fact": "It can give two valid roots (e.g. $\\log\\sqrt[3]{x^2+48x} = \\frac23$), one, or none. Check each one."
+    },
+    {
+      "myth": "A negative root is always extraneous.",
+      "fact": "A root is extraneous only if it makes an **argument** non-positive. $x = -50$ is valid in $\\log\\sqrt[3]{x^2+48x} = \\frac23$."
+    },
+    {
+      "myth": "$\\log(-3) + \\log(-4) = \\log 12$ by the product law.",
+      "fact": "$\\log(-3)$ and $\\log(-4)$ are undefined; the laws only apply to positive arguments."
+    },
+    {
+      "myth": "I can check a root in my simplified equation.",
+      "fact": "Always check in the **original** equation — the simplified one may be defined where the original is not."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Concert sound",
+      "body": "Sound engineers set levels in decibels. Solving $L = 10\\log\\frac{I}{I_0}$ for $I$ tells them the actual intensity reaching the audience — and how much hearing protection is needed."
+    },
+    {
+      "title": "Photography",
+      "body": "Adjusting the aperture by one f-stop doubles or halves the light. Photographers solve $n = \\log_2\\frac1p$ to compensate for cloudy days or bright snow."
+    },
+    {
+      "title": "The human eye",
+      "body": "Our perception of brightness is roughly logarithmic, which is why cameras and displays use logarithmic scales."
+    },
+    {
+      "title": "Chemistry",
+      "body": "pH is a logarithmic scale; finding the hydronium ion concentration from a pH reading means rewriting a logarithmic equation in exponential form."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Solve $\\log(x - 2) = 1$.",
+      "hint": "Exponential form.",
+      "solution": "$x - 2 = 10$, so $x = 12$."
+    },
+    {
+      "question": "Solve $2 = \\log(x - 25)$.",
+      "hint": "$10^2$.",
+      "solution": "$x - 25 = 100$, so $x = 125$."
+    },
+    {
+      "question": "Solve $1 + \\log(w + 7) = 0$.",
+      "hint": "Isolate the log first.",
+      "solution": "$\\log(w+7) = -1$, so $w + 7 = 0.1$ and $w = -6.9$. Check: $w + 7 = 0.1 > 0$ ✓."
+    },
+    {
+      "question": "Solve $\\log_3(x - 4) = 2$.",
+      "hint": "$3^2$.",
+      "solution": "$x - 4 = 9$, so $x = 13$."
+    },
+    {
+      "question": "Solve $5 = \\log_2(2x + 10)$.",
+      "hint": "$2^5 = 32$.",
+      "solution": "$2x + 10 = 32$, so $x = 11$."
+    },
+    {
+      "question": "Solve $\\log x + \\log(x + 3) = 1$.",
+      "hint": "Product law, then factor.",
+      "solution": "$x^2 + 3x - 10 = 0 \\Rightarrow (x+5)(x-2) = 0$. Reject $x = -5$. $x = 2$."
+    },
+    {
+      "question": "Solve $\\log\\sqrt{x^2 + 3x} = \\frac12$.",
+      "hint": "Power law: $\\frac12\\log(x^2+3x) = \\frac12$.",
+      "solution": "$x^2 + 3x = 10 \\Rightarrow x = -5$ or $x = 2$. Both make $x^2 + 3x = 10 > 0$, so both are valid."
+    },
+    {
+      "question": "Solve $2\\log(x - 1) = \\log(x + 1)$.",
+      "hint": "Power law, then equate arguments.",
+      "solution": "$x^2 - 2x + 1 = x + 1 \\Rightarrow x(x - 3) = 0$. Reject $x = 0$ ($\\log(-1)$). $x = 3$."
+    }
+  ],
+  "summary": [
+    "Rewrite $\\log_b x = y$ as $b^y = x$, or write both sides as logarithms with the same base and equate arguments.",
+    "Isolate logarithms and combine them using the product, quotient and power laws before converting.",
+    "Quadratic equations may result: solve by factoring or the quadratic formula.",
+    "Check every root in the original equation; reject any that make an argument zero or negative.",
+    "A quadratic can produce two, one or no valid roots.",
+    "Graphing both sides and finding intersections confirms the algebraic solution."
+  ],
+  "questions": [
+    {
+      "id": "7-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "d": {
+          "min": 20,
+          "max": 80,
+          "step": 5
+        }
+      },
+      "text": "Solve each equation and check your solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log(x - {{a}}) = 1$",
+          "answer": {
+            "expr": "10+a",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log(x + {{c}}) = 2$",
+          "answer": {
+            "expr": "100-c",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "$4 = 2\\log(p - {{d}})$",
+          "answer": {
+            "expr": "100+d",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $x - {{a}} = 10^1 \\Rightarrow x = {{10+a}}$. Check: $\\log 10 = 1$ ✓.\n\n(b) $x + {{c}} = 10^2 \\Rightarrow x = {{100-c}}$. Check: $\\log 100 = 2$ ✓.\n\n(c) $\\log(p - {{d}}) = 2 \\Rightarrow p = {{100+d}}$.",
+      "rubric": [
+        {
+          "point": "(a) correct with check",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct with check",
+          "marks": 1
+        },
+        {
+          "point": "(c) isolates the log before converting",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            5
+          ]
+        },
+        "k": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "c": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\log_{ {{b}} }({{c}}x + {{d}}) = {{k}}$. Show the step where you rewrite the equation in exponential form, and check your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "(b^k-d)/c",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Exponential form: ${{c}}x + {{d}} = {{b}}^{ {{k}} } = {{b^k}}$.\n\n${{c}}x = {{b^k-d}}$, so $x = \\frac{ {{b^k-d}} }{ {{c}} } \\approx {{(b^k-d)/c:4}}$.\n\nCheck: ${{c}}x + {{d}} = {{b^k}} > 0$ and $\\log_{ {{b}} }{{b^k}} = {{k}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Solves the linear equation",
+          "marks": 1
+        },
+        {
+          "point": "Checks the argument is positive",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve each equation. Check each solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$1 + \\log(w + 7) = 0$",
+          "answer": {
+            "expr": "-6.9",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log(k + 8) = 2$",
+          "answer": {
+            "expr": "92",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$6 + 3\\log(2n) = 0$",
+          "answer": {
+            "expr": "0.005",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$9 - \\log_5(x + 100) = 6$",
+          "answer": {
+            "expr": "25",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log(w + 7) = -1 \\Rightarrow w + 7 = 0.1 \\Rightarrow w = -6.9$. Check: $w + 7 = 0.1 > 0$ ✓.\n\n(b) $\\log(k + 8) = 2 \\Rightarrow k = 92$.\n\n(c) $3\\log(2n) = -6 \\Rightarrow \\log(2n) = -2 \\Rightarrow 2n = 0.01 \\Rightarrow n = 0.005$.\n\n(d) $9 - \\log_5(x + 100) = 6 \\Rightarrow \\log_5(x+100) = 3 \\Rightarrow x + 100 = 125 \\Rightarrow x = 25$.",
+      "rubric": [
+        {
+          "point": "(a) isolates the log and handles the negative exponent",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\log x + \\log(x + {{d}}) = \\log {{r*(r+d)}}$. Identify and reject any extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The valid solution.",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Product law: $\\log[x(x + {{d}})] = \\log {{r*(r+d)}}$.\n\nEquate arguments: $x^2 + {{d}}x - {{r*(r+d)}} = 0$, so $(x - {{r}})(x + {{r+d}}) = 0$.\n\n$x = {{r}}$ or $x = -{{r+d}}$.\n\n$x = -{{r+d}}$ makes $\\log x$ undefined: reject. Check $x = {{r}}$: $\\log {{r}} + \\log {{r+d}} = \\log {{r*(r+d)}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Applies the product law",
+          "marks": 1
+        },
+        {
+          "point": "Equates arguments to form a quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Factors and solves",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the negative root with a reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            1,
+            2
+          ]
+        }
+      },
+      "text": "Solve $\\log(x - {{a}}) + \\log(x + {{3-a}}) = 1$. Identify and reject any extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The valid solution.",
+          "answer": {
+            "expr": "a+2",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$\\log[(x - {{a}})(x + {{3-a}})] = 1$, so $(x - {{a}})(x + {{3-a}}) = 10$.\n\nExpand and collect: $x^2 + ({{3-2*a}})x - {{a*(3-a)}} = 10$, so $x^2 + ({{3-2*a}})x - {{a*(3-a)+10}} = 0$.\n\nFactor: $(x - {{a+2}})(x + {{5-a}}) = 0$, so $x = {{a+2}}$ or $x = -{{5-a}}$.\n\n$x = -{{5-a}}$ makes $x - {{a}} < 0$: reject.\n\nThe solution is $x = {{a+2}}$. Check: $\\log 2 + \\log 5 = \\log 10 = 1$ ✓.",
+      "rubric": [
+        {
+          "point": "Product law",
+          "marks": 1
+        },
+        {
+          "point": "Rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Forms and factors the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the extraneous root",
+          "marks": 1
+        },
+        {
+          "point": "Checks the valid root",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "choices": [
+            1,
+            2,
+            4,
+            5
+          ]
+        }
+      },
+      "derived": {
+        "p": "100/r - r"
+      },
+      "text": "Solve $\\log\\sqrt[3]{x^2 + {{p}}x} = \\frac23$. Check both roots for validity.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The positive root.",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "The negative root.",
+          "answer": {
+            "expr": "-100/r",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Power law: $\\frac13\\log(x^2 + {{p}}x) = \\frac23$, so $\\log(x^2 + {{p}}x) = 2$ and $x^2 + {{p}}x = 100$.\n\n$x^2 + {{p}}x - 100 = 0 \\Rightarrow (x - {{r}})(x + {{100/r}}) = 0$, so $x = {{r}}$ or $x = -{{100/r}}$.\n\nCheck: for each root, $x^2 + {{p}}x = 100 > 0$, so the argument is positive and $\\log\\sqrt[3]{100} = \\frac13(2) = \\frac23$ ✓. **Both roots are valid.**",
+      "rubric": [
+        {
+          "point": "Writes the radical as a power and applies the power law",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quadratic x² + px − 100 = 0",
+          "marks": 1
+        },
+        {
+          "point": "Factors and solves",
+          "marks": 1
+        },
+        {
+          "point": "Checks both roots and concludes both are valid",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-4-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve each equation. Check for extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log\\sqrt{x^2 + 3x} = \\frac12$ — give the positive root",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log\\sqrt{x^2 - 48x} = 1$ — give the positive root",
+          "answer": {
+            "expr": "50",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\frac12\\log(x^2 + 3x) = \\frac12 \\Rightarrow x^2 + 3x = 10 \\Rightarrow (x + 5)(x - 2) = 0$. Both $x = -5$ and $x = 2$ give $x^2 + 3x = 10 > 0$: both valid.\n\n(b) $\\frac12\\log(x^2 - 48x) = 1 \\Rightarrow x^2 - 48x = 100 \\Rightarrow (x - 50)(x + 2) = 0$. Both $x = 50$ and $x = -2$ give $x^2 - 48x = 100 > 0$: both valid.",
+      "rubric": [
+        {
+          "point": "(a) correct equation in x",
+          "marks": 1
+        },
+        {
+          "point": "(a) both roots, both checked",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct equation in x",
+          "marks": 1
+        },
+        {
+          "point": "(b) both roots, both checked",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $\\log_2(x - 4) + \\log_2(x - 2) = 3$. Identify any extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The valid solution.",
+          "answer": {
+            "expr": "6",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$\\log_2[(x-4)(x-2)] = 3 \\Rightarrow (x - 4)(x - 2) = 8$.\n\n$x^2 - 6x + 8 = 8 \\Rightarrow x^2 - 6x = 0 \\Rightarrow x(x - 6) = 0$.\n\n$x = 0$ makes $x - 4 = -4 < 0$: extraneous.\n\n$x = 6$: $\\log_2 2 + \\log_2 4 = 1 + 2 = 3$ ✓.",
+      "rubric": [
+        {
+          "point": "Product law and exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Forms and solves the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Rejects x = 0 with a reason",
+          "marks": 1
+        },
+        {
+          "point": "Verifies x = 6",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\log({{a}}k + {{c}}) - \\log k = 1$ and check your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $k$.",
+          "answer": {
+            "expr": "c/(10-a)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Quotient law: $\\log\\dfrac{ {{a}}k + {{c}} }{k} = 1$, so $\\dfrac{ {{a}}k + {{c}} }{k} = 10$.\n\n${{a}}k + {{c}} = 10k \\Rightarrow {{10-a}}k = {{c}} \\Rightarrow k = \\frac{ {{c}} }{ {{10-a}} } \\approx {{c/(10-a):4}}$.\n\nCheck: $k > 0$ and ${{a}}k + {{c}} > 0$, and the left side equals $\\log 10 = 1$ ✓.",
+      "rubric": [
+        {
+          "point": "Quotient law",
+          "marks": 1
+        },
+        {
+          "point": "Exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Solves for k",
+          "marks": 1
+        },
+        {
+          "point": "Checks the arguments are positive",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "I": {
+          "min": 0.5,
+          "max": 0.9,
+          "step": 0.1
+        },
+        "W": {
+          "choices": [
+            10,
+            20,
+            30
+          ]
+        }
+      },
+      "text": "**Chapter problem.** The loudness of a sound, in decibels, is $L = 10\\log\\dfrac{I}{I_0}$, where $I$ is the intensity in W/m² and $I_0 = 1.0\\times10^{-12}$ W/m².",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The intensity at a concert is {{I}} W/m². How loud is the concert?",
+          "answer": {
+            "expr": "10*log(I/10^(-12))",
+            "unit": "dB",
+            "sig": 4,
+            "tol": 0.003
+          }
+        },
+        {
+          "label": "b",
+          "text": "A whisper has a loudness of {{W}} dB. What is its intensity?",
+          "answer": {
+            "expr": "10^(W/10-12)",
+            "unit": "W/m²",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "A car stereo produces 120 dB. What is its intensity?",
+          "answer": {
+            "expr": "1",
+            "unit": "W/m²",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $L = 10\\log\\dfrac{ {{I}} }{10^{-12}} \\approx {{10*log(I/10^(-12)):4}}$ dB.\n\n(b) ${{W}} = 10\\log\\dfrac{I}{10^{-12}} \\Rightarrow \\dfrac{I}{10^{-12}} = 10^{ {{W/10}} } \\Rightarrow I = 10^{ {{W/10-12}} }$ W/m².\n\n(c) $120 = 10\\log\\dfrac{I}{10^{-12}} \\Rightarrow I = 10^{12}\\times10^{-12} = 1$ W/m².",
+      "rubric": [
+        {
+          "point": "(a) correct substitution and value",
+          "marks": 1
+        },
+        {
+          "point": "(b) isolates the log and converts to exponential form",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct intensity",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct intensity",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "m": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The change in f-stop setting needed on a camera is $n = \\log_2\\dfrac1p$, where $p$ is the fraction of light available.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "On a cloudy day only $\\frac{1}{ {{2^k}} }$ of the sunlight is available. By how many f-stops must the setting change?",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "If the setting changes by {{m}} f-stops, what fraction of the light falls on the sensor?",
+          "answer": {
+            "expr": "1/2^m",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $p = \\frac{1}{ {{2^k}} }$: $n = \\log_2 {{2^k}} = {{k}}$ stops.\n\n(b) $n = {{m}}$: $\\frac1p = 2^{ {{m}} } = {{2^m}}$, so $p = \\frac{1}{ {{2^m}} } \\approx {{1/2^m:3}}$.",
+      "rubric": [
+        {
+          "point": "(a) substitutes and evaluates the logarithm",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct number of stops",
+          "marks": 1
+        },
+        {
+          "point": "(b) rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct fraction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "r": {
+          "min": 4,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "derived": {
+        "a": "r^2-3*r+1"
+      },
+      "text": "Solve $\\log(x + {{a}}) = 2\\log(x - 1)$ algebraically. Identify any extraneous roots, and explain how a graph confirms your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The valid solution.",
+          "answer": {
+            "expr": "r",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Power law: $\\log(x + {{a}}) = \\log(x - 1)^2$, so $x + {{a}} = x^2 - 2x + 1$.\n\n$x^2 - 3x - {{a-1}} = 0 \\Rightarrow (x - {{r}})(x + {{r-3}}) = 0$, so $x = {{r}}$ or $x = -{{r-3}}$.\n\n$x = -{{r-3}}$ makes $x - 1 < 0$, so $\\log(x - 1)$ is undefined: reject.\n\n$x = {{r}}$: left $\\log {{r+a}}$, right $2\\log {{r-1}} = \\log {{(r-1)^2}}$ ✓.\n\nGraph $y_1 = \\log(x + {{a}})$ and $y_2 = 2\\log(x - 1)$: they intersect once, at $x = {{r}}$. The graph of $y_2$ only exists for $x > 1$, so there is no intersection at the negative root.",
+      "rubric": [
+        {
+          "point": "Applies the power law",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Factors and solves",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the extraneous root with a reason",
+          "marks": 1
+        },
+        {
+          "point": "Explains the graphical confirmation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q13",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Consider the statement: *\\\"When solving a logarithmic equation that results in a quadratic, you always obtain two roots: one valid and one extraneous.\\\"* Do you agree or disagree? Justify your answer with at least **two** counterexamples or supporting examples.",
+      "modelAnswer": "Disagree.\n\n* $\\log\\sqrt[3]{x^2 + 48x} = \\frac23$ gives $x = -50$ and $x = 2$ — **both valid**.\n* $\\log x + \\log(x+3) = 1$ gives $x = -5$ (extraneous) and $x = 2$ (valid) — one of each.\n* A quadratic could also have a double root, or no real roots (e.g. $\\log(x^2 + 1) = \\log(x - 5)$ leads to $x^2 - x + 6 = 0$, which has none).\n\nThe number of valid roots depends on whether each root keeps every argument of the original equation positive.",
+      "rubric": [
+        {
+          "point": "States disagreement",
+          "marks": 1
+        },
+        {
+          "point": "Gives a correct example with two valid roots",
+          "marks": 2
+        },
+        {
+          "point": "Gives a second correct example (one valid, or none)",
+          "marks": 1
+        },
+        {
+          "point": "Explains the general principle for validity",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q14",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Consider $\\log_4(x - 5) = 2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show that each of $\\log_2 4$, $\\log_4 16$, $\\log_5 25$ and $\\log 100$ equals the right side."
+        },
+        {
+          "label": "b",
+          "text": "Which would you use to rewrite the right side, and why?"
+        },
+        {
+          "label": "c",
+          "text": "Solve the equation.",
+          "answer": {
+            "expr": "21",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_2 4 = 2$, $\\log_4 16 = 2$, $\\log_5 25 = 2$, $\\log 100 = 2$ — all equal 2.\n\n(b) $\\log_4 16$ is the most useful, because it has the same base as the left side, so the arguments can be equated: $x - 5 = 16$.\n\n(c) $x = 21$. Check: $\\log_4 16 = 2$ ✓.",
+      "rubric": [
+        {
+          "point": "(a) shows each expression equals 2",
+          "marks": 1
+        },
+        {
+          "point": "(b) chooses log_4 16 with a reason",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Decide whether each statement is valid. Explain your reasoning.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log(-3) + \\log(-4) = \\log 12$"
+        },
+        {
+          "label": "b",
+          "text": "$-\\log 3 - \\log 4 = -\\log 12$"
+        }
+      ],
+      "modelAnswer": "(a) Not valid: $\\log(-3)$ and $\\log(-4)$ are undefined because logarithms of negative numbers do not exist. The product law only applies to positive arguments, so the statement has no meaning even though $(-3)(-4) = 12$.\n\n(b) Valid: $-\\log 3 - \\log 4 = -(\\log 3 + \\log 4) = -\\log 12$, and all arguments are positive.",
+      "rubric": [
+        {
+          "point": "(a) correct conclusion",
+          "marks": 1
+        },
+        {
+          "point": "(a) explains that the arguments must be positive",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct conclusion",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct justification using the product law",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q16",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Solve $\\log(x + {{a}}) = 2 - \\log x$. Give the solution correct to two decimal places and sketch (describe) the graphical solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "(-a+sqrt(a*a+400))/2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\log x + \\log(x + {{a}}) = 2 \\Rightarrow x(x + {{a}}) = 100 \\Rightarrow x^2 + {{a}}x - 100 = 0$.\n\n$$x = \\frac{-{{a}}\\pm\\sqrt{ {{a*a}} + 400} }{2}$$\n\n$x \\approx {{(-a+sqrt(a*a+400))/2:4}}$ or $x \\approx {{(-a-sqrt(a*a+400))/2:4}}$. The negative root makes $\\log x$ undefined: reject.\n\nGraph $y_1 = \\log(x + {{a}})$ and $y_2 = 2 - \\log x$: one is increasing, the other decreasing, and they cross once, at $x \\approx {{(-a+sqrt(a*a+400))/2:3}}$.",
+      "rubric": [
+        {
+          "point": "Collects logs and applies the product law",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Applies the quadratic formula",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the negative root",
+          "marks": 1
+        },
+        {
+          "point": "Describes the graphical solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q17",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\frac23 = \\log\\sqrt[3]{w^2 + 10w}$ algebraically and check for extraneous roots. Give exact answers and approximations.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The positive root.",
+          "answer": {
+            "expr": "-5+5*sqrt(5)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "The negative root.",
+          "answer": {
+            "expr": "-5-5*sqrt(5)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\frac13\\log(w^2 + 10w) = \\frac23 \\Rightarrow \\log(w^2 + 10w) = 2 \\Rightarrow w^2 + 10w - 100 = 0$.\n\n$$w = \\frac{-10\\pm\\sqrt{100 + 400}}{2} = -5 \\pm 5\\sqrt5$$\n\n$w \\approx 6.18$ or $w \\approx -16.18$.\n\nBoth give $w^2 + 10w = 100 > 0$, so **both are valid**.",
+      "rubric": [
+        {
+          "point": "Uses the power law to remove the cube root",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Exact roots by the quadratic formula",
+          "marks": 1
+        },
+        {
+          "point": "Approximations",
+          "marks": 1
+        },
+        {
+          "point": "Checks both roots",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q18",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Show that if $\\log_b a = c$ and $\\log_y b = c$, then $\\log_a y = c^{-2}$ (for suitable positive values with $c \\ne 0$).",
+      "modelAnswer": "From $\\log_b a = c$: $a = b^c$. From $\\log_y b = c$: $b = y^c$.\n\nSubstitute: $a = (y^c)^c = y^{c^2}$.\n\nSo $y = a^{\\frac{1}{c^2}}$, which in logarithmic form is $\\log_a y = \\frac{1}{c^2} = c^{-2}$. ∎",
+      "rubric": [
+        {
+          "point": "Rewrites both statements in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes to express a in terms of y",
+          "marks": 1
+        },
+        {
+          "point": "Solves for y as a power of a",
+          "marks": 1
+        },
+        {
+          "point": "Writes the result in logarithmic form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q19",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe **two different methods** for checking whether a root of a logarithmic equation is extraneous. Illustrate both methods with the equation $\\log_2 x + \\log_2(x + 2) = 3$, whose algebra gives $x = 2$ or $x = -4$.",
+      "modelAnswer": "**Method 1 — substitution:** substitute each root into every argument of the original equation. $x = -4$ gives $\\log_2(-4)$, undefined: extraneous. $x = 2$: $\\log_2 2 + \\log_2 4 = 1 + 2 = 3$ ✓.\n\n**Method 2 — graphing:** graph $y_1 = \\log_2 x + \\log_2(x+2)$ and $y_2 = 3$. $y_1$ exists only for $x > 0$, and the graphs meet only at $x = 2$, so $x = -4$ is not a solution.\n\n(Another acceptable method: find the domain of the original equation first — here $x > 0$ — and reject any root outside it.)",
+      "rubric": [
+        {
+          "point": "Describes a substitution method",
+          "marks": 1
+        },
+        {
+          "point": "Applies it correctly to both roots",
+          "marks": 1
+        },
+        {
+          "point": "Describes a second method (graphing or domain)",
+          "marks": 1
+        },
+        {
+          "point": "Applies it correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-4-q20",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $\\log_3(n^2 - 3n + 5) = 2$. Determine whether either root is extraneous, and explain why.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "The positive root.",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "The negative root.",
+          "answer": {
+            "expr": "-1",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "$n^2 - 3n + 5 = 3^2 = 9 \\Rightarrow n^2 - 3n - 4 = 0 \\Rightarrow (n - 4)(n + 1) = 0$, so $n = 4$ or $n = -1$.\n\nCheck: $n = 4$: $16 - 12 + 5 = 9 > 0$ ✓. $n = -1$: $1 + 3 + 5 = 9 > 0$ ✓.\n\nNeither root is extraneous: in both cases the only argument equals 9, which is positive. (The quadratic $n^2 - 3n + 5$ is actually positive for every $n$.)",
+      "rubric": [
+        {
+          "point": "Rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Solves the quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Checks both roots in the original",
+          "marks": 1
+        },
+        {
+          "point": "Explains why neither is extraneous",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

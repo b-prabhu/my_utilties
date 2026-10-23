@@ -1,0 +1,1108 @@
+{
+  "id": "5-5",
+  "number": "5.5",
+  "title": "Making Connections and Instantaneous Rate of Change",
+  "estimatedMinutes": 75,
+  "overview": "Sinusoidal models describe Ferris wheels, temperatures, daylight and populations. Here you will calculate average rates of change, estimate instantaneous rates of change of sinusoidal functions, discover that these rates follow their own sinusoidal pattern, and interpret rates in real contexts.",
+  "objectives": [
+    "Calculate average rates of change of sinusoidal functions over an interval.",
+    "Estimate instantaneous rates of change by shrinking intervals, and interpret them in context.",
+    "Recognise that the instantaneous rates of change of a sinusoidal function follow a sinusoidal pattern.",
+    "Identify where a sinusoidal function's rate of change is zero, greatest and least.",
+    "Build sinusoidal models from data and connect them to rates of change."
+  ],
+  "lessons": [
+    {
+      "id": "average-rate",
+      "title": "Average rate of change of a sinusoidal function",
+      "body": "The **average rate of change** of $f$ from $x=a$ to $x=b$ is the slope of the **secant** joining the two points:\n\n$$\\text{average rate of change}=\\frac{f(b)-f(a)}{b-a}$$\n\nFor a height $h(t)$ in metres and time in seconds, this is the **average vertical velocity** in m/s.\n\n**Example.** A Ferris wheel car has height $h=20\\sin\\left(\\frac{\\pi t}{60}\\right)+25$. From $t=5$ to $t=10$ s:\n\n$$\\frac{h(10)-h(5)}{10-5}=\\frac{\\left[20\\sin\\frac{\\pi}{6}+25\\right]-\\left[20\\sin\\frac{\\pi}{12}+25\\right]}{5}\\approx\\frac{35-30.176}{5}\\approx0.965\\text{ m/s}$$\n\nBecause a sine curve is always bending, the average rate depends strongly on **which** interval you choose."
+    },
+    {
+      "id": "instantaneous",
+      "title": "Estimating the instantaneous rate of change",
+      "body": "The **instantaneous rate of change** at a point is the slope of the **tangent** there. Estimate it by shrinking the interval:\n\n| Interval | Average rate of change of $h=20\\sin\\left(\\frac{\\pi t}{60}\\right)+25$ |\n|---|---|\n| $5\\le t\\le10$ | $0.965$ |\n| $9\\le t\\le10$ | $0.920$ |\n| $9.9\\le t\\le10$ | $0.908$ |\n| $9.99\\le t\\le10$ | $0.907$ |\n\nThe values settle down to about **0.907 m/s** – the car's vertical speed at $t=10$ s.\n\n```plot\ntitle: Secant lines approach the tangent at t = 10\nf: 20*sin(pi*x/60)+25 | label=h(t)\nf: 0.907*(x-10)+35 | dashed; label=tangent at t = 10\ndomain: 0, 60\nrange: 20, 50\nticks: 10, 5\npoints: (10,35)\n```\n\nYou can also use a **centred** interval such as $9.99\\le t\\le10.01$, which usually gives a more accurate estimate with the same width.\n\n**Interpreting the sign.** Positive → the quantity is increasing (car rising); negative → decreasing; zero → at a maximum or minimum (car momentarily neither rising nor falling)."
+    },
+    {
+      "id": "pattern",
+      "title": "The rates of change of sine and cosine are sinusoidal",
+      "body": "Estimate the instantaneous rate of change of $f(x)=\\sin x$ at several points (for example with $h=0.001$):\n\n| $x$ | $0$ | $\\frac{\\pi}{6}$ | $\\frac{\\pi}{4}$ | $\\frac{\\pi}{3}$ | $\\frac{\\pi}{2}$ | $\\pi$ | $\\frac{3\\pi}{2}$ | $2\\pi$ |\n|---|---|---|---|---|---|---|---|---|\n| $\\sin x$ | $0$ | $0.5$ | $0.71$ | $0.87$ | $1$ | $0$ | $-1$ | $0$ |\n| rate of change | $1$ | $0.87$ | $0.71$ | $0.5$ | $0$ | $-1$ | $0$ | $1$ |\n\nPlotting the rates gives another sinusoidal curve – it matches the graph of $y=\\cos x$!\n\n\n```plot\ntitle: y = sin x and the graph of its instantaneous rates of change\nf: sin(x) | label=y = sin x\nf: cos(x) | dashed; label=rate of change of sin x\ndomain: 0, 2*pi\nrange: -1.5, 1.5\nxticks: pi\n```\n\n\nWhy this makes sense:\n* At a **maximum or minimum** of $\\sin x$ ($\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$) the tangent is horizontal: rate $0$.\n* Where $\\sin x$ crosses its **midline** the graph is steepest: rate $\\pm1$ (the greatest and least rates).\n* $\\sin x$ is periodic, so its slopes repeat with the same period.\n\nSimilarly, the rates of change of $\\cos x$ follow the graph of $y=-\\sin x$. For a model $h=a\\sin(kt)+c$, the greatest rate of change is about $a\\cdot k$ and happens at the midline."
+    },
+    {
+      "id": "modelling-data",
+      "title": "Modelling data and connecting rates",
+      "body": "Many real processes repeat without involving angles: temperatures, hours of daylight, tides, populations, the Moon's phases.\n\n**Building a sinusoidal model from data**\n1. Plot the data (scatter plot).\n2. $a=\\frac{\\max-\\min}{2}$, $c=\\frac{\\max+\\min}{2}$.\n3. Period from the repeating cycle (12 months, 365 days, 29.5 days, …) → $k=\\frac{2\\pi}{\\text{period}}$.\n4. Phase shift: a sine maximum normally occurs $\\frac14$ of a period after the start, so $d=t_{\\max}-\\frac{T}{4}$.\n5. Graph the model on the scatter plot, comment on the fit, and (optionally) compare with sinusoidal regression.\n\n**Example.** Moose Factory, Ontario: max 22.4 °C (month 7), min −14.0 °C (month 1).\n$a=\\frac{22.4-(-14.0)}{2}=18.2$, $c=\\frac{22.4+(-14.0)}{2}=4.2$, $k=\\frac{\\pi}{6}$, $d=7-3=4$:\n$$T=18.2\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+4.2$$\n\n**Rates in context.** The instantaneous rate of change of temperature in °C per month tells you how quickly it is warming or cooling; it is greatest in spring and fall (midline crossings) and zero at the hottest and coldest times.\n\n**Predator and prey.** If wolves follow $P=500+100\\sin t$ and deer follow $p=2000+500\\cos t$, the deer peak a quarter-cycle **before** the wolves: when wolves are increasing, the deer population is decreasing, and vice versa.\n\n\n```plot\ntitle: Deer (p/4, scaled) and wolves P over time\nf: 500+100*sin(x) | label=wolves P(t)\nf: (2000+500*cos(x))/4 | dashed; label=deer p(t) ÷ 4\ndomain: 0, 4*pi\nrange: 300, 700\nxticks: pi\n```"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "average rate of change",
+      "definition": "$\\frac{f(b)-f(a)}{b-a}$ – the slope of the secant between two points."
+    },
+    {
+      "term": "instantaneous rate of change",
+      "definition": "The rate of change at a single point – the slope of the tangent – estimated by shrinking the interval."
+    },
+    {
+      "term": "secant line",
+      "definition": "A line through two points on a curve."
+    },
+    {
+      "term": "tangent line",
+      "definition": "A line that touches a curve at a point and has the same slope as the curve there."
+    },
+    {
+      "term": "sinusoidal model",
+      "definition": "A function of the form $a\\sin[k(x-d)]+c$ used to describe periodic data."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Average rate of change",
+      "latex": "\\frac{\\Delta y}{\\Delta x}=\\frac{f(b)-f(a)}{b-a}",
+      "meaning": "Units: units of $y$ per unit of $x$."
+    },
+    {
+      "name": "Estimate of instantaneous rate",
+      "latex": "\\frac{f(a+h)-f(a)}{h}\\ \\text{ or }\\ \\frac{f(a+h)-f(a-h)}{2h},\\quad h\\text{ small}",
+      "meaning": "Use $h=0.01$ or $0.001$."
+    },
+    {
+      "name": "Phase shift from a maximum (sine model)",
+      "latex": "d=t_{\\max}-\\frac{T}{4}",
+      "meaning": "A sine maximum occurs a quarter period after the cycle starts."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Vertical speed on a Ferris wheel",
+      "problem": "For $h=20\\sin\\left(\\frac{\\pi t}{60}\\right)+25$, find the average rates of change on $[9,10]$ and $[9.99,10]$, estimate the instantaneous rate at $t=10$, and interpret it.",
+      "steps": [
+        "$h(10)=20\\sin\\frac{\\pi}{6}+25=35$; $h(9)=20\\sin(0.15\\pi)+25\\approx34.080$.",
+        "$[9,10]$: $\\frac{35-34.080}{1}\\approx0.920$ m/s.",
+        "$h(9.99)\\approx34.9909$; $[9.99,10]$: $\\frac{35-34.9909}{0.01}\\approx0.907$ m/s.",
+        "The rates settle near $0.907$ m/s: the car is rising at about $0.91$ m/s at $t=10$ s."
+      ],
+      "answer": "Instantaneous rate ≈ 0.907 m/s (the car's vertical velocity)."
+    },
+    {
+      "title": "Will the rate be the same later?",
+      "problem": "Using the same model, is the instantaneous rate of change at $t=15$ s the same as at $t=10$ s?",
+      "steps": [
+        "Estimate with $[14.99,15]$: $h(15)=20\\sin\\frac{\\pi}{4}+25\\approx39.142$; $h(14.99)\\approx39.1347$.",
+        "Rate $\\approx\\frac{39.142-39.1347}{0.01}\\approx0.74$ m/s.",
+        "It is smaller: the car is approaching the top ($t=30$ s), where the rate becomes 0."
+      ],
+      "answer": "No – about 0.74 m/s at 15 s, because the slope of a sine curve changes continually."
+    },
+    {
+      "title": "Model temperature data",
+      "problem": "Write a sine model for Moose Factory temperatures (max 22.4 °C in month 7, min −14.0 °C in month 1).",
+      "steps": [
+        "$a=18.2$, $c=4.2$, $k=\\frac{\\pi}{6}$.",
+        "A sine maximum normally occurs at $m=3$; here it is at $m=7$, so $d=4$.",
+        "$T=18.2\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+4.2$.",
+        "A sinusoidal regression gives about $T\\approx18.3\\sin[0.5(m-4.2)]+4.1$ – very close."
+      ],
+      "answer": "$T=18.2\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+4.2$."
+    },
+    {
+      "title": "Where is the rate zero or greatest?",
+      "problem": "For $f(x)=\\cos x$ on $[0,2\\pi]$, where is the instantaneous rate of change 0, and where is it greatest and least?",
+      "steps": [
+        "Zero at the maximum and minimum: $x=0,\\ \\pi,\\ 2\\pi$.",
+        "Steepest where the graph crosses its midline: $x=\\frac{\\pi}{2}$ (falling, rate $-1$, the least) and $x=\\frac{3\\pi}{2}$ (rising, rate $+1$, the greatest)."
+      ],
+      "answer": "Rate 0 at $0,\\pi,2\\pi$; least $-1$ at $\\frac{\\pi}{2}$; greatest $1$ at $\\frac{3\\pi}{2}$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The average rate of change over any interval is the same for a sine function.",
+      "fact": "Unlike a line, a sine curve's slope keeps changing, so average rates depend on the interval."
+    },
+    {
+      "myth": "The rate of change is greatest at the maximum.",
+      "fact": "At a maximum the rate is **zero**. The rate is greatest where the graph crosses its midline going up."
+    },
+    {
+      "myth": "A negative rate of change means the quantity is negative.",
+      "fact": "A negative rate means the quantity is **decreasing**; the quantity itself can still be positive."
+    },
+    {
+      "myth": "Using $h=1$ is good enough for an instantaneous rate.",
+      "fact": "Large intervals can give poor estimates on curved graphs. Shrink the interval until the values settle."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Speed wobble",
+      "body": "A 'shimmy' in a bicycle, skateboard or grocery cart wheel is an oscillation that can be modelled sinusoidally; engineers care about how fast the angle changes, not just its size."
+    },
+    {
+      "title": "Daylight",
+      "body": "Hours of daylight change fastest near the equinoxes (March and September) and hardly at all near the solstices – exactly where the rate of change of a sinusoidal model is greatest and zero."
+    },
+    {
+      "title": "Ecology",
+      "body": "Predator and prey populations often rise and fall in sinusoidal cycles that are out of phase with each other."
+    },
+    {
+      "title": "Tides",
+      "body": "The rate of change of water depth tells harbour pilots when the tide is rising fastest – halfway between low and high tide."
+    }
+  ],
+  "practice": [
+    {
+      "question": "For $f(x)=\\cos x$, for which $x$ in $[0,2\\pi]$ does the instantaneous rate of change appear to equal 0?",
+      "hint": "Look for horizontal tangents.",
+      "solution": "At the max and min: $x=0,\\pi,2\\pi$."
+    },
+    {
+      "question": "For $h=15\\cos\\left(\\frac{\\pi t}{120}\\right)+18$, find the average rate of change from $t=19$ to $t=20$.",
+      "hint": "Evaluate $h$ at both times in radian mode.",
+      "solution": "$h(20)=15\\cos\\frac{\\pi}{6}+18\\approx30.990$; $h(19)\\approx31.182$; rate $\\approx\\frac{30.990-31.182}{1}\\approx-0.192$ m/s: the car is going down."
+    },
+    {
+      "question": "Estimate the instantaneous rate of change of $f(x)=\\sin x$ at $x=\\frac{\\pi}{3}$.",
+      "hint": "Use $\\frac{f(\\frac{\\pi}{3}+0.001)-f(\\frac{\\pi}{3})}{0.001}$.",
+      "solution": "$\\approx0.4996\\approx0.50$, matching $\\cos\\frac{\\pi}{3}=0.5$."
+    },
+    {
+      "question": "Daylight hours are modelled by $D=3.6\\sin\\left[\\frac{2\\pi}{365}(n-80)\\right]+12.2$. On which days is the rate of change greatest?",
+      "hint": "Greatest when the graph crosses its midline going up.",
+      "solution": "When $n-80=0$, i.e. day 80 (about March 21), the length of the day increases fastest."
+    },
+    {
+      "question": "Explain why the graph of the instantaneous rate of change of a sinusoidal function is also periodic.",
+      "hint": "Think about the shape repeating.",
+      "solution": "The curve repeats exactly every period, so its slopes at corresponding points are identical; the rates therefore repeat with the same period."
+    },
+    {
+      "question": "Wolves: $P=500+100\\sin t$; deer: $p=2000+500\\cos t$ (t in years). What is happening to the deer population while the wolf population is increasing on $\\left(0,\\frac{\\pi}{2}\\right)$?",
+      "hint": "Check the sign of the rate of change of $\\cos t$ there.",
+      "solution": "On $\\left(0,\\frac{\\pi}{2}\\right)$, $\\cos t$ is decreasing, so the deer population is decreasing – more wolves eat more deer."
+    }
+  ],
+  "summary": [
+    "Average rate of change = slope of a secant = $\\frac{f(b)-f(a)}{b-a}$.",
+    "Estimate the instantaneous rate (slope of a tangent) by using smaller and smaller intervals.",
+    "The rate of change is 0 at maxima and minima and greatest in size at midline crossings.",
+    "The instantaneous rates of change of a sinusoidal function themselves follow a sinusoidal pattern (for $\\sin x$ they follow $\\cos x$).",
+    "Periodic data that do not involve angles can be modelled with transformed sinusoidal functions."
+  ],
+  "questions": [
+    {
+      "id": "5-5-q01",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "choices": [
+            15,
+            18,
+            20
+          ]
+        },
+        "P": {
+          "choices": [
+            45,
+            60,
+            90
+          ]
+        },
+        "C": {
+          "choices": [
+            20,
+            22,
+            25
+          ]
+        },
+        "t0": {
+          "choices": [
+            10,
+            15,
+            20
+          ]
+        }
+      },
+      "text": "The height of a car on a Ferris wheel is $h={{A}}\\sin\\left(\\frac{\\pi t}{ {{P}} }\\right)+{{C}}$, where $h$ is in metres and $t$ in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find the average rate of change of $h$ on i) $[{{t0-5}},{{t0}}]$, ii) $[{{t0-1}},{{t0}}]$, iii) $[{{t0-0.01}},{{t0}}]$.",
+          "answer": {
+            "expr": "(A*sin(pi*t0/P)-A*sin(pi*(t0-0.01)/P))/0.01",
+            "unit": "m/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Estimate the instantaneous rate of change at $t={{t0}}$ s.",
+          "answer": {
+            "expr": "A*pi/P*cos(pi*t0/P)",
+            "unit": "m/s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "What physical quantity does this rate represent?"
+        }
+      ],
+      "modelAnswer": "Use $\\frac{h(t_2)-h(t_1)}{t_2-t_1}$ with the calculator in radian mode.\n\n(a) $h({{t0}})={{A}}\\sin\\left(\\frac{ {{t0}}\\pi}{ {{P}} }\\right)+{{C}}\\approx{{A*sin(pi*t0/P)+C:5}}$.\n\ni) $[{{t0-5}},{{t0}}]$: $\\approx{{(A*sin(pi*t0/P)-A*sin(pi*(t0-5)/P))/5:3}}$ m/s\n\nii) $[{{t0-1}},{{t0}}]$: $\\approx{{A*sin(pi*t0/P)-A*sin(pi*(t0-1)/P):3}}$ m/s\n\niii) $[{{t0-0.01}},{{t0}}]$: $\\approx{{(A*sin(pi*t0/P)-A*sin(pi*(t0-0.01)/P))/0.01:3}}$ m/s\n\n(b) The values settle at about {{A*pi/P*cos(pi*t0/P):3}} m/s.\n\n(c) It is the car's vertical velocity at $t={{t0}}$ s.",
+      "rubric": [
+        {
+          "point": "Correct method for average rate",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for interval i",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for interval ii",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for interval iii",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable estimate of instantaneous rate",
+          "marks": 1
+        },
+        {
+          "point": "Interprets as vertical velocity",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "choices": [
+            12,
+            15,
+            18
+          ]
+        },
+        "P": {
+          "choices": [
+            60,
+            90,
+            120
+          ]
+        },
+        "C": {
+          "choices": [
+            16,
+            18,
+            20
+          ]
+        },
+        "t0": {
+          "choices": [
+            20,
+            30
+          ]
+        }
+      },
+      "text": "The height of a car on a Ferris wheel is $h={{A}}\\cos\\left(\\frac{\\pi t}{ {{P}} }\\right)+{{C}}$ (metres, seconds).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the instantaneous rate of change of $h$ at $t={{t0}}$ s.",
+          "answer": {
+            "expr": "-A*pi/P*sin(pi*t0/P)",
+            "unit": "m/s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Interpret the sign of your answer."
+        },
+        {
+          "label": "c",
+          "text": "Would you expect the same rate at $t={{t0+5}}$ s? Justify.",
+          "answer": {
+            "expr": "-A*pi/P*sin(pi*(t0+5)/P)",
+            "unit": "m/s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) Using $[{{t0-0.01}},{{t0}}]$: rate $\\approx\\dfrac{h({{t0}})-h({{t0-0.01}})}{0.01}\\approx{{-A*pi/P*sin(pi*t0/P):3}}$ m/s.\n\n(b) The rate is negative: the car is moving **down** at about {{A*pi/P*sin(pi*t0/P):3}} m/s.\n\n(c) Not the same at $t={{t0+5}}$ s: the slope of a cosine curve changes continually. Estimating there gives about {{-A*pi/P*sin(pi*(t0+5)/P):3}} m/s.",
+      "rubric": [
+        {
+          "point": "Correct estimate at t0",
+          "marks": 2
+        },
+        {
+          "point": "Interprets sign as moving down",
+          "marks": 1
+        },
+        {
+          "point": "Second estimate and explanation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q03",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Refer to the graph of $y=\\sin x$ on $[0,2\\pi]$. (a) As $x$ increases from 0 to $\\frac{\\pi}{2}$, what happens to the instantaneous rate of change? Why? (b) Where does the rate equal 0? (c) Where is it greatest and least, and what are those values?",
+      "modelAnswer": "(a) It decreases from 1 to 0: the curve is steepest at the origin and flattens out as it approaches the maximum.\n\n(b) At the maximum $x=\\frac{\\pi}{2}$ and minimum $x=\\frac{3\\pi}{2}$, where the tangent is horizontal.\n\n(c) Greatest (about 1) at $x=0$ and $x=2\\pi$, where the graph crosses its midline going up; least (about −1) at $x=\\pi$, where it crosses going down.",
+      "rubric": [
+        {
+          "point": "Describes decreasing rate with reason",
+          "marks": 2
+        },
+        {
+          "point": "Zero rates at max and min",
+          "marks": 1
+        },
+        {
+          "point": "Greatest and least with locations and values",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q04",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "Estimate the instantaneous rate of change of $f(x)=\\sin x$ at $x=\\frac{\\pi}{ {{n}} }$ using a small interval, and compare your answer with the value of $\\cos\\frac{\\pi}{ {{n}} }$. What pattern does this suggest about the graph of the rate of change of $y=\\sin x$?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate of the rate at $x=\\frac{\\pi}{ {{n}} }$",
+          "answer": {
+            "expr": "cos(pi/n)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.02
+          }
+        }
+      ],
+      "modelAnswer": "With $h=0.001$: $\\dfrac{\\sin\\left(\\frac{\\pi}{ {{n}} }+0.001\\right)-\\sin\\frac{\\pi}{ {{n}} }}{0.001}\\approx{{(sin(pi/n+0.001)-sin(pi/n))/0.001:3}}$.\n\n$\\cos\\frac{\\pi}{ {{n}} }\\approx{{cos(pi/n):3}}$ – essentially the same.\n\nPattern: the instantaneous rates of change of $y=\\sin x$ follow the graph of $y=\\cos x$ – a sinusoidal curve with the same period, shifted $\\frac{\\pi}{2}$ left.",
+      "rubric": [
+        {
+          "point": "Correct difference quotient",
+          "marks": 1
+        },
+        {
+          "point": "Accurate estimate",
+          "marks": 1
+        },
+        {
+          "point": "Comparison with cosine",
+          "marks": 1
+        },
+        {
+          "point": "States the pattern",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "(a) Sketch (describe) $f(x)=\\cos x$ on $[0,2\\pi]$ and identify where its instantaneous rate of change is 0, greatest and least. (b) Do the instantaneous rates of change of the cosine function follow a sinusoidal pattern? Justify using estimates at $x=0,\\frac{\\pi}{2},\\pi,\\frac{3\\pi}{2},2\\pi$.",
+      "modelAnswer": "(a) Rate 0 at $x=0,\\pi,2\\pi$ (max and min); least ($-1$) at $x=\\frac{\\pi}{2}$ (crossing the midline going down); greatest ($1$) at $x=\\frac{3\\pi}{2}$.\n\n(b) Estimated rates: $0,\\ -1,\\ 0,\\ 1,\\ 0$ – a sinusoidal pattern with period $2\\pi$ that matches $y=-\\sin x$ (the sine graph reflected in the $x$-axis).",
+      "rubric": [
+        {
+          "point": "Correct points with zero rate",
+          "marks": 1
+        },
+        {
+          "point": "Greatest and least rates with locations",
+          "marks": 2
+        },
+        {
+          "point": "Rate estimates at five points",
+          "marks": 1
+        },
+        {
+          "point": "Identifies sinusoidal pattern (−sin x)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q06",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "choices": [
+            2.8,
+            3.2,
+            3.6,
+            4.1
+          ]
+        }
+      },
+      "text": "The durations of daylight in a city are modelled by $D={{a}}\\sin\\left[\\frac{2\\pi}{365}(n-80)\\right]+12.2$, where $D$ is in hours and $n$ is the day of the year.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the maximum and minimum daylight and the days on which they occur.",
+          "answer": {
+            "expr": "12.2+a",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the average rate of change of $D$ from day 80 to the day of maximum daylight.",
+          "answer": {
+            "expr": "a/91.25",
+            "unit": "h/day",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Estimate the instantaneous rate of change on day 80 and explain why it is the greatest of the year.",
+          "answer": {
+            "expr": "a*2*pi/365",
+            "unit": "h/day",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) Max $=12.2+{{a}}={{12.2+a}}$ h when $\\frac{2\\pi}{365}(n-80)=\\frac{\\pi}{2}$, i.e. $n=80+91.25\\approx171$ (about June 20). Min $={{12.2-a}}$ h at $n\\approx80+273.75\\approx354$ (about December 20).\n\n(b) Average rate from day 80 to day 171: $\\dfrac{ {{12.2+a}}-12.2}{91.25}\\approx{{a/91.25:3}}$ h/day ≈ {{a/91.25*60:3}} min/day.\n\n(c) Using $[80,81]$: $\\approx\\dfrac{D(81)-D(80)}{1}\\approx{{a*sin(2*pi/365):3}}$ h/day ≈ {{a*sin(2*pi/365)*60:3}} min/day – the fastest increase of the year, because day 80 is a midline crossing (spring equinox).",
+      "rubric": [
+        {
+          "point": "Correct max and min with days",
+          "marks": 2
+        },
+        {
+          "point": "Correct average rate with units",
+          "marks": 2
+        },
+        {
+          "point": "Correct estimate at day 80",
+          "marks": 1
+        },
+        {
+          "point": "Explains why this is the greatest rate",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q07",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "A": {
+          "choices": [
+            14,
+            16,
+            18
+          ]
+        },
+        "M": {
+          "choices": [
+            3,
+            5,
+            7
+          ]
+        }
+      },
+      "text": "The average maximum daily temperature in a town on the first of each month (month 1 = January) is shown.\n\n| Month | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| T (°C) | {{round(10*(A*sin(pi/6*(1-4))+M+(0)))/10}} | {{round(10*(A*sin(pi/6*(2-4))+M+(0.5)))/10}} | {{round(10*(A*sin(pi/6*(3-4))+M+(-0.4)))/10}} | {{round(10*(A*sin(pi/6*(4-4))+M+(0.3)))/10}} | {{round(10*(A*sin(pi/6*(5-4))+M+(-0.6)))/10}} | {{round(10*(A*sin(pi/6*(6-4))+M+(0.4)))/10}} | {{round(10*(A*sin(pi/6*(7-4))+M+(0)))/10}} | {{round(10*(A*sin(pi/6*(8-4))+M+(-0.3)))/10}} | {{round(10*(A*sin(pi/6*(9-4))+M+(0.5)))/10}} | {{round(10*(A*sin(pi/6*(10-4))+M+(-0.2)))/10}} | {{round(10*(A*sin(pi/6*(11-4))+M+(0.4)))/10}} | {{round(10*(A*sin(pi/6*(12-4))+M+(-0.5)))/10}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write a sine function $T(m)$ to model the data.",
+          "answer": {
+            "expr": "A",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Comment on how well the model fits the data."
+        },
+        {
+          "label": "c",
+          "text": "Estimate the instantaneous rate of change of temperature at month 4 and interpret it.",
+          "answer": {
+            "expr": "A*pi/6",
+            "unit": "°C/month",
+            "sig": 3,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "d",
+          "text": "When is the instantaneous rate of change zero? What does that mean?"
+        }
+      ],
+      "modelAnswer": "(a) Max ≈ {{A+M}} (month 7), min ≈ {{M-A}} (month 1): $a\\approx{{A}}$, $c\\approx{{M}}$, period 12 so $k=\\frac{\\pi}{6}$; max at month 7 so $d=7-3=4$.\n$$T={{A}}\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+{{M}}$$\n\n(b) The model fits closely; small differences come from natural year-to-year variation.\n\n(c) Using $[3.99,4.01]$ or the midline argument, the instantaneous rate at month 4 is about $\\frac{\\pi}{6}({{A}})\\approx{{A*pi/6:3}}$ °C/month: warming fastest in spring.\n\n(d) The rate is 0 at months 1 and 7: the coldest and warmest times, when the temperature momentarily stops changing direction.",
+      "rubric": [
+        {
+          "point": "Correct parameters from data",
+          "marks": 2
+        },
+        {
+          "point": "Correct model",
+          "marks": 1
+        },
+        {
+          "point": "Comment on fit",
+          "marks": 1
+        },
+        {
+          "point": "Correct rate estimate with units",
+          "marks": 1
+        },
+        {
+          "point": "Interprets zero-rate times",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q08",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "The population of wolves in an area is $P(t)=500+100\\sin t$ and the population of deer is $p(t)=2000+500\\cos t$, where $t$ is in years. (a) Describe each graph over 20 years (period, max, min). (b) What happens to the deer population while the wolf population is increasing? while it is decreasing? (c) Explain this relationship in terms of predator and prey.",
+      "modelAnswer": "(a) Both have period $2\\pi\\approx6.28$ years (about three cycles in 20 years). Wolves vary between 400 and 600; deer between 1500 and 2500.\n\n(b) Wolves increase on $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$ (mod $2\\pi$). On $\\left(-\\frac{\\pi}{2},0\\right)$ the deer are still increasing toward their peak at $t=0$, and on $\\left(0,\\frac{\\pi}{2}\\right)$ they are decreasing: while wolves increase, the deer population stops growing and then decreases. While wolves decrease, the deer population stops declining and then increases.\n\n(c) The deer peak a quarter-cycle before the wolves. Many deer (food) let the wolf population grow; more wolves then reduce the deer; with less food the wolves decline, which lets the deer recover.",
+      "rubric": [
+        {
+          "point": "Correct period, max and min for both",
+          "marks": 2
+        },
+        {
+          "point": "Correct relationship while wolves increase and decrease",
+          "marks": 2
+        },
+        {
+          "point": "Ecological explanation with phase lag",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "H": {
+          "choices": [
+            1.2,
+            1.8,
+            2.4
+          ]
+        },
+        "T": {
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "text": "A boat bobs at a dock. The vertical distance between its high and low points is {{H}} m and the cycle repeats every {{T}} s. Its position is modelled by $y={{H/2}}\\sin\\left(\\frac{2\\pi}{ {{T}} }t\\right)$, with $y$ in metres relative to its mean position.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "At what times during a cycle is the instantaneous rate of change 0?",
+          "answer": {
+            "expr": "T/4",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "At what times is it greatest in size?"
+        },
+        {
+          "label": "c",
+          "text": "Estimate the greatest rate of change.",
+          "answer": {
+            "expr": "H/2*2*pi/T",
+            "unit": "m/s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) The rate of change is 0 at the high and low points: $t=\\frac{T}{4}={{T/4:3}}$ s and $t=\\frac{3T}{4}={{3*T/4:3}}$ s in each cycle.\n\n(b) The rate is greatest in size at the mean position: at $t=0$ (and $t={{T}}$) the boat is rising fastest, at $t={{T/2:3}}$ s it is falling fastest.\n\n(c) Estimate at $t=0$ with $[0,0.01]$: $\\approx\\frac{ {{H/2}}\\sin(0.01\\cdot2\\pi/{{T}})}{0.01}\\approx{{H/2*2*pi/T:3}}$ m/s.",
+      "rubric": [
+        {
+          "point": "Times of zero rate with justification",
+          "marks": 2
+        },
+        {
+          "point": "Times of greatest rate with justification",
+          "marks": 2
+        },
+        {
+          "point": "Correct estimate of the maximum rate",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q10",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Design an investigation (using a spreadsheet, graphing calculator or dynamic geometry software) to show that the instantaneous rates of change of $y=\\tan x$ are always positive on $\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right)$ and grow without bound near the asymptotes. Describe the steps, the table you would produce, and what you expect to see.",
+      "modelAnswer": "Steps: for $x=-1.5,-1.0,-0.5,0,0.5,1.0,1.5$ (and values closer to $\\pm\\frac{\\pi}{2}$ such as $\\pm1.55$), compute $\\frac{\\tan(x+0.001)-\\tan x}{0.001}$; record $x$, $\\tan x$ and the rate in a table; plot the rates.\n\nExpected results: all rates are positive (tangent is always increasing between asymptotes); the smallest rate is about 1 at $x=0$; the rates grow very large near $\\pm\\frac{\\pi}{2}$ (e.g. about 1000 at $x=1.54$) because the graph becomes almost vertical; the pattern repeats with period $\\pi$.",
+      "rubric": [
+        {
+          "point": "Clear procedure using small intervals",
+          "marks": 2
+        },
+        {
+          "point": "Appropriate table of values including points near asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Correct predictions with reasons",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q11",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "text": "For $f(x)={{a}}\\sin({{k}}x)$, (a) estimate the instantaneous rate of change at $x=0$, (b) explain how the greatest rate of change relates to the amplitude and period, and (c) predict how the greatest rate changes if the period is halved.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the rate at $x=0$.",
+          "answer": {
+            "expr": "a*k",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.02
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain the relationship."
+        },
+        {
+          "label": "c",
+          "text": "Predict the greatest rate if the period is halved.",
+          "answer": {
+            "expr": "2*a*k",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.02
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\dfrac{ {{a}}\\sin({{k}}(0.001))-0}{0.001}\\approx{{a*k:3}}$.\n\n(b) The graph is steepest at the midline crossings; the greatest rate is about amplitude × $k$ $={{a}}\\times{{k}}={{a*k}}$, i.e. amplitude $\\times\\frac{2\\pi}{\\text{period}}$. A taller wave or a shorter period makes the graph steeper.\n\n(c) Halving the period doubles $k$, so the greatest rate doubles to about {{2*a*k}}.",
+      "rubric": [
+        {
+          "point": "Accurate estimate at 0",
+          "marks": 2
+        },
+        {
+          "point": "Relates greatest rate to amplitude and period",
+          "marks": 2
+        },
+        {
+          "point": "Correct prediction for halved period",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            20,
+            25,
+            30
+          ]
+        },
+        "T": {
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        },
+        "d": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "c": {
+          "choices": [
+            230,
+            235,
+            240
+          ]
+        }
+      },
+      "text": "The number of employees at a company over 11 years is modelled by $E={{a}}\\sin\\left[\\frac{2\\pi}{ {{T}} }(t-{{d}})\\right]+{{c}}$, where $t$ is the year number.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change from year 1 to year 3",
+          "answer": {
+            "expr": "(a*sin(2*pi/T*(3-d))-a*sin(2*pi/T*(1-d)))/2",
+            "unit": "employees/yr",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Estimate the instantaneous rate of change at $t=5$.",
+          "answer": {
+            "expr": "a*2*pi/T*cos(2*pi/T*(5-d))",
+            "unit": "employees/yr",
+            "sig": 3,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "c",
+          "text": "Suggest reasons why the number of employees might fluctuate like this."
+        }
+      ],
+      "modelAnswer": "(a) Average rate from $t=1$ to $t=3$: $\\dfrac{E(3)-E(1)}{2}\\approx{{(a*sin(2*pi/T*(3-d))-a*sin(2*pi/T*(1-d)))/2:3}}$ employees/year.\n\n(b) Estimate at $t=5$ with $[4.99,5.01]$: $\\approx{{a*2*pi/T*cos(2*pi/T*(5-d)):3}}$ employees/year; the sign shows whether staff numbers are rising or falling then.\n\n(c) Business cycles (expansion and contraction of the economy), seasonal demand for bicycles, or hiring and layoffs in response to sales could cause this periodic pattern.",
+      "rubric": [
+        {
+          "point": "Correct average rate",
+          "marks": 2
+        },
+        {
+          "point": "Correct instantaneous estimate",
+          "marks": 2
+        },
+        {
+          "point": "Reasonable explanation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q13",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Explain the difference between the average rate of change and the instantaneous rate of change of a sinusoidal function, referring to secant and tangent lines. Why is the average rate of change of $y=\\sin x$ over $[0,2\\pi]$ equal to 0 even though the function is changing?",
+      "modelAnswer": "The average rate of change is the slope of the secant between two points – the overall change divided by the interval length. The instantaneous rate is the slope of the tangent at one point – how fast the function is changing at that moment – found by shrinking the interval.\n\nOver $[0,2\\pi]$, $\\sin0=\\sin2\\pi=0$, so $\\frac{0-0}{2\\pi}=0$: the function rises and falls but ends where it started. The average hides all the changes in between.",
+      "rubric": [
+        {
+          "point": "Secant/average explanation",
+          "marks": 1
+        },
+        {
+          "point": "Tangent/instantaneous explanation",
+          "marks": 1
+        },
+        {
+          "point": "Explains zero average over a full period",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q14",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "f": {
+          "min": 2,
+          "max": 20,
+          "step": 1
+        }
+      },
+      "text": "The percent of the Moon that is illuminated is modelled by $L=50\\cos\\left[\\frac{2\\pi}{29.5}(t-{{f}})\\right]+50$, where $t$ is the day of the year and the Moon is full on day {{f}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Day of the next new moon",
+          "answer": {
+            "expr": "f+14.75",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average rate of change from full to new moon",
+          "answer": {
+            "expr": "-100/14.75",
+            "unit": "%/day",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Estimate the greatest rate of decrease and when it occurs.",
+          "answer": {
+            "expr": "-50*2*pi/29.5",
+            "unit": "%/day",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "d",
+          "text": "What does this rate represent?"
+        }
+      ],
+      "modelAnswer": "(a) Full moon (100 %) on day {{f}}; new moon (0 %) half a period later, on day $\\approx{{f+14.75:4}}$.\n\n(b) Average rate from the full moon to the next new moon: $\\frac{0-100}{14.75}\\approx-6.78$ % per day.\n\n(c) The rate is greatest in size halfway between, at the quarter phases: e.g. at $t\\approx{{f+7.375:4}}$ the rate is about $-50\\cdot\\frac{2\\pi}{29.5}\\approx-10.6$ % per day (illumination decreasing fastest).\n\n(d) This rate tells you how quickly the visible lit portion is shrinking each day.",
+      "rubric": [
+        {
+          "point": "Correct full/new days",
+          "marks": 1
+        },
+        {
+          "point": "Correct average rate",
+          "marks": 1
+        },
+        {
+          "point": "Locates greatest rate",
+          "marks": 1
+        },
+        {
+          "point": "Correct estimate",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            1.5,
+            2,
+            2.5,
+            3
+          ]
+        },
+        "h": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "choices": [
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "text": "The depth of water in a harbour is $D={{a}}\\cos\\left[\\frac{2\\pi}{12.4}(t-{{h}})\\right]+{{c}}$, where $D$ is in metres and $t$ is hours after midnight.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "When is the next low tide?",
+          "answer": {
+            "expr": "h+6.2",
+            "unit": "h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average rate of change from high to low tide",
+          "answer": {
+            "expr": "-2*a/6.2",
+            "unit": "m/h",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Estimate the greatest rate of decrease and when it occurs.",
+          "answer": {
+            "expr": "-a*2*pi/12.4",
+            "unit": "m/h",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "d",
+          "text": "Why might this rate matter?"
+        }
+      ],
+      "modelAnswer": "(a) High tide ({{a+c}} m) at $t={{h}}$ h; low tide ({{c-a}} m) half a period later, at $t={{h+6.2:3}}$ h.\n\n(b) Average rate from high to low tide: $\\dfrac{ {{c-a}}-{{a+c}} }{6.2}\\approx{{-2*a/6.2:3}}$ m/h.\n\n(c) The water falls fastest halfway between, at $t\\approx{{h+3.1:3}}$ h, where the rate is about $-{{a}}\\cdot\\frac{2\\pi}{12.4}\\approx{{-a*2*pi/12.4:3}}$ m/h.\n\n(d) A ship's pilot needs to know how quickly the depth is changing to decide how long a safe window remains.",
+      "rubric": [
+        {
+          "point": "Times and depths of high and low tide",
+          "marks": 1
+        },
+        {
+          "point": "Average rate",
+          "marks": 1
+        },
+        {
+          "point": "Time of fastest change with reason",
+          "marks": 1
+        },
+        {
+          "point": "Estimate of fastest rate",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-5-q16",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "choices": [
+            10,
+            15,
+            20
+          ]
+        },
+        "P": {
+          "choices": [
+            30,
+            45,
+            60
+          ]
+        },
+        "C": {
+          "choices": [
+            15,
+            20,
+            25
+          ]
+        }
+      },
+      "text": "For $h={{A}}\\sin\\left(\\frac{\\pi t}{ {{P}} }\\right)+{{C}}$, calculate the average rate of change over (a) $[0,{{P}}]$ and (b) $[0,{{2*P}}]$. Explain each result using the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate on $[0,{{P}}]$",
+          "answer": {
+            "expr": "0",
+            "unit": "m/s",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average rate on $[0,{{2*P}}]$",
+          "answer": {
+            "expr": "0",
+            "unit": "m/s",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $h(0)={{C}}$, $h({{P}})={{A}}\\sin\\pi+{{C}}={{C}}$: average rate $=\\frac{ {{C}}-{{C}} }{ {{P}} }=0$. Over this half-period the height rises to the top and comes back down to the midline – no net change.\n\n(b) $h({{2*P}})={{A}}\\sin2\\pi+{{C}}={{C}}$: again 0. A full period always gives zero net change, so the average rate is 0 even though the instantaneous rate is rarely 0.",
+      "rubric": [
+        {
+          "point": "Correct value (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value (b)",
+          "marks": 1
+        },
+        {
+          "point": "Explains using graph/net change",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-5-q17",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A temperature model is $T=18.2\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+4.2$ (°C, month $m$). Without calculating, describe how the instantaneous rate of change of temperature varies through the year: when it is positive, negative, zero, greatest and least. Then estimate the greatest rate.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Estimate the greatest rate of change.",
+          "answer": {
+            "expr": "18.2*pi/6",
+            "unit": "°C/month",
+            "sig": 3,
+            "tol": 0.05
+          }
+        }
+      ],
+      "modelAnswer": "The graph crosses its midline going up at $m=4$, peaks at $m=7$, crosses going down at $m=10$ and is lowest at $m=1$ (and 13).\n\n* Positive (warming) from month 1 to month 7; negative (cooling) from month 7 to month 13.\n* Zero at months 1 and 7 (coldest and warmest).\n* Greatest at month 4 (spring), least at month 10 (fall).\n\nGreatest rate ≈ amplitude × $k$ = $18.2\\cdot\\frac{\\pi}{6}\\approx9.5$ °C per month.",
+      "rubric": [
+        {
+          "point": "Correct positive/negative intervals",
+          "marks": 2
+        },
+        {
+          "point": "Zero-rate months",
+          "marks": 1
+        },
+        {
+          "point": "Greatest and least months",
+          "marks": 1
+        },
+        {
+          "point": "Estimate of greatest rate",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

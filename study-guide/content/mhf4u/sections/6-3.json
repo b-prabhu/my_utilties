@@ -1,0 +1,1240 @@
+{
+  "id": "6-3",
+  "number": "6.3",
+  "title": "Transformations of Logarithmic Functions",
+  "estimatedMinutes": 80,
+  "overview": "Stretch it, flip it, slide it: transformations work on logarithmic functions exactly as they do on other functions. By tracking two **anchor points**, $(1, 0)$ and $(10, 1)$, and the vertical asymptote, you can sketch any function of the form $f(x) = a\\log[k(x - d)] + c$ and find its key features algebraically.",
+  "objectives": [
+    "Describe the roles of $a$, $k$, $d$ and $c$ in $f(x) = a\\log[k(x - d)] + c$.",
+    "Graph transformed logarithmic functions using anchor points and the asymptote.",
+    "Factor the argument to identify horizontal translations correctly.",
+    "Determine the domain, range, asymptote and intercepts of transformed logarithmic functions.",
+    "Write an equation for a transformed logarithmic function from a description or graph."
+  ],
+  "lessons": [
+    {
+      "id": "anchor-points",
+      "title": "The parent function and its anchor points",
+      "body": "Every transformed logarithmic function starts from the **parent function** $y = \\log x$. Three things are worth memorising about it:\n\n* **Anchor point $(1, 0)$** — because $\\log 1 = 0$\n* **Anchor point $(10, 1)$** — because $\\log 10 = 1$\n* **Vertical asymptote $x = 0$** — the graph never touches the $y$-axis\n\nTrack these three things through each transformation and you can sketch any logarithmic graph quickly.\n\n```plot\ntitle: The parent function y = log x\nf: log(x) | label=y = log x\ndomain: -1, 12\nrange: -3, 2\npoints: (1,0), (10,1), (0.1,-1)\nasymptote x: 0\n```\n\nThe general transformed function is\n\n$$f(x) = a\\log[k(x - d)] + c$$\n\n| Parameter | Effect | On the anchor point $(x, y)$ |\n|---|---|---|\n| $a$ | vertical stretch by $\\lvert a\\rvert$; reflect in $x$-axis if $a < 0$ | $y \\to ay$ |\n| $k$ | horizontal compression by $\\frac{1}{\\lvert k\\rvert}$; reflect in $y$-axis if $k < 0$ | $x \\to \\frac{x}{k}$ |\n| $d$ | horizontal translation (right if $d > 0$) | $x \\to x + d$ |\n| $c$ | vertical translation (up if $c > 0$) | $y \\to y + c$ |\n\n**Mapping rule:** $(x, y) \\to \\left(\\frac{x}{k} + d,\\ ay + c\\right)$. The asymptote $x = 0$ moves only with $d$ (it becomes $x = d$)."
+    },
+    {
+      "id": "translations",
+      "title": "Translations: y = log(x − d) + c",
+      "body": "**Vertical translation** $y = \\log x + c$: every point moves up $c$ units (down if $c < 0$). The asymptote stays at $x = 0$.\n\n**Horizontal translation** $y = \\log(x - d)$: every point moves right $d$ units (left if $d < 0$), and so does the asymptote: $x = d$.\n\n> Why the minus sign? $\\log(x - 2)$ needs $x = 3$ to get $\\log 1 = 0$: the input must be 2 bigger than before, so the graph has moved **right** 2.\n\n**Example:** $y = \\log(x - 2) - 5$\n\n```plot\nf: log(x) | dashed; label=y = log x\nf: log(x-2) - 5 | label=y = log(x − 2) − 5\ndomain: -1, 14\nrange: -7, 2\npoints: (3,-5), (12,-4)\nasymptote x: 2\n```\n\n* Anchor points: $(1, 0) \\to (3, -5)$ and $(10, 1) \\to (12, -4)$\n* Asymptote: $x = 2$; domain $\\{x \\in \\mathbb{R}, x > 2\\}$; range $\\{y \\in \\mathbb{R}\\}$\n* $x$-intercept: $0 = \\log(x - 2) - 5 \\Rightarrow \\log(x - 2) = 5 \\Rightarrow x - 2 = 10^5 \\Rightarrow x = 100\\,002$\n* $y$-intercept: $\\log(0 - 2) = \\log(-2)$ is undefined, so there is none."
+    },
+    {
+      "id": "stretches-reflections",
+      "title": "Stretches, compressions and reflections",
+      "body": "**Vertical stretch $y = a\\log x$.** Multiply every $y$-coordinate by $a$: $(10, 1) \\to (10, a)$. $(1, 0)$ doesn't move (0 times anything is 0). If $a < 0$ the graph is also reflected in the $x$-axis — it becomes decreasing.\n\n**Horizontal compression $y = \\log(kx)$.** Divide every $x$-coordinate by $k$: for $y = \\log(2x)$, $(1, 0) \\to (0.5, 0)$ and $(10, 1) \\to (5, 1)$. The asymptote stays at $x = 0$.\n\n**Reflection in the $y$-axis $y = \\log(-x)$.** The $x$-coordinates change sign: $(1, 0) \\to (-1, 0)$. Now the **domain is $x < 0$** — the graph lives on the left of the asymptote.\n\n```plot\ntitle: Reflections of y = log x\nf: log(x) | label=y = log x\nf: -log(x) | label=y = −log x\nf: log(-x) | dashed; label=y = log(−x)\ndomain: -11, 11\nrange: -3, 3\npoints: (1,0), (-1,0)\nasymptote x: 0\n```\n\nA vertical reflection never changes the domain; a horizontal reflection does."
+    },
+    {
+      "id": "combined",
+      "title": "Combining transformations in the right order",
+      "body": "To graph $f(x) = a\\log[k(x - d)] + c$:\n\n1. **Make sure it is in this form.** Factor out $k$ if needed: $\\log(2x - 4) = \\log[2(x - 2)]$. Without factoring you would wrongly translate 4 units instead of 2.\n2. **Apply stretches/compressions** ($a$ and $k$).\n3. **Apply reflections** (signs of $a$ and $k$).\n4. **Apply translations** ($d$ and $c$).\n\n**Example:** $y = \\log(-2x) + 4$\n\n| Step | Transformation | $(1, 0)$ | $(10, 1)$ |\n|---|---|---|---|\n| compress horizontally by $\\frac12$ | $y = \\log(2x)$ | $(0.5, 0)$ | $(5, 1)$ |\n| reflect in $y$-axis | $y = \\log(-2x)$ | $(-0.5, 0)$ | $(-5, 1)$ |\n| translate up 4 | $y = \\log(-2x) + 4$ | $(-0.5, 4)$ | $(-5, 5)$ |\n\n```plot\nf: log(-2*x) + 4 | label=y = log(−2x) + 4\ndomain: -12, 2\nrange: -2, 7\npoints: (-0.5,4), (-5,5)\nasymptote x: 0\n```\n\nDomain $x < 0$, range all reals, asymptote $x = 0$. $x$-intercept: $\\log(-2x) = -4 \\Rightarrow -2x = 10^{-4} \\Rightarrow x = -0.000\\,05$."
+    },
+    {
+      "id": "key-features",
+      "title": "Finding key features algebraically",
+      "body": "For $f(x) = a\\log[k(x - d)] + c$ (with $k > 0$):\n\n| Feature | How to find it |\n|---|---|\n| Vertical asymptote | set the argument equal to 0: $x = d$ |\n| Domain | argument $> 0$: $x > d$ (or $x < d$ if $k < 0$) |\n| Range | always $\\{y \\in \\mathbb{R}\\}$ |\n| $x$-intercept | set $f(x) = 0$, isolate the log, rewrite in exponential form |\n| $y$-intercept | substitute $x = 0$ — exists only if 0 is in the domain |\n\n**Example:** $y = 5\\log(x + 3)$. Asymptote $x = -3$; domain $x > -3$. $x$-intercept: $\\log(x + 3) = 0 \\Rightarrow x + 3 = 1 \\Rightarrow x = -2$. $y$-intercept: $5\\log 3 \\approx 2.386$.\n\nThe same ideas work for other bases, e.g. $y = \\log_2(x - 2) + 1$ has asymptote $x = 2$ and passes through $(3, 1)$ and $(4, 2)$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "parent function",
+      "definition": "The basic function $y = \\log x$ from which transformed functions are built."
+    },
+    {
+      "term": "anchor points",
+      "definition": "Easy-to-track points on the parent graph, usually $(1, 0)$ and $(10, 1)$ for $y = \\log x$."
+    },
+    {
+      "term": "vertical asymptote",
+      "definition": "The line $x = d$ that a logarithmic graph approaches but never crosses; it is where the argument equals 0."
+    },
+    {
+      "term": "mapping rule",
+      "definition": "For $y = a\\log[k(x - d)] + c$: $(x, y) \\to \\left(\\frac{x}{k} + d,\\ ay + c\\right)$."
+    },
+    {
+      "term": "argument",
+      "definition": "The expression inside the logarithm; it must be positive, which determines the domain."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "General transformed logarithmic function",
+      "latex": "f(x) = a\\log[k(x - d)] + c",
+      "meaning": "$a$: vertical stretch/reflection; $k$: horizontal compression/reflection; $d$: horizontal shift; $c$: vertical shift."
+    },
+    {
+      "name": "Mapping rule",
+      "latex": "(x, y) \\to \\left(\\frac{x}{k} + d,\\ ay + c\\right)",
+      "meaning": "Apply to anchor points $(1, 0)$ and $(10, 1)$."
+    },
+    {
+      "name": "Asymptote and domain",
+      "latex": "x = d;\\quad k(x - d) > 0",
+      "meaning": "Range is always all real numbers."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Translations",
+      "problem": "Graph $y = \\log(x - 2) - 5$ and state its key features.",
+      "steps": [
+        "Translate $y = \\log x$ right 2 and down 5: $(1, 0) \\to (3, -5)$, $(10, 1) \\to (12, -4)$, asymptote $x = 2$.",
+        "Domain $\\{x > 2\\}$, range all reals.",
+        "$x$-intercept: $\\log(x - 2) = 5 \\Rightarrow x = 10^5 + 2 = 100\\,002$.",
+        "$y$-intercept: $\\log(-2)$ is undefined, so none."
+      ],
+      "answer": "Asymptote $x = 2$, domain $x > 2$, $x$-intercept $100\\,002$, no $y$-intercept."
+    },
+    {
+      "title": "Stretch and translation",
+      "problem": "Graph $y = 5\\log(x + 3)$ and find its intercepts.",
+      "steps": [
+        "Vertical stretch by 5: $(1, 0) \\to (1, 0)$, $(10, 1) \\to (10, 5)$.",
+        "Translate left 3: $(1, 0) \\to (-2, 0)$, $(10, 5) \\to (7, 5)$; asymptote $x = -3$.\n```plot\nf: 5*log(x+3)\ndomain: -4, 10\nrange: -6, 7\npoints: (-2,0), (7,5)\nasymptote x: -3\n```",
+        "$x$-intercept $-2$ (from the anchor point). $y$-intercept: $5\\log 3 \\approx 2.39$."
+      ],
+      "answer": "Domain $x > -3$, asymptote $x = -3$, $x$-intercept $-2$, $y$-intercept $\\approx 2.39$."
+    },
+    {
+      "title": "Factor the argument first",
+      "problem": "Sketch $y = \\log(2x - 4)$.",
+      "steps": [
+        "Factor: $y = \\log[2(x - 2)]$, so $k = 2$ and $d = 2$.",
+        "Compress horizontally by $\\frac12$: $(1, 0) \\to (0.5, 0)$, $(10, 1) \\to (5, 1)$.",
+        "Translate right 2: $(0.5, 0) \\to (2.5, 0)$, $(5, 1) \\to (7, 1)$; asymptote $x = 2$.\n```plot\nf: log(2*x-4)\ndomain: 0, 10\nrange: -3, 2\npoints: (2.5,0), (7,1)\nasymptote x: 2\n```"
+      ],
+      "answer": "Asymptote $x = 2$, $x$-intercept 2.5, passes through $(7, 1)$."
+    },
+    {
+      "title": "Reflection, compression and translation",
+      "problem": "Find the key features of $y = \\log(-2x) + 4$.",
+      "steps": [
+        "Domain: $-2x > 0 \\Rightarrow x < 0$. Range all reals. Asymptote $x = 0$.",
+        "$x$-intercept: $0 = \\log(-2x) + 4 \\Rightarrow \\log(-2x) = -4 \\Rightarrow -2x = 10^{-4} \\Rightarrow x = -0.000\\,05$.",
+        "$y$-intercept: $\\log 0$ is undefined, so none."
+      ],
+      "answer": "Domain $x < 0$, asymptote $x = 0$, $x$-intercept $-0.000\\,05$, no $y$-intercept."
+    },
+    {
+      "title": "Write an equation from a description",
+      "problem": "Write an equation for $y = \\log x$ after a vertical stretch by 3, a reflection in the $x$-axis, and translations 2 right and 1 up. Find its value at $x = 12$.",
+      "steps": [
+        "$a = -3$, $k = 1$, $d = 2$, $c = 1$: $y = -3\\log(x - 2) + 1$.",
+        "At $x = 12$: $y = -3\\log 10 + 1 = -3 + 1 = -2$."
+      ],
+      "answer": "$y = -3\\log(x - 2) + 1$; $y(12) = -2$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$y = \\log(x - 3)$ moves the graph 3 units left.",
+      "fact": "It moves **right** 3: the input must be 3 larger to give the same output. The asymptote becomes $x = 3$."
+    },
+    {
+      "myth": "$y = \\log(2x - 4)$ is a shift of 4 units right.",
+      "fact": "Factor first: $\\log[2(x - 2)]$ is a compression then a shift of **2** right."
+    },
+    {
+      "myth": "Every log graph has domain $x > 0$.",
+      "fact": "Horizontal translations and reflections change the domain, e.g. $y = \\log(x + 5)$ has $x > -5$ and $y = \\log(-x)$ has $x < 0$."
+    },
+    {
+      "myth": "Vertical stretches move the asymptote.",
+      "fact": "Only the horizontal translation $d$ moves the vertical asymptote; $a$, $c$ and $k$ do not."
+    },
+    {
+      "myth": "$y = -\\log x$ and $y = \\log(-x)$ are the same graph.",
+      "fact": "$-\\log x$ is a reflection in the $x$-axis (domain $x > 0$); $\\log(-x)$ is a reflection in the $y$-axis (domain $x < 0$)."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Electronics",
+      "body": "Logarithmic amplifiers (op amps) produce an output voltage such as $V_o = 2\\log V_i + 5$; the parameters $a$ and $c$ set the gain and offset of the circuit."
+    },
+    {
+      "title": "Sound engineering",
+      "body": "Mixing desks use logarithmic sliders: shifting and stretching a log curve changes how volume responds to the slider position."
+    },
+    {
+      "title": "Data visualisation",
+      "body": "Scientists translate and stretch log scales so that wide-ranging data (earthquakes, star brightness) fit neatly on a graph."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Describe the transformations that map $f(x) = \\log x$ onto $g(x) = \\log(x + 5) - 4$.",
+      "hint": "Look at the signs inside and outside.",
+      "solution": "Translate left 5 and down 4. Asymptote $x = -5$."
+    },
+    {
+      "question": "State the domain, range and asymptote of $y = -\\log(x - 4)$.",
+      "hint": "The reflection in the $x$-axis doesn't affect the domain.",
+      "solution": "Domain $x > 4$, range all reals, asymptote $x = 4$."
+    },
+    {
+      "question": "Find the $x$-intercept of $y = \\log(x + 3) - 1$.",
+      "hint": "Set $y = 0$ and rewrite in exponential form.",
+      "solution": "$\\log(x + 3) = 1 \\Rightarrow x + 3 = 10 \\Rightarrow x = 7$."
+    },
+    {
+      "question": "Where do the anchor points $(1, 0)$ and $(10, 1)$ go for $y = 2\\log[3(x + 4)] - 2$?",
+      "hint": "Use $(x, y) \\to \\left(\\frac{x}{3} - 4,\\ 2y - 2\\right)$.",
+      "solution": "$(1, 0) \\to (-\\tfrac{11}{3}, -2)$ and $(10, 1) \\to (-\\tfrac23, 0)$."
+    },
+    {
+      "question": "Find the range of $y = -2\\log x$ on the restricted domain $10^{-3} \\le x \\le 10^{-1}$.",
+      "hint": "Evaluate at the endpoints; the function is decreasing.",
+      "solution": "At $x = 10^{-3}$: $y = 6$. At $x = 10^{-1}$: $y = 2$. Range $2 \\le y \\le 6$."
+    },
+    {
+      "question": "Write the equation of $y = \\log x$ compressed horizontally by a factor of $\\frac14$ and translated 1 unit up.",
+      "hint": "A compression by $\\frac14$ means $k = 4$.",
+      "solution": "$y = \\log(4x) + 1$."
+    },
+    {
+      "question": "Graph $y = \\log_2(x - 2) + 1$ by listing three points.",
+      "hint": "Anchor points for base 2 are $(1, 0)$, $(2, 1)$, $(4, 2)$.",
+      "solution": "$(3, 1)$, $(4, 2)$, $(6, 3)$; asymptote $x = 2$."
+    }
+  ],
+  "summary": [
+    "Transform $y = \\log x$ to $y = a\\log[k(x - d)] + c$ by tracking the anchor points $(1, 0)$ and $(10, 1)$ and the asymptote $x = 0$.",
+    "Mapping rule $(x, y) \\to \\left(\\frac{x}{k} + d,\\ ay + c\\right)$; the asymptote becomes $x = d$.",
+    "Factor the argument into the form $k(x - d)$ before identifying the horizontal shift.",
+    "Apply stretches/compressions, then reflections, then translations.",
+    "Find the domain from (argument $> 0$), the $x$-intercept by solving $f(x) = 0$ in exponential form, and the $y$-intercept only if $0$ is in the domain."
+  ],
+  "questions": [
+    {
+      "id": "6-3-q01",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "k": {
+          "choices": [
+            2,
+            4,
+            5
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = \\log x$ and $g(x) = {{a}}\\log[{{k}}(x - {{d}})] + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations that map $f$ onto $g$, in the order you would apply them."
+        },
+        {
+          "label": "b",
+          "text": "Find the images of the anchor points $(1, 0)$ and $(10, 1)$. Give the $x$-coordinate of the image of $(10, 1)$.",
+          "answer": {
+            "expr": "10/k + d",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the equation of the asymptote, the domain and the range of $g$.",
+          "answer": {
+            "expr": "d",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Vertical stretch by a factor of {{a}}; horizontal compression by a factor of $\\frac{1}{ {{k}} }$; translation {{d}} units right and {{c}} units up.\n\n(b) Mapping rule $(x, y) \\to \\left(\\frac{x}{ {{k}} } + {{d}},\\ {{a}}y + {{c}}\\right)$:\n\n* $(1, 0) \\to \\left(\\frac{1}{ {{k}} } + {{d}},\\ {{c}}\\right) = ({{1/k + d}}, {{c}})$\n* $(10, 1) \\to \\left(\\frac{10}{ {{k}} } + {{d}},\\ {{a}} + {{c}}\\right) = ({{10/k + d}}, {{a + c}})$\n\n(c) Asymptote $x = {{d}}$; domain $\\{x \\in \\mathbb{R}, x > {{d}}\\}$; range $\\{y \\in \\mathbb{R}\\}$.",
+      "rubric": [
+        {
+          "point": "Identifies all four transformations correctly",
+          "marks": 2
+        },
+        {
+          "point": "Correct image of (1, 0)",
+          "marks": 1
+        },
+        {
+          "point": "Correct image of (10, 1)",
+          "marks": 1
+        },
+        {
+          "point": "Correct asymptote, domain and range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "d": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $y = \\log(x - {{d}}) + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations and give the images of $(1, 0)$ and $(10, 1)$."
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Determine the $x$-intercept algebraically.",
+          "answer": {
+            "expr": "d + 10^(-c)",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "Does the graph have a $y$-intercept? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Translate $y = \\log x$ right {{d}} units and up {{c}} units: $(1, 0) \\to ({{1+d}}, {{c}})$ and $(10, 1) \\to ({{10+d}}, {{c+1}})$; asymptote $x = {{d}}$.\n\n(b) Domain $\\{x > {{d}}\\}$, range all reals.\n\n(c) $x$-intercept: $0 = \\log(x - {{d}}) + {{c}} \\Rightarrow \\log(x - {{d}}) = -{{c}} \\Rightarrow x - {{d}} = 10^{-{{c}} } \\Rightarrow x = {{d + 10^(-c)}}$.\n\n(d) $y$-intercept: $\\log(0 - {{d}}) = \\log(-{{d}})$ is undefined, so there is no $y$-intercept (0 is not in the domain).",
+      "rubric": [
+        {
+          "point": "Correct translations and anchor points",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and range",
+          "marks": 1
+        },
+        {
+          "point": "x-intercept found by rewriting in exponential form",
+          "marks": 2
+        },
+        {
+          "point": "Explains why there is no y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3,
+            5
+          ]
+        },
+        "h": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Consider $y = {{a}}\\log(x + {{h}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations and sketch the graph using anchor points."
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and asymptote."
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "1-h",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find the $y$-intercept.",
+          "answer": {
+            "expr": "a*log(h)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Vertical stretch by a factor of {{a}}, then translate {{h}} units left: $(1, 0) \\to ({{1-h}}, 0)$, $(10, 1) \\to ({{10-h}}, {{a}})$. Asymptote $x = -{{h}}$.\n\n(b) Domain $\\{x > -{{h}}\\}$; range all reals.\n\n(c) $x$-intercept: ${{a}}\\log(x + {{h}}) = 0 \\Rightarrow x + {{h}} = 1 \\Rightarrow x = {{1-h}}$.\n\n(d) $y$-intercept: $y = {{a}}\\log({{h}}) \\approx {{a*log(h):4}}$.",
+      "rubric": [
+        {
+          "point": "Correct transformations",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q04",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "a": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "Consider $y = -\\log(x - {{d}}) + {{c}}$ and $y = {{a}}\\log(-x)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Graph $y = -\\log(x - {{d}}) + {{c}}$ using anchor points and state its domain, range and asymptote."
+        },
+        {
+          "label": "b",
+          "text": "Repeat for $y = {{a}}\\log(-x)$."
+        },
+        {
+          "label": "c",
+          "text": "Which reflection changed the domain? Explain why."
+        }
+      ],
+      "modelAnswer": "(a) $y = -\\log(x - {{d}}) + {{c}}$: reflect in the $x$-axis, translate right {{d}} and up {{c}}. Anchor points: $(1, 0) \\to ({{1+d}}, {{c}})$, $(10, 1) \\to ({{10+d}}, {{c-1}})$. Domain $x > {{d}}$; range all reals; asymptote $x = {{d}}$. The graph is decreasing.\n\n(b) $y = {{a}}\\log(-x)$: reflect in the $y$-axis and stretch vertically by {{a}}: $(1, 0) \\to (-1, 0)$, $(10, 1) \\to (-10, {{a}})$. Domain $x < 0$; range all reals; asymptote $x = 0$. As $x$ increases toward 0, $-x$ decreases toward 0, so $\\log(-x)$ decreases: the graph is decreasing and falls steeply as it approaches the asymptote.\n\n(c) The reflection in the $x$-axis in (a) did not change the domain, but the reflection in the $y$-axis in (b) changed the domain from $x > 0$ to $x < 0$, because it changes the sign of every $x$-coordinate.",
+      "rubric": [
+        {
+          "point": "Correct description and anchor points for the first function",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain/range/asymptote for the first function",
+          "marks": 1
+        },
+        {
+          "point": "Correct description and anchor points for the second function",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain/range/asymptote for the second function",
+          "marks": 1
+        },
+        {
+          "point": "Explains which reflection changes the domain and why",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "The graph of $y = \\log x$ is stretched vertically by a factor of {{a}}, reflected in the $x$-axis, and translated {{d}} units right and {{c}} units up.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the transformed function."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate your function at $x = {{d+10}}$.",
+          "answer": {
+            "expr": "c - a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain, range and asymptote."
+        },
+        {
+          "label": "d",
+          "text": "Determine the $x$-intercept.",
+          "answer": {
+            "expr": "d + 10^(c/a)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $a = -{{a}}$, $d = {{d}}$, $c = {{c}}$: $y = -{{a}}\\log(x - {{d}}) + {{c}}$.\n\n(b) At $x = {{d+10}}$: $y = -{{a}}\\log({{10}}) + {{c}} = -{{a}} + {{c}} = {{c - a}}$.\n\n(c) Domain $x > {{d}}$, range all reals, asymptote $x = {{d}}$.\n\n(d) $x$-intercept: $-{{a}}\\log(x - {{d}}) + {{c}} = 0 \\Rightarrow \\log(x - {{d}}) = \\frac{ {{c}} }{ {{a}} } \\Rightarrow x = {{d}} + 10^{ {{c/a:3}} } \\approx {{d + 10^(c/a):4}}$.",
+      "rubric": [
+        {
+          "point": "Correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct value at the given x",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, range and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "m": {
+          "min": 2,
+          "max": 12,
+          "step": 2
+        }
+      },
+      "text": "Consider $y = \\log({{k}}x - {{m}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Rewrite the function in the form $y = \\log[k(x - d)]$ and describe the transformations."
+        },
+        {
+          "label": "b",
+          "text": "State the equation of the asymptote.",
+          "answer": {
+            "expr": "m/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "(m+1)/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find the image of the anchor point $(10, 1)$."
+        }
+      ],
+      "modelAnswer": "(a) Factor: ${{k}}x - {{m}} = {{k}}\\left(x - \\frac{ {{m}} }{ {{k}} }\\right)$, so $y = \\log\\left[{{k}}\\left(x - {{m/k:3}}\\right)\\right]$. This is a horizontal compression by a factor of $\\frac{1}{ {{k}} }$ followed by a translation of {{m/k:3}} units right (not {{m}} units).\n\n(b) Asymptote: ${{k}}x - {{m}} = 0 \\Rightarrow x = {{m/k:3}}$. Domain $x > {{m/k:3}}$.\n\n(c) $x$-intercept: ${{k}}x - {{m}} = 1 \\Rightarrow x = \\frac{ {{m+1}} }{ {{k}} } \\approx {{(m+1)/k:3}}$.\n\n(d) Image of $(10, 1)$: $\\left(\\frac{10}{ {{k}} } + {{m/k:3}},\\ 1\\right) = ({{(10+m)/k:3}}, 1)$.",
+      "rubric": [
+        {
+          "point": "Factors the argument correctly",
+          "marks": 1
+        },
+        {
+          "point": "Identifies compression and the correct shift",
+          "marks": 1
+        },
+        {
+          "point": "Correct asymptote and domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct image of (10, 1)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "c": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "v1": {
+          "min": 5,
+          "max": 40,
+          "step": 5
+        },
+        "w": {
+          "min": 8,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "A particular operational amplifier (op amp) produces an output voltage $V_o = {{a}}\\log V_i + {{c}}$, where both voltages are in volts.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the output voltage for an input of {{v1}} V?",
+          "answer": {
+            "expr": "a*log(v1)+c",
+            "unit": "V",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "What input voltage produces an output of {{w}} V?",
+          "answer": {
+            "expr": "10^((w-c)/a)",
+            "unit": "V",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the domain and range and explain what they represent."
+        }
+      ],
+      "modelAnswer": "(a) $V_o = {{a}}\\log({{v1}}) + {{c}} \\approx {{a}}({{log(v1):4}}) + {{c}} \\approx {{a*log(v1)+c:3}}$ V.\n\n(b) ${{w}} = {{a}}\\log V_i + {{c}} \\Rightarrow \\log V_i = \\frac{ {{w - c}} }{ {{a}} } \\Rightarrow V_i = 10^{ {{(w-c)/a:3}} } \\approx {{10^((w-c)/a):3}}$ V.\n\n(c) Domain $V_i > 0$ (input voltage must be positive for the log to be defined); range: all real outputs in theory, but in practice limited by the circuit's supply voltage. The graph is $y = \\log x$ stretched vertically by {{a}} and translated {{c}} units up.",
+      "rubric": [
+        {
+          "point": "Correct output voltage",
+          "marks": 1
+        },
+        {
+          "point": "Sets up and solves for the input voltage in exponential form",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain with explanation",
+          "marks": 1
+        },
+        {
+          "point": "Describes the transformation / range sensibly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q08",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "k": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "h": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = {{a}}\\log[{{k}}(x + {{h}})] - {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations and map the anchor points."
+        },
+        {
+          "label": "b",
+          "text": "State the asymptote, domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "10^(c/a)/k - h",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find the $y$-intercept.",
+          "answer": {
+            "expr": "a*log(k*h) - c",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Vertical stretch by {{a}}, horizontal compression by $\\frac{1}{ {{k}} }$, translation {{h}} left and {{c}} down. Mapping: $(x, y) \\to \\left(\\frac{x}{ {{k}} } - {{h}},\\ {{a}}y - {{c}}\\right)$.\n\n$(1, 0) \\to ({{1/k - h:3}}, -{{c}})$, $(10, 1) \\to ({{10/k - h:3}}, {{a - c}})$.\n\n(b) Asymptote $x = -{{h}}$; domain $x > -{{h}}$; range all reals.\n\n(c) $x$-intercept: ${{a}}\\log[{{k}}(x + {{h}})] = {{c}} \\Rightarrow \\log[{{k}}(x + {{h}})] = \\frac{ {{c}} }{ {{a}} } \\Rightarrow {{k}}(x + {{h}}) = 10^{ {{c/a:3}} } \\Rightarrow x = \\frac{10^{ {{c/a:3}} } }{ {{k}} } - {{h}} \\approx {{10^(c/a)/k - h:3}}$.\n\n(d) $y$-intercept: $f(0) = {{a}}\\log({{k*h}}) - {{c}} \\approx {{a*log(k*h) - c:3}}$.",
+      "rubric": [
+        {
+          "point": "Correct transformations and mapped anchor points",
+          "marks": 2
+        },
+        {
+          "point": "Correct asymptote and domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q09",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "A student says, \"Reflecting a logarithmic function never changes its domain.\" Evaluate this claim.",
+      "modelAnswer": "The claim is only half true.\n\n* A **vertical** reflection $y = -\\log x$ multiplies $y$-coordinates by $-1$. The $x$-coordinates are unchanged, so the domain stays $x > 0$ and the range stays all reals.\n* A **horizontal** reflection $y = \\log(-x)$ multiplies $x$-coordinates by $-1$: $(1, 0) \\to (-1, 0)$, $(10, 1) \\to (-10, 1)$. The argument $-x$ must be positive, so the domain becomes $x < 0$.\n\nIn both cases the range is all real numbers and the asymptote is $x = 0$. Diagram: the vertical reflection flips the graph upside down on the right of the $y$-axis; the horizontal reflection mirrors it onto the left side.",
+      "rubric": [
+        {
+          "point": "Correct analysis of the vertical reflection",
+          "marks": 2
+        },
+        {
+          "point": "Correct analysis of the horizontal reflection with domain x < 0",
+          "marks": 2
+        },
+        {
+          "point": "Clear conclusion / diagram description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            2,
+            4,
+            5
+          ]
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Sketch the graph of $y = \\log(-{{k}}x) + {{c}}$ by applying transformations in a series of steps.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Show each step and the images of the anchor points."
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and asymptote."
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "-(10^(-c))/k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Rewrite as $y = \\log[-{{k}}(x)] + {{c}}$: horizontal compression by $\\frac{1}{ {{k}} }$, reflection in the $y$-axis, translation {{c}} units up.\n\n| Step | Function | $(1, 0)$ | $(10, 1)$ |\n|---|---|---|---|\n| compress | $\\log({{k}}x)$ | $({{1/k}}, 0)$ | $({{10/k}}, 1)$ |\n| reflect in $y$-axis | $\\log(-{{k}}x)$ | $(-{{1/k}}, 0)$ | $(-{{10/k}}, 1)$ |\n| translate up {{c}} | $\\log(-{{k}}x) + {{c}}$ | $(-{{1/k}}, {{c}})$ | $(-{{10/k}}, {{c+1}})$ |\n\nDomain $x < 0$; range all reals; asymptote $x = 0$.\n\n$x$-intercept: $\\log(-{{k}}x) = -{{c}} \\Rightarrow -{{k}}x = 10^{-{{c}} } \\Rightarrow x = -\\frac{10^{-{{c}} } }{ {{k}} } = {{-(10^(-c))/k:3}}$. No $y$-intercept.",
+      "rubric": [
+        {
+          "point": "Correct order of transformations",
+          "marks": 1
+        },
+        {
+          "point": "Correct anchor points after each step",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "p": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "text": "Consider $y = -{{a}}\\log x$ over the restricted domain $10^{-{{p}} } \\le x \\le 10^{-{{q}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the transformations and whether the function is increasing or decreasing."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate $y$ at each endpoint of the domain. Give the larger value.",
+          "answer": {
+            "expr": "a*p",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "State the range over the restricted domain."
+        }
+      ],
+      "modelAnswer": "(a) The function is $y = \\log x$ stretched vertically by {{a}} and reflected in the $x$-axis, so it is decreasing.\n\n(b) At $x = 10^{-{{p}} }$: $y = -{{a}}(-{{p}}) = {{a*p}}$. At $x = 10^{-{{q}} }$: $y = -{{a}}(-{{q}}) = {{a*q}}$.\n\n(c) Because the function is decreasing, the range is $\\{y \\in \\mathbb{R},\\ {{a*q}} \\le y \\le {{a*p}}\\}$.",
+      "rubric": [
+        {
+          "point": "Recognises the function is decreasing",
+          "marks": 1
+        },
+        {
+          "point": "Correct value at the left endpoint",
+          "marks": 1
+        },
+        {
+          "point": "Correct value at the right endpoint",
+          "marks": 1
+        },
+        {
+          "point": "Correct range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "n": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "c": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = \\frac{1}{ {{n}} }\\log x - {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the graph of $f$."
+        },
+        {
+          "label": "b",
+          "text": "Determine an equation for $f^{-1}$."
+        },
+        {
+          "label": "c",
+          "text": "State the domain, range and asymptote of $f^{-1}$."
+        },
+        {
+          "label": "d",
+          "text": "Evaluate $f^{-1}({{1-c}})$.",
+          "answer": {
+            "expr": "10^n",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $f$ is $\\log x$ compressed vertically by $\\frac{1}{ {{n}} }$ and translated {{c}} units down. Anchor points $(1, -{{c}})$ and $(10, {{1/n - c:3}})$; asymptote $x = 0$.\n\n(b) To find $f^{-1}$, swap $x$ and $y$: $x = \\frac{1}{ {{n}} }\\log y - {{c}}$.\n\n$x + {{c}} = \\frac{1}{ {{n}} }\\log y \\Rightarrow {{n}}(x + {{c}}) = \\log y \\Rightarrow y = 10^{ {{n}}(x + {{c}}) }$.\n\n(c) $f^{-1}$: domain all reals, range $y > 0$, horizontal asymptote $y = 0$ (the reflection of $x = 0$).\n\n(d) $f^{-1}(-{{c}}+1) = 10^{ {{n}}(1) } = {{10^n}}$. Check: $f({{10^n}}) = \\frac{1}{ {{n}} }({{n}}) - {{c}} = {{1 - c}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Describes the transformations of f",
+          "marks": 1
+        },
+        {
+          "point": "Correctly derives the inverse equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct key features of the inverse",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of the inverse with check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "The graph shows a translation of $y = \\log x$.\n```plot\nf: log(x + {{h}}) - {{c}}\ndomain: {{-h - 1}}, {{12 - h}}\nrange: {{-c - 3}}, {{3 - c}}\npoints: ({{1 - h}}, {{-c}}), ({{10 - h}}, {{1 - c}})\nasymptote x: {{-h}}\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the equation of the vertical asymptote.",
+          "answer": {
+            "expr": "-h",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Use the marked points to identify the transformations."
+        },
+        {
+          "label": "c",
+          "text": "Write an equation for the graph."
+        },
+        {
+          "label": "d",
+          "text": "Determine the $x$-intercept of the graph.",
+          "answer": {
+            "expr": "10^c - h",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) The vertical asymptote is at $x = -{{h}}$, so the graph was translated {{h}} units left.\n\n(b) The anchor point $(1, 0)$ moved to $({{1-h}}, -{{c}})$: left {{h}} and down {{c}}. The point $(10, 1)$ moved to $({{10-h}}, {{1-c}})$, confirming no stretch.\n\n(c) $y = \\log(x + {{h}}) - {{c}}$.\n\n(d) $x$-intercept: $\\log(x + {{h}}) = {{c}} \\Rightarrow x = 10^{ {{c}} } - {{h}} = {{10^c - h}}$.",
+      "rubric": [
+        {
+          "point": "Identifies the asymptote and horizontal shift",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the vertical shift using an anchor point",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q14",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Let $f(x) = \\log x$, $g(x) = -\\log x$ and $h(x) = \\log(-x)$.",
+      "modelAnswer": "(a) $g$ is the reflection of $f$ in the $x$-axis. They are **not** inverses: the inverse of $f$ is $y = 10^x$ (reflection in $y = x$), not a reflection in the $x$-axis.\n\n(b) $h$ is the reflection of $f$ in the $y$-axis. They are not inverses either: $h$ has domain $x < 0$ and $f$'s inverse has domain all reals.\n\n(c) $g$ and $h$ are not inverses. The inverse of $g$: $x = -\\log y \\Rightarrow y = 10^{-x}$, a decreasing exponential with domain all reals — different from $h$ (domain $x < 0$). In general, two functions are inverses only if one is the reflection of the other in the line $y = x$.",
+      "rubric": [
+        {
+          "point": "(a) correct relationship and not inverses with reason",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct relationship and not inverses with reason",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct conclusion with reason",
+          "marks": 1
+        },
+        {
+          "point": "States the reflection-in-y = x criterion for inverses",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "d": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $y = \\log_2(x - {{d}}) + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "List three points on the graph."
+        },
+        {
+          "label": "b",
+          "text": "State the asymptote, domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "d + 2^(-c)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) Anchor points of $y = \\log_2 x$: $(1, 0)$, $(2, 1)$, $(4, 2)$, $(\\tfrac12, -1)$. Translate right {{d}} and up {{c}}: $({{1+d}}, {{c}})$, $({{2+d}}, {{c+1}})$, $({{4+d}}, {{c+2}})$.\n\n(b) Asymptote $x = {{d}}$; domain $x > {{d}}$; range all reals.\n\n(c) $x$-intercept: $\\log_2(x - {{d}}) = -{{c}} \\Rightarrow x - {{d}} = 2^{-{{c}} } \\Rightarrow x = {{d + 2^(-c):4}}$.",
+      "rubric": [
+        {
+          "point": "Correct anchor points for base 2 after translation",
+          "marks": 2
+        },
+        {
+          "point": "Correct asymptote, domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept in exponential form",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "6-3-q16",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Explain how each parameter in $f(x) = a\\log[k(x - d)] + c$ affects the domain, the range and the vertical asymptote of the graph.",
+      "modelAnswer": "* $a$ (vertical stretch/reflection): changes only $y$-coordinates — no effect on the domain, range (still all reals) or asymptote.\n* $k$ (horizontal compression/stretch): scales $x$-coordinates toward or away from $x = d$; if $k > 0$ the domain stays on the same side; if $k < 0$ (reflection in the $y$-axis) the domain switches to $x < d$. Asymptote unchanged.\n* $d$ (horizontal translation): moves the asymptote to $x = d$ and the domain to $x > d$ (or $x < d$).\n* $c$ (vertical translation): moves every point up or down; no effect on domain, range or asymptote.\n\nThe range of every transformed logarithmic function is $\\{y \\in \\mathbb{R}\\}$.",
+      "rubric": [
+        {
+          "point": "Correct effect of a",
+          "marks": 1
+        },
+        {
+          "point": "Correct effect of k including reflection",
+          "marks": 1
+        },
+        {
+          "point": "Correct effect of d on asymptote/domain",
+          "marks": 2
+        },
+        {
+          "point": "Correct effect of c and statement that range is always all reals",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q17",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = -\\frac12\\log\\left(-\\frac12 x + {{m}}\\right) + 2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Rewrite in the form $a\\log[k(x - d)] + c$ and describe the transformations."
+        },
+        {
+          "label": "b",
+          "text": "State the domain, range and asymptote.",
+          "answer": {
+            "expr": "2*m",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Find the $x$-intercept.",
+          "answer": {
+            "expr": "2*(m - 10000)",
+            "unit": "",
+            "sig": 5
+          }
+        },
+        {
+          "label": "d",
+          "text": "Find the $y$-intercept.",
+          "answer": {
+            "expr": "-0.5*log(m) + 2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Factor the argument: $-\\frac12 x + {{m}} = -\\frac12(x - {{2*m}})$. So $f(x) = -\\frac12\\log\\left[-\\frac12(x - {{2*m}})\\right] + 2$.\n\nTransformations: vertical compression by $\\frac12$ and reflection in the $x$-axis ($a = -\\frac12$); horizontal stretch by a factor of 2 and reflection in the $y$-axis ($k = -\\frac12$); translation {{2*m}} units right and 2 units up.\n\n(b) Argument $> 0$: $-\\frac12(x - {{2*m}}) > 0 \\Rightarrow x < {{2*m}}$. Domain $x < {{2*m}}$; range all reals; asymptote $x = {{2*m}}$.\n\n(c) $x$-intercept: $\\log\\left(-\\frac12 x + {{m}}\\right) = 4 \\Rightarrow -\\frac12 x + {{m}} = 10^4 \\Rightarrow x = 2({{m}} - 10\\,000) = {{2*(m - 10000)}}$.\n\n(d) $y$-intercept: $f(0) = -\\frac12\\log {{m}} + 2 \\approx {{-0.5*log(m) + 2:4}}$.",
+      "rubric": [
+        {
+          "point": "Factors the argument correctly",
+          "marks": 1
+        },
+        {
+          "point": "Identifies all transformations",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain and asymptote",
+          "marks": 1
+        },
+        {
+          "point": "Correct x-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Correct y-intercept",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "6-3-q18",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create a logarithmic function that includes **all** of the following transformations of $y = \\log x$: a horizontal stretch, a translation to the left, a vertical translation, and a reflection.",
+      "modelAnswer": "Sample answer: $y = -\\log\\left[\\frac12(x + 3)\\right] + 2$.\n\n* $k = \\frac12$: horizontal stretch by a factor of 2\n* $d = -3$: translation 3 units left\n* $c = 2$: translation 2 units up\n* $a = -1$: reflection in the $x$-axis\n\nAnchor points: $(1, 0) \\to (2 - 3, 2) = (-1, 2)$; $(10, 1) \\to (20 - 3, -1 + 2) = (17, 1)$.\n\nDomain $x > -3$; range all reals; asymptote $x = -3$.\n\n(Any function with $0 < |k| < 1$, $d < 0$, $c \\neq 0$ and $a < 0$ or $k < 0$ is acceptable, with consistent key features.)",
+      "rubric": [
+        {
+          "point": "Equation includes a horizontal stretch (|k| < 1)",
+          "marks": 1
+        },
+        {
+          "point": "Includes a translation left and a vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Includes a reflection",
+          "marks": 1
+        },
+        {
+          "point": "Correct anchor points / sketch description",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain, range and asymptote for their function",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

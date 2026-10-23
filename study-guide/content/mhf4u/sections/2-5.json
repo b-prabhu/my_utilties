@@ -1,0 +1,790 @@
+{
+  "id": "2-5",
+  "number": "2.5",
+  "title": "Solve Inequalities Using Technology",
+  "estimatedMinutes": 70,
+  "overview": "Equations ask *where* a polynomial equals zero; **inequalities** ask *where it is positive or negative*. In this section you will learn to describe solutions using intervals, see how the zeros split the $x$-axis into regions of constant sign, and use graphs and technology to solve polynomial inequalities — including real models of revenue and amusement-park rides.",
+  "objectives": [
+    "Explain the difference between a polynomial equation and a polynomial inequality.",
+    "Write solutions using inequality, interval and set notation and on a number line.",
+    "Explain how the real zeros divide the $x$-axis into intervals of constant sign.",
+    "Solve polynomial inequalities graphically, by hand and with technology.",
+    "Solve inequalities of the form $P(x) \\ge Q(x)$ by rearranging or comparing graphs.",
+    "Solve problems involving polynomial inequalities and interpret the answers."
+  ],
+  "lessons": [
+    {
+      "id": "inequality-language",
+      "title": "Polynomial inequalities and how to write their solutions",
+      "body": "A **polynomial inequality** is what you get when the equal sign of a polynomial equation is replaced by $<$, $\\le$, $>$ or $\\ge$. For example, $x^3 - 4x > 0$.\n\nAn equation usually has a few solutions; an inequality usually has **intervals** of solutions. There are three common ways to write them:\n\n| Words | Inequality | Interval notation | Number line |\n|---|---|---|---|\n| between $-2$ and $3$, not including the ends | $-2 < x < 3$ | $(-2, 3)$ | open dots at $-2$ and $3$, shaded between |\n| $-2$ up to $3$, including both | $-2 \\le x \\le 3$ | $[-2, 3]$ | closed dots, shaded between |\n| greater than $5$ | $x > 5$ | $(5, \\infty)$ | open dot at $5$, arrow right |\n| at most $-1$ | $x \\le -1$ | $(-\\infty, -1]$ | closed dot at $-1$, arrow left |\n| two separate pieces | $x < -2$ or $x > 3$ | $(-\\infty, -2) \\cup (3, \\infty)$ | two shaded rays |\n\n* Round brackets / open dots: the endpoint is **not** included ($<$, $>$). Infinity always takes a round bracket.\n* Square brackets / closed dots: the endpoint **is** included ($\\le$, $\\ge$).\n* $\\cup$ means \"or\" (union of intervals).\n\n**Set notation** describes the same thing: $\\{x \\in \\mathbb{R} \\mid x < -2 \\text{ or } x > 3\\}$."
+    },
+    {
+      "id": "zeros-split-intervals",
+      "title": "The zeros split the x-axis into intervals",
+      "body": "A polynomial graph is a smooth unbroken curve. It can only change from positive to negative (or back) by passing through the $x$-axis — that is, at a **zero**. So:\n\n> Between two consecutive zeros, a polynomial has **one sign** throughout.\n\nFor $P(x) = (x + 1)(x - 2)(x - 3)$ the zeros $-1$, $2$, $3$ split the axis into four intervals:\n\n| Interval | $(-\\infty, -1)$ | $(-1, 2)$ | $(2, 3)$ | $(3, \\infty)$ |\n|---|---|---|---|---|\n| Test value | $-2$ | $0$ | $2.5$ | $4$ |\n| Sign of $P(x)$ | $-$ | $+$ | $-$ | $+$ |\n| Graph is | below axis | above | below | above |\n\n```plot\ntitle: y = (x + 1)(x − 2)(x − 3): positive where the graph is above the x-axis\nf: (x+1)*(x-2)*(x-3)\ndomain: -2, 4.5\nrange: -12, 10\nticks: 1, 2\npoints: (-1,0), (2,0), (3,0)\n```\n\nSo $(x + 1)(x - 2)(x - 3) > 0$ for $-1 < x < 2$ or $x > 3$, i.e. $(-1, 2) \\cup (3, \\infty)$."
+    },
+    {
+      "id": "graphical-method",
+      "title": "Solving an inequality graphically",
+      "body": "**Steps**\n\n1. Rearrange so one side is $0$: e.g. $P(x) \\ge 0$. (Or keep both sides and compare two graphs — see below.)\n2. Graph $y = P(x)$ (by hand from its factors, or with technology).\n3. Find the zeros (exactly if it factors; otherwise with the **zero** operation, rounded as asked).\n4. Read the intervals where the graph is **above** the axis ($> 0$) or **below** it ($< 0$).\n5. Include the zeros if the inequality is $\\le$ or $\\ge$.\n\n**Two-graph method:** to solve $P(x) \\ge k$ or $P(x) \\ge Q(x)$, graph both sides and find where one graph is above the other. The boundary points are the **intersection points**.\n\n**Example:** solve $x^2 + 3x - 5 > 0$. The zeros (technology, or the quadratic formula) are $x \\approx -4.2$ and $x \\approx 1.2$. The parabola opens up, so it is above the axis outside the zeros:\n\n$$x < -4.2 \\text{ or } x > 1.2$$"
+    },
+    {
+      "id": "technology",
+      "title": "Using technology effectively",
+      "body": "Most polynomial inequalities that come from real data don't factor, so you need technology.\n\n**Graphing calculator / graphing software**\n* Enter $y = P(x)$, choose a window that shows every $x$-intercept and the turning points.\n* Use **zero** (or *root*) to find each $x$-intercept; round as instructed.\n* Read off the intervals.\n\n**Computer algebra system (CAS)** or a **table of values**\n* Solve $P(x) = 0$ numerically to get the boundary points.\n* Test one value in each interval: if the inequality is true there, the whole interval is a solution.\n\n**Example:** solve $x^3 - 2x^2 - 5x + 2 \\ge 0$.\n\n```plot\nf: x^3 - 2*x^2 - 5*x + 2\ndomain: -2.5, 4\nrange: -12, 8\npoints: (-1.681,0), (0.358,0), (3.323,0)\n```\n\nZeros $\\approx -1.7,\\ 0.4,\\ 3.3$. The graph is above (or on) the axis on $[-1.7, 0.4]$ and $[3.3, \\infty)$."
+    },
+    {
+      "id": "applications",
+      "title": "Applications: when is a model above a target?",
+      "body": "Inequalities answer questions like \"**when** will sales be at least \\$100 million?\" or \"**for how long** is a ride higher than 15 m?\"\n\n**Example:** the yearly revenue of an MP3 player company is $R(t) = t^3 - 0.8t^2 + 2t - 1$ million dollars, $t$ years after 2003. When is $R(t) \\ge 100$?\n\n* Rearrange: $t^3 - 0.8t^2 + 2t - 101 \\ge 0$.\n* Graph and find the zero: $t \\approx 4.8$.\n* The graph is above the axis for $t > 4.8$.\n\nSo revenue is at least \\$100 million from about $4.8$ years after 2003 — late in 2007 — onward (as long as the model stays valid).\n\n> In context, also state the **domain** that makes sense (e.g. $t \\ge 0$) and question whether the model stays realistic far into the future."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "polynomial inequality",
+      "definition": "An inequality containing a polynomial, such as $x^3 - 4x \\ge 0$."
+    },
+    {
+      "term": "interval notation",
+      "definition": "Writing a set of real numbers using brackets, e.g. $(-2, 3]$; round brackets exclude endpoints, square brackets include them."
+    },
+    {
+      "term": "set notation",
+      "definition": "Describing a solution set as $\\{x \\in \\mathbb{R} \\mid \\text{condition}\\}$."
+    },
+    {
+      "term": "test value",
+      "definition": "A number chosen inside an interval to determine the sign of the polynomial there."
+    },
+    {
+      "term": "union (∪)",
+      "definition": "Combines intervals; read as \\\"or\\\"."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Sign rule",
+      "latex": "\\text{between consecutive zeros, } P(x) \\text{ keeps one sign}",
+      "meaning": "So test one value per interval."
+    },
+    {
+      "name": "Rearranging",
+      "latex": "P(x) \\ge Q(x) \\iff P(x) - Q(x) \\ge 0",
+      "meaning": "Graph the difference, or graph both and compare."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Reading the solution from a factored graph",
+      "problem": "Solve $x^3 - 4x^2 + x + 6 \\ge 0$, given $x^3 - 4x^2 + x + 6 = (x + 1)(x - 2)(x - 3)$.",
+      "steps": [
+        "Zeros: $-1$, $2$, $3$. Leading coefficient positive, degree 3: the graph starts below the axis on the left and ends above on the right.",
+        "Signs on the intervals: $(-\\infty, -1)$: $-$; $(-1, 2)$: $+$; $(2, 3)$: $-$; $(3, \\infty)$: $+$.",
+        "$\\ge$ includes the zeros."
+      ],
+      "answer": "$-1 \\le x \\le 2$ or $x \\ge 3$, i.e. $[-1, 2] \\cup [3, \\infty)$"
+    },
+    {
+      "title": "A quartic with technology",
+      "problem": "Solve $2x^4 + 5x^3 - 3x^2 - 15x - 9 \\ge 0$.",
+      "steps": [
+        "Graph $y = 2x^4 + 5x^3 - 3x^2 - 15x - 9$. The zeros are approximately $-1.7$, $-1.5$, $-1$ and $1.7$. (In fact it factors as $(2x + 3)(x + 1)(x^2 - 3)$, so the zeros are exactly $\\pm\\sqrt3$, $-\\tfrac32$ and $-1$.)",
+        "Positive leading coefficient, even degree: up on both ends. Signs: $+, -, +, -, +$ across the five intervals.",
+        "Include the zeros."
+      ],
+      "answer": "$x \\le -1.7$ or $-1.5 \\le x \\le -1$ or $x \\ge 1.7$"
+    },
+    {
+      "title": "Comparing two sides",
+      "problem": "Solve $x^3 + 3x \\le 8x^2 - 9$. Round to one decimal place.",
+      "steps": [
+        "Rearrange: $x^3 - 8x^2 + 3x + 9 \\le 0$.",
+        "Graph $y = x^3 - 8x^2 + 3x + 9$; zeros $\\approx -0.9$, $1.4$, $7.4$.",
+        "Cubic with positive leading coefficient: below the axis on $(-\\infty, -0.9)$ and $(1.4, 7.4)$."
+      ],
+      "answer": "$x \\le -0.9$ or $1.4 \\le x \\le 7.4$"
+    },
+    {
+      "title": "A water ride",
+      "problem": "The height of a water-tube ride is $h(t) = -0.002t^4 + 0.104t^3 - 1.69t^2 + 8.5t + 9$ metres after $t$ seconds, $0 \\le t \\le 25$. When are riders more than $15$ m above the ground?",
+      "steps": [
+        "Solve $h(t) > 15$: graph $y = h(t)$ and $y = 15$ (or $y = h(t) - 15$).",
+        "Intersections (zeros of $h(t) - 15$): $t \\approx 0.8$, $7.6$, $20.0$ and $23.6$.",
+        "The graph of $h$ is above $y = 15$ between the first two and between the last two."
+      ],
+      "answer": "About $0.8 < t < 7.6$ s and $20.0 < t < 23.6$ s."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The solution of $(x - 1)(x - 4) > 0$ is $x > 1$ and $x > 4$.",
+      "fact": "A product is positive when both factors have the **same** sign: $x < 1$ or $x > 4$. Check with a graph or test values."
+    },
+    {
+      "myth": "For $\\le$, use round brackets at the zeros.",
+      "fact": "$\\le$ and $\\ge$ **include** the zeros: use square brackets and closed dots."
+    },
+    {
+      "myth": "$[3, \\infty]$",
+      "fact": "Infinity is not a number you can reach; always use a round bracket: $[3, \\infty)$."
+    },
+    {
+      "myth": "To solve $P(x) > 5$, find the zeros of $P(x)$.",
+      "fact": "Find where $P(x) = 5$, i.e. the zeros of $P(x) - 5$ (or the intersections with $y = 5$)."
+    },
+    {
+      "myth": "Signs always alternate between intervals.",
+      "fact": "At a zero of **even** order the sign does **not** change (the graph touches and turns back). Test every interval."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Business targets",
+      "body": "Companies solve inequalities to find when revenue exceeds a target or when costs stay below a budget."
+    },
+    {
+      "title": "Amusement park safety",
+      "body": "Ride designers check when riders are above certain heights or below certain speeds — inequalities on polynomial models."
+    },
+    {
+      "title": "Engineering tolerances",
+      "body": "A part is acceptable if a measurement stays within a range; that is an inequality on a model of the measurement."
+    },
+    {
+      "title": "Medicine",
+      "body": "A drug is effective while its concentration stays above a threshold; solving the inequality gives the effective time window."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Write in interval notation: $-3 < x \\le 2$ or $x > 5$.",
+      "hint": "Square bracket for $\\le$.",
+      "solution": "$(-3, 2] \\cup (5, \\infty)$."
+    },
+    {
+      "question": "The zeros of a cubic with positive leading coefficient are $-7$, $0$ and $2$. List the intervals and the sign of the function on each.",
+      "hint": "Start from the left end behaviour.",
+      "solution": "$(-\\infty, -7)$: $-$; $(-7, 0)$: $+$; $(0, 2)$: $-$; $(2, \\infty)$: $+$."
+    },
+    {
+      "question": "Solve $(x + 2)(x - 1)(x - 4) < 0$.",
+      "hint": "Use the sign pattern for a positive cubic.",
+      "solution": "$x < -2$ or $1 < x < 4$."
+    },
+    {
+      "question": "Solve $x^3 - 6x + 2 \\ge 0$ using technology. Round to one decimal place.",
+      "hint": "Find the three zeros first.",
+      "solution": "Zeros $\\approx -2.6$, $0.3$, $2.3$. Solution: $-2.6 \\le x \\le 0.3$ or $x \\ge 2.3$."
+    },
+    {
+      "question": "Solve $x^3 - 2x^2 - 3x + 1 < 0$. Round to one decimal place.",
+      "hint": "Graph $y = x^3 - 2x^2 - 3x + 1$.",
+      "solution": "Zeros $\\approx -1.2$, $0.3$, $2.9$. Solution: $x < -1.2$ or $0.3 < x < 2.9$."
+    },
+    {
+      "question": "Explain why the solution of $(x - 3)^2(x + 1) \\ge 0$ is $x \\ge -1$.",
+      "hint": "Think about the sign of $(x - 3)^2$.",
+      "solution": "$(x - 3)^2 \\ge 0$ for all $x$, so the sign is controlled by $x + 1$: the product is $\\ge 0$ exactly when $x + 1 \\ge 0$ (and at $x = 3$, where it equals $0$, which is already included). So $x \\ge -1$."
+    }
+  ],
+  "summary": [
+    "A polynomial inequality's solution is usually a union of intervals; write it with inequalities, interval notation, set notation or a number line.",
+    "The real zeros split the $x$-axis into intervals on which the polynomial keeps one sign.",
+    "Graphically: $P(x) > 0$ where the graph is above the $x$-axis, $P(x) < 0$ where it is below. Include zeros for $\\le$ and $\\ge$.",
+    "Use technology to find zeros that are not exact; round as asked.",
+    "For $P(x) \\ge Q(x)$, solve $P(x) - Q(x) \\ge 0$ or compare the two graphs."
+  ],
+  "questions": [
+    {
+      "id": "2-5-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 0,
+          "max": 2,
+          "step": 1
+        },
+        "c": {
+          "min": 3,
+          "max": 7,
+          "step": 1
+        }
+      },
+      "text": "The $x$-intercepts of the graph of a cubic function $y = f(x)$ with a **positive** leading coefficient are $-{{a}}$, ${{b}}$ and ${{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the intervals into which the $x$-axis is divided."
+        },
+        {
+          "label": "b",
+          "text": "State the sign of $f(x)$ on each interval and explain."
+        },
+        {
+          "label": "c",
+          "text": "Solve $f(x) > 0$."
+        }
+      ],
+      "modelAnswer": "(a) The intercepts divide the $x$-axis into four intervals:\n$(-\\infty, -{{a}})$, $(-{{a}}, {{b}})$, $({{b}}, {{c}})$, $({{c}}, \\infty)$.\n\n(b) A cubic with positive leading coefficient goes from below the axis (left) to above (right), changing sign at each simple zero:\n\n| Interval | $(-\\infty, -{{a}})$ | $(-{{a}}, {{b}})$ | $({{b}}, {{c}})$ | $({{c}}, \\infty)$ |\n|---|---|---|---|---|\n| Sign of $f(x)$ | $-$ | $+$ | $-$ | $+$ |\n\n(c) $f(x) > 0$ for $-{{a}} < x < {{b}}$ or $x > {{c}}$: $(-{{a}}, {{b}}) \\cup ({{c}}, \\infty)$.",
+      "rubric": [
+        {
+          "point": "Correct four intervals",
+          "marks": 1
+        },
+        {
+          "point": "Correct signs, with reasoning from end behaviour",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution of $f(x) > 0$ in interval notation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q02",
+      "type": "conceptual",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 6,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "A solution is described in words as: \\\"all real numbers greater than $-{{a}}$ and less than or equal to ${{b}}$, or greater than or equal to ${{c}}$.\\\"",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write it using inequality symbols."
+        },
+        {
+          "label": "b",
+          "text": "Write it in interval notation."
+        },
+        {
+          "label": "c",
+          "text": "Write it in set notation."
+        },
+        {
+          "label": "d",
+          "text": "Describe how it would look on a number line, explaining each endpoint."
+        }
+      ],
+      "modelAnswer": "(a) $-{{a}} < x \\le {{b}}$ or $x \\ge {{c}}$\n\n(b) $(-{{a}}, {{b}}] \\cup [{{c}}, \\infty)$\n\n(c) $\\{x \\in \\mathbb{R} \\mid -{{a}} < x \\le {{b}} \\text{ or } x \\ge {{c}}\\}$\n\n(d) Open dot at $-{{a}}$, closed dot at ${{b}}$, shading between them; closed dot at ${{c}}$ with shading (an arrow) to the right.\n\nRound bracket/open dot at $-{{a}}$ because it is not included (\"greater than\"); square brackets/closed dots at ${{b}}$ and ${{c}}$ because they are included; round bracket at $\\infty$ because infinity is never reached.",
+      "rubric": [
+        {
+          "point": "Correct inequality form",
+          "marks": 1
+        },
+        {
+          "point": "Correct interval notation (brackets)",
+          "marks": 1
+        },
+        {
+          "point": "Correct set notation",
+          "marks": 1
+        },
+        {
+          "point": "Correct number line description with explanation of open/closed dots",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q03",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "B": {
+          "min": 0,
+          "max": 1,
+          "step": 1
+        },
+        "C": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The graph of $y = P(x)$, a cubic polynomial, is shown.\n\n```plot\nf: (x+{{A}})*(x-{{B}})*(x-{{C}})\ndomain: -5, 7\npoints: (-{{A}},0), ({{B}},0), ({{C}},0)\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve $P(x) \\ge 0$."
+        },
+        {
+          "label": "b",
+          "text": "Solve $P(x) < 0$."
+        }
+      ],
+      "modelAnswer": "The zeros are $-{{A}}$, ${{B}}$ and ${{C}}$.\n\nThe graph rises to the right (positive leading coefficient), so it is below the axis on the far left, then above, below, above:\n\n| Interval | $(-\\infty, -{{A}})$ | $(-{{A}}, {{B}})$ | $({{B}}, {{C}})$ | $({{C}}, \\infty)$ |\n|---|---|---|---|---|\n| Graph | below | above | below | above |\n\n(a) $P(x) \\ge 0$ (on or above the axis, zeros included): $-{{A}} \\le x \\le {{B}}$ or $x \\ge {{C}}$, i.e. $[-{{A}}, {{B}}] \\cup [{{C}}, \\infty)$.\n\n(b) $P(x) < 0$ (strictly below, zeros excluded): $x < -{{A}}$ or ${{B}} < x < {{C}}$, i.e. $(-\\infty, -{{A}}) \\cup ({{B}}, {{C}})$.",
+      "rubric": [
+        {
+          "point": "Reads the zeros from the graph",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution of $P(x) \\ge 0$ including endpoints",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution of $P(x) < 0$ excluding endpoints",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Solve $x^2 + 3x - 5 > 0$. Round the zeros to one decimal place, and explain how the graph shows your answer.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the larger boundary value.",
+          "answer": {
+            "expr": "1.193",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.05
+          }
+        }
+      ],
+      "modelAnswer": "Zeros of $x^2 + 3x - 5$: $x = \\dfrac{-3 \\pm \\sqrt{9 + 20}}{2} = \\dfrac{-3 \\pm \\sqrt{29}}{2}$, so $x \\approx -4.2$ and $x \\approx 1.2$ (or use the zero operation).\n\nThe parabola opens upward, so it is **above** the $x$-axis to the left of the smaller zero and to the right of the larger zero.\n\n$$x < -4.2 \\text{ or } x > 1.2$$",
+      "rubric": [
+        {
+          "point": "Finds both zeros to one decimal place",
+          "marks": 2
+        },
+        {
+          "point": "Uses the shape of the graph to choose intervals",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with strict inequalities",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $2x^3 - 13x^2 + 17x + 12 \\le 0$. Explain your method.",
+      "modelAnswer": "Graph $y = 2x^3 - 13x^2 + 17x + 12$ and find the zeros: $x = -0.5$, $3$ and $4$. (Check: it factors as $(2x + 1)(x - 3)(x - 4)$.)\n\nPositive leading coefficient, cubic: below the axis on the far left, then above, below, above.\n\n| Interval | $(-\\infty, -0.5)$ | $(-0.5, 3)$ | $(3, 4)$ | $(4, \\infty)$ |\n|---|---|---|---|---|\n| Sign | $-$ | $+$ | $-$ | $+$ |\n\nInclude the zeros ($\\le$): $x \\le -0.5$ or $3 \\le x \\le 4$, i.e. $(-\\infty, -0.5] \\cup [3, 4]$.",
+      "rubric": [
+        {
+          "point": "Correct zeros",
+          "marks": 2
+        },
+        {
+          "point": "Determines the sign on each interval",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution including endpoints",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Use technology to solve $x^3 - 2x^2 - 5x + 2 \\ge 0$. Round to one decimal place.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the largest zero.",
+          "answer": {
+            "expr": "3.323",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Graph $y = x^3 - 2x^2 - 5x + 2$ and use the zero operation: $x \\approx -1.7$, $0.4$, $3.3$.\n\nThe graph is on or above the $x$-axis between the first two zeros and to the right of the third.\n\n$$-1.7 \\le x \\le 0.4 \\text{ or } x \\ge 3.3$$",
+      "rubric": [
+        {
+          "point": "Finds all three zeros to one decimal place",
+          "marks": 2
+        },
+        {
+          "point": "Identifies where the graph is above the axis",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with closed endpoints",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $3x^3 + 4x^2 - 35x - 12 > 0$. Give exact boundary values.",
+      "modelAnswer": "Graphing (or testing rational zeros) gives zeros $-4$, $-\\tfrac13$ and $3$; indeed $3x^3 + 4x^2 - 35x - 12 = (x + 4)(3x + 1)(x - 3)$.\n\nPositive cubic: signs $-, +, -, +$ on $(-\\infty, -4)$, $(-4, -\\tfrac13)$, $(-\\tfrac13, 3)$, $(3, \\infty)$.\n\n$$-4 < x < -\\tfrac13 \\text{ or } x > 3$$",
+      "rubric": [
+        {
+          "point": "Finds exact zeros",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign analysis",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with strict inequalities",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q08",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Solve $-x^4 - 2x^3 + 4x^2 + 10x + 5 \\ge 0$. Explain what happens at $x = -1$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the right-hand endpoint of the solution to one decimal place.",
+          "answer": {
+            "expr": "sqrt(5)",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Graphing shows zeros at about $-2.2$, $-1$ and $2.2$, with the graph **touching** the axis at $x = -1$.\n\nIt factors: $-x^4 - 2x^3 + 4x^2 + 10x + 5 = -(x + 1)^2(x^2 - 5)$.\n\nSo $-(x + 1)^2(x^2 - 5) \\ge 0 \\iff (x + 1)^2(x^2 - 5) \\le 0$. Since $(x + 1)^2 \\ge 0$, this holds when $x^2 - 5 \\le 0$ or $x = -1$:\n\n$$-\\sqrt5 \\le x \\le \\sqrt5 \\quad (\\approx -2.2 \\le x \\le 2.2)$$\n\nAt $x = -1$ (a zero of order 2) the graph touches the axis but does **not** change sign — the function is $\\ge 0$ on both sides, so the solution is one unbroken interval.",
+      "rubric": [
+        {
+          "point": "Finds the zeros (exact or approximate)",
+          "marks": 2
+        },
+        {
+          "point": "Recognises the double zero at $-1$",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution interval",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the sign does not change at $x = -1$",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $x^3 + 3x \\le 8x^2 - 9$. Round answers to one decimal place.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the largest boundary value.",
+          "answer": {
+            "expr": "7.434",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Rearrange: $x^3 - 8x^2 + 3x + 9 \\le 0$.\n\nGraph $y = x^3 - 8x^2 + 3x + 9$; zeros $\\approx -0.9$, $1.4$, $7.4$.\n\nPositive cubic: below the axis on $(-\\infty, -0.9)$ and $(1.4, 7.4)$.\n\n$$x \\le -0.9 \\text{ or } 1.4 \\le x \\le 7.4$$\n\n(Alternatively graph $y = x^3 + 3x$ and $y = 8x^2 - 9$ and find where the first is on or below the second.)",
+      "rubric": [
+        {
+          "point": "Rearranges to compare with zero (or uses two graphs)",
+          "marks": 1
+        },
+        {
+          "point": "Finds the three boundary values",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $-x^4 + 3x^3 + 9x^2 > 5x + 5$. Round to one decimal place.",
+      "modelAnswer": "Rearrange: $-x^4 + 3x^3 + 9x^2 - 5x - 5 > 0$.\n\nGraph $y = -x^4 + 3x^3 + 9x^2 - 5x - 5$; zeros $\\approx -2.0$, $-0.6$, $0.9$, $4.7$.\n\nNegative leading coefficient, even degree: down on both ends, so the signs across the five intervals are $-, +, -, +, -$.\n\n$$-2.0 < x < -0.6 \\text{ or } 0.9 < x < 4.7$$",
+      "rubric": [
+        {
+          "point": "Rearranges correctly",
+          "marks": 1
+        },
+        {
+          "point": "Finds all four zeros",
+          "marks": 2
+        },
+        {
+          "point": "Uses end behaviour / test values to get the signs",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with strict inequalities",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "An electronics manufacturer models yearly revenue from MP3 players by $R(t) = t^3 - 0.8t^2 + 2t - 1$, in millions of dollars, where $t$ is the number of years since 2003.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an inequality for when yearly revenue is \\$100 million or more."
+        },
+        {
+          "label": "b",
+          "text": "Solve it and interpret the answer. Give the boundary value of $t$.",
+          "answer": {
+            "expr": "4.788",
+            "unit": "years",
+            "sig": 2,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "c",
+          "text": "Is the model likely to remain valid for 20 years? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $t^3 - 0.8t^2 + 2t - 1 \\ge 100$\n\n(b) Rearrange: $t^3 - 0.8t^2 + 2t - 101 \\ge 0$. Graph $y = t^3 - 0.8t^2 + 2t - 101$; its only real zero is $t \\approx 4.8$. The graph is above the axis to the right of this zero, so $t \\ge 4.8$.\n\nRevenue is at least \\$100 million from about $4.8$ years after 2003 (late 2007) onward.\n\n(c) Probably not: the cubic model keeps increasing without limit, but real sales of a product eventually level off or fall (new technology replaces it). The model is only reliable for a limited time.",
+      "rubric": [
+        {
+          "point": "Writes the correct inequality",
+          "marks": 1
+        },
+        {
+          "point": "Solves with technology to get $t \\approx 4.8$",
+          "marks": 2
+        },
+        {
+          "point": "Interprets in context (year)",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable comment on the validity of the model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "A section of a water-tube ride is modelled by $h(t) = -0.002t^4 + 0.104t^3 - 1.69t^2 + 8.5t + 9$, where $h$ is the height in metres and $t$ is the time in seconds, $0 \\le t \\le 25$. When will riders be more than $15$ m above the ground?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long, in total, are riders above 15 m? (Round to one decimal place.)",
+          "answer": {
+            "expr": "(7.588 - 0.839) + (23.574 - 20)",
+            "unit": "s",
+            "sig": 2,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Solve $h(t) > 15$, i.e. $-0.002t^4 + 0.104t^3 - 1.69t^2 + 8.5t - 6 > 0$.\n\nGraph $y = h(t)$ and $y = 15$ for $0 \\le t \\le 25$ (or graph $y = h(t) - 15$). The intersection points are at $t \\approx 0.8$, $7.6$, $20.0$ and $23.6$.\n\nThe ride is above $15$ m between the first pair and between the second pair:\n\n$$0.8 < t < 7.6 \\quad\\text{or}\\quad 20.0 < t < 23.6 \\text{ (seconds)}$$",
+      "rubric": [
+        {
+          "point": "Sets up the inequality $h(t) > 15$",
+          "marks": 1
+        },
+        {
+          "point": "Uses technology to find all four boundary times",
+          "marks": 2
+        },
+        {
+          "point": "Correct intervals",
+          "marks": 2
+        },
+        {
+          "point": "Answer stated in context with units",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q13",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain the difference between a polynomial equation and a polynomial inequality. Support your answer with an example of each, including what their solutions look like.",
+      "modelAnswer": "A polynomial **equation** states that a polynomial equals something (usually $0$), e.g. $x^2 - 4 = 0$. Its solution is a finite set of values: $x = \\pm2$. These are the $x$-intercepts of $y = x^2 - 4$.\n\nA polynomial **inequality** uses $<$, $\\le$, $>$ or $\\ge$, e.g. $x^2 - 4 < 0$. Its solution is usually one or more **intervals**: $-2 < x < 2$, the $x$-values where the graph is below the $x$-axis.\n\nThe equation's roots are the **boundary points** of the inequality's solution intervals.",
+      "rubric": [
+        {
+          "point": "Correct description and example of an equation and its solution",
+          "marks": 2
+        },
+        {
+          "point": "Correct description and example of an inequality and its interval solution",
+          "marks": 2
+        },
+        {
+          "point": "Explains the connection (roots are boundary points)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q14",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Describe the connection between the solution of a polynomial inequality and the graph of the corresponding function. What role do the real roots of the related equation play? Use $f(x) = x(x - 3)(x + 2)$ to illustrate.",
+      "modelAnswer": "The solution of $f(x) > 0$ is the set of $x$-values where the graph of $y = f(x)$ is **above** the $x$-axis; $f(x) < 0$ is where it is **below**.\n\nThe real roots of $f(x) = 0$ — here $-2$, $0$, $3$ — are the $x$-intercepts. They are the only places the graph can change from above to below, so they split the axis into intervals of constant sign and form the **endpoints** of the solution intervals. Whether the endpoints are included depends on whether the inequality is strict.\n\nFor $f(x) = x(x - 3)(x + 2)$ (positive cubic): $f(x) > 0$ on $(-2, 0) \\cup (3, \\infty)$ and $f(x) \\le 0$ on $(-\\infty, -2] \\cup [0, 3]$.",
+      "rubric": [
+        {
+          "point": "Explains above/below the axis",
+          "marks": 1
+        },
+        {
+          "point": "Explains the roots as boundaries where the sign can change",
+          "marks": 2
+        },
+        {
+          "point": "Correct worked illustration",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Describe how you would use technology to solve $1.2x^3 + 5x^2 - 3.5x - 2 \\ge 0$, then carry out your plan. Round to one decimal place.",
+      "modelAnswer": "**Plan:** enter $y = 1.2x^3 + 5x^2 - 3.5x - 2$ in a graphing calculator or graphing software. Choose a window showing all intercepts (e.g. $x \\in [-6, 3]$, $y \\in [-10, 30]$). Use the zero operation near each $x$-intercept. Then read the intervals where the graph is on or above the axis. (With a CAS: solve the equation numerically, then test a value in each interval.)\n\n**Result:** zeros $\\approx -4.7$, $-0.4$, $0.9$. Positive cubic → signs $-, +, -, +$.\n\n$$-4.7 \\le x \\le -0.4 \\text{ or } x \\ge 0.9$$",
+      "rubric": [
+        {
+          "point": "Clear description of the technology steps (graph, window, zero operation)",
+          "marks": 2
+        },
+        {
+          "point": "Correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-5-q16",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create an equation for a cubic function $y = f(x)$ such that $f(x) < 0$ when $-4 < x < 3$ or $x > 7$, and $f(x) > 0$ when $x < -4$ or $3 < x < 7$. Explain how your equation produces exactly these intervals, and describe its graph.",
+      "modelAnswer": "The sign changes at $-4$, $3$ and $7$, so these are the zeros: factors $(x + 4)$, $(x - 3)$, $(x - 7)$.\n\nFor large $x$ the function is negative, and for very negative $x$ it is positive: the end behaviour is \"up on the left, down on the right\", so the leading coefficient is **negative**.\n\n$$f(x) = -(x + 4)(x - 3)(x - 7)$$ (any $f(x) = k(x + 4)(x - 3)(x - 7)$ with $k < 0$ works).\n\nCheck with test values: $f(0) = -(4)(-3)(-7) = -84 < 0$ ✓ (in $(-4, 3)$); $f(5) = -(9)(2)(-2) = 36 > 0$ ✓.\n\nThe graph comes down from the upper left, crosses the axis at $-4$, rises to cross again at $3$, then falls back through $7$ and continues downward.",
+      "rubric": [
+        {
+          "point": "Identifies the zeros from the sign changes",
+          "marks": 1
+        },
+        {
+          "point": "Chooses a negative leading coefficient with a reason",
+          "marks": 2
+        },
+        {
+          "point": "Valid equation verified with test values",
+          "marks": 1
+        },
+        {
+          "point": "Describes the graph",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $x^3 + 3x^2 - 4x - 7 < 0$ using technology. Round to one decimal place.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the smallest zero.",
+          "answer": {
+            "expr": "-3.571",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "Graph $y = x^3 + 3x^2 - 4x - 7$; zeros $\\approx -3.6$, $-1.1$, $1.7$.\n\nPositive cubic: below the axis on $(-\\infty, -3.6)$ and $(-1.1, 1.7)$.\n\n$$x < -3.6 \\text{ or } -1.1 < x < 1.7$$",
+      "rubric": [
+        {
+          "point": "Finds the three zeros",
+          "marks": 2
+        },
+        {
+          "point": "Correct intervals",
+          "marks": 1
+        },
+        {
+          "point": "Strict inequality endpoints excluded",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-5-q18",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $2x^4 + 5x^3 - 3x^2 - 15x - 9 \\ge 0$. Use technology to find the zeros, then confirm them by factoring.",
+      "modelAnswer": "Graph $y = 2x^4 + 5x^3 - 3x^2 - 15x - 9$: zeros $\\approx -1.7$, $-1.5$, $-1$, $1.7$.\n\n**Confirm by factoring:** $P(-1) = 2 - 5 - 3 + 15 - 9 = 0$, so $x + 1$ is a factor. Dividing gives $2x^3 + 3x^2 - 6x - 9 = x^2(2x + 3) - 3(2x + 3) = (2x + 3)(x^2 - 3)$.\nSo $P(x) = (x + 1)(2x + 3)(x^2 - 3)$, with zeros $-1$, $-\\tfrac32$, $\\pm\\sqrt3 \\approx \\pm1.7$ ✓\n\nPositive even-degree polynomial: signs $+, -, +, -, +$.\n\n$$x \\le -\\sqrt3 \\;\\text{ or }\\; -\\tfrac32 \\le x \\le -1 \\;\\text{ or }\\; x \\ge \\sqrt3$$\n(about $x \\le -1.7$, $-1.5 \\le x \\le -1$, $x \\ge 1.7$)",
+      "rubric": [
+        {
+          "point": "Finds the four zeros with technology",
+          "marks": 1
+        },
+        {
+          "point": "Confirms by factoring",
+          "marks": 2
+        },
+        {
+          "point": "Correct sign pattern",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution with closed endpoints",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

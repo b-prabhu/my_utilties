@@ -1,0 +1,1353 @@
+{
+  "id": "5-review",
+  "number": "Review",
+  "title": "Chapter 5 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "Pull the whole chapter together: graphs of all six trigonometric functions, sinusoidal models $a\\sin[k(x-d)]+c$, solving trigonometric equations, and rates of change. The questions here are rewritten from the chapter review and practice test – every one asks you to show your reasoning.",
+  "objectives": [
+    "Review the key properties of the primary and reciprocal trigonometric functions.",
+    "Read, write and verify sinusoidal equations from properties, graphs and contexts.",
+    "Solve linear and quadratic trigonometric equations exactly and approximately.",
+    "Model periodic data and estimate rates of change."
+  ],
+  "lessons": [
+    {
+      "id": "big-picture",
+      "title": "Chapter 5 at a glance",
+      "body": "| Section | Big idea | Key tools |\n|---|---|---|\n| 5.1 | Sine, cosine and tangent as functions of a radian angle | amplitude, period $\\frac{2\\pi}{k}$, asymptotes of $\\tan x$ |\n| 5.2 | Reciprocal functions $\\csc$, $\\sec$, $\\cot$ | reciprocal behaviour, $\\csc x\\ne\\sin^{-1}x$ |\n| 5.3 | $f(x)=a\\sin[k(x-d)]+c$ | $a=\\frac{\\max-\\min}{2}$, $c=\\frac{\\max+\\min}{2}$, factor $k$ |\n| 5.4 | Solving trigonometric equations | reference angle, CAST, factoring, identities |\n| 5.5 | Rates of change and modelling | secant → tangent, rates follow a sinusoidal pattern |\n\n```plot\ntitle: One picture, many ideas: y = 2 sin[2(x − π/4)] + 1\nf: 2*sin(2*(x-pi/4))+1\nf: 1 | dashed; label=midline y = 1\ndomain: 0, 2*pi\nrange: -2, 4\nxticks: pi\npoints: (pi/4,1), (pi/2,3), (3*pi/4,1), (pi,-1), (5*pi/4,1)\n```\nAmplitude 2, period $\\pi$, phase shift $\\frac{\\pi}{4}$ right, midline $y=1$, max 3, min $-1$. The steepest points (greatest rate of change) are the midline crossings; the rate is zero at $(\\frac{\\pi}{2},3)$ and $(\\pi,-1)$."
+    },
+    {
+      "id": "strategy",
+      "title": "A checklist for chapter problems",
+      "body": "**Reading a sinusoidal equation**\n1. Is it in the form $a\\sin[k(x-d)]+c$? If not, factor $k$ out of the bracket.\n2. Amplitude $|a|$ (reflection if $a<0$), period $\\frac{2\\pi}{k}$, phase shift $d$, midline $c$.\n\n**Writing a model**\n1. $a$ and $c$ from the max and min.\n2. $k$ from the period (watch units: rpm, Hz, days, months).\n3. $d$ from a recognisable point: cosine → maximum; sine → midline going up; or $d=t_{\\max}-\\frac{T}{4}$ for sine.\n4. **Check** with one or two points.\n\n**Solving an equation on $[0,2\\pi]$**\n1. Rearrange; factor (or use the quadratic formula / an identity).\n2. Reject impossible values ($|\\sin x|>1$, $|\\cos x|>1$, $|\\csc x|<1$, $|\\sec x|<1$).\n3. Reference angle → all quadrants by CAST. Exact if special, otherwise approximate (and say so).\n\n**Rates of change**\n* Average: $\\frac{f(b)-f(a)}{b-a}$. Instantaneous: shrink the interval.\n* Zero at max/min; greatest at midline crossings; units = output units per input unit."
+    },
+    {
+      "id": "problem-wrapup",
+      "title": "Chapter problem: design a rollercoaster",
+      "body": "The chapter ends by combining ideas from Chapters 1–5. A rollercoaster is built from three pieces:\n\n1. a **polynomial** section with a steep hill starting at the origin,\n2. a **sinusoidal** section with at least two full cycles,\n3. a **rational** section that brings the cars back close to the ground.\n\nThe pieces must **join** (equal heights where they meet) and the **rates of change** where they meet must not differ by more than 10 %. To check this you estimate the instantaneous rate of change of each function at the joining point using a very small interval, then compare:\n$$\\text{percent difference}=\\frac{|r_1-r_2|}{|r_1|}\\times100\\%$$\nThis is a good example of why we estimate instantaneous rates: smooth joins feel comfortable, sudden changes in slope jolt the riders."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "amplitude",
+      "definition": "Half the distance between the maximum and minimum values."
+    },
+    {
+      "term": "period",
+      "definition": "The length of one cycle; $\\frac{2\\pi}{k}$ for sine and cosine, $\\frac{\\pi}{k}$ for tangent."
+    },
+    {
+      "term": "phase shift",
+      "definition": "The horizontal translation $d$ in $a\\sin[k(x-d)]+c$."
+    },
+    {
+      "term": "vertical translation",
+      "definition": "The constant $c$; the midline is $y=c$."
+    },
+    {
+      "term": "reciprocal trigonometric functions",
+      "definition": "$\\csc x=\\frac{1}{\\sin x}$, $\\sec x=\\frac{1}{\\cos x}$, $\\cot x=\\frac{1}{\\tan x}$."
+    },
+    {
+      "term": "instantaneous rate of change",
+      "definition": "The slope of the tangent at a point, estimated with very small intervals."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Sinusoidal function",
+      "latex": "f(x)=a\\sin[k(x-d)]+c",
+      "meaning": "Also with cosine."
+    },
+    {
+      "name": "Period",
+      "latex": "T=\\frac{2\\pi}{k}",
+      "meaning": "Tangent and cotangent: $\\frac{\\pi}{k}$."
+    },
+    {
+      "name": "Amplitude and midline",
+      "latex": "a=\\frac{\\max-\\min}{2},\\quad c=\\frac{\\max+\\min}{2}",
+      "meaning": ""
+    },
+    {
+      "name": "Reciprocal identities",
+      "latex": "\\csc x=\\frac{1}{\\sin x},\\ \\sec x=\\frac{1}{\\cos x},\\ \\cot x=\\frac{1}{\\tan x}",
+      "meaning": ""
+    },
+    {
+      "name": "Pythagorean identity",
+      "latex": "\\sin^2x+\\cos^2x=1",
+      "meaning": "Used to rewrite equations in one ratio."
+    },
+    {
+      "name": "Average rate of change",
+      "latex": "\\frac{f(b)-f(a)}{b-a}",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Piston model (review question)",
+      "problem": "A lawn-mower piston moves up and down 30 times in 1 s, travelling 10 cm from top to bottom. Model its vertical position $y$ (cm) at time $t$ (s). Is the model unique?",
+      "steps": [
+        "Amplitude $=\\frac{10}{2}=5$ cm; take the midline as $y=0$.",
+        "Period $=\\frac{1}{30}$ s, so $k=2\\pi(30)=60\\pi$.",
+        "Starting at the top: $y=5\\cos(60\\pi t)$.",
+        "Not unique: e.g. $y=5\\sin(60\\pi t)$ (starting at the middle going up), or a different midline if $y$ is measured from the bottom: $y=5\\cos(60\\pi t)+5$."
+      ],
+      "answer": "$y=5\\cos(60\\pi t)$ (one of many correct models)."
+    },
+    {
+      "title": "Boat at a dock (review questions 12–13)",
+      "problem": "A boat bobs with 1.8 m between high and low points, every 4 s. Model its position, find when it is 0.5 m above its mean position, and when its rate of change is 0.",
+      "steps": [
+        "$a=0.9$, $k=\\frac{2\\pi}{4}=\\frac{\\pi}{2}$; starting at the mean going up: $y=0.9\\sin\\left(\\frac{\\pi}{2}t\\right)$.",
+        "$0.9\\sin\\left(\\frac{\\pi}{2}t\\right)=0.5\\Rightarrow\\sin\\left(\\frac{\\pi}{2}t\\right)\\approx0.5556$.",
+        "$\\frac{\\pi}{2}t\\approx0.5890$ or $\\pi-0.5890\\approx2.5526$, so $t\\approx0.37$ s or $t\\approx1.63$ s in each cycle.",
+        "Rate of change 0 at the top and bottom: $t=1$ s and $t=3$ s; greatest at $t=0,4$ s (rising) and $t=2$ s (falling)."
+      ],
+      "answer": "$y=0.9\\sin\\left(\\frac{\\pi}{2}t\\right)$; 0.5 m above at $t\\approx0.37$ s and $1.63$ s."
+    },
+    {
+      "title": "Exact solutions (practice test)",
+      "problem": "Find exact solutions of $2\\sin^2x-3\\sin x+1=0$ on $[0,2\\pi]$.",
+      "steps": [
+        "$(2\\sin x-1)(\\sin x-1)=0$.",
+        "$\\sin x=\\frac12$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6}$.",
+        "$\\sin x=1$: $x=\\frac{\\pi}{2}$."
+      ],
+      "answer": "$x=\\frac{\\pi}{6},\\frac{\\pi}{2},\\frac{5\\pi}{6}$."
+    },
+    {
+      "title": "Reading a messy equation (practice test)",
+      "problem": "For $y=3\\cos\\left(2x-\\frac{\\pi}{2}\\right)$ find the phase shift.",
+      "steps": [
+        "Factor 2: $3\\cos\\left[2\\left(x-\\frac{\\pi}{4}\\right)\\right]$.",
+        "Phase shift $\\frac{\\pi}{4}$ to the right (not $\\frac{\\pi}{2}$)."
+      ],
+      "answer": "$\\frac{\\pi}{4}$ right."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Phase shift can be read before factoring.",
+      "fact": "Always factor $k$ out first: $\\cos(2x-\\frac{\\pi}{2})$ shifts $\\frac{\\pi}{4}$, not $\\frac{\\pi}{2}$."
+    },
+    {
+      "myth": "$\\sec\\frac{1}{\\sqrt2}$ and $\\cos^{-1}\\frac{1}{\\sqrt2}$ mean the same thing.",
+      "fact": "One is a reciprocal (a number), the other an inverse (an angle)."
+    },
+    {
+      "myth": "Every trigonometric equation has two solutions in $[0,2\\pi]$.",
+      "fact": "There may be 0, 1, 2, 3, 4 or more – check every factor and every quadrant."
+    },
+    {
+      "myth": "The rate of change is greatest at the top of a Ferris wheel.",
+      "fact": "At the top the vertical rate is zero; it is greatest at the height of the hub."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Theme parks",
+      "body": "Every ride in this chapter – the Octopus, Round-Up, swing ride, Gravitron and Ferris wheel – is modelled with sinusoidal or reciprocal trigonometric functions."
+    },
+    {
+      "title": "Climate",
+      "body": "Monthly temperatures for Hamilton, Ontario follow a sinusoidal model with period 12 months; the rate of change shows when the seasons change fastest."
+    },
+    {
+      "title": "Astronomy",
+      "body": "Moon phases repeat about every 29.5 days, so percent illumination is sinusoidal and its rate of change tells how quickly the Moon is waxing or waning."
+    }
+  ],
+  "practice": [
+    {
+      "question": "A sine function has max 6 and min 2. Determine its amplitude and vertical translation.",
+      "hint": "Use the two formulas.",
+      "solution": "Amplitude 2, vertical translation 4."
+    },
+    {
+      "question": "Write an equation of a cosine function with period $3\\pi$ and phase shift $-\\frac{\\pi}{3}$.",
+      "hint": "$k=\\frac{2\\pi}{3\\pi}$.",
+      "solution": "$y=\\cos\\left[\\frac23\\left(x+\\frac{\\pi}{3}\\right)\\right]$."
+    },
+    {
+      "question": "Determine all $x\\in[0,2\\pi]$ with $\\csc x=4$.",
+      "hint": "$\\sin x=0.25$.",
+      "solution": "$x\\approx0.25,\\ 2.89$."
+    },
+    {
+      "question": "Find an exact solution of $\\cos^2x-\\frac34=0$ on $[0,2\\pi]$.",
+      "hint": "$\\cos x=\\pm\\frac{\\sqrt3}{2}$.",
+      "solution": "$x=\\frac{\\pi}{6},\\frac{5\\pi}{6},\\frac{7\\pi}{6},\\frac{11\\pi}{6}$."
+    },
+    {
+      "question": "Solve $\\cos^2x-0.49=0$ to the nearest hundredth.",
+      "hint": "$\\cos x=\\pm0.7$.",
+      "solution": "$x\\approx0.80,\\ 2.35,\\ 3.94,\\ 5.49$."
+    },
+    {
+      "question": "Where do $y=\\csc x$ and $y=\\cos\\left(x-\\frac{\\pi}{2}\\right)$ intersect on $[0,2\\pi]$?",
+      "hint": "$\\cos(x-\\frac{\\pi}{2})=\\sin x$.",
+      "solution": "$\\csc x=\\sin x\\Rightarrow\\sin x=\\pm1$: $x=\\frac{\\pi}{2},\\frac{3\\pi}{2}$."
+    }
+  ],
+  "summary": [
+    "Know the graphs and key properties of all six trigonometric functions in radians.",
+    "Read and write sinusoidal equations $a\\sin[k(x-d)]+c$, factoring $k$ when needed.",
+    "Solve linear and quadratic trigonometric equations on $[0,2\\pi]$, exactly or approximately.",
+    "Model periodic situations and interpret average and instantaneous rates of change."
+  ],
+  "questions": [
+    {
+      "id": "5-r-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "mx": {
+          "min": 3,
+          "max": 10,
+          "step": 1
+        },
+        "mn": {
+          "min": -4,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "text": "The graph of a sine function has a maximum value of {{mx}} and a minimum value of {{mn}}. (a) Determine the amplitude. (b) Determine the vertical translation. (c) Explain how you could check your answers using the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Amplitude",
+          "answer": {
+            "expr": "(mx-mn)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Vertical translation",
+          "answer": {
+            "expr": "(mx+mn)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain a check."
+        }
+      ],
+      "modelAnswer": "(a) $a=\\frac{ {{mx}}-({{mn}}) }{2}={{(mx-mn)/2:3}}$.\n\n(b) $c=\\frac{ {{mx}}+({{mn}}) }{2}={{(mx+mn)/2:3}}$.\n\n(c) The midline $y={{(mx+mn)/2:3}}$ should be exactly halfway between the highest and lowest points, and each of those should be {{(mx-mn)/2:3}} units from the midline.",
+      "rubric": [
+        {
+          "point": "Amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Valid check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q02",
+      "type": "conceptual",
+      "difficulty": 1,
+      "vars": {
+        "c": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "mx": {
+          "min": 5,
+          "max": 9,
+          "step": 1
+        },
+        "mn": {
+          "min": -3,
+          "max": 1,
+          "step": 1
+        }
+      },
+      "text": "A student claims that the maximum value of $y=\\cos x-{{c}}$ is ${{c+1}}$ and that a transformed sine function with maximum {{mx}} and minimum {{mn}} has vertical translation {{mx}}. Correct and justify each statement.",
+      "modelAnswer": "The maximum of $\\cos x$ is 1, so the maximum of $y=\\cos x-{{c}}$ is $1-{{c}}={{1-c}}$, not {{c+1}}.\n\nThe vertical translation is the midline, halfway between max and min: $\\frac{ {{mx}}+({{mn}}) }{2}={{(mx+mn)/2:3}}$, not the maximum.",
+      "rubric": [
+        {
+          "point": "Corrects the maximum with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Corrects the vertical translation with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "Write an equation for a cosine function with a period of {{p}}π and a phase shift of $-\\frac{\\pi}{ {{n}} }$. Explain how you found $k$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $k$",
+          "answer": {
+            "expr": "2/p",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$k=\\frac{2\\pi}{\\text{period}}=\\frac{2\\pi}{ {{p}}\\pi}=\\frac{2}{ {{p}} }\\approx{{2/p:3}}$.\n\n$y=\\cos\\left[\\frac{2}{ {{p}} }\\left(x+\\frac{\\pi}{ {{n}} }\\right)\\right]$ (amplitude 1, no vertical translation).",
+      "rubric": [
+        {
+          "point": "Correct k with explanation",
+          "marks": 2
+        },
+        {
+          "point": "Correct phase shift sign",
+          "marks": 1
+        },
+        {
+          "point": "Complete equation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "f": {
+          "choices": [
+            20,
+            25,
+            30,
+            40
+          ]
+        },
+        "L": {
+          "choices": [
+            8,
+            10,
+            12
+          ]
+        }
+      },
+      "text": "A piston in a motor moves up and down {{f}} times in 1 s. Its total travel from top to bottom is {{L}} cm. (a) Write an equation to model its vertical position $y$ (cm) at time $t$ (s). (b) Is this the only possible equation? Justify.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $k$",
+          "answer": {
+            "expr": "2*pi*f",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Is the model unique? Justify."
+        }
+      ],
+      "modelAnswer": "(a) Amplitude $=\\frac{ {{L}} }{2}={{L/2:3}}$ cm; period $=\\frac{1}{ {{f}} }$ s, so $k=2\\pi({{f}})={{2*f}}\\pi$. Starting at the top with midline 0: $y={{L/2:3}}\\cos({{2*f}}\\pi t)$.\n\n(b) No. Other correct models include $y={{L/2:3}}\\sin({{2*f}}\\pi t)$ (starts at the middle going up), $y=-{{L/2:3}}\\cos({{2*f}}\\pi t)$ (starts at the bottom), or adding a vertical translation if $y$ is measured from a different reference level. Any phase shift by whole periods also gives the same graph.",
+      "rubric": [
+        {
+          "point": "Correct amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct k from frequency",
+          "marks": 1
+        },
+        {
+          "point": "Complete model",
+          "marks": 1
+        },
+        {
+          "point": "Explains non-uniqueness with examples",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      },
+      "text": "Determine all values of $x$ in $[0,2\\pi]$ such that $\\csc x=-{{c}}$. Round to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution",
+          "answer": {
+            "expr": "pi+asin(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution",
+          "answer": {
+            "expr": "2*pi-asin(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\sin x=-\\frac{1}{ {{c}} }$. Reference angle $\\sin^{-1}\\left(\\frac{1}{ {{c}} }\\right)\\approx{{asin(1/c):3}}$.\n\nSine is negative in III and IV: $x\\approx\\pi+{{asin(1/c):3}}\\approx{{pi+asin(1/c):3}}$ and $x\\approx2\\pi-{{asin(1/c):3}}\\approx{{2*pi-asin(1/c):3}}$.",
+      "rubric": [
+        {
+          "point": "Converts to sine",
+          "marks": 1
+        },
+        {
+          "point": "Reference angle",
+          "marks": 1
+        },
+        {
+          "point": "Both solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q06",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "(a) Explain the difference between $\\sec\\frac{1}{\\sqrt2}$ and $\\cos^{-1}\\left(\\frac{1}{\\sqrt2}\\right)$. (b) Determine a value for each. (c) Repeat for $\\csc\\frac{\\sqrt3}{2}$ and $\\sin^{-1}\\left(\\frac{\\sqrt3}{2}\\right)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $\\sec\\frac{1}{\\sqrt2}$",
+          "answer": {
+            "expr": "1/cos(1/sqrt(2))",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Value of $\\csc\\frac{\\sqrt3}{2}$",
+          "answer": {
+            "expr": "1/sin(sqrt(3)/2)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\sec\\frac{1}{\\sqrt2}=\\frac{1}{\\cos(0.7071\\text{ rad})}$ – a number. $\\cos^{-1}\\left(\\frac{1}{\\sqrt2}\\right)$ is an angle whose cosine is $\\frac{1}{\\sqrt2}$.\n\n(b) $\\cos(0.7071)\\approx0.7602$, so $\\sec\\frac{1}{\\sqrt2}\\approx1.315$. $\\cos^{-1}\\left(\\frac{1}{\\sqrt2}\\right)=\\frac{\\pi}{4}\\approx0.785$.\n\n(c) $\\csc\\frac{\\sqrt3}{2}=\\frac{1}{\\sin(0.8660)}\\approx\\frac{1}{0.7616}\\approx1.313$. $\\sin^{-1}\\left(\\frac{\\sqrt3}{2}\\right)=\\frac{\\pi}{3}\\approx1.047$.",
+      "rubric": [
+        {
+          "point": "Explains reciprocal vs inverse",
+          "marks": 2
+        },
+        {
+          "point": "Values in (b)",
+          "marks": 2
+        },
+        {
+          "point": "Values in (c)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 8,
+          "max": 16,
+          "step": 1
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "When the Sun is at an angle of elevation $x$, a tree of height {{h}} m casts a shadow of length $s$. (a) Show that $s={{h}}\\cot x$. (b) Describe the graph on $\\left(0,\\frac{\\pi}{2}\\right]$. (c) Interpret the graph as $x\\to0$ and $x\\to\\frac{\\pi}{2}$. (d) Find $s$ when $x=\\frac{\\pi}{ {{n}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Shadow length at $x=\\frac{\\pi}{ {{n}} }$",
+          "answer": {
+            "expr": "h/tan(pi/n)",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\tan x=\\frac{ {{h}} }{s}\\Rightarrow s=\\frac{ {{h}} }{\\tan x}={{h}}\\cot x$.\n\n(b) Decreasing curve with a vertical asymptote at $x=0$ and an $x$-intercept at $x=\\frac{\\pi}{2}$.\n\n(c) Near $x=0$ (Sun on the horizon) the shadow is extremely long; at $x=\\frac{\\pi}{2}$ (Sun overhead) there is no shadow.\n\n(d) $s={{h}}\\cot\\frac{\\pi}{ {{n}} }\\approx{{h/tan(pi/n):3}}$ m.",
+      "rubric": [
+        {
+          "point": "Derivation",
+          "marks": 1
+        },
+        {
+          "point": "Graph description",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation at both ends",
+          "marks": 2
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 3,
+          "max": 8,
+          "step": 1
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        }
+      },
+      "text": "A sailboat's mast is {{h}} m high. A wire runs from the bow to the top of the mast at angle of inclination $x$. (a) Show that the wire's length is $l={{h}}\\csc x$. (b) Interpret the graph of $l$ as $x\\to0$ and as $x\\to\\frac{\\pi}{2}$. (c) Find $l$ for $x=\\frac{\\pi}{ {{n}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Wire length at $x=\\frac{\\pi}{ {{n}} }$",
+          "answer": {
+            "expr": "h/sin(pi/n)",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) The mast is opposite $x$; the wire is the hypotenuse: $\\sin x=\\frac{ {{h}} }{l}$, so $l={{h}}\\csc x$.\n\n(b) As $x\\to0$, $l\\to\\infty$ (the bow would have to be infinitely far away). As $x\\to\\frac{\\pi}{2}$, $l\\to{{h}}$ m (a vertical wire the same height as the mast).\n\n(c) $l={{h}}\\csc\\frac{\\pi}{ {{n}} }\\approx{{h/sin(pi/n):3}}$ m.",
+      "rubric": [
+        {
+          "point": "Derivation",
+          "marks": 2
+        },
+        {
+          "point": "Interpretation at both ends",
+          "marks": 2
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q09",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "d": {
+          "choices": [
+            0.5,
+            1,
+            1.5
+          ]
+        },
+        "c": {
+          "min": -1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "text": "Model the graph shown using a cosine function. (a) Determine the amplitude, vertical translation, phase shift and period. (b) Write an equation. (c) Verify using two points.\n\n```plot\nf: {{a}}*cos({{k}}*(x-{{d}}))+{{c}}\ndomain: -2, 6\nticks: 1, 1\npoints: ({{d}}, {{a+c}})\n```\n\n",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Amplitude",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Period",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Max {{a+c}}, min {{c-a}}: amplitude {{a}}, vertical translation {{c}}. A maximum at $x={{d}}$ gives phase shift {{d}} right. Consecutive maxima are $\\frac{2\\pi}{ {{k}} }\\approx{{2*pi/k:3}}$ apart (period), so $k={{k}}$.\n\n(b) $y={{a}}\\cos[{{k}}(x-{{d}})]+{{c}}$.\n\n(c) At $x={{d}}$: $y={{a+c}}$ ✓. Half a period later, $x\\approx{{d+pi/k:3}}$: $y={{a}}\\cos\\pi+{{c}}={{c-a}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Amplitude and vertical translation",
+          "marks": 2
+        },
+        {
+          "point": "Phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Period and k",
+          "marks": 1
+        },
+        {
+          "point": "Equation",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $y=-{{a}}\\sin[\\pi(x+{{d}})]+{{c}}$. (a) What is the amplitude? (b) the period? (c) Describe the phase shift. (d) Describe the vertical translation. (e) Describe the graph over one cycle, including the max and min values and where they occur.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Amplitude",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Period",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "Maximum value",
+          "answer": {
+            "expr": "c+a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) {{a}} (reflected in the $x$-axis).\n\n(b) $\\frac{2\\pi}{\\pi}=2$.\n\n(c) {{d}} units to the left.\n\n(d) {{c}} up; midline $y={{c}}$.\n\n(e) Starting at $x=-{{d}}$ on the midline, the reflected sine goes **down** first: min $={{c-a}}$ at $x=-{{d}}+0.5={{-d+0.5}}$, back to the midline at $x={{-d+1}}$, max $={{c+a}}$ at $x={{-d+1.5}}$, and the cycle ends at $x={{-d+2}}$.",
+      "rubric": [
+        {
+          "point": "Amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Period",
+          "marks": 1
+        },
+        {
+          "point": "Phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Correct key points accounting for reflection",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Consider $y=-2\\cos\\left[4\\left(x+\\frac{2\\pi}{3}\\right)\\right]-3$. Determine the amplitude, period, phase shift and vertical translation, and the range. At which $x$-value closest to the origin (with $x\\ge-\\frac{2\\pi}{3}$) does the first **maximum** occur?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Location of the first maximum",
+          "answer": {
+            "expr": "-5*pi/12",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Amplitude 2 (reflected), period $\\frac{2\\pi}{4}=\\frac{\\pi}{2}$, phase shift $\\frac{2\\pi}{3}$ left, vertical translation 3 down. Range: $-5\\le y\\le-1$.\n\nBecause $a<0$, $x=-\\frac{2\\pi}{3}$ is a **minimum** ($-5$). The next maximum is half a period later: $x=-\\frac{2\\pi}{3}+\\frac{\\pi}{4}=-\\frac{5\\pi}{12}\\approx-1.31$.",
+      "rubric": [
+        {
+          "point": "Amplitude and period",
+          "marks": 1
+        },
+        {
+          "point": "Phase shift and vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Range",
+          "marks": 1
+        },
+        {
+          "point": "Recognises minimum at phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Correct maximum location",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mx": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "mn": {
+          "min": -4,
+          "max": 0,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "T": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "A cosine function has a maximum value of {{mx}}, a minimum value of {{mn}}, a phase shift of {{d}} rad to the right, and a period of {{T}}. Determine an equation and verify that it satisfies the properties.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $k$",
+          "answer": {
+            "expr": "2*pi/T",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$a=\\frac{ {{mx}}-({{mn}}) }{2}={{(mx-mn)/2:3}}$, $c=\\frac{ {{mx}}+({{mn}}) }{2}={{(mx+mn)/2:3}}$, $k=\\frac{2\\pi}{ {{T}} }={{2/T:3}}\\pi$.\n\n$$y={{(mx-mn)/2:3}}\\cos\\left[\\frac{2\\pi}{ {{T}} }(x-{{d}})\\right]+({{(mx+mn)/2:3}})$$\n\nAt $x={{d}}$: $y=a+c={{mx}}$ ✓ (maximum). At $x={{d}}+\\frac{ {{T}} }{2}$: $y=-a+c={{mn}}$ ✓.",
+      "rubric": [
+        {
+          "point": "a and c",
+          "marks": 2
+        },
+        {
+          "point": "k",
+          "marks": 1
+        },
+        {
+          "point": "Equation",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mx": {
+          "min": 3,
+          "max": 7,
+          "step": 1
+        },
+        "mn": {
+          "min": -3,
+          "max": 1,
+          "step": 1
+        }
+      },
+      "text": "A sine function has a maximum value of {{mx}}, a minimum value of {{mn}}, a phase shift of $\\frac{5\\pi}{6}$ rad to the left, and a period of $\\pi$. Write an equation and describe two ways to verify it.",
+      "modelAnswer": "$a=\\frac{ {{mx}}-({{mn}}) }{2}={{(mx-mn)/2:3}}$; $c={{(mx+mn)/2:3}}$; $k=\\frac{2\\pi}{\\pi}=2$; $d=-\\frac{5\\pi}{6}$.\n\n$$y={{(mx-mn)/2:3}}\\sin\\left[2\\left(x+\\frac{5\\pi}{6}\\right)\\right]+{{(mx+mn)/2:3}}$$\n\nVerify: (1) graph it and read the max, min and period; (2) substitute $x=-\\frac{5\\pi}{6}$ (gives the midline value {{(mx+mn)/2:3}}, rising) and $x=-\\frac{5\\pi}{6}+\\frac{\\pi}{4}=-\\frac{7\\pi}{12}$ (gives the maximum {{mx}}).",
+      "rubric": [
+        {
+          "point": "a and c",
+          "marks": 2
+        },
+        {
+          "point": "k and d",
+          "marks": 1
+        },
+        {
+          "point": "Equation",
+          "marks": 1
+        },
+        {
+          "point": "Two valid verifications",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        },
+        "r": {
+          "choices": [
+            0.3,
+            0.4,
+            0.6,
+            0.7
+          ]
+        }
+      },
+      "text": "Determine the approximate solutions of each equation on $[0,2\\pi]$, to the nearest hundredth: (a) $\\cos x+\\frac{1}{ {{n}} }=0$; (b) $\\sin x+{{r}}=0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution of (a)",
+          "answer": {
+            "expr": "pi-acos(1/n)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Smaller solution of (b)",
+          "answer": {
+            "expr": "pi+asin(r)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\cos x=-\\frac{1}{ {{n}} }$; reference $\\cos^{-1}\\left(\\frac{1}{ {{n}} }\\right)\\approx{{acos(1/n):3}}$; quadrants II, III: $x\\approx{{pi-acos(1/n):3}},\\ {{pi+acos(1/n):3}}$.\n\n(b) $\\sin x=-{{r}}$; reference $\\sin^{-1}({{r}})\\approx{{asin(r):3}}$; quadrants III, IV: $x\\approx{{pi+asin(r):3}},\\ {{2*pi-asin(r):3}}$.",
+      "rubric": [
+        {
+          "point": "(a) both solutions",
+          "marks": 2
+        },
+        {
+          "point": "(b) both solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "s": {
+          "choices": [
+            5,
+            6,
+            8,
+            10
+          ]
+        }
+      },
+      "text": "Determine the approximate solutions of (a) $\\cot x+{{c}}=0$ and (b) $4\\sec x-{{s}}=0$ on $[0,2\\pi]$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smaller solution of (a)",
+          "answer": {
+            "expr": "pi-atan(1/c)",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Smaller solution of (b)",
+          "answer": {
+            "expr": "acos(4/s)",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\tan x=-\\frac{1}{ {{c}} }$; reference $\\tan^{-1}\\left(\\frac{1}{ {{c}} }\\right)\\approx{{atan(1/c):3}}$; II and IV: $x\\approx{{pi-atan(1/c):3}},\\ {{2*pi-atan(1/c):3}}$.\n\n(b) $\\sec x=\\frac{ {{s}} }{4}$, so $\\cos x=\\frac{4}{ {{s}} }\\approx{{4/s:3}}$: $x\\approx{{acos(4/s):3}},\\ {{2*pi-acos(4/s):3}}$.",
+      "rubric": [
+        {
+          "point": "(a) both solutions",
+          "marks": 2
+        },
+        {
+          "point": "(b) converts and solves",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "(a) Determine all solutions of $2\\sin^2x-\\sin x-1=0$ on $[0,2\\pi]$. (b) Describe how a graph verifies your solutions.",
+      "modelAnswer": "(a) $(2\\sin x+1)(\\sin x-1)=0$. $\\sin x=-\\frac12$: $x=\\frac{7\\pi}{6},\\frac{11\\pi}{6}$. $\\sin x=1$: $x=\\frac{\\pi}{2}$.\n\n(b) Graph $y=2\\sin^2x-\\sin x-1$; its zeros on $[0,2\\pi]$ occur at $x\\approx1.57$ (touching the axis), $3.67$ and $5.76$.",
+      "rubric": [
+        {
+          "point": "Correct factoring",
+          "marks": 2
+        },
+        {
+          "point": "All three solutions",
+          "marks": 2
+        },
+        {
+          "point": "Graphical verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q17",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Determine the exact solutions of $\\cos^2x-\\frac34=0$ and $2\\sin^2x-3\\sin x+1=0$ on $[0,2\\pi]$.",
+      "modelAnswer": "First: $\\cos x=\\pm\\frac{\\sqrt3}{2}$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6},\\frac{7\\pi}{6},\\frac{11\\pi}{6}$.\n\nSecond: $(2\\sin x-1)(\\sin x-1)=0$: $x=\\frac{\\pi}{6},\\frac{5\\pi}{6},\\frac{\\pi}{2}$.",
+      "rubric": [
+        {
+          "point": "First equation, four solutions",
+          "marks": 2
+        },
+        {
+          "point": "Second equation, three solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r2": {
+          "choices": [
+            0.25,
+            0.36,
+            0.49,
+            0.64
+          ]
+        }
+      },
+      "text": "Determine the approximate solutions of $\\cos^2x-{{r2}}=0$ on $[0,2\\pi]$, to the nearest hundredth of a radian.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Smallest solution",
+          "answer": {
+            "expr": "acos(sqrt(r2))",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Largest solution",
+          "answer": {
+            "expr": "2*pi-acos(sqrt(r2))",
+            "unit": "rad",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$\\cos x=\\pm{{sqrt(r2):3}}$. Reference $\\cos^{-1}({{sqrt(r2):3}})\\approx{{acos(sqrt(r2)):3}}$.\n\n$x\\approx{{acos(sqrt(r2)):3}},\\ {{pi-acos(sqrt(r2)):3}},\\ {{pi+acos(sqrt(r2)):3}},\\ {{2*pi-acos(sqrt(r2)):3}}$.",
+      "rubric": [
+        {
+          "point": "Takes both roots",
+          "marks": 1
+        },
+        {
+          "point": "Reference angle",
+          "marks": 1
+        },
+        {
+          "point": "All four solutions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "H": {
+          "choices": [
+            1.6,
+            1.8,
+            2.0,
+            2.4
+          ]
+        },
+        "T": {
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        },
+        "y0": {
+          "choices": [
+            0.4,
+            0.5,
+            0.6
+          ]
+        }
+      },
+      "text": "A boat tied at a dock bobs with passing waves. The vertical distance between its high and low points is {{H}} m and the cycle repeats every {{T}} s. (a) Model its vertical position (relative to its mean position) assuming it is at the mean position and rising at $t=0$. (b) When during each cycle is the boat {{y0}} m above its mean position? (c) When is the instantaneous rate of change 0, and when is it greatest?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "First time at the given height",
+          "answer": {
+            "expr": "T/(2*pi)*asin(2*y0/H)",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Second time",
+          "answer": {
+            "expr": "T/(2*pi)*(pi-asin(2*y0/H))",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $y={{H/2:3}}\\sin\\left(\\frac{2\\pi}{ {{T}} }t\\right)$.\n\n(b) $\\sin\\left(\\frac{2\\pi}{ {{T}} }t\\right)=\\frac{ {{y0}} }{ {{H/2:3}} }\\approx{{2*y0/H:3}}$, so $\\frac{2\\pi}{ {{T}} }t\\approx{{asin(2*y0/H):4}}$ or $\\pi-{{asin(2*y0/H):4}}$.\n\n$t\\approx{{T/(2*pi)*asin(2*y0/H):3}}$ s and $t\\approx{{T/(2*pi)*(pi-asin(2*y0/H)):3}}$ s.\n\n(c) Rate 0 at the top and bottom: $t={{T/4:3}}$ s and ${{3*T/4:3}}$ s. Greatest (rising fastest) at $t=0$ and ${{T}}$ s; falling fastest at $t={{T/2:3}}$ s.",
+      "rubric": [
+        {
+          "point": "Correct model",
+          "marks": 2
+        },
+        {
+          "point": "Both times in (b)",
+          "marks": 2
+        },
+        {
+          "point": "Zero-rate times",
+          "marks": 1
+        },
+        {
+          "point": "Greatest-rate times",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q20",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Average monthly temperatures for Hamilton, Ontario (month 1 = January) are: −4.8, −4.8, −0.2, 6.6, 12.7, 18.6, 21.9, 20.7, 16.4, 10.5, 3.6, −2.3 (°C). (a) Use the data to write a sinusoidal model. (b) Comment on the accuracy of the fit at two months of your choice. (c) Estimate the instantaneous rate of change of temperature in April (month 4) from your model and interpret it.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Amplitude of your model",
+          "answer": {
+            "expr": "13.35",
+            "unit": "°C",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Instantaneous rate in April",
+          "answer": {
+            "expr": "13.35*pi/6",
+            "unit": "°C/month",
+            "sig": 2,
+            "tol": 0.05
+          }
+        }
+      ],
+      "modelAnswer": "(a) Max 21.9 (month 7), min −4.8 (months 1–2). $a=\\frac{21.9-(-4.8)}{2}=13.35$; $c=\\frac{21.9+(-4.8)}{2}=8.55$; $k=\\frac{\\pi}{6}$; sine max normally at month 3, here at 7, so $d=4$:\n$$T=13.35\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+8.55$$\n\n(b) Month 4: model $8.55$ °C vs actual 6.6 °C (about 2 °C high). Month 10: model $8.55$ vs actual 10.5 °C. The model is close but real data are not perfectly symmetric.\n\n(c) Using $[3.99,4.01]$: rate $\\approx13.35\\cdot\\frac{\\pi}{6}\\approx7.0$ °C per month – in April the average temperature is rising about 7 °C each month, the fastest warming of the year.",
+      "rubric": [
+        {
+          "point": "Correct a, c and k",
+          "marks": 2
+        },
+        {
+          "point": "Correct phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Comments on fit using data",
+          "marks": 1
+        },
+        {
+          "point": "Correct rate estimate with units",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q21",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "In 2007 the Moon was full on Jan 3 (day 3), Feb 2 (day 33), Mar 3 (day 62) and Apr 2 (day 92), and new on Jan 19 (day 19), Feb 17 (day 48), Mar 19 (day 78), Apr 17 (day 107). (a) Express the phases as percent illuminated (full 100 %, new 0 %). (b) Determine a sinusoidal model for illumination $L$ against day $t$. (c) Describe how to estimate the instantaneous rate of change on Jan 25 (day 25) and carry it out. (d) What does that rate represent?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Period of your model (days)",
+          "answer": {
+            "expr": "29.7",
+            "unit": "days",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Rate on day 25",
+          "answer": {
+            "expr": "-50*2*pi/29.7*sin(2*pi/29.7*22)",
+            "unit": "%/day",
+            "sig": 2,
+            "tol": 0.1
+          }
+        }
+      ],
+      "modelAnswer": "(a) Full = 100 %, new = 0 %, quarters = 50 %.\n\n(b) $a=50$, $c=50$. Full moons are about 29.7 days apart (3 → 92 in 3 cycles), so $T\\approx29.7$, $k=\\frac{2\\pi}{29.7}$. A maximum at day 3 suggests cosine with $d=3$:\n$$L=50\\cos\\left[\\frac{2\\pi}{29.7}(t-3)\\right]+50$$\n\n(c) Compute $\\frac{L(25.01)-L(24.99)}{0.02}$ (or use smaller and smaller intervals). From the model this is about $-50\\cdot\\frac{2\\pi}{29.7}\\sin\\left[\\frac{2\\pi}{29.7}(22)\\right]\\approx+10.5$ % per day.\n\n(d) The lit portion of the Moon is growing by about 10 % per day around the first-quarter phase – it is waxing fastest.",
+      "rubric": [
+        {
+          "point": "Percent illumination",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable period and k",
+          "marks": 1
+        },
+        {
+          "point": "Correct amplitude, midline and phase shift",
+          "marks": 2
+        },
+        {
+          "point": "Method and estimate of rate",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q22",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "For each statement, explain whether it is correct and justify (do not just answer yes/no): (a) $y=\\tan x$ and $y=\\sec x$ both have vertical asymptotes at $x=\\frac{\\pi}{2}$ and $x=\\frac{3\\pi}{2}$ on $[0,2\\pi]$. (b) The graphs of $y=\\csc x$ and $y=\\cos\\left(x-\\frac{\\pi}{2}\\right)$ intersect at $0$, $\\pi$ and $2\\pi$. (c) $x=\\frac{3\\pi}{2}$ is a solution of $\\sin x-\\frac{1}{\\sqrt2}=0$.",
+      "modelAnswer": "(a) Correct: both are undefined where $\\cos x=0$ (tangent $=\\frac{\\sin x}{\\cos x}$, secant $=\\frac{1}{\\cos x}$).\n\n(b) Incorrect: $\\cos\\left(x-\\frac{\\pi}{2}\\right)=\\sin x$, and $\\csc x=\\sin x$ only when $\\sin x=\\pm1$, at $x=\\frac{\\pi}{2},\\frac{3\\pi}{2}$. At $0,\\pi,2\\pi$, $\\csc x$ is undefined.\n\n(c) Incorrect: $\\sin\\frac{3\\pi}{2}=-1$. The solutions are $x=\\frac{\\pi}{4}$ and $\\frac{3\\pi}{4}$.",
+      "rubric": [
+        {
+          "point": "(a) with justification",
+          "marks": 2
+        },
+        {
+          "point": "(b) corrected with justification",
+          "marks": 2
+        },
+        {
+          "point": "(c) corrected with justification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-r-q23",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "d": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Consider $y={{a}}\\sin[{{k}}\\pi(x-{{d}})]-{{c}}$. Determine the period and phase shift, then find the maximum and minimum values. Explain why the period is not $\\frac{2\\pi}{ {{k}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Period",
+          "answer": {
+            "expr": "2/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Maximum value",
+          "answer": {
+            "expr": "a-c",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Here $k={{k}}\\pi$, so the period is $\\frac{2\\pi}{ {{k}}\\pi}=\\frac{2}{ {{k}} }\\approx{{2/k:3}}$. Phase shift {{d}} right. Max $={{a}}-{{c}}={{a-c}}$, min $=-{{a}}-{{c}}={{-a-c}}$.\n\nThe coefficient of $x$ is ${{k}}\\pi$, not {{k}}; the $\\pi$ is part of $k$, so it cancels with the $2\\pi$.",
+      "rubric": [
+        {
+          "point": "Correct period",
+          "marks": 1
+        },
+        {
+          "point": "Phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Max and min",
+          "marks": 1
+        },
+        {
+          "point": "Explains π is part of k",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-r-q24",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Chapter problem: design a rollercoaster in three parts – a polynomial hill starting at the origin, a sinusoidal section with at least two cycles, and a rational section that brings the cars close to the ground. (a) Give an equation for each part and the domain of each. (b) Show that the parts join. (c) Show that the rates of change where the parts join differ by no more than 10 %.",
+      "modelAnswer": "A complete answer:\n* gives three equations with domains, e.g. polynomial $h_1(x)$ on $[0,x_1]$, sinusoid $h_2(x)=a\\sin[k(x-d)]+c$ on $[x_1,x_2]$ with $x_2-x_1\\ge2\\cdot\\frac{2\\pi}{k}$, rational $h_3(x)$ on $[x_2,x_3]$;\n* checks $h_1(x_1)=h_2(x_1)$ and $h_2(x_2)=h_3(x_2)$;\n* estimates each rate of change at the joins with small intervals, e.g. $\\frac{h(x_1+0.001)-h(x_1)}{0.001}$, and shows $\\frac{|r_1-r_2|}{|r_1|}\\le10\\%$.\n\nA useful strategy: join at points where the sinusoid has a known slope (e.g. a maximum, where the rate is 0, matching a polynomial with a local max there).",
+      "rubric": [
+        {
+          "point": "Three appropriate equations with domains",
+          "marks": 2
+        },
+        {
+          "point": "Demonstrates joining points",
+          "marks": 2
+        },
+        {
+          "point": "Rate comparison within 10 %",
+          "marks": 2
+        },
+        {
+          "point": "Clear communication",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

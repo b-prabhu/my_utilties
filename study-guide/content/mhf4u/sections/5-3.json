@@ -1,0 +1,1357 @@
+{
+  "id": "5-3",
+  "number": "5.3",
+  "title": "Sinusoidal Functions of the Form f(x) = a sin[k(x − d)] + c and f(x) = a cos[k(x − d)] + c",
+  "estimatedMinutes": 90,
+  "overview": "Now all four transformations happen at once. You will read the amplitude, period, phase shift and vertical translation from an equation, build equations from a description or a graph, and model rides, buoys, engines and temperatures. The extension shows how technology fits a sinusoidal model to real data.",
+  "objectives": [
+    "Determine the amplitude, period, phase shift and vertical translation of $f(x)=a\\sin[k(x-d)]+c$ and $f(x)=a\\cos[k(x-d)]+c$.",
+    "Factor the argument to find the phase shift when the equation is not in standard form.",
+    "Sketch sinusoidal functions by applying transformations to key points.",
+    "Write an equation of a sinusoidal function from its properties or its graph.",
+    "Model real situations with sinusoidal functions and interpret the parameters.",
+    "Use and interpret sinusoidal regression from technology."
+  ],
+  "lessons": [
+    {
+      "id": "general-form",
+      "title": "The general form and what each parameter does",
+      "body": "Every transformed sine or cosine function in this course can be written as\n\n$$f(x)=a\\sin[k(x-d)]+c\\qquad\\text{or}\\qquad f(x)=a\\cos[k(x-d)]+c$$\n\n| Parameter | Job | How to read it |\n|---|---|---|\n| $a$ | vertical stretch; reflection if $a<0$ | amplitude $=\\lvert a\\rvert$ |\n| $k$ | horizontal stretch/compression | period $=\\dfrac{2\\pi}{\\lvert k\\rvert}$ |\n| $d$ | horizontal translation (phase shift) | right if $d>0$, left if $d<0$ |\n| $c$ | vertical translation | midline $y=c$; max $=c+\\lvert a\\rvert$, min $=c-\\lvert a\\rvert$ |\n\n\n```plot\ntitle: y = 2.5 sin[π(x + 1)] + 1.5 compared with y = sin x\nf: 2.5*sin(pi*(x+1))+1.5 | label=y = 2.5 sin[π(x+1)] + 1.5\nf: sin(x) | dashed; label=y = sin x\ndomain: -2, 4\nrange: -2, 4.5\nticks: 1, 1\n```\n\n\nHere amplitude $2.5$, period $\\frac{2\\pi}{\\pi}=2$, phase shift $1$ left, midline $y=1.5$, max $4$, min $-1$.\n\n> **Order matters when sketching by hand:** apply the stretches ($a$ and $k$) first, then the translations ($d$ and $c$)."
+    },
+    {
+      "id": "factor-k",
+      "title": "Factor out k before reading the phase shift",
+      "body": "Equations are not always written in the tidy form. In $g(x)=2\\cos(3x+2)-5$ it is tempting to say \"phase shift 2 left\" – **wrong**.\n\nFactor the coefficient of $x$ out of the bracket:\n$$3x+2=3\\left(x+\\tfrac23\\right)\\quad\\Rightarrow\\quad g(x)=2\\cos\\left[3\\left(x+\\tfrac23\\right)\\right]-5$$\n\nNow the phase shift is $\\frac23$ rad **left**. The 2 was being multiplied by $\\frac13$ – the same horizontal compression that affects every $x$-value.\n\nSimilarly $y=3\\cos\\left(2x-\\frac{\\pi}{2}\\right)=3\\cos\\left[2\\left(x-\\frac{\\pi}{4}\\right)\\right]$: phase shift $\\frac{\\pi}{4}$ right."
+    },
+    {
+      "id": "from-properties",
+      "title": "Writing an equation from given properties",
+      "body": "A four-step recipe works for almost every problem:\n\n1. **Amplitude:** $a=\\dfrac{\\max-\\min}{2}$.\n2. **Vertical translation:** $c=\\dfrac{\\max+\\min}{2}$.\n3. **$k$ from the period:** $k=\\dfrac{2\\pi}{\\text{period}}$.\n4. **Phase shift $d$:** find where one recognisable point of the parent ends up.\n   * For **cosine**, $d$ = an $x$-value of a **maximum**.\n   * For **sine**, $d$ = an $x$-value where the graph crosses the **midline going up**.\n   * Or, if a sine maximum is at $x=m$: a sine max normally occurs a quarter period after its start, so $d=m-\\frac{T}{4}$.\n\n**Example (properties).** Amplitude 4, period $\\pi$, phase shift $\\frac{\\pi}{6}$ left, up 2:\n$a=4$, $k=\\frac{2\\pi}{\\pi}=2$, $d=-\\frac{\\pi}{6}$, $c=2$, so $g(x)=4\\cos\\left[2\\left(x+\\frac{\\pi}{6}\\right)\\right]+2$.\n\nThe same graph has **many** correct equations: you can shift by any whole number of periods, switch between sine and cosine (shift by a quarter period), or use a negative $a$ with a half-period shift."
+    },
+    {
+      "id": "from-graph",
+      "title": "Reading an equation from a graph",
+      "body": "```plot\ntitle: Find an equation for this graph\nf: 3*cos(2*(x-pi/4))+1\ndomain: -pi/2, 2*pi\nrange: -3, 5\nxticks: pi\npoints: (pi/4,4), (3*pi/4,-2), (5*pi/4,4)\n```\n\n\n* Max $=4$, min $=-2$ → $a=\\frac{4-(-2)}{2}=3$, $c=\\frac{4+(-2)}{2}=1$.\n* Consecutive maxima at $\\frac{\\pi}{4}$ and $\\frac{5\\pi}{4}$ → period $\\pi$ → $k=2$.\n* A maximum at $x=\\frac{\\pi}{4}$ → for cosine, $d=\\frac{\\pi}{4}$.\n\n$$y=3\\cos\\left[2\\left(x-\\frac{\\pi}{4}\\right)\\right]+1$$\n\nAs a sine function, the graph crosses the midline going up a quarter period ($\\frac{\\pi}{4}$) before the max, at $x=0$: $y=3\\sin2x+1$. Both are correct – check by substituting a point."
+    },
+    {
+      "id": "modelling",
+      "title": "Modelling rides, waves and engines",
+      "body": "Real problems give you the four ingredients in words.\n\n**The Round-Up ride.** Max height 7.5 m, min 1.5 m, one turn every 5 s, highest point at $t=0$.\n\n* $a=\\frac{7.5-1.5}{2}=3$, $c=\\frac{7.5+1.5}{2}=4.5$, $k=\\frac{2\\pi}{5}=0.4\\pi$.\n* Cosine is easiest because cosine starts at a maximum: $h=3\\cos(0.4\\pi t)+4.5$.\n* With sine, a maximum normally occurs at $\\frac14$ of a period ($1.25$ s); we need it at $t=0$, so shift **left** $1.25$: $h=3\\sin[0.4\\pi(t+1.25)]+4.5$.\n\n\n```plot\ntitle: Round-Up height h(t)\nf: 3*cos(0.4*pi*x)+4.5 | label=h = 3 cos(0.4πt) + 4.5\ndomain: 0, 10\nrange: 0, 8\nticks: 1, 1\npoints: (0,7.5), (2.5,1.5), (5,7.5)\n```\n\n\n**Units of $k$.** If $t$ is in seconds and the period is $T$ seconds, $k=\\frac{2\\pi}{T}$ has units of radians per second. If an engine turns at 2100 rpm, the period is $\\frac{60}{2100}$ s.\n\n**Starting conditions.** Read carefully whether the object starts at the top, the bottom, or the middle (going up or down):\n\n| Starts at… | Simplest model |\n|---|---|\n| maximum | $a\\cos kt+c$ |\n| minimum | $-a\\cos kt+c$ |\n| midline, going up | $a\\sin kt+c$ |\n| midline, going down | $-a\\sin kt+c$ |"
+    },
+    {
+      "id": "regression",
+      "title": "Extension: sinusoidal regression with technology",
+      "body": "When you have real data (temperatures, tides, daylight), a graphing calculator's **SinReg** (or software such as Desmos) finds the sinusoidal function that best fits the points. It usually reports the form\n$$y=a\\sin(bx+c)+d$$\nwhich you can rewrite in our form by factoring: $a\\sin\\left[b\\left(x+\\frac{c}{b}\\right)\\right]+d$ – so the phase shift is $-\\frac{c}{b}$.\n\nGood habits:\n* **Build your own model first** from the max, min and period, then compare with the regression. The values should be close.\n* Enter at least one full cycle of data; regression with less than a cycle can give misleading periods.\n* Look at the **residuals** (how far points are from the curve) to judge the fit, and think about why real data are not perfectly sinusoidal."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "sinusoidal function",
+      "definition": "A function of the form $f(x)=a\\sin[k(x-d)]+c$ or $f(x)=a\\cos[k(x-d)]+c$."
+    },
+    {
+      "term": "midline",
+      "definition": "The horizontal line $y=c$ halfway between the maximum and minimum."
+    },
+    {
+      "term": "phase shift",
+      "definition": "The horizontal translation $d$, read only after factoring $k$ out of the argument."
+    },
+    {
+      "term": "sinusoidal regression",
+      "definition": "A statistical process, usually done with technology, that finds the sinusoidal function that best fits a set of data."
+    },
+    {
+      "term": "cycle",
+      "definition": "One complete repetition of the pattern of a periodic function."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "General sinusoidal function",
+      "latex": "f(x)=a\\sin[k(x-d)]+c",
+      "meaning": "Amplitude $|a|$, period $\\frac{2\\pi}{k}$, phase shift $d$, vertical translation $c$."
+    },
+    {
+      "name": "Amplitude and vertical translation",
+      "latex": "a=\\frac{\\max-\\min}{2},\\qquad c=\\frac{\\max+\\min}{2}",
+      "meaning": "From the highest and lowest values."
+    },
+    {
+      "name": "k from the period",
+      "latex": "k=\\frac{2\\pi}{T}",
+      "meaning": "T is the period."
+    },
+    {
+      "name": "Factoring the argument",
+      "latex": "\\sin(kx+b)=\\sin\\left[k\\left(x+\\frac{b}{k}\\right)\\right]",
+      "meaning": "Phase shift is $-\\frac{b}{k}$."
+    },
+    {
+      "name": "Max and min",
+      "latex": "\\max=c+|a|,\\qquad \\min=c-|a|",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Transform a cosine function",
+      "problem": "Transform $f(x)=\\cos x$ into $g(x)$ with amplitude 4, period $\\pi$, phase shift $\\frac{\\pi}{6}$ left and vertical translation 2 up. Describe two cycles.",
+      "steps": [
+        "$a=4$; $k=\\frac{2\\pi}{\\pi}=2$; $d=-\\frac{\\pi}{6}$; $c=2$.",
+        "$g(x)=4\\cos\\left[2\\left(x+\\frac{\\pi}{6}\\right)\\right]+2$.",
+        "Maxima ($y=6$) at $x=-\\frac{\\pi}{6},\\ \\frac{5\\pi}{6},\\ \\frac{11\\pi}{6}$; minima ($y=-2$) at $x=\\frac{\\pi}{3},\\ \\frac{4\\pi}{3}$.\n\n```plot\nf: 4*cos(2*(x+pi/6))+2\nf: 4*cos(2*x) | dashed\ndomain: -pi/2, 2*pi\nrange: -3, 7\nxticks: pi\n```\n\n"
+      ],
+      "answer": "$g(x)=4\\cos\\left[2\\left(x+\\frac{\\pi}{6}\\right)\\right]+2$."
+    },
+    {
+      "title": "Data not in terms of π",
+      "problem": "Transform $f(x)=\\sin x$ to have amplitude 2, period 1, phase shift 0.5 left and vertical translation 3 up.",
+      "steps": [
+        "$a=2$; $k=\\frac{2\\pi}{1}=2\\pi$; $d=-0.5$; $c=3$.",
+        "$g(x)=2\\sin[2\\pi(x+0.5)]+3$.",
+        "The period is 1, so the graph completes one cycle every 1 unit; max 5, min 1.\n\n```plot\nf: 2*sin(2*pi*(x+0.5))+3\ndomain: -1, 2\nrange: 0, 6\nticks: 0.25, 1\n```\n\n"
+      ],
+      "answer": "$g(x)=2\\sin[2\\pi(x+0.5)]+3$."
+    },
+    {
+      "title": "Reading a messy equation",
+      "problem": "State the amplitude, period, phase shift and vertical translation of $y=-2\\cos\\left[4\\left(x+\\frac{2\\pi}{3}\\right)\\right]-3$, and its maximum and minimum.",
+      "steps": [
+        "Amplitude $\\lvert-2\\rvert=2$ (reflected in the $x$-axis).",
+        "Period $\\frac{2\\pi}{4}=\\frac{\\pi}{2}$.",
+        "Phase shift $\\frac{2\\pi}{3}$ left.",
+        "Vertical translation 3 down: midline $y=-3$, max $-1$, min $-5$."
+      ],
+      "answer": "Amplitude 2, period $\\frac{\\pi}{2}$, $\\frac{2\\pi}{3}$ left, 3 down; range $[-5,-1]$."
+    },
+    {
+      "title": "Buoy on a lake",
+      "problem": "A buoy bobs so that the distance between its highest and lowest points is 1.5 m, completing a cycle every 6 s. At $t=0$ it is at equilibrium and moving down. Model its vertical displacement $v$.",
+      "steps": [
+        "Amplitude $\\frac{1.5}{2}=0.75$ m; midline $v=0$ (displacement from equilibrium).",
+        "$k=\\frac{2\\pi}{6}=\\frac{\\pi}{3}$.",
+        "Starts at the midline going **down**: use $-a\\sin kt$.",
+        "$v=-0.75\\sin\\left(\\frac{\\pi}{3}t\\right)$."
+      ],
+      "answer": "$v=-0.75\\sin\\left(\\frac{\\pi}{3}t\\right)$, or equivalently $v=0.75\\sin\\left[\\frac{\\pi}{3}(t-3)\\right]$."
+    },
+    {
+      "title": "Aircraft piston",
+      "problem": "A piston moves between 25 cm and 75 cm from the crankshaft at 2100 rpm. Model its position $h$ (cm) at time $t$ (s), starting at the maximum.",
+      "steps": [
+        "$a=\\frac{75-25}{2}=25$; $c=\\frac{75+25}{2}=50$.",
+        "Period $=\\frac{60}{2100}=\\frac{1}{35}$ s, so $k=2\\pi(35)=70\\pi$.",
+        "Starts at a maximum: $h=25\\cos(70\\pi t)+50$.",
+        "At 2400 rpm only $k$ changes: $k=2\\pi\\cdot\\frac{2400}{60}=80\\pi$."
+      ],
+      "answer": "$h=25\\cos(70\\pi t)+50$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "In $y=\\cos(3x+2)$ the phase shift is 2 to the left.",
+      "fact": "Factor first: $\\cos[3(x+\\frac23)]$. The phase shift is $\\frac23$ left."
+    },
+    {
+      "myth": "The vertical translation is the minimum value.",
+      "fact": "The vertical translation is the **midline**, halfway between max and min: $c=\\frac{\\max+\\min}{2}$."
+    },
+    {
+      "myth": "Amplitude is the distance from max to min.",
+      "fact": "That distance is **twice** the amplitude. Amplitude $=\\frac{\\max-\\min}{2}$."
+    },
+    {
+      "myth": "There is only one correct equation for a sinusoidal graph.",
+      "fact": "Infinitely many: shift by whole periods, switch sine/cosine with a quarter-period shift, or reflect and shift a half period."
+    },
+    {
+      "myth": "$k$ is the period.",
+      "fact": "$k$ is the number of cycles per $2\\pi$; the period is $\\frac{2\\pi}{k}$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Breathing",
+      "body": "The volume of air in your lungs during normal breathing can be modelled by $V=a\\sin[k(t-d)]+c$: $a$ is half the volume of one breath, $c$ includes the air that always stays in your lungs, and the period is the time for one breath."
+    },
+    {
+      "title": "Ferris wheels",
+      "body": "The height of a gondola on a wheel of radius $r$ whose hub is $c$ m above the ground is $h=r\\sin[k(t-d)]+c$, with $k=\\frac{2\\pi}{\\text{time per revolution}}$."
+    },
+    {
+      "title": "Gravitron ride",
+      "body": "A rider on a ride of radius 4 m and period 2 s has position $x=4\\sin(\\pi t)$, $y=4\\cos(\\pi t)$, and $x^2+y^2=16$ for every $t$ – the rider stays on the circle."
+    },
+    {
+      "title": "Moon illumination",
+      "body": "The fraction of the Moon that is lit follows a roughly sinusoidal pattern with a period of about 29.5 days."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Determine the amplitude and period of $y=-3\\cos\\frac43x$.",
+      "hint": "Amplitude $|a|$; period $\\frac{2\\pi}{k}$.",
+      "solution": "Amplitude 3; period $\\frac{2\\pi}{4/3}=\\frac{3\\pi}{2}$."
+    },
+    {
+      "question": "For $y=4\\sin\\left[3\\left(x-\\frac{\\pi}{3}\\right)\\right]+2$ state the amplitude, period, phase shift and vertical translation.",
+      "hint": "Read directly.",
+      "solution": "Amplitude 4, period $\\frac{2\\pi}{3}$, $\\frac{\\pi}{3}$ right, 2 up."
+    },
+    {
+      "question": "Find the phase shift of $y=3\\cos\\left(2x-\\frac{\\pi}{2}\\right)$.",
+      "hint": "Factor 2 out of the bracket.",
+      "solution": "$3\\cos\\left[2\\left(x-\\frac{\\pi}{4}\\right)\\right]$: $\\frac{\\pi}{4}$ right."
+    },
+    {
+      "question": "A sine function has max 7, min $-1$, phase shift $\\frac{3\\pi}{4}$ left and period $\\frac{\\pi}{2}$. Write its equation.",
+      "hint": "Use the four-step recipe.",
+      "solution": "$a=4$, $c=3$, $k=4$, $d=-\\frac{3\\pi}{4}$: $y=4\\sin\\left[4\\left(x+\\frac{3\\pi}{4}\\right)\\right]+3$."
+    },
+    {
+      "question": "A cosine function has max 1, min $-5$, phase shift 2 rad right and period 3. Write its equation.",
+      "hint": "$k=\\frac{2\\pi}{3}$.",
+      "solution": "$a=3$, $c=-2$, $k=\\frac{2\\pi}{3}$: $y=3\\cos\\left[\\frac{2\\pi}{3}(x-2)\\right]-2$."
+    },
+    {
+      "question": "Explain why $g(x)=3\\sin\\left[2\\left(x+\\frac{3\\pi}{4}\\right)\\right]+4$ has no zeros.",
+      "hint": "Find the minimum.",
+      "solution": "Min $=c-|a|=4-3=1>0$, so the graph never reaches the $x$-axis."
+    },
+    {
+      "question": "Model the Round-Up ride (max 7.5 m, min 1.5 m, period 5 s, highest at $t=0$) using a cosine function.",
+      "hint": "Cosine starts at a maximum.",
+      "solution": "$h=3\\cos(0.4\\pi t)+4.5$."
+    },
+    {
+      "question": "A Ferris wheel gondola follows $h=10\\sin\\left[\\frac{\\pi}{15}(t-d)\\right]+12$. Find a phase shift so that $h=7$ m at $t=0$ while rising.",
+      "hint": "Solve $10\\sin(-\\frac{\\pi}{15}d)+12=7$.",
+      "solution": "$\\sin\\left(-\\frac{\\pi}{15}d\\right)=-0.5$. For the gondola to be rising, the argument must lie on the increasing part of the sine curve, so $-\\frac{\\pi}{15}d=-\\frac{\\pi}{6}$ and $d=2.5$. Model: $h=10\\sin\\left[\\frac{\\pi}{15}(t-2.5)\\right]+12$. Check: $h(0)=10\\sin\\left(-\\frac{\\pi}{6}\\right)+12=7$ ✓."
+    }
+  ],
+  "summary": [
+    "$f(x)=a\\sin[k(x-d)]+c$: amplitude $|a|$, period $\\frac{2\\pi}{k}$, phase shift $d$, vertical translation $c$.",
+    "Always factor $k$ out of the argument before reading the phase shift.",
+    "$a=\\frac{\\max-\\min}{2}$ and $c=\\frac{\\max+\\min}{2}$.",
+    "Cosine models start at a max; sine models start on the midline going up.",
+    "A graph has many equivalent equations; check by substituting a point.",
+    "Sinusoidal regression fits a model to data; compare it with a model built by hand."
+  ],
+  "questions": [
+    {
+      "id": "5-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        },
+        "c": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Consider $y={{a}}\\sin\\left[{{k}}\\left(x-\\frac{\\pi}{ {{n}} }\\right)\\right]+{{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the amplitude?",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the period?",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the phase shift."
+        },
+        {
+          "label": "d",
+          "text": "Describe the vertical translation."
+        },
+        {
+          "label": "e",
+          "text": "State the maximum and minimum values.",
+          "answer": {
+            "expr": "c+a",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Amplitude $={{a}}$.\n\n(b) Period $=\\dfrac{2\\pi}{ {{k}} }\\approx{{2*pi/k:3}}$.\n\n(c) Phase shift $\\frac{\\pi}{ {{n}} }$ to the right.\n\n(d) Vertical translation {{c}} units up; midline $y={{c}}$.\n\n(e) Max $={{c}}+{{a}}={{c+a}}$; min $={{c}}-{{a}}={{c-a}}$.",
+      "rubric": [
+        {
+          "point": "Amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Period",
+          "marks": 1
+        },
+        {
+          "point": "Phase shift with direction",
+          "marks": 1
+        },
+        {
+          "point": "Vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Max and min",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        },
+        "n": {
+          "choices": [
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Consider $y=-{{a}}\\cos\\left[{{k}}\\left(x+\\frac{\\pi}{ {{n}} }\\right)\\right]-{{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the amplitude? What does the negative sign do?",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "What is the period?",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe the phase shift."
+        },
+        {
+          "label": "d",
+          "text": "Describe the vertical translation and state the range."
+        },
+        {
+          "label": "e",
+          "text": "Is there a maximum or a minimum at $x=-\\frac{\\pi}{ {{n}} }$? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Amplitude $\\lvert-{{a}}\\rvert={{a}}$; the negative sign reflects the graph in the $x$-axis.\n\n(b) Period $=\\frac{2\\pi}{ {{k}} }\\approx{{2*pi/k:3}}$.\n\n(c) Phase shift $\\frac{\\pi}{ {{n}} }$ to the left.\n\n(d) Vertical translation {{c}} down; midline $y=-{{c}}$; range $-{{c+a}}\\le y\\le {{a-c}}$.\n\n(e) Because of the reflection, the graph has a **minimum** (not a maximum) at $x=-\\frac{\\pi}{ {{n}} }$.",
+      "rubric": [
+        {
+          "point": "Amplitude and reflection",
+          "marks": 1
+        },
+        {
+          "point": "Period",
+          "marks": 1
+        },
+        {
+          "point": "Phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Vertical translation and range",
+          "marks": 1
+        },
+        {
+          "point": "Identifies minimum at the phase shift due to reflection",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q03",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Consider $g(x)={{a}}\\cos({{k}}x+{{b}})-{{c}}$. A student says the phase shift is {{b}} rad to the left. Explain the error and determine the actual phase shift, amplitude, period and vertical translation.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Phase shift (rad, left)",
+          "answer": {
+            "expr": "b/k",
+            "unit": "rad",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Period",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The phase shift is only read directly when the coefficient of $x$ inside the bracket is 1. Factor {{k}} out:\n$${{k}}x+{{b}}={{k}}\\left(x+\\frac{ {{b}} }{ {{k}} }\\right)$$\nso $g(x)={{a}}\\cos\\left[{{k}}\\left(x+{{b/k:3}}\\right)\\right]-{{c}}$.\n\nPhase shift $\\frac{ {{b}} }{ {{k}} }\\approx{{b/k:3}}$ rad **left**; amplitude {{a}}; period $\\frac{2\\pi}{ {{k}} }\\approx{{2*pi/k:3}}$; vertical translation {{c}} down.",
+      "rubric": [
+        {
+          "point": "Explains need to factor k",
+          "marks": 2
+        },
+        {
+          "point": "Correct phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Amplitude and period",
+          "marks": 1
+        },
+        {
+          "point": "Vertical translation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mx": {
+          "min": 3,
+          "max": 9,
+          "step": 1
+        },
+        "mn": {
+          "min": -5,
+          "max": 1,
+          "step": 1
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        },
+        "p": {
+          "choices": [
+            1,
+            2
+          ]
+        }
+      },
+      "text": "A sine function has a maximum value of {{mx}}, a minimum value of {{mn}}, a phase shift of $\\frac{\\pi}{ {{n}} }$ rad to the left, and a period of $\\frac{\\pi}{ {{p}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $a$.",
+          "answer": {
+            "expr": "(mx-mn)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $c$.",
+          "answer": {
+            "expr": "(mx+mn)/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine $k$.",
+          "answer": {
+            "expr": "2*p",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Write the equation and verify that it has the given properties."
+        }
+      ],
+      "modelAnswer": "$a=\\dfrac{ {{mx}}-({{mn}}) }{2}={{(mx-mn)/2:3}}$, $c=\\dfrac{ {{mx}}+({{mn}}) }{2}={{(mx+mn)/2:3}}$.\n\n$k=\\dfrac{2\\pi}{\\pi/{{p}}}={{2*p}}$, $d=-\\frac{\\pi}{ {{n}} }$.\n\n$$y={{(mx-mn)/2:3}}\\sin\\left[{{2*p}}\\left(x+\\frac{\\pi}{ {{n}} }\\right)\\right]+{{(mx+mn)/2:3}}$$\n\nCheck: max $={{(mx+mn)/2:3}}+{{(mx-mn)/2:3}}={{mx}}$ ✓; one cycle has length $\\frac{\\pi}{ {{p}} }$ ✓; the cycle starts (midline, rising) at $x=-\\frac{\\pi}{ {{n}} }$ ✓.",
+      "rubric": [
+        {
+          "point": "Correct amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct phase shift sign",
+          "marks": 1
+        },
+        {
+          "point": "Complete equation with a verification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-3-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mx": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "mn": {
+          "min": -7,
+          "max": -1,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "T": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "A cosine function has a maximum value of {{mx}}, a minimum value of {{mn}}, a phase shift of {{d}} rad to the right, and a period of {{T}}.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $k$.",
+          "answer": {
+            "expr": "2*pi/T",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the equation and verify it."
+        }
+      ],
+      "modelAnswer": "$a=\\frac{ {{mx}}-({{mn}}) }{2}={{(mx-mn)/2:3}}$; $c=\\frac{ {{mx}}+({{mn}}) }{2}={{(mx+mn)/2:3}}$; $k=\\frac{2\\pi}{ {{T}} }\\approx{{2*pi/T:4}}$; $d={{d}}$.\n\n$$y={{(mx-mn)/2:3}}\\cos\\left[\\frac{2\\pi}{ {{T}} }(x-{{d}})\\right]+({{(mx+mn)/2:3}})$$\n\nCheck: at $x={{d}}$ the argument is 0, so $y=a+c={{mx}}$, the maximum ✓.",
+      "rubric": [
+        {
+          "point": "Correct amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct vertical translation",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q06",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "n": {
+          "choices": [
+            3,
+            4,
+            6
+          ]
+        },
+        "c": {
+          "min": -1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Model the graph shown using a **cosine** function.\n\n```plot\nf: {{a}}*cos({{k}}*(x-pi/{{n}}))+{{c}}\ndomain: -pi, 2*pi\nxticks: pi\npoints: (pi/{{n}}, {{a+c}})\n```\n\n",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the amplitude, vertical translation, period and phase shift.",
+          "answer": {
+            "expr": "a",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write an equation."
+        },
+        {
+          "label": "c",
+          "text": "Verify your equation using two points on the graph."
+        }
+      ],
+      "modelAnswer": "(a) From the graph: max $={{a+c}}$, min $={{c-a}}$, so amplitude $={{a}}$ and vertical translation $={{c}}$. Consecutive maxima are $\\frac{2\\pi}{ {{k}} }$ apart, so the period is $\\frac{2\\pi}{ {{k}} }$. A maximum occurs at $x=\\frac{\\pi}{ {{n}} }$, so the phase shift is $\\frac{\\pi}{ {{n}} }$ right.\n\n(b) $y={{a}}\\cos\\left[{{k}}\\left(x-\\frac{\\pi}{ {{n}} }\\right)\\right]+{{c}}$.\n\n(c) Verify: at $x=\\frac{\\pi}{ {{n}} }$, $y={{a}}\\cos0+{{c}}={{a+c}}$ ✓; half a period later the graph is at its minimum {{c-a}} ✓.",
+      "rubric": [
+        {
+          "point": "Correct amplitude and vertical translation from the graph",
+          "marks": 2
+        },
+        {
+          "point": "Correct period and k",
+          "marks": 1
+        },
+        {
+          "point": "Correct phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Verification using a point",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q07",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "d": {
+          "choices": [
+            0.5,
+            1,
+            1.5
+          ]
+        },
+        "c": {
+          "min": -1,
+          "max": 2,
+          "step": 1
+        }
+      },
+      "text": "Model the graph shown using a **sine** function, then give a second, different equation for the same graph.\n\n```plot\nf: {{a}}*sin({{k}}*(x-{{d}}))+{{c}}\ndomain: -2, 6\nticks: 1, 1\npoints: ({{d}}, {{c}})\n```\n\n",
+      "modelAnswer": "Max $={{a+c}}$, min $={{c-a}}$: $a={{a}}$, $c={{c}}$.\n\nThe graph crosses its midline going up at $x={{d}}$, and its period is about {{2*pi/k:3}}, so $k=\\frac{2\\pi}{\\text{period}}={{k}}$.\n\nEquation 1: $y={{a}}\\sin[{{k}}(x-{{d}})]+{{c}}$.\n\nEquation 2 (one of many): shift by one full period, $y={{a}}\\sin\\left[{{k}}\\left(x-{{d}}-\\frac{2\\pi}{ {{k}} }\\right)\\right]+{{c}}$, or use cosine with the maximum a quarter period later: $y={{a}}\\cos\\left[{{k}}\\left(x-{{d}}-\\frac{\\pi}{2({{k}})}\\right)\\right]+{{c}}$.",
+      "rubric": [
+        {
+          "point": "Amplitude and midline",
+          "marks": 1
+        },
+        {
+          "point": "Period and k",
+          "marks": 1
+        },
+        {
+          "point": "Phase shift from rising midline crossing",
+          "marks": 1
+        },
+        {
+          "point": "Correct first equation",
+          "marks": 1
+        },
+        {
+          "point": "Valid second equation with reasoning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-3-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mx": {
+          "min": 6,
+          "max": 12,
+          "step": 1
+        },
+        "mn": {
+          "choices": [
+            1,
+            1.5,
+            2
+          ]
+        },
+        "T": {
+          "min": 4,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "The maximum height of a theme-park ride is {{mx}} m and its minimum is {{mn}} m. It completes one rotation every {{T}} s and is at its highest point at $t=0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write a cosine model for the height $h$ (m) after $t$ s."
+        },
+        {
+          "label": "b",
+          "text": "Write a sine model.",
+          "answer": {
+            "expr": "T/4",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "When does the rider first reach the lowest point, and how high is it?",
+          "answer": {
+            "expr": "T/2",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$a=\\frac{ {{mx}}-{{mn}} }{2}={{(mx-mn)/2:3}}$; $c=\\frac{ {{mx}}+{{mn}} }{2}={{(mx+mn)/2:3}}$; $k=\\frac{2\\pi}{ {{T}} }\\approx{{2*pi/T:3}}$.\n\n(a) Cosine starts at a maximum: $h={{(mx-mn)/2:3}}\\cos\\left(\\frac{2\\pi}{ {{T}} }t\\right)+{{(mx+mn)/2:3}}$.\n\n(b) A sine maximum normally occurs $\\frac{T}{4}={{T/4:3}}$ s after its start; to have it at $t=0$, shift **left** {{T/4:3}} s: $h={{(mx-mn)/2:3}}\\sin\\left[\\frac{2\\pi}{ {{T}} }(t+{{T/4:3}})\\right]+{{(mx+mn)/2:3}}$.\n\n(c) At $t=\\frac{T}{2}={{T/2:3}}$ s, the rider is at the minimum height {{mn}} m.",
+      "rubric": [
+        {
+          "point": "Correct a and c",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct cosine model",
+          "marks": 1
+        },
+        {
+          "point": "Correct sine model with quarter-period shift",
+          "marks": 2
+        },
+        {
+          "point": "Correct interpretation of half period",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "H": {
+          "choices": [
+            1.2,
+            1.5,
+            1.8,
+            2.4
+          ]
+        },
+        "T": {
+          "min": 4,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "A buoy bobs up and down. The distance between its highest and lowest points is {{H}} m and it takes {{T}} s to complete a cycle. At $t=0$ it is at its equilibrium point and moving **down**.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Model the vertical displacement $v$ (m) at time $t$ (s)."
+        },
+        {
+          "label": "b",
+          "text": "When is the buoy first at its lowest point?",
+          "answer": {
+            "expr": "T/4",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "When is it first at its highest point?",
+          "answer": {
+            "expr": "3*T/4",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Amplitude $=\\frac{ {{H}} }{2}={{H/2:3}}$ m; midline $v=0$; $k=\\frac{2\\pi}{ {{T}} }\\approx{{2*pi/T:3}}$.\n\nStarting at the midline and going down means a reflected sine: $v=-{{H/2:3}}\\sin\\left(\\frac{2\\pi}{ {{T}} }t\\right)$.\n\nThe buoy is lowest a quarter period later, at $t={{T/4:3}}$ s, and highest at $t={{3*T/4:3}}$ s.",
+      "rubric": [
+        {
+          "point": "Amplitude from crest-to-trough distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Uses −sin to match start going down",
+          "marks": 2
+        },
+        {
+          "point": "Correct times of lowest and highest points",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "mn": {
+          "min": 20,
+          "max": 30,
+          "step": 1
+        },
+        "mx": {
+          "min": 60,
+          "max": 80,
+          "step": 5
+        },
+        "rpm": {
+          "choices": [
+            1800,
+            2100,
+            2400,
+            2700
+          ]
+        }
+      },
+      "text": "A piston in an engine moves horizontally between a minimum distance of {{mn}} cm and a maximum of {{mx}} cm from the crankshaft at {{rpm}} rpm. At $t=0$ it is at its maximum distance.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the period.",
+          "answer": {
+            "expr": "60/rpm",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the model.",
+          "answer": {
+            "expr": "2*pi*rpm/60",
+            "unit": "",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "What changes to the model if the engine speed increases? Explain."
+        }
+      ],
+      "modelAnswer": "$a=\\frac{ {{mx}}-{{mn}} }{2}={{(mx-mn)/2:3}}$, $c=\\frac{ {{mx}}+{{mn}} }{2}={{(mx+mn)/2:3}}$.\n\nPeriod: $\\frac{60}{ {{rpm}} }\\approx{{60/rpm:3}}$ s, so $k=2\\pi\\cdot\\frac{ {{rpm}} }{60}={{rpm/30:4}}\\pi$.\n\n$h={{(mx-mn)/2:3}}\\cos({{rpm/30:4}}\\pi t)+{{(mx+mn)/2:3}}$.\n\nIf the engine speed increases, only $k$ changes (period shorter); amplitude and midline stay the same because the piston still travels between the same positions.",
+      "rubric": [
+        {
+          "point": "Amplitude and midline",
+          "marks": 1
+        },
+        {
+          "point": "Period from rpm",
+          "marks": 1
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct model",
+          "marks": 1
+        },
+        {
+          "point": "Explains effect of rpm change",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q11",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "h0": {
+          "choices": [
+            4,
+            5,
+            7,
+            9,
+            15,
+            17
+          ]
+        }
+      },
+      "text": "A Ferris wheel gondola's height is $h=10\\sin\\left[\\frac{\\pi}{15}(t-d)\\right]+12$, where $t$ is in seconds. The gondola must be at a height of {{h0}} m at $t=0$ and moving upward.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the required phase shift $d$ (in seconds).",
+          "answer": {
+            "expr": "-15/pi*asin((h0-12)/10)",
+            "unit": "s",
+            "sig": 3,
+            "tol": 0.03
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show that your answer is correct and describe a different method."
+        }
+      ],
+      "modelAnswer": "At $t=0$: $10\\sin\\left(-\\frac{\\pi}{15}d\\right)+12={{h0}}$, so $\\sin\\left(-\\frac{\\pi}{15}d\\right)={{(h0-12)/10:3}}$.\n\nFor the gondola to be rising, the argument must be on the increasing part of the sine curve (between $-\\frac{\\pi}{2}$ and $\\frac{\\pi}{2}$), so $-\\frac{\\pi}{15}d=\\sin^{-1}({{(h0-12)/10:3}})\\approx{{asin((h0-12)/10):4}}$.\n\n$d=-\\frac{15}{\\pi}({{asin((h0-12)/10):4}})\\approx{{-15/pi*asin((h0-12)/10):3}}$ s.\n\nCheck: $h(0)=10\\sin({{asin((h0-12)/10):4}})+12\\approx{{h0}}$ ✓, and a slightly larger $t$ gives a larger height ✓. (Another method: find the time after the rising midline crossing at which $h={{h0}}$ on the graph.)",
+      "rubric": [
+        {
+          "point": "Sets up equation at t = 0",
+          "marks": 1
+        },
+        {
+          "point": "Chooses the rising branch with justification",
+          "marks": 2
+        },
+        {
+          "point": "Correct phase shift",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        },
+        {
+          "point": "Describes a second method",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q12",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "c": {
+          "min": 5,
+          "max": 8,
+          "step": 1
+        },
+        "c2": {
+          "min": 0,
+          "max": 1,
+          "step": 1
+        }
+      },
+      "text": "(a) Explain why $g(x)={{a}}\\sin\\left[2\\left(x+\\frac{3\\pi}{4}\\right)\\right]+{{c}}$ has no zeros. (b) Without graphing, decide whether $h(x)={{a}}\\cos x+{{c2}}$ has zeros, and justify.",
+      "modelAnswer": "(a) The minimum of $g$ is $c-|a|={{c}}-{{a}}={{c-a}}>0$, so the whole graph lies above the $x$-axis and never crosses it.\n\n(b) Min of $h$ is ${{c2}}-{{a}}={{c2-a}}$ and max is ${{c2+a}}$. Since the minimum is negative and the maximum positive, the graph must cross the $x$-axis: $h$ has zeros (two in each period).",
+      "rubric": [
+        {
+          "point": "Uses minimum value to explain no zeros",
+          "marks": 2
+        },
+        {
+          "point": "Correct reasoning for second function",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-3-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "r": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        },
+        "T": {
+          "choices": [
+            2,
+            3,
+            4
+          ]
+        }
+      },
+      "text": "A Gravitron ride has radius {{r}} m and period {{T}} s, with the origin at the centre of rotation. A rider starts at the point $(0,{{r}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Model the $x$-position using a sine function."
+        },
+        {
+          "label": "b",
+          "text": "Model the $y$-position using a cosine function."
+        },
+        {
+          "label": "c",
+          "text": "Show that $x^2+y^2$ is constant and find its value.",
+          "answer": {
+            "expr": "r*r",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain why this must be true."
+        }
+      ],
+      "modelAnswer": "$k=\\frac{2\\pi}{ {{T}} }$.\n\n(a) $x={{r}}\\sin\\left(\\frac{2\\pi}{ {{T}} }t\\right)$ (starts at 0, increases).\n\n(b) $y={{r}}\\cos\\left(\\frac{2\\pi}{ {{T}} }t\\right)$ (starts at the maximum {{r}}).\n\n(c) $x^2+y^2={{r}}^2\\left[\\sin^2\\left(\\tfrac{2\\pi t}{ {{T}} }\\right)+\\cos^2\\left(\\tfrac{2\\pi t}{ {{T}} }\\right)\\right]={{r}}^2(1)={{r*r}}$.\n\n(d) This is the equation of a circle of radius {{r}}: the rider is always {{r}} m from the centre, which is exactly what a rotating ride does.",
+      "rubric": [
+        {
+          "point": "Correct x model",
+          "marks": 1
+        },
+        {
+          "point": "Correct y model",
+          "marks": 1
+        },
+        {
+          "point": "Shows x² + y² = r² using the Pythagorean identity",
+          "marks": 2
+        },
+        {
+          "point": "Explains geometrically",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q14",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "y0": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "A sine function is transformed so that it has a single $x$-intercept in the interval $[0,\\pi)$, a period of $\\pi$, and a $y$-intercept of {{y0}}. (a) Determine an equation that satisfies these properties. (b) Verify each property. (c) Are there other sine functions with these properties? Give one or explain why not.",
+      "modelAnswer": "Period $\\pi$ gives $k=2$. A single $x$-intercept per period means the graph just touches the $x$-axis at its minimum, so $c=|a|$. With no phase shift, the $y$-intercept is $c$ (since $\\sin0=0$), so $c={{y0}}$ and $a={{y0}}$:\n\n$$y={{y0}}\\sin2x+{{y0}}$$\n\nCheck: min $=0$ (touches the axis once, at $x=\\frac{3\\pi}{4}$), period $\\pi$, $y(0)={{y0}}$ ✓.\n\nOther answers exist, e.g. $y=-{{y0}}\\sin2x+{{y0}}$ (touches at $x=\\frac{\\pi}{4}$), or functions using a phase shift together with a different $a$ and $c$ chosen to keep the $y$-intercept {{y0}}.",
+      "rubric": [
+        {
+          "point": "Uses period to find k",
+          "marks": 1
+        },
+        {
+          "point": "Recognises single intercept means min (or max) on the axis",
+          "marks": 2
+        },
+        {
+          "point": "Correct equation",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        },
+        {
+          "point": "Second valid function",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "lo": {
+          "choices": [
+            -12,
+            -8,
+            -5,
+            -4
+          ]
+        },
+        "A": {
+          "choices": [
+            13,
+            14,
+            15
+          ]
+        }
+      },
+      "text": "The table shows the average monthly temperature in a city (month 1 = January).\n\n| Month | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| T (°C) | {{round(10*(A*sin(pi/6*(1-4))+lo+A+(0)))/10}} | {{round(10*(A*sin(pi/6*(2-4))+lo+A+(0.4)))/10}} | {{round(10*(A*sin(pi/6*(3-4))+lo+A+(-0.6)))/10}} | {{round(10*(A*sin(pi/6*(4-4))+lo+A+(0.5)))/10}} | {{round(10*(A*sin(pi/6*(5-4))+lo+A+(-0.3)))/10}} | {{round(10*(A*sin(pi/6*(6-4))+lo+A+(0.6)))/10}} | {{round(10*(A*sin(pi/6*(7-4))+lo+A+(0)))/10}} | {{round(10*(A*sin(pi/6*(8-4))+lo+A+(-0.4)))/10}} | {{round(10*(A*sin(pi/6*(9-4))+lo+A+(0.3)))/10}} | {{round(10*(A*sin(pi/6*(10-4))+lo+A+(-0.5)))/10}} | {{round(10*(A*sin(pi/6*(11-4))+lo+A+(0.4)))/10}} | {{round(10*(A*sin(pi/6*(12-4))+lo+A+(-0.2)))/10}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write a sinusoidal function $T(m)$ to model the data.",
+          "answer": {
+            "expr": "A",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "Comment on how well your model fits the data."
+        },
+        {
+          "label": "c",
+          "text": "Explain why a sinusoidal model is appropriate."
+        }
+      ],
+      "modelAnswer": "(a) Max $\\approx{{lo+2*A}}$ (July, month 7), min $\\approx{{lo}}$ (January).\n\n$a=\\frac{ {{lo+2*A}}-({{lo}}) }{2}={{A}}$; $c=\\frac{ {{lo+2*A}}+({{lo}}) }{2}={{lo+A}}$; period 12 months so $k=\\frac{2\\pi}{12}=\\frac{\\pi}{6}$.\n\nA sine maximum normally occurs at $\\frac{12}{4}=3$; the data's maximum is at 7, so the phase shift is $7-3=4$ right:\n$$T={{A}}\\sin\\left[\\frac{\\pi}{6}(m-4)\\right]+{{lo+A}}$$\n\n(b) A good fit: the model passes close to most points; differences of 1–2 °C are expected because real weather is not perfectly sinusoidal.\n\n(c) Seasonal temperature repeats every year between a high and a low, so a periodic sinusoidal model is appropriate.",
+      "rubric": [
+        {
+          "point": "Correct amplitude and midline from data",
+          "marks": 2
+        },
+        {
+          "point": "Correct k",
+          "marks": 1
+        },
+        {
+          "point": "Correct phase shift with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Comments sensibly on fit",
+          "marks": 1
+        },
+        {
+          "point": "Justifies sinusoidal model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "5-3-q16",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            12.5,
+            15.2,
+            18.3
+          ]
+        },
+        "b": {
+          "choices": [
+            0.5,
+            0.52,
+            0.6
+          ]
+        },
+        "cc": {
+          "choices": [
+            -2.1,
+            -1.8,
+            2.1
+          ]
+        },
+        "dd": {
+          "choices": [
+            4.1,
+            5.6,
+            -4.1
+          ]
+        }
+      },
+      "text": "A graphing calculator's sinusoidal regression for some data returns $y={{a}}\\sin({{b}}x+{{cc}})+{{dd}}$. (a) Rewrite the equation in the form $y=a\\sin[k(x-d)]+c$. (b) State the amplitude, period, phase shift and vertical translation. (c) Explain why you should still build a model by hand from the data before using regression.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Phase shift magnitude (rad)",
+          "answer": {
+            "expr": "abs(cc/b)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Period",
+          "answer": {
+            "expr": "2*pi/b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Factor {{b}} out: ${{b}}x+{{cc}}={{b}}\\left(x+\\frac{ {{cc}} }{ {{b}} }\\right)$, so $y={{a}}\\sin\\left[{{b}}\\left(x-({{-cc/b:3}})\\right)\\right]+({{dd}})$.\n\n(b) Amplitude {{a}}; period $\\frac{2\\pi}{ {{b}} }\\approx{{2*pi/b:3}}$; phase shift $d\\approx{{-cc/b:3}}$ (a positive value means right, negative means left); vertical translation {{dd}}.\n\n(c) Building a model from the max, min and period lets you check that the regression is sensible (technology can return a strange fit, especially with less than a full cycle of data), and it shows you understand what each parameter means in context.",
+      "rubric": [
+        {
+          "point": "Correct factored form",
+          "marks": 2
+        },
+        {
+          "point": "All four properties",
+          "marks": 2
+        },
+        {
+          "point": "Sound reason for a hand model",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-3-q17",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain, using the Round-Up example (max 7.5 m, min 1.5 m, period 5 s, highest point at $t=0$), how the **same** situation can be modelled by both a sine function and a cosine function. Write both models and explain how they are related.",
+      "modelAnswer": "$a=3$, $c=4.5$, $k=\\frac{2\\pi}{5}=0.4\\pi$.\n\nCosine: $h=3\\cos(0.4\\pi t)+4.5$, since cosine starts at a maximum.\n\nSine: a sine maximum normally occurs a quarter period ($1.25$ s) after the start, so shift left 1.25 s: $h=3\\sin[0.4\\pi(t+1.25)]+4.5$.\n\nThey are related by $\\cos\\theta=\\sin\\left(\\theta+\\frac{\\pi}{2}\\right)$: a quarter-period shift ($\\frac{\\pi}{2}$ in the argument, $1.25$ s in time) changes one into the other.",
+      "rubric": [
+        {
+          "point": "Correct parameters",
+          "marks": 1
+        },
+        {
+          "point": "Correct cosine model",
+          "marks": 1
+        },
+        {
+          "point": "Correct sine model",
+          "marks": 1
+        },
+        {
+          "point": "Explains quarter-period relationship",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "5-3-q18",
+      "type": "design",
+      "difficulty": 3,
+      "text": "Write an equation for a transformed **cosine** function that includes at least three transformations. Then write the minimum set of clues (e.g. max, min, period, a point) that would let a classmate determine your equation exactly. Show that your clues are sufficient by solving your own problem, and explain whether more than one answer is possible.",
+      "modelAnswer": "Sample: $y=2\\cos\\left[3\\left(x-\\frac{\\pi}{6}\\right)\\right]+1$.\n\nClues: max 3, min $-1$, period $\\frac{2\\pi}{3}$, a maximum at $x=\\frac{\\pi}{6}$.\n\nSolve: $a=\\frac{3-(-1)}{2}=2$, $c=1$, $k=\\frac{2\\pi}{2\\pi/3}=3$, and a maximum at $\\frac{\\pi}{6}$ gives $d=\\frac{\\pi}{6}$ ✓.\n\nMore than one answer is possible: any $d=\\frac{\\pi}{6}+\\frac{2\\pi n}{3}$ gives the same graph, and the graph could also be written as a sine function. The clues determine the **graph** uniquely but not the **equation**.",
+      "rubric": [
+        {
+          "point": "Valid equation with three or more transformations",
+          "marks": 1
+        },
+        {
+          "point": "Sufficient, minimal clues",
+          "marks": 2
+        },
+        {
+          "point": "Correctly solves own problem",
+          "marks": 2
+        },
+        {
+          "point": "Discusses non-uniqueness",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

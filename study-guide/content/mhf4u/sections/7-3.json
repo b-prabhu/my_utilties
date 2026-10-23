@@ -1,0 +1,1145 @@
+{
+  "id": "7-3",
+  "number": "7.3",
+  "title": "Product and Quotient Laws of Logarithms",
+  "estimatedMinutes": 70,
+  "overview": "Because a logarithm is an exponent, every exponent law has a matching logarithm law. In this section you learn the **product** and **quotient** laws, prove them, and use them with the power law to condense, expand, evaluate and simplify logarithmic expressions — always keeping track of restrictions.",
+  "objectives": [
+    "State, prove and apply the product law of logarithms",
+    "State, prove and apply the quotient law of logarithms",
+    "Write a combination of logarithms as a single logarithm and evaluate it",
+    "Write a single logarithm as a sum or difference of simpler logarithms",
+    "Simplify algebraic logarithmic expressions and state restrictions on the variables",
+    "Recognise and correct common false 'laws' of logarithms"
+  ],
+  "lessons": [
+    {
+      "id": "logs-are-exponents",
+      "title": "Logarithms are exponents",
+      "body": "\nA logarithm answers the question *\"what exponent?\"*: $\\log_b x = y$ means $b^y = x$. Because a logarithm **is** an exponent, every exponent law has a matching logarithm law.\n\n| Exponent law | Logarithm law |\n|---|---|\n| $b^m \\cdot b^n = b^{m+n}$ (multiply → add exponents) | $\\log_b(mn) = \\log_b m + \\log_b n$ |\n| $\\dfrac{b^m}{b^n} = b^{m-n}$ (divide → subtract exponents) | $\\log_b\\left(\\dfrac mn\\right) = \\log_b m - \\log_b n$ |\n| $(b^m)^n = b^{mn}$ (power → multiply exponents) | $\\log_b(m^n) = n\\log_b m$ |\n\n### A picture of the product law\nCompare $f(x) = \\log x$ with $g(x) = \\log(10x)$. Each point on $g$ is exactly 1 unit higher than the matching point on $f$, because\n\n$$\\log(10x) = \\log 10 + \\log x = 1 + \\log x$$\n\n```plot\ntitle: log(10x) = log x + 1 and log(100x) = log x + 2\nf: log(x) | label=y = log x\nf: log(10*x) | label=y = log(10x)\nf: log(100*x) | label=y = log(100x)\ndomain: 0.01, 10\nrange: -2, 4\nticks: 1, 1\npoints: (1, 0), (1, 1), (1, 2)\n```\n\nMultiplying the input by 10 **translates the graph up 1 unit**. Multiplying by $10^n$ translates it up $n$ units.\n"
+    },
+    {
+      "id": "the-laws",
+      "title": "The product and quotient laws",
+      "body": "\nFor $b > 0,\\ b \\ne 1,\\ m > 0,\\ n > 0$:\n\n$$\\log_b(mn) = \\log_b m + \\log_b n \\qquad\\qquad \\log_b\\left(\\frac mn\\right) = \\log_b m - \\log_b n$$\n\n**Proof of the product law.** Let $x = \\log_b m$ and $y = \\log_b n$. In exponential form, $b^x = m$ and $b^y = n$. Then\n\n$$mn = b^x b^y = b^{x+y} \\quad\\Rightarrow\\quad \\log_b(mn) = x + y = \\log_b m + \\log_b n$$\n\n**Proof of the quotient law.** With the same $x$ and $y$:\n\n$$\\frac mn = \\frac{b^x}{b^y} = b^{x-y} \\quad\\Rightarrow\\quad \\log_b\\left(\\frac mn\\right) = x - y = \\log_b m - \\log_b n$$\n\n> **The restrictions matter.** The laws only apply when every logarithm in the statement is defined — every argument must be positive.\n"
+    },
+    {
+      "id": "single-log",
+      "title": "Writing as a single logarithm and evaluating",
+      "body": "\nTo **condense** an expression into one logarithm:\n\n1. Use the power law to move coefficients up as exponents: $2\\log 5 = \\log 5^2$.\n2. Combine **added** logs into a product and **subtracted** logs into a quotient.\n3. Simplify the argument, then evaluate if possible.\n\n**Examples**\n\n$$\\log_5 6 + \\log_5 8 - \\log_5 16 = \\log_5\\frac{6\\times8}{16} = \\log_5 3$$\n\n$$\\log_8 4 + \\log_8 16 = \\log_8 64 = 2 \\qquad\\qquad \\log_3 405 - \\log_3 5 = \\log_3 81 = 4$$\n\n$$2\\log 5 + \\tfrac12\\log 16 = \\log 25 + \\log 4 = \\log 100 = 2$$\n\n> **Tip:** if the individual logs are awkward (like $\\log_6 18$), combining them often produces a 'nice' argument whose logarithm you know exactly.\n"
+    },
+    {
+      "id": "expanding",
+      "title": "Writing as a sum or difference of logarithms",
+      "body": "\n**Expanding** goes the other way: break one logarithm into simpler pieces.\n\n$$\\log(ab^2c) = \\log a + 2\\log b + \\log c, \\quad a,b,c > 0$$\n\n$$\\log\\left(\\frac{uv}{\\sqrt w}\\right) = \\log u + \\log v - \\tfrac12\\log w, \\quad u,v,w > 0$$\n\nA number can be split using any factors: $\\log 20 = \\log 4 + \\log 5$, or more usefully $\\log 20 = \\log 10 + \\log 2 = 1 + \\log 2$.\n\n> Choose factors that include the base whenever possible — they simplify to whole numbers.\n"
+    },
+    {
+      "id": "algebraic",
+      "title": "Simplifying algebraic expressions and stating restrictions",
+      "body": "\nThe laws also simplify expressions with variables. Always work out the **restrictions** from the *original* expression.\n\n**Example:** simplify $\\log(2x - 2) - \\log(x^2 - 1)$.\n\n$$= \\log\\frac{2x-2}{x^2-1} = \\log\\frac{2(x-1)}{(x+1)(x-1)} = \\log\\frac{2}{x+1}$$\n\nRestrictions: both original arguments must be positive.\n\n* $2x - 2 > 0 \\Rightarrow x > 1$\n* $x^2 - 1 > 0 \\Rightarrow x > 1$ or $x < -1$\n\nBoth are true only when $x > 1$. So $\\log(2x-2) - \\log(x^2-1) = \\log\\frac{2}{x+1}$, $x > 1$.\n\n> The simplified form $\\log\\frac2{x+1}$ is defined for $x > -1$, but the original is not — so the restriction comes from the original.\n\n**Example:** $\\log\\left(\\frac{\\sqrt x}{x^2}\\right) = \\frac12\\log x - 2\\log x = -\\frac32\\log x$, $x > 0$.\n"
+    },
+    {
+      "id": "pitfalls",
+      "title": "What the laws do NOT say",
+      "body": "\n| Tempting but **false** | Why |\n|---|---|\n| $\\log(x + y) = \\log x + \\log y$ | The product law is about $\\log(xy)$. Test: $\\log(10 + 10) = \\log 20 \\approx 1.30$, but $\\log 10 + \\log 10 = 2$. |\n| $\\log\\left(\\dfrac ab\\right) = \\dfrac{\\log a}{\\log b}$ | Test: $\\log\\frac{100}{10} = 1$, but $\\frac{\\log 100}{\\log 10} = 2$. |\n| $\\log a \\times \\log b = \\log(ab)$ | Test: $\\log 10\\times\\log 10 = 1$, but $\\log 100 = 2$. |\n| $\\log(3x^2) = 2\\log(3x)$ | The exponent applies only to $x$: $\\log(3x^2) = \\log 3 + 2\\log x$. |\n\nTesting with simple numbers like 10 and 100 is the quickest way to catch a false 'law'.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "product law of logarithms",
+      "definition": "$\\log_b(mn) = \\log_b m + \\log_b n$ for $b>0,\\ b\\ne1,\\ m,n>0$."
+    },
+    {
+      "term": "quotient law of logarithms",
+      "definition": "$\\log_b\\left(\\frac mn\\right) = \\log_b m - \\log_b n$ for $b>0,\\ b\\ne1,\\ m,n>0$."
+    },
+    {
+      "term": "power law of logarithms",
+      "definition": "$\\log_b(m^n) = n\\log_b m$ for $b>0,\\ b\\ne1,\\ m>0$."
+    },
+    {
+      "term": "argument",
+      "definition": "The input of a logarithm: in $\\log_b x$, the argument is $x$. It must be positive."
+    },
+    {
+      "term": "restriction",
+      "definition": "A condition on a variable (such as $x > 1$) that keeps every logarithm in an expression defined."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Product law",
+      "latex": "\\log_b(mn) = \\log_b m + \\log_b n",
+      "meaning": "Multiplying inside → adding outside."
+    },
+    {
+      "name": "Quotient law",
+      "latex": "\\log_b\\left(\\frac{m}{n}\\right) = \\log_b m - \\log_b n",
+      "meaning": "Dividing inside → subtracting outside."
+    },
+    {
+      "name": "Power law",
+      "latex": "\\log_b(m^n) = n\\log_b m",
+      "meaning": "An exponent inside → a coefficient outside."
+    },
+    {
+      "name": "Logarithm of the base and of 1",
+      "latex": "\\log_b b = 1 \\qquad \\log_b 1 = 0",
+      "meaning": "Useful when splitting numbers into factors."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Write as a single logarithm",
+      "problem": "Write as a single logarithm: (a) $\\log_5 6 + \\log_5 8 - \\log_5 16$ (b) $\\log x + \\log y + \\log(3x) - \\log y$",
+      "steps": [
+        "(a) Combine: $\\log_5\\dfrac{6\\times8}{16} = \\log_5 3$.",
+        "(b) Combine: $\\log\\dfrac{x\\cdot y\\cdot 3x}{y} = \\log(3x^2)$.",
+        "Restrictions come from the original: $x > 0$, $y > 0$.",
+        "Note: $\\log(3x^2) \\ne 2\\log(3x)$, because the exponent 2 applies only to $x$."
+      ],
+      "answer": "(a) $\\log_5 3$ (b) $\\log(3x^2),\\ x>0,\\ y>0$"
+    },
+    {
+      "title": "Evaluate using the laws",
+      "problem": "Evaluate: (a) $\\log_8 4 + \\log_8 16$ (b) $\\log_3 405 - \\log_3 5$ (c) $2\\log 5 + \\frac12\\log 16$",
+      "steps": [
+        "(a) $\\log_8(4\\times16) = \\log_8 64 = 2$ because $8^2 = 64$.",
+        "(b) $\\log_3\\frac{405}{5} = \\log_3 81 = 4$.",
+        "(c) $\\log 5^2 + \\log 16^{\\frac12} = \\log 25 + \\log 4 = \\log 100 = 2$."
+      ],
+      "answer": "(a) 2 (b) 4 (c) 2"
+    },
+    {
+      "title": "Expand a logarithm",
+      "problem": "Write as a sum or difference of logarithms: (a) $\\log(ab^2c)$ (b) $\\log\\left(\\dfrac{uv}{\\sqrt w}\\right)$",
+      "steps": [
+        "(a) $\\log a + \\log b^2 + \\log c = \\log a + 2\\log b + \\log c$, with $a, b, c > 0$.",
+        "(b) $\\log u + \\log v - \\log w^{\\frac12} = \\log u + \\log v - \\frac12\\log w$, with $u, v, w > 0$."
+      ],
+      "answer": "(a) $\\log a + 2\\log b + \\log c$ (b) $\\log u + \\log v - \\frac12\\log w$"
+    },
+    {
+      "title": "Simplify with restrictions",
+      "problem": "Simplify $\\log(\\sqrt x)^3 + \\log x^2 - \\log\\sqrt x$.",
+      "steps": [
+        "Write as powers: $\\log x^{\\frac32} + \\log x^2 - \\log x^{\\frac12}$.",
+        "Combine: $\\log\\dfrac{x^{\\frac32}\\cdot x^2}{x^{\\frac12}} = \\log x^{\\frac32 + 2 - \\frac12} = \\log x^3$.",
+        "Power law: $3\\log x$, with $x > 0$."
+      ],
+      "answer": "$3\\log x,\\ x > 0$"
+    },
+    {
+      "title": "Factor before simplifying",
+      "problem": "Simplify $\\log(x^2 - 4) - \\log(x - 2)$ and state the restrictions.",
+      "steps": [
+        "Quotient law: $\\log\\dfrac{x^2-4}{x-2} = \\log\\dfrac{(x-2)(x+2)}{x-2} = \\log(x+2)$.",
+        "Restrictions: $x^2 - 4 > 0$ needs $x > 2$ or $x < -2$; $x - 2 > 0$ needs $x > 2$.",
+        "Together: $x > 2$."
+      ],
+      "answer": "$\\log(x+2),\\ x > 2$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\log x + \\log y = \\log(x + y)$.",
+      "fact": "$\\log x + \\log y = \\log(xy)$. Check: $\\log 10 + \\log 10 = 2 = \\log 100$, not $\\log 20$."
+    },
+    {
+      "myth": "$\\log\\left(\\frac ab\\right) = \\frac{\\log a}{\\log b}$.",
+      "fact": "$\\log\\left(\\frac ab\\right) = \\log a - \\log b$. The expression $\\frac{\\log a}{\\log b}$ is the change of base formula for $\\log_b a$ — a different thing."
+    },
+    {
+      "myth": "The simplified expression has the same domain as the original.",
+      "fact": "Restrictions must come from the **original** expression. $\\log(2x-2) - \\log(x^2-1)$ requires $x > 1$ even though $\\log\\frac{2}{x+1}$ is defined for $x > -1$."
+    },
+    {
+      "myth": "$\\log(3x^2) = 2\\log(3x)$.",
+      "fact": "The exponent applies only to $x$: $\\log(3x^2) = \\log 3 + 2\\log x$."
+    },
+    {
+      "myth": "$\\log_2 5 + \\log_3 5 = \\log_6 25$.",
+      "fact": "The laws only combine logarithms with the **same base**."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Op Amps in guitar electronics",
+      "body": "Some operational amplifier circuits output $V_0 = \\log V_2 - \\log V_1 = \\log\\frac{V_2}{V_1}$. A circuit that subtracts logs effectively divides signals — used in effects pedals and signal processors."
+    },
+    {
+      "title": "Slide rules and early computing",
+      "body": "Before calculators, engineers multiplied numbers by *adding* lengths on logarithmic scales — the product law in physical form."
+    },
+    {
+      "title": "Decibels and the Richter scale",
+      "body": "Because $\\log(10x) = 1 + \\log x$, multiplying an intensity by 10 adds a fixed amount to the scale reading: 10 dB for sound, one unit for earthquakes."
+    },
+    {
+      "title": "Salary comparisons",
+      "body": "Comparing a salary that rises by a fixed amount with one that rises by a fixed percentage leads to exponential equations whose solution uses the laws of logarithms and graphs."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Simplify: (a) $\\log 9 + \\log 6$ (b) $\\log 48 - \\log 6$ (c) $\\log_3 7 + \\log_3 3$",
+      "hint": "Product and quotient laws.",
+      "solution": "(a) $\\log 54 \\approx 1.732$ (b) $\\log 8 \\approx 0.903$ (c) $\\log_3 21$ (or $1 + \\log_3 7$)"
+    },
+    {
+      "question": "Evaluate: $\\log_6 18 + \\log_6 2$.",
+      "hint": "Combine into one log.",
+      "solution": "$\\log_6 36 = 2$"
+    },
+    {
+      "question": "Evaluate: $\\log 5 + \\log 40 + \\log 5$.",
+      "hint": "Multiply the arguments.",
+      "solution": "$\\log 1000 = 3$"
+    },
+    {
+      "question": "Evaluate: $\\log_4 320 - \\log_4 5$.",
+      "hint": "$320 \\div 5$.",
+      "solution": "$\\log_4 64 = 3$"
+    },
+    {
+      "question": "Write as a single logarithm: $2\\log m + 3\\log n - 4\\log y$.",
+      "hint": "Use the power law first.",
+      "solution": "$\\log\\dfrac{m^2n^3}{y^4}$, $m, n, y > 0$"
+    },
+    {
+      "question": "Write as a sum or difference: $\\log\\left(\\dfrac{a\\sqrt b}{c^2}\\right)$.",
+      "hint": "Three logs, with coefficients.",
+      "solution": "$\\log a + \\frac12\\log b - 2\\log c$, $a, b, c > 0$"
+    },
+    {
+      "question": "Simplify: $\\log(x^2 + 7x + 12) - \\log(x + 3)$.",
+      "hint": "Factor the trinomial.",
+      "solution": "$\\log\\frac{(x+3)(x+4)}{x+3} = \\log(x + 4)$, $x > -3$"
+    },
+    {
+      "question": "Does $\\log\\left(\\frac{100}{10}\\right) = \\frac{\\log 100}{\\log 10}$?",
+      "hint": "Evaluate both sides.",
+      "solution": "No: the left side is $\\log 10 = 1$; the right side is $\\frac21 = 2$."
+    }
+  ],
+  "summary": [
+    "Product law: $\\log_b(mn) = \\log_b m + \\log_b n$.",
+    "Quotient law: $\\log_b\\left(\\frac mn\\right) = \\log_b m - \\log_b n$.",
+    "Power law: $\\log_b(m^n) = n\\log_b m$. All laws need $b>0,\\ b\\ne1$ and positive arguments.",
+    "The laws come directly from the exponent laws, because logarithms are exponents.",
+    "Use the laws to condense, expand, evaluate and simplify; state restrictions from the original expression.",
+    "Watch for false 'laws' such as $\\log(x+y) = \\log x + \\log y$."
+  ],
+  "questions": [
+    {
+      "id": "7-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Evaluate each expression using the product law of logarithms. Show the single logarithm you obtain before evaluating.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_6 18 + \\log_6 2$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log 40 + \\log 2.5$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_{12}8 + \\log_{12}2 + \\log_{12}9$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log 5 + \\log 40 + \\log 5$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_6(18\\times2) = \\log_6 36 = 2$\n\n(b) $\\log(40\\times2.5) = \\log 100 = 2$\n\n(c) $\\log_{12}(8\\times2\\times9) = \\log_{12}144 = 2$\n\n(d) $\\log(5\\times40\\times5) = \\log 1000 = 3$",
+      "rubric": [
+        {
+          "point": "(a) correct single log and value",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Evaluate each expression using the quotient law of logarithms.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_3 54 - \\log_3 2$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log 50\\,000 - \\log 5$",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_4 320 - \\log_4 5$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log 2 - \\log 200$",
+          "answer": {
+            "expr": "-2",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_3\\frac{54}{2} = \\log_3 27 = 3$\n\n(b) $\\log\\frac{50\\,000}{5} = \\log 10\\,000 = 4$\n\n(c) $\\log_4\\frac{320}{5} = \\log_4 64 = 3$\n\n(d) $\\log\\frac{2}{200} = \\log 0.01 = -2$",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct, including the negative value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Evaluate each expression using the laws of logarithms. Show each law you use.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$3\\log_{16}2 + 2\\log_{16}8 - \\log_{16}2$",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log 20 + \\log 2 + \\frac13\\log 125$",
+          "answer": {
+            "expr": "log(200)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log_{16}2^3 + \\log_{16}8^2 - \\log_{16}2 = \\log_{16}\\frac{8\\times64}{2} = \\log_{16}256 = 2$\n\n(b) $\\log 20 + \\log 2 + \\log 125^{\\frac13} = \\log 20 + \\log 2 + \\log 5 = \\log 200 \\approx 2.301$",
+      "rubric": [
+        {
+          "point": "Uses the power law to move coefficients",
+          "marks": 1
+        },
+        {
+          "point": "Combines correctly in (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for (a)",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies 125^(1/3) = 5 and combines in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for (b)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q04",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "choices": [
+            2,
+            4,
+            5
+          ]
+        },
+        "n": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Evaluate ${{n}}\\log {{p}} + {{n}}\\log {{10/p}}$ without a calculator. Explain each step.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of the expression.",
+          "answer": {
+            "expr": "n",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Factor or combine: ${{n}}\\log {{p}} + {{n}}\\log {{10/p}} = {{n}}(\\log {{p}} + \\log {{10/p}}) = {{n}}\\log({{p}}\\times{{10/p}}) = {{n}}\\log 10 = {{n}}$.\n\n(Equivalently, $\\log {{p}}^{ {{n}} } + \\log {{10/p}}^{ {{n}} } = \\log 10^{ {{n}} } = {{n}}$.)",
+      "rubric": [
+        {
+          "point": "Applies the product law (or power law then product law)",
+          "marks": 1
+        },
+        {
+          "point": "Recognises that the product is 10",
+          "marks": 1
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Write each as a single logarithm. State any restrictions on the variables.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log x + \\log y + \\log(2z)$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log_2 a + \\log_2(3b) - \\log_2(2c)$"
+        },
+        {
+          "label": "c",
+          "text": "$2\\log m + 3\\log n - 4\\log y$"
+        },
+        {
+          "label": "d",
+          "text": "$2\\log u + \\log v + \\frac12\\log w$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log(2xyz)$, $x, y, z > 0$\n\n(b) $\\log_2\\dfrac{3ab}{2c}$, $a, b, c > 0$\n\n(c) $\\log\\dfrac{m^2n^3}{y^4}$, $m, n, y > 0$\n\n(d) $\\log\\left(u^2v\\sqrt w\\right)$, $u, v, w > 0$",
+      "rubric": [
+        {
+          "point": "(a) correct with restrictions",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct with restrictions",
+          "marks": 1
+        },
+        {
+          "point": "(c) uses the power law correctly",
+          "marks": 1
+        },
+        {
+          "point": "(d) converts ½ log w to log √w",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q06",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "Write each as a sum or difference of logarithms. Simplify where possible.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_7(cd)$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log_3\\left(\\frac mn\\right)$"
+        },
+        {
+          "label": "c",
+          "text": "$\\log(uv^3)$"
+        },
+        {
+          "label": "d",
+          "text": "$\\log\\left(\\dfrac{a\\sqrt b}{c^2}\\right)$"
+        },
+        {
+          "label": "e",
+          "text": "$\\log_2 10$"
+        },
+        {
+          "label": "f",
+          "text": "$\\log_5 50$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log_7 c + \\log_7 d$\n\n(b) $\\log_3 m - \\log_3 n$\n\n(c) $\\log u + 3\\log v$\n\n(d) $\\log a + \\frac12\\log b - 2\\log c$\n\n(e) $\\log_2 10 = \\log_2(2\\times5) = 1 + \\log_2 5$\n\n(f) $\\log_5 50 = \\log_5(25\\times2) = 2 + \\log_5 2$ (choosing the factor 25, a power of the base, gives the simplest result)",
+      "rubric": [
+        {
+          "point": "(a)–(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c)–(d) correct, using the power law",
+          "marks": 2
+        },
+        {
+          "point": "(e) splits using a factor equal to the base",
+          "marks": 1
+        },
+        {
+          "point": "(f) chooses factors to give the simplest form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Simplify each expression. State any restrictions on the variables.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log\\left(\\dfrac{x^2}{\\sqrt x}\\right)$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log\\left(\\dfrac{\\sqrt m}{m^3}\\right) + \\log(\\sqrt m)^7$"
+        },
+        {
+          "label": "c",
+          "text": "$\\log\\sqrt k + \\log(\\sqrt k)^3 + \\log\\sqrt[3]{k^2}$"
+        },
+        {
+          "label": "d",
+          "text": "$2\\log w + 3\\log\\sqrt w + \\frac12\\log w^2$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log\\dfrac{x^2}{\\sqrt x} = 2\\log x - \\frac12\\log x = \\frac32\\log x$, $x > 0$\n\n(b) $\\log\\dfrac{\\sqrt m}{m^3} + \\log(\\sqrt m)^7 = \\left(\\frac12 - 3\\right)\\log m + \\frac72\\log m = \\log m$, $m > 0$\n\n(c) $\\log k^{\\frac12} + \\log k^{\\frac32} + \\log k^{\\frac23} = \\left(\\frac12 + \\frac32 + \\frac23\\right)\\log k = \\frac83\\log k$, $k > 0$\n\n(d) $2\\log w + \\frac32\\log w + \\log w = \\frac92\\log w$, $w > 0$",
+      "rubric": [
+        {
+          "point": "Converts radicals to rational exponents",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct with restriction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q08",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Simplify each expression by factoring. State the restrictions on $x$, explaining how you found them.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log(x^2 - 4) - \\log(x - 2)$"
+        },
+        {
+          "label": "b",
+          "text": "$\\log(x^2 + 7x + 12) - \\log(x + 3)$"
+        },
+        {
+          "label": "c",
+          "text": "$\\log(x^2 - x - 6) - \\log(2x - 6)$"
+        },
+        {
+          "label": "d",
+          "text": "$\\log(x^2 + 7x + 12) - \\log(x^2 - 9)$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log\\dfrac{(x-2)(x+2)}{x-2} = \\log(x+2)$. Need $x^2 - 4 > 0$ ($x>2$ or $x<-2$) and $x - 2 > 0$ ($x > 2$): so $x > 2$.\n\n(b) $\\log\\dfrac{(x+3)(x+4)}{x+3} = \\log(x+4)$. Need $(x+3)(x+4) > 0$ ($x > -3$ or $x < -4$) and $x + 3 > 0$: so $x > -3$.\n\n(c) $\\log\\dfrac{(x-3)(x+2)}{2(x-3)} = \\log\\dfrac{x+2}{2}$. Need $x^2-x-6 > 0$ ($x > 3$ or $x < -2$) and $2x - 6 > 0$ ($x > 3$): so $x > 3$.\n\n(d) $\\log\\dfrac{(x+3)(x+4)}{(x+3)(x-3)} = \\log\\dfrac{x+4}{x-3}$. Need $(x+3)(x+4) > 0$ ($x > -3$ or $x < -4$) and $x^2 - 9 > 0$ ($x > 3$ or $x < -3$): so $x > 3$ or $x < -4$.",
+      "rubric": [
+        {
+          "point": "Factors each argument correctly",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies each quotient correctly",
+          "marks": 2
+        },
+        {
+          "point": "Finds restrictions from the original arguments",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-3-q09",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Answer each question. Support each answer with a numerical example.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Does $\\log x + \\log y = \\log(x + y)$?"
+        },
+        {
+          "label": "b",
+          "text": "Does $\\log\\left(\\frac ab\\right) = \\frac{\\log a}{\\log b}$?"
+        },
+        {
+          "label": "c",
+          "text": "Does $\\log a\\times\\log b = \\log(ab)$?"
+        }
+      ],
+      "modelAnswer": "(a) No. The product law says $\\log x + \\log y = \\log(xy)$. Counterexample: $x = y = 10$: $\\log 10 + \\log 10 = 2$, but $\\log 20 \\approx 1.301$.\n\n(b) No. The quotient law says $\\log\\frac ab = \\log a - \\log b$. Counterexample: $a = 100, b = 10$: $\\log 10 = 1$, but $\\frac{\\log100}{\\log10} = 2$.\n\n(c) No. $\\log 10\\times\\log 10 = 1$, but $\\log 100 = 2$.",
+      "rubric": [
+        {
+          "point": "(a) correct conclusion with a correct counterexample",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct conclusion with a correct counterexample",
+          "marks": 2
+        },
+        {
+          "point": "(c) correct conclusion with a correct counterexample",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Prove the quotient law of logarithms, $\\log_b\\left(\\frac mn\\right) = \\log_b m - \\log_b n$ for $b > 0,\\ b\\ne1,\\ m,n > 0$, using algebraic reasoning.",
+      "modelAnswer": "Let $x = \\log_b m$ and $y = \\log_b n$, so $b^x = m$ and $b^y = n$.\n\nThen $\\dfrac mn = \\dfrac{b^x}{b^y} = b^{x-y}$ by the quotient law of exponents.\n\nWriting in logarithmic form: $\\log_b\\left(\\frac mn\\right) = x - y = \\log_b m - \\log_b n$. ∎",
+      "rubric": [
+        {
+          "point": "Defines x and y as logarithms and rewrites in exponential form",
+          "marks": 1
+        },
+        {
+          "point": "Forms the quotient and applies the exponent law",
+          "marks": 1
+        },
+        {
+          "point": "Converts back to logarithmic form",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes to complete the proof",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q11",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Use the laws of logarithms to prove the exponent laws.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Given the product law of logarithms, prove $b^mb^n = b^{m+n}$."
+        },
+        {
+          "label": "b",
+          "text": "Given the quotient law of logarithms, prove $\\frac{b^m}{b^n} = b^{m-n}$."
+        }
+      ],
+      "modelAnswer": "(a) Let $P = b^mb^n$. Take $\\log_b$: $\\log_b P = \\log_b b^m + \\log_b b^n$ (product law of logarithms) $= m + n$. In exponential form, $P = b^{m+n}$. So $b^mb^n = b^{m+n}$.\n\n(b) Let $Q = \\frac{b^m}{b^n}$. Then $\\log_b Q = \\log_b b^m - \\log_b b^n = m - n$ (quotient law of logarithms), so $Q = b^{m-n}$.",
+      "rubric": [
+        {
+          "point": "(a) takes logarithms of the product and applies the product law",
+          "marks": 1
+        },
+        {
+          "point": "(a) uses log_b(b^m) = m and converts back",
+          "marks": 1
+        },
+        {
+          "point": "(b) applies the quotient law",
+          "marks": 1
+        },
+        {
+          "point": "(b) converts back to exponential form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 50,
+          "step": 1
+        }
+      },
+      "text": "**Chapter problem.** An operational amplifier (Op Amp) produces an output voltage $V_0 = \\log V_2 - \\log V_1$ from two input voltages $V_1$ and $V_2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the formula as a single logarithm."
+        },
+        {
+          "label": "b",
+          "text": "What is the output if $V_2$ is {{k}} times $V_1$?",
+          "answer": {
+            "expr": "log(k)",
+            "unit": "V",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What is the output if $V_2 = V_1$?",
+          "answer": {
+            "expr": "0",
+            "unit": "V",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "What is the output if $V_2$ is 100 times $V_1$? What happens when the ratio increases by a factor of 10?",
+          "answer": {
+            "expr": "2",
+            "unit": "V",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) $V_0 = \\log\\dfrac{V_2}{V_1}$.\n\n(b) $V_2 = {{k}}V_1$: $V_0 = \\log {{k}} \\approx {{log(k):3}}$ V.\n\n(c) $V_2 = V_1$: $V_0 = \\log 1 = 0$ V.\n\n(d) $V_2 = 100V_1$: $V_0 = \\log 100 = 2$ V. Increasing the ratio by a factor of 10 adds 1 V to the output.",
+      "rubric": [
+        {
+          "point": "(a) single logarithm",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct output",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct output with reason",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct output and observation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q13",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Explain how the graph of $f(x) = \\log x$ can be transformed to produce $g(x) = \\log(10^{ {{n}} }x)$. Support your explanation with the laws of logarithms and by tracking the points $(1, 0)$ and $(10, 1)$. Then explain what happens if the exponent is a negative integer, such as $g(x) = \\log(10^{-2}x)$.",
+      "modelAnswer": "$g(x) = \\log 10^{ {{n}} } + \\log x = {{n}} + \\log x$, so the graph of $f$ is **translated up {{n}} units**.\n\n$(1, 0) \\to (1, {{n}})$ and $(10, 1) \\to (10, {{n+1}})$.\n\n(Equivalently, it is a horizontal compression by a factor of $\\frac{1}{10^{ {{n}} }}$ — the two descriptions give the same graph.)\n\nFor a negative integer, $\\log(10^{-2}x) = \\log x - 2$: a translation **down** 2 units. The process works for any integer (indeed any real) exponent.",
+      "rubric": [
+        {
+          "point": "Uses the product law to rewrite g(x)",
+          "marks": 1
+        },
+        {
+          "point": "Identifies a vertical translation of n units up",
+          "marks": 1
+        },
+        {
+          "point": "Tracks both points correctly",
+          "marks": 1
+        },
+        {
+          "point": "Explains the case of a negative exponent",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q14",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Consider $f(x) = 2\\log x$ and $g(x) = 4\\log x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Simplify $p(x) = f(x) + g(x)$ and state its domain."
+        },
+        {
+          "label": "b",
+          "text": "Write a single function $q(x) = \\log(\\ldots)$ that should equal $p(x)$."
+        },
+        {
+          "label": "c",
+          "text": "When $p$ and $q$ are graphed, something unusual appears on the graph of $q$. Describe it and explain where it comes from."
+        },
+        {
+          "label": "d",
+          "text": "What laws of logarithms does this illustrate, and what restriction must be remembered?"
+        }
+      ],
+      "modelAnswer": "(a) $p(x) = 2\\log x + 4\\log x = 6\\log x$, domain $x > 0$.\n\n(b) To show the same law, $q(x) = \\log x^6$.\n\n(c) $q(x) = \\log x^6$ is defined for all $x \\ne 0$, because $x^6 > 0$ even when $x < 0$. So $q$ has an extra branch for $x < 0$ (a mirror image of the right branch), while $p$ exists only for $x > 0$.\n\n(d) They agree for $x > 0$, which illustrates the product and power laws: $2\\log x + 4\\log x = \\log x^2 + \\log x^4 = \\log x^6$. The laws hold only where every original logarithm is defined.",
+      "rubric": [
+        {
+          "point": "(a) combines to 6 log x",
+          "marks": 1
+        },
+        {
+          "point": "(b) gives q(x) = log x^6",
+          "marks": 1
+        },
+        {
+          "point": "(c) explains the extra branch for x < 0",
+          "marks": 2
+        },
+        {
+          "point": "(d) relates the result to the laws and their restrictions",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Renata has two job offers. Firm A pays 40 000 dollars in the first year, rising by 2000 dollars each year. Firm B pays 38 500 dollars in the first year, rising by 5% each year.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an expression for Renata's salary in year $n$ at each firm."
+        },
+        {
+          "label": "b",
+          "text": "Which firm pays more in year 10? Give Firm B's year-10 salary.",
+          "answer": {
+            "expr": "38500*1.05^9",
+            "unit": "dollars",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Give Firm B's salary in year 20.",
+          "answer": {
+            "expr": "38500*1.05^19",
+            "unit": "dollars",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "In which year does Firm B's salary first exceed Firm A's? Explain how you know."
+        },
+        {
+          "label": "e",
+          "text": "What other factors might affect Renata's choice?"
+        }
+      ],
+      "modelAnswer": "(a) Year $n$: $A(n) = 40\\,000 + 2000(n-1)$ and $B(n) = 38\\,500(1.05)^{n-1}$.\n\n(b) Year 10: $A = 58\\,000$ dollars; $B = 38\\,500(1.05)^9 \\approx 59\\,726$ dollars, so Firm B pays more.\n\n(c) Year 20: $A = 78\\,000$ dollars; $B = 38\\,500(1.05)^{19} \\approx 97\\,288$ dollars.\n\n(d) Graphing both (or comparing a table) shows they are equal when $n - 1 \\approx 6.9$, i.e. during the 8th year: $A(7) = 52\\,000 > B(7) \\approx 51\\,594$, but $A(8) = 54\\,000 < B(8) \\approx 54\\,174$. This equation mixes a linear and an exponential expression, so it is solved graphically rather than with logarithms alone.\n\n(e) Factors such as promotion prospects, job security, benefits, location and interest in the work could outweigh the salary difference.",
+      "rubric": [
+        {
+          "point": "(a) correct models",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct year-10 salaries and comparison",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct year-20 salaries",
+          "marks": 1
+        },
+        {
+          "point": "(d) finds when salaries become equal with supporting values",
+          "marks": 2
+        },
+        {
+          "point": "(e) discusses other factors",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Express each as a single logarithm. Then evaluate, if possible.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log_4 192 - \\log_4 3$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log_5 35 - \\log_5 7 + \\log_5 25$",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log_a(ab) - \\log_a(a^3b)$",
+          "answer": {
+            "expr": "-2",
+            "unit": "",
+            "sig": 2
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log(xy) + \\log\\left(\\frac yx\\right)$"
+        }
+      ],
+      "modelAnswer": "(a) $\\log_4\\frac{192}{3} = \\log_4 64 = 3$\n\n(b) $\\log_5\\frac{35\\times25}{7} = \\log_5 125 = 3$\n\n(c) $\\log_a\\frac{ab}{a^3b} = \\log_a a^{-2} = -2$ ($a > 0, a \\ne 1, b > 0$)\n\n(d) $\\log\\left(xy\\cdot\\frac yx\\right) = \\log y^2 = 2\\log y$ ($x, y > 0$) — it cannot be evaluated without knowing $y$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct, using log_a a = 1",
+          "marks": 1
+        },
+        {
+          "point": "(d) correct simplification and explanation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Given $\\log 2 \\approx 0.3010$ and $\\log 3 \\approx 0.4771$, use **only** the laws of logarithms (no log key on your calculator) to evaluate each expression. Show how you split each number.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$\\log 12$",
+          "answer": {
+            "expr": "log(12)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.002
+          }
+        },
+        {
+          "label": "b",
+          "text": "$\\log 18$",
+          "answer": {
+            "expr": "log(18)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.002
+          }
+        },
+        {
+          "label": "c",
+          "text": "$\\log\\frac83$",
+          "answer": {
+            "expr": "log(8/3)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "d",
+          "text": "$\\log 5$",
+          "answer": {
+            "expr": "log(5)",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.005
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log 12 = \\log(2^2\\cdot3) = 2\\log2 + \\log3 \\approx 1.0792$\n\n(b) $\\log 18 = \\log(2\\cdot3^2) = \\log2 + 2\\log3 \\approx 1.2553$\n\n(c) $\\log\\frac83 = 3\\log2 - \\log3 \\approx 0.4260$\n\n(d) $\\log 5 = \\log\\frac{10}{2} = 1 - \\log 2 \\approx 0.6990$",
+      "rubric": [
+        {
+          "point": "(a) correct factorisation and value",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct",
+          "marks": 1
+        },
+        {
+          "point": "(d) uses log 10 = 1",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "In simplifying $\\log(2x - 2) - \\log(x^2 - 1) = \\log\\left(\\frac{2}{x+1}\\right)$, the restriction is $x > 1$, **not** $|x| > 1$. Explain why. Then explain why the argument of any logarithm must be positive.",
+      "modelAnswer": "Both original logarithms must be defined. $\\log(x^2 - 1)$ needs $|x| > 1$, but $\\log(2x - 2)$ needs $x > 1$. Values such as $x = -2$ satisfy $|x| > 1$ but make $2x - 2 = -6 < 0$, so the original expression is undefined there. The overlap of both conditions is $x > 1$.\n\nThe argument must be positive because $\\log_b x = y$ means $b^y = x$, and a positive base raised to any real power is positive. No exponent can give 0 or a negative number, so $\\log$ of these values is undefined. (Equivalently, the domain of $y = \\log x$ is $x > 0$.)",
+      "rubric": [
+        {
+          "point": "Identifies that every original logarithm must be defined",
+          "marks": 1
+        },
+        {
+          "point": "Explains why |x| > 1 is not enough, with an example",
+          "marks": 2
+        },
+        {
+          "point": "Explains why log arguments must be positive",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-3-q19",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            3,
+            5,
+            7
+          ]
+        },
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Evaluate $\\log_2\\left({{8*k}}\\right) + \\log_2\\left(\\dfrac{ {{2^c}} }{ {{k}} }\\right)$ without a calculator.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value.",
+          "answer": {
+            "expr": "3+c",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "Product law: $\\log_2\\left({{8*k}}\\times\\dfrac{ {{2^c}} }{ {{k}} }\\right) = \\log_2\\left(8\\times{{2^c}}\\right) = \\log_2 {{8*2^c}} = \\log_2 2^{ {{3+c}} } = {{3+c}}$.",
+      "rubric": [
+        {
+          "point": "Applies the product law",
+          "marks": 1
+        },
+        {
+          "point": "Simplifies the argument (the k cancels)",
+          "marks": 1
+        },
+        {
+          "point": "Writes the result as a power of 2 and evaluates",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-3-q20",
+      "type": "design",
+      "difficulty": 2,
+      "text": "Create your own example to illustrate each of the **product**, **quotient** and **power** laws of logarithms. For each example, (i) state the law in words, (ii) show the law applied in symbols, and (iii) verify numerically that both sides are equal, correct to three decimal places.",
+      "modelAnswer": "Sample:\n\n* Product: the log of a product is the sum of the logs. $\\log(4\\times5) = \\log4 + \\log5$: $1.301 = 0.602 + 0.699$ ✓\n* Quotient: the log of a quotient is the difference of the logs. $\\log\\frac{50}{2} = \\log50 - \\log2$: $1.398 = 1.699 - 0.301$ ✓\n* Power: the log of a power is the exponent times the log of the base. $\\log 3^4 = 4\\log3$: $1.908 = 4(0.477)$ ✓",
+      "rubric": [
+        {
+          "point": "Product law stated, applied and verified",
+          "marks": 2
+        },
+        {
+          "point": "Quotient law stated, applied and verified",
+          "marks": 2
+        },
+        {
+          "point": "Power law stated, applied and verified",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

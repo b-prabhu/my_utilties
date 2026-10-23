@@ -1,0 +1,1301 @@
+{
+  "id": "8-3",
+  "number": "8.3",
+  "title": "Composite Functions",
+  "estimatedMinutes": 85,
+  "overview": "Wolves depend on rabbits; rabbits depend on time. When one function feeds into another we get a **composite function**. In this section you will build composite functions algebraically, evaluate them, find their domains and ranges, see why order matters, and use them with inverses, transformations and real-world models.",
+  "objectives": [
+    "Determine $f(g(x))$ algebraically and verify that $f(g(x))$ is not always equal to $g(f(x))$.",
+    "Evaluate composite functions at given values, from equations, tables or graphs.",
+    "State the domain and range of a composite function.",
+    "Show that $f(f^{-1}(x)) = x$ and explain its geometric meaning.",
+    "Connect $f(k(x - d))$ to transformations of $f$.",
+    "Solve real-world problems using composition."
+  ],
+  "lessons": [
+    {
+      "id": "meaning",
+      "title": "What Is a Composite Function?",
+      "body": "\nSometimes one quantity depends on another, which in turn depends on a third. A wolf population depends on the rabbit population, which depends on time. Feeding one function's output into another gives a **composite function**.\n\n> $f(g(x))$ – read \"**f of g of x**\" – is the composite function formed when $g(x)$ is substituted for $x$ in $f(x)$. Alternative notation: $(f \\circ g)(x)$.\n\n### The machine picture\n$$x \\;\\xrightarrow{\\;g\\;}\\; g(x) \\;\\xrightarrow{\\;f\\;}\\; f(g(x))$$\n\nThe **inner** function ($g$, written on the right) acts **first**; its output becomes the input of the **outer** function $f$.\n\n| Expression | Means | Operation |\n|---|---|---|\n| $f(x)g(x)$ | multiply the outputs | product |\n| $f(g(x))$ | feed $g$'s output into $f$ | composition |\n\nThese are completely different! With $f(x) = x^2$ and $g(x) = x + 3$: $f(x)g(x) = x^3 + 3x^2$ but $f(g(x)) = (x + 3)^2$.\n"
+    },
+    {
+      "id": "equations",
+      "title": "Finding the Equation of a Composite Function",
+      "body": "\n**Rule:** to find $f(g(x))$, replace every $x$ in $f(x)$ with the whole expression $g(x)$ (in brackets), then simplify.\n\nLet $f(x) = x^2$ and $g(x) = x + 3$.\n\n| Composite | Substitution | Result | Graph |\n|---|---|---|---|\n| $f(g(x))$ | $(x + 3)^2$ | $x^2 + 6x + 9$ | $y = x^2$ shifted 3 left; range $y \\ge 0$ |\n| $g(f(x))$ | $(x^2) + 3$ | $x^2 + 3$ | $y = x^2$ shifted 3 up; range $y \\ge 3$ |\n| $f(f(x))$ | $(x^2)^2$ | $x^4$ | quartic; range $y \\ge 0$ |\n| $g(g(x))$ | $(x + 3) + 3$ | $x + 6$ | line |\n\n> In general $f(g(x)) \\ne g(f(x))$: **composition is not commutative.** Order matters.\n\n```plot\ntitle: f(g(x)) = (x + 3)² vs g(f(x)) = x² + 3\nf: (x+3)^2 | label=f(g(x))\nf: x^2 + 3 | dashed; label=g(f(x))\ndomain: -7, 4\nrange: -1, 14\n```\n\n**Tip:** always use brackets when substituting. With $f(x) = 2x^2 - x$ and $g(x) = x - 1$:\n$f(g(x)) = 2(x - 1)^2 - (x - 1) = 2x^2 - 4x + 2 - x + 1 = 2x^2 - 5x + 3$.\n"
+    },
+    {
+      "id": "evaluate",
+      "title": "Evaluating a Composite Function",
+      "body": "\nTo evaluate $f(g(a))$ you can:\n\n* **Method 1 – equation first:** find $f(g(x))$, then substitute $x = a$.\n* **Method 2 – work inside out:** compute $g(a)$, then put that number into $f$.\n\nMethod 2 is usually quicker for a single value.\n\n**Example.** $u(x) = x^2 - 3x + 2$, $w(x) = \\dfrac{1}{x - 1}$.\n\n* $u(w(2))$: $w(2) = \\dfrac{1}{1} = 1$, then $u(1) = 1 - 3 + 2 = 0$.\n* $w(u(0))$: $u(0) = 2$, then $w(2) = 1$.\n* $w(u(1))$: $u(1) = 0$, then $w(0) = \\dfrac{1}{-1} = -1$.\n\n**Undefined compositions.** $w(u(x))$ is undefined whenever $u(x) = 1$, because $w$ cannot accept the input 1. Solving $x^2 - 3x + 2 = 1$ gives the excluded $x$-values.\n\nComposite functions can also be evaluated from **tables or graphs**: read $g(a)$ off the graph of $g$, then read $f$ at that value off the graph of $f$.\n"
+    },
+    {
+      "id": "domain-range",
+      "title": "Domain and Range of a Composite Function",
+      "body": "\n> The domain of $f(g(x))$ is the set of $x$ in the domain of $g$ **for which $g(x)$ is in the domain of $f$**.\n\nSo check two things: (1) can $g$ accept $x$? (2) can $f$ accept $g(x)$?\n\n| $f$ | $g$ | $f(g(x))$ | Domain | Range |\n|---|---|---|---|---|\n| $\\sqrt{x}$ | $25 - x^2$ | $\\sqrt{25 - x^2}$ | $-5 \\le x \\le 5$ | $0 \\le y \\le 5$ |\n| $\\dfrac1x$ | $x^2 - 9$ | $\\dfrac{1}{x^2 - 9}$ | $x \\ne \\pm 3$ | $y \\le -\\tfrac19$ or $y > 0$ |\n| $\\log x$ | $\\sin x$ | $\\log(\\sin x)$ | $\\sin x > 0$: $2n\\pi < x < (2n+1)\\pi$ | $y \\le 0$ |\n\n**Why is the range of $\\log(\\sin x)$ $y \\le 0$?** Inputs to $\\log$ are values of $\\sin x$ in $(0, 1]$, and $\\log$ of a number in $(0, 1]$ is $\\le 0$ (with $\\log 1 = 0$).\n\n```plot\ntitle: y = log(sin x) exists only where sin x > 0\nf: log(sin(x))\nf: sin(x) | dashed; label=sin x\ndomain: -7, 13\nrange: -2.5, 1.5\nxticks: pi\n```\n"
+    },
+    {
+      "id": "inverses",
+      "title": "Composing a Function with Its Inverse",
+      "body": "\nAn inverse **undoes** a function. So composing them returns the original input:\n\n> $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$ (for $x$ in the appropriate domains).\n\n**Example.** $g(x) = x + 3$, so $g^{-1}(x) = x - 3$ (interchange $x$ and $y$, solve for $y$).\n$g^{-1}(g(x)) = (x + 3) - 3 = x$. ✓\n\n**Example.** $f(x) = x^3$, $f^{-1}(x) = \\sqrt[3]{x}$: $f(f^{-1}(5)) = (\\sqrt[3]{5})^3 = 5$.\n\n**Geometric meaning:** the graph of $y = f(f^{-1}(x))$ is the line $y = x$. Every number is mapped onto itself: whatever $f^{-1}$ does, $f$ reverses it.\n\n**Inverse of a composite.** To undo \"do $g$, then do $f$\", you undo $f$ first, then undo $g$ (like taking off shoes before socks):\n$$(f \\circ g)^{-1}(x) = (g^{-1} \\circ f^{-1})(x)$$\n"
+    },
+    {
+      "id": "transformations-models",
+      "title": "Transformations and Real-World Composition",
+      "body": "\n### Composition with a linear function\nIf $g(x) = k(x - d)$, then $f(g(x)) = f(k(x - d))$ is $f$ **horizontally stretched/compressed by a factor of $\\frac1k$ and translated $d$ units right**.\n\n* $f(x) = x^2$, $g(x) = 2(x - 1)$: $f(g(x)) = 4(x - 1)^2$ – compressed horizontally by $\\tfrac12$, shifted right 1.\n* $f(x) = \\sin x$, $g(x) = 2\\left(x - \\frac{\\pi}{4}\\right)$: $f(g(x)) = \\sin 2\\left(x - \\frac{\\pi}{4}\\right)$ – period $\\pi$, phase shift $\\frac{\\pi}{4}$ right.\n\nComposing on the **outside**, $g(f(x)) = k(f(x) - d)$, gives **vertical** transformations instead.\n\n### Modelling\n* **Predator–prey:** rabbits $R(t) = 50\\cos t + 100$; wolves follow the rabbits with a delay, $W(t) = 0.2R(t + 2) = 10\\cos(t + 2) + 20$.\n* **Pollution:** concentration depends on population, population depends on time: $C(P(t))$.\n* **Two ships:** one sails north at 4 km/h, one east at 5 km/h. Distance $d = \\sqrt{x^2 + y^2}$ with $x = 5t$, $y = 4t$, so $d(t) = \\sqrt{41}\\,t$.\n* **Sales revenue:** revenue depends on the number of CDs and tapes sold, each a function of time.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "composite function",
+      "definition": "A function formed when one function is substituted into another; $f(g(x))$ or $(f \\circ g)(x)$ means apply $g$ first, then $f$."
+    },
+    {
+      "term": "inner and outer function",
+      "definition": "In $f(g(x))$, $g$ is the inner function (applied first) and $f$ is the outer function."
+    },
+    {
+      "term": "inverse function",
+      "definition": "$f^{-1}$ reverses $f$: if $f(a) = b$ then $f^{-1}(b) = a$. Found by interchanging $x$ and $y$ and solving for $y$."
+    },
+    {
+      "term": "identity property of inverses",
+      "definition": "$f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$: composing a function with its inverse maps every number onto itself."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Composition",
+      "latex": "(f \\circ g)(x) = f(g(x))",
+      "meaning": "Substitute $g(x)$ for $x$ in $f$."
+    },
+    {
+      "name": "Not commutative",
+      "latex": "f(g(x)) \\ne g(f(x)) \\text{ in general}",
+      "meaning": "Check with any example."
+    },
+    {
+      "name": "Inverse identity",
+      "latex": "f(f^{-1}(x)) = f^{-1}(f(x)) = x",
+      "meaning": "The graph is the line $y = x$."
+    },
+    {
+      "name": "Inverse of a composite",
+      "latex": "(f \\circ g)^{-1} = g^{-1} \\circ f^{-1}",
+      "meaning": "Undo in the reverse order."
+    },
+    {
+      "name": "Composition with a linear function",
+      "latex": "f(k(x - d))",
+      "meaning": "Horizontal stretch by factor $\frac1k$ and translation $d$ right."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Determine compositions",
+      "problem": "Let $f(x) = x^2$ and $g(x) = x + 3$. Find $f(g(x))$, $g(f(x))$, $f(f(x))$, $g(g(x))$ and $g^{-1}(g(x))$, with domain and range.",
+      "steps": [
+        "$f(g(x)) = (x + 3)^2 = x^2 + 6x + 9$. Domain $\\mathbb{R}$, range $y \\ge 0$.",
+        "$g(f(x)) = x^2 + 3$. Domain $\\mathbb{R}$, range $y \\ge 3$. Different from $f(g(x))$!",
+        "$f(f(x)) = (x^2)^2 = x^4$. Domain $\\mathbb{R}$, range $y \\ge 0$.",
+        "$g(g(x)) = (x + 3) + 3 = x + 6$. Domain and range $\\mathbb{R}$.",
+        "$g^{-1}(x) = x - 3$, so $g^{-1}(g(x)) = (x + 3) - 3 = x$. Domain and range $\\mathbb{R}$."
+      ],
+      "answer": "Order matters: $f(g(x)) \\ne g(f(x))$; $g^{-1}(g(x)) = x$."
+    },
+    {
+      "title": "Evaluate inside-out",
+      "problem": "$u(x) = x^2 - 3x + 2$, $w(x) = \\dfrac{1}{x - 1}$. Evaluate $u(w(3))$ and $w(u(4))$.",
+      "steps": [
+        "$w(3) = \\dfrac{1}{2}$.",
+        "$u\\left(\\tfrac12\\right) = \\tfrac14 - \\tfrac32 + 2 = \\tfrac34$.",
+        "$u(4) = 16 - 12 + 2 = 6$.",
+        "$w(6) = \\dfrac{1}{5} = 0.2$."
+      ],
+      "answer": "$u(w(3)) = \\frac34$, $w(u(4)) = \\frac15$."
+    },
+    {
+      "title": "Domain of a composite",
+      "problem": "Let $f(x) = \\sqrt{x}$ and $g(x) = 25 - x^2$. Find the domain and range of $f(g(x))$ and $g(f(x))$.",
+      "steps": [
+        "$f(g(x)) = \\sqrt{25 - x^2}$: need $25 - x^2 \\ge 0$, so $-5 \\le x \\le 5$.",
+        "The largest value is at $x = 0$: $\\sqrt{25} = 5$; the smallest is 0. Range $[0, 5]$ (upper semicircle).",
+        "$g(f(x)) = 25 - (\\sqrt{x})^2 = 25 - x$, **but** $f$ requires $x \\ge 0$ first.",
+        "Domain $x \\ge 0$, range $y \\le 25$ – a ray, not a whole line."
+      ],
+      "answer": "$f(g)$: domain $[-5, 5]$, range $[0, 5]$; $g(f)$: domain $x \\ge 0$, range $y \\le 25$."
+    },
+    {
+      "title": "Music store revenue",
+      "problem": "CD sales (thousands) $C(t) = -0.03t^2 + 0.5t + 3$, tape sales $T(t) = 1.5 - 0.1t$, $t$ years after 1990. Revenue $R(t) = [3C(t) + 2T(t)](1.04)^t$ (thousands of dollars). Simplify $R$ and interpret.",
+      "steps": [
+        "$3C(t) = -0.09t^2 + 1.5t + 9$; $2T(t) = 3 - 0.2t$.",
+        "Sum: $-0.09t^2 + 1.3t + 12$.",
+        "$R(t) = (-0.09t^2 + 1.3t + 12)(1.04)^t$ – a quadratic times an exponential.",
+        "Tapes stop when $T(t) = 0$: $t = 15$ (2005), so the model for $T$ is only valid to $t = 15$.",
+        "Graphing shows revenue rising through the 1990s, peaking about $t \\approx 11$, then falling."
+      ],
+      "answer": "$R(t) = (-0.09t^2 + 1.3t + 12)(1.04)^t$."
+    },
+    {
+      "title": "Inverse of a composite",
+      "problem": "$f(x) = 2x + 1$, $g(x) = x^3$. Verify that $(f \\circ g)^{-1} = g^{-1} \\circ f^{-1}$ at $x = 17$.",
+      "steps": [
+        "$(f \\circ g)(x) = 2x^3 + 1$. Inverse: $x = 2y^3 + 1 \\Rightarrow y = \\sqrt[3]{\\frac{x - 1}{2}}$. At 17: $\\sqrt[3]{8} = 2$.",
+        "$f^{-1}(x) = \\frac{x - 1}{2}$, $g^{-1}(x) = \\sqrt[3]{x}$.",
+        "$g^{-1}(f^{-1}(17)) = g^{-1}(8) = 2$. ✓",
+        "But $f^{-1}(g^{-1}(17)) = \\frac{\\sqrt[3]{17} - 1}{2} \\approx 0.79$ – not equal."
+      ],
+      "answer": "$(f\\circ g)^{-1}(17) = 2 = (g^{-1}\\circ f^{-1})(17)$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$f(g(x))$ means $f(x) \\times g(x)$.",
+      "fact": "Composition substitutes $g(x)$ into $f$; multiplication multiplies outputs. They are different."
+    },
+    {
+      "myth": "$f(g(x)) = g(f(x))$.",
+      "fact": "Order matters. With $f(x) = x^2$, $g(x) = x + 3$: $(x+3)^2 \\ne x^2 + 3$."
+    },
+    {
+      "myth": "In $f(g(x))$, apply $f$ first because it is written first.",
+      "fact": "Work from the inside out: $g$ first, then $f$."
+    },
+    {
+      "myth": "The domain of $f(g(x))$ is read from the simplified equation.",
+      "fact": "Check the domain of $g$ first. $g(f(x)) = 25 - (\\sqrt{x})^2$ simplifies to $25 - x$ but still needs $x \\ge 0$."
+    },
+    {
+      "myth": "$(f \\circ g)^{-1} = f^{-1} \\circ g^{-1}$.",
+      "fact": "Undo in reverse order: $(f \\circ g)^{-1} = g^{-1} \\circ f^{-1}$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Predator and prey",
+      "body": "Wolf numbers depend on rabbit numbers a couple of years earlier: $W(t) = 0.2R(t + 2)$. The wolf graph is a shifted, scaled copy of the rabbit graph."
+    },
+    {
+      "title": "Currency and taxes",
+      "body": "Converting a price to another currency and then adding tax is a composition. Doing it in the other order can give a different result when the tax includes a flat fee."
+    },
+    {
+      "title": "Environmental science",
+      "body": "Pollutant concentration depends on a city's population, which grows over time. Composing gives concentration as a function of time, so you can predict when it reaches a safety limit."
+    },
+    {
+      "title": "Distance between ships",
+      "body": "Each ship's position is a function of time; distance is a function of positions. Composition gives distance as a function of time."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Let $f(x) = -x + 2$ and $g(x) = (x - 3)^2$. Find $f(g(x))$ and $g(f(x))$.",
+      "hint": "Brackets!",
+      "solution": "$f(g(x)) = -(x-3)^2 + 2 = -x^2 + 6x - 7$. $g(f(x)) = (-x + 2 - 3)^2 = (-x - 1)^2 = x^2 + 2x + 1$."
+    },
+    {
+      "question": "For the same functions, find $f(f(x))$ and $f^{-1}(f(x))$.",
+      "hint": "$f^{-1}(x) = 2 - x$.",
+      "solution": "$f(f(x)) = -(-x + 2) + 2 = x$. $f^{-1}(f(x)) = 2 - (-x + 2) = x$. (This $f$ is its own inverse!)"
+    },
+    {
+      "question": "$f(x) = x^2 + 2x - 4$, $g(x) = \\dfrac{1}{x + 1}$. Evaluate $g(f(0))$ and $f(g(-2))$.",
+      "hint": "Inside out.",
+      "solution": "$f(0) = -4$, $g(-4) = -\\tfrac13$. $g(-2) = -1$, $f(-1) = 1 - 2 - 4 = -5$."
+    },
+    {
+      "question": "For $f$ and $g$ above, show that $g(f(x))$ is undefined for $x = 1$ and $x = -3$.",
+      "hint": "When is $f(x) = -1$?",
+      "solution": "$g$ is undefined at input $-1$. $f(x) = -1 \\Rightarrow x^2 + 2x - 3 = 0 \\Rightarrow (x+3)(x-1) = 0$."
+    },
+    {
+      "question": "Let $f(x) = x^3$. Find $f^{-1}(x)$ and verify $f(f^{-1}(-8)) = -8$.",
+      "hint": "Cube root.",
+      "solution": "$f^{-1}(x) = \\sqrt[3]{x}$; $f^{-1}(-8) = -2$; $f(-2) = -8$. ✓"
+    },
+    {
+      "question": "Two ships leave port together: one north at 4 km/h, one east at 5 km/h. How far apart are they after 3 h?",
+      "hint": "$d(t) = \\sqrt{(4t)^2 + (5t)^2}$.",
+      "solution": "$d(t) = \\sqrt{41}\\,t$; $d(3) = 3\\sqrt{41} \\approx 19.2$ km."
+    },
+    {
+      "question": "Describe $y = f(g(x))$ for $f(x) = \\sin x$, $g(x) = 3\\left(x + \\frac{\\pi}{6}\\right)$.",
+      "hint": "Composition with a linear function.",
+      "solution": "$y = \\sin 3\\left(x + \\frac{\\pi}{6}\\right)$: horizontal compression by $\\frac13$ (period $\\frac{2\\pi}{3}$) and translation $\\frac{\\pi}{6}$ left."
+    }
+  ],
+  "summary": [
+    "$f(g(x)) = (f \\circ g)(x)$: substitute $g(x)$ into $f$; the inner function acts first.",
+    "Composition is not commutative: in general $f(g(x)) \\ne g(f(x))$.",
+    "Evaluate a composite at a number by working inside out, or by finding the composite equation first.",
+    "The domain of $f(g(x))$: $x$ must be in the domain of $g$ **and** $g(x)$ must be in the domain of $f$.",
+    "$f(f^{-1}(x)) = f^{-1}(f(x)) = x$; and $(f \\circ g)^{-1} = g^{-1} \\circ f^{-1}$.",
+    "$f(k(x - d))$ transforms $f$ horizontally; composition models chains of dependence in the real world."
+  ],
+  "questions": [
+    {
+      "id": "8-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = {{a}}x + {{b}}$ and $g(x) = x^2 + {{c}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $f(g(x))$."
+        },
+        {
+          "label": "b",
+          "text": "Determine $g(f(x))$."
+        },
+        {
+          "label": "c",
+          "text": "Evaluate $f(g({{k}}))$ and $g(f({{k}}))$.",
+          "answer": {
+            "expr": "(a*k+b)^2+c",
+            "unit": "(g(f(k)))",
+            "sig": 4
+          }
+        },
+        {
+          "label": "d",
+          "text": "What do your results show about the order of composition?"
+        }
+      ],
+      "modelAnswer": "**(a)** $f(g(x)) = {{a}}(x^2 + {{c}}) + {{b}} = {{a}}x^2 + {{a*c+b}}$.\n\n**(b)** $g(f(x)) = ({{a}}x + {{b}})^2 + {{c}} = {{a*a}}x^2 + {{2*a*b}}x + {{b*b+c}}$.\n\n**(c)** $f(g({{k}})) = {{a}}({{k*k}}) + {{a*c+b}} = {{a*k*k+a*c+b}}$. $g(f({{k}})) = ({{a*k+b}})^2 + {{c}} = {{(a*k+b)^2+c}}$.\n\n**(d)** The values differ, so $f(g(x)) \\ne g(f(x))$: composition is not commutative. In $f(g(x))$ we square first and then apply the linear function; in $g(f(x))$ we apply the linear function first and then square.",
+      "rubric": [
+        {
+          "point": "Correct f(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(f(x)) with correct expansion",
+          "marks": 2
+        },
+        {
+          "point": "Correct f(g(k))",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(f(k))",
+          "marks": 1
+        },
+        {
+          "point": "Concludes composition is not commutative, with reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": 0,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2 - {{a}}$ and $g(x) = x - {{b}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(g(x))$, describe its graph, and give its domain and range."
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = g(f(x))$ and its range."
+        },
+        {
+          "label": "c",
+          "text": "Determine $y = g(g(x))$."
+        },
+        {
+          "label": "d",
+          "text": "Determine $g^{-1}(x)$ and $y = g^{-1}(g(x))$."
+        },
+        {
+          "label": "e",
+          "text": "Evaluate $f(g({{k}}))$.",
+          "answer": {
+            "expr": "(k-b)^2-a",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $f(g(x)) = (x - {{b}})^2 - {{a}} = x^2 - {{2*b}}x + {{b*b-a}}$. Graph: $y = x^2$ translated {{b}} right and {{a}} down. Domain $\\mathbb{R}$, range $y \\ge -{{a}}$.\n\n**(b)** $g(f(x)) = x^2 - {{a}} - {{b}} = x^2 - {{a+b}}$. Graph: $y = x^2$ translated {{a+b}} down. Range $y \\ge -{{a+b}}$.\n\n**(c)** $g(g(x)) = x - {{2*b}}$, a line; domain and range $\\mathbb{R}$.\n\n**(d)** $g^{-1}(x) = x + {{b}}$ and $g^{-1}(g(x)) = (x - {{b}}) + {{b}} = x$: the line $y = x$.\n\n**(e)** $f(g({{k}})) = ({{k-b}})^2 - {{a}} = {{(k-b)^2-a}}$.",
+      "rubric": [
+        {
+          "point": "Correct f(g(x)) with domain and range",
+          "marks": 2
+        },
+        {
+          "point": "Correct g(f(x)) with range",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct inverse and g⁻¹(g(x)) = x",
+          "marks": 1
+        },
+        {
+          "point": "Correct evaluation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "n": {
+          "min": 4,
+          "max": 9,
+          "step": 1
+        },
+        "p": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "Let $u(x) = x^2 - {{m}}x + {{n}}$ and $w(x) = \\dfrac{1}{x - {{p}}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Evaluate $u(w({{p+1}}))$.",
+          "answer": {
+            "expr": "1-m+n",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Evaluate $w(u(0))$.",
+          "answer": {
+            "expr": "1/(n-p)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why $w(u(x))$ is undefined for some values of $x$, and write the equation you would solve to find them."
+        }
+      ],
+      "modelAnswer": "**(a)** Inside out: $w({{p+1}}) = \\dfrac{1}{ {{p+1}} - {{p}} } = 1$. Then $u(1) = 1 - {{m}} + {{n}} = {{1-m+n}}$. So $u(w({{p+1}})) = {{1-m+n}}$.\n\n**(b)** $u(0) = {{n}}$, then $w({{n}}) = \\dfrac{1}{ {{n}} - {{p}} } = {{1/(n-p):3}}$.\n\n**(c)** $w(u(x))$ is undefined when $u(x) = {{p}}$, because $w$ cannot accept the input {{p}}:\n$x^2 - {{m}}x + {{n-p}} = 0$, so $x = \\dfrac{ {{m}} \\pm \\sqrt{ {{m*m-4*(n-p)}} } }{2}$, if real.",
+      "rubric": [
+        {
+          "point": "Correct inner value w(p + 1)",
+          "marks": 1
+        },
+        {
+          "point": "Correct u(w(p + 1))",
+          "marks": 1
+        },
+        {
+          "point": "Correct w(u(0))",
+          "marks": 2
+        },
+        {
+          "point": "Explains when w(u(x)) is undefined and sets up the equation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q04",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "A student writes: \\\"$f(g(x))$ means the same thing as $f(x)g(x)$.\\\"",
+      "modelAnswer": "The student is wrong. $f(g(x))$ is a **composition**: $g$ is applied first and its output is substituted into $f$. $f(x)g(x)$ is a **product**: both functions are evaluated at $x$ and the outputs are multiplied.\n\nExample: $f(x) = x^2$, $g(x) = x + 1$. $f(g(x)) = (x + 1)^2 = x^2 + 2x + 1$ but $f(x)g(x) = x^2(x + 1) = x^3 + x^2$. At $x = 2$: $f(g(2)) = 9$ while $f(2)g(2) = 12$.",
+      "rubric": [
+        {
+          "point": "States that the claim is false",
+          "marks": 1
+        },
+        {
+          "point": "Explains composition (substitution, inner first)",
+          "marks": 1
+        },
+        {
+          "point": "Explains product (multiply outputs)",
+          "marks": 1
+        },
+        {
+          "point": "Gives a correct example showing different results",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q05",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 15,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = {{a}}x - {{b}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $f^{-1}(x)$."
+        },
+        {
+          "label": "b",
+          "text": "Show that $f(f^{-1}(x)) = x$."
+        },
+        {
+          "label": "c",
+          "text": "Show that $f^{-1}(f(x)) = x$."
+        },
+        {
+          "label": "d",
+          "text": "Without calculating, state $f(f^{-1}({{k}}))$ and explain.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $y = {{a}}x - {{b}}$. Interchange: $x = {{a}}y - {{b}} \\Rightarrow y = \\dfrac{x + {{b}}}{ {{a}} }$. So $f^{-1}(x) = \\dfrac{x + {{b}}}{ {{a}} }$.\n\n**(b)** $f(f^{-1}(x)) = {{a}}\\left(\\dfrac{x + {{b}}}{ {{a}} }\\right) - {{b}} = x + {{b}} - {{b}} = x$.\n\n**(c)** $f^{-1}(f(x)) = \\dfrac{ ({{a}}x - {{b}}) + {{b}} }{ {{a}} } = x$.\n\n**(d)** $f(f^{-1}({{k}})) = {{k}}$: composing a function with its inverse maps every number onto itself (the graph is $y = x$).",
+      "rubric": [
+        {
+          "point": "Correct inverse using interchange-and-solve",
+          "marks": 2
+        },
+        {
+          "point": "Correct verification of f(f⁻¹(x)) = x",
+          "marks": 1
+        },
+        {
+          "point": "Correct verification of f⁻¹(f(x)) = x",
+          "marks": 1
+        },
+        {
+          "point": "Correct value with interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q06",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Assume that a function $f(x)$ and its inverse $f^{-1}(x)$ are both defined for all real numbers.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give a geometric interpretation of $y = f(f^{-1}(x))$."
+        },
+        {
+          "label": "b",
+          "text": "Illustrate your answer with two examples."
+        },
+        {
+          "label": "c",
+          "text": "Explain what changes for $f(x) = 2^x$, whose inverse is not defined for all real numbers."
+        }
+      ],
+      "modelAnswer": "**(a)** $y = f(f^{-1}(x))$ is the line $y = x$. Geometrically, $f^{-1}$ is the reflection of $f$ in $y = x$; applying $f^{-1}$ and then $f$ returns every input to itself, so each number is mapped onto itself.\n\n**(b)** Example 1: $f(x) = 2x + 5$, $f^{-1}(x) = \\dfrac{x - 5}{2}$: $f(f^{-1}(x)) = 2\\cdot\\dfrac{x - 5}{2} + 5 = x$.\nExample 2: $f(x) = x^3$, $f^{-1}(x) = \\sqrt[3]{x}$: $f(f^{-1}(x)) = (\\sqrt[3]{x})^3 = x$.\n\n**(c)** For $f(x) = 2^x$, $f^{-1}(x) = \\log_2 x$ is defined only for $x > 0$, so $f(f^{-1}(x)) = 2^{\\log_2 x} = x$ only for $x > 0$ – the graph is the part of $y = x$ with $x > 0$.",
+      "rubric": [
+        {
+          "point": "Gives the geometric interpretation (line y = x, maps each number to itself)",
+          "marks": 2
+        },
+        {
+          "point": "Two correct examples with algebraic verification",
+          "marks": 2
+        },
+        {
+          "point": "Explains the domain issue for exponential/logarithmic inverses",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            4,
+            9,
+            16,
+            25,
+            36
+          ]
+        }
+      },
+      "text": "Let $f(x) = \\sqrt{x}$ and $g(x) = {{a}} - x^2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(g(x))$ and its domain and range. What is its maximum value?",
+          "answer": {
+            "expr": "sqrt(a)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = g(f(x))$ and its domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Explain why you cannot find the domain of $g(f(x))$ from its simplified equation alone."
+        }
+      ],
+      "modelAnswer": "**(a)** $f(g(x)) = \\sqrt{ {{a}} - x^2}$. Need ${{a}} - x^2 \\ge 0 \\Rightarrow -{{sqrt(a)}} \\le x \\le {{sqrt(a)}}$.\nDomain $[-{{sqrt(a)}}, {{sqrt(a)}}]$. The maximum is at $x = 0$: $\\sqrt{ {{a}} } = {{sqrt(a)}}$; the minimum is 0. Range $[0, {{sqrt(a)}}]$. The graph is the upper semicircle of radius {{sqrt(a)}}.\n\n**(b)** $g(f(x)) = {{a}} - (\\sqrt{x})^2 = {{a}} - x$, but $f$ must accept $x$ first, so $x \\ge 0$. Domain $\\{x \\ge 0\\}$, range $\\{y \\le {{a}}\\}$.\n\n**(c)** Simplifying $g(f(x))$ to ${{a}} - x$ hides the restriction $x \\ge 0$; the domain must be found from the inner function.",
+      "rubric": [
+        {
+          "point": "Correct equation and domain of f(g(x))",
+          "marks": 2
+        },
+        {
+          "point": "Correct range of f(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(f(x)) and domain x ≥ 0",
+          "marks": 2
+        },
+        {
+          "point": "Explains why the simplified form hides the restriction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q08",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "c": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2 - {{c*c}}$ and $g(x) = \\dfrac{1}{x}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $y = f(g(x))$ and its domain and range."
+        },
+        {
+          "label": "b",
+          "text": "Determine $y = g(f(x))$, its domain, range and asymptotes."
+        },
+        {
+          "label": "c",
+          "text": "Evaluate $g(f(0))$.",
+          "answer": {
+            "expr": "-1/(c*c)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $f(g(x)) = \\dfrac{1}{x^2} - {{c*c}}$. $g$ needs $x \\ne 0$, and $f$ accepts any input. Domain $\\{x \\ne 0\\}$. Since $\\frac{1}{x^2} > 0$, range $\\{y > -{{c*c}}\\}$.\n\n**(b)** $g(f(x)) = \\dfrac{1}{x^2 - {{c*c}}}$. Need $x^2 \\ne {{c*c}}$: domain $\\{x \\ne \\pm{{c}}\\}$.\nFor $|x| < {{c}}$: $-{{c*c}} \\le x^2 - {{c*c}} < 0$, so $y \\le -\\dfrac{1}{ {{c*c}} }$ (max $-\\frac{1}{ {{c*c}} }$ at $x = 0$). For $|x| > {{c}}$: $y > 0$.\nRange $\\{y \\le -\\tfrac{1}{ {{c*c}} } \\text{ or } y > 0\\}$; vertical asymptotes $x = \\pm{{c}}$, horizontal asymptote $y = 0$.\n\n**(c)** $g(f(0)) = -\\dfrac{1}{ {{c*c}} } \\approx {{-1/(c*c):3}}$.",
+      "rubric": [
+        {
+          "point": "Correct f(g(x)) with domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct range of f(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct g(f(x)) with domain",
+          "marks": 1
+        },
+        {
+          "point": "Correct range of g(f(x)) with reasoning",
+          "marks": 2
+        },
+        {
+          "point": "Correct value at 0",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q09",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "Let $f(x) = \\log x$, $g(x) = \\sin x$ and $h(x) = \\cos x$ (radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the domain of $f(x)$?"
+        },
+        {
+          "label": "b",
+          "text": "Predict the domain, range and shape of $y = f(g(x))$."
+        },
+        {
+          "label": "c",
+          "text": "Use your result to predict the graph, domain and range of $y = f(h(x))$."
+        },
+        {
+          "label": "d",
+          "text": "Evaluate $f(g(\\tfrac{\\pi}{6}))$.",
+          "answer": {
+            "expr": "log(0.5)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $\\log x$ requires $x > 0$.\n\n**(b)** $y = f(g(x)) = \\log(\\sin x)$ exists only where $\\sin x > 0$: $2n\\pi < x < (2n + 1)\\pi$, $n \\in \\mathbb{Z}$. Since $0 < \\sin x \\le 1$, $\\log(\\sin x) \\le 0$: range $y \\le 0$, maximum 0 at $x = \\frac{\\pi}{2} + 2n\\pi$. Vertical asymptotes at $x = n\\pi$. The graph is a series of separate \"arches\" below the x-axis, repeating every $2\\pi$.\n\n**(c)** $y = \\log(\\cos x)$: same shape translated $\\frac{\\pi}{2}$ left, because $\\cos x = \\sin(x + \\frac{\\pi}{2})$. Domain $-\\frac{\\pi}{2} + 2n\\pi < x < \\frac{\\pi}{2} + 2n\\pi$, range $y \\le 0$.\n\n**(d)** $\\log(\\sin \\tfrac{\\pi}{6}) = \\log 0.5 \\approx -0.301$.",
+      "rubric": [
+        {
+          "point": "States the domain of log x",
+          "marks": 1
+        },
+        {
+          "point": "Correct domain of log(sin x) in general form",
+          "marks": 2
+        },
+        {
+          "point": "Correct range with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Describes the shape (arches, asymptotes, period)",
+          "marks": 1
+        },
+        {
+          "point": "Correct prediction for log(cos x) as a translation",
+          "marks": 1
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b0": {
+          "min": 40,
+          "max": 50,
+          "step": 1
+        },
+        "r": {
+          "choices": [
+            0.2,
+            0.4,
+            0.5
+          ]
+        }
+      },
+      "text": "During an election campaign, the popularity of the Blue party is $B(t) = {{b0}} - {{r}}t$ percent, $t$ days into the campaign. The Red party's popularity depends on the Blue party's: $R(B(t)) = 20 + 0.75[{{b0}} - B(t)]$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the trend of $B(t)$."
+        },
+        {
+          "label": "b",
+          "text": "Determine a simplified equation for the Red party's popularity as a function of time and interpret it."
+        },
+        {
+          "label": "c",
+          "text": "After how many days will the two parties be tied?",
+          "answer": {
+            "expr": "(b0-20)/(1.75*r)",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Assuming no undecided voters, find and interpret $V(t) = 100 - [B(t) + R(t)]$. Can you tell who will win?"
+        }
+      ],
+      "modelAnswer": "**(a)** $B$ decreases at {{r}} percentage points per day, starting at {{b0}}%.\n\n**(b)** $R(t) = 20 + 0.75[{{b0}} - ({{b0}} - {{r}}t)] = 20 + {{0.75*r}}t$. Red starts at 20% and gains {{0.75*r}} points per day – three-quarters of the voters Blue loses.\n\n**(c)** Tie: ${{b0}} - {{r}}t = 20 + {{0.75*r}}t \\Rightarrow t = \\dfrac{ {{b0-20}} }{ {{1.75*r}} } \\approx {{(b0-20)/(1.75*r):3}}$ days.\n\n**(d)** Other parties' share: $V(t) = 100 - [B(t) + R(t)] = {{80-b0}} + {{0.25*r}}t$. It grows, so the remaining quarter of Blue's losses goes to other parties (or undecided voters). Who wins depends on the campaign length compared with {{(b0-20)/(1.75*r):3}} days.",
+      "rubric": [
+        {
+          "point": "Interprets B(t)",
+          "marks": 1
+        },
+        {
+          "point": "Correct simplified R(t) with interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Correct time when the parties tie",
+          "marks": 1
+        },
+        {
+          "point": "Correct V(t) and interpretation; discusses dependence on campaign length",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q11",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "choices": [
+            1.2,
+            1.5,
+            1.8
+          ]
+        },
+        "b": {
+          "min": 20,
+          "max": 40,
+          "step": 5
+        },
+        "P0": {
+          "min": 10,
+          "max": 14,
+          "step": 1
+        },
+        "d": {
+          "min": 40,
+          "max": 60,
+          "step": 5
+        }
+      },
+      "text": "An environmental scientist models a lake pollutant concentration as $C(P) = {{a}}P + {{b}}$ ppm, where $P$ is the lakeside city's population in thousands. The population is $P(t) = {{P0}}(2)^{t/{{d}} }$, $t$ in years.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an equation for the concentration as a function of time."
+        },
+        {
+          "label": "b",
+          "text": "Describe the graph of this function."
+        },
+        {
+          "label": "c",
+          "text": "How long will it take for the concentration to reach 100 ppm?",
+          "answer": {
+            "expr": "d*logb(2,(100-b)/(a*P0))",
+            "unit": "years",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $C(P(t)) = {{a}}\\left[{{P0}}(2)^{t/{{d}} }\\right] + {{b}} = {{a*P0:4}}(2)^{t/{{d}} } + {{b}}$.\n\n**(b)** An exponential growth curve with y-intercept ${{a*P0+b:4}}$ ppm, doubling its excess over {{b}} every {{d}} years.\n\n**(c)** Set $C = 100$: ${{a*P0:4}}(2)^{t/{{d}} } = {{100-b}}$\n$2^{t/{{d}} } = \\dfrac{ {{100-b}} }{ {{a*P0:4}} }$\n$t = {{d}}\\log_2\\left(\\dfrac{ {{100-b}} }{ {{a*P0:4}} }\\right) \\approx {{d*logb(2,(100-b)/(a*P0)):3}}$ years.",
+      "rubric": [
+        {
+          "point": "Correct composite function",
+          "marks": 2
+        },
+        {
+          "point": "Describes the graph",
+          "marks": 1
+        },
+        {
+          "point": "Sets C = 100 and isolates the exponential",
+          "marks": 1
+        },
+        {
+          "point": "Solves for t with logarithms correctly",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q12",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "u": {
+          "min": 3,
+          "max": 8,
+          "step": 1
+        },
+        "w": {
+          "min": 4,
+          "max": 10,
+          "step": 1
+        },
+        "T": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Two ships leave port at the same time. One travels north at {{u}} km/h and the other travels east at {{w}} km/h.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write their distance apart as a function of time."
+        },
+        {
+          "label": "b",
+          "text": "How far apart are they after {{T}} h?",
+          "answer": {
+            "expr": "sqrt(w*w+u*u)*T",
+            "unit": "km",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** After $t$ hours: north ship $y = {{u}}t$, east ship $x = {{w}}t$.\nDistance $d = \\sqrt{x^2 + y^2}$ (Pythagoras), so $d(t) = \\sqrt{({{w}}t)^2 + ({{u}}t)^2} = \\sqrt{ {{w*w+u*u}} }\\,t \\approx {{sqrt(w*w+u*u):4}}t$.\nThis is a composition: $d$ is a function of the positions, which are functions of $t$.\n\n**(b)** $d({{T}}) \\approx {{sqrt(w*w+u*u)*T:3}}$ km.",
+      "rubric": [
+        {
+          "point": "Writes each ship's position as a function of time",
+          "marks": 1
+        },
+        {
+          "point": "Uses the Pythagorean theorem to get d(t)",
+          "marks": 2
+        },
+        {
+          "point": "Correct distance after T h",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "min": 30,
+          "max": 60,
+          "step": 10
+        },
+        "M": {
+          "min": 100,
+          "max": 150,
+          "step": 10
+        }
+      },
+      "text": "The number of rabbits in a reserve is $R(t) = {{A}}\\cos t + {{M}}$, $t$ in years. The number of wolves is $W(t) = 0.2\\,R(t + 2)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the period and range of $R(t)$."
+        },
+        {
+          "label": "b",
+          "text": "Develop a simplified equation for $W(t)$."
+        },
+        {
+          "label": "c",
+          "text": "State the range of $W(t)$ and evaluate $W(0)$.",
+          "answer": {
+            "expr": "0.2*A*cos(2)+0.2*M",
+            "unit": "wolves",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Compare the graphs of $R$ and $W$ and suggest reasons for their relationship."
+        }
+      ],
+      "modelAnswer": "**(a)** $R$: period $2\\pi \\approx 6.28$ years, range $[{{M-A}}, {{M+A}}]$.\n\n**(b)** $W(t) = 0.2[{{A}}\\cos(t + 2) + {{M}}] = {{0.2*A}}\\cos(t + 2) + {{0.2*M}}$.\n\n**(c)** Range of $W$: $[{{0.2*(M-A)}}, {{0.2*(M+A)}}]$; same period $2\\pi$. $W(0) = {{0.2*A}}\\cos 2 + {{0.2*M}} \\approx {{0.2*A*cos(2)+0.2*M:3}}$.\n\n**(d)** The wolf graph is the rabbit graph compressed vertically by 0.2 and shifted 2 years left: wolves are fewer than rabbits, and their numbers follow the rabbit cycle with a time offset – when prey is plentiful, the predator population grows; when prey becomes scarce, it falls.",
+      "rubric": [
+        {
+          "point": "Correct period and range of R",
+          "marks": 1
+        },
+        {
+          "point": "Correct simplified W(t)",
+          "marks": 2
+        },
+        {
+          "point": "Correct range of W and value W(0)",
+          "marks": 1
+        },
+        {
+          "point": "Explains the relationship between the graphs and the ecology",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q14",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Is $(f \\circ g)^{-1}(x) = (f^{-1} \\circ g^{-1})(x)$, or $(f \\circ g)^{-1}(x) = (g^{-1} \\circ f^{-1})(x)$, or neither? Investigate with $f(x) = {{a}}x + {{b}}$ and $g(x) = x^3$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $(f \\circ g)^{-1}(x)$."
+        },
+        {
+          "label": "b",
+          "text": "Find $(f^{-1} \\circ g^{-1})(x)$ and $(g^{-1} \\circ f^{-1})(x)$ and compare. Check numerically at $x = {{a*8+b}}$.",
+          "answer": {
+            "expr": "2",
+            "unit": "(value of (f∘g)⁻¹)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "State and explain your conclusion."
+        }
+      ],
+      "modelAnswer": "$(f \\circ g)(x) = {{a}}x^3 + {{b}}$. Inverse: $x = {{a}}y^3 + {{b}} \\Rightarrow (f\\circ g)^{-1}(x) = \\sqrt[3]{\\dfrac{x - {{b}}}{ {{a}} }}$.\n\n$f^{-1}(x) = \\dfrac{x - {{b}}}{ {{a}} }$, $g^{-1}(x) = \\sqrt[3]{x}$.\n\n* $(g^{-1} \\circ f^{-1})(x) = \\sqrt[3]{\\dfrac{x - {{b}}}{ {{a}} }}$ – **matches**.\n* $(f^{-1} \\circ g^{-1})(x) = \\dfrac{\\sqrt[3]{x} - {{b}}}{ {{a}} }$ – does not match.\n\nCheck at $x = {{a*8+b}}$: $(f\\circ g)^{-1} = \\sqrt[3]{8} = 2$; $(g^{-1}\\circ f^{-1}) = 2$; $(f^{-1}\\circ g^{-1}) \\approx {{(( a*8+b)^(1/3)-b)/a:3}}$.\n\n**Conclusion:** $(f \\circ g)^{-1} = g^{-1} \\circ f^{-1}$. To undo \"apply $g$ then $f$\", you must undo $f$ first and then $g$.",
+      "rubric": [
+        {
+          "point": "Correct composite and its inverse",
+          "marks": 2
+        },
+        {
+          "point": "Correct individual inverses",
+          "marks": 1
+        },
+        {
+          "point": "Computes both candidate compositions",
+          "marks": 1
+        },
+        {
+          "point": "Numerical check",
+          "marks": 1
+        },
+        {
+          "point": "Correct conclusion with explanation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2$, $h(x) = \\sin x$ and $g(x) = {{k}}(x - {{d}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $f(g(x))$ and describe it as a transformation of $y = x^2$."
+        },
+        {
+          "label": "b",
+          "text": "Determine $h(g(x))$ and give its period.",
+          "answer": {
+            "expr": "2*pi/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine $g(h(x))$. How do inside and outside compositions with a linear function differ?"
+        }
+      ],
+      "modelAnswer": "**(a)** $f(g(x)) = [{{k}}(x - {{d}})]^2 = {{k*k}}(x - {{d}})^2$. Compared with $y = x^2$: horizontal compression by a factor of $\\frac{1}{ {{k}} }$ (equivalently a vertical stretch by {{k*k}}) and a translation {{d}} units right. Vertex $({{d}}, 0)$.\n\n**(b)** $h(g(x)) = \\sin {{k}}(x - {{d}})$: horizontal compression by $\\frac{1}{ {{k}} }$ – period $\\frac{2\\pi}{ {{k}} } \\approx {{2*pi/k:3}}$ – and phase shift {{d}} right.\n\n**(c)** $g(h(x)) = {{k}}(\\sin x - {{d}}) = {{k}}\\sin x - {{k*d}}$: vertical stretch by {{k}} and translation {{k*d}} down. Composing on the outside transforms the graph vertically; composing on the inside transforms it horizontally.",
+      "rubric": [
+        {
+          "point": "Correct f(g(x)) and its transformations",
+          "marks": 2
+        },
+        {
+          "point": "Correct h(g(x)), period and phase shift",
+          "marks": 2
+        },
+        {
+          "point": "Correct g(h(x)) and explains inside vs outside composition",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q16",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "M": {
+          "min": 60,
+          "max": 90,
+          "step": 10
+        },
+        "p1": {
+          "min": 8,
+          "max": 14,
+          "step": 1
+        }
+      },
+      "text": "The number of stuffed bears sold, in thousands, is projected to be $N(p) = -0.1(p + 5)^2 + {{M}}$, where $p$ is the price in dollars. Revenue is $R(p) = p \\cdot N(p)$, in thousands of dollars. The minimum price is &#36;5.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe and interpret the trend of $N(p)$ for $p \\ge 5$."
+        },
+        {
+          "label": "b",
+          "text": "What price domain yields revenue? Give the largest price.",
+          "answer": {
+            "expr": "-5+sqrt(10*M)",
+            "unit": "$",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Calculate the revenue at a price of &#36;{{p1}}.",
+          "answer": {
+            "expr": "p1*(-0.1*(p1+5)^2+M)",
+            "unit": "thousand $",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Explain how you would find the optimum price, and why it cannot be read from the graph of $N(p)$."
+        }
+      ],
+      "modelAnswer": "**(a)** $N$ is a downward parabola with vertex $(-5, {{M}})$, so on $p \\ge 5$ sales decrease as the price rises.\n\n**(b)** Revenue requires $N(p) > 0$: $(p + 5)^2 < {{10*M}} \\Rightarrow p < -5 + \\sqrt{ {{10*M}} } \\approx {{-5+sqrt(10*M):4}}$. Price domain: $5 \\le p < {{-5+sqrt(10*M):4}}$.\n\n**(c)** $R({{p1}}) = {{p1}}[-0.1({{p1+5}})^2 + {{M}}] = {{p1*(-0.1*(p1+5)^2+M):4}}$ thousand dollars.\n\n**(d)** $R$ is a cubic; the optimum price is where it is largest, found from its graph (between &#36;5 and &#36;{{-5+sqrt(10*M):3}}). You cannot read the optimum from the graph of $N$ alone, because revenue depends on price × quantity.",
+      "rubric": [
+        {
+          "point": "Describes N(p)",
+          "marks": 1
+        },
+        {
+          "point": "Correct price domain for positive sales",
+          "marks": 2
+        },
+        {
+          "point": "Correct revenue at the given price",
+          "marks": 1
+        },
+        {
+          "point": "Explains why the optimum comes from R, not N",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 10,
+          "max": 30,
+          "step": 5
+        },
+        "T": {
+          "min": 4,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "A manufacturer's weekly production of chairs is $N(t) = 100 + {{r}}t$, $t$ years since 2001. The workforce depends on production: $W(N) = 3\\sqrt{N}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the workforce as a function of time."
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range and describe the graph."
+        },
+        {
+          "label": "c",
+          "text": "How many workers are needed {{T}} years after 2001?",
+          "answer": {
+            "expr": "3*sqrt(100+r*T)",
+            "unit": "workers",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** $W(N(t)) = 3\\sqrt{100 + {{r}}t}$.\n\n**(b)** Domain $t \\ge 0$; at $t = 0$, $W = 3\\sqrt{100} = 30$, increasing slowly (square-root shape). Range $W \\ge 30$.\n\n**(c)** $W({{T}}) = 3\\sqrt{ {{100+r*T}} } \\approx {{3*sqrt(100+r*T):3}}$ workers.",
+      "rubric": [
+        {
+          "point": "Correct composite function",
+          "marks": 2
+        },
+        {
+          "point": "Correct domain, range and shape",
+          "marks": 2
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-3-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Let $f(x) = x^2$, $g(x) = x^3$ and $h(x) = \\sin x$ (radians).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe $y = f(h(x))$: is it periodic? Give its domain and range."
+        },
+        {
+          "label": "b",
+          "text": "Describe $y = g(h(x))$."
+        },
+        {
+          "label": "c",
+          "text": "Compare the two functions."
+        }
+      ],
+      "modelAnswer": "**(a)** $f(h(x)) = \\sin^2 x$: never negative, touches 0 at $x = n\\pi$, max 1. Range $[0, 1]$. Periodic with period $\\pi$ (squaring makes the negative half-waves positive).\n\n**(b)** $g(h(x)) = \\sin^3 x$: range $[-1, 1]$, period $2\\pi$, flatter near the zeros and peakier than $\\sin x$ (cubing a number between −1 and 1 makes it smaller in size). Odd function.\n\n**(c)** Similar: both periodic, both have zeros at $n\\pi$ and max 1. Different: $\\sin^2 x$ is even, non-negative, period $\\pi$; $\\sin^3 x$ is odd, takes negative values, period $2\\pi$.",
+      "rubric": [
+        {
+          "point": "Correct description of sin²x with range and period",
+          "marks": 2
+        },
+        {
+          "point": "Correct description of sin³x with range and period",
+          "marks": 2
+        },
+        {
+          "point": "Correct comparison including symmetry",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-3-q19",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Let $f(x) = x^2$, $g(x) = x + {{a}}$ and $h(x) = \\dfrac{1}{x}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine simplified models for (i) $f(g(x))$ (ii) $h(g(x))$ (iii) $g^{-1}(h(x))$."
+        },
+        {
+          "label": "b",
+          "text": "Evaluate $f(h({{k}}))$.",
+          "answer": {
+            "expr": "1/(k*k)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** (i) $f(g(x)) = (x + {{a}})^2 = x^2 + {{2*a}}x + {{a*a}}$.\n(ii) $h(g(x)) = \\dfrac{1}{x + {{a}}}$, $x \\ne -{{a}}$.\n(iii) $g^{-1}(x) = x - {{a}}$, so $g^{-1}(h(x)) = \\dfrac{1}{x} - {{a}}$, $x \\ne 0$.\n\n**(b)** $h({{k}}) = \\dfrac{1}{ {{k}} }$, so $f(h({{k}})) = \\dfrac{1}{ {{k*k}} } \\approx {{1/(k*k):3}}$.",
+      "rubric": [
+        {
+          "point": "Correct f(g(x))",
+          "marks": 1
+        },
+        {
+          "point": "Correct h(g(x)) with restriction",
+          "marks": 1
+        },
+        {
+          "point": "Correct g⁻¹ and g⁻¹(h(x))",
+          "marks": 2
+        },
+        {
+          "point": "Correct value f(h(k))",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,974 @@
+{
+  "id": "1-5",
+  "number": "1.5",
+  "title": "Slopes of Secants and Average Rate of Change",
+  "estimatedMinutes": 60,
+  "overview": "How fast is a population shrinking? How quickly is a stock losing value? An **average rate of change** answers questions like these by comparing the change in one quantity with the change in another over an interval. Geometrically it is the slope of a **secant** line joining two points on a graph. In this section you calculate and interpret average rates of change from graphs, tables and equations.",
+  "objectives": [
+    "Explain what a rate of change is and identify situations that involve one.",
+    "Calculate an average rate of change from a graph, a table of values and an equation.",
+    "Connect the average rate of change to the slope of a secant.",
+    "Interpret the sign, size and units of an average rate of change in context.",
+    "Recognise that non-linear relationships have non-constant rates of change."
+  ],
+  "lessons": [
+    {
+      "id": "rate-of-change",
+      "title": "What is a rate of change?",
+      "body": "\nA **rate of change** measures how quickly one quantity (the **dependent** variable) changes compared with another (the **independent** variable). Speed in km/h, a bank balance changing in dollars/month, and population growth in people/year are all rates of change.\n\nThe **average rate of change** over an interval compares the *total* change in $y$ with the *total* change in $x$:\n\n$$\\text{average rate of change} = \\frac{\\Delta y}{\\Delta x} = \\frac{y_2 - y_1}{x_2 - x_1}$$\n\n* It always has **units**: (units of $y$) per (unit of $x$).\n* A **positive** value means $y$ is increasing on average; **negative** means decreasing; **zero** means no overall change.\n\n> Statements such as \"the average height of the team is 2.1 m\" or \"the class average was 75%\" are *averages*, not *rates of change* — there is no \"per\" comparing two changing quantities.\n"
+    },
+    {
+      "id": "secants",
+      "title": "Average rate of change is the slope of a secant",
+      "body": "\nA **secant** is a line that passes through two points on a curve. Its slope is exactly the average rate of change between those two points.\n\n```plot\ntitle: Secant through P(1, f(1)) and Q(3, f(3)) on y = x² − 2x + 2\nf: x^2 - 2*x + 2 | label=y = x² − 2x + 2\nf: 2*x - 1 | dashed; label=secant PQ, slope 2\ndomain: -1, 4\nrange: -1, 8\npoints: (1,1), (3,5)\n```\n\n$$m_{PQ} = \\frac{f(3) - f(1)}{3 - 1} = \\frac{5 - 1}{2} = 2$$\n\n* For a **linear** function every secant has the same slope: the rate of change is constant.\n* For a **non-linear** function the secant slope depends on which interval you choose — the rate of change is not constant.\n"
+    },
+    {
+      "id": "from-graphs",
+      "title": "Average rates of change from a graph",
+      "body": "\nRead two points from the graph, then compute $\\dfrac{\\Delta y}{\\Delta x}$.\n\n**Example: a bank account over one year**\n\n```plot\ntitle: Amount in an account (A, $) vs time (t, months)\nf: 500 + 100*min(x,5) - 200*max(x-8,0)\ndomain: 0, 12\nrange: 0, 1200\nticks: 1, 100\npoints: (0,500), (5,1000), (8,1000), (12,200)\n```\n\n| Interval | Points | $\\dfrac{\\Delta A}{\\Delta t}$ | Meaning |\n|---|---|---|---|\n| month 0 to 5 | $(0, 500)$, $(5, 1000)$ | $\\dfrac{500}{5} = 100$ | increasing by 100 dollars/month on average |\n| month 5 to 8 | $(5, 1000)$, $(8, 1000)$ | $0$ | no change |\n| month 8 to 12 | $(8, 1000)$, $(12, 200)$ | $\\dfrac{-800}{4} = -200$ | decreasing by 200 dollars/month |\n\nOn straight-line pieces, the average rate of change equals the slope of that piece.\n"
+    },
+    {
+      "id": "from-tables-equations",
+      "title": "From tables and equations",
+      "body": "\n**From a table.** Pick the two rows at the ends of the interval.\n\n| $t$ (min) | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |\n|---|---|---|---|---|---|---|---|---|\n| $P$ (bacteria) | 800 | 799 | 782 | 737 | 652 | 515 | 314 | 37 |\n\n* Whole period: $\\dfrac{37 - 800}{7 - 0} = -109$ bacteria/min.\n* First 3 min: $\\dfrac{737 - 800}{3} = -21$ bacteria/min.\n* Last 3 min: $\\dfrac{37 - 652}{3} = -205$ bacteria/min.\n\nThe rate is not constant — the population falls faster and faster. That is the signature of a non-linear model.\n\n**From an equation.** Evaluate the function at both ends.\n\nFor $h(t) = -4.9t^2 + 20t + 2$ (height of a ball, in m) from $t = 1$ to $t = 3$ s:\n$h(1) = 17.1$, $h(3) = 17.9$, so\n$$\\frac{17.9 - 17.1}{3 - 1} = 0.4 \\text{ m/s.}$$\nThe ball's **average velocity** over that interval is 0.4 m/s upward, even though it went up and came back down in between.\n"
+    },
+    {
+      "id": "interpreting",
+      "title": "Interpreting average rates of change",
+      "body": "\nAn average rate of change hides what happens *inside* the interval. Two very different journeys can have the same average speed.\n\n* A symmetric curve can give an average rate of change of **0** even though $y$ changed a lot in between: for $f(x) = (x - 2)^2$ on $[0, 4]$, $\\dfrac{f(4) - f(0)}{4} = \\dfrac{4 - 4}{4} = 0$.\n* Short intervals give more detailed information than long ones. Comparing several consecutive intervals shows whether the rate is speeding up or slowing down.\n\n**Always answer in context:** give the value, the units, and what the sign means (\"the value of the stock decreased on average by 2.40 dollars per month between months 6 and 9\").\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "rate of change",
+      "definition": "How quickly the dependent variable changes with respect to the independent variable."
+    },
+    {
+      "term": "average rate of change",
+      "definition": "$\\dfrac{\\Delta y}{\\Delta x}$ over an interval; the change in $y$ divided by the change in $x$."
+    },
+    {
+      "term": "secant",
+      "definition": "A line that passes through two points on a curve. Its slope is the average rate of change between them."
+    },
+    {
+      "term": "independent / dependent variable",
+      "definition": "The input ($x$, often time) and the output ($y$) that depends on it."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Average rate of change",
+      "latex": "\\frac{\\Delta y}{\\Delta x} = \\frac{f(x_2) - f(x_1)}{x_2 - x_1}",
+      "meaning": "Slope of the secant through $(x_1, f(x_1))$ and $(x_2, f(x_2))$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "From an equation",
+      "problem": "Find the average rate of change of $f(x) = 2x^3 - 5x$ from $x = 1$ to $x = 3$.",
+      "steps": [
+        "$f(1) = 2 - 5 = -3$; $f(3) = 54 - 15 = 39$.",
+        "$\\dfrac{39 - (-3)}{3 - 1} = \\dfrac{42}{2} = 21$."
+      ],
+      "answer": "21 — on average $y$ increases 21 units per unit of $x$."
+    },
+    {
+      "title": "From a table",
+      "problem": "Using the bacteria table above, compare the average rate of change in the first 3 min and the last 3 min.",
+      "steps": [
+        "First 3 min: $\\dfrac{737 - 800}{3 - 0} = -21$ bacteria/min.",
+        "Last 3 min: $\\dfrac{37 - 652}{7 - 4} = -205$ bacteria/min.",
+        "Both negative (the population is decreasing), but the decrease is almost 10 times faster at the end."
+      ],
+      "answer": "−21 vs −205 bacteria/min: the spray works faster as time goes on."
+    },
+    {
+      "title": "Average velocity",
+      "problem": "A ball's height is $h(t) = -4.9t^2 + 15t + 1$ (m). Find its average velocity from $t = 0.5$ s to $t = 2$ s.",
+      "steps": [
+        "$h(0.5) = -1.225 + 7.5 + 1 = 7.275$",
+        "$h(2) = -19.6 + 30 + 1 = 11.4$",
+        "$\\dfrac{11.4 - 7.275}{2 - 0.5} = \\dfrac{4.125}{1.5} = 2.75$ m/s"
+      ],
+      "answer": "2.75 m/s upward (on average)."
+    },
+    {
+      "title": "Equation of a secant",
+      "problem": "Find the equation of the secant to $f(x) = x^3 - 4x$ through $x = 1$ and $x = 3$.",
+      "steps": [
+        "$f(1) = -3$, $f(3) = 15$.",
+        "Slope $m = \\dfrac{15 - (-3)}{3 - 1} = 9$.",
+        "$y - (-3) = 9(x - 1) \\Rightarrow y = 9x - 12$."
+      ],
+      "answer": "$y = 9x - 12$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "An average rate of change is the same as an average.",
+      "fact": "A rate of change compares *changes* in two variables ($\\Delta y/\\Delta x$, with 'per' units). An average of data values is not a rate."
+    },
+    {
+      "myth": "A zero average rate of change means nothing happened.",
+      "fact": "It only means the start and end values are equal; the function may have risen and fallen in between."
+    },
+    {
+      "myth": "Order of subtraction doesn't matter.",
+      "fact": "Subtract in the same order on top and bottom: $\\dfrac{y_2 - y_1}{x_2 - x_1}$. Mixing orders flips the sign."
+    },
+    {
+      "myth": "Units can be left off.",
+      "fact": "Rates always need units, e.g. m/s or bacteria per minute, and an interpretation of the sign."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Finance",
+      "body": "A change in the Canadian dollar from 0.75 US dollars to 1.01 US dollars over 8 months is an average rate of change of 0.0325 US dollars per month."
+    },
+    {
+      "title": "Weather",
+      "body": "30 cm of snow in 5 hours is an average snowfall rate of 6 cm/h."
+    },
+    {
+      "title": "Medicine",
+      "body": "Comparing average rates of decrease of bacteria over successive intervals tells researchers when a treatment is most effective."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Find the average rate of change of $f(x) = x^2 + 3x$ from $x = 2$ to $x = 5$.",
+      "hint": "Evaluate at both ends.",
+      "solution": "$f(2) = 10$, $f(5) = 40$; $\\dfrac{40 - 10}{3} = 10$."
+    },
+    {
+      "question": "Which of these are average rates of change? (a) the snowboarder crossed the line at 60 km/h (b) the pool temperature fell 5°C over 3 days (c) the class average was 75%.",
+      "hint": "Look for a change over an interval.",
+      "solution": "(b) only: $-\\tfrac53$°C per day. (a) is an instantaneous rate (a reading at one moment). (c) is an average of marks, not a rate."
+    },
+    {
+      "question": "A car travels 210 km in 2.5 h. What is its average speed? Could it ever have been travelling at 100 km/h?",
+      "hint": "Average speed hides variation.",
+      "solution": "84 km/h. Yes — the average says nothing about the speed at individual moments."
+    },
+    {
+      "question": "Show that the average rate of change of $f(x) = (x - 3)^2$ on $[1, 5]$ is 0. Explain what this means.",
+      "hint": "Symmetry about $x = 3$.",
+      "solution": "$f(1) = 4 = f(5)$, so $\\dfrac{0}{4} = 0$. The function decreased then increased by the same amount, so overall it did not change."
+    },
+    {
+      "question": "For $h(t) = -5t^2 + 30t$, compute the average rate of change on $[0, 1]$, $[1, 2]$, $[2, 3]$. What pattern do you see?",
+      "hint": "Compute $h$ at 0 to 3.",
+      "solution": "$h$: 0, 25, 40, 45. Rates: 25, 15, 5 m/s. They decrease by 10 each second — the ball is slowing down as it rises."
+    },
+    {
+      "question": "When the independent variable changes by $-3$, the dependent variable changes by 12. What is the average rate of change?",
+      "hint": "$\\Delta y/\\Delta x$",
+      "solution": "$\\dfrac{12}{-3} = -4$."
+    }
+  ],
+  "summary": [
+    "Average rate of change $= \\dfrac{\\Delta y}{\\Delta x} = \\dfrac{f(x_2) - f(x_1)}{x_2 - x_1}$, with units (y-units per x-unit).",
+    "It equals the slope of the secant through the two endpoints of the interval.",
+    "It can be found from a graph, a table, or an equation.",
+    "Positive → increasing on average; negative → decreasing; zero → no net change.",
+    "For non-linear functions the average rate of change depends on the interval."
+  ],
+  "questions": [
+    {
+      "id": "1-5-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "x1": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "x2": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Determine the average rate of change of $f(x) = {{a}}x^3 - {{b}}x$ from $x = {{x1}}$ to $x = {{x2}}$. Show your work and explain what the sign of your answer tells you.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change",
+          "answer": {
+            "expr": "(a*x2^3 - b*x2 - a*x1^3 + b*x1)/(x2 - x1)",
+            "unit": "",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "$f({{x1}}) = {{a}}({{x1}})^3 - {{b}}({{x1}}) = {{a*x1^3 - b*x1}}$\n\n$f({{x2}}) = {{a}}({{x2}})^3 - {{b}}({{x2}}) = {{a*x2^3 - b*x2}}$\n\n$$\\frac{\\Delta y}{\\Delta x} = \\frac{ {{a*x2^3 - b*x2}} - ({{a*x1^3 - b*x1}}) }{ {{x2}} - {{x1}} } = {{(a*x2^3 - b*x2 - a*x1^3 + b*x1)/(x2 - x1):4}}$$\n\nA positive value means that, on average, $f(x)$ increases as $x$ increases over this interval (a negative value would mean it decreases).",
+      "rubric": [
+        {
+          "point": "Correct f(x₁)",
+          "marks": 1
+        },
+        {
+          "point": "Correct f(x₂)",
+          "marks": 1
+        },
+        {
+          "point": "Correct formula and substitution",
+          "marks": 1
+        },
+        {
+          "point": "Correct value",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the sign",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "b": {
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 800,
+          "max": 1200,
+          "step": 50
+        }
+      },
+      "text": "A new antibacterial spray is tested. The population $P$ of a culture $t$ minutes after spraying is shown.\n\n| $t$ (min) | 0 | 1 | 2 | 3 | 4 | 5 | 6 |\n|---|---|---|---|---|---|---|---|\n| $P$ | {{c}} | {{c - a + b}} | {{c - 8*a + 2*b}} | {{c - 27*a + 3*b}} | {{c - 64*a + 4*b}} | {{c - 125*a + 5*b}} | {{c - 216*a + 6*b}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the average rate of change over the whole 6 minutes and interpret it.",
+          "answer": {
+            "expr": "(-216*a + 6*b)/6",
+            "unit": "bacteria/min",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the average rate of change in the first 3 minutes and in the last 3 minutes.",
+          "answer": {
+            "expr": "(-189*a + 3*b)/3",
+            "unit": "bacteria/min",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the two rates and explain what this tells you about the model."
+        }
+      ],
+      "modelAnswer": "(a) $\\dfrac{ {{c - 216*a + 6*b}} - {{c}} }{6 - 0} = {{(-216*a + 6*b)/6:4}}$ bacteria/min. On average the population decreases by {{abs((-216*a + 6*b)/6):4}} bacteria each minute over the 6 minutes.\n\n(b) First 3 min: $\\dfrac{ {{c - 27*a + 3*b}} - {{c}} }{3} = {{(-27*a + 3*b)/3:4}}$ bacteria/min.\n\nLast 3 min: $\\dfrac{ {{c - 216*a + 6*b}} - ({{c - 27*a + 3*b}}) }{3} = {{(-189*a + 3*b)/3:4}}$ bacteria/min.\n\n(c) Both are negative, but the population falls much faster in the last 3 minutes. The average rate of change is not constant, so the relationship is non-linear (the spray becomes more effective over time).",
+      "rubric": [
+        {
+          "point": "Correct whole-period rate with units",
+          "marks": 2
+        },
+        {
+          "point": "Correct first-3-minute rate",
+          "marks": 1
+        },
+        {
+          "point": "Correct last-3-minute rate",
+          "marks": 1
+        },
+        {
+          "point": "Interprets comparison and non-constant rate",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-5-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "s1": {
+          "min": 50,
+          "max": 150,
+          "step": 10
+        },
+        "s3": {
+          "min": 100,
+          "max": 175,
+          "step": 25
+        }
+      },
+      "text": "The graph shows the amount of money, $A$ (dollars), in a bank account over a year, $t$ in months.\n\n```plot\nf: 500 + {{s1}}*min(x,5) - {{s3}}*max(x-8,0)\ndomain: 0, 12\nrange: 0, {{500+5*s1+200}}\npoints: (0,500), (5,{{500+5*s1}}), (8,{{500+5*s1}}), (12,{{500+5*s1-4*s3}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change from month 0 to month 5",
+          "answer": {
+            "expr": "s1",
+            "unit": "dollars/month",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "From month 5 to month 8",
+          "answer": {
+            "expr": "0",
+            "unit": "dollars/month",
+            "sig": 1
+          }
+        },
+        {
+          "label": "c",
+          "text": "From month 8 to month 12",
+          "answer": {
+            "expr": "-s3",
+            "unit": "dollars/month",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Points: $(0, 500)$, $(5, {{500+5*s1}})$, $(8, {{500+5*s1}})$, $(12, {{500+5*s1-4*s3}})$.\n\n(a) Months 0–5: $\\dfrac{ {{500+5*s1}} - 500}{5} = {{s1}}$ dollars/month — the balance increases by {{s1}} dollars each month.\n\n(b) Months 5–8: $\\dfrac{0}{3} = 0$ — no change.\n\n(c) Months 8–12: $\\dfrac{ {{500+5*s1-4*s3}} - {{500+5*s1}} }{4} = -{{s3}}$ dollars/month — the balance decreases by {{s3}} dollars each month.\n\nEach piece is a straight line, so each average rate of change equals that segment's slope.",
+      "rubric": [
+        {
+          "point": "Reads points correctly",
+          "marks": 1
+        },
+        {
+          "point": "Months 0–5 rate and interpretation",
+          "marks": 1
+        },
+        {
+          "point": "Months 5–8 rate and interpretation",
+          "marks": 1
+        },
+        {
+          "point": "Months 8–12 rate and interpretation",
+          "marks": 1
+        },
+        {
+          "point": "Connects to slope of segments",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q04",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Decide which of the following are examples of average rates of change. Explain each decision.\n\n(a) The average height of the players on the basketball team is 2.1 m.\n(b) The temperature of the water in the pool decreased by 5°C over 3 days.\n(c) The snowboarder raced across the finish line at 60 km/h.\n(d) The class average on the last math test was 75%.\n(e) The value of the Canadian dollar increased from 0.75 US dollars to 1.01 US dollars in 8 months.\n(f) Approximately 30 cm of snow fell over a 5-h period.",
+      "modelAnswer": "* (a) **Not** — it is the mean of a set of heights; nothing is changing with respect to another variable.\n* (b) **Yes** — $\\dfrac{-5}{3} \\approx -1.7$ °C/day.\n* (c) **Not** an average rate — it is the speed at one instant (an instantaneous rate of change).\n* (d) **Not** — an average of marks, not a change per unit of something.\n* (e) **Yes** — $\\dfrac{1.01 - 0.75}{8} = 0.0325$ dollars U.S. per month.\n* (f) **Yes** — $\\dfrac{30}{5} = 6$ cm/h.",
+      "rubric": [
+        {
+          "point": "(a) and (d) rejected as averages",
+          "marks": 2
+        },
+        {
+          "point": "(c) identified as instantaneous",
+          "marks": 1
+        },
+        {
+          "point": "(b), (e), (f) identified with rates",
+          "marks": 2
+        },
+        {
+          "point": "Clear reasoning for each",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "v": {
+          "min": 15,
+          "max": 25,
+          "step": 1
+        },
+        "h0": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        }
+      },
+      "text": "A ball is thrown upward. Its height, in metres, after $t$ seconds is $h(t) = -4.9t^2 + {{v}}t + {{h0}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the average velocity from $t = 0$ to $t = 1$ s.",
+          "answer": {
+            "expr": "v - 4.9",
+            "unit": "m/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Determine the average velocity from $t = 1$ to $t = 3$ s.",
+          "answer": {
+            "expr": "(2*v - 39.2)/2",
+            "unit": "m/s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Interpret your answers."
+        }
+      ],
+      "modelAnswer": "$h(0) = {{h0}}$, $h(1) = -4.9 + {{v}} + {{h0}} = {{-4.9 + v + h0}}$, $h(3) = -44.1 + {{3*v}} + {{h0}} = {{-44.1 + 3*v + h0}}$.\n\n(a) $[0, 1]$: $\\dfrac{ {{-4.9 + v + h0}} - {{h0}} }{1} = {{v - 4.9}}$ m/s.\n\n(b) $[1, 3]$: $\\dfrac{ {{-44.1 + 3*v + h0}} - {{-4.9 + v + h0}} }{2} = {{(2*v - 39.2)/2}}$ m/s.\n\n(c) In the first second the ball rises quickly (positive average velocity). Over $[1, 3]$ the average velocity is smaller — if it is negative, the ball is lower at 3 s than at 1 s, meaning it has passed its highest point and is falling.",
+      "rubric": [
+        {
+          "point": "Correct function values",
+          "marks": 1
+        },
+        {
+          "point": "Correct rate on [0, 1] with units",
+          "marks": 2
+        },
+        {
+          "point": "Correct rate on [1, 3] with units",
+          "marks": 2
+        },
+        {
+          "point": "Interprets the signs in context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q06",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = {{a}}x^2 + {{b}}x$, calculate the average rate of change over $[0, 1]$, $[1, 2]$ and $[2, 3]$. Describe the pattern, and explain what it tells you about the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change over $[2, 3]$",
+          "answer": {
+            "expr": "5*a + b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f(0) = 0$, $f(1) = {{a + b}}$, $f(2) = {{4*a + 2*b}}$, $f(3) = {{9*a + 3*b}}$.\n\n* $[0, 1]$: ${{a + b}}$\n* $[1, 2]$: ${{3*a + b}}$\n* $[2, 3]$: ${{5*a + b}}$\n\nEach average rate of change is ${{2*a}}$ more than the previous one (the differences are constant at $2a = {{2*a}}$). The rate of change itself is increasing at a steady rate, so the graph gets steeper and steeper: it is a parabola opening upward ($a > 0$), not a straight line.",
+      "rubric": [
+        {
+          "point": "Correct function values",
+          "marks": 1
+        },
+        {
+          "point": "Three correct rates",
+          "marks": 2
+        },
+        {
+          "point": "Identifies constant increase of 2a",
+          "marks": 1
+        },
+        {
+          "point": "Interprets as increasingly steep / concave up",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Find the equation of the secant line to $f(x) = x^3 - {{k}}x$ through the points where $x = 1$ and $x = 3$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Slope of the secant",
+          "answer": {
+            "expr": "13 - k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "$y$-intercept of the secant",
+          "answer": {
+            "expr": "-12",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$f(1) = 1 - {{k}} = {{1 - k}}$, $f(3) = 27 - {{3*k}} = {{27 - 3*k}}$.\n\nSlope: $m = \\dfrac{ {{27 - 3*k}} - ({{1 - k}}) }{3 - 1} = \\dfrac{ {{26 - 2*k}} }{2} = {{13 - k}}$.\n\nUsing point $(1, {{1 - k}})$: $y - ({{1 - k}}) = {{13 - k}}(x - 1)$, so $y = {{13 - k}}x - 12$.\n\n(The slope of the secant is the average rate of change of $f$ from $x = 1$ to $x = 3$.)",
+      "rubric": [
+        {
+          "point": "Correct function values",
+          "marks": 1
+        },
+        {
+          "point": "Correct slope",
+          "marks": 2
+        },
+        {
+          "point": "Correct equation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-5-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "C": {
+          "min": 400,
+          "max": 900,
+          "step": 50
+        }
+      },
+      "text": "Water drains from a tank. The volume, in litres, after $t$ minutes is $V(t) = {{C}}\\left(1 - \\dfrac{t}{40}\\right)^2$, $0 \\le t \\le 40$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change for the first 10 min",
+          "answer": {
+            "expr": "-0.04375*C",
+            "unit": "L/min",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average rate of change for the last 10 min",
+          "answer": {
+            "expr": "-0.00625*C",
+            "unit": "L/min",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the two rates and explain."
+        }
+      ],
+      "modelAnswer": "$V(0) = {{C}}$, $V(10) = {{C}}(0.75)^2 = {{C*0.5625:4}}$, $V(30) = {{C}}(0.25)^2 = {{C*0.0625:4}}$, $V(40) = 0$.\n\n(a) $\\dfrac{ {{C*0.5625:4}} - {{C}} }{10} = {{-0.04375*C:4}}$ L/min.\n\n(b) $\\dfrac{0 - {{C*0.0625:4}} }{10} = {{-0.00625*C:4}}$ L/min.\n\n(c) Both rates are negative (the tank is emptying), but the water drains about 7 times faster in the first 10 minutes than in the last 10 minutes. The flow slows down as the tank empties.",
+      "rubric": [
+        {
+          "point": "Correct volumes",
+          "marks": 1
+        },
+        {
+          "point": "Correct rate for first 10 min with units",
+          "marks": 2
+        },
+        {
+          "point": "Correct rate for last 10 min",
+          "marks": 1
+        },
+        {
+          "point": "Compares and interprets",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "s": {
+          "min": 4,
+          "max": 12,
+          "step": 1
+        }
+      },
+      "text": "The average rate of change of $f(x) = x^2$ on the interval $[1, x]$, $x > 1$, is {{s}}. Determine $x$, showing your algebra.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$x$",
+          "answer": {
+            "expr": "s - 1",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$$\\frac{f(x) - f(1)}{x - 1} = \\frac{x^2 - 1}{x - 1} = \\frac{(x - 1)(x + 1)}{x - 1} = x + 1 \\quad (x \\ne 1)$$\n\nSet $x + 1 = {{s}}$: $x = {{s - 1}}$.\n\nCheck: $\\dfrac{ {{(s-1)^2}} - 1}{ {{s - 1}} - 1} = \\dfrac{ {{(s-1)^2 - 1}} }{ {{s - 2}} } = {{s}}$ ✓",
+      "rubric": [
+        {
+          "point": "Sets up the average rate of change expression",
+          "marks": 1
+        },
+        {
+          "point": "Factors difference of squares and simplifies",
+          "marks": 2
+        },
+        {
+          "point": "Solves for x",
+          "marks": 1
+        },
+        {
+          "point": "Verification",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q10",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The graph shows the approximate value, $V$ (dollars), of a stock over one year ($t$ in months), modelled by $V(t) = 0.05t(t - 9)(t - 14) + 20$.\n\n```plot\nf: 0.05*x*(x-9)*(x-14) + 20\ndomain: 0, 12\nrange: 0, 35\nticks: 1, 5\npoints: (0,20), (6,27.2), (9,20), (12,16.4)\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change from month 0 to month 6",
+          "answer": {
+            "expr": "1.2",
+            "unit": "dollars/month",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "From month 6 to month 9",
+          "answer": {
+            "expr": "-2.4",
+            "unit": "dollars/month",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "From month 9 to month 12",
+          "answer": {
+            "expr": "-1.2",
+            "unit": "dollars/month",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $V(0) = 20$, so 20 dollars at the start; $V(12) = 0.05(12)(3)(-2) + 20 = 16.40$, so 16.40 dollars at the end.\n\n(b) $V(6) = 0.05(6)(-3)(-8) + 20 = 27.20$, $V(9) = 20$.\n* Months 0–6: $\\dfrac{27.20 - 20}{6} = 1.20$ dollars/month (value rising on average).\n* Months 6–9: $\\dfrac{20 - 27.20}{3} = -2.40$ dollars/month (falling).\n* Months 9–12: $\\dfrac{16.40 - 20}{3} = -1.20$ dollars/month (still falling, but more slowly).\n\n(c) The graph rises then falls; the secants over the last two intervals have negative slopes, with the steepest decline between months 6 and 9.",
+      "rubric": [
+        {
+          "point": "Start and end values",
+          "marks": 1
+        },
+        {
+          "point": "Months 0–6 rate",
+          "marks": 1
+        },
+        {
+          "point": "Months 6–9 rate",
+          "marks": 1
+        },
+        {
+          "point": "Months 9–12 rate",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation linked to graph",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "1-5-q11",
+      "type": "explain",
+      "difficulty": 2,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "For $f(x) = (x - {{m}})^2$, show that the average rate of change on $[0, {{2*m}}]$ is 0. Explain why this does **not** mean the function is constant on the interval, and suggest how to get more useful information.",
+      "modelAnswer": "$f(0) = (0 - {{m}})^2 = {{m^2}}$ and $f({{2*m}}) = ({{m}})^2 = {{m^2}}$.\n\n$$\\frac{ {{m^2}} - {{m^2}} }{ {{2*m}} - 0} = 0$$\n\nThe parabola is symmetric about $x = {{m}}$: it decreases from {{m^2}} to 0 on $[0, {{m}}]$ and increases back to {{m^2}} on $[{{m}}, {{2*m}}]$. The average rate of change only compares the endpoints, so the decrease and increase cancel.\n\nMore useful information comes from shorter intervals, e.g. $[0, {{m}}]$ gives $-{{m}}$ and $[{{m}}, {{2*m}}]$ gives ${{m}}$.",
+      "rubric": [
+        {
+          "point": "Correct calculation showing 0",
+          "marks": 2
+        },
+        {
+          "point": "Explains symmetry / cancellation",
+          "marks": 2
+        },
+        {
+          "point": "Suggests shorter intervals with values",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q12",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "r1": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        "r2": {
+          "min": 6,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "The area of a circle is $A(r) = \\pi r^2$. Determine the average rate of change of the area as the radius increases from {{r1}} cm to {{r2}} cm. Include units and explain what your answer means.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change",
+          "answer": {
+            "expr": "pi*(r2 + r1)",
+            "unit": "cm²/cm",
+            "sig": 4
+          }
+        }
+      ],
+      "modelAnswer": "$A({{r1}}) = {{r1^2}}\\pi$, $A({{r2}}) = {{r2^2}}\\pi$.\n\n$$\\frac{ {{r2^2}}\\pi - {{r1^2}}\\pi}{ {{r2}} - {{r1}} } = \\frac{ {{r2^2 - r1^2}}\\pi}{ {{r2 - r1}} } = {{(r2^2 - r1^2)/(r2 - r1)}}\\pi \\approx {{pi*(r2 + r1):4}} \\text{ cm}^2/\\text{cm}$$\n\nOn average, the area increases by about {{pi*(r2 + r1):3}} cm² for each 1 cm increase in radius over this interval.",
+      "rubric": [
+        {
+          "point": "Correct areas",
+          "marks": 1
+        },
+        {
+          "point": "Correct rate",
+          "marks": 2
+        },
+        {
+          "point": "Units cm²/cm",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q13",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Describe a real situation in which the average rate of change is (a) constant and positive, (b) constant and negative, (c) zero. For each, sketch-describe what the graph looks like and give the units of the rate.",
+      "modelAnswer": "Sample answers:\n\n(a) A car travelling at a steady 90 km/h: distance vs time is a straight line rising to the right; rate 90 km/h.\n\n(b) A candle burning down at 2 cm/h: height vs time is a straight line falling to the right; rate $-2$ cm/h.\n\n(c) A parked car: distance vs time is a horizontal line; rate 0 km/h. (A zero *average* rate can also come from a quantity that goes up and comes back down to its starting value.)",
+      "rubric": [
+        {
+          "point": "Valid constant positive example with graph and units",
+          "marks": 1
+        },
+        {
+          "point": "Valid constant negative example with graph and units",
+          "marks": 1
+        },
+        {
+          "point": "Valid zero example with graph and units",
+          "marks": 1
+        },
+        {
+          "point": "Recognises constant rate ↔ straight line",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q14",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Create a polynomial function of degree at least 2 and an interval $[x_1, x_2]$ on which its average rate of change is exactly $-{{r}}$. Show the calculation that proves your example works.",
+      "modelAnswer": "One systematic method: choose $f(x) = x^2$ and the interval $[a, b]$; the average rate of change is $\\dfrac{b^2 - a^2}{b - a} = a + b$. Choose $a + b = -{{r}}$, for example $a = {{-r-1}}$, $b = 1$.\n\nCheck with $f(x) = x^2$ on $[-{{r+1}}, 1]$:\n$$\\frac{1^2 - (-{{r+1}})^2}{1 - (-{{r+1}})} = \\frac{1 - {{(r+1)^2}} }{ {{r+2}} } = \\frac{ {{1 - (r+1)^2}} }{ {{r+2}} } = -{{r}} \\;✓$$\n\nAny correct example with a verified calculation earns full marks.",
+      "rubric": [
+        {
+          "point": "Function of degree ≥ 2",
+          "marks": 1
+        },
+        {
+          "point": "Interval chosen",
+          "marks": 1
+        },
+        {
+          "point": "Correct verification calculation",
+          "marks": 2
+        },
+        {
+          "point": "Result exactly equals the target",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p1": {
+          "min": 6,
+          "max": 10,
+          "step": 1
+        },
+        "d1": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        },
+        "d2": {
+          "min": 5,
+          "max": 7,
+          "step": 1
+        },
+        "d3": {
+          "min": 7,
+          "max": 9,
+          "step": 1
+        },
+        "d4": {
+          "min": 8,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "The table shows the percent of Canadian households using the Internet for electronic banking (sample data).\n\n| Year | 1999 | 2000 | 2001 | 2002 | 2003 |\n|---|---|---|---|---|---|\n| Households (%) | {{p1}} | {{p1 + d1}} | {{p1 + d1 + d2}} | {{p1 + d1 + d2 + d3}} | {{p1 + d1 + d2 + d3 + d4}} |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average rate of change from 1999 to 2003",
+          "answer": {
+            "expr": "(d1 + d2 + d3 + d4)/4",
+            "unit": "% per year",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Average rates from 1999 to 2001 and from 2001 to 2003. Give the second one.",
+          "answer": {
+            "expr": "(d3 + d4)/2",
+            "unit": "% per year",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare and interpret."
+        }
+      ],
+      "modelAnswer": "(a) $\\dfrac{ {{p1 + d1 + d2 + d3 + d4}} - {{p1}} }{2003 - 1999} = {{(d1 + d2 + d3 + d4)/4:3}}$ percentage points per year.\n\n(b) 1999–2001: $\\dfrac{ {{d1 + d2}} }{2} = {{(d1 + d2)/2:3}}$ per year; 2001–2003: $\\dfrac{ {{d3 + d4}} }{2} = {{(d3 + d4)/2:3}}$ per year.\n\n(c) The rate in the later period is greater: online banking was being adopted faster and faster. The four-year average hides this acceleration.",
+      "rubric": [
+        {
+          "point": "Correct four-year average rate with units",
+          "marks": 2
+        },
+        {
+          "point": "Two sub-interval rates",
+          "marks": 2
+        },
+        {
+          "point": "Interpretation of the comparison",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "1-5-q16",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "T": {
+          "min": 50,
+          "max": 70,
+          "step": 2
+        }
+      },
+      "text": "Two runners each finish a 400 m race in {{T}} s. Runner A runs at a steady pace. Runner B's distance, in metres, is modelled by $d(t) = \\dfrac{400}{ {{T^2}} }t^2$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Average speed of each runner over the race",
+          "answer": {
+            "expr": "400/T",
+            "unit": "m/s",
+            "sig": 4
+          }
+        },
+        {
+          "label": "b",
+          "text": "Runner B's average speed in the second half of the time",
+          "answer": {
+            "expr": "600/T",
+            "unit": "m/s",
+            "sig": 4
+          }
+        },
+        {
+          "label": "c",
+          "text": "Compare the shapes of the two distance–time graphs."
+        }
+      ],
+      "modelAnswer": "(a) Both: $\\dfrac{400 - 0}{ {{T}} - 0} = {{400/T:4}}$ m/s. The average rates are equal because both start at 0 m and finish 400 m at {{T}} s.\n\n(b) Runner B, first half of the time: $d({{T/2}}) = \\dfrac{400}{ {{T^2}} }\\left({{T/2}}\\right)^2 = 100$ m, so $\\dfrac{100}{ {{T/2}} } = {{200/T:4}}$ m/s. Second half: $\\dfrac{400 - 100}{ {{T/2}} } = {{600/T:4}}$ m/s.\n\n(c) Runner A's distance–time graph is a straight line (constant rate). Runner B's is a curve that gets steeper: B starts slowly and finishes fast. Same average, very different races — the average rate of change hides what happens inside the interval.",
+      "rubric": [
+        {
+          "point": "Equal average speeds with explanation",
+          "marks": 2
+        },
+        {
+          "point": "Runner B's two half-interval rates",
+          "marks": 2
+        },
+        {
+          "point": "Compares graphs and interprets",
+          "marks": 2
+        }
+      ]
+    }
+  ]
+}

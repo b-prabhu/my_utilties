@@ -1,0 +1,1006 @@
+{
+  "id": "2-4",
+  "number": "2.4",
+  "title": "Families of Polynomial Functions",
+  "estimatedMinutes": 70,
+  "overview": "How many different graphs pass through the same $x$-intercepts? Infinitely many! They form a **family**. In this section you will write equations for families of polynomial functions, use one extra point to find a particular member, handle repeated and irrational zeros, and determine the equation of a polynomial from its graph.",
+  "objectives": [
+    "Explain what a family of polynomial functions is and how its members are related.",
+    "Write an equation for a family given its zeros, including zeros of order 2 or 3.",
+    "Combine irrational zeros $h \\pm \\sqrt{m}$ into a quadratic factor with integer coefficients.",
+    "Determine the equation of a particular member using a point on its graph.",
+    "Determine an equation for a polynomial function from its graph.",
+    "Decide whether functions belong to the same family."
+  ],
+  "lessons": [
+    {
+      "id": "what-is-a-family",
+      "title": "What is a family of polynomial functions?",
+      "body": "A **family of functions** is a set of functions that share a characteristic. In this section the shared characteristic is the **zeros** (the $x$-intercepts).\n\nAll quadratic functions with zeros $-1$ and $3$ can be written as\n\n$$y = k(x + 1)(x - 3), \\qquad k \\in \\mathbb{R},\\ k \\neq 0$$\n\nEach value of $k$ gives a different **member** of the family.\n\n```plot\ntitle: Members of the family y = k(x + 1)(x − 3)\nf: (x+1)*(x-3) | label=k = 1\nf: 2*(x+1)*(x-3) | label=k = 2\nf: -1*(x+1)*(x-3) | label=k = −1\nf: 0.5*(x+1)*(x-3) | dashed; label=k = 0.5\ndomain: -3, 5\nrange: -10, 10\nticks: 1, 2\npoints: (-1,0), (3,0)\n```\n\n**What stays the same:** the $x$-intercepts.\n**What changes:** the vertical stretch or compression (size of $|k|$), whether the graph is reflected in the $x$-axis ($k < 0$), and the $y$-intercept and other points.\n\nIn general, a family of polynomial functions with zeros $a_1, a_2, \\dots, a_n$ is\n\n$$y = k(x - a_1)(x - a_2)\\cdots(x - a_n), \\qquad k \\neq 0$$"
+    },
+    {
+      "id": "find-a-member",
+      "title": "Finding a particular member",
+      "body": "To pin down **one** member you need one more piece of information: a point on its graph (other than an $x$-intercept). Substitute the point and solve for $k$.\n\n**Example:** find the cubic with zeros $-2$, $1$ and $3$ that passes through $(2, 8)$.\n\n1. Family: $y = k(x + 2)(x - 1)(x - 3)$.\n2. Substitute $(2, 8)$: $8 = k(4)(1)(-1) = -4k$.\n3. $k = -2$.\n4. Member: $y = -2(x + 2)(x - 1)(x - 3)$.\n\n> **Why not use an $x$-intercept?** Every member passes through the $x$-intercepts, so substituting one gives $0 = 0$ — no information about $k$.\n\nThe **$y$-intercept** is often the easiest point to use: set $x = 0$."
+    },
+    {
+      "id": "order-of-zeros",
+      "title": "Repeated zeros: the order of a zero",
+      "body": "A zero can appear more than once. In $y = (x - 2)^2(x + 1)$ the zero $2$ has **order 2** (it is a double zero), and $-1$ has order 1.\n\nThe order changes how the graph behaves at the $x$-intercept:\n\n| Order of the zero | Factor | Behaviour at the intercept |\n|---|---|---|\n| 1 | $(x - a)$ | crosses the axis (roughly straight) |\n| 2 | $(x - a)^2$ | **touches** the axis and turns back (like a parabola's vertex) |\n| 3 | $(x - a)^3$ | crosses with a flattened \"S\" shape |\n\n```plot\ntitle: y = (x − 2)²(x + 1): crosses at −1, touches at 2\nf: (x-2)^2*(x+1)\ndomain: -2, 4\nrange: -6, 8\nticks: 1, 2\npoints: (-1,0), (2,0)\n```\n\nWhen you write a family, include repeated factors: zeros $5$ (order 2) and $-1$ give $y = k(x - 5)^2(x + 1)$."
+    },
+    {
+      "id": "irrational-zeros",
+      "title": "Irrational zeros and simplified form",
+      "body": "Zeros such as $2 \\pm \\sqrt5$ come in pairs. Multiply their factors together to get a quadratic with integer coefficients:\n\n$$\\left(x - (2 + \\sqrt5)\\right)\\left(x - (2 - \\sqrt5)\\right) = \\left((x - 2) - \\sqrt5\\right)\\left((x - 2) + \\sqrt5\\right) = (x - 2)^2 - 5 = x^2 - 4x - 1$$\n\nThis is a difference of squares — the $\\sqrt5$ terms cancel.\n\n**Example:** the family of cubics with zeros $2 \\pm \\sqrt5$ and $0$ is\n\n$$y = kx(x^2 - 4x - 1)$$\n\nThe member through $(2, 20)$: $20 = k(2)(4 - 8 - 1) = -10k$, so $k = -2$ and $y = -2x(x^2 - 4x - 1) = -2x^3 + 8x^2 + 2x$.\n\n> **Shortcut:** for zeros $h \\pm \\sqrt{m}$ the quadratic factor is $(x - h)^2 - m$."
+    },
+    {
+      "id": "from-a-graph",
+      "title": "Determining an equation from a graph",
+      "body": "To find the equation of a polynomial from its graph:\n\n1. Read the $x$-intercepts — these are the zeros.\n2. Decide the **order** of each zero from the shape (crosses, touches, or flattens).\n3. Write the family $y = k(\\dots)$. Check the degree matches the end behaviour.\n4. Use another point you can read accurately (often the $y$-intercept) to find $k$.\n\n**Example:** a quartic touches the $x$-axis at $-1$, crosses at $2$ and $-3$, and has $y$-intercept $-12$.\n\nFamily: $y = k(x + 1)^2(x - 2)(x + 3)$. Order 2 + 1 + 1 = degree 4 ✓\n\n$y$-intercept: $-12 = k(1)^2(-2)(3) = -6k$, so $k = 2$.\n\n$$y = 2(x + 1)^2(x - 2)(x + 3)$$\n\n```plot\nf: 2*(x+1)^2*(x-2)*(x+3)\ndomain: -3.5, 2.5\nrange: -30, 20\nticks: 1, 5\npoints: (-3,0), (-1,0), (2,0), (0,-12)\n```"
+    },
+    {
+      "id": "belonging",
+      "title": "Does a function belong to the family?",
+      "body": "Functions can look different but still belong to the same family. Compare **zeros**, not appearance.\n\n$y = (4x - 12)(x + 2)(x - 1)$ looks unlike $y = k(x - 3)(x + 2)(x - 1)$, but $4x - 12 = 4(x - 3)$, so it is the member with $k = 4$.\n\n$y = -0.2(x - 3)(2x + 4)(2x - 3)$ has zeros $3$, $-2$ and $\\tfrac32$. Because $\\tfrac32$ is a different zero, it belongs to a **different** family.\n\n> **Tip:** factor out the leading coefficient of each binomial so every factor has the form $(x - a)$. Then compare the values of $a$."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "family of functions",
+      "definition": "A set of functions sharing a characteristic; here, polynomial functions with the same zeros."
+    },
+    {
+      "term": "member of a family",
+      "definition": "One function from the family, determined by a specific value of $k$."
+    },
+    {
+      "term": "order of a zero",
+      "definition": "The number of times its factor appears; e.g. in $(x - 5)^2$ the zero $5$ has order 2."
+    },
+    {
+      "term": "simplified form",
+      "definition": "An equation with the factors multiplied so coefficients are integers, e.g. $x^2 - 4x - 1$ instead of $(x - 2 - \\sqrt5)(x - 2 + \\sqrt5)$."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Family with zeros a₁ … aₙ",
+      "latex": "y = k(x - a_1)(x - a_2)\\cdots(x - a_n),\\ k \\neq 0",
+      "meaning": "Each nonzero $k$ gives one member."
+    },
+    {
+      "name": "Quadratic factor for zeros h ± √m",
+      "latex": "(x - h)^2 - m = x^2 - 2hx + h^2 - m",
+      "meaning": "A difference of squares removes the root signs."
+    },
+    {
+      "name": "Finding k",
+      "latex": "k = \\frac{y_0}{(x_0 - a_1)(x_0 - a_2)\\cdots}",
+      "meaning": "Substitute a known point $(x_0, y_0)$ that is not an $x$-intercept."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "A family and one member",
+      "problem": "The zeros of a quadratic function are $-7$ and $3$. (a) Write the family. (b) Give two members. (c) Find the member passing through $(2, 18)$.",
+      "steps": [
+        "(a) $y = k(x + 7)(x - 3)$, $k \\neq 0$.",
+        "(b) For example $y = (x + 7)(x - 3)$ ($k = 1$) and $y = -3(x + 7)(x - 3)$ ($k = -3$).",
+        "(c) $18 = k(2 + 7)(2 - 3) = -9k$, so $k = -2$."
+      ],
+      "answer": "$y = -2(x + 7)(x - 3)$"
+    },
+    {
+      "title": "A quartic with a double zero and irrational zeros",
+      "problem": "Find the family of quartic functions with zeros $5$ (order 2) and $-2 \\pm \\sqrt6$, then the member with $y$-intercept $20$.",
+      "steps": [
+        "Irrational pair: $(x + 2)^2 - 6 = x^2 + 4x - 2$.",
+        "Family: $y = k(x - 5)^2(x^2 + 4x - 2)$.",
+        "$y$-intercept: $20 = k(25)(-2) = -50k$, so $k = -0.4$."
+      ],
+      "answer": "$y = -0.4(x - 5)^2(x^2 + 4x - 2)$"
+    },
+    {
+      "title": "Equation from a graph",
+      "problem": "A cubic graph crosses the $x$-axis at $-2$ and touches it at $3$; it passes through $(0, 36)$. Find its equation.",
+      "steps": [
+        "Zeros: $-2$ (order 1), $3$ (order 2). Family: $y = k(x + 2)(x - 3)^2$.",
+        "Substitute $(0, 36)$: $36 = k(2)(9) = 18k$, so $k = 2$."
+      ],
+      "answer": "$y = 2(x + 2)(x - 3)^2$"
+    },
+    {
+      "title": "Which one doesn't belong?",
+      "problem": "Which function is not in the same family as the others? A: $y = 3.5(x + 2)(x - 1)(x - 3)$; B: $y = -0.2(x - 3)(2x + 4)(2x - 3)$; C: $y = (4x - 12)(x + 2)(x - 1)$; D: $y = -7(x - 1)(x - 3)(x + 2)$.",
+      "steps": [
+        "A: zeros $-2, 1, 3$. D: zeros $1, 3, -2$.",
+        "C: $4x - 12 = 4(x - 3)$, so zeros $3, -2, 1$.",
+        "B: $2x + 4 = 2(x + 2)$ and $2x - 3 = 2\\left(x - \\tfrac32\\right)$, so zeros $3, -2, \\tfrac32$."
+      ],
+      "answer": "B does not belong: its zeros are $3, -2, \\tfrac32$ instead of $3, -2, 1$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Substitute an $x$-intercept to find $k$.",
+      "fact": "Every member passes through the $x$-intercepts, giving $0 = 0$. Use a different point."
+    },
+    {
+      "myth": "$y = 2(x - 1)(x + 3)$ and $y = (2x - 2)(x + 3)$ are in different families.",
+      "fact": "$2x - 2 = 2(x - 1)$: both have zeros $1$ and $-3$, so they are in the same family."
+    },
+    {
+      "myth": "Zeros $2 \\pm \\sqrt5$ give the factor $(x - 2 + \\sqrt5)(x - 2 + \\sqrt5)$.",
+      "fact": "One factor is $x - (2 + \\sqrt5)$ and the other is $x - (2 - \\sqrt5)$; their product is $x^2 - 4x - 1$."
+    },
+    {
+      "myth": "A graph that touches the axis at $x = 4$ has the factor $(x - 4)$.",
+      "fact": "Touching means order 2 (or another even order): use $(x - 4)^2$."
+    },
+    {
+      "myth": "$k$ can be any number, including 0.",
+      "fact": "$k = 0$ gives $y = 0$, which has no specific zeros and is not a polynomial of that degree. So $k \\neq 0$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Design with curves",
+      "body": "Designers create shapes — bottles, logos, vase outlines — from members of a family of polynomials. Changing $k$ makes the curve taller or flatter while keeping the same \\\"anchor points\\\" at the zeros."
+    },
+    {
+      "title": "Arches and bridges",
+      "body": "An arch whose ends are at fixed points on the ground belongs to a family with those zeros; the required height picks out one member."
+    },
+    {
+      "title": "Packaging",
+      "body": "Boxes folded from a sheet of card have volumes that form a family: doubling the volume formula keeps the same cut sizes that give zero volume."
+    },
+    {
+      "title": "Data modelling",
+      "body": "When you know where a quantity is zero (e.g. a population, or the height of a ride at certain times), a family of polynomials plus one measurement gives a model."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Write the family of cubic functions with zeros $-4$, $0$ and $2$.",
+      "hint": "Use $y = k(x - a_1)(x - a_2)(x - a_3)$.",
+      "solution": "$y = kx(x + 4)(x - 2)$, $k \\neq 0$."
+    },
+    {
+      "question": "Find the member of $y = k(x + 1)(x - 2)(x - 4)$ whose $y$-intercept is $-16$.",
+      "hint": "Set $x = 0$.",
+      "solution": "$-16 = k(1)(-2)(-4) = 8k$, so $k = -2$: $y = -2(x + 1)(x - 2)(x - 4)$."
+    },
+    {
+      "question": "Write, in simplified form, the quadratic factor with zeros $3 \\pm \\sqrt2$.",
+      "hint": "$(x - h)^2 - m$.",
+      "solution": "$(x - 3)^2 - 2 = x^2 - 6x + 7$."
+    },
+    {
+      "question": "Determine the family of quartics with zeros $-1$ (order 3) and $4$, and the member through $(1, 24)$.",
+      "hint": "Factor $(x + 1)^3$.",
+      "solution": "$y = k(x + 1)^3(x - 4)$. $24 = k(8)(-3) = -24k$, so $k = -1$: $y = -(x + 1)^3(x - 4)$."
+    },
+    {
+      "question": "Do $y = 3(x - 2)(x + 5)$ and $y = (6 - 3x)(x + 5)$ belong to the same family? Explain.",
+      "hint": "Factor $6 - 3x$.",
+      "solution": "$6 - 3x = -3(x - 2)$, so the second is $y = -3(x - 2)(x + 5)$. Both have zeros $2$ and $-5$, so yes."
+    },
+    {
+      "question": "A cubic graph touches the $x$-axis at $-2$, crosses at $1$, and has $y$-intercept $8$. Find its equation.",
+      "hint": "Order 2 at $-2$.",
+      "solution": "$y = k(x + 2)^2(x - 1)$. $8 = k(4)(-1)$, so $k = -2$: $y = -2(x + 2)^2(x - 1)$."
+    },
+    {
+      "question": "How many polynomial functions have zeros $1$ and $5$? What extra information picks out just one?",
+      "hint": "Think about $k$ and the degree.",
+      "solution": "Infinitely many: any $k \\neq 0$, and any degree (you could add more zeros or repeat them). Knowing the degree and order of each zero, plus one other point, picks out one function."
+    }
+  ],
+  "summary": [
+    "A family of polynomial functions with zeros $a_1, \\dots, a_n$ is $y = k(x - a_1)\\cdots(x - a_n)$, $k \\neq 0$.",
+    "Members share $x$-intercepts; $k$ controls the vertical stretch/compression and reflection.",
+    "Find a particular member by substituting a known point (not an $x$-intercept) and solving for $k$.",
+    "A zero of order 2 makes the graph touch the axis; order 3 gives a flattened crossing.",
+    "Irrational zeros $h \\pm \\sqrt{m}$ combine into the factor $x^2 - 2hx + h^2 - m$."
+  ],
+  "questions": [
+    {
+      "id": "2-4-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "r": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            -3,
+            -2,
+            -1,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "Y": "k*p*q*r"
+      },
+      "text": "A cubic function has zeros $-{{p}}$, ${{q}}$ and ${{r}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write an equation for the family of cubic functions with these zeros."
+        },
+        {
+          "label": "b",
+          "text": "Write equations for two members of the family."
+        },
+        {
+          "label": "c",
+          "text": "Determine the member of the family whose $y$-intercept is ${{Y}}$. State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $y = k(x + {{p}})(x - {{q}})(x - {{r}})$, $k \\in \\mathbb{R}$, $k \\neq 0$.\n\n(b) Any two nonzero values of $k$, e.g. $y = (x + {{p}})(x - {{q}})(x - {{r}})$ and $y = -2(x + {{p}})(x - {{q}})(x - {{r}})$.\n\n(c) Substitute $(0, {{Y}})$: ${{Y}} = k({{p}})(-{{q}})(-{{r}}) = {{p*q*r}}k$, so $k = {{k}}$.\n\n$y = {{k}}(x + {{p}})(x - {{q}})(x - {{r}})$",
+      "rubric": [
+        {
+          "point": "Correct family equation including $k \\neq 0$",
+          "marks": 2
+        },
+        {
+          "point": "Two valid members",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes the $y$-intercept and solves for $k$",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "r": {
+          "min": 4,
+          "max": 5,
+          "step": 1
+        },
+        "x0": {
+          "choices": [
+            3
+          ]
+        },
+        "k": {
+          "choices": [
+            -2,
+            -1,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "y0": "k*(x0+p)*(x0-q)*(x0-r)"
+      },
+      "text": "Determine an equation for the cubic function with zeros $-{{p}}$, ${{q}}$ and ${{r}}$ whose graph passes through the point $({{x0}}, {{y0}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Family: $y = k(x + {{p}})(x - {{q}})(x - {{r}})$.\n\nSubstitute $({{x0}}, {{y0}})$:\n\n${{y0}} = k({{x0}} + {{p}})({{x0}} - {{q}})({{x0}} - {{r}})$\n\n${{y0}} = k({{x0 + p}})({{x0 - q}})({{x0 - r}}) = {{(x0+p)*(x0-q)*(x0-r)}}k$\n\n$k = {{k}}$\n\n$$y = {{k}}(x + {{p}})(x - {{q}})(x - {{r}})$$",
+      "rubric": [
+        {
+          "point": "Writes the family",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes the point correctly",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$",
+          "marks": 1
+        },
+        {
+          "point": "States the final equation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q03",
+      "type": "analysis",
+      "difficulty": 1,
+      "text": "Examine the functions. Which one does **not** belong to the same family as the others? Explain fully.\n\n* A: $y = 3.5(x + 2)(x - 1)(x - 3)$\n* B: $y = -0.2(x - 3)(2x + 4)(2x - 3)$\n* C: $y = (4x - 12)(x + 2)(x - 1)$\n* D: $y = -7(x - 1)(x - 3)(x + 2)$",
+      "modelAnswer": "Write each factor in the form $(x - a)$ to read the zeros.\n\n* A: zeros $-2, 1, 3$.\n* B: $2x + 4 = 2(x + 2)$ and $2x - 3 = 2\\left(x - \\tfrac32\\right)$, so $y = -0.8(x - 3)(x + 2)\\left(x - \\tfrac32\\right)$: zeros $3, -2, \\tfrac32$.\n* C: $4x - 12 = 4(x - 3)$, so $y = 4(x - 3)(x + 2)(x - 1)$: zeros $3, -2, 1$.\n* D: zeros $1, 3, -2$.\n\nA, C and D all have zeros $-2, 1, 3$ (with $k = 3.5$, $4$ and $-7$). **B** has the zero $\\tfrac32$ instead of $1$, so it does not belong.",
+      "rubric": [
+        {
+          "point": "Rewrites factors to identify zeros (e.g. $4x - 12 = 4(x - 3)$)",
+          "marks": 2
+        },
+        {
+          "point": "Correct zeros for each function",
+          "marks": 2
+        },
+        {
+          "point": "Identifies B with a clear reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "m": {
+          "min": 5,
+          "max": 7,
+          "step": 1
+        },
+        "x0": {
+          "choices": [
+            1,
+            3
+          ]
+        },
+        "k": {
+          "choices": [
+            -3,
+            -2,
+            -1,
+            1,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "y0": "k*x0*(x0^2 - 2*h*x0 - m + h^2)"
+      },
+      "text": "A family of cubic functions has zeros ${{h}} \\pm \\sqrt{ {{m}} }$ and $0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an equation, in simplified form, for the family."
+        },
+        {
+          "label": "b",
+          "text": "Determine the member of the family whose graph passes through $({{x0}}, {{y0}})$. State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Pair the irrational zeros:\n\n$\\left(x - ({{h}} + \\sqrt{ {{m}} })\\right)\\left(x - ({{h}} - \\sqrt{ {{m}} })\\right) = (x - {{h}})^2 - {{m}} = x^2 - {{2*h}}x - {{m - h^2}}$\n\nFamily: $y = kx(x^2 - {{2*h}}x - {{m - h^2}})$, $k \\neq 0$.\n\n(b) Substitute $({{x0}}, {{y0}})$:\n\n${{y0}} = k({{x0}})\\left({{x0^2}} - {{2*h*x0}} - {{m - h^2}}\\right) = k({{x0}})({{x0^2 - 2*h*x0 - m + h^2}}) = {{x0*(x0^2 - 2*h*x0 - m + h^2)}}k$\n\n$k = {{k}}$\n\n$y = {{k}}x(x^2 - {{2*h}}x - {{m - h^2}})$",
+      "rubric": [
+        {
+          "point": "Multiplies the conjugate factors to get a quadratic with integer coefficients",
+          "marks": 2
+        },
+        {
+          "point": "Writes the family in simplified form",
+          "marks": 1
+        },
+        {
+          "point": "Substitutes the point and solves for $k$",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "h": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "m": {
+          "min": 5,
+          "max": 7,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            -2,
+            -1,
+            1,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "Y": "k*a^2*(h^2 - m)"
+      },
+      "text": "A family of quartic functions has zeros ${{a}}$ (order 2) and $-{{h}} \\pm \\sqrt{ {{m}} }$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an equation, in simplified form, for the family."
+        },
+        {
+          "label": "b",
+          "text": "Determine the member whose $y$-intercept is ${{Y}}$. State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Describe how the graph behaves at each $x$-intercept."
+        }
+      ],
+      "modelAnswer": "(a) Irrational pair: $(x + {{h}})^2 - {{m}} = x^2 + {{2*h}}x - {{m - h^2}}$.\n\nFamily: $y = k(x - {{a}})^2(x^2 + {{2*h}}x - {{m - h^2}})$, $k \\neq 0$.\n\n(b) $y$-intercept: set $x = 0$:\n\n${{Y}} = k({{a^2}})(-{{m - h^2}}) = {{-a^2*(m - h^2)}}k$\n\n$k = {{k}}$\n\n$y = {{k}}(x - {{a}})^2(x^2 + {{2*h}}x - {{m - h^2}})$\n\n(c) The graph touches the $x$-axis at $x = {{a}}$ (order 2) and crosses it at $-{{h}} \\pm \\sqrt{ {{m}} }$ (about ${{-h + sqrt(m):3}}$ and ${{-h - sqrt(m):3}}$).",
+      "rubric": [
+        {
+          "point": "Correct quadratic factor for the irrational zeros",
+          "marks": 1
+        },
+        {
+          "point": "Includes the squared factor for the order-2 zero",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$ using the $y$-intercept",
+          "marks": 2
+        },
+        {
+          "point": "Describes the behaviour at each zero",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q06",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "B": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            -2,
+            -1,
+            1,
+            2
+          ]
+        }
+      },
+      "text": "The graph of a cubic polynomial function is shown. The marked points are the $x$-intercepts and the $y$-intercept.\n\n```plot\nf: {{k}}*(x+{{A}})*(x-{{B}})^2\ndomain: -5, 5\npoints: (-{{A}},0), ({{B}},0), (0,{{k*A*B^2}})\n```\n\nDetermine an equation for the function. Explain how you decided on the order of each zero.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the value of $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**Zeros:** the graph crosses the axis at $x = -{{A}}$ (order 1) and **touches** it at $x = {{B}}$, turning back, so ${{B}}$ is a zero of order 2.\n\nFamily: $y = k(x + {{A}})(x - {{B}})^2$ (degree 3 ✓).\n\n$y$-intercept $(0, {{k*A*B^2}})$: ${{k*A*B^2}} = k({{A}})({{B^2}}) = {{A*B^2}}k$, so $k = {{k}}$.\n\n$$y = {{k}}(x + {{A}})(x - {{B}})^2$$",
+      "rubric": [
+        {
+          "point": "Identifies both zeros",
+          "marks": 1
+        },
+        {
+          "point": "Explains that touching means order 2",
+          "marks": 2
+        },
+        {
+          "point": "Uses the $y$-intercept to find $k$",
+          "marks": 1
+        },
+        {
+          "point": "Correct final equation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "A": {
+          "choices": [
+            1
+          ]
+        },
+        "B": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "C": {
+          "choices": [
+            3,
+            4
+          ]
+        },
+        "k": {
+          "choices": [
+            -1,
+            1
+          ]
+        }
+      },
+      "text": "The graph of a quartic function is shown. Its $y$-intercept is marked.\n\n```plot\nf: {{k}}*(x+{{A}})^2*(x-{{B}})*(x-{{C}})\ndomain: -4, 5\npoints: (-{{A}},0), ({{B}},0), ({{C}},0), (0,{{k*A^2*B*C}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine an equation for the function. State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Use the graph and your equation to identify the intervals on which the function is below the $x$-axis."
+        }
+      ],
+      "modelAnswer": "(a) The graph touches the axis at $x = -{{A}}$ (order 2) and crosses at $x = {{B}}$ and $x = {{C}}$ (order 1). Total order $2 + 1 + 1 = 4$ ✓.\n\nFamily: $y = k(x + {{A}})^2(x - {{B}})(x - {{C}})$.\n\n$y$-intercept: ${{k*A^2*B*C}} = k({{A^2}})(-{{B}})(-{{C}}) = {{A^2*B*C}}k$, so $k = {{k}}$.\n\n$$y = {{k}}(x + {{A}})^2(x - {{B}})(x - {{C}})$$\n\n(b) From the graph the function is below the $x$-axis where $y < 0$. Using the zeros and the sign of $k$: for $k > 0$ the quartic opens upward, so $y < 0$ only between ${{B}}$ and ${{C}}$ (it touches at $-{{A}}$ without changing sign). For $k < 0$, $y < 0$ for $x < {{B}}$ (except $x = -{{A}}$) and $x > {{C}}$.",
+      "rubric": [
+        {
+          "point": "Identifies zeros and their orders from the graph",
+          "marks": 2
+        },
+        {
+          "point": "Writes the family with the squared factor",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$",
+          "marks": 1
+        },
+        {
+          "point": "Correct intervals where the function is below the $x$-axis",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q08",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "(a) How many polynomial functions can have the same $x$-intercepts? Explain. (b) What information do you need to write an equation for a **family**, and what extra information picks out one **member**?",
+      "modelAnswer": "(a) Infinitely many. For given zeros, $y = k(x - a_1)\\cdots(x - a_n)$ is a valid function for every $k \\neq 0$ — each one is a different vertical stretch/reflection with the same $x$-intercepts. (You could also change the order of the zeros.)\n\n(b) **Family:** the zeros (and their orders), which give the factors.\n**Member:** additionally one point on the graph that is not an $x$-intercept (for example the $y$-intercept), which lets you solve for $k$.",
+      "rubric": [
+        {
+          "point": "Infinitely many, explained using $k$",
+          "marks": 2
+        },
+        {
+          "point": "Zeros (with orders) determine the family",
+          "marks": 1
+        },
+        {
+          "point": "One additional point determines the member, with reason",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q09",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Describe how the graphs of the members of a family of polynomial functions are the same and how they are different. Refer to the effect of the value of $k$, including $k > 1$, $0 < k < 1$ and $k < 0$.",
+      "modelAnswer": "**Same:** every member has the same $x$-intercepts (and the same behaviour type at each — crossing or touching) and the same degree.\n\n**Different:**\n* $k > 1$: vertical stretch — the graph is taller/steeper between the zeros.\n* $0 < k < 1$: vertical compression — flatter between the zeros.\n* $k < 0$: reflection in the $x$-axis, which also reverses the end behaviour.\n* The $y$-intercept and every other point (not on the $x$-axis) change: each $y$-value is multiplied by $k$.",
+      "rubric": [
+        {
+          "point": "States what stays the same (zeros/intercepts)",
+          "marks": 1
+        },
+        {
+          "point": "Explains $k > 1$ and $0 < k < 1$",
+          "marks": 2
+        },
+        {
+          "point": "Explains $k < 0$ (reflection, end behaviour)",
+          "marks": 1
+        },
+        {
+          "point": "Notes the $y$-intercept/other points change",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "An open-top box is made from a sheet of cardboard $36$ cm by $20$ cm by cutting equal squares of side $x$ cm from each corner and folding up the sides.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Express the volume of the box as a function of $x$, with its domain."
+        },
+        {
+          "label": "b",
+          "text": "Determine the possible dimensions if the volume is to be $450$ cm³. Round to the nearest tenth. Give the smaller possible value of $x$.",
+          "answer": {
+            "expr": "0.699",
+            "unit": "cm",
+            "sig": 2,
+            "tol": 0.08
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write an equation for the family of functions that this volume function belongs to."
+        },
+        {
+          "label": "d",
+          "text": "Describe the graphs of two other members of this family."
+        }
+      ],
+      "modelAnswer": "(a) Length $36 - 2x$, width $20 - 2x$, height $x$:\n\n$V(x) = x(36 - 2x)(20 - 2x) = 4x(18 - x)(10 - x)$, for $0 < x < 10$.\n\n(b) Solve $4x(18 - x)(10 - x) = 450$ with graphing technology (intersect $y = V(x)$ with $y = 450$): $x \\approx 0.7$ or $x \\approx 8.6$ in the domain $0 < x < 10$.\n* $x \\approx 0.7$: about $34.6$ cm × $18.6$ cm × $0.7$ cm.\n* $x \\approx 8.6$: about $18.8$ cm × $2.8$ cm × $8.6$ cm.\n\n(c) Family: $V = kx(x - 18)(x - 10)$, $k \\neq 0$ (the box function is the member with $k = 4$).\n\n(d) For example $k = 2$ and $k = 8$: both have zeros $0, 10, 18$; $k = 8$ is twice as tall as the box function between the zeros, $k = 2$ half as tall.",
+      "rubric": [
+        {
+          "point": "Correct volume function and domain",
+          "marks": 2
+        },
+        {
+          "point": "Solves $V(x) = 450$ and gives both sets of dimensions",
+          "marks": 2
+        },
+        {
+          "point": "Correct family equation",
+          "marks": 1
+        },
+        {
+          "point": "Describes two members correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q11",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "An open-top box is formed from a $40$ cm by $32$ cm piece of cardboard by cutting congruent squares of side $x$ from the corners.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Express the volume as a function of $x$."
+        },
+        {
+          "label": "b",
+          "text": "Write equations for boxes with (i) twice and (ii) half this volume."
+        },
+        {
+          "label": "c",
+          "text": "How are the three equations related? Explain using the idea of a family."
+        }
+      ],
+      "modelAnswer": "(a) $V(x) = x(40 - 2x)(32 - 2x) = 4x(20 - x)(16 - x)$, $0 < x < 16$.\n\n(b) (i) Twice the volume: $V = 2 \\cdot 4x(20 - x)(16 - x) = 8x(20 - x)(16 - x)$.\n(ii) Half the volume: $V = 2x(20 - x)(16 - x)$.\n\n(c) All three have the same zeros $0, 16, 20$, so they belong to the same family $y = kx(x - 16)(x - 20)$ (with $k = 4, 8, 2$). The graphs are vertical stretches/compressions of each other by factors of $2$ and $\\tfrac12$.",
+      "rubric": [
+        {
+          "point": "Correct volume function",
+          "marks": 2
+        },
+        {
+          "point": "Correct twice and half equations",
+          "marks": 2
+        },
+        {
+          "point": "Explains they are members of the same family (same zeros, different $k$)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q12",
+      "type": "design",
+      "difficulty": 2,
+      "text": "A perfume company wants a symmetric bottle outline built from polynomial curves. Design the outline using **two members of the same family** of polynomial functions (for example one for the left/right edges or one for the top and one for the bottom). Give the equations, describe what part of the bottle each forms, and explain why your two curves meet where they do.",
+      "modelAnswer": "Sample design: use the family $y = k(x^2 - 9)$, whose zeros are $\\pm3$.\n\n* Top curve: $y = -\\tfrac13(x^2 - 9)$ — a dome of height $3$ above the $x$-axis.\n* Bottom curve: $y = \\tfrac19(x^2 - 9)$ — a shallow base of depth $1$ below the axis.\n\nBoth curves pass through $(-3, 0)$ and $(3, 0)$ because they share the zeros $\\pm3$; that is where the outline's two pieces join, giving a closed, symmetric shape (symmetric because both functions are even). Changing $k$ makes the bottle taller or flatter without moving the joining points.\n\nAny design is acceptable if it uses two members of one family, gives correct equations, and explains the shared zeros.",
+      "rubric": [
+        {
+          "point": "Two correct equations from the same family",
+          "marks": 2
+        },
+        {
+          "point": "Describes the role of each curve in the design",
+          "marks": 1
+        },
+        {
+          "point": "Explains that the curves meet at the shared zeros",
+          "marks": 1
+        },
+        {
+          "point": "Explains the effect of $k$ / symmetry in the design",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-4-q13",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "x0": {
+          "min": -1,
+          "max": 0,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            -3,
+            -2,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "y0": "k*(x0+p)*(x0-q)"
+      },
+      "text": "The zeros of a quadratic function are $-{{p}}$ and ${{q}}$. Determine the member of the family whose graph passes through $({{x0}}, {{y0}})$, and write it in standard form $y = ax^2 + bx + c$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Family: $y = k(x + {{p}})(x - {{q}})$.\n\nSubstitute: ${{y0}} = k({{x0 + p}})({{x0 - q}}) = {{(x0+p)*(x0-q)}}k$, so $k = {{k}}$.\n\n$y = {{k}}(x + {{p}})(x - {{q}}) = {{k}}(x^2 + ({{p - q}})x - {{p*q}})$\n\n$y = {{k}}x^2 + ({{k*(p - q)}})x + ({{-k*p*q}})$",
+      "rubric": [
+        {
+          "point": "Writes the family",
+          "marks": 1
+        },
+        {
+          "point": "Finds $k$",
+          "marks": 1
+        },
+        {
+          "point": "Expands into standard form",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q14",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Show that $y = (4x - 12)(x + 2)(x - 1)$ belongs to the family $y = k(x - 3)(x + 2)(x - 1)$ and find its value of $k$. Then write the equation of the member of this family that is the reflection of this function in the $x$-axis.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State $k$.",
+          "answer": {
+            "expr": "4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$4x - 12 = 4(x - 3)$, so $y = 4(x - 3)(x + 2)(x - 1)$. It has the same zeros $3, -2, 1$, so it belongs to the family with $k = 4$.\n\nThe reflection in the $x$-axis multiplies every $y$-value by $-1$: $y = -4(x - 3)(x + 2)(x - 1)$, which is the member with $k = -4$.",
+      "rubric": [
+        {
+          "point": "Factors $4x - 12 = 4(x - 3)$",
+          "marks": 1
+        },
+        {
+          "point": "States $k = 4$ with reason (same zeros)",
+          "marks": 1
+        },
+        {
+          "point": "Reflection member with $k = -4$",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q15",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "k": {
+          "choices": [
+            -2,
+            -1,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "Y": "3*k"
+      },
+      "text": "Determine an equation for the family of quartic functions with zeros $\\pm\\sqrt3$ and $\\pm\\tfrac12$, using integer coefficients. Then determine the member whose $y$-intercept is ${{Y}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Pair the zeros:\n* $\\pm\\sqrt3$: $(x - \\sqrt3)(x + \\sqrt3) = x^2 - 3$\n* $\\pm\\tfrac12$: $\\left(x - \\tfrac12\\right)\\left(x + \\tfrac12\\right) = x^2 - \\tfrac14$, or with integer coefficients $(2x - 1)(2x + 1) = 4x^2 - 1$.\n\nFamily: $y = k(x^2 - 3)(4x^2 - 1)$, $k \\neq 0$.\n\n$y$-intercept: ${{Y}} = k(-3)(-1) = 3k$, so $k = {{k}}$.\n\n$y = {{k}}(x^2 - 3)(4x^2 - 1)$",
+      "rubric": [
+        {
+          "point": "Pairs $\\pm\\sqrt3$ to get $x^2 - 3$",
+          "marks": 1
+        },
+        {
+          "point": "Uses $(2x - 1)(2x + 1)$ for integer coefficients",
+          "marks": 1
+        },
+        {
+          "point": "Writes the family",
+          "marks": 1
+        },
+        {
+          "point": "Finds $k$ from the $y$-intercept",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q16",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The functions $f(x) = (x - 1)^2(x + 2)$ and $g(x) = (x - 1)(x + 2)^2$ have the same $x$-intercepts. Do they belong to the same family? Compare their graphs and explain your reasoning.",
+      "modelAnswer": "Both have $x$-intercepts at $1$ and $-2$, but the **orders** of the zeros differ:\n\n* $f$: zero $1$ has order 2 (graph touches at $1$), $-2$ has order 1 (crosses).\n* $g$: zero $1$ has order 1 (crosses), $-2$ has order 2 (touches).\n\nNo value of $k$ turns $f$ into $g$: $k(x - 1)^2(x + 2)$ always touches at $1$. So they belong to **different** families — a family is defined by the zeros including their orders.\n\n```plot\nf: (x-1)^2*(x+2) | label=f(x)\nf: (x-1)*(x+2)^2 | dashed; label=g(x)\ndomain: -3, 2\nrange: -6, 6\npoints: (1,0), (-2,0)\n```",
+      "rubric": [
+        {
+          "point": "Identifies the orders of the zeros in each function",
+          "marks": 2
+        },
+        {
+          "point": "Describes the different graph behaviour at each intercept",
+          "marks": 1
+        },
+        {
+          "point": "Concludes they are different families with a valid reason",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-4-q17",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 4,
+          "max": 6,
+          "step": 1
+        },
+        "H": {
+          "min": 6,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "The entrance to a tunnel is an arch whose base runs from $x = -{{a}}$ m to $x = {{a}}$ m along the ground, and whose highest point is ${{H}}$ m above the centre of the base. Model the arch with a member of a family of quadratic functions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the family of functions with the correct zeros."
+        },
+        {
+          "label": "b",
+          "text": "Find the member that models the arch. State $k$.",
+          "answer": {
+            "expr": "-H/a^2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "How tall is the arch ${{1}}$ m in from the edge (at $x = {{a - 1}}$)?",
+          "answer": {
+            "expr": "-H/a^2*((a-1)^2 - a^2)",
+            "unit": "m",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Zeros at $\\pm{{a}}$: $y = k(x + {{a}})(x - {{a}}) = k(x^2 - {{a^2}})$.\n\n(b) The highest point is at the centre $(0, {{H}})$: ${{H}} = k(0 - {{a^2}})$, so $k = -\\dfrac{ {{H}} }{ {{a^2}} } = {{-H/a^2:3}}$.\n\n$y = {{-H/a^2:3}}(x^2 - {{a^2}})$\n\n(c) At $x = {{a - 1}}$: $y = {{-H/a^2:3}}\\left({{(a-1)^2}} - {{a^2}}\\right) = {{-H/a^2*((a-1)^2 - a^2):3}}$ m. So a vehicle ${{-H/a^2*((a-1)^2 - a^2):3}}$ m tall could fit $1$ m from the edge.",
+      "rubric": [
+        {
+          "point": "Writes the family using the zeros $\\pm a$",
+          "marks": 1
+        },
+        {
+          "point": "Uses the top point to find $k$",
+          "marks": 2
+        },
+        {
+          "point": "Evaluates the model at the required point",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the result in context",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

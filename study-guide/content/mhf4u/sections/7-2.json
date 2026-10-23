@@ -1,0 +1,1369 @@
+{
+  "id": "7-2",
+  "number": "7.2",
+  "title": "Techniques for Solving Exponential Equations",
+  "estimatedMinutes": 75,
+  "overview": "Not every exponential equation has a convenient common base. In this section you take the logarithm of both sides, use the power law to bring the variable down, and handle tougher equations that turn into quadratics — watching out for **extraneous roots**. Along the way you will model radioactive decay, depreciation and the sustain of a guitar note.",
+  "objectives": [
+    "Solve exponential equations by taking the common logarithm of both sides",
+    "Give exact answers in terms of logarithms and decimal approximations",
+    "Determine half-lives and decay times using $A = A_0\\left(\\frac12\\right)^{\\frac th}$",
+    "Solve equations with different bases on each side by collecting and factoring",
+    "Solve exponential equations of quadratic form and reject extraneous roots",
+    "Check solutions using graphing technology"
+  ],
+  "lessons": [
+    {
+      "id": "take-logs",
+      "title": "When there is no common base: take the logarithm of both sides",
+      "body": "\nSome equations have no convenient common base, such as $1.07^t = 2$ or $4^{2x-1} = 3^{x+2}$. The fix is to take the **common logarithm of both sides**. An equation stays balanced when you do the same thing to both sides, as long as both sides are positive.\n\nThe **power law of logarithms**, $\\log x^n = n\\log x$, then brings the variable down out of the exponent.\n\n**Example:** solve $2 = 1.07^t$.\n\n$$\\log 2 = \\log 1.07^t \\;\\Rightarrow\\; \\log 2 = t\\log 1.07 \\;\\Rightarrow\\; t = \\frac{\\log 2}{\\log 1.07} \\approx 10.24$$\n\n> **Exact vs approximate.** $t = \\frac{\\log 2}{\\log 1.07}$ is the **exact** answer. $10.24$ is an approximation. When a question says \"exact\", leave the logarithms in.\n\n**Isolate the power first.** For $100 = 10(1.04)^t$, divide by 10 before taking logarithms: $10 = 1.04^t$, so $t = \\frac{\\log 10}{\\log 1.04} = \\frac{1}{\\log 1.04} \\approx 58.7$.\n"
+    },
+    {
+      "id": "half-life",
+      "title": "Radioactive decay and half-life",
+      "body": "\nThe **half-life** of a radioactive substance is the time it takes for half of a sample to decay. The amount remaining is\n\n$$A(t) = A_0\\left(\\tfrac12\\right)^{\\frac{t}{h}}$$\n\n* $A_0$ — the initial amount\n* $h$ — the half-life (same time unit as $t$)\n* $\\frac{t}{h}$ — the number of half-lives that have passed; each one multiplies the amount by $\\frac12$\n\nAfter one half-life ($t = h$) half remains; after two ($t = 2h$) a quarter remains; and so on.\n\n**Finding the half-life from data.** Polonium-218: 100 mg becomes 80 mg after 1 min.\n\n$$80 = 100\\left(\\tfrac12\\right)^{\\frac1h} \\;\\Rightarrow\\; 0.8 = 0.5^{\\frac1h} \\;\\Rightarrow\\; \\log 0.8 = \\tfrac1h\\log 0.5 \\;\\Rightarrow\\; h = \\frac{\\log 0.5}{\\log 0.8} \\approx 3.1 \\text{ min}$$\n\n```plot\ntitle: Polonium-218: A(t) = 100(1/2)^(t/3.1)\nf: 100*0.5^(x/3.1) | label=A(t), mg\ndomain: 0, 15\nrange: 0, 110\nticks: 3.1, 25\npoints: (3.1, 50), (6.2, 25), (9.3, 12.5)\nasymptote y: 0\n```\n\nThe marked points show the amount halving every 3.1 min. The curve approaches 0 but never reaches it.\n\nThe same model describes anything that halves at a steady rate: the value of a car or computer, the loudness of a guitar note as it fades, caffeine in your blood.\n"
+    },
+    {
+      "id": "different-bases",
+      "title": "Different bases on both sides",
+      "body": "\nTo solve $4^{2x-1} = 3^{x+2}$:\n\n1. Take the common logarithm of both sides: $\\log 4^{2x-1} = \\log 3^{x+2}$.\n2. Apply the power law: $(2x-1)\\log 4 = (x+2)\\log 3$.\n3. Expand: $2x\\log4 - \\log 4 = x\\log 3 + 2\\log 3$.\n4. Collect the $x$-terms on one side: $2x\\log 4 - x\\log 3 = 2\\log 3 + \\log 4$.\n5. Factor out $x$: $x(2\\log 4 - \\log 3) = 2\\log 3 + \\log 4$.\n6. Divide: $x = \\dfrac{2\\log 3 + \\log 4}{2\\log 4 - \\log 3} \\approx 2.14$.\n\n> $\\log 4$ and $\\log 3$ are just **numbers** (about 0.602 and 0.477). Treat them like coefficients: collect, factor and divide.\n\n```plot\ntitle: y = 4^(2x-1) and y = 3^(x+2) intersect near x = 2.14\nf: 4^(2*x-1) | label=y = 4^(2x − 1)\nf: 3^(x+2) | label=y = 3^(x + 2)\ndomain: 0, 3\nrange: 0, 150\nticks: 0.5, 25\npoints: (2.1397, 94.6)\n```\n"
+    },
+    {
+      "id": "quadratic-form",
+      "title": "Equations of quadratic form",
+      "body": "\nSome exponential equations hide a quadratic. Look for $b^{2x}$, which is $(b^x)^2$.\n\n**Example:** $2^{2x} + 2^x - 6 = 0$. Let $z = 2^x$:\n\n$$z^2 + z - 6 = 0 \\;\\Rightarrow\\; (z+3)(z-2) = 0 \\;\\Rightarrow\\; z = -3 \\text{ or } z = 2$$\n\n* $2^x = 2$ gives $x = 1$ ✓\n* $2^x = -3$ is impossible, because $2^x > 0$ for every real $x$. This root is **extraneous**: reject it.\n\n**Example:** $2^x - 2^{-x} = 4$. Multiply both sides by $2^x$ (remember $2^x\\cdot2^{-x} = 2^0 = 1$):\n\n$$2^{2x} - 1 = 4(2^x) \\;\\Rightarrow\\; z^2 - 4z - 1 = 0, \\quad z = 2^x$$\n\nThe quadratic formula gives $z = 2 \\pm \\sqrt5$. Since $2 - \\sqrt5 < 0$, reject it. From $2^x = 2 + \\sqrt 5$, $x = \\frac{\\log(2+\\sqrt5)}{\\log 2} \\approx 2.08$.\n\n> Multiplying both sides by an expression that contains the variable can **introduce extraneous roots**. Always check each root in the original equation.\n"
+    },
+    {
+      "id": "extraneous",
+      "title": "Extraneous roots and equations with no solution",
+      "body": "\nAn **extraneous root** is a value produced by a correct-looking algebraic process that does **not** satisfy the original equation.\n\nFor exponential equations they usually appear when a substitution $z = b^x$ leads to $z \\le 0$. A positive base raised to any real power is always positive, so\n\n$$b^x = \\text{(negative number or 0)} \\quad\\text{has no solution.}$$\n\n**No real solutions at all.** Does $4^{2x} + 2(4^x) + 3 = 0$ have a solution? Every term on the left is positive, so the sum can never be 0. In quadratic form, $z^2 + 2z + 3 = 0$ has discriminant $4 - 12 < 0$, so there are no real $z$ values either.\n\n**How to check**\n\n* Substitute each candidate into the **original** equation, or\n* graph both sides and look for intersections. The number of intersection points equals the number of real solutions.\n"
+    },
+    {
+      "id": "applications",
+      "title": "Applications: decay, depreciation and growth",
+      "body": "\n| Situation | Model | Unknown you might solve for |\n|---|---|---|\n| Radioactive decay | $A = A_0\\left(\\frac12\\right)^{\\frac{t}{h}}$ | half-life $h$, or time $t$ |\n| Depreciating car | $V = V_0\\left(\\frac12\\right)^{\\frac{t}{h}}$ | time to reach a value |\n| Doubling audience | $N = N_0(2)^t$ | when two audiences are equal |\n| Advertising response | $P = 1 - 2^{-0.05n}$ | days until $P$ passes a target |\n| Guitar sustain | $I = I_0\\left(\\frac12\\right)^{\\frac{t}{12}}$ | time for the note to fade |\n\n**Strategy for any word problem**\n\n1. Write the model and substitute the known values.\n2. **Isolate the power** (divide by the coefficient, move constants).\n3. Take the logarithm of both sides and apply the power law.\n4. Solve, round sensibly, and answer in a sentence with units.\n5. Ask whether the answer is reasonable (for example, a time should be positive).\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "half-life",
+      "definition": "The time required for an amount to decay to half of its initial value. In $A = A_0\\left(\\frac12\\right)^{\\frac th}$ it is $h$."
+    },
+    {
+      "term": "power law of logarithms",
+      "definition": "$\\log_b x^n = n\\log_b x$ for $b>0,\\ b\\ne1,\\ x>0$. It moves an exponent down into a product."
+    },
+    {
+      "term": "exact answer",
+      "definition": "An answer left in terms of logarithms or radicals, e.g. $x = \\frac{\\log 5}{\\log 3}$."
+    },
+    {
+      "term": "extraneous root",
+      "definition": "A value obtained while solving that does not satisfy the original equation and must be rejected."
+    },
+    {
+      "term": "quadratic form",
+      "definition": "An equation such as $b^{2x} + p\\,b^x + q = 0$ that becomes a quadratic when $z = b^x$."
+    },
+    {
+      "term": "radioactive decay",
+      "definition": "The process by which an unstable element changes into another element, releasing energy. The amount left follows an exponential model."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Take logarithms of both sides",
+      "latex": "a^x = c \\;\\Rightarrow\\; x = \\frac{\\log c}{\\log a}",
+      "meaning": "Valid for $a>0,\\ a\\ne1,\\ c>0$."
+    },
+    {
+      "name": "Half-life model",
+      "latex": "A(t) = A_0\\left(\\tfrac{1}{2}\\right)^{\\frac{t}{h}}",
+      "meaning": "$A_0$ initial amount, $h$ half-life, $t$ time."
+    },
+    {
+      "name": "Half-life from data",
+      "latex": "h = \\frac{t\\,\\log 0.5}{\\log\\left(\\frac{A}{A_0}\\right)}",
+      "meaning": "Rearranged from the model after taking logarithms."
+    },
+    {
+      "name": "Different bases",
+      "latex": "a^{px+q} = b^{rx+s} \\;\\Rightarrow\\; (px+q)\\log a = (rx+s)\\log b",
+      "meaning": "Expand, collect $x$-terms, factor and divide."
+    },
+    {
+      "name": "Quadratic formula",
+      "latex": "z = \\frac{-B\\pm\\sqrt{B^2-4AC}}{2A}",
+      "meaning": "Use it when $z = b^x$ gives a quadratic that does not factor; reject any $z \\le 0$."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Find a half-life",
+      "problem": "One minute after a 100-mg sample of polonium-218 is placed in a chamber, 80 mg remains. Determine the half-life.",
+      "steps": [
+        "Model: $A(t) = A_0\\left(\\frac12\\right)^{\\frac th}$ with $A_0 = 100$, $t = 1$, $A = 80$.",
+        "$80 = 100\\left(\\frac12\\right)^{\\frac1h}$, so $0.8 = 0.5^{\\frac1h}$.",
+        "Take logarithms: $\\log 0.8 = \\frac1h\\log 0.5$.",
+        "Multiply by $h$ and divide by $\\log 0.8$: $h = \\frac{\\log 0.5}{\\log 0.8} \\approx 3.1$."
+      ],
+      "answer": "The half-life of polonium-218 is about 3.1 min."
+    },
+    {
+      "title": "Different bases",
+      "problem": "Solve $4^{2x-1} = 3^{x+2}$. Give an exact answer and a decimal approximation.",
+      "steps": [
+        "$(2x-1)\\log 4 = (x+2)\\log 3$",
+        "$2x\\log4 - \\log4 = x\\log3 + 2\\log3$",
+        "$x(2\\log4 - \\log3) = 2\\log3 + \\log4$",
+        "$x = \\dfrac{2\\log3 + \\log4}{2\\log4 - \\log3} \\approx 2.14$"
+      ],
+      "answer": "$x = \\dfrac{2\\log3+\\log4}{2\\log4-\\log3} \\approx 2.14$"
+    },
+    {
+      "title": "Quadratic form with the quadratic formula",
+      "problem": "Solve $2^x - 2^{-x} = 4$.",
+      "steps": [
+        "Multiply both sides by $2^x$: $2^{2x} - 1 = 4(2^x)$.",
+        "Let $z = 2^x$: $z^2 - 4z - 1 = 0$.",
+        "$z = \\frac{4\\pm\\sqrt{16+4}}{2} = 2\\pm\\sqrt5$.",
+        "$2 - \\sqrt5 < 0$ is impossible for $2^x$, so reject it.",
+        "$2^x = 2+\\sqrt5 \\Rightarrow x = \\frac{\\log(2+\\sqrt5)}{\\log 2} \\approx 2.08$."
+      ],
+      "answer": "$x \\approx 2.08$ (one solution)"
+    },
+    {
+      "title": "Factorable quadratic form",
+      "problem": "Solve $3^{2x} - 7(3^x) + 12 = 0$.",
+      "steps": [
+        "Let $z = 3^x$: $z^2 - 7z + 12 = 0$, so $(z-3)(z-4) = 0$.",
+        "$3^x = 3$ gives $x = 1$.",
+        "$3^x = 4$ gives $x = \\frac{\\log 4}{\\log 3} \\approx 1.26$.",
+        "Both values of $z$ are positive, so neither root is extraneous."
+      ],
+      "answer": "$x = 1$ or $x \\approx 1.26$"
+    },
+    {
+      "title": "Depreciation",
+      "problem": "A minivan bought for 24 000 dollars has value $V(t) = 24\\,000\\left(\\frac12\\right)^{\\frac t3}$, where $t$ is in years. When is it worth 10% of its purchase price?",
+      "steps": [
+        "10% of 24 000 is 2400: $2400 = 24\\,000\\left(\\frac12\\right)^{\\frac t3}$.",
+        "Divide: $0.1 = 0.5^{\\frac t3}$.",
+        "$\\log 0.1 = \\frac t3\\log 0.5$, so $t = \\frac{3\\log0.1}{\\log0.5} \\approx 9.97$."
+      ],
+      "answer": "After about 10 years."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$\\log(100\\cdot1.04^t) = 100\\log 1.04^t$.",
+      "fact": "The power law applies only to an exponent. Isolate the power first ($1.04^t = \\ldots$) or use $\\log(ab) = \\log a + \\log b$."
+    },
+    {
+      "myth": "$\\frac{\\log 2}{\\log 1.07} = \\log\\frac{2}{1.07}$.",
+      "fact": "A **quotient of logarithms** is not the logarithm of a quotient. Evaluate the top and bottom separately: $\\frac{0.3010}{0.0294} \\approx 10.24$."
+    },
+    {
+      "myth": "Both roots of the quadratic in $z$ give solutions.",
+      "fact": "Each $z$ must equal $b^x > 0$. Any $z \\le 0$ gives an **extraneous** root."
+    },
+    {
+      "myth": "Half-life means the substance is gone after two half-lives.",
+      "fact": "After two half-lives a **quarter** remains, after three an eighth. Exponential decay never reaches zero."
+    },
+    {
+      "myth": "$2^x - 2^{-x} = 4$ can be solved by taking logs: $x\\log 2 - (-x)\\log 2 = \\log 4$.",
+      "fact": "The logarithm of a **difference** cannot be split: $\\log(a-b) \\ne \\log a - \\log b$. Use the quadratic-form method instead."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Carbon and medical isotopes",
+      "body": "Hospitals use short-lived isotopes for imaging. Knowing the half-life lets technicians calculate how much tracer remains when a scan begins."
+    },
+    {
+      "title": "Car and computer depreciation",
+      "body": "Many items lose value by a constant percentage each year. Solving $V = V_0\\left(\\frac12\\right)^{\\frac th}$ tells you when the item reaches a trade-in value."
+    },
+    {
+      "title": "Guitar sustain",
+      "body": "A plucked string's intensity fades exponentially. Guitar designers compare 'sustain' by the time for the intensity to fall to a fraction of its starting value."
+    },
+    {
+      "title": "Viral content",
+      "body": "A video whose audience doubles daily follows $N = N_0\\cdot2^t$. Comparing two such models (one doubling, one tripling) means solving an equation with different bases."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Solve for $t$ to two decimal places: (a) $2 = 1.07^t$ (b) $3 = 1.1^t$",
+      "hint": "Take the common logarithm of both sides.",
+      "solution": "(a) $t = \\frac{\\log 2}{\\log 1.07} \\approx 10.24$ (b) $t = \\frac{\\log 3}{\\log 1.1} \\approx 11.53$"
+    },
+    {
+      "question": "Solve $100 = 10(1.04)^t$.",
+      "hint": "Divide by 10 first.",
+      "solution": "$10 = 1.04^t$, so $t = \\frac{1}{\\log 1.04} \\approx 58.71$."
+    },
+    {
+      "question": "Solve $15 = \\left(\\frac12\\right)^{\\frac t4}$.",
+      "hint": "Take logs, then multiply by 4.",
+      "solution": "$\\log 15 = \\frac t4\\log 0.5$, so $t = \\frac{4\\log 15}{\\log 0.5} \\approx -15.63$."
+    },
+    {
+      "question": "Solve exactly: $2^x = 3^{x-1}$.",
+      "hint": "$x\\log2 = (x-1)\\log3$.",
+      "solution": "$x\\log 2 - x\\log 3 = -\\log 3$, so $x = \\frac{\\log 3}{\\log 3 - \\log 2} \\approx 2.71$."
+    },
+    {
+      "question": "Solve $2^{2x} + 2^x - 6 = 0$.",
+      "hint": "Let $z = 2^x$ and factor.",
+      "solution": "$(z+3)(z-2) = 0$. $z = 2$ gives $x = 1$; $z = -3$ is extraneous."
+    },
+    {
+      "question": "A 20-mg sample of thorium-233 decays to 17 mg after 5 min. Find the half-life.",
+      "hint": "$0.85 = 0.5^{\\frac 5h}$.",
+      "solution": "$h = \\frac{5\\log0.5}{\\log0.85} \\approx 21.3$ min."
+    },
+    {
+      "question": "Does $4^{2x} + 2(4^x) + 3 = 0$ have a real solution?",
+      "hint": "What is the sign of each term?",
+      "solution": "No. Each term is positive for every real $x$, so the left side is always greater than 3. (Also $z^2+2z+3=0$ has a negative discriminant.)"
+    },
+    {
+      "question": "Solve $4^x = 3 + 18(4^{-x})$.",
+      "hint": "Multiply by $4^x$.",
+      "solution": "$z^2 - 3z - 18 = 0 \\Rightarrow (z-6)(z+3) = 0$. Reject $z = -3$. $x = \\frac{\\log 6}{\\log 4} \\approx 1.29$."
+    }
+  ],
+  "summary": [
+    "Taking the common logarithm of both sides keeps an equation balanced and, with the power law, brings the variable out of the exponent.",
+    "Isolate the power before taking logarithms.",
+    "Half-life model: $A = A_0\\left(\\frac12\\right)^{\\frac th}$; solve for $h$ or $t$ with logarithms.",
+    "With different bases: apply the power law, expand, collect the variable terms, factor and divide.",
+    "Equations such as $b^{2x} + pb^x + q = 0$ are quadratic in $b^x$; reject any root that requires $b^x \\le 0$.",
+    "Always check for extraneous roots, algebraically or with a graph."
+  ],
+  "questions": [
+    {
+      "id": "7-2-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "N": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "choices": [
+            1.05,
+            1.06,
+            1.07,
+            1.08,
+            1.1,
+            1.12
+          ]
+        },
+        "c": {
+          "choices": [
+            10,
+            20,
+            25,
+            50
+          ]
+        },
+        "M": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "g": {
+          "choices": [
+            1.03,
+            1.04,
+            1.05
+          ]
+        }
+      },
+      "text": "Solve each equation for $t$. Round to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "${{N}} = {{b}}^t$",
+          "answer": {
+            "expr": "log(N)/log(b)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        },
+        {
+          "label": "b",
+          "text": "${{c*M}} = {{c}}({{g}})^t$",
+          "answer": {
+            "expr": "log(M)/log(g)",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.005
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\log {{N}} = t\\log {{b}}$, so $t = \\frac{\\log {{N}} }{\\log {{b}} } \\approx {{log(N)/log(b):4}}$.\n\n(b) First isolate the power: divide both sides by {{c}} to get ${{M}} = {{g}}^t$. Then $t = \\frac{\\log {{M}} }{\\log {{g}} } \\approx {{log(M)/log(g):4}}$.",
+      "rubric": [
+        {
+          "point": "Takes logarithms of both sides in (a)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for (a)",
+          "marks": 1
+        },
+        {
+          "point": "Isolates the power before taking logarithms in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Correct value for (b)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A0": {
+          "min": 20,
+          "max": 100,
+          "step": 10
+        },
+        "r": {
+          "min": 0.7,
+          "max": 0.92,
+          "step": 0.02
+        },
+        "t": {
+          "min": 1,
+          "max": 10,
+          "step": 1
+        },
+        "p": {
+          "choices": [
+            1,
+            5,
+            10,
+            25
+          ]
+        }
+      },
+      "derived": {
+        "A1": "A0*r",
+        "hl": "t*log(0.5)/log(r)"
+      },
+      "text": "A {{A0}}-mg sample of a radioactive isotope decays to {{A1:3}} mg after {{t}} min.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the half-life.",
+          "answer": {
+            "expr": "hl",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long will it take for the sample to decay to {{p}}% of its initial amount?",
+          "answer": {
+            "expr": "hl*log(p/100)/log(0.5)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Would your answer to (b) change if the initial sample were larger? Explain."
+        }
+      ],
+      "modelAnswer": "(a) $A = A_0\\left(\\frac12\\right)^{\\frac th}$: ${{A1:3}} = {{A0}}\\left(\\frac12\\right)^{\\frac{ {{t}} }{h}}$, so ${{r}} = 0.5^{\\frac{ {{t}} }{h}}$.\n\n$\\log {{r}} = \\frac{ {{t}} }{h}\\log 0.5 \\Rightarrow h = \\frac{ {{t}}\\log 0.5}{\\log {{r}} } \\approx {{hl:3}}$ min.\n\n(b) {{p}}% remains: $\\frac{ {{p}} }{100} = 0.5^{\\frac{t}{ {{hl:3}} }}$, so $t = \\frac{ {{hl:3}}\\log({{p/100}})}{\\log 0.5} \\approx {{hl*log(p/100)/log(0.5):3}}$ min.\n\n(c) No. The time depends only on the **fraction** remaining ($A/A_0$); $A_0$ cancels when you divide both sides by it.",
+      "rubric": [
+        {
+          "point": "Substitutes into the half-life model",
+          "marks": 1
+        },
+        {
+          "point": "Isolates the power and takes logarithms",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-life",
+          "marks": 1
+        },
+        {
+          "point": "Sets up (b) with the fraction remaining",
+          "marks": 1
+        },
+        {
+          "point": "Correct time in (b)",
+          "marks": 1
+        },
+        {
+          "point": "Explains that A0 cancels",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "A0": {
+          "min": 20,
+          "max": 80,
+          "step": 10
+        },
+        "s": {
+          "choices": [
+            60,
+            90,
+            120,
+            150,
+            180
+          ]
+        }
+      },
+      "text": "Polonium-218 decays according to $A(t) = A_0\\left(\\frac12\\right)^{\\frac{t}{3.1}}$, where $t$ is in minutes. A sample starts at {{A0}} mg.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How much remains after {{s}} s?",
+          "answer": {
+            "expr": "A0*0.5^((s/60)/3.1)",
+            "unit": "mg",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until 10% of the sample remains?",
+          "answer": {
+            "expr": "3.1*log(0.1)/log(0.5)",
+            "unit": "min",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) {{s}} s $= {{s/60:3}}$ min: $A = {{A0}}(0.5)^{\\frac{ {{s/60:3}} }{3.1}} \\approx {{A0*0.5^((s/60)/3.1):3}}$ mg.\n\n(b) 10% remaining: $0.1 = 0.5^{\\frac t{3.1}}$, so $t = \\frac{3.1\\log 0.1}{\\log 0.5} \\approx 10.3$ min.",
+      "rubric": [
+        {
+          "point": "Converts seconds to minutes",
+          "marks": 1
+        },
+        {
+          "point": "Correct amount in (a)",
+          "marks": 1
+        },
+        {
+          "point": "Sets up 0.1 = 0.5^(t/3.1)",
+          "marks": 1
+        },
+        {
+          "point": "Correct time in (b)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "c": {
+          "choices": [
+            5,
+            7
+          ]
+        }
+      },
+      "text": "Solve ${{b}}^x = {{c}}^{x-1}$. Leave your answer in exact form, then give a decimal approximation to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Decimal approximation of $x$.",
+          "answer": {
+            "expr": "log(c)/(log(c)-log(b))",
+            "unit": "",
+            "sig": 4,
+            "tol": 0.003
+          }
+        }
+      ],
+      "modelAnswer": "Take logarithms: $x\\log {{b}} = (x-1)\\log {{c}}$.\n\nExpand: $x\\log {{b}} = x\\log {{c}} - \\log {{c}}$.\n\nCollect: $x\\log {{c}} - x\\log {{b}} = \\log {{c}}$, so $x(\\log {{c}} - \\log {{b}}) = \\log {{c}}$.\n\nExact: $x = \\dfrac{\\log {{c}} }{\\log {{c}} - \\log {{b}} }$. Decimal: $x \\approx {{log(c)/(log(c)-log(b)):4}}$.",
+      "rubric": [
+        {
+          "point": "Takes logarithms and applies the power law",
+          "marks": 1
+        },
+        {
+          "point": "Expands and collects x-terms",
+          "marks": 1
+        },
+        {
+          "point": "Factors out x",
+          "marks": 1
+        },
+        {
+          "point": "Exact answer",
+          "marks": 1
+        },
+        {
+          "point": "Decimal approximation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        },
+        "c": {
+          "choices": [
+            2,
+            3
+          ]
+        }
+      },
+      "text": "Solve ${{a}}^{2x-1} = {{c}}^{x+2}$ algebraically. Give an exact expression for $x$ and an approximation to two decimal places. Then describe how you would verify the root with graphing technology.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Decimal value of $x$.",
+          "answer": {
+            "expr": "(2*log(c)+log(a))/(2*log(a)-log(c))",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$(2x-1)\\log {{a}} = (x+2)\\log {{c}}$\n\n$2x\\log {{a}} - \\log {{a}} = x\\log {{c}} + 2\\log {{c}}$\n\n$x(2\\log {{a}} - \\log {{c}}) = 2\\log {{c}} + \\log {{a}}$\n\n$$x = \\frac{2\\log {{c}} + \\log {{a}} }{2\\log {{a}} - \\log {{c}} } \\approx {{(2*log(c)+log(a))/(2*log(a)-log(c)):4}}$$\n\nVerify: graph $y_1 = {{a}}^{2x-1}$ and $y_2 = {{c}}^{x+2}$ and use *Intersect*; the x-coordinate should be about {{(2*log(c)+log(a))/(2*log(a)-log(c)):3}}.",
+      "rubric": [
+        {
+          "point": "Takes logarithms and applies the power law to both sides",
+          "marks": 1
+        },
+        {
+          "point": "Expands using the distributive property",
+          "marks": 1
+        },
+        {
+          "point": "Collects x-terms and factors",
+          "marks": 1
+        },
+        {
+          "point": "Correct exact and decimal answers",
+          "marks": 1
+        },
+        {
+          "point": "Describes a graphical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "k": {
+          "choices": [
+            1,
+            2
+          ]
+        },
+        "p": {
+          "min": 11,
+          "max": 15,
+          "step": 1
+        }
+      },
+      "derived": {
+        "q": "b^k"
+      },
+      "text": "Consider the equation ${{b}}^{2x} + {{p-q}}({{b}}^x) - {{p*q}} = 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the equation in the form $az^2 + bz + c = 0$ where $z = {{b}}^x$, and identify $a$, $b$ and $c$."
+        },
+        {
+          "label": "b",
+          "text": "Solve for $z$."
+        },
+        {
+          "label": "c",
+          "text": "Solve for $x$ and identify any extraneous roots.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "(a) Let $z = {{b}}^x$: $z^2 + {{p-q}}z - {{p*q}} = 0$, with $a = 1$, $b = {{p-q}}$, $c = -{{p*q}}$.\n\n(b) Factor: $(z + {{p}})(z - {{q}}) = 0$, so $z = -{{p}}$ or $z = {{q}}$.\n\n(c) ${{b}}^x = {{q}} = {{b}}^{ {{k}} }$ gives $x = {{k}}$. ${{b}}^x = -{{p}}$ is impossible because ${{b}}^x > 0$; this root is extraneous.",
+      "rubric": [
+        {
+          "point": "Rewrites the equation as a quadratic in z = b^x and identifies coefficients",
+          "marks": 1
+        },
+        {
+          "point": "Solves the quadratic correctly",
+          "marks": 1
+        },
+        {
+          "point": "Converts the valid z back to x",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the negative z with a reason",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q07",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "b": {
+          "choices": [
+            2,
+            3,
+            5,
+            8
+          ]
+        },
+        "c": {
+          "min": 1,
+          "max": 4,
+          "step": 1
+        },
+        "d": {
+          "min": 2,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Solve ${{b}}^{2x} - {{c}}({{b}}^x) - {{d}} = 0$. Identify any extraneous roots and give the solution correct to three decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "log((c+sqrt(c*c+4*d))/2)/log(b)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Let $z = {{b}}^x$: $z^2 - {{c}}z - {{d}} = 0$. This does not factor nicely, so use the quadratic formula:\n\n$$z = \\frac{ {{c}} \\pm\\sqrt{ {{c*c}} + {{4*d}} } }{2} = \\frac{ {{c}}\\pm\\sqrt{ {{c*c+4*d}} } }{2}$$\n\n$z_1 \\approx {{(c+sqrt(c*c+4*d))/2:4}}$ and $z_2 \\approx {{(c-sqrt(c*c+4*d))/2:4}}$.\n\n$z_2 < 0$, and ${{b}}^x$ is always positive, so $z_2$ is extraneous.\n\n${{b}}^x = {{(c+sqrt(c*c+4*d))/2:4}} \\Rightarrow x = \\frac{\\log {{(c+sqrt(c*c+4*d))/2:4}} }{\\log {{b}} } \\approx {{log((c+sqrt(c*c+4*d))/2)/log(b):4}}$",
+      "rubric": [
+        {
+          "point": "Substitutes z = b^x to obtain a quadratic",
+          "marks": 1
+        },
+        {
+          "point": "Applies the quadratic formula correctly",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the negative root with a reason",
+          "marks": 1
+        },
+        {
+          "point": "Solves b^x = z1 using logarithms",
+          "marks": 1
+        },
+        {
+          "point": "Correct final answer",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q08",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve $2^x - 2^{-x} = {{k}}$ algebraically. Explain why the equation has exactly one solution.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "log((k+sqrt(k*k+4))/2)/log(2)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Multiply both sides by $2^x$: $2^{2x} - 1 = {{k}}(2^x)$. Let $z = 2^x$:\n\n$$z^2 - {{k}}z - 1 = 0 \\;\\Rightarrow\\; z = \\frac{ {{k}}\\pm\\sqrt{ {{k*k+4}} } }{2}$$\n\nSince $\\sqrt{ {{k*k+4}} } > {{k}}$, the root with the minus sign is negative and is extraneous ($2^x > 0$).\n\n$2^x = \\frac{ {{k}}+\\sqrt{ {{k*k+4}} } }{2} \\approx {{(k+sqrt(k*k+4))/2:4}}$, so $x = \\frac{\\log {{(k+sqrt(k*k+4))/2:4}} }{\\log 2} \\approx {{log((k+sqrt(k*k+4))/2)/log(2):4}}$.\n\nExactly one solution: only one value of $z$ is positive, and $2^x = z$ has exactly one solution for each positive $z$.",
+      "rubric": [
+        {
+          "point": "Multiplies by 2^x and simplifies 2^x · 2^(−x) = 1",
+          "marks": 1
+        },
+        {
+          "point": "Writes a quadratic in z",
+          "marks": 1
+        },
+        {
+          "point": "Applies the quadratic formula",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the negative root",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of x",
+          "marks": 1
+        },
+        {
+          "point": "Explains why there is exactly one solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q09",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "s": {
+          "choices": [
+            5,
+            6,
+            8,
+            10
+          ]
+        },
+        "t": {
+          "choices": [
+            2,
+            3
+          ]
+        }
+      },
+      "text": "Solve $4^x = {{s-t}} + {{s*t}}(4^{-x})$. Check for extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $x$.",
+          "answer": {
+            "expr": "log(s)/log(4)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Multiply both sides by $4^x$: $4^{2x} = {{s-t}}(4^x) + {{s*t}}$.\n\nLet $z = 4^x$: $z^2 - {{s-t}}z - {{s*t}} = 0$, so $(z - {{s}})(z + {{t}}) = 0$.\n\n$z = -{{t}}$ is extraneous because $4^x > 0$.\n\n$4^x = {{s}} \\Rightarrow x = \\frac{\\log {{s}} }{\\log 4} \\approx {{log(s)/log(4):4}}$.\n\nCheck: $4^{ {{log(s)/log(4):4}} } \\approx {{s}}$ and ${{s-t}} + {{s*t}}\\cdot\\frac{1}{ {{s}} } = {{s-t}} + {{t}} = {{s}}$ ✓.",
+      "rubric": [
+        {
+          "point": "Multiplies by 4^x to clear the negative exponent",
+          "marks": 1
+        },
+        {
+          "point": "Writes and factors the quadratic in z",
+          "marks": 1
+        },
+        {
+          "point": "Rejects the negative root",
+          "marks": 1
+        },
+        {
+          "point": "Correct x",
+          "marks": 1
+        },
+        {
+          "point": "Checks in the original equation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q10",
+      "type": "conceptual",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Does the equation $4^{2x} + {{p}}(4^x) + {{q}} = 0$ have any real solutions? Justify your answer in **two different ways**.",
+      "modelAnswer": "No real solutions.\n\n**Method 1 (signs):** $4^{2x} > 0$ and ${{p}}(4^x) > 0$ for all real $x$, and ${{q}} > 0$, so the left side is always greater than {{q}} and can never equal 0.\n\n**Method 2 (quadratic form):** with $z = 4^x$, $z^2 + {{p}}z + {{q}} = 0$. Its roots (if real) are both negative because their sum $-{{p}}$ is negative and their product ${{q}}$ is positive — and $4^x$ can never be negative. (If the discriminant ${{p*p-4*q}}$ is negative, there are no real $z$ at all.)\n\nA graph of $y = 4^{2x} + {{p}}(4^x) + {{q}}$ lies entirely above the x-axis.",
+      "rubric": [
+        {
+          "point": "States there are no real solutions",
+          "marks": 1
+        },
+        {
+          "point": "First justification (signs of the terms or a graph)",
+          "marks": 2
+        },
+        {
+          "point": "Second justification (quadratic in z with negative or non-real roots)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "7-2-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "V0": {
+          "min": 18000,
+          "max": 40000,
+          "step": 2000
+        },
+        "h": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "A car bought for {{V0}} dollars has value $V(t) = {{V0}}\\left(\\frac12\\right)^{\\frac{t}{ {{h}} }}$ after $t$ years.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long until it is worth one quarter of its purchase price?",
+          "answer": {
+            "expr": "2*h",
+            "unit": "years",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until it is worth 10% of its purchase price?",
+          "answer": {
+            "expr": "h*log(0.1)/log(0.5)",
+            "unit": "years",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain what the number {{h}} means in this model."
+        }
+      ],
+      "modelAnswer": "(a) One quarter remains: $\\frac14 = \\left(\\frac12\\right)^{\\frac t{ {{h}} }}$. Since $\\frac14 = \\left(\\frac12\\right)^2$, $\\frac{t}{ {{h}} } = 2$ and $t = {{2*h}}$ years.\n\n(b) $0.1 = 0.5^{\\frac t{ {{h}} }} \\Rightarrow t = \\frac{ {{h}}\\log 0.1}{\\log 0.5} \\approx {{h*log(0.1)/log(0.5):3}}$ years.\n\n(c) Each half-life the value halves; after $t = {{h}}$ years the car is worth {{V0/2}} dollars. The value approaches 0 but never reaches it.",
+      "rubric": [
+        {
+          "point": "(a) uses a common base or logarithms correctly",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct time",
+          "marks": 1
+        },
+        {
+          "point": "(b) sets up and isolates the power",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct time",
+          "marks": 1
+        },
+        {
+          "point": "(c) interprets the half-life in context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q12",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "choices": [
+            0.2,
+            0.3,
+            0.4,
+            0.5
+          ]
+        }
+      },
+      "text": "The probability, $P$ (as a decimal), that a person will respond to a TV advertisement is modelled by $P(n) = 1 - 2^{-0.05n}$, where $n$ is the number of days since the ad began. After how many days is the probability greater than {{100*p:2}}%?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $n$ where $P$ equals the target (two decimal places).",
+          "answer": {
+            "expr": "-log(1-p)/(0.05*log(2))",
+            "unit": "days",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Solve $1 - 2^{-0.05n} = {{p}}$: $2^{-0.05n} = {{1-p:2}}$.\n\n$-0.05n\\log 2 = \\log {{1-p:2}}$, so $n = \\frac{\\log {{1-p:2}} }{-0.05\\log 2} \\approx {{-log(1-p)/(0.05*log(2)):3}}$.\n\nAs $n$ increases, $2^{-0.05n}$ decreases, so $P$ increases. The probability is greater than {{100*p:2}}% after about {{-log(1-p)/(0.05*log(2)):3}} days, i.e. from day {{ceil(-log(1-p)/(0.05*log(2)))}} onward.",
+      "rubric": [
+        {
+          "point": "Sets P equal to the target and isolates the power",
+          "marks": 1
+        },
+        {
+          "point": "Takes logarithms and applies the power law",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of n",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the inequality and gives a whole-day answer",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "h": {
+          "min": 8,
+          "max": 16,
+          "step": 1
+        }
+      },
+      "text": "**Chapter problem.** A guitar holds a note according to $I(t) = I_0\\left(\\frac12\\right)^{\\frac{t}{ {{h}} }}$, where $I$ is the intensity after $t$ seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How long until the intensity is half its initial value?",
+          "answer": {
+            "expr": "h",
+            "unit": "s",
+            "sig": 2
+          }
+        },
+        {
+          "label": "b",
+          "text": "How long until it is 10% of its initial value?",
+          "answer": {
+            "expr": "h*log(0.1)/log(0.5)",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "If the guitar's sustain is improved, how would the equation and the graph change?"
+        }
+      ],
+      "modelAnswer": "(a) Half: $t = {{h}}$ s, since $\\left(\\frac12\\right)^1 = \\frac12$.\n\n(b) $0.1 = 0.5^{\\frac t{ {{h}} }} \\Rightarrow t = \\frac{ {{h}}\\log 0.1}{\\log 0.5} \\approx {{h*log(0.1)/log(0.5):3}}$ s.\n\n(c) Better sustain means the note lasts longer, so the half-life ({{h}} in the equation) increases. The graph still starts at $I_0$ but decays more slowly — it is stretched horizontally away from the vertical axis.",
+      "rubric": [
+        {
+          "point": "(a) correct with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct set-up",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct time",
+          "marks": 1
+        },
+        {
+          "point": "(c) explains the change to the equation",
+          "marks": 1
+        },
+        {
+          "point": "(c) explains the change to the graph",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q14",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "A": {
+          "choices": [
+            40,
+            50,
+            60
+          ]
+        },
+        "B": {
+          "choices": [
+            10,
+            20,
+            30
+          ]
+        },
+        "D": {
+          "choices": [
+            5,
+            6,
+            7
+          ]
+        }
+      },
+      "text": "A video is posted online. {{A}} people see it on the first day, and the number of viewers doubles each day: $N_1 = {{A}}(2)^t$. {{D}} days later a second video revealing the first as a hoax is posted; {{B}} people see it on its first day, and this number triples each day: $N_2 = {{B}}(3)^{t-{{D}}}$, where $t$ is days after the first video was posted.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solve for $t$.",
+          "answer": {
+            "expr": "(log(A)-log(B)+D*log(3))/(log(3)-log(2))",
+            "unit": "days",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "What does your solution mean?"
+        },
+        {
+          "label": "c",
+          "text": "How could you check your answer with graphing technology?"
+        }
+      ],
+      "modelAnswer": "(a) ${{A}}(2)^t = {{B}}(3)^{t-{{D}}}$.\n\n$\\log {{A}} + t\\log 2 = \\log {{B}} + (t-{{D}})\\log 3$\n\n$t(\\log 3 - \\log 2) = \\log {{A}} - \\log {{B}} + {{D}}\\log 3$\n\n$$t = \\frac{\\log {{A}} - \\log {{B}} + {{D}}\\log 3}{\\log 3 - \\log 2} \\approx {{(log(A)-log(B)+D*log(3))/(log(3)-log(2)):3}}$$\n\n(b) About {{(log(A)-log(B)+D*log(3))/(log(3)-log(2)):3}} days after the first video appears, both videos are seen by the same number of people on that day; after that, the debunking video reaches more viewers per day.\n\n(c) Graph $y_1 = {{A}}(2)^x$ and $y_2 = {{B}}(3)^{x-{{D}}}$; the intersection's x-coordinate should match.",
+      "rubric": [
+        {
+          "point": "Sets the two models equal",
+          "marks": 1
+        },
+        {
+          "point": "Takes logarithms and applies product and power laws",
+          "marks": 1
+        },
+        {
+          "point": "Collects and factors t correctly",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of t",
+          "marks": 1
+        },
+        {
+          "point": "Interprets the solution in context",
+          "marks": 1
+        },
+        {
+          "point": "Describes a graphical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p": {
+          "choices": [
+            50,
+            75,
+            90,
+            99
+          ]
+        }
+      },
+      "text": "Platinum-197 undergoes beta decay to become stable gold-197. Its half-life is 20 h. How long would it take to turn {{p}}% of a 1-kg sample of platinum-197 into gold? Do you think this is a viable get-rich-quick scheme? Explain.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Time required.",
+          "answer": {
+            "expr": "20*log((100-p)/100)/log(0.5)",
+            "unit": "h",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "If {{p}}% becomes gold, {{100-p}}% of the platinum remains: $\\frac{ {{100-p}} }{100} = 0.5^{\\frac t{20}}$.\n\n$t = \\frac{20\\log({{(100-p)/100}})}{\\log 0.5} \\approx {{20*log((100-p)/100)/log(0.5):3}}$ h.\n\nNot viable: platinum is itself extremely valuable (and platinum-197 is not found in nature — it must be produced in a nuclear reactor at great cost), so turning it into gold gains little or nothing. Any sensible economic or practical argument is acceptable.",
+      "rubric": [
+        {
+          "point": "Recognises that the remaining fraction is 1 − p/100",
+          "marks": 1
+        },
+        {
+          "point": "Correct equation and use of logarithms",
+          "marks": 1
+        },
+        {
+          "point": "Correct time",
+          "marks": 1
+        },
+        {
+          "point": "Reasoned judgement about viability",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q16",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "The steps of the solution to $5^{3x} = 4^{x+1}$ are given below **out of order**.\n\n* $x(3\\log5 - \\log4) = \\log4$\n* $5^{3x} = 4^{x+1}$\n* $3x\\log5 - x\\log4 = \\log4$\n* $\\log5^{3x} = \\log4^{x+1}$\n* $3x\\log5 = (x+1)\\log4$\n* $3x\\log5 = x\\log4 + \\log4$\n* $x = \\dfrac{\\log4}{3\\log5 - \\log4}$\n\nRewrite the solution in the correct order, write a brief explanation beside each step, and evaluate $x$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $x$.",
+          "answer": {
+            "expr": "log(4)/(3*log(5)-log(4))",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "1. $5^{3x} = 4^{x+1}$ — given.\\n2. $\\log5^{3x} = \\log4^{x+1}$ — take the common logarithm of both sides.\\n3. $3x\\log5 = (x+1)\\log4$ — power law of logarithms.\\n4. $3x\\log5 = x\\log4 + \\log4$ — distributive property.\\n5. $3x\\log5 - x\\log4 = \\log4$ — collect the x-terms on one side.\\n6. $x(3\\log5 - \\log4) = \\log4$ — factor out $x$.\\n7. $x = \\dfrac{\\log4}{3\\log5 - \\log4} \\approx 0.274$ — divide.",
+      "rubric": [
+        {
+          "point": "Correct order of all steps",
+          "marks": 2
+        },
+        {
+          "point": "Correct justification for each step",
+          "marks": 2
+        },
+        {
+          "point": "Correct value of x",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q17",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Answer each question about extraneous roots.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is an extraneous root?"
+        },
+        {
+          "label": "b",
+          "text": "How can extraneous roots be identified?"
+        },
+        {
+          "label": "c",
+          "text": "Give an example of an extraneous root for an exponential equation."
+        },
+        {
+          "label": "d",
+          "text": "Why can solving an exponential equation in quadratic form produce extraneous roots?"
+        }
+      ],
+      "modelAnswer": "(a) An extraneous root is a value produced by the solving process that does not satisfy the original equation.\n\n(b) Substitute each root into the original equation, check whether any expression would require a positive power to be negative or zero, or graph both sides and count intersections.\n\n(c) Example: $2^{2x} + 2^x - 6 = 0$ gives $(2^x + 3)(2^x - 2) = 0$. The root from $2^x = -3$ is extraneous because $2^x > 0$.\n\n(d) Multiplying both sides by an expression containing the variable (such as $2^x$) or substituting $z = b^x$ creates an equation whose solutions are not all allowed in the original. Every root must therefore be checked.",
+      "rubric": [
+        {
+          "point": "(a) correct definition",
+          "marks": 1
+        },
+        {
+          "point": "(b) describes a valid checking method",
+          "marks": 1
+        },
+        {
+          "point": "(c) gives a correct exponential example",
+          "marks": 2
+        },
+        {
+          "point": "(d) explains how extraneous roots arise",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q18",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Refer to the radioactive decay equation $A(t) = A_0\\left(\\frac12\\right)^{\\frac th}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Why does the equation contain the factor $\\frac12$?"
+        },
+        {
+          "label": "b",
+          "text": "What does the exponent $\\frac th$ represent?"
+        },
+        {
+          "label": "c",
+          "text": "What fraction of the sample remains after three half-lives?"
+        },
+        {
+          "label": "d",
+          "text": "Write a similar model for a quantity that doubles every $d$ hours."
+        }
+      ],
+      "modelAnswer": "(a) The factor $\\frac12$ appears because the definition of half-life is the time for the amount to become **half** of what it was.\n\n(b) $\\frac th$ counts how many half-lives have passed. At $t = h$ the exponent is 1 and $A = \\frac12A_0$; at $t = 2h$ it is 2 and $A = \\frac14A_0$.\n\n(c) At $t = 3h$, $A = \\frac18 A_0 = 12.5\\%$ of $A_0$.\n\n(d) For a quantity that doubles every $d$ units of time, $N(t) = N_0(2)^{\\frac td}$.",
+      "rubric": [
+        {
+          "point": "(a) explains the 1/2",
+          "marks": 1
+        },
+        {
+          "point": "(b) explains t/h as the number of half-lives",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct fraction after three half-lives",
+          "marks": 1
+        },
+        {
+          "point": "(d) writes a doubling model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "If $4^x - 4^{x-1} = 24$, determine the value of $(2x)^x$. Show every step and explain your reasoning.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Value of $(2x)^x$ (decimal).",
+          "answer": {
+            "expr": "25*sqrt(5)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Factor out $4^{x-1}$: $4^{x-1}(4 - 1) = 24$, so $4^{x-1} = 8$.\n\nUse base 2: $2^{2x-2} = 2^3$, so $2x - 2 = 3$ and $x = \\frac52$.\n\nThen $(2x)^x = 5^{\\frac52} = 5^2\\sqrt5 = 25\\sqrt5 \\approx 55.9$.",
+      "rubric": [
+        {
+          "point": "Factors out 4^(x−1)",
+          "marks": 1
+        },
+        {
+          "point": "Solves 4^(x−1) = 8 using a common base",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of x",
+          "marks": 1
+        },
+        {
+          "point": "Correct value of (2x)^x in exact form",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "7-2-q20",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "m0": {
+          "choices": [
+            10,
+            20,
+            40
+          ]
+        },
+        "r": {
+          "choices": [
+            0.85,
+            0.9,
+            0.95
+          ]
+        }
+      },
+      "derived": {
+        "m1": "m0*r"
+      },
+      "text": "A {{m0}}-mg sample of bismuth-214 decays to {{m1}} mg in 3 min.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the half-life of bismuth-214.",
+          "answer": {
+            "expr": "3*log(0.5)/log(r)",
+            "unit": "min",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the function for the amount remaining and describe its graph."
+        },
+        {
+          "label": "c",
+          "text": "How would the graph change if the half-life were shorter? Longer?"
+        },
+        {
+          "label": "d",
+          "text": "How would the graph change if the initial sample were greater? Less?"
+        }
+      ],
+      "modelAnswer": "(a) ${{m1/m0:3}} = 0.5^{\\frac3h} \\Rightarrow h = \\frac{3\\log0.5}{\\log {{m1/m0:3}} } \\approx {{3*log(0.5)/log(m1/m0):3}}$ min.\n\n(b) $A(t) = {{m0}}\\left(\\frac12\\right)^{\\frac{t}{ {{3*log(0.5)/log(m1/m0):3}} }}$: it starts at (0, {{m0}}), halves every {{3*log(0.5)/log(m1/m0):3}} min, and approaches the horizontal asymptote $A = 0$.\n\n(c) A shorter half-life makes the graph fall more steeply; a longer half-life makes it fall more gently. (The decay is faster or slower.)\n\n(d) A larger initial sample stretches the graph vertically (higher A-intercept); a smaller sample compresses it. The half-life is unchanged.",
+      "rubric": [
+        {
+          "point": "Correct half-life",
+          "marks": 2
+        },
+        {
+          "point": "Writes the decay function and describes its key features",
+          "marks": 1
+        },
+        {
+          "point": "Explains the effect of a shorter and a longer half-life",
+          "marks": 1
+        },
+        {
+          "point": "Explains the effect of a larger and a smaller initial sample",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

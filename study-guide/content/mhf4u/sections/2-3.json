@@ -1,0 +1,930 @@
+{
+  "id": "2-3",
+  "number": "2.3",
+  "title": "Polynomial Equations",
+  "estimatedMinutes": 75,
+  "overview": "A polynomial **equation** asks: for which values of $x$ is $P(x) = 0$? In this section you will connect the roots of an equation to the zeros of a function and the $x$-intercepts of its graph. You will solve equations by factoring, use the quadratic formula when a factor won't factor, approximate roots from a graph when nothing factors, and solve real problems such as finding the dimensions of a box.",
+  "objectives": [
+    "Explain the relationship between roots, zeros and $x$-intercepts.",
+    "Solve polynomial equations by factoring, using the factor theorem, grouping and special patterns.",
+    "Use the quadratic formula and the discriminant for quadratic factors.",
+    "Determine real and non-real roots, and the number of $x$-intercepts.",
+    "Approximate roots of non-factorable equations using a graph or sign changes.",
+    "Write and solve polynomial equations to solve problems."
+  ],
+  "lessons": [
+    {
+      "id": "roots-zeros-intercepts",
+      "title": "Roots, zeros and x-intercepts: three views of one idea",
+      "body": "These three words describe the same numbers from three different points of view:\n\n| Word | Belongs to | Meaning | Example for $x^3 - x^2 - 6x$ |\n|---|---|---|---|\n| **root** | the equation $P(x) = 0$ | a solution of the equation | roots of $x^3 - x^2 - 6x = 0$ are $-2, 0, 3$ |\n| **zero** | the function $P(x)$ | an input that gives output $0$ | $P(-2) = P(0) = P(3) = 0$ |\n| **$x$-intercept** | the graph $y = P(x)$ | where the graph meets the $x$-axis | $(-2, 0)$, $(0, 0)$, $(3, 0)$ |\n\n```plot\ntitle: The real roots of P(x) = 0 are the x-intercepts of y = P(x)\nf: x^3 - x^2 - 6*x | label=y = x³ − x² − 6x\ndomain: -3, 4\nrange: -12, 12\nticks: 1, 2\npoints: (-2,0), (0,0), (3,0)\n```\n\n**Important:** only **real** roots appear as $x$-intercepts. An equation like $x^2 + 4 = 0$ has no real roots, so the graph of $y = x^2 + 4$ never touches the $x$-axis.\n\nA polynomial equation of degree $n$ has **at most $n$ real roots**, so its graph has at most $n$ $x$-intercepts. A repeated root (such as $(x - 2)^2 = 0$) gives one $x$-intercept where the graph touches the axis."
+    },
+    {
+      "id": "solve-by-factoring",
+      "title": "Solving by factoring",
+      "body": "The key fact is the **zero product property**: if $ab = 0$, then $a = 0$ or $b = 0$. So once a polynomial is factored, set each factor equal to zero.\n\n**Steps**\n\n1. Rearrange so one side is $0$: $P(x) = 0$.\n2. Factor completely — common factor first, then grouping, special patterns, or the factor theorem.\n3. Set each factor equal to $0$ and solve.\n4. Check (substitute, or look at a graph).\n\n**Example:** solve $x^3 + 2x^2 - 5x - 6 = 0$.\n\n$P(-1) = -1 + 2 + 5 - 6 = 0$, so $x + 1$ is a factor. Dividing gives $(x + 1)(x^2 + x - 6) = (x + 1)(x + 3)(x - 2) = 0$.\n\n$$x = -1,\\quad x = -3,\\quad x = 2$$\n\n**Example with a common factor:** $2x^4 - 18x^2 = 0 \\Rightarrow 2x^2(x^2 - 9) = 0 \\Rightarrow 2x^2(x - 3)(x + 3) = 0$, so $x = 0$ (a double root), $x = 3$ or $x = -3$.\n\n> **Never divide both sides by $x$** to \"simplify\" — you would lose the root $x = 0$. Factor it out instead."
+    },
+    {
+      "id": "quadratic-formula",
+      "title": "When the last factor won't factor: the quadratic formula",
+      "body": "After dividing, you may be left with a quadratic that does not factor nicely. Use the **quadratic formula**:\n\n$$ax^2 + bx + c = 0 \\;\\Rightarrow\\; x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$\n\nThe **discriminant** $b^2 - 4ac$ tells you how many real roots the quadratic has:\n\n| $b^2 - 4ac$ | Real roots of the quadratic |\n|---|---|\n| $> 0$ | two distinct |\n| $= 0$ | one (repeated) |\n| $< 0$ | none |\n\n**Example:** solve $x^3 - 4x^2 + 8 = 0$.\n\n$P(2) = 8 - 16 + 8 = 0$, so $x - 2$ is a factor. Dividing: $(x - 2)(x^2 - 2x - 4) = 0$.\n\n$x^2 - 2x - 4 = 0 \\Rightarrow x = \\dfrac{2 \\pm \\sqrt{4 + 16}}{2} = 1 \\pm \\sqrt5$\n\nRoots: $x = 2$, $x = 1 + \\sqrt5 \\approx 3.24$, $x = 1 - \\sqrt5 \\approx -1.24$.\n\n**Example with non-real roots:** $(x^2 + 5)(x - 2) = 0$. The factor $x^2 + 5 = 0$ gives $x^2 = -5$, which has no real solution. The only real root is $x = 2$."
+    },
+    {
+      "id": "technology",
+      "title": "Equations that don't factor: using a graph",
+      "body": "Many equations cannot be factored over the integers — for example $x^3 - 4x + 1 = 0$. Testing $\\pm1$ gives $P(1) = -2$ and $P(-1) = 4$, neither $0$, so there is no rational root.\n\nYou can still find the roots **approximately** from the graph of $y = x^3 - 4x + 1$:\n\n```plot\ntitle: y = x³ − 4x + 1 crosses the x-axis three times\nf: x^3 - 4*x + 1\ndomain: -3, 3\nrange: -8, 8\nticks: 0.5, 2\npoints: (-2.115, 0), (0.254, 0), (1.861, 0)\n```\n\n* On a graphing calculator, use the **zero** (root) operation near each crossing.\n* Without a calculator, use **sign changes**: $P(0) = 1 > 0$ and $P(1) = -2 < 0$, so a root lies between $0$ and $1$. Narrow it down: $P(0.2) = 0.208$, $P(0.3) = -0.173$, so the root is between $0.2$ and $0.3$ — about $0.3$ to one decimal place.\n\nThe three roots are approximately $-2.1$, $0.3$ and $1.9$.\n\n> You can also solve $P(x) = k$ by finding where $y = P(x)$ meets the horizontal line $y = k$, or by graphing $y = P(x) - k$ and finding its zeros."
+    },
+    {
+      "id": "applications",
+      "title": "Applications: setting up and solving an equation",
+      "body": "Word problems lead to polynomial equations when a **volume** or **area** is built from expressions.\n\n**Example:** a box has a width $2$ cm less than its length and a height $3$ cm more than its length. Its volume is $120$ cm³. Find the dimensions.\n\n1. Let the length be $l$. Then width $= l - 2$, height $= l + 3$.\n2. $V = l(l - 2)(l + 3) = 120 \\Rightarrow l^3 + l^2 - 6l - 120 = 0$.\n3. Test factors of $120$: $P(5) = 125 + 25 - 30 - 120 = 0$ ✓, so $l - 5$ is a factor.\n4. Divide: $(l - 5)(l^2 + 6l + 24) = 0$. The quadratic has discriminant $36 - 96 < 0$, so no other real roots.\n5. $l = 5$: the box is $5$ cm by $3$ cm by $8$ cm. Check: $5 \\times 3 \\times 8 = 120$ ✓\n\n> Always **check that your answer makes sense** in context — lengths must be positive, and every dimension (like $l - 2$) must be positive too."
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "polynomial equation",
+      "definition": "An equation of the form $P(x) = 0$ where $P(x)$ is a polynomial."
+    },
+    {
+      "term": "root",
+      "definition": "A solution of a polynomial equation."
+    },
+    {
+      "term": "zero",
+      "definition": "A value of $x$ for which $P(x) = 0$."
+    },
+    {
+      "term": "x-intercept",
+      "definition": "A point where a graph meets the $x$-axis; its $x$-coordinate is a real zero of the function."
+    },
+    {
+      "term": "zero product property",
+      "definition": "If $ab = 0$ then $a = 0$ or $b = 0$."
+    },
+    {
+      "term": "discriminant",
+      "definition": "$b^2 - 4ac$; its sign tells how many real roots a quadratic equation has."
+    },
+    {
+      "term": "non-real roots",
+      "definition": "Solutions that are not real numbers, such as those of $x^2 + 4 = 0$; they do not appear as $x$-intercepts."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Zero product property",
+      "latex": "ab = 0 \\Rightarrow a = 0 \\text{ or } b = 0",
+      "meaning": "Factor, then set each factor to zero."
+    },
+    {
+      "name": "Quadratic formula",
+      "latex": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+      "meaning": "For a quadratic factor that won't factor."
+    },
+    {
+      "name": "Number of real roots",
+      "latex": "\\text{degree } n \\Rightarrow \\text{at most } n \\text{ real roots}",
+      "meaning": "So at most $n$ $x$-intercepts."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Factor and solve",
+      "problem": "Solve $x^3 - 13x + 12 = 0$.",
+      "steps": [
+        "Test factors of $12$: $P(1) = 1 - 13 + 12 = 0$ ✓, so $x - 1$ is a factor.",
+        "Synthetic division with $1$ on $1, 0, -13, 12$: $1, 1, -12, \\mathbf{0}$, quotient $x^2 + x - 12$.",
+        "$x^2 + x - 12 = (x + 4)(x - 3)$, so $(x - 1)(x + 4)(x - 3) = 0$."
+      ],
+      "answer": "$x = 1$, $x = -4$, $x = 3$"
+    },
+    {
+      "title": "Grouping",
+      "problem": "Solve $32x^3 - 48x^2 - 98x + 147 = 0$.",
+      "steps": [
+        "Group: $16x^2(2x - 3) - 49(2x - 3) = 0$.",
+        "$(2x - 3)(16x^2 - 49) = 0 \\Rightarrow (2x - 3)(4x - 7)(4x + 7) = 0$.",
+        "Set each factor to zero."
+      ],
+      "answer": "$x = \\tfrac32$, $x = \\tfrac74$, $x = -\\tfrac74$"
+    },
+    {
+      "title": "A common factor of x",
+      "problem": "Solve $45x^4 - 27x^3 - 20x^2 + 12x = 0$.",
+      "steps": [
+        "Common factor: $x(45x^3 - 27x^2 - 20x + 12) = 0$.",
+        "Group the cubic: $9x^2(5x - 3) - 4(5x - 3) = (5x - 3)(9x^2 - 4)$.",
+        "$x(5x - 3)(3x - 2)(3x + 2) = 0$."
+      ],
+      "answer": "$x = 0, \\tfrac35, \\tfrac23, -\\tfrac23$"
+    },
+    {
+      "title": "Real roots only",
+      "problem": "Determine the real roots of $(x^2 - 2x + 3)(2x^2 - 50) = 0$.",
+      "steps": [
+        "$x^2 - 2x + 3 = 0$: discriminant $(-2)^2 - 4(1)(3) = -8 < 0$, so no real roots from this factor.",
+        "$2x^2 - 50 = 0 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm5$."
+      ],
+      "answer": "The real roots are $x = 5$ and $x = -5$."
+    },
+    {
+      "title": "A root that is irrational",
+      "problem": "Solve $x^3 - 4x^2 + 8 = 0$. Give exact answers and approximations to two decimal places.",
+      "steps": [
+        "$P(2) = 8 - 16 + 8 = 0$, so $x - 2$ is a factor.",
+        "Synthetic division with $2$ on $1, -4, 0, 8$: $1, -2, -4, \\mathbf{0}$, quotient $x^2 - 2x - 4$.",
+        "Quadratic formula: $x = \\dfrac{2 \\pm \\sqrt{(-2)^2 - 4(1)(-4)}}{2} = \\dfrac{2 \\pm \\sqrt{20}}{2} = 1 \\pm \\sqrt5$."
+      ],
+      "answer": "$x = 2$, $x = 1 + \\sqrt5 \\approx 3.24$, $x = 1 - \\sqrt5 \\approx -1.24$"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "$x^3 = 9x$, so divide both sides by $x$: $x^2 = 9$, $x = \\pm3$.",
+      "fact": "Dividing by $x$ loses the root $x = 0$. Write $x^3 - 9x = 0 \\Rightarrow x(x - 3)(x + 3) = 0$: roots $0, 3, -3$."
+    },
+    {
+      "myth": "Every root of a polynomial equation is an $x$-intercept.",
+      "fact": "Only **real** roots are $x$-intercepts. Non-real roots (e.g. from $x^2 + 4 = 0$) do not appear on the graph."
+    },
+    {
+      "myth": "A quartic equation always has four $x$-intercepts.",
+      "fact": "It has **at most** four. It may have 4, 3, 2, 1 or 0, depending on repeated and non-real roots."
+    },
+    {
+      "myth": "$(x - 2)(x + 5) = 6$ means $x - 2 = 6$ or $x + 5 = 6$.",
+      "fact": "The zero product property only works when the product equals **zero**. Expand and rearrange to $x^2 + 3x - 16 = 0$ first."
+    },
+    {
+      "myth": "If a polynomial won't factor, the equation has no solution.",
+      "fact": "It may still have real roots; find them with the quadratic formula or approximate them from a graph."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Designing packages",
+      "body": "Packaging designers set the volume formula equal to the required volume and solve the resulting cubic to find workable dimensions."
+    },
+    {
+      "title": "Break-even points",
+      "body": "A business's profit can be modelled by a polynomial. Solving $P(x) = 0$ gives the production levels where it breaks even."
+    },
+    {
+      "title": "Engineering tolerances",
+      "body": "Engineers often need roots of equations that can't be factored; graphing technology gives approximate answers that are accurate enough to build with."
+    },
+    {
+      "title": "Physics",
+      "body": "The time when a moving object is at a given height can be found by solving a polynomial equation in time $t$."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Solve $x(x - 2)(x + 5) = 0$.",
+      "hint": "Zero product property.",
+      "solution": "$x = 0, 2, -5$."
+    },
+    {
+      "question": "Solve $x^3 + 4x^2 + 5x + 2 = 0$.",
+      "hint": "Test $x = -1$.",
+      "solution": "$P(-1) = -1 + 4 - 5 + 2 = 0$. Dividing: $(x + 1)(x^2 + 3x + 2) = (x + 1)(x + 1)(x + 2)$. Roots $x = -1$ (double) and $x = -2$."
+    },
+    {
+      "question": "Find the real roots of $(x^2 - 121)(x^2 + 16) = 0$.",
+      "hint": "One factor gives no real roots.",
+      "solution": "$x^2 = 121 \\Rightarrow x = \\pm11$; $x^2 + 16 = 0$ has no real roots. Real roots: $\\pm11$."
+    },
+    {
+      "question": "Solve $(3x^2 - 27)(x^2 - 3x - 10) = 0$.",
+      "hint": "Factor each bracket.",
+      "solution": "$3(x - 3)(x + 3)(x - 5)(x + 2) = 0$: $x = 3, -3, 5, -2$."
+    },
+    {
+      "question": "Solve $2x^3 - 3x^2 - 11x + 6 = 0$.",
+      "hint": "Possible rational zeros include $\\pm\\frac12, \\pm\\frac32$.",
+      "solution": "$P(3) = 54 - 27 - 33 + 6 = 0$. Dividing: $(x - 3)(2x^2 + 3x - 2) = (x - 3)(2x - 1)(x + 2)$. Roots $3, \\tfrac12, -2$."
+    },
+    {
+      "question": "Without solving, explain how you know $x^3 + x + 1 = 0$ has a root between $-1$ and $0$.",
+      "hint": "Look for a sign change.",
+      "solution": "$P(-1) = -1 - 1 + 1 = -1 < 0$ and $P(0) = 1 > 0$. A polynomial graph is unbroken, so it must cross the $x$-axis between $-1$ and $0$."
+    },
+    {
+      "question": "The volume of a box is $V = x(x + 1)(x + 4)$ cm³. Find $x$ when $V = 84$.",
+      "hint": "Expand, set the expression equal to 84, and test factors of 84.",
+      "solution": "$x^3 + 5x^2 + 4x - 84 = 0$. $P(3) = 27 + 45 + 12 - 84 = 0$, so $x - 3$ is a factor: $(x - 3)(x^2 + 8x + 28) = 0$. The quadratic has discriminant $64 - 112 < 0$, so $x = 3$ cm is the only real root. The box is $3$ cm × $4$ cm × $7$ cm."
+    }
+  ],
+  "summary": [
+    "The real roots of $P(x) = 0$, the real zeros of $P(x)$, and the $x$-intercepts of $y = P(x)$ are the same numbers.",
+    "To solve by factoring: rearrange to $P(x) = 0$, factor completely, set each factor to zero.",
+    "Use the quadratic formula for a quadratic factor that doesn't factor; a negative discriminant means no real roots.",
+    "If an equation can't be factored, approximate its roots from a graph or with sign changes.",
+    "A degree-$n$ equation has at most $n$ real roots. In applications, keep only roots that make sense."
+  ],
+  "questions": [
+    {
+      "id": "2-3-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "c": {
+          "choices": [
+            1,
+            3,
+            5,
+            7
+          ]
+        }
+      },
+      "text": "Solve $(x - {{a}})(x + {{b}})(2x - {{c}}) = 0$ and explain the property you are using.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the root that comes from the factor $2x - {{c}}$.",
+          "answer": {
+            "expr": "c/2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "By the **zero product property**, if a product is $0$, at least one factor is $0$.\n\n$x - {{a}} = 0 \\Rightarrow x = {{a}}$\n\n$x + {{b}} = 0 \\Rightarrow x = -{{b}}$\n\n$2x - {{c}} = 0 \\Rightarrow x = {{c/2}}$\n\nThe roots are ${{a}}$, $-{{b}}$ and ${{c/2}}$.",
+      "rubric": [
+        {
+          "point": "States the zero product property",
+          "marks": 1
+        },
+        {
+          "point": "Correct roots from the first two factors",
+          "marks": 1
+        },
+        {
+          "point": "Correct root from $2x - c = 0$",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q02",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Determine the real roots of $(x^2 - {{a^2}})(x^2 + {{b}}) = 0$. Explain why the equation has fewer real roots than its degree.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How many real roots does the equation have?",
+          "answer": {
+            "expr": "2",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$x^2 - {{a^2}} = 0 \\Rightarrow x^2 = {{a^2}} \\Rightarrow x = \\pm{{a}}$.\n\n$x^2 + {{b}} = 0 \\Rightarrow x^2 = -{{b}}$. No real number squared is negative, so this factor gives **no real roots**.\n\nReal roots: $x = {{a}}$ and $x = -{{a}}$.\n\nThe equation has degree 4, so it could have up to four real roots, but the factor $x^2 + {{b}}$ contributes two **non-real** roots. These do not appear as $x$-intercepts: the graph of $y = (x^2 - {{a^2}})(x^2 + {{b}})$ crosses the $x$-axis only at $\\pm{{a}}$.",
+      "rubric": [
+        {
+          "point": "Correct real roots $\\pm a$",
+          "marks": 2
+        },
+        {
+          "point": "Explains why $x^2 + b = 0$ has no real roots",
+          "marks": 1
+        },
+        {
+          "point": "Explains that degree 4 allows at most 4 real roots and two are non-real",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 5,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c2": "q + r - 1",
+        "c1": "q*r - q - r",
+        "c0": "q*r"
+      },
+      "text": "Solve $x^3 + {{c2}}x^2 + {{c1}}x - {{c0}} = 0$ by factoring. Check one root.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the smallest root?",
+          "answer": {
+            "expr": "-r",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Test factors of ${{c0}}$: $P(1) = 1 + {{c2}} + {{c1}} - {{c0}} = 0$, so $x - 1$ is a factor.\n\nSynthetic division with $1$: $1, {{c2}}, {{c1}}, -{{c0}} \\to 1, {{q+r}}, {{q*r}}, \\mathbf{0}$.\n\n$(x - 1)(x^2 + {{q+r}}x + {{q*r}}) = 0$\n\n$(x - 1)(x + {{q}})(x + {{r}}) = 0$\n\nRoots: $x = 1$, $x = -{{q}}$, $x = -{{r}}$.\n\nCheck $x = -{{q}}$: $({{-q}})^3 + {{c2}}({{-q}})^2 + {{c1}}({{-q}}) - {{c0}} = {{-q^3}} + {{c2*q^2}} - {{c1*q}} - {{c0}} = 0$ ✓",
+      "rubric": [
+        {
+          "point": "Finds a zero with the factor theorem",
+          "marks": 1
+        },
+        {
+          "point": "Divides correctly",
+          "marks": 1
+        },
+        {
+          "point": "Factors the quotient",
+          "marks": 1
+        },
+        {
+          "point": "States all three roots",
+          "marks": 1
+        },
+        {
+          "point": "Checks a root",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 7,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve $x^3 + {{a}}x^2 - {{b^2}}x - {{a*b^2}} = 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the positive root.",
+          "answer": {
+            "expr": "b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Factor by grouping:\n\n$x^2(x + {{a}}) - {{b^2}}(x + {{a}}) = 0$\n\n$(x + {{a}})(x^2 - {{b^2}}) = 0$\n\n$(x + {{a}})(x - {{b}})(x + {{b}}) = 0$\n\nRoots: $x = -{{a}}$, $x = {{b}}$, $x = -{{b}}$.",
+      "rubric": [
+        {
+          "point": "Groups and factors correctly",
+          "marks": 2
+        },
+        {
+          "point": "Factors the difference of squares",
+          "marks": 1
+        },
+        {
+          "point": "States all roots",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "b": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Solve $x^4 - {{a^2 + b^2}}x^2 + {{a^2*b^2}} = 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the largest root.",
+          "answer": {
+            "expr": "b",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Treat it like a quadratic in $x^2$: two numbers that multiply to ${{a^2*b^2}}$ and add to ${{a^2 + b^2}}$ are ${{a^2}}$ and ${{b^2}}$.\n\n$(x^2 - {{a^2}})(x^2 - {{b^2}}) = 0$\n\n$(x - {{a}})(x + {{a}})(x - {{b}})(x + {{b}}) = 0$\n\nRoots: $x = \\pm{{a}}$ and $x = \\pm{{b}}$ — four real roots, the most a quartic can have.",
+      "rubric": [
+        {
+          "point": "Recognises the trinomial pattern in $x^2$",
+          "marks": 1
+        },
+        {
+          "point": "Factors into two quadratic factors",
+          "marks": 1
+        },
+        {
+          "point": "Factors each difference of squares",
+          "marks": 1
+        },
+        {
+          "point": "States all four roots",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $x^3 - 4x^2 + 8 = 0$. Give exact roots and approximations to two decimal places.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the largest root to two decimal places.",
+          "answer": {
+            "expr": "1 + sqrt(5)",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$P(2) = 8 - 16 + 8 = 0$, so $x - 2$ is a factor.\n\nSynthetic division with $2$ on $1, -4, 0, 8$ (placeholder for $x$): $1, -2, -4, \\mathbf{0}$.\n\n$(x - 2)(x^2 - 2x - 4) = 0$\n\nThe quadratic doesn't factor over the integers, so use the quadratic formula:\n\n$x = \\dfrac{2 \\pm \\sqrt{4 + 16}}{2} = \\dfrac{2 \\pm 2\\sqrt5}{2} = 1 \\pm \\sqrt5$\n\nRoots: $2$, $1 + \\sqrt5 \\approx 3.24$, $1 - \\sqrt5 \\approx -1.24$.",
+      "rubric": [
+        {
+          "point": "Finds the factor $x - 2$",
+          "marks": 1
+        },
+        {
+          "point": "Divides (with placeholder) to get $x^2 - 2x - 4$",
+          "marks": 1
+        },
+        {
+          "point": "Applies the quadratic formula correctly",
+          "marks": 2
+        },
+        {
+          "point": "Exact and approximate roots",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q07",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Consider the equation $x^3 - 4x + 1 = 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Explain why the equation cannot be solved by factoring over the integers."
+        },
+        {
+          "label": "b",
+          "text": "Use sign changes to find intervals of length 1 that contain the roots."
+        },
+        {
+          "label": "c",
+          "text": "Use a graph (or graphing technology) to find each root to one decimal place. Give the largest root.",
+          "answer": {
+            "expr": "1.861",
+            "unit": "",
+            "sig": 2,
+            "tol": 0.03
+          }
+        }
+      ],
+      "modelAnswer": "(a) The only possible rational roots are $\\pm1$ (factors of the constant $1$). $P(1) = 1 - 4 + 1 = -2$ and $P(-1) = -1 + 4 + 1 = 4$. Neither is $0$, so there is no rational root and the cubic cannot be factored over the integers.\n\n(b) Sign changes: $P(-3) = -14$, $P(-2) = 1$ → a root between $-3$ and $-2$; $P(0) = 1$, $P(1) = -2$ → a root between $0$ and $1$; $P(1) = -2$, $P(2) = 1$ → a root between $1$ and $2$.\n\n(c) Using the zero operation on a graphing calculator (or narrowing the sign changes):\n\n```plot\nf: x^3 - 4*x + 1\ndomain: -3, 3\nrange: -8, 8\npoints: (-2.115,0), (0.254,0), (1.861,0)\n```\n\n$x \\approx -2.1$, $x \\approx 0.3$, $x \\approx 1.9$.",
+      "rubric": [
+        {
+          "point": "Shows that $\\pm1$ are not roots, so no rational roots",
+          "marks": 2
+        },
+        {
+          "point": "Identifies intervals containing roots using sign changes",
+          "marks": 2
+        },
+        {
+          "point": "Correct approximations to one decimal place",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-3-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "w": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "h": {
+          "min": 5,
+          "max": 6,
+          "step": 1
+        },
+        "L": {
+          "min": 6,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "derived": {
+        "V": "L*(L - w)*(L + h)"
+      },
+      "text": "The width of a box is ${{w}}$ cm less than its length, and the height is ${{h}}$ cm more than its length. The volume is ${{V}}$ cm³.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write a polynomial equation for the volume."
+        },
+        {
+          "label": "b",
+          "text": "Solve the equation and state the dimensions of the box. What is the length?",
+          "answer": {
+            "expr": "L",
+            "unit": "cm",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Let the length be $l$ cm. Width $= l - {{w}}$, height $= l + {{h}}$.\n\n$l(l - {{w}})(l + {{h}}) = {{V}}$\n\n$l^3 + {{h - w}}l^2 - {{w*h}}l - {{V}} = 0$\n\n(b) Test factors of ${{V}}$. $P({{L}}) = {{L^3}} + {{(h-w)*L^2}} - {{w*h*L}} - {{V}} = 0$ ✓, so $l - {{L}}$ is a factor.\n\nDividing: $(l - {{L}})(l^2 + {{h - w + L}}l + {{L*(h - w + L) - w*h}}) = 0$.\n\nThe quadratic factor has positive coefficients, so any real roots it has are negative — impossible for a length. So $l = {{L}}$.\n\nDimensions: length ${{L}}$ cm, width ${{L - w}}$ cm, height ${{L + h}}$ cm.\n\nCheck: ${{L}} \\times {{L - w}} \\times {{L + h}} = {{V}}$ ✓",
+      "rubric": [
+        {
+          "point": "Defines a variable and writes expressions for each dimension",
+          "marks": 1
+        },
+        {
+          "point": "Writes the volume equation in the form $P(l) = 0$",
+          "marks": 1
+        },
+        {
+          "point": "Finds a root using the factor theorem",
+          "marks": 1
+        },
+        {
+          "point": "Explains why other roots are rejected",
+          "marks": 1
+        },
+        {
+          "point": "Correct dimensions with a check",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-3-q09",
+      "type": "explain",
+      "difficulty": 1,
+      "text": "Explain what is meant by a **root**, a **zero** and an **$x$-intercept**, and how they are related. Use $P(x) = (x - 1)(x + 2)(x - 4)$ as an example.",
+      "modelAnswer": "* A **root** is a solution of the equation $P(x) = 0$: here $x = 1, -2, 4$.\n* A **zero** is a value of $x$ that makes the function's output zero: $P(1) = P(-2) = P(4) = 0$.\n* An **$x$-intercept** is where the graph of $y = P(x)$ meets the $x$-axis: $(1, 0)$, $(-2, 0)$, $(4, 0)$.\n\nThey describe the same numbers from three points of view (equation, function, graph). The one difference: only **real** roots/zeros show up as $x$-intercepts.",
+      "rubric": [
+        {
+          "point": "Correct definition of root with example",
+          "marks": 1
+        },
+        {
+          "point": "Correct definition of zero with example",
+          "marks": 1
+        },
+        {
+          "point": "Correct definition of $x$-intercept with example",
+          "marks": 1
+        },
+        {
+          "point": "Explains how they are related, including the real-only condition",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-3-q10",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "A polynomial equation of degree four has exactly two distinct real roots. How many $x$-intercepts does the graph of the corresponding function have? Describe two different ways this could happen, giving an example equation for each.",
+      "modelAnswer": "The graph has exactly **two** $x$-intercepts — one for each distinct real root.\n\n**Way 1 – two non-real roots:** $(x - 1)(x + 3)(x^2 + 4) = 0$. Roots $1$ and $-3$ are real; $x^2 + 4 = 0$ gives two non-real roots.\n\n**Way 2 – repeated roots:** $(x - 1)^2(x + 3)^2 = 0$, or $(x - 1)^3(x + 3) = 0$. There are only two distinct values, but they are repeated; the graph touches or flattens at those intercepts.",
+      "rubric": [
+        {
+          "point": "States two $x$-intercepts with reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Example with non-real roots",
+          "marks": 2
+        },
+        {
+          "point": "Example with repeated roots",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-3-q11",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Without solving, describe **two** ways to show that $2, -1, 3$ and $-2$ are the roots of $x^4 - 2x^3 - 7x^2 + 8x + 12 = 0$. Carry out one of them completely.",
+      "modelAnswer": "**Way 1 — substitution:** substitute each value; each should give $0$. For example $P(2) = 16 - 16 - 28 + 16 + 12 = 0$, $P(-1) = 1 + 2 - 7 - 8 + 12 = 0$, $P(3) = 81 - 54 - 63 + 24 + 12 = 0$, $P(-2) = 16 + 16 - 28 - 16 + 12 = 0$ ✓\n\n**Way 2 — expand the factored form:** if these are the roots, the polynomial should be $(x - 2)(x + 1)(x - 3)(x + 2)$.\n$(x - 2)(x + 2) = x^2 - 4$ and $(x + 1)(x - 3) = x^2 - 2x - 3$.\n$(x^2 - 4)(x^2 - 2x - 3) = x^4 - 2x^3 - 3x^2 - 4x^2 + 8x + 12 = x^4 - 2x^3 - 7x^2 + 8x + 12$ ✓\n\n(A third way: graph $y = x^4 - 2x^3 - 7x^2 + 8x + 12$ and check the $x$-intercepts.)",
+      "rubric": [
+        {
+          "point": "Describes substitution (factor theorem) method",
+          "marks": 1
+        },
+        {
+          "point": "Describes expanding the factored form (or graphing)",
+          "marks": 1
+        },
+        {
+          "point": "Carries out one method fully and correctly",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "id": "2-3-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $32x^3 - 48x^2 - 98x + 147 = 0$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the largest root.",
+          "answer": {
+            "expr": "1.75",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Group:\n\n$16x^2(2x - 3) - 49(2x - 3) = 0$\n\n$(2x - 3)(16x^2 - 49) = 0$\n\n$(2x - 3)(4x - 7)(4x + 7) = 0$\n\n$x = \\tfrac32$, $x = \\tfrac74$, $x = -\\tfrac74$.",
+      "rubric": [
+        {
+          "point": "Recognises that grouping works",
+          "marks": 1
+        },
+        {
+          "point": "Factors out the common binomial",
+          "marks": 1
+        },
+        {
+          "point": "Factors the difference of squares",
+          "marks": 1
+        },
+        {
+          "point": "All three roots",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q13",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $45x^4 - 27x^3 - 20x^2 + 12x = 0$.",
+      "modelAnswer": "Common factor $x$: $x(45x^3 - 27x^2 - 20x + 12) = 0$.\n\nGroup the cubic: $9x^2(5x - 3) - 4(5x - 3) = (5x - 3)(9x^2 - 4)$.\n\n$x(5x - 3)(3x - 2)(3x + 2) = 0$\n\n$x = 0$, $\\tfrac35$, $\\tfrac23$, $-\\tfrac23$.",
+      "rubric": [
+        {
+          "point": "Removes the common factor $x$ (does not divide it away)",
+          "marks": 1
+        },
+        {
+          "point": "Groups the cubic correctly",
+          "marks": 1
+        },
+        {
+          "point": "Factors the difference of squares",
+          "marks": 1
+        },
+        {
+          "point": "All four roots including 0",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "c": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "b": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Determine the real roots of $(x^2 - 2x + {{c}})({{a}}x^2 - {{a*b^2}}) = 0$. Justify how you know which factor has real roots.",
+      "modelAnswer": "**First factor:** $x^2 - 2x + {{c}} = 0$ has discriminant $(-2)^2 - 4(1)({{c}}) = {{4 - 4*c}} < 0$, so no real roots.\n\n**Second factor:** ${{a}}x^2 - {{a*b^2}} = 0 \\Rightarrow {{a}}(x^2 - {{b^2}}) = 0 \\Rightarrow x = \\pm{{b}}$.\n\nThe real roots are $x = {{b}}$ and $x = -{{b}}$.",
+      "rubric": [
+        {
+          "point": "Uses the discriminant (or completing the square) to show the first factor has no real roots",
+          "marks": 2
+        },
+        {
+          "point": "Solves the second factor correctly",
+          "marks": 1
+        },
+        {
+          "point": "States the real roots",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "B": {
+          "choices": [
+            1
+          ]
+        },
+        "C": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "The graph of a cubic function $y = P(x)$ with leading coefficient $1$ is shown.\n\n```plot\nf: (x+{{A}})*(x-{{B}})*(x-{{C}})\ndomain: -6, 7\nticks: 1, 10\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the roots of $P(x) = 0$. Give the largest root.",
+          "answer": {
+            "expr": "C",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write an equation for $P(x)$ in factored form."
+        },
+        {
+          "label": "c",
+          "text": "Explain how you could check your equation using the graph."
+        }
+      ],
+      "modelAnswer": "(a) The graph crosses the $x$-axis at $x = -{{A}}$, $x = {{B}}$ and $x = {{C}}$, so these are the roots of $P(x) = 0$.\n\n(b) Each root $r$ gives a factor $(x - r)$, and the leading coefficient is $1$:\n\n$P(x) = (x + {{A}})(x - {{B}})(x - {{C}})$\n\n(c) Expand and substitute each root into the expanded equation (each gives $0$), or substitute $x = 0$: $P(0) = ({{A}})(-{{B}})(-{{C}}) = {{A*B*C}}$, which should match the $y$-intercept on the graph.",
+      "rubric": [
+        {
+          "point": "Reads all three roots correctly",
+          "marks": 2
+        },
+        {
+          "point": "Writes the factored equation with correct signs",
+          "marks": 2
+        },
+        {
+          "point": "Describes a valid check (e.g. $y$-intercept or substitution)",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 2,
+          "max": 4,
+          "step": 1
+        },
+        "r": {
+          "min": 5,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c2": "2*q + 2*r - 1",
+        "c1": "2*q*r - q - r",
+        "c0": "q*r"
+      },
+      "text": "Solve $2x^3 + {{c2}}x^2 + {{c1}}x - {{c0}} = 0$ completely, then explain how you could confirm your answers with a graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the positive root.",
+          "answer": {
+            "expr": "0.5",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Possible rational roots include $\\pm\\tfrac12$. Test: $P\\left(\\tfrac12\\right) = 0$, so $2x - 1$ is a factor.\n\nDividing by $2x - 1$ gives $x^2 + {{q+r}}x + {{q*r}}$, so\n\n$(2x - 1)(x + {{q}})(x + {{r}}) = 0$\n\nRoots: $x = \\tfrac12$, $x = -{{q}}$, $x = -{{r}}$.\n\n**Graph check:** graph $y = 2x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$; it should cross the $x$-axis at exactly $-{{r}}$, $-{{q}}$ and $0.5$.",
+      "rubric": [
+        {
+          "point": "Uses the rational zero theorem to find a root",
+          "marks": 1
+        },
+        {
+          "point": "Divides correctly",
+          "marks": 1
+        },
+        {
+          "point": "Factors fully and states all roots",
+          "marks": 2
+        },
+        {
+          "point": "Describes the graphical check",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-3-q17",
+      "type": "conceptual",
+      "difficulty": 1,
+      "text": "Suppose a polynomial function has degree $n$. What is the maximum number of real roots of the corresponding equation? Will the number of $x$-intercepts always equal the number of real roots? Explain with examples.",
+      "modelAnswer": "A degree-$n$ polynomial equation has **at most $n$ real roots** (it can be written with at most $n$ linear factors).\n\nThe number of $x$-intercepts equals the number of **distinct** real roots, which can be less than $n$:\n\n* Non-real roots: $x^2 + 1 = 0$ (degree 2) has no real roots and no $x$-intercepts.\n* Repeated roots: $(x - 3)^2 = 0$ has the root $3$ twice but only one $x$-intercept, where the graph touches the axis.\n\nSo the number of $x$-intercepts is at most $n$, and can be smaller.",
+      "rubric": [
+        {
+          "point": "States at most $n$ real roots",
+          "marks": 1
+        },
+        {
+          "point": "Explains non-real roots with an example",
+          "marks": 2
+        },
+        {
+          "point": "Explains repeated roots with an example",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-3-q18",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Describe the different methods you can use to factor a polynomial when solving an equation. For each, give a short example and say when it is the best choice.",
+      "modelAnswer": "* **Common factor:** $3x^3 - 12x = 3x(x^2 - 4)$. Always check this first.\n* **Special patterns** (difference of squares, sum/difference of cubes): $x^2 - 9 = (x - 3)(x + 3)$, $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$. Best when the terms are perfect squares or cubes.\n* **Trinomial factoring:** $x^2 + 5x + 6 = (x + 2)(x + 3)$; also trinomials in $x^2$, like $x^4 - 5x^2 + 4$.\n* **Grouping:** $x^3 + 2x^2 - 9x - 18 = (x + 2)(x^2 - 9)$. Best for four terms whose pairs share a ratio.\n* **Factor theorem + division** (with integral/rational zero theorems): $x^3 - 13x + 12$ has $P(1) = 0$, so divide by $x - 1$. Works for any polynomial with a rational zero.\n* **Quadratic formula** for a leftover quadratic that won't factor, and **graphing technology** when no rational root exists.",
+      "rubric": [
+        {
+          "point": "Describes at least four methods correctly",
+          "marks": 2
+        },
+        {
+          "point": "Gives a correct example for each method",
+          "marks": 2
+        },
+        {
+          "point": "Explains when each method is most appropriate",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}
