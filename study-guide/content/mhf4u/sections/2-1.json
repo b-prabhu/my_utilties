@@ -102,7 +102,7 @@
     {
       "name": "Remainder theorem (ax − b)",
       "latex": "R = P\\!\\left(\\frac{b}{a}\\right)",
-      "meaning": "For divisors like $2x - 1$, substitute $x = \frac12$."
+      "meaning": "For divisors like $2x - 1$, substitute $x = \\frac12$."
     }
   ],
   "workedExamples": [

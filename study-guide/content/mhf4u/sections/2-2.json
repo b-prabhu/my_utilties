@@ -393,7 +393,7 @@
           }
         }
       ],
-      "modelAnswer": "**Possible rational zeros** $\\frac{b}{a}$: $b$ divides ${{c0}}$ and $a$ divides $2$, so the list includes $\\pm1, \\pm{{q}}, \\pm{{r}}, \\dots$ and the halves $\\pm\\frac12, \\pm\\frac{ {{q}} }{2}, \\dots$\n\nTest $x = \\tfrac12$: $P\\left(\\tfrac12\\right) = 2\\left(\\tfrac18\\right) + {{c2}}\\left(\\tfrac14\\right) + {{c1}}\\left(\\tfrac12\\right) - {{c0}} = {{0.25 + c2/4 + c1/2 - c0}}$, so $2x - 1$ is a factor.\n\nDivide $P(x)$ by $2x - 1$: quotient $x^2 + {{q+r}}x + {{q*r}}$, remainder $0$.\n\n$x^2 + {{q+r}}x + {{q*r}} = (x + {{q}})(x + {{r}})$\n\n$$P(x) = (2x - 1)(x + {{q}})(x + {{r}})$$\n\nCheck: expanding gives $2x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$ ✓",
+      "modelAnswer": "**Possible rational zeros** $\\frac{b}{a}$: $b$ divides ${{c0}}$ and $a$ divides $2$, so the list includes $\\pm1, \\pm{{q}}, \\pm{{r}}, \\dots$ and fractions with denominator 2 such as $\\pm\\frac12$ and $\\pm\\frac{ {{c0}} }{2}$\n\nTest $x = \\tfrac12$: $P\\left(\\tfrac12\\right) = 2\\left(\\tfrac18\\right) + {{c2}}\\left(\\tfrac14\\right) + {{c1}}\\left(\\tfrac12\\right) - {{c0}} = {{0.25 + c2/4 + c1/2 - c0}}$, so $2x - 1$ is a factor.\n\nDivide $P(x)$ by $2x - 1$: quotient $x^2 + {{q+r}}x + {{q*r}}$, remainder $0$.\n\n$x^2 + {{q+r}}x + {{q*r}} = (x + {{q}})(x + {{r}})$\n\n$$P(x) = (2x - 1)(x + {{q}})(x + {{r}})$$\n\nCheck: expanding gives $2x^3 + {{c2}}x^2 + {{c1}}x - {{c0}}$ ✓",
       "rubric": [
         {
           "point": "Lists possible rational zeros using the rational zero theorem",

@@ -1,0 +1,1038 @@
+{
+  "id": "2-review",
+  "number": "Review",
+  "title": "Chapter 2 Review & Practice Test",
+  "estimatedMinutes": 90,
+  "overview": "Pull the whole chapter together. This review revisits every section — division and the remainder theorem, the factor theorem, polynomial equations, families of functions, and polynomial inequalities — with mixed problems in the style of the chapter review and practice test. Use it to find your weak spots before a test.",
+  "objectives": [
+    "Divide polynomials and apply the remainder and factor theorems.",
+    "Factor polynomials completely using the most efficient strategy.",
+    "Solve polynomial equations, finding real roots exactly or approximately.",
+    "Write equations for families of polynomial functions and particular members.",
+    "Solve polynomial inequalities graphically, with technology and algebraically.",
+    "Model and solve real-world problems with polynomial equations and inequalities."
+  ],
+  "lessons": [
+    {
+      "id": "chapter-map",
+      "title": "Chapter 2 at a glance",
+      "body": "Everything in this chapter connects back to one statement — the **division statement** $P(x) = (x - b)Q(x) + R$.\n\n| Idea | What it says | Section |\n|---|---|---|\n| Long / synthetic division | find $Q(x)$ and $R$ | 2.1, 2.2 |\n| Remainder theorem | $R = P(b)$ (or $P(\\frac{b}{a})$ for $ax - b$) | 2.1 |\n| Factor theorem | $x - b$ is a factor $\\iff P(b) = 0$ | 2.2 |\n| Integral / rational zero theorems | which values of $b$ to test | 2.2 |\n| Polynomial equations | factor, then zero product property | 2.3 |\n| Families | $y = k(x - a_1)\\cdots(x - a_n)$ | 2.4 |\n| Inequalities (technology) | read intervals from the graph | 2.5 |\n| Inequalities (algebra) | factor + sign table | 2.6 |\n\n**Roots, zeros and $x$-intercepts** are the thread running through it all: the real roots of $P(x) = 0$ are the zeros of $P$, which are the $x$-intercepts of $y = P(x)$, which are the boundary points of the inequalities $P(x) > 0$ and $P(x) < 0$."
+    },
+    {
+      "id": "factoring-strategy",
+      "title": "A complete factoring strategy",
+      "body": "When you meet a polynomial you need to factor (to solve an equation or inequality), work through this checklist:\n\n1. **Common factor?** Take it out first — including a factor of $x$ or $-1$.\n2. **Special pattern?** Difference of squares, sum or difference of cubes, perfect-square trinomial.\n3. **Four terms?** Try grouping.\n4. **Trinomial (including in $x^2$)?** Factor like a quadratic.\n5. **Otherwise:** list possible rational zeros $\\frac{b}{a}$, test them with the factor theorem, divide (synthetic division is fastest), and repeat on the quotient.\n6. **Leftover quadratic that won't factor?** Quadratic formula — or the discriminant shows there are no real roots.\n\n> Check your factorisation by expanding, or by substituting a value such as $x = 1$ into both forms."
+    },
+    {
+      "id": "inequality-strategy",
+      "title": "Solving any polynomial inequality",
+      "body": "1. Rearrange so one side is $0$.\n2. If it factors, factor completely; otherwise use technology to find the zeros (rounded as asked).\n3. Mark the zeros on a number line — they create the intervals.\n4. Decide the sign on each interval: test values, a sign table, or the end behaviour plus the orders of the zeros.\n5. Pick the intervals that match the inequality. Use **closed** endpoints for $\\le$ and $\\ge$, **open** for $<$ and $>$.\n6. In an application, intersect with the domain that makes sense, and answer in words with units.\n\n**Quick sign shortcut:** for a polynomial with all zeros of order 1, the signs alternate. Start from the right: the right-most interval has the sign of the leading coefficient."
+    },
+    {
+      "id": "pitfalls",
+      "title": "The most common mistakes in this chapter",
+      "body": "| Mistake | Fix |\n|---|---|\n| Substituting $x = 3$ for the divisor $x + 3$ | Solve divisor $= 0$: use $x = -3$ |\n| Forgetting a placeholder ($0x^2$) | Write every power before dividing |\n| Writing $Q(x) + R$ instead of $Q(x) + \\frac{R}{x - b}$ | The remainder is also divided; state $x \\neq b$ |\n| Testing only integers when the leading coefficient isn't 1 | Use the rational zero theorem |\n| Dividing an equation by $x$ | Factor $x$ out to keep the root $x = 0$ |\n| Using an $x$-intercept to find $k$ in a family | Use a point **not** on the $x$-axis |\n| Not flipping the sign when dividing by a negative | Flip it! |\n| Assuming signs always alternate | Even-order zeros don't change sign |"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "remainder theorem",
+      "definition": "The remainder when $P(x)$ is divided by $x - b$ is $P(b)$."
+    },
+    {
+      "term": "factor theorem",
+      "definition": "$x - b$ is a factor of $P(x)$ if and only if $P(b) = 0$."
+    },
+    {
+      "term": "rational zero theorem",
+      "definition": "Rational zeros have the form $\\frac{b}{a}$, $b$ a factor of the constant term, $a$ a factor of the leading coefficient."
+    },
+    {
+      "term": "family of functions",
+      "definition": "$y = k(x - a_1)\\cdots(x - a_n)$: polynomial functions with the same zeros."
+    },
+    {
+      "term": "polynomial inequality",
+      "definition": "An inequality involving a polynomial; its solution is a union of intervals."
+    },
+    {
+      "term": "order of a zero",
+      "definition": "How many times its factor is repeated; even order → the graph touches the axis."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Division statement",
+      "latex": "P(x) = (x - b)Q(x) + R",
+      "meaning": ""
+    },
+    {
+      "name": "Remainder theorem",
+      "latex": "R = P(b)\\ \\text{ or }\\ R = P\\!\\left(\\tfrac{b}{a}\\right)",
+      "meaning": ""
+    },
+    {
+      "name": "Family of polynomials",
+      "latex": "y = k(x - a_1)(x - a_2)\\cdots(x - a_n)",
+      "meaning": ""
+    },
+    {
+      "name": "Sum and difference of cubes",
+      "latex": "a^3 \\pm b^3 = (a \\pm b)(a^2 \\mp ab + b^2)",
+      "meaning": ""
+    },
+    {
+      "name": "Quadratic formula",
+      "latex": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+      "meaning": ""
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Checking statements about a polynomial",
+      "problem": "For $P(x) = 5x^3 + 4x^2 - 3x + 2$, decide whether each statement is true: (A) the remainder when dividing by $x + 1$ is $8$; (B) $x + 2$ is a factor; (C) $P(-2) = -16$; (D) $P(x) = (x + 1)(5x^2 - x - 2) - 4$.",
+      "steps": [
+        "(A) $P(-1) = -5 + 4 + 3 + 2 = 4$. **False**; the remainder is $4$.",
+        "(C) $P(-2) = -40 + 16 + 6 + 2 = -16$. **True**.",
+        "(B) Since $P(-2) = -16 \\neq 0$, $x + 2$ is **not** a factor. False.",
+        "(D) $(x + 1)(5x^2 - x - 2) = 5x^3 + 4x^2 - 3x - 2$, so $P(x) = (x + 1)(5x^2 - x - 2) + 4$. The statement has the wrong sign: **false** (it should be $+4$, matching (A))."
+      ],
+      "answer": "Only (C) is true."
+    },
+    {
+      "title": "Unknown coefficient, then a second remainder",
+      "problem": "$f(x) = x^4 + kx^3 - 2x^2 + 1$ leaves remainder $5$ when divided by $x + 2$. Find $k$, then the remainder when $f(x)$ is divided by $x + 4$.",
+      "steps": [
+        "$f(-2) = 16 - 8k - 8 + 1 = 9 - 8k = 5$, so $k = \\tfrac12$.",
+        "$f(-4) = 256 + \\tfrac12(-64) - 2(16) + 1 = 256 - 32 - 32 + 1 = 193$."
+      ],
+      "answer": "$k = 0.5$; remainder $193$."
+    },
+    {
+      "title": "Dimensions from specifications",
+      "problem": "A box's width is $5$ cm less than its length and its height is $1$ cm more than double its width. The volume is $550$ cm³. Find the dimensions.",
+      "steps": [
+        "Length $l$, width $l - 5$, height $2(l - 5) + 1 = 2l - 9$.",
+        "$l(l - 5)(2l - 9) = 550 \\Rightarrow 2l^3 - 19l^2 + 45l - 550 = 0$.",
+        "Test factors of $550$: $P(10) = 2000 - 1900 + 450 - 550 = 0$ ✓. Divide: $(l - 10)(2l^2 + l + 55) = 0$; the quadratic has discriminant $1 - 440 < 0$.",
+        "$l = 10$: dimensions $10$ cm × $5$ cm × $11$ cm. Check: $10 \\times 5 \\times 11 = 550$ ✓"
+      ],
+      "answer": "$10$ cm by $5$ cm by $11$ cm"
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "The remainder theorem tells you the quotient.",
+      "fact": "It only gives the remainder; divide to get the quotient."
+    },
+    {
+      "myth": "A cubic always has three $x$-intercepts.",
+      "fact": "It has one, two or three (two when one zero has order 2)."
+    },
+    {
+      "myth": "If $P(a) > 0$ and $P(b) > 0$, there is no zero between $a$ and $b$.",
+      "fact": "There could be an even number of zeros between them (or a touching zero). A sign change guarantees a zero; no sign change guarantees nothing."
+    },
+    {
+      "myth": "$(x - 4)^2 > 0$ is true for all $x$.",
+      "fact": "It is false at $x = 4$, where it equals $0$."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Design and manufacturing",
+      "body": "Volume models for boxes and moulds lead to polynomial equations (exact sizes) and inequalities (acceptable ranges of sizes)."
+    },
+    {
+      "title": "Business",
+      "body": "Revenue and profit models give break-even points (roots) and profitable periods (inequality intervals)."
+    },
+    {
+      "title": "Entertainment engineering",
+      "body": "Ride heights over time are polynomial models; inequalities show when riders are above or below safety thresholds."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Divide $x^3 - 4x^2 + 3x - 7$ by $x + 3$; write the quotient form, the restriction and the check statement.",
+      "hint": "Synthetic division with $-3$.",
+      "solution": "$1, -4, 3, -7 \\to 1, -7, 24, -79$. $\\dfrac{x^3 - 4x^2 + 3x - 7}{x + 3} = x^2 - 7x + 24 - \\dfrac{79}{x + 3}$, $x \\neq -3$. Check: $(x + 3)(x^2 - 7x + 24) - 79 = x^3 - 4x^2 + 3x - 7$ ✓"
+    },
+    {
+      "question": "Factor $x^3 + 9x^2 + 26x + 24$.",
+      "hint": "All coefficients positive, so try negative values.",
+      "solution": "$P(-2) = -8 + 36 - 52 + 24 = 0$: $(x + 2)(x^2 + 7x + 12) = (x + 2)(x + 3)(x + 4)$."
+    },
+    {
+      "question": "Determine the real roots of $(x^2 + 5)(x - 2) = 0$ and $(3x^2 - 27)(x^2 - 3x - 10) = 0$.",
+      "hint": "Factor each bracket.",
+      "solution": "First: $x = 2$ only ($x^2 + 5 > 0$). Second: $x = \\pm3$, $x = 5$, $x = -2$."
+    },
+    {
+      "question": "Solve $(5x + 4)(x - 4) \\ge 0$.",
+      "hint": "Zeros $-0.8$ and $4$.",
+      "solution": "Parabola opens up: $x \\le -0.8$ or $x \\ge 4$."
+    },
+    {
+      "question": "Find the family of cubics with zeros $1 \\pm \\sqrt3$ and $-2$, and the member through $(1, 9)$.",
+      "hint": "$(x - 1)^2 - 3$.",
+      "solution": "$y = k(x + 2)(x^2 - 2x - 2)$. At $x = 1$: $9 = k(3)(-3)$, so $k = -1$: $y = -(x + 2)(x^2 - 2x - 2)$."
+    },
+    {
+      "question": "Solve $x^3 - 2x^2 - 3x + 1 < 0$ (one decimal place).",
+      "hint": "Use technology.",
+      "solution": "Zeros $\\approx -1.2$, $0.3$, $2.9$: $x < -1.2$ or $0.3 < x < 2.9$."
+    }
+  ],
+  "summary": [
+    "Division statement: $P(x) = (x - b)Q(x) + R$; remainder theorem: $R = P(b)$.",
+    "Factor theorem: $P(b) = 0 \\iff (x - b)$ is a factor. Use the integral and rational zero theorems to choose test values.",
+    "Solve polynomial equations by factoring completely; use the quadratic formula or technology when needed.",
+    "Families: $y = k(x - a_1)\\cdots(x - a_n)$; one extra point gives $k$.",
+    "Polynomial inequalities: zeros split the axis into intervals; choose intervals by sign, include endpoints for $\\le$, $\\ge$."
+  ],
+  "questions": [
+    {
+      "id": "2-rev-q01",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "For each division, (i) use the remainder theorem to find the remainder, and (ii) perform the division and write the result in quotient form with any restriction.\n\n(a) $x^3 + 9x^2 - 5x + 3$ divided by $x - 2$\n\n(b) $12x^3 - 2x^2 + x - 11$ divided by $3x + 1$",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Remainder in (a).",
+          "answer": {
+            "expr": "37",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Remainder in (b).",
+          "answer": {
+            "expr": "-12",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** (i) $P(2) = 8 + 36 - 10 + 3 = 37$.\n\n(ii) Synthetic division with $2$: $1, 9, -5, 3 \\to 1, 11, 17, \\mathbf{37}$.\n\n$\\dfrac{x^3 + 9x^2 - 5x + 3}{x - 2} = x^2 + 11x + 17 + \\dfrac{37}{x - 2},\\quad x \\neq 2$\n\n**(b)** (i) $3x + 1 = 0 \\Rightarrow x = -\\tfrac13$. $P\\left(-\\tfrac13\\right) = 12\\left(-\\tfrac1{27}\\right) - 2\\left(\\tfrac19\\right) - \\tfrac13 - 11 = -\\tfrac49 - \\tfrac29 - \\tfrac39 - \\tfrac{99}{9} = -12$.\n\n(ii) Long division: $12x^3 \\div 3x = 4x^2$; subtract $12x^3 + 4x^2$ → $-6x^2 + x$; $-6x^2 \\div 3x = -2x$; subtract $-6x^2 - 2x$ → $3x - 11$; $3x \\div 3x = 1$; subtract $3x + 1$ → $-12$.\n\n$\\dfrac{12x^3 - 2x^2 + x - 11}{3x + 1} = 4x^2 - 2x + 1 - \\dfrac{12}{3x + 1},\\quad x \\neq -\\tfrac13$",
+      "rubric": [
+        {
+          "point": "(a) correct remainder by the remainder theorem",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct quotient form and restriction",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct remainder using $P(-\\frac13)$",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct long division and quotient form with restriction",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q02",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "For $P(x) = 5x^3 + 4x^2 - 3x + 2$, a student claims: (A) dividing by $x + 1$ leaves remainder $8$; (B) $x + 2$ is a factor; (C) $P(-2) = -16$; (D) $P(x) = (x + 1)(5x^2 - x - 2) - 4$. Decide whether each claim is true. Correct every false claim and justify your decisions.",
+      "modelAnswer": "(A) $P(-1) = -5 + 4 + 3 + 2 = 4$. **False** — the remainder is $4$.\n\n(C) $P(-2) = 5(-8) + 4(4) - 3(-2) + 2 = -40 + 16 + 6 + 2 = -16$. **True**.\n\n(B) By the factor theorem $x + 2$ is a factor only if $P(-2) = 0$, but $P(-2) = -16$. **False** — dividing by $x + 2$ leaves remainder $-16$.\n\n(D) $(x + 1)(5x^2 - x - 2) = 5x^3 - x^2 - 2x + 5x^2 - x - 2 = 5x^3 + 4x^2 - 3x - 2$. To get $+2$ we must add $4$: $P(x) = (x + 1)(5x^2 - x - 2) + 4$. **False** (sign of the remainder).",
+      "rubric": [
+        {
+          "point": "Evaluates $P(-1)$ and corrects (A)",
+          "marks": 1
+        },
+        {
+          "point": "Verifies (C)",
+          "marks": 1
+        },
+        {
+          "point": "Uses the factor theorem to reject (B)",
+          "marks": 1
+        },
+        {
+          "point": "Expands to check (D) and corrects it",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q03",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            -2,
+            -1,
+            1,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "R": "9 - 8*k"
+      },
+      "text": "Let $f(x) = x^4 + kx^3 - 2x^2 + 1$. When $f(x)$ is divided by $x + 2$, the remainder is ${{R}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Find the remainder when $f(x)$ is divided by $x + 4$.",
+          "answer": {
+            "expr": "225 - 64*k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain how you could verify part (b) by division."
+        }
+      ],
+      "modelAnswer": "(a) $f(-2) = 16 + k(-8) - 2(4) + 1 = 9 - 8k$.\n\n$9 - 8k = {{R}}$, so $k = \\dfrac{9 - ({{R}})}{8} = {{k}}$.\n\n(b) $f(-4) = 256 + ({{k}})(-64) - 2(16) + 1 = 225 - 64({{k}}) = {{225 - 64*k}}$.\n\n(c) Long division of $x^4 + ({{k}})x^3 - 2x^2 + 0x + 1$ by $x + 4$ (note the $0x$ placeholder) — or synthetic division with $-4$ — should give remainder ${{225 - 64*k}}$.",
+      "rubric": [
+        {
+          "point": "Sets up $f(-2) = R$",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$",
+          "marks": 1
+        },
+        {
+          "point": "Correct remainder for $x + 4$",
+          "marks": 2
+        },
+        {
+          "point": "Describes a valid verification, mentioning the placeholder",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q04",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "For what value of $b$ will the polynomial $P(x) = 4x^3 - 3x^2 + bx + 6$ have the same remainder when it is divided by $x - 1$ and by $x + 3$?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $b$.",
+          "answer": {
+            "expr": "-34",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "$P(1) = 4 - 3 + b + 6 = b + 7$\n\n$P(-3) = 4(-27) - 3(9) - 3b + 6 = -108 - 27 - 3b + 6 = -129 - 3b$\n\nSet equal: $b + 7 = -129 - 3b \\Rightarrow 4b = -136 \\Rightarrow b = -34$.\n\nCheck: $P(1) = -27$ and $P(-3) = -129 + 102 = -27$ ✓",
+      "rubric": [
+        {
+          "point": "Writes $P(1)$ and $P(-3)$ in terms of $b$",
+          "marks": 2
+        },
+        {
+          "point": "Sets them equal and solves",
+          "marks": 1
+        },
+        {
+          "point": "Checks the answer",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Factor fully: (a) $x^3 - 4x^2 + x + 6$  (b) $3x^3 - 5x^2 - 26x - 8$  (c) $5x^4 + 12x^3 - 101x^2 + 48x + 36$",
+      "modelAnswer": "(a) $P(-1) = -1 - 4 - 1 + 6 = 0$ → $(x + 1)(x^2 - 5x + 6) = (x + 1)(x - 2)(x - 3)$.\n\n(b) $P(4) = 192 - 80 - 104 - 8 = 0$ → divide: $3x^2 + 7x + 2 = (3x + 1)(x + 2)$. So $(x - 4)(3x + 1)(x + 2)$.\n\n(c) $P(3) = 405 + 324 - 909 + 144 + 36 = 0$ → synthetic division with $3$: $5, 12, -101, 48, 36 \\to 5, 27, -20, -12, \\mathbf{0}$.\nFor $5x^3 + 27x^2 - 20x - 12$: $Q(-6) = -1080 + 972 + 120 - 12 = 0$ → synthetic division with $-6$: $5, -3, -2, \\mathbf{0}$.\n$5x^2 - 3x - 2 = (5x + 2)(x - 1)$.\n\n$5x^4 + 12x^3 - 101x^2 + 48x + 36 = (x - 3)(x + 6)(5x + 2)(x - 1)$",
+      "rubric": [
+        {
+          "point": "(a) correct factorisation",
+          "marks": 1
+        },
+        {
+          "point": "(b) finds a zero using the rational zero theorem and factors",
+          "marks": 2
+        },
+        {
+          "point": "(c) finds two zeros and divides twice correctly",
+          "marks": 2
+        },
+        {
+          "point": "(c) complete factorisation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q06",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Factor: (a) $-4x^3 - 4x^2 + 16x + 16$  (b) $25x^3 - 50x^2 - 9x + 18$  (c) $2x^4 + 5x^3 - 8x^2 - 20x$",
+      "modelAnswer": "(a) Common factor $-4$: $-4(x^3 + x^2 - 4x - 4) = -4[x^2(x + 1) - 4(x + 1)] = -4(x + 1)(x - 2)(x + 2)$.\n\n(b) Group: $25x^2(x - 2) - 9(x - 2) = (x - 2)(25x^2 - 9) = (x - 2)(5x - 3)(5x + 3)$.\n\n(c) Common factor $x$: $x(2x^3 + 5x^2 - 8x - 20) = x[x^2(2x + 5) - 4(2x + 5)] = x(2x + 5)(x - 2)(x + 2)$.",
+      "rubric": [
+        {
+          "point": "Takes out common factors (including $-4$ and $x$)",
+          "marks": 2
+        },
+        {
+          "point": "Groups correctly in each part",
+          "marks": 2
+        },
+        {
+          "point": "Factors the differences of squares",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Rectangular blocks of limestone have volume, in cubic metres, $V(x) = 2x^3 + 7x^2 + 2x - 3$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the dimensions of the blocks in terms of $x$."
+        },
+        {
+          "label": "b",
+          "text": "What are the dimensions when $x = 1$? What is the volume?",
+          "answer": {
+            "expr": "8",
+            "unit": "m³",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "What values of $x$ are possible? Explain."
+        }
+      ],
+      "modelAnswer": "(a) Possible rational zeros: $\\pm1, \\pm3, \\pm\\tfrac12, \\pm\\tfrac32$. $V(-1) = -2 + 7 - 2 - 3 = 0$ → $x + 1$ is a factor.\n\nDividing: $V(x) = (x + 1)(2x^2 + 5x - 3) = (x + 1)(2x - 1)(x + 3)$.\n\nDimensions: $(x + 1)$ m, $(2x - 1)$ m, $(x + 3)$ m.\n\n(b) When $x = 1$: $2$ m, $1$ m and $4$ m. Volume $8$ m³; check $V(1) = 2 + 7 + 2 - 3 = 8$ ✓\n\n(c) Every dimension must be positive; the binding condition is $2x - 1 > 0$, so $x > \\tfrac12$.",
+      "rubric": [
+        {
+          "point": "Finds a factor using the factor theorem",
+          "marks": 1
+        },
+        {
+          "point": "Factors $V(x)$ fully",
+          "marks": 2
+        },
+        {
+          "point": "Correct dimensions when $x = 1$, with a check",
+          "marks": 1
+        },
+        {
+          "point": "Correct restriction on $x$",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q08",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "m": {
+          "min": 2,
+          "max": 3,
+          "step": 1
+        },
+        "a": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "k": {
+          "min": -4,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "derived": {
+        "c": "m^3 + a*m^2 - k*m"
+      },
+      "text": "Determine $k$ so that $x - {{m}}$ is a factor of $x^3 + {{a}}x^2 - kx - {{c}}$. Show your check.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Find $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "By the factor theorem, $P({{m}}) = 0$:\n\n${{m^3}} + {{a*m^2}} - {{m}}k - {{c}} = 0 \\Rightarrow {{m}}k = {{m^3 + a*m^2 - c}} \\Rightarrow k = {{k}}$\n\nCheck: $P({{m}}) = {{m^3}} + {{a*m^2}} - {{m}}({{k}}) - {{c}} = 0$ ✓",
+      "rubric": [
+        {
+          "point": "Applies the factor theorem",
+          "marks": 1
+        },
+        {
+          "point": "Solves for $k$",
+          "marks": 2
+        },
+        {
+          "point": "Checks",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q09",
+      "type": "analysis",
+      "difficulty": 1,
+      "vars": {
+        "A": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        },
+        "B": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "C": {
+          "min": 3,
+          "max": 4,
+          "step": 1
+        }
+      },
+      "text": "Use the graph of $y = P(x)$, a quartic polynomial with leading coefficient $1$, to determine the roots of $P(x) = 0$. Then write $P(x)$ in factored form and explain how the graph confirms the degree.\n\n```plot\nf: (x+{{A}})*(x+1)*(x-{{B}})*(x-{{C}})\ndomain: -6, 6\npoints: (-{{A}},0), (-1,0), ({{B}},0), ({{C}},0)\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the largest root.",
+          "answer": {
+            "expr": "C",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "The graph crosses the $x$-axis at $x = -{{A}}$, $-1$, ${{B}}$ and ${{C}}$, so these are the roots.\n\n$P(x) = (x + {{A}})(x + 1)(x - {{B}})(x - {{C}})$\n\nFour distinct crossings (each a zero of order 1) and both ends pointing **up** match a quartic with a positive leading coefficient.",
+      "rubric": [
+        {
+          "point": "Reads all four roots",
+          "marks": 2
+        },
+        {
+          "point": "Writes the factored form with correct signs",
+          "marks": 2
+        },
+        {
+          "point": "Explains the degree / end behaviour",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Determine the real roots of each equation: (a) $(5x^2 + 20)(3x^2 - 48) = 0$  (b) $(2x^2 - x - 13)(x^2 + 1) = 0$ (give exact roots and two-decimal approximations).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Give the positive root in (b) to two decimal places.",
+          "answer": {
+            "expr": "(1 + sqrt(105))/4",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $5x^2 + 20 = 0 \\Rightarrow x^2 = -4$: no real roots. $3x^2 - 48 = 0 \\Rightarrow x^2 = 16 \\Rightarrow x = \\pm4$. Real roots: $\\pm4$.\n\n(b) $x^2 + 1 = 0$: no real roots. $2x^2 - x - 13 = 0$: $x = \\dfrac{1 \\pm \\sqrt{1 + 104}}{4} = \\dfrac{1 \\pm \\sqrt{105}}{4}$, so $x \\approx 2.81$ or $x \\approx -2.31$.",
+      "rubric": [
+        {
+          "point": "(a) identifies no real roots from $5x^2 + 20$",
+          "marks": 1
+        },
+        {
+          "point": "(a) roots $\\pm4$",
+          "marks": 1
+        },
+        {
+          "point": "(b) identifies no real roots from $x^2 + 1$",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct quadratic formula roots",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve $7x^3 + 5x^2 - 5x - 3 = 0$. Round answers to one decimal place where necessary.",
+      "modelAnswer": "$P(-1) = -7 + 5 + 5 - 3 = 0$, so $x + 1$ is a factor.\n\nSynthetic division with $-1$: $7, 5, -5, -3 \\to 7, -2, -3, \\mathbf{0}$.\n\n$(x + 1)(7x^2 - 2x - 3) = 0$\n\n$7x^2 - 2x - 3 = 0 \\Rightarrow x = \\dfrac{2 \\pm \\sqrt{4 + 84}}{14} = \\dfrac{2 \\pm \\sqrt{88}}{14} = \\dfrac{1 \\pm \\sqrt{22}}{7}$\n\n$x = -1$, $x \\approx 0.8$, $x \\approx -0.5$.",
+      "rubric": [
+        {
+          "point": "Finds the rational root",
+          "marks": 1
+        },
+        {
+          "point": "Divides correctly",
+          "marks": 1
+        },
+        {
+          "point": "Uses the quadratic formula",
+          "marks": 2
+        },
+        {
+          "point": "All three roots, rounded",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "The specifications for a cardboard box state that the width is $5$ cm less than the length, and the height is $1$ cm more than double the width. Write an equation for the volume and find the dimensions for a volume of $550$ cm³.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the length.",
+          "answer": {
+            "expr": "10",
+            "unit": "cm",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Let the length be $l$. Width $= l - 5$; height $= 2(l - 5) + 1 = 2l - 9$.\n\n$V = l(l - 5)(2l - 9) = 2l^3 - 19l^2 + 45l$\n\n$2l^3 - 19l^2 + 45l - 550 = 0$\n\nTest factors of $550$ (larger values make sense for a length): $P(10) = 2000 - 1900 + 450 - 550 = 0$ ✓\n\nDividing: $(l - 10)(2l^2 + l + 55) = 0$. Discriminant $1 - 440 < 0$, so $l = 10$ is the only real root.\n\nDimensions: $10$ cm × $5$ cm × $11$ cm. Check $10 \\cdot 5 \\cdot 11 = 550$ ✓",
+      "rubric": [
+        {
+          "point": "Correct expressions for width and height",
+          "marks": 1
+        },
+        {
+          "point": "Correct volume equation in standard form",
+          "marks": 1
+        },
+        {
+          "point": "Finds the root with the factor theorem",
+          "marks": 1
+        },
+        {
+          "point": "Justifies that there are no other valid roots",
+          "marks": 1
+        },
+        {
+          "point": "Correct dimensions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q13",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Which function does **not** belong to the same family as the others? Explain.\n\n* A: $y = (x - 2)(x + 1)(2x - 6)$\n* B: $y = -3(x + 1)(x - 3)(x - 2)$\n* C: $y = 0.5(2x - 4)(x + 1)(x - 3)$\n* D: $y = 4(x - 2)(x - 1)(x - 3)$",
+      "modelAnswer": "Rewrite each factor as $(x - a)$:\n\n* A: $2x - 6 = 2(x - 3)$ → $y = 2(x - 2)(x + 1)(x - 3)$: zeros $2, -1, 3$.\n* B: zeros $-1, 3, 2$.\n* C: $2x - 4 = 2(x - 2)$ → $y = (x - 2)(x + 1)(x - 3)$: zeros $2, -1, 3$.\n* D: zeros $2, 1, 3$.\n\n**D** does not belong: it has the zero $1$ instead of $-1$. A, B and C are members of $y = k(x - 2)(x + 1)(x - 3)$ with $k = 2, -3, 1$.",
+      "rubric": [
+        {
+          "point": "Rewrites factors to find the zeros",
+          "marks": 2
+        },
+        {
+          "point": "Identifies D with a reason",
+          "marks": 2
+        },
+        {
+          "point": "States the $k$ values / family for the others",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q14",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            -2,
+            2,
+            3
+          ]
+        }
+      },
+      "derived": {
+        "y0": "-9*k"
+      },
+      "text": "(a) Determine an equation, in simplified form, for the family of cubic functions with zeros $1 \\pm \\sqrt3$ and $-2$. (b) Determine the member of the family whose graph passes through $(1, {{y0}})$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State $k$ for part (b).",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $\\left(x - (1 + \\sqrt3)\\right)\\left(x - (1 - \\sqrt3)\\right) = (x - 1)^2 - 3 = x^2 - 2x - 2$.\n\nFamily: $y = k(x + 2)(x^2 - 2x - 2)$.\n\n(b) At $x = 1$: $y = k(3)(1 - 2 - 2) = -9k$. So $-9k = {{y0}}$ and $k = {{k}}$.\n\n$y = {{k}}(x + 2)(x^2 - 2x - 2)$",
+      "rubric": [
+        {
+          "point": "Correct quadratic factor from the irrational zeros",
+          "marks": 2
+        },
+        {
+          "point": "Correct family",
+          "marks": 1
+        },
+        {
+          "point": "Finds $k$ from the point",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q15",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "choices": [
+            -2,
+            2,
+            3
+          ]
+        }
+      },
+      "text": "Determine an equation for the polynomial function represented by this graph. The $y$-intercept is $(0, {{-4*k}})$.\n\n```plot\nf: {{k}}*(x+2)*(x-1)^2*(x-2)\ndomain: -3, 3\npoints: (-2,0), (1,0), (2,0), (0,{{-4*k}})\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State $k$.",
+          "answer": {
+            "expr": "k",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "Zeros: $-2$ and $2$ (the graph crosses), and $1$ (the graph touches and turns back, so order 2). Degree $1 + 2 + 1 = 4$.\n\nFamily: $y = k(x + 2)(x - 1)^2(x - 2)$.\n\n$y$-intercept: $k(2)(1)(-2) = -4k = {{-4*k}}$, so $k = {{k}}$.\n\n$$y = {{k}}(x + 2)(x - 1)^2(x - 2)$$",
+      "rubric": [
+        {
+          "point": "Identifies zeros and the order-2 zero",
+          "marks": 2
+        },
+        {
+          "point": "Writes the family",
+          "marks": 1
+        },
+        {
+          "point": "Finds $k$",
+          "marks": 1
+        },
+        {
+          "point": "Final equation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q16",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Use technology to solve each inequality. Round the zeros to one decimal place.\n\n(a) $x^3 - 2x^2 - 3x + 1 < 0$\n\n(b) $2x^2 - x - 13 \\ge 0$",
+      "modelAnswer": "(a) Zeros of $y = x^3 - 2x^2 - 3x + 1$: $\\approx -1.2$, $0.3$, $2.9$. Positive cubic → below the axis on $(-\\infty, -1.2)$ and $(0.3, 2.9)$.\n\n$x < -1.2$ or $0.3 < x < 2.9$\n\n(b) Zeros $\\approx -2.3$ and $2.8$. Parabola opens up → on or above the axis outside the zeros.\n\n$x \\le -2.3$ or $x \\ge 2.8$",
+      "rubric": [
+        {
+          "point": "(a) correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "(a) correct intervals",
+          "marks": 2
+        },
+        {
+          "point": "(b) correct zeros",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct intervals with closed endpoints",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q17",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "The height of a roller coaster car above the ground is modelled by $h(t) = -0.1t^3 + 1.2t^2 - 2.5t + 6$, where $h$ is in metres and $t$ is in seconds, $0 \\le t \\le 10$. When is the car more than $10$ m above the ground?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "For how long is the car above 10 m? (one decimal place)",
+          "answer": {
+            "expr": "8.51 - 4.528",
+            "unit": "s",
+            "sig": 2,
+            "tol": 0.05
+          }
+        }
+      ],
+      "modelAnswer": "Solve $h(t) > 10$: $-0.1t^3 + 1.2t^2 - 2.5t - 4 > 0$.\n\nGraph $y = -0.1t^3 + 1.2t^2 - 2.5t - 4$ (or $y = h(t)$ with $y = 10$). Zeros $\\approx -1.0$, $4.5$, $8.5$.\n\nNegative leading coefficient: the graph is above the axis between $4.5$ and $8.5$ (and for $t < -1.0$, outside the domain).\n\nThe car is above $10$ m for about $4.5 < t < 8.5$ seconds — roughly $4$ seconds in total.",
+      "rubric": [
+        {
+          "point": "Sets up the inequality",
+          "marks": 1
+        },
+        {
+          "point": "Finds the relevant zeros with technology",
+          "marks": 2
+        },
+        {
+          "point": "Correct interval using the domain",
+          "marks": 2
+        },
+        {
+          "point": "Answers in context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q18",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve each inequality algebraically and show the solution on a number line: (a) $(5x + 4)(x - 4) \\ge 0$  (b) $-(2x + 3)(x - 1)(3x - 2) \\le 0$  (c) $(x^2 + 4x + 4)(x^2 - 25) > 0$",
+      "modelAnswer": "(a) Zeros $-0.8$, $4$. Opens up: $x \\le -0.8$ or $x \\ge 4$.\n\n(b) Multiply by $-1$ and flip: $(2x + 3)(x - 1)(3x - 2) \\ge 0$. Zeros $-1.5$, $\\tfrac23$, $1$; positive cubic: $-, +, -, +$. Solution: $-1.5 \\le x \\le \\tfrac23$ or $x \\ge 1$.\n\n(c) $(x + 2)^2(x - 5)(x + 5) > 0$. $(x + 2)^2 > 0$ for $x \\neq -2$, so we need $(x - 5)(x + 5) > 0$ (and $x \\neq -2$, which is automatic): $x < -5$ or $x > 5$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) handles the negative and gets the correct intervals",
+          "marks": 2
+        },
+        {
+          "point": "(c) factors and uses the squared factor correctly",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q19",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve by factoring: (a) $12x^2 + 25x - 7 \\le 0$  (b) $2x^3 + 5x^2 - 18x - 45 > 0$",
+      "modelAnswer": "(a) $(4x - 1)(3x + 7) \\le 0$. Zeros $-\\tfrac73$ and $\\tfrac14$; opens up → between: $-\\tfrac73 \\le x \\le \\tfrac14$.\n\n(b) $(2x + 5)(x - 3)(x + 3) > 0$. Zeros $-3, -2.5, 3$; positive cubic: $-, +, -, +$. Solution: $-3 < x < -2.5$ or $x > 3$.",
+      "rubric": [
+        {
+          "point": "(a) factors and solves correctly",
+          "marks": 2
+        },
+        {
+          "point": "(b) factors by grouping",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct intervals",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q20",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $-3x^4 + 10x^3 + 20x^2 - 40x - 32 \\le 0$.",
+      "modelAnswer": "From the factor theorem ($P(2) = 0$, $P(-2) = 0$) and division:\n\n$-3x^4 + 10x^3 + 20x^2 - 40x - 32 = -(x - 2)(x + 2)(3x + 2)(x - 4)$\n\nZeros $-2, -\\tfrac23, 2, 4$. Negative quartic → signs $-, +, -, +, -$.\n\n$\\le 0$: $x \\le -2$ or $-\\tfrac23 \\le x \\le 2$ or $x \\ge 4$.",
+      "rubric": [
+        {
+          "point": "Factors completely",
+          "marks": 3
+        },
+        {
+          "point": "Correct sign pattern",
+          "marks": 1
+        },
+        {
+          "point": "Correct solution",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q21",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "(a) Describe the similarities and differences between polynomial **equations**, polynomial **functions** and polynomial **inequalities**. (b) What is the relationship between roots, zeros and $x$-intercepts? Support both answers with examples.",
+      "modelAnswer": "(a) All three involve the same polynomial expression, e.g. $x^2 - x - 6$.\n* **Function:** $f(x) = x^2 - x - 6$ — a rule giving an output for every input; it has a graph.\n* **Equation:** $x^2 - x - 6 = 0$ — asks for specific values: $x = -2, 3$.\n* **Inequality:** $x^2 - x - 6 < 0$ — asks for intervals: $-2 < x < 3$.\nThe equation's solutions are the function's zeros and the inequality's boundary points.\n\n(b) The **roots** of $P(x) = 0$, the **zeros** of $P(x)$ and the **$x$-intercepts** of $y = P(x)$ are the same real numbers ($-2$ and $3$ here), seen as solutions, inputs giving 0, and points on a graph. Non-real roots are not $x$-intercepts.",
+      "rubric": [
+        {
+          "point": "Describes each of function, equation, inequality with examples",
+          "marks": 3
+        },
+        {
+          "point": "Explains how they are connected",
+          "marks": 1
+        },
+        {
+          "point": "Explains roots/zeros/intercepts relationship with an example",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q22",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Boxes for chocolates are made from cardboard sheets $36$ cm by $20$ cm by cutting squares of side $x$ cm from each corner and folding. (a) Express the volume as a function of $x$. (b) Determine the dimensions for a volume of $450$ cm³ (to the nearest tenth). (c) Determine algebraically or with technology the values of $x$ for which the volume is at least $450$ cm³.",
+      "modelAnswer": "(a) $V(x) = x(36 - 2x)(20 - 2x) = 4x(18 - x)(10 - x)$, $0 < x < 10$.\n\n(b) $V(x) = 450$: technology gives $x \\approx 0.7$ or $x \\approx 8.6$ in the domain.\n* $x \\approx 0.7$: $34.6$ cm × $18.6$ cm × $0.7$ cm\n* $x \\approx 8.6$: $18.8$ cm × $2.8$ cm × $8.6$ cm\n\n(c) $V(x) - 450 \\ge 0$: the zeros in the domain are $0.7$ and $8.6$, and $V(x) > 450$ between them (e.g. $V(3) = 4(3)(15)(7) = 1260$). So $0.7 \\le x \\le 8.6$ cm (approximately).",
+      "rubric": [
+        {
+          "point": "Correct volume function and domain",
+          "marks": 1
+        },
+        {
+          "point": "Both solutions of $V = 450$ with dimensions",
+          "marks": 2
+        },
+        {
+          "point": "Correct interval for $V \\ge 450$ with justification",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q23",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "**Can you tell just by looking?** Consider $x^2 - 3x + 2 = 0$, $x^3 - 6x^2 + 11x - 6 = 0$ and $x^4 - 10x^3 + 35x^2 - 50x + 24 = 0$.\n\n(a) Determine the roots of each equation. (b) Describe the pattern in the roots. (c) Make a conjecture about how the coefficients relate to the roots, and test it on $x^3 - 7x + 6 = 0$.",
+      "modelAnswer": "(a) $x^2 - 3x + 2 = (x - 1)(x - 2)$: roots $1, 2$.\n$x^3 - 6x^2 + 11x - 6$: $P(1) = 0$; dividing gives $x^2 - 5x + 6 = (x - 2)(x - 3)$: roots $1, 2, 3$.\n$x^4 - 10x^3 + 35x^2 - 50x + 24$: $P(1) = 0$ → quotient $x^3 - 9x^2 + 26x - 24$; $Q(2) = 0$ → $x^2 - 7x + 12 = (x - 3)(x - 4)$: roots $1, 2, 3, 4$.\n\n(b) The roots are the consecutive integers $1, 2, \\dots, n$.\n\n(c) **Conjecture:** for a polynomial with leading coefficient $1$, the coefficient of $x^{n-1}$ is the **negative of the sum** of the roots ($-3 = -(1 + 2)$, $-6 = -(1 + 2 + 3)$, $-10 = -(1 + 2 + 3 + 4)$), and the constant term is $\\pm$ the **product** of the roots ($2$, $-6$, $24$ — positive for even degree, negative for odd).\n\n**Test:** $x^3 - 7x + 6 = 0$: $P(1) = 0$ → $(x - 1)(x^2 + x - 6) = (x - 1)(x + 3)(x - 2)$. Roots $1, 2, -3$: sum $0$, matching the $x^2$-coefficient $0$ ✓; product $-6$, and the constant is $+6 = -(-6)$ ✓ (odd degree).",
+      "rubric": [
+        {
+          "point": "Correct roots of all three equations",
+          "marks": 2
+        },
+        {
+          "point": "Describes the pattern",
+          "marks": 1
+        },
+        {
+          "point": "States a reasonable conjecture linking coefficients to sum/product of roots",
+          "marks": 2
+        },
+        {
+          "point": "Tests the conjecture correctly",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q24",
+      "type": "design",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 2,
+          "step": 1
+        },
+        "b": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Write two possible quartic inequalities — one using $\\le$ and one using $\\ge$ — whose solution is $-2 - \\sqrt3 \\le x \\le -2 + \\sqrt3$ or ${{a}} \\le x \\le {{b}}$. Explain your reasoning.",
+      "modelAnswer": "Boundary values: $-2 \\pm \\sqrt3$, ${{a}}$, ${{b}}$.\n\nPair the irrational ones: $(x + 2)^2 - 3 = x^2 + 4x + 1$. Other factors: $(x - {{a}})(x - {{b}})$.\n\nThe solution is two closed intervals **between** pairs of zeros, which is where a **positive** quartic is negative (pattern $+, -, +, -, +$).\n\n* $\\le$: $(x^2 + 4x + 1)(x - {{a}})(x - {{b}}) \\le 0$\n* $\\ge$: $-(x^2 + 4x + 1)(x - {{a}})(x - {{b}}) \\ge 0$\n\n(Any positive multiple works too.) Test $x = 0$, which lies between $-2 + \\sqrt3 \\approx -0.27$ and ${{a}}$ and should be excluded: $(1)({{-a}})({{-b}}) = {{a*b}} > 0$, so it fails the $\\le$ inequality ✓.",
+      "rubric": [
+        {
+          "point": "Combines the irrational boundaries into $x^2 + 4x + 1$",
+          "marks": 2
+        },
+        {
+          "point": "Correct $\\le$ inequality with sign reasoning",
+          "marks": 1
+        },
+        {
+          "point": "Correct $\\ge$ inequality",
+          "marks": 1
+        },
+        {
+          "point": "Verification with a test value",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q25",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Factor each polynomial: (a) $x^3 - 5x^2 + 2x + 8$  (b) $5x^3 + 7x^2 - 8x - 4$  (c) $2x^4 + 13x^3 + 28x^2 + 23x + 6$",
+      "modelAnswer": "(a) $P(-1) = -1 - 5 - 2 + 8 = 0$ → $(x + 1)(x^2 - 6x + 8) = (x + 1)(x - 2)(x - 4)$.\n\n(b) $P(1) = 5 + 7 - 8 - 4 = 0$ → $(x - 1)(5x^2 + 12x + 4) = (x - 1)(5x + 2)(x + 2)$.\n\n(c) All coefficients positive → test negatives. $P(-1) = 2 - 13 + 28 - 23 + 6 = 0$ → quotient $2x^3 + 11x^2 + 17x + 6$. $Q(-2) = -16 + 44 - 34 + 6 = 0$ → quotient $2x^2 + 7x + 3 = (2x + 1)(x + 3)$.\n$(x + 1)(x + 2)(2x + 1)(x + 3)$.",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 2
+        },
+        {
+          "point": "(c) two zeros found and full factorisation",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "2-rev-q26",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "The volume of an open-top box made from a $40$ cm by $32$ cm sheet with corner squares of side $x$ is $V(x) = 4x(20 - x)(16 - x)$. (a) Write equations for boxes with twice and half this volume and explain how the three functions are related. (b) Find the values of $x$ for which the original box has volume greater than $2016$ cm³.",
+      "modelAnswer": "(a) Twice: $V = 8x(20 - x)(16 - x)$; half: $V = 2x(20 - x)(16 - x)$. All three are members of the family $y = kx(x - 20)(x - 16)$ (with $k = 4, 8, 2$): same zeros, vertical stretches/compressions of one another.\n\n(b) $4x^3 - 144x^2 + 1280x > 2016 \\Rightarrow x^3 - 36x^2 + 320x - 504 > 0 \\Rightarrow (x - 2)(x^2 - 34x + 252) > 0$.\nZeros $2$, $17 \\pm \\sqrt{37}$ ($\\approx 10.9$, $23.1$). Positive on $(2, 10.9)$ within the domain $0 < x < 16$.\n\n$2 < x < 17 - \\sqrt{37} \\approx 10.9$ cm.",
+      "rubric": [
+        {
+          "point": "Correct twice/half equations",
+          "marks": 1
+        },
+        {
+          "point": "Explains the family relationship",
+          "marks": 1
+        },
+        {
+          "point": "Factors the cubic inequality",
+          "marks": 2
+        },
+        {
+          "point": "Correct solution within the domain",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

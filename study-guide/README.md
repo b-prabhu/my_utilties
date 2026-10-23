@@ -78,10 +78,12 @@ kept when content is updated or reloaded.
 
 Current subjects:
 
-| Subject | Units | Source |
-|---|---|---|
-| Physics 11 – Chapter 4: Applications of Forces | 4.1–4.6, Investigations, Review & careers, Review problems | Nelson Physics 11 chapter 4 |
-| Advanced Functions 12 (MHF4U) | Chapters 1–8 (sections 1.2–8.5) plus a review unit per chapter | McGraw-Hill Ryerson Advanced Functions |
+| Subject | Units | Test questions | Source |
+|---|---|---|---|
+| Physics 11 – Chapter 4: Applications of Forces | 9 (4.1–4.6, Investigations, Review & careers, Review problems) | 217 | Nelson Physics 11, chapter 4 |
+| Advanced Functions 12 (MHF4U) | 49 (sections 1.2–8.5 plus a review unit per chapter) | 936 | McGraw-Hill Ryerson Advanced Functions |
+
+Section 1.1 (Power Functions) was not in the supplied MHF4U file, so it is not included yet.
 
 ## Development
 
