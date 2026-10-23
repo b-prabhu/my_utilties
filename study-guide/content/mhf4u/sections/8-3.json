@@ -1109,7 +1109,7 @@
           "step": 1
         }
       },
-      "text": "The number of stuffed bears sold, in thousands, is projected to be $N(p) = -0.1(p + 5)^2 + {{M}}$, where $p$ is the price in dollars. Revenue is $R(p) = p \\cdot N(p)$, in thousands of dollars. The minimum price is &#36;5.",
+      "text": "The number of stuffed bears sold, in thousands, is projected to be $N(p) = -0.1(p + 5)^2 + {{M}}$, where $p$ is the price in dollars. Revenue is $R(p) = p \\cdot N(p)$, in thousands of dollars. The minimum price is \\$5.",
       "parts": [
         {
           "label": "a",
@@ -1126,7 +1126,7 @@
         },
         {
           "label": "c",
-          "text": "Calculate the revenue at a price of &#36;{{p1}}.",
+          "text": "Calculate the revenue at a price of \\${{p1}}.",
           "answer": {
             "expr": "p1*(-0.1*(p1+5)^2+M)",
             "unit": "thousand $",
@@ -1138,7 +1138,7 @@
           "text": "Explain how you would find the optimum price, and why it cannot be read from the graph of $N(p)$."
         }
       ],
-      "modelAnswer": "**(a)** $N$ is a downward parabola with vertex $(-5, {{M}})$, so on $p \\ge 5$ sales decrease as the price rises.\n\n**(b)** Revenue requires $N(p) > 0$: $(p + 5)^2 < {{10*M}} \\Rightarrow p < -5 + \\sqrt{ {{10*M}} } \\approx {{-5+sqrt(10*M):4}}$. Price domain: $5 \\le p < {{-5+sqrt(10*M):4}}$.\n\n**(c)** $R({{p1}}) = {{p1}}[-0.1({{p1+5}})^2 + {{M}}] = {{p1*(-0.1*(p1+5)^2+M):4}}$ thousand dollars.\n\n**(d)** $R$ is a cubic; the optimum price is where it is largest, found from its graph (between &#36;5 and &#36;{{-5+sqrt(10*M):3}}). You cannot read the optimum from the graph of $N$ alone, because revenue depends on price × quantity.",
+      "modelAnswer": "**(a)** $N$ is a downward parabola with vertex $(-5, {{M}})$, so on $p \\ge 5$ sales decrease as the price rises.\n\n**(b)** Revenue requires $N(p) > 0$: $(p + 5)^2 < {{10*M}} \\Rightarrow p < -5 + \\sqrt{ {{10*M}} } \\approx {{-5+sqrt(10*M):4}}$. Price domain: $5 \\le p < {{-5+sqrt(10*M):4}}$.\n\n**(c)** $R({{p1}}) = {{p1}}[-0.1({{p1+5}})^2 + {{M}}] = {{p1*(-0.1*(p1+5)^2+M):4}}$ thousand dollars.\n\n**(d)** $R$ is a cubic; the optimum price is where it is largest, found from its graph (between \\$5 and \\${{-5+sqrt(10*M):3}}). You cannot read the optimum from the graph of $N$ alone, because revenue depends on price × quantity.",
       "rubric": [
         {
           "point": "Describes N(p)",

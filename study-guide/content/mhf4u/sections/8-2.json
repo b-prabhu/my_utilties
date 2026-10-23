@@ -107,7 +107,7 @@
       "steps": [
         "$R(g) = P(g)N(g) = (25 - 0.1g)(10 + 0.2g)$.",
         "Expand: $250 + 5g - g - 0.02g^2 = -0.02g^2 + 4g + 250$ (hundreds of dollars).",
-        "Vertex: $g = -\\dfrac{4}{2(-0.02)} = 100$. $R(100) = -200 + 400 + 250 = 450$, i.e. &#36;45 000 per game.",
+        "Vertex: $g = -\\dfrac{4}{2(-0.02)} = 100$. $R(100) = -200 + 400 + 250 = 450$, i.e. \\$45 000 per game.",
         "Revenue increases until game 100, then decreases. Only $g \\ge 0$ has meaning."
       ],
       "answer": "Revenue rises in the short term, peaking at game 100, then falls."
@@ -220,7 +220,7 @@
     {
       "question": "With $P(g) = 25 - 0.1g$ and $N(g) = 10 + 0.2g$, compute the revenue at game 20.",
       "hint": "$R(g) = P(g)N(g)$.",
-      "solution": "$R(20) = (23)(14) = 322$ hundred dollars = &#36;32 200."
+      "solution": "$R(20) = (23)(14) = 322$ hundred dollars = \\$32 200."
     }
   ],
   "summary": [

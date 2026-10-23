@@ -102,7 +102,7 @@
     },
     {
       "title": "The profit function (T-shirt fundraiser)",
-      "problem": "Student Council pays a fixed cost of &#36;200 plus &#36;5 per T-shirt and sells each shirt for &#36;8. (a) Write $C(n)$ and $R(n)$. (b) Find the break-even point. (c) Model profit. (d) When does council make money?",
+      "problem": "Student Council pays a fixed cost of \\$200 plus \\$5 per T-shirt and sells each shirt for \\$8. (a) Write $C(n)$ and $R(n)$. (b) Find the break-even point. (c) Model profit. (d) When does council make money?",
       "steps": [
         "**Given:** $F = 200$, $v = 5$, $p = 8$.",
         "$C(n) = 200 + 5n$ and $R(n) = 8n$.",
@@ -111,7 +111,7 @@
         "$P(n) > 0$ when $3n > 200$, i.e. $n > 66.\\overline{6}$. Since $n$ is a whole number, council makes money when it sells **67 or more** shirts and loses money for 66 or fewer.",
         "Practical domain: $\\{n \\in \\mathbb{W}\\}$ (whole numbers). Ranges: $C \\ge 200$, $R \\ge 0$, $P \\ge -200$."
       ],
-      "answer": "Break-even ≈ (67 shirts, &#36;533); $P(n) = 3n - 200$; profit for $n \\ge 67$."
+      "answer": "Break-even ≈ (67 shirts, \\$533); $P(n) = 3n - 200$; profit for $n \\ge 67$."
     },
     {
       "title": "An AC–DC voltage signal",
@@ -205,9 +205,9 @@
       "solution": "Translate $y = 2^x$ down 3. Domain $\\mathbb{R}$; horizontal asymptote $y = -3$; range $\\{y \\in \\mathbb{R}, y > -3\\}$."
     },
     {
-      "question": "A hotdog vendor has fixed costs of &#36;120 per day, variable costs of &#36;1 per hotdog, sells hotdogs for &#36;2.50 and can sell at most 250 a day. Find the break-even point and the maximum daily profit.",
+      "question": "A hotdog vendor has fixed costs of \\$120 per day, variable costs of \\$1 per hotdog, sells hotdogs for \\$2.50 and can sell at most 250 a day. Find the break-even point and the maximum daily profit.",
       "hint": "$P(h) = 2.5h - (120 + h)$.",
-      "solution": "$P(h) = 1.5h - 120$. Break-even: $h = 80$ hotdogs (&#36;200). Maximum profit at $h = 250$: $1.5(250) - 120 = &#36;255$."
+      "solution": "$P(h) = 1.5h - 120$. Break-even: $h = 80$ hotdogs (\\$200). Maximum profit at $h = 250$: $1.5(250) - 120 = \\$255$."
     },
     {
       "question": "What are the minimum, maximum and average values of $V(t) = 6\\sin t + 9$?",
@@ -439,7 +439,7 @@
           "step": 10
         }
       },
-      "text": "A school club is selling hoodies. There is a fixed cost of &#36;{{F}} plus a variable cost of &#36;{{v}} per hoodie, and each hoodie sells for &#36;{{p}}.",
+      "text": "A school club is selling hoodies. There is a fixed cost of \\${{F}} plus a variable cost of \\${{v}} per hoodie, and each hoodie sells for \\${{p}}.",
       "parts": [
         {
           "label": "a",
@@ -472,7 +472,7 @@
           "text": "When does the club lose money and when does it make money? Give the practical domain."
         }
       ],
-      "modelAnswer": "**(a)** $C(n) = {{F}} + {{v}}n$ and $R(n) = {{p}}n$.\n\n**(b)** Break-even: $R(n) = C(n)$\n${{p}}n = {{F}} + {{v}}n \\Rightarrow {{p-v}}n = {{F}} \\Rightarrow n = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):4}}$.\nThe revenue (= cost) there is about &#36;{{p*F/(p-v):4}}. The club breaks even at about {{F/(p-v):3}} hoodies.\n\n**(c)** $P(n) = R(n) - C(n) = {{p}}n - ({{F}} + {{v}}n) = {{p-v}}n - {{F}}$.\nIt is a line with slope {{p-v}} (profit per hoodie) and P-intercept −{{F}}; it crosses the n-axis at the break-even point.\n\n**(d)** $P({{N}}) = {{p-v}}({{N}}) - {{F}} = {{(p-v)*N-F}}$ dollars.\n\n**(e)** The club loses money when $P(n) < 0$ (below the break-even number) and makes money when $P(n) > 0$. Practical domain: $n$ is a whole number $\\ge 0$; $C \\ge {{F}}$, $R \\ge 0$, $P \\ge -{{F}}$.",
+      "modelAnswer": "**(a)** $C(n) = {{F}} + {{v}}n$ and $R(n) = {{p}}n$.\n\n**(b)** Break-even: $R(n) = C(n)$\n${{p}}n = {{F}} + {{v}}n \\Rightarrow {{p-v}}n = {{F}} \\Rightarrow n = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):4}}$.\nThe revenue (= cost) there is about \\${{p*F/(p-v):4}}. The club breaks even at about {{F/(p-v):3}} hoodies.\n\n**(c)** $P(n) = R(n) - C(n) = {{p}}n - ({{F}} + {{v}}n) = {{p-v}}n - {{F}}$.\nIt is a line with slope {{p-v}} (profit per hoodie) and P-intercept −{{F}}; it crosses the n-axis at the break-even point.\n\n**(d)** $P({{N}}) = {{p-v}}({{N}}) - {{F}} = {{(p-v)*N-F}}$ dollars.\n\n**(e)** The club loses money when $P(n) < 0$ (below the break-even number) and makes money when $P(n) > 0$. Practical domain: $n$ is a whole number $\\ge 0$; $C \\ge {{F}}$, $R \\ge 0$, $P \\ge -{{F}}$.",
       "rubric": [
         {
           "point": "Correct cost and revenue equations",
@@ -526,7 +526,7 @@
           "step": 25
         }
       },
-      "text": "A hotdog vendor has fixed costs of &#36;{{F}} per day plus &#36;{{v}} per hotdog. Hotdogs sell for &#36;{{p}} each, and the vendor can sell at most {{M}} hotdogs a day.",
+      "text": "A hotdog vendor has fixed costs of \\${{F}} per day plus \\${{v}} per hotdog. Hotdogs sell for \\${{p}} each, and the vendor can sell at most {{M}} hotdogs a day.",
       "parts": [
         {
           "label": "a",
@@ -555,7 +555,7 @@
           }
         }
       ],
-      "modelAnswer": "$C(h) = {{F}} + {{v}}h$, $R(h) = {{p}}h$.\n\n**(a)** Break-even: ${{p}}h = {{F}} + {{v}}h \\Rightarrow h = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):3}}$. Cost and revenue are both about &#36;{{p*F/(p-v):3}} there.\n\n**(b)** $P(h) = R(h) - C(h) = {{p-v}}h - {{F}}$.\n\n**(c)** Practical domain: $\\{h \\in \\mathbb{W}, 0 \\le h \\le {{M}}\\}$.\n$C$: from &#36;{{F}} to &#36;{{F+v*M}}; $R$: from &#36;0 to &#36;{{p*M}}; $P$: from −&#36;{{F}} to &#36;{{(p-v)*M-F}}.\n\n**(d)** $P$ is increasing, so the maximum profit is at $h = {{M}}$: $P({{M}}) = {{p-v}}({{M}}) - {{F}} = &#36;{{(p-v)*M-F}}$.",
+      "modelAnswer": "$C(h) = {{F}} + {{v}}h$, $R(h) = {{p}}h$.\n\n**(a)** Break-even: ${{p}}h = {{F}} + {{v}}h \\Rightarrow h = \\dfrac{ {{F}} }{ {{p-v}} } \\approx {{F/(p-v):3}}$. Cost and revenue are both about \\${{p*F/(p-v):3}} there.\n\n**(b)** $P(h) = R(h) - C(h) = {{p-v}}h - {{F}}$.\n\n**(c)** Practical domain: $\\{h \\in \\mathbb{W}, 0 \\le h \\le {{M}}\\}$.\n$C$: from \\${{F}} to \\${{F+v*M}}; $R$: from \\$0 to \\${{p*M}}; $P$: from −\\${{F}} to \\${{(p-v)*M-F}}.\n\n**(d)** $P$ is increasing, so the maximum profit is at $h = {{M}}$: $P({{M}}) = {{p-v}}({{M}}) - {{F}} = \\${{(p-v)*M-F}}$.",
       "rubric": [
         {
           "point": "Correct break-even quantity with working",
@@ -619,7 +619,7 @@
           ]
         }
       },
-      "text": "A vendor's daily costs are $C(h) = {{F}} + {{v}}h$ and revenue is $R(h) = {{p}}h$, with at most {{M}} items sold per day. The vendor can either **(A)** reduce fixed costs by &#36;{{dF}} per day, or **(B)** reduce the variable cost by &#36;{{dv}} per item.",
+      "text": "A vendor's daily costs are $C(h) = {{F}} + {{v}}h$ and revenue is $R(h) = {{p}}h$, with at most {{M}} items sold per day. The vendor can either **(A)** reduce fixed costs by \\${{dF}} per day, or **(B)** reduce the variable cost by \\${{dv}} per item.",
       "parts": [
         {
           "label": "a",
@@ -1059,7 +1059,7 @@
           "step": 1
         }
       },
-      "text": "The annual operating costs for a toy company's game division are:\n\n| Fixed costs | | Variable costs (per game) | |\n|---|---|---|---|\n| Rent | &#36;12 000 | Material | &#36;6 |\n| Taxes | &#36;3 000 | Labour | &#36;9 |\n| Utilities | &#36;5 000 | | |\n\nEach game sells for &#36;{{p}}.",
+      "text": "The annual operating costs for a toy company's game division are:\n\n| Fixed costs | | Variable costs (per game) | |\n|---|---|---|---|\n| Rent | \\$12 000 | Material | \\$6 |\n| Taxes | \\$3 000 | Labour | \\$9 |\n| Utilities | \\$5 000 | | |\n\nEach game sells for \\${{p}}.",
       "parts": [
         {
           "label": "a",
@@ -1132,7 +1132,7 @@
           "step": 4
         }
       },
-      "text": "Max earns &#36;{{w}}/h as a server plus an average of &#36;{{t}}/h in tips.",
+      "text": "Max earns \\${{w}}/h as a server plus an average of \\${{t}}/h in tips.",
       "parts": [
         {
           "label": "a",
@@ -1152,7 +1152,7 @@
           }
         }
       ],
-      "modelAnswer": "**(a)** Wages $W(h) = {{w}}h$; tips $T(h) = {{t}}h$. Both are lines through the origin (slopes {{w}} and {{t}}).\n\n**(b)** Total $E(h) = W(h) + T(h) = {{w+t}}h$ – by superposition the slopes add.\n\n**(c)** $E({{H}}) = {{w+t}}({{H}}) = &#36;{{(w+t)*H}}$.",
+      "modelAnswer": "**(a)** Wages $W(h) = {{w}}h$; tips $T(h) = {{t}}h$. Both are lines through the origin (slopes {{w}} and {{t}}).\n\n**(b)** Total $E(h) = W(h) + T(h) = {{w+t}}h$ – by superposition the slopes add.\n\n**(c)** $E({{H}}) = {{w+t}}({{H}}) = \\${{(w+t)*H}}$.",
       "rubric": [
         {
           "point": "Correct wage and tip functions",

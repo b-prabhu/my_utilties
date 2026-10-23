@@ -1,0 +1,1248 @@
+{
+  "id": "3-review",
+  "number": "Review",
+  "title": "Chapter 3 Review & Practice Test",
+  "estimatedMinutes": 120,
+  "overview": "Pull the whole chapter together: reciprocals of linear and quadratic functions, linear-over-linear functions, rational equations and inequalities, and real-world models with holes and oblique asymptotes. Use the checklists here, then test yourself with the mixed review and practice-test questions.",
+  "objectives": [
+    "Find all key features of rational functions and sketch them without technology.",
+    "Solve rational equations and inequalities and justify each step.",
+    "Write equations of rational functions from their features.",
+    "Model and analyse real situations with rational functions, including rates of change."
+  ],
+  "lessons": [
+    {
+      "id": "map",
+      "title": "Chapter 3 at a glance",
+      "body": "| Section | Big idea | Key tool |\n|---|---|---|\n| 3.1 Reciprocal of a linear function | $\\frac{1}{kx - c}$: one vertical asymptote, $y = 0$ | denominator $= 0$ |\n| 3.2 Reciprocal of a quadratic | two, one or no vertical asymptotes; turning point at the quadratic's vertex | factor / discriminant |\n| 3.3 $\\frac{ax+b}{cx+d}$ | horizontal asymptote $y = \\frac{a}{c}$ | divide every term by $x$ |\n| 3.4 Equations and inequalities | extraneous roots; intervals | clear fractions; sign tables |\n| 3.5 Making connections | holes, oblique asymptotes, models | factor & cancel; long division |\n\n### Asymptote checklist for $f(x) = \\dfrac{P(x)}{Q(x)}$\n1. **Factor** numerator and denominator; cancel common factors → **holes**.\n2. Remaining zeros of the denominator → **vertical asymptotes**.\n3. Compare degrees: $\\deg P < \\deg Q$ → $y = 0$; equal → ratio of leading coefficients; one more → **oblique** asymptote by division.\n4. Zeros of the (simplified) numerator → **$x$-intercepts**; $f(0)$ → **$y$-intercept**.\n5. Test points near each vertical asymptote and for large $|x|$ → **behaviour** and **end behaviour**.\n"
+    },
+    {
+      "id": "sketch",
+      "title": "A reliable sketching routine",
+      "body": "To sketch any rational function in this chapter without technology:\n\n1. Find and draw the asymptotes (dashed lines).\n2. Plot the intercepts and any holes (open circles).\n3. Make a **sign table** using all critical values (zeros of numerator and denominator).\n4. Decide the behaviour beside each vertical asymptote (does $f \\to +\\infty$ or $-\\infty$?).\n5. For reciprocals of quadratics with two zeros, plot the turning point midway between the asymptotes.\n6. Join the pieces smoothly, approaching asymptotes without crossing vertical ones.\n\n```plot\ntitle: Example: f(x) = (x + 4)/(x − 2)\nf: (x+4)/(x-2)\ndomain: -10, 10\nrange: -8, 10\npoints: (-4,0), (0,-2)\nasymptote x: 2\nasymptote y: 1\n```\n"
+    },
+    {
+      "id": "solve",
+      "title": "Solving: equations versus inequalities",
+      "body": "| | Equation $\\frac{P}{Q} = k$ | Inequality $\\frac{P}{Q} > k$ |\n|---|---|---|\n| Goal | specific values | intervals |\n| First step | restrictions, multiply by common denominator | move everything to one side; single fraction |\n| Danger | extraneous roots | multiplying by an expression of unknown sign |\n| Check | substitute into the original | test a point in each interval |\n\n**Rates of change** appear throughout: average rate = slope of a secant; instantaneous rate ≈ slope of a secant over a tiny interval.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "rational function",
+      "definition": "$f(x) = \\frac{P(x)}{Q(x)}$ with polynomials $P$, $Q$ and $Q(x) \\ne 0$."
+    },
+    {
+      "term": "vertical asymptote",
+      "definition": "Where the simplified denominator is zero."
+    },
+    {
+      "term": "horizontal asymptote",
+      "definition": "The value approached as x → ±∞ (degree comparison)."
+    },
+    {
+      "term": "oblique asymptote",
+      "definition": "The linear quotient when the numerator's degree is one more than the denominator's."
+    },
+    {
+      "term": "hole",
+      "definition": "Point discontinuity from a cancelled common factor."
+    },
+    {
+      "term": "extraneous root",
+      "definition": "A value from the algebra that does not satisfy the original equation."
+    },
+    {
+      "term": "critical value",
+      "definition": "A zero of the numerator or denominator used to split a number line into test intervals."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Reciprocal linear",
+      "latex": "f(x) = \\frac{1}{kx - c}:\\ x = \\frac{c}{k},\\ y = 0",
+      "meaning": "3.1"
+    },
+    {
+      "name": "Reciprocal quadratic turning point",
+      "latex": "x = \\frac{r_1 + r_2}{2}",
+      "meaning": "3.2"
+    },
+    {
+      "name": "Linear over linear",
+      "latex": "f(x) = \\frac{ax+b}{cx+d}:\\ x = -\\frac{d}{c},\\ y = \\frac{a}{c}",
+      "meaning": "3.3"
+    },
+    {
+      "name": "Inverse square law",
+      "latex": "I = \\frac{k}{d^2}",
+      "meaning": "3.5"
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Full analysis of a reciprocal of a quadratic",
+      "problem": "Analyse $g(x) = \\dfrac{1}{x^2 - 5x - 24}$.",
+      "steps": [
+        "Factor: $(x - 8)(x + 3)$. Vertical asymptotes $x = -3$, $x = 8$; horizontal asymptote $y = 0$.",
+        "$y$-intercept $-\\frac{1}{24}$. Turning point at $x = \\frac{-3 + 8}{2} = 2.5$: $q(2.5) = -30.25$, so a local maximum $(2.5, -0.0331)$.",
+        "Signs: + for $x < -3$, − between, + for $x > 8$.",
+        "Increasing: $x < -3$ and $-3 < x < 2.5$. Decreasing: $2.5 < x < 8$ and $x > 8$.",
+        "Domain $x \\ne -3, 8$; range $y \\le -\\frac{1}{30.25}$ or $y > 0$."
+      ],
+      "answer": "Two vertical asymptotes, local max $(2.5, -0.033)$."
+    },
+    {
+      "title": "Equation with a cubic",
+      "problem": "Solve $\\dfrac{20}{x^2 - 4x + 7} = x + 2$.",
+      "steps": [
+        "$x^2 - 4x + 7 > 0$ always (discriminant $-12$), so no restrictions.",
+        "$20 = (x + 2)(x^2 - 4x + 7) = x^3 - 2x^2 - x + 14$, so $x^3 - 2x^2 - x - 6 = 0$.",
+        "Factor theorem: $x = 3$ works ($27 - 18 - 3 - 6 = 0$). $x^3 - 2x^2 - x - 6 = (x - 3)(x^2 + x + 2)$.",
+        "$x^2 + x + 2$ has discriminant $-7$: no more real roots."
+      ],
+      "answer": "$x = 3$"
+    },
+    {
+      "title": "Inequality",
+      "problem": "Solve $\\dfrac{x + 1}{x - 2} > \\dfrac{x + 7}{x + 1}$.",
+      "steps": [
+        "$\\frac{(x+1)^2 - (x+7)(x-2)}{(x-2)(x+1)} > 0 \\Rightarrow \\frac{15 - 3x}{(x - 2)(x + 1)} > 0$.",
+        "Critical values $-1, 2, 5$. Signs: $x < -1$: +; $-1 < x < 2$: −; $2 < x < 5$: +; $x > 5$: −."
+      ],
+      "answer": "$x < -1$ or $2 < x < 5$."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "Cancelling a common factor removes the restriction.",
+      "fact": "The restriction stays; it becomes a hole."
+    },
+    {
+      "myth": "Multiply an inequality by the denominator to clear it.",
+      "fact": "Only if you know the sign of the denominator – otherwise use a sign table or cases."
+    },
+    {
+      "myth": "The horizontal asymptote of $\\frac{ax+b}{cx+d}$ is $y = \\frac{b}{d}$.",
+      "fact": "That is the $y$-intercept. The horizontal asymptote is $y = \\frac{a}{c}$."
+    },
+    {
+      "myth": "Every reciprocal of a quadratic has a vertical asymptote.",
+      "fact": "Not if the quadratic has no real zeros."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Oil spill clean-up",
+      "body": "The cost $C(p) = \\frac{50p}{100 - p}$ of cleaning up $p$% of a spill explodes as $p \\to 100$ – removing the last few percent is extremely expensive."
+    },
+    {
+      "title": "Sawmills",
+      "body": "The percent of wood lost to the saw blade, $P(t) = \\frac{100t}{t + W}$, shows why thin blades matter for thick lumber."
+    },
+    {
+      "title": "Batteries",
+      "body": "Power $P = \\frac{100R}{(2+R)^2}$ peaks when the load resistance matches the battery's internal resistance."
+    }
+  ],
+  "practice": [
+    {
+      "question": "State the asymptotes of $h(x) = -\\dfrac{1}{x - 5}$.",
+      "hint": "",
+      "solution": "$x = 5$ and $y = 0$."
+    },
+    {
+      "question": "Find the hole in $g(x) = \\dfrac{x^2 - 2x - 35}{x^2 - 3x - 28}$.",
+      "hint": "Factor both.",
+      "solution": "$\\frac{(x - 7)(x + 5)}{(x - 7)(x + 4)} = \\frac{x + 5}{x + 4}$; hole at $(7, \\frac{12}{11})$."
+    },
+    {
+      "question": "Solve $\\dfrac{3}{x^2 + 6x - 24} = 1$.",
+      "hint": "Multiply out.",
+      "solution": "$x^2 + 6x - 27 = 0 \\Rightarrow x = 3$ or $x = -9$."
+    },
+    {
+      "question": "Solve $\\dfrac{6}{x + 5} < 2$.",
+      "hint": "Single fraction.",
+      "solution": "$\\frac{2x + 4}{x + 5} > 0$: $x < -5$ or $x > -2$."
+    },
+    {
+      "question": "Write $f(x) = \\dfrac{ax+b}{cx+d}$ with $x$-intercept 2, vertical asymptote $x = -1$, horizontal asymptote $y = -3$.",
+      "hint": "",
+      "solution": "$f(x) = \\dfrac{-3(x - 2)}{x + 1} = \\dfrac{-3x + 6}{x + 1}$."
+    },
+    {
+      "question": "For $f(x) = \\dfrac{x + 2}{x - 5}$, state the domain and range.",
+      "hint": "",
+      "solution": "Domain $x \\ne 5$; range $y \\ne 1$."
+    }
+  ],
+  "summary": [
+    "Vertical asymptotes come from zeros of the simplified denominator; holes from cancelled factors.",
+    "Horizontal asymptotes come from comparing degrees; a numerator one degree higher gives an oblique asymptote.",
+    "Reciprocals of quadratics have 2, 1 or 0 vertical asymptotes depending on the discriminant.",
+    "Solve rational equations by clearing denominators and rejecting extraneous roots; solve inequalities with sign tables.",
+    "Rational models describe inverse variation, concentrations, averages and many scientific laws."
+  ],
+  "questions": [
+    {
+      "id": "3-rev-q01",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Determine the equations of the vertical and horizontal asymptotes of each function and state each domain: (a) $f(x) = \\dfrac{1}{x - {{a}}}$ (b) $g(x) = \\dfrac{1}{x + {{b}}}$ (c) $h(x) = -\\dfrac{1}{x - {{c}}}$",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical asymptote of $g$ ($x = ?$).",
+          "answer": {
+            "expr": "-b",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Give all asymptotes and domains."
+        }
+      ],
+      "modelAnswer": "(a) $x = {{a}}$, $y = 0$; domain $x \\ne {{a}}$.\n\n(b) $x = -{{b}}$, $y = 0$; domain $x \\ne -{{b}}$.\n\n(c) $x = {{c}}$, $y = 0$; domain $x \\ne {{c}}$. (The negative sign reflects the graph but does not change the asymptotes.)",
+      "rubric": [
+        {
+          "point": "(a) correct",
+          "marks": 1
+        },
+        {
+          "point": "(b) correct",
+          "marks": 1
+        },
+        {
+          "point": "(c) correct with comment",
+          "marks": 1
+        },
+        {
+          "point": "Domains",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q02",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        },
+        "c": {
+          "min": 1,
+          "max": 8,
+          "step": 1
+        }
+      },
+      "text": "Analyse $k(x) = -\\dfrac{1}{ {{k}}x + {{c}} }$: domain, range, $y$-intercept, asymptotes, and the behaviour near the vertical asymptote. Describe the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Vertical asymptote.",
+          "answer": {
+            "expr": "-c/k",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Complete the analysis."
+        }
+      ],
+      "modelAnswer": "Vertical asymptote ${{k}}x + {{c}} = 0 \\Rightarrow x = -\\frac{ {{c}} }{ {{k}} } \\approx {{-c/k:3}}$; horizontal asymptote $y = 0$.\n\n$y$-intercept $-\\frac{1}{ {{c}} } \\approx {{-1/c:3}}$. Domain $x \\ne {{-c/k:3}}$; range $y \\ne 0$.\n\nAs $x \\to {{-c/k:3}}^-$ the denominator is a small negative number, so $k(x) \\to +\\infty$; as $x \\to {{-c/k:3}}^+$, $k(x) \\to -\\infty$.\n\nGraph: the reciprocal of a linear function reflected in the $x$-axis – increasing on both branches, left branch above the $x$-axis and right branch below.",
+      "rubric": [
+        {
+          "point": "Asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Behaviour near the vertical asymptote",
+          "marks": 2
+        },
+        {
+          "point": "Graph description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q03",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "q": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "r": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Determine the vertical asymptotes and state the domain of each function: (a) $f(x) = \\dfrac{1}{(x - {{p}})(x + {{q}})}$ (b) $g(x) = -\\dfrac{2}{(x + {{r}})^2}$ (c) $h(x) = \\dfrac{1}{x^2 + 8x + 12}$",
+      "modelAnswer": "(a) $x = {{p}}$, $x = -{{q}}$; domain $x \\ne -{{q}}, {{p}}$.\n\n(b) $x = -{{r}}$ only (double zero); domain $x \\ne -{{r}}$.\n\n(c) $x^2 + 8x + 12 = (x + 2)(x + 6)$: $x = -2$, $x = -6$; domain $x \\ne -6, -2$.",
+      "rubric": [
+        {
+          "point": "(a)",
+          "marks": 1
+        },
+        {
+          "point": "(b) including recognising the double zero",
+          "marks": 2
+        },
+        {
+          "point": "(c) factoring",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q04",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "For $g(x) = \\dfrac{1}{x^2 - 5x - 24}$: determine the asymptotes, the $y$-intercept, the local maximum, the intervals of increase and decrease, and the domain and range.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$y$-coordinate of the local maximum.",
+          "answer": {
+            "expr": "-1/30.25",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Complete the analysis."
+        }
+      ],
+      "modelAnswer": "$x^2 - 5x - 24 = (x - 8)(x + 3)$: vertical asymptotes $x = -3$ and $x = 8$; horizontal asymptote $y = 0$.\n\n$y$-intercept $-\\frac{1}{24} \\approx -0.0417$.\n\nTurning point at $x = \\frac{-3 + 8}{2} = 2.5$; $(2.5)^2 - 5(2.5) - 24 = -30.25$, so a local maximum $(2.5, -\\frac{1}{30.25}) \\approx (2.5, -0.0331)$.\n\nIncreasing on $x < -3$ and $-3 < x < 2.5$; decreasing on $2.5 < x < 8$ and $x > 8$.\n\nDomain $x \\ne -3, 8$; range $y \\le -0.0331$ or $y > 0$.",
+      "rubric": [
+        {
+          "point": "Factoring and vertical asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Horizontal asymptote and y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Local maximum",
+          "marks": 2
+        },
+        {
+          "point": "Intervals of increase/decrease",
+          "marks": 2
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q05",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "n": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Analyse $h(x) = -\\dfrac{1}{x^2 - 6x + 9}$ and $k(x) = -\\dfrac{1}{x^2 + {{n}}}$. For each give the asymptotes, intervals of increase and decrease, and domain and range. Explain why the graphs look so different.",
+      "modelAnswer": "$h(x) = -\\frac{1}{(x - 3)^2}$: vertical asymptote $x = 3$, horizontal $y = 0$. Always negative; $h \\to -\\infty$ at $x = 3$ from both sides. Decreasing for $x < 3$, increasing for $x > 3$. Domain $x \\ne 3$, range $y < 0$.\n\n$k(x)$: $x^2 + {{n}} \\ge {{n}} > 0$, so no vertical asymptote; horizontal asymptote $y = 0$. Minimum $(0, -\\frac{1}{ {{n}} })$. Decreasing for $x < 0$, increasing for $x > 0$. Domain all reals; range $-\\frac{1}{ {{n}} } \\le y < 0$.\n\nThe quadratic in $h$ has a double zero, giving an asymptote; the quadratic in $k$ has no real zeros, so $k$ is defined everywhere and has a minimum instead.",
+      "rubric": [
+        {
+          "point": "h analysis",
+          "marks": 3
+        },
+        {
+          "point": "k analysis",
+          "marks": 3
+        },
+        {
+          "point": "Explanation via zeros of the quadratic",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q06",
+      "type": "analysis",
+      "difficulty": 3,
+      "vars": {
+        "m": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "n": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "A reciprocal of a quadratic function has these features:\n\n* vertical asymptotes $x = -{{m}}$ and $x = {{n}}$;\n* for $x < -{{m}}$ and $x > {{n}}$, $y < 0$.\n\nWrite a possible equation, state its $y$-intercept, and describe its turning point.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$y$-intercept.",
+          "answer": {
+            "expr": "1/(m*n)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Value of the local minimum.",
+          "answer": {
+            "expr": "4/(m+n)^2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Write the equation and explain."
+        }
+      ],
+      "modelAnswer": "$\\frac{1}{(x + {{m}})(x - {{n}})}$ is positive outside the asymptotes, so reflect it: $f(x) = -\\dfrac{1}{(x + {{m}})(x - {{n}})}$.\n\n$y$-intercept: $f(0) = -\\dfrac{1}{({{m}})(-{{n}})} = \\dfrac{1}{ {{m*n}} } \\approx {{1/(m*n):3}}$.\n\nBetween the asymptotes $f > 0$; the turning point is midway at $x = \\frac{-{{m}} + {{n}}}{2} = {{(n-m)/2:3}}$, a **local minimum** with value $\\frac{4}{({{m+n}})^2} \\approx {{4/(m+n)^2:3}}$.",
+      "rubric": [
+        {
+          "point": "Correct equation with justification of sign",
+          "marks": 2
+        },
+        {
+          "point": "y-intercept",
+          "marks": 1
+        },
+        {
+          "point": "Turning point location",
+          "marks": 1
+        },
+        {
+          "point": "Identifies local minimum with value",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q07",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "p": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "q": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "r": {
+          "min": 2,
+          "max": 9,
+          "step": 1
+        },
+        "s": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Determine the horizontal asymptote of each function: (a) $a(x) = \\dfrac{ {{p}} }{x + 5}$ (b) $b(x) = -\\dfrac{ {{q}}x}{x - 3}$ (c) $c(x) = \\dfrac{ {{r}}x + 2}{ {{s}}x - 2}$. Explain your method.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Horizontal asymptote of $c(x)$.",
+          "answer": {
+            "expr": "r/s",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Give all three and explain."
+        }
+      ],
+      "modelAnswer": "(a) Numerator degree 0 < denominator degree 1: $y = 0$.\n\n(b) $\\dfrac{-{{q}}x}{x - 3} = \\dfrac{-{{q}}}{1 - 3/x} \\to -{{q}}$: $y = -{{q}}$.\n\n(c) $\\dfrac{ {{r}} + 2/x}{ {{s}} - 2/x} \\to \\dfrac{ {{r}} }{ {{s}} }$: $y \\approx {{r/s:3}}$.\n\nMethod: divide each term by $x$ and let $x \\to \\pm\\infty$ (equivalently, compare degrees and leading coefficients).",
+      "rubric": [
+        {
+          "point": "(a)",
+          "marks": 1
+        },
+        {
+          "point": "(b)",
+          "marks": 1
+        },
+        {
+          "point": "(c)",
+          "marks": 1
+        },
+        {
+          "point": "Explains method",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q08",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Summarize the key features of $h(x) = \\dfrac{x - {{a}}}{x + {{b}}}$ and describe its graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$y$-intercept.",
+          "answer": {
+            "expr": "-a/b",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Complete the summary."
+        }
+      ],
+      "modelAnswer": "Vertical asymptote $x = -{{b}}$; horizontal asymptote $y = 1$; $x$-intercept {{a}}; $y$-intercept $-\\frac{ {{a}} }{ {{b}} } \\approx {{-a/b:3}}$. Domain $x \\ne -{{b}}$, range $y \\ne 1$.\n\nRewrite: $h(x) = 1 - \\dfrac{ {{a+b}} }{x + {{b}}}$, a reflected, stretched $\\frac{1}{x}$: **increasing** on both branches. As $x \\to -{{b}}^-$, $h \\to +\\infty$; as $x \\to -{{b}}^+$, $h \\to -\\infty$. Branches lie top-left and bottom-right of the asymptotes' intersection $(-{{b}}, 1)$.",
+      "rubric": [
+        {
+          "point": "Asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "Intercepts",
+          "marks": 2
+        },
+        {
+          "point": "Domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Increasing on both branches with reason",
+          "marks": 1
+        },
+        {
+          "point": "Behaviour near the vertical asymptote",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "q": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "r": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "Write an equation of the form $f(x) = \\dfrac{ax+b}{cx+d}$ whose graph has an $x$-intercept of 1, a $y$-intercept of $-\\dfrac{ {{r}} }{ {{q}} }$, a vertical asymptote $x = -{{q}}$ and a horizontal asymptote $y = {{r}}$. Verify every feature.",
+      "modelAnswer": "Try $f(x) = \\dfrac{ {{r}}(x - 1)}{x + {{q}}} = \\dfrac{ {{r}}x - {{r}} }{x + {{q}}}$.\n\n* $x$-intercept: $x - 1 = 0 \\Rightarrow x = 1$ ✓\n* $y$-intercept: $f(0) = \\dfrac{-{{r}}}{ {{q}} }$ ✓\n* vertical asymptote: $x + {{q}} = 0 \\Rightarrow x = -{{q}}$ (numerator $\\ne 0$ there) ✓\n* horizontal asymptote: $\\frac{ {{r}} }{1} = {{r}}$ ✓",
+      "rubric": [
+        {
+          "point": "Correct equation",
+          "marks": 3
+        },
+        {
+          "point": "Verifies each of the four features",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q10",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a": {
+          "min": 2,
+          "max": 12,
+          "step": 2
+        },
+        "p": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "Solve algebraically and check: (a) $\\dfrac{ {{a}} }{x - {{p}}} = 2$ (b) $\\dfrac{3}{x^2 + 6x - 24} = 1$",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Solution of (a).",
+          "answer": {
+            "expr": "p+a/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Larger solution of (b).",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Smaller solution of (b).",
+          "answer": {
+            "expr": "-9",
+            "unit": "",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) Restriction $x \\ne {{p}}$. ${{a}} = 2(x - {{p}})$, so $x = {{p}} + \\frac{ {{a}} }{2} = {{p+a/2}}$. Check: $\\frac{ {{a}} }{ {{a/2}} } = 2$ ✓.\n\n(b) $x^2 + 6x - 24 = 3 \\Rightarrow x^2 + 6x - 27 = 0 \\Rightarrow (x + 9)(x - 3) = 0$, so $x = -9$ or $x = 3$. Neither makes the denominator zero ($81 - 54 - 24 = 3$ and $9 + 18 - 24 = 3$) ✓.",
+      "rubric": [
+        {
+          "point": "(a) restriction and solution",
+          "marks": 2
+        },
+        {
+          "point": "(a) check",
+          "marks": 1
+        },
+        {
+          "point": "(b) forms and factors the quadratic",
+          "marks": 2
+        },
+        {
+          "point": "(b) both solutions checked",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q11",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Solve each inequality without technology and illustrate the solution on a number line: (a) $\\dfrac{6}{x + 5} < 2$ (b) $\\dfrac{3}{x + 2} \\le \\dfrac{4}{x + 3}$",
+      "modelAnswer": "(a) $\\frac{6 - 2(x + 5)}{x + 5} < 0 \\Rightarrow \\frac{-2x - 4}{x + 5} < 0 \\Rightarrow \\frac{2x + 4}{x + 5} > 0$. Critical values −5, −2. Solution: $x < -5$ or $x > -2$ (open dots at −5 and −2).\n\n(b) $\\frac{3(x+3) - 4(x+2)}{(x+2)(x+3)} \\le 0 \\Rightarrow \\frac{1 - x}{(x+2)(x+3)} \\le 0$. Critical values −3, −2, 1. Signs: +, −, +, −. Solution: $-3 < x < -2$ or $x \\ge 1$ (open at −3, −2; closed at 1).",
+      "rubric": [
+        {
+          "point": "(a) single fraction and critical values",
+          "marks": 2
+        },
+        {
+          "point": "(a) solution",
+          "marks": 1
+        },
+        {
+          "point": "(b) single fraction",
+          "marks": 2
+        },
+        {
+          "point": "(b) solution with correct endpoints",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q12",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{x^2 - x - 20}{x^2 - 4x - 12} > 0$.",
+      "modelAnswer": "Factor: $\\dfrac{(x - 5)(x + 4)}{(x - 6)(x + 2)} > 0$. Critical values: $-4, -2, 5, 6$.\n\n| Interval | $x < -4$ | $-4 < x < -2$ | $-2 < x < 5$ | $5 < x < 6$ | $x > 6$ |\n|---|---|---|---|---|---|\n| sign | + | − | + | − | + |\n\nSolution: $x < -4$ or $-2 < x < 5$ or $x > 6$.",
+      "rubric": [
+        {
+          "point": "Factoring",
+          "marks": 2
+        },
+        {
+          "point": "Critical values",
+          "marks": 1
+        },
+        {
+          "point": "Sign analysis",
+          "marks": 2
+        },
+        {
+          "point": "Solution",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "p1": {
+          "min": 20,
+          "max": 90,
+          "step": 5
+        }
+      },
+      "text": "The cost $C$, in millions of dollars, of cleaning up $p$% of an oil spill is $C(p) = \\dfrac{50p}{100 - p}$. The rate of change of the cost is given by $R(p) = \\dfrac{5000}{(100 - p)^2}$ (millions of dollars per percent).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "State the domain and range and explain them."
+        },
+        {
+          "label": "b",
+          "text": "Find the cost of cleaning up {{p1}}% of the spill.",
+          "answer": {
+            "expr": "50*p1/(100-p1)",
+            "unit": "million dollars",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Estimate the rate of change at {{p1}}% and compare with $R({{p1}})$.",
+          "answer": {
+            "expr": "5000/(100-p1)^2",
+            "unit": "million dollars per percent",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Interpret."
+        }
+      ],
+      "modelAnswer": "(a) Domain $0 \\le p < 100$ (you cannot clean more than 100%, and the cost is undefined at 100). Range $C \\ge 0$: the cost is unbounded as $p \\to 100^-$.\n\n(b) $C({{p1}}) = \\dfrac{50({{p1}})}{ {{100-p1}} } \\approx {{50*p1/(100-p1):3}}$ million dollars.\n\n(c) Secant from {{p1}} to {{p1}}.01: $\\dfrac{C({{p1}}.01) - C({{p1}})}{0.01} \\approx {{5000/(100-p1)^2:3}}$, which matches $R({{p1}}) = \\dfrac{5000}{ {{(100-p1)^2}} } \\approx {{5000/(100-p1)^2:3}}$.\n\n(d) Both the cost and its rate of change grow without bound as $p \\to 100$: the last few percent of a spill are by far the most expensive to clean.",
+      "rubric": [
+        {
+          "point": "Domain and range with interpretation",
+          "marks": 2
+        },
+        {
+          "point": "Correct cost",
+          "marks": 1
+        },
+        {
+          "point": "Secant estimate",
+          "marks": 1
+        },
+        {
+          "point": "Comparison with R(p)",
+          "marks": 1
+        },
+        {
+          "point": "Interpretation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q14",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "Sketch (by describing) each function and describe each special case: (a) $f(x) = \\dfrac{x^2 + 5x}{x + 5}$ (b) $g(x) = \\dfrac{x^2 - 2x - 35}{x^2 - 3x - 28}$",
+      "parts": [
+        {
+          "label": "a",
+          "text": "$y$-coordinate of the hole in $g$.",
+          "answer": {
+            "expr": "12/11",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Describe both graphs."
+        }
+      ],
+      "modelAnswer": "(a) $f(x) = \\dfrac{x(x + 5)}{x + 5} = x$, $x \\ne -5$: the line $y = x$ with a hole at $(-5, -5)$.\n\n(b) $g(x) = \\dfrac{(x - 7)(x + 5)}{(x - 7)(x + 4)} = \\dfrac{x + 5}{x + 4}$, $x \\ne 7$: vertical asymptote $x = -4$, horizontal asymptote $y = 1$, $x$-intercept $-5$, $y$-intercept $\\frac{5}{4}$, and a hole at $\\left(7, \\frac{12}{11}\\right)$.\n\nBoth are special cases because a common factor cancels, producing a hole rather than an asymptote at that restriction.",
+      "rubric": [
+        {
+          "point": "(a) simplification and hole",
+          "marks": 2
+        },
+        {
+          "point": "(b) factoring",
+          "marks": 1
+        },
+        {
+          "point": "(b) asymptotes and intercepts",
+          "marks": 2
+        },
+        {
+          "point": "(b) hole",
+          "marks": 1
+        },
+        {
+          "point": "Explains special case",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q15",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "For $f(x) = \\dfrac{1}{x + 5}$, a student writes: 'As $x \\to \\infty$, $f(x) \\to \\infty$; as $x \\to -5^+$, $f(x) \\to -\\infty$.' Correct each statement, justify your corrections with values, and describe the behaviour as $x \\to -5^-$.",
+      "modelAnswer": "As $x \\to \\infty$, the denominator grows without bound, so $f(x) \\to 0$ (e.g. $f(995) = 0.001$), not $\\infty$.\n\nAs $x \\to -5^+$, $x + 5$ is a small **positive** number (e.g. $f(-4.99) = 100$), so $f(x) \\to +\\infty$, not $-\\infty$.\n\nAs $x \\to -5^-$, $x + 5$ is a small negative number ($f(-5.01) = -100$), so $f(x) \\to -\\infty$.",
+      "rubric": [
+        {
+          "point": "Corrects end behaviour with a value",
+          "marks": 2
+        },
+        {
+          "point": "Corrects behaviour from the right with a value",
+          "marks": 2
+        },
+        {
+          "point": "Behaviour from the left",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q16",
+      "type": "problem",
+      "difficulty": 1,
+      "vars": {
+        "a": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        },
+        "b": {
+          "min": 1,
+          "max": 6,
+          "step": 1
+        }
+      },
+      "text": "State the domain and range of $f(x) = \\dfrac{x + {{a}}}{x - {{b}}}$ and justify each.",
+      "modelAnswer": "Domain: the denominator is zero at $x = {{b}}$, so $\\{x \\in \\mathbb{R} \\mid x \\ne {{b}}\\}$.\n\nRange: the horizontal asymptote is $y = 1$; solving $\\frac{x + {{a}}}{x - {{b}}} = 1$ gives ${{a}} = -{{b}}$, impossible, so $y = 1$ is never reached: $\\{y \\in \\mathbb{R} \\mid y \\ne 1\\}$.",
+      "rubric": [
+        {
+          "point": "Domain with reason",
+          "marks": 2
+        },
+        {
+          "point": "Range with algebraic justification",
+          "marks": 3
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q17",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "k": {
+          "min": 1,
+          "max": 9,
+          "step": 1
+        }
+      },
+      "text": "Consider $f(x) = -\\dfrac{1}{x^2} + {{k}}$. Determine the domain and range, intercepts, asymptotes, and intervals of increase and decrease. Describe the graph.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Positive $x$-intercept.",
+          "answer": {
+            "expr": "1/sqrt(k)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Complete the analysis."
+        }
+      ],
+      "modelAnswer": "Domain $x \\ne 0$. Vertical asymptote $x = 0$, horizontal asymptote $y = {{k}}$.\n\n$-\\frac{1}{x^2} < 0$, so $f(x) < {{k}}$: range $y < {{k}}$.\n\n$x$-intercepts: $\\frac{1}{x^2} = {{k}} \\Rightarrow x = \\pm\\frac{1}{\\sqrt{ {{k}} }} \\approx \\pm{{1/sqrt(k):3}}$. No $y$-intercept.\n\n$-\\frac{1}{x^2}$ is the reflection of $\\frac{1}{x^2}$, so $f$ is decreasing for $x < 0$ and increasing for $x > 0$. Both branches plunge to $-\\infty$ beside the $y$-axis and level off toward $y = {{k}}$ from below.",
+      "rubric": [
+        {
+          "point": "Domain, range and asymptotes",
+          "marks": 2
+        },
+        {
+          "point": "x-intercepts",
+          "marks": 2
+        },
+        {
+          "point": "Intervals of increase/decrease",
+          "marks": 1
+        },
+        {
+          "point": "Graph description",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q18",
+      "type": "explain",
+      "difficulty": 3,
+      "text": "If $f(x)$ is a polynomial function, does $\\dfrac{1}{f(x)}$ always have a horizontal asymptote? If yes, explain why. If no, provide a counterexample.",
+      "modelAnswer": "For any **non-constant** polynomial, $|f(x)| \\to \\infty$ as $x \\to \\pm\\infty$, so $\\frac{1}{f(x)} \\to 0$: the horizontal asymptote is $y = 0$.\n\nCounterexample: a **constant** polynomial such as $f(x) = 4$. Then $\\frac{1}{f(x)} = \\frac{1}{4}$ is a horizontal line; it is the graph itself, not a line approached as $x \\to \\pm\\infty$, so it does not have a horizontal asymptote in the usual sense. (And $f(x) = 0$ gives a reciprocal that is undefined everywhere.)\n\nSo the answer is: yes for every non-constant polynomial, but not for constant polynomials.",
+      "rubric": [
+        {
+          "point": "Explains non-constant case gives y = 0",
+          "marks": 2
+        },
+        {
+          "point": "Provides constant-polynomial counterexample",
+          "marks": 2
+        },
+        {
+          "point": "Clear conclusion",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q19",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{20}{x^2 - 4x + 7} = x + 2$. Give exact solutions.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Real solution.",
+          "answer": {
+            "expr": "3",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show your work."
+        }
+      ],
+      "modelAnswer": "The denominator $x^2 - 4x + 7$ has discriminant $16 - 28 < 0$, so it is never zero: no restrictions.\n\nMultiply: $20 = (x + 2)(x^2 - 4x + 7) = x^3 - 2x^2 - x + 14$, so $x^3 - 2x^2 - x - 6 = 0$.\n\nTest factors of −6: $x = 3$ gives $27 - 18 - 3 - 6 = 0$ ✓. Divide: $(x - 3)(x^2 + x + 2) = 0$.\n\n$x^2 + x + 2 = 0$ has discriminant $1 - 8 < 0$: no real roots. Solution: $x = 3$. Check: $\\frac{20}{9 - 12 + 7} = 5 = 3 + 2$ ✓.",
+      "rubric": [
+        {
+          "point": "Checks for restrictions",
+          "marks": 1
+        },
+        {
+          "point": "Forms the cubic",
+          "marks": 2
+        },
+        {
+          "point": "Finds x = 3 via the factor theorem",
+          "marks": 2
+        },
+        {
+          "point": "Shows the quadratic factor has no real roots",
+          "marks": 1
+        },
+        {
+          "point": "Checks",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q20",
+      "type": "problem",
+      "difficulty": 3,
+      "text": "Solve $\\dfrac{x + 1}{x - 2} > \\dfrac{x + 7}{x + 1}$ and illustrate the solution on a number line.",
+      "modelAnswer": "$\\dfrac{(x + 1)^2 - (x + 7)(x - 2)}{(x - 2)(x + 1)} > 0$.\n\nNumerator: $x^2 + 2x + 1 - (x^2 + 5x - 14) = 15 - 3x$.\n\n$\\dfrac{15 - 3x}{(x - 2)(x + 1)} > 0$; critical values −1, 2, 5.\n\n| Interval | $x < -1$ | $-1 < x < 2$ | $2 < x < 5$ | $x > 5$ |\n|---|---|---|---|---|\n| sign | + | − | + | − |\n\nSolution: $x < -1$ or $2 < x < 5$; open dots at −1, 2 and 5.",
+      "rubric": [
+        {
+          "point": "Combines into one fraction",
+          "marks": 2
+        },
+        {
+          "point": "Simplifies numerator",
+          "marks": 1
+        },
+        {
+          "point": "Sign analysis",
+          "marks": 2
+        },
+        {
+          "point": "Solution and number line",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q21",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "r": {
+          "min": 2,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "(a) Determine $f(x) = \\dfrac{ax + b}{cx + d}$ with $x$-intercept 2, vertical asymptote $x = -1$ and horizontal asymptote $y = -{{r}}$. (b) Is it possible for a different function to have the same key features? Explain, with an example if possible.",
+      "modelAnswer": "(a) $f(x) = \\dfrac{-{{r}}(x - 2)}{x + 1} = \\dfrac{-{{r}}x + {{2*r}} }{x + 1}$.\n\n(b) Within the form $\\frac{ax+b}{cx+d}$: any such function must have $\\frac{a}{c} = -{{r}}$, $-\\frac{b}{a} = 2$ and $-\\frac{d}{c} = -1$, which forces every coefficient to be a multiple of the ones above – the same function. So no other linear-over-linear function works.\n\nOutside that form, yes: for example $g(x) = \\dfrac{-{{r}}(x - 2)(x - 5)}{(x + 1)(x - 5)}$ has the same intercept and asymptotes but also a hole at $x = 5$.",
+      "rubric": [
+        {
+          "point": "Correct equation",
+          "marks": 2
+        },
+        {
+          "point": "Explains uniqueness within the form",
+          "marks": 2
+        },
+        {
+          "point": "Gives a valid different function (e.g. with a hole)",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q22",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "W": {
+          "min": 20,
+          "max": 50,
+          "step": 5
+        },
+        "t1": {
+          "min": 2,
+          "max": 6,
+          "step": 1
+        },
+        "P1": {
+          "min": 4,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "When a saw cuts wood, the percent of wood lost as sawdust is $P(t) = \\dfrac{100t}{t + W}$, where $t$ is the thickness of the blade and $W$ the thickness of the wood (mm). Consider a {{W}}-mm-thick board.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the graph."
+        },
+        {
+          "label": "b",
+          "text": "State the domain and range."
+        },
+        {
+          "label": "c",
+          "text": "Explain the significance of the horizontal asymptote."
+        },
+        {
+          "label": "d",
+          "text": "Percent lost with a {{t1}}-mm blade.",
+          "answer": {
+            "expr": "100*t1/(t1+W)",
+            "unit": "%",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "Blade thickness that loses {{P1}}%.",
+          "answer": {
+            "expr": "P1*W/(100-P1)",
+            "unit": "mm",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "(a) $P(t) = \\dfrac{100t}{t + {{W}}}$, $t \\ge 0$: starts at $(0, 0)$ and increases toward 100.\n\n(b) Domain $t \\ge 0$ (realistically $0 < t <$ a few mm); range $0 \\le P < 100$.\n\n(c) Horizontal asymptote $P = 100$: as the blade becomes enormously thick compared with the wood, almost all the wood would be lost – a limit that is never reached.\n\n(d) $P({{t1}}) = \\dfrac{ {{100*t1}} }{ {{t1+W}} } \\approx {{100*t1/(t1+W):3}}\\%$.\n\n(e) $\\dfrac{100t}{t + {{W}}} = {{P1}} \\Rightarrow 100t = {{P1}}t + {{P1*W}} \\Rightarrow t = \\dfrac{ {{P1*W}} }{ {{100-P1}} } \\approx {{P1*W/(100-P1):3}}$ mm.",
+      "rubric": [
+        {
+          "point": "Graph description",
+          "marks": 1
+        },
+        {
+          "point": "Domain and range",
+          "marks": 2
+        },
+        {
+          "point": "Horizontal asymptote interpreted",
+          "marks": 1
+        },
+        {
+          "point": "Percent lost for given blade",
+          "marks": 1
+        },
+        {
+          "point": "Blade thickness for given percent",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q23",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "a1": {
+          "choices": [
+            3.0,
+            4.5,
+            6.0,
+            7.5
+          ]
+        }
+      },
+      "text": "The acceleration due to gravity is inversely proportional to the square of the distance from the centre of Earth; it is 8.2 m/s² at 7000 km from the centre. (a) Write a formula. (b) Describe its graph. (c) At what distance from the centre is it {{a1}} m/s²?",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Distance from the centre.",
+          "answer": {
+            "expr": "sqrt(8.2*7000^2/a1)",
+            "unit": "km",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show the formula and describe the graph."
+        }
+      ],
+      "modelAnswer": "(a) $g = \\dfrac{k}{d^2}$, $k = 8.2(7000)^2 = 4.018 \\times 10^8$.\n\n(b) A decreasing inverse-square curve for $d > 0$ (in practice $d \\ge 6400$ km): $g \\to 0$ as $d \\to \\infty$.\n\n(c) $d = \\sqrt{\\dfrac{4.018 \\times 10^8}{ {{a1}} }} \\approx {{sqrt(4.018e8/a1):4}}$ km.",
+      "rubric": [
+        {
+          "point": "Formula",
+          "marks": 2
+        },
+        {
+          "point": "Graph description",
+          "marks": 1
+        },
+        {
+          "point": "Correct distance",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q24",
+      "type": "explain",
+      "difficulty": 3,
+      "text": "Investigate the graphs of functions of the form $f(x) = \\dfrac{1}{x^n}$, $n \\in \\mathbb{N}$. Summarize what happens to the asymptotes and the shape (slopes) as $n$ increases, and explain the difference between even and odd $n$.",
+      "modelAnswer": "For every $n$: vertical asymptote $x = 0$ and horizontal asymptote $y = 0$; all graphs pass through $(1, 1)$.\n\n**Odd $n$** ($\\frac{1}{x}, \\frac{1}{x^3}, \\ldots$): $f(-x) = -f(x)$, point symmetry about the origin; branches in quadrants I and III; $f \\to -\\infty$ as $x \\to 0^-$ and $+\\infty$ as $x \\to 0^+$; decreasing on both branches. Through $(-1, -1)$.\n\n**Even $n$** ($\\frac{1}{x^2}, \\frac{1}{x^4}, \\ldots$): $f(-x) = f(x)$, symmetric about the $y$-axis; both branches above the $x$-axis; $f \\to +\\infty$ from both sides of 0. Through $(-1, 1)$.\n\n**As $n$ increases:** for $|x| > 1$ the graph hugs the $x$-axis more closely (it approaches $y = 0$ faster); for $|x| < 1$ it rises more steeply near the vertical asymptote. Slopes are steeper near $x = 0$ and flatter far away.",
+      "rubric": [
+        {
+          "point": "Common asymptotes and point (1, 1)",
+          "marks": 1
+        },
+        {
+          "point": "Odd case described with symmetry",
+          "marks": 2
+        },
+        {
+          "point": "Even case described with symmetry",
+          "marks": 2
+        },
+        {
+          "point": "Effect of increasing n on both regions",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "3-rev-q25",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "The electric power $P$, in watts, delivered by a battery is $P = \\dfrac{100R}{(2 + R)^2}$. (a) Describe the power output as $R$ increases from 0 Ω to 20 Ω, using values. (b) Show numerically that the rate of change is 0 at $R = 2$, and explain what this means.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Maximum power.",
+          "answer": {
+            "expr": "12.5",
+            "unit": "W",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Show and explain."
+        }
+      ],
+      "modelAnswer": "(a) $P(0) = 0$, $P(1) \\approx 11.1$, $P(2) = 12.5$, $P(5) \\approx 10.2$, $P(10) \\approx 6.9$, $P(20) \\approx 4.1$. The power rises quickly to a maximum of 12.5 W at $R = 2$ Ω and then decreases slowly toward 0.\n\n(b) $\\frac{P(2.001) - P(1.999)}{0.002} \\approx 0$ (both values are about 12.49999). A zero rate of change at the top of the curve means $R = 2$ Ω gives the **maximum** power, 12.5 W.",
+      "rubric": [
+        {
+          "point": "Table of values",
+          "marks": 2
+        },
+        {
+          "point": "Describes rise to max then decrease",
+          "marks": 1
+        },
+        {
+          "point": "Secant computation",
+          "marks": 1
+        },
+        {
+          "point": "Interprets as maximum",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

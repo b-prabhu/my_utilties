@@ -1,0 +1,1134 @@
+{
+  "id": "8-5",
+  "number": "8.5",
+  "title": "Making Connections: Modelling With Combined Functions",
+  "estimatedMinutes": 75,
+  "overview": "How many times does a bungee jumper bounce? Why do some musical notes sound good together? What is the path of a skier over moguls? This section brings the whole chapter together: you will choose component functions that match the features of real data, decide whether to add or multiply them, find the parameters, and use the model to answer questions.",
+  "objectives": [
+    "Identify the component functions (sinusoidal, exponential, linear and others) suggested by data or a description.",
+    "Decide whether a situation calls for a sum or a product of functions.",
+    "Build and use a damped-oscillation model from data.",
+    "Explain consonant and discordant musical chords using superposition and frequency ratios.",
+    "Model a trend plus an oscillation, and other combined models such as the catenary."
+  ],
+  "lessons": [
+    {
+      "id": "process",
+      "title": "How to Build a Combined-Function Model",
+      "body": "\nReal data rarely follow a single basic function. Modelling with combined functions is like detective work: look at the features of the data and ask which simple functions could produce them.\n\n**Step 1 – Identify features.**\n\n| Feature you see | Component function |\n|---|---|\n| repeating crests and troughs | sinusoidal: $a\\sin(kt)$ or $a\\cos(kt)$ |\n| crests getting smaller by the same **fraction** each cycle | exponential decay factor: $b^t$ or $0.5^{ct}$ |\n| a steady upward or downward drift | linear: $mt + b$ |\n| growth that speeds up | exponential or polynomial |\n\n**Step 2 – Decide how they combine.**\n* A trend **plus** an oscillation (a skier going down a hill over moguls) → **sum**.\n* An oscillation whose **amplitude** changes (a bouncing bungee jumper) → **product**.\n\n**Step 3 – Find the parameters** from the data (period, amplitude, starting value, rate of decay) using algebra, sliders or systematic trial.\n\n**Step 4 – Check and use the model:** compare with the data, then answer questions (heights, times, when amplitude reaches a limit).\n\n**Think about rates of change.** In a damped oscillation the height changes fastest as it passes the rest position (steepest part of the graph) and is momentarily zero at each crest and trough.\n"
+    },
+    {
+      "id": "bungee",
+      "title": "Damped Harmonic Motion: the Bungee Jumper",
+      "body": "\nHeight (m, relative to the rest position) of a bungee jumper:\n\n| Time (s) | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Height (m) | 100 | 90 | 72 | 45 | 14 | −15 | −41 | −61 | −71 | −73 | −66 | −52 | −32 |\n\n| Time (s) | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Height (m) | −11 | 11 | 30 | 44 | 53 | 54 | 48 | 37 | 23 | 6 | −8 | −23 | −33 |\n\n| Time (s) | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Height (m) | −39 | −39 | −35 | −27 | −16 | −4 | 6 | 17 | 24 | 28 | 29 | 26 |\n\n**Sinusoidal features:** the heights rise and fall in a repeating pattern. Crests occur at about $t = 0$, $18$ and $36$ s, so the **period** is about 18 s.\n\n**Exponential features:** the crests shrink: 100 → 54 → 29. Each cycle keeps about 54% of the amplitude – a constant ratio, which is exponential decay.\n\n**The model**\n$$h(t) = 100\\cos(kt) \\cdot 0.5^{ct}$$\n* $100$ is the starting height (amplitude at $t = 0$). Only one factor of 100 is needed because it multiplies the whole product.\n* **Cosine** is used because the motion starts at a crest ($\\cos 0 = 1$).\n* Period 18 s → $k = \\dfrac{2\\pi}{18} \\approx 0.349$.\n* After one period the amplitude is 54: $0.5^{18c} = 0.54 \\Rightarrow 18c = \\dfrac{\\log 0.54}{\\log 0.5} \\approx 0.889 \\Rightarrow c \\approx 0.049$.\n\n```plot\ntitle: h(t) = 100cos(0.349t)·0.5^(0.049t)\nf: 100*cos(0.349*x)*0.5^(0.049*x) | label=model\nf: 100*0.5^(0.049*x) | dashed; label=envelope\nf: -100*0.5^(0.049*x) | dashed\ndomain: 0, 40\nrange: -100, 105\npoints: (0,100), (9,-73), (18,54), (27,-39), (36,29)\nticks: 5, 25\n```\n\n**Using the model**\n* Fourth crest at $t = 54$: $100(0.5)^{0.049 \\times 54} \\approx 16$ m.\n* Amplitude reaches 10 m when $100(0.5)^{0.049t} = 10$: $t = \\dfrac{\\log 0.1}{0.049\\log 0.5} \\approx 68$ s.\n\n**Simple vs. damped harmonic motion:** a simple harmonic oscillator repeats forever with the same amplitude (an ideal clock pendulum). A damped one loses amplitude to friction and air resistance – like the bungee jumper, a child on a swing, or a car's suspension after a bump.\n"
+    },
+    {
+      "id": "music",
+      "title": "Sound Waves: Why Some Notes Sound Good Together",
+      "body": "\nA pure musical note can be modelled by\n$$I(t) = \\sin(2\\pi f t)$$\nwhere $I$ is the sound intensity, $f$ the frequency (Hz) and $t$ the time (s). Playing notes together **adds** their waves (superposition).\n\n**The chromatic scale** (one octave):\n\n| Note | C | C# | D | D# | E | F | F# | G | G# | A | A# | B | high C |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| f (Hz) | 262 | 277 | 294 | 311 | 330 | 349 | 370 | 392 | 415 | 440 | 466 | 494 | 524 |\n\n**Consonance:** notes sound good together when their waves have **constructive interference at regular intervals** – the combined wave is periodic.\n\n* **C and high C:** $f$ = 262 and 524, ratio 1 : 2. High C is C compressed horizontally by $\\frac12$, so crests line up every cycle of C. The sum is periodic: they sound good.\n* **C-major triad (C, E, G):** 262 : 330 : 392 ≈ 4 : 5 : 6. The sum is complicated but still repeats regularly – a pleasing chord.\n* **C and F#:** 262 : 370 ≈ 1 : 1.41 (close to $\\sqrt2$, not a simple ratio). The crests rarely line up and the sum does not look periodic: the notes are **discordant**.\n\n```plot\ntitle: C + high C: sin(2π·262t) + sin(2π·524t) over 0.01 s\nf: sin(2*pi*262*x) + sin(2*pi*524*x)\ndomain: 0, 0.01\nrange: -2.2, 2.2\nticks: 0.001, 1\n```\n\nA **minor chord** such as D-minor (D, F, A, high D) also repeats regularly, but its ratios give it a \"sadder\" sound.\n"
+    },
+    {
+      "id": "sums",
+      "title": "Trend + Oscillation: the Skier on Moguls",
+      "body": "\nA skier goes down a 100 m hill at a constant speed of 1 m/s (height drops 1 m each second). The hill has moguls 1.5 m from crest to trough, spaced 5 m apart.\n\n**Step 1 – the trend.** Ignoring moguls: $h(t) = -t + 100$ (linear).\n\n**Step 2 – the moguls.** A sinusoid:\n* amplitude = half the crest-to-trough distance: $A = \\dfrac{1.5}{2} = 0.75$ m;\n* frequency = speed ÷ spacing $= \\dfrac{1}{5} = 0.2$ moguls per second, so $k = 2\\pi(0.2) = 0.4\\pi \\approx 1.26$;\n* $M(t) = 0.75\\sin(0.4\\pi t)$.\n\n**Step 3 – add them:**\n$$P(t) = h(t) + M(t) = -t + 100 + 0.75\\sin(1.26t)$$\n\n```plot\ntitle: Skier: P(t) = −t + 100 + 0.75 sin(1.26t) (first 30 s)\nf: -x + 100 + 0.75*sin(1.26*x) | label=height\nf: -x + 100 | dashed; label=trend\ndomain: 0, 30\nrange: 68, 102\nticks: 5, 5\n```\n\n**Reading the parameters back.** Higher moguls → larger amplitude; moguls closer together → higher frequency (larger $k$); a faster skier → both a steeper trend line and a higher mogul frequency.\n"
+    },
+    {
+      "id": "more-models",
+      "title": "More Combined Models: Catenaries and Growth with Cycles",
+      "body": "\n### The catenary – a sum of exponentials\nA hanging chain looks like a parabola, but its shape is actually\n$$f(x) = \\frac{e^x + e^{-x}}{2}, \\quad e \\approx 2.718$$\na **sum of an exponential growth and an exponential decay** function (halved). It is even, with minimum $f(0) = 1$.\n\nA parabola through the same lowest point and the points at $x = \\pm 5$ is $y = 1 + 2.928x^2$ (using $f(5) \\approx 74.2$). They agree at $x = 0$ and $x = \\pm5$ but **diverge** in between: at $x = 2$ the catenary is about 3.76 while the parabola is about 12.7. The catenary stays flat near the bottom and then rises much faster.\n\n```plot\ntitle: catenary (solid) vs parabola through the same three points\nf: (e^x + e^(-x))/2 | label=catenary\nf: 1 + 2.928*x^2 | dashed; label=parabola\ndomain: -5.5, 5.5\nrange: 0, 80\npoints: (0,1), (5,74.21), (-5,74.21)\nticks: 1, 10\n```\n\n### Growth with seasonal cycles\nA quantity that grows over a year but also rises and falls seasonally – for example monthly visitors to a park – can be modelled by an **exponential trend plus a sinusoid**, $V(t) = V_0(1.03)^t + A\\sin\\left(\\frac{\\pi t}{6}\\right)$, with $t$ in months.\n\n### General advice\n* Use a **sum** when an effect adds a fixed amount on top of a trend.\n* Use a **product** when an effect scales (changes the size of) another.\n* Always state the domain that makes sense in context, and check the model against data.\n"
+    }
+  ],
+  "keyTerms": [
+    {
+      "term": "mathematical model",
+      "definition": "An equation or graph that describes a real relationship and can be used to make predictions."
+    },
+    {
+      "term": "simple harmonic motion",
+      "definition": "Cyclic motion that repeats indefinitely with constant amplitude."
+    },
+    {
+      "term": "damped harmonic motion",
+      "definition": "Cyclic motion whose amplitude decreases over time because of friction or air resistance; modelled by sinusoid × exponential decay."
+    },
+    {
+      "term": "crest / trough",
+      "definition": "The highest points (local maxima) and lowest points (local minima) of a wave."
+    },
+    {
+      "term": "consonance / discord",
+      "definition": "Notes sound good together (consonant) when their waves interfere constructively at regular intervals; otherwise they are discordant."
+    },
+    {
+      "term": "catenary",
+      "definition": "The shape of a hanging flexible chain, $f(x) = \\frac{e^x + e^{-x}}{2}$ – not a parabola."
+    }
+  ],
+  "formulas": [
+    {
+      "name": "Damped oscillation",
+      "latex": "h(t) = A\\cos(kt)\\cdot 0.5^{ct}",
+      "meaning": "$k = \\frac{2\\pi}{\\text{period}}$; amplitude halves every $\\frac1c$ seconds."
+    },
+    {
+      "name": "Pure note",
+      "latex": "I(t) = \\sin(2\\pi f t)",
+      "meaning": "$f$ = frequency in Hz. Chords are sums."
+    },
+    {
+      "name": "Trend + oscillation",
+      "latex": "P(t) = (mt + b) + A\\sin(kt)",
+      "meaning": "$A$ = half crest-to-trough; $k = 2\\pi \\times$ frequency."
+    },
+    {
+      "name": "Catenary",
+      "latex": "f(x) = \\frac{e^x + e^{-x}}{2}",
+      "meaning": "Sum of exponential growth and decay."
+    }
+  ],
+  "workedExamples": [
+    {
+      "title": "Bungee jumper model",
+      "problem": "Use the data (crests 100 m at $t = 0$ and 54 m at $t = 18$) to build $h(t) = 100\\cos(kt)\\cdot 0.5^{ct}$, then find the height at the fourth crest and when the amplitude reaches 10 m.",
+      "steps": [
+        "Period ≈ 18 s, so $k = \\dfrac{2\\pi}{18} \\approx 0.349$.",
+        "$0.5^{18c} = 0.54 \\Rightarrow c = \\dfrac{\\log 0.54}{18\\log 0.5} \\approx 0.0494$.",
+        "Fourth crest: $t = 3 \\times 18 = 54$ s; height $= 100(0.5)^{0.0494 \\times 54} \\approx 15.7$ m.",
+        "$100(0.5)^{0.0494t} = 10 \\Rightarrow t = \\dfrac{\\log 0.1}{0.0494\\log 0.5} \\approx 67$ s."
+      ],
+      "answer": "$h(t) \\approx 100\\cos(0.349t)\\,0.5^{0.0494t}$; about 16 m; about 67 s."
+    },
+    {
+      "title": "C-major triad",
+      "problem": "Explain why C (262 Hz), E (330 Hz) and G (392 Hz) sound good together, but C and F# (370 Hz) do not.",
+      "steps": [
+        "Triad waveform: $I = \\sin(524\\pi t) + \\sin(660\\pi t) + \\sin(784\\pi t)$.",
+        "Ratios 262 : 330 : 392 ≈ 4 : 5 : 6 – small whole numbers, so the crests line up regularly and the sum repeats.",
+        "C and F#: $370/262 \\approx 1.41$, not close to a simple ratio of small whole numbers.",
+        "Their sum shows no regular repeating pattern → discordant."
+      ],
+      "answer": "Simple frequency ratios → periodic combined wave → consonant."
+    },
+    {
+      "title": "Skier through moguls",
+      "problem": "A skier descends a 100 m hill at 1 m/s through moguls 1.5 m crest-to-trough and 5 m apart. Model height vs time and find the height at $t = 12$ s.",
+      "steps": [
+        "Trend: $h(t) = -t + 100$.",
+        "Moguls: $A = 0.75$, frequency $= 1 \\div 5 = 0.2$ Hz, $k = 0.4\\pi \\approx 1.26$.",
+        "$P(t) = -t + 100 + 0.75\\sin(1.26t)$.",
+        "$P(12) = -12 + 100 + 0.75\\sin(15.08) \\approx 88 + 0.75(0.58) \\approx 88.4$ m."
+      ],
+      "answer": "$P(t) = -t + 100 + 0.75\\sin(1.26t)$; about 88.4 m."
+    },
+    {
+      "title": "Catenary vs parabola",
+      "problem": "Compare $f(x) = \\frac{e^x + e^{-x}}{2}$ with the parabola through $(0, 1)$ and $(\\pm5, f(5))$.",
+      "steps": [
+        "$f(5) = \\frac{e^5 + e^{-5}}{2} \\approx \\frac{148.41 + 0.0067}{2} \\approx 74.21$.",
+        "Parabola $y = 1 + ax^2$: $74.21 = 1 + 25a \\Rightarrow a \\approx 2.928$.",
+        "At $x = 2$: $f(2) \\approx \\frac{7.389 + 0.135}{2} \\approx 3.76$; parabola $1 + 2.928(4) \\approx 12.7$.",
+        "They share three points but differ greatly in between, so a hanging chain is not a parabola."
+      ],
+      "answer": "The functions agree at 0 and ±5 only."
+    }
+  ],
+  "misconceptions": [
+    {
+      "myth": "A damped oscillation is a sinusoid plus an exponential.",
+      "fact": "The amplitude changes, so the exponential **multiplies** the sinusoid. A sum would oscillate about an exponential curve with constant amplitude."
+    },
+    {
+      "myth": "Any two notes played together sound good.",
+      "fact": "Only when their frequencies have simple ratios, so the combined wave is periodic."
+    },
+    {
+      "myth": "In the skier model, the mogul amplitude is the full crest-to-trough height.",
+      "fact": "Amplitude is half the crest-to-trough distance."
+    },
+    {
+      "myth": "A hanging chain is a parabola.",
+      "fact": "It is a catenary, $\\frac{e^x + e^{-x}}{2}$; it only becomes parabolic when a load such as a bridge deck is attached."
+    }
+  ],
+  "realWorld": [
+    {
+      "title": "Bungee design",
+      "body": "Engineers choose cord length and stiffness so that the jumper's damped oscillation never reaches the ground and dies out quickly."
+    },
+    {
+      "title": "Music and acoustics",
+      "body": "Chords, harmonics and the 'beats' you hear when tuning a guitar are all superpositions of sine waves."
+    },
+    {
+      "title": "Bridges and power lines",
+      "body": "Hanging cables form catenaries; loaded suspension bridge cables become parabolic."
+    },
+    {
+      "title": "Sports data",
+      "body": "Trends in team numbers or player drafts can be modelled by combining linear, exponential and other functions, then used to predict future changes."
+    }
+  ],
+  "practice": [
+    {
+      "question": "Explain the difference between simple and damped harmonic motion, with an example of each.",
+      "hint": "What happens to the amplitude?",
+      "solution": "Simple: constant amplitude forever (an ideal clock pendulum). Damped: amplitude decreases due to friction (a swing after one push, a bungee jumper)."
+    },
+    {
+      "question": "What is the frequency of high D, if D is 294 Hz?",
+      "hint": "Octave → double.",
+      "solution": "588 Hz."
+    },
+    {
+      "question": "A skier's mogul model is $M(t) = 0.75\\sin(1.26t)$. How would it change if the moguls were twice as high? closer together?",
+      "hint": "Amplitude vs k.",
+      "solution": "Twice as high: amplitude 1.5. Closer together: the skier meets them more often, so frequency and $k$ increase (shorter period)."
+    },
+    {
+      "question": "For $h(t) = 80\\cos(0.4t)(0.5)^{0.05t}$, when has the amplitude fallen to 40 m?",
+      "hint": "$0.5^{0.05t} = 0.5$.",
+      "solution": "$0.05t = 1$, so $t = 20$ s."
+    },
+    {
+      "question": "Bobby's guitar plays C at 262 Hz but E at 300 Hz and G at 360 Hz. Predict the sound quality.",
+      "hint": "Compare ratios with 4 : 5 : 6.",
+      "solution": "262 : 300 : 360 ≈ 4 : 4.58 : 5.50 – not simple ratios, so the sum is irregular and the chord sounds out of tune."
+    },
+    {
+      "question": "Which type of combination – sum or product – models (a) a stock price that trends up with daily wiggles of constant size (b) a guitar string's fading vibration?",
+      "hint": "Does the wiggle size change?",
+      "solution": "(a) sum (linear/exponential + sinusoid); (b) product (sinusoid × exponential decay)."
+    }
+  ],
+  "summary": [
+    "Model real data by identifying component features (periodic, decaying, linear trend) and how they combine (sum vs product).",
+    "Damped harmonic motion: $h(t) = A\\cos(kt)\\cdot b^t$; use the period for $k$ and the crest ratio for the decay.",
+    "Musical notes add by superposition; simple frequency ratios give periodic, consonant waveforms.",
+    "Trend + oscillation (skier on moguls): $P(t) = (mt + b) + A\\sin(kt)$, $A$ = half crest-to-trough.",
+    "Other combinations, like the catenary $\\frac{e^x + e^{-x}}{2}$, model physical shapes."
+  ],
+  "questions": [
+    {
+      "id": "8-5-q01",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "A": {
+          "min": 60,
+          "max": 120,
+          "step": 10
+        },
+        "T": {
+          "min": 12,
+          "max": 20,
+          "step": 2
+        },
+        "H": {
+          "min": 15,
+          "max": 25,
+          "step": 5
+        }
+      },
+      "text": "A bungee jumper's height above his rest position starts at {{A}} m. His crests occur every {{T}} s, and the amplitude halves every {{H}} s. Model his height by $h(t) = {{A}}\\cos(kt)\\cdot 0.5^{ct}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine $k$ and $c$.",
+          "answer": {
+            "expr": "2*pi/T",
+            "unit": "(k)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the model and explain why cosine is used."
+        },
+        {
+          "label": "c",
+          "text": "How high above the rest position is he at his fourth crest?",
+          "answer": {
+            "expr": "A*0.5^(3*T/H)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "For how long will he bounce before his amplitude has diminished to 10 m?",
+          "answer": {
+            "expr": "H*log(10/A)/log(0.5)",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Period {{T}} s: $k = \\dfrac{2\\pi}{ {{T}} } \\approx {{2*pi/T:3}}$.\nThe amplitude ${{A}}(0.5)^{ct}$ halves when $ct = 1$, i.e. every $\\frac1c$ s: $c = \\dfrac{1}{ {{H}} } \\approx {{1/H:3}}$.\n\n**(b)** $h(t) = {{A}}\\cos({{2*pi/T:3}}t)\\cdot 0.5^{ {{1/H:3}}t }$. Cosine because he starts at a crest; {{A}} is the starting amplitude.\n\n**(c)** Crests at $t = 0, {{T}}, {{2*T}}, {{3*T}}$, so the fourth crest is at $t = {{3*T}}$ s:\n$h = {{A}}(0.5)^{ {{3*T}}/{{H}} } \\approx {{A*0.5^(3*T/H):3}}$ m.\n\n**(d)** ${{A}}(0.5)^{t/{{H}} } = 10 \\Rightarrow t = {{H}}\\cdot\\dfrac{\\log(10/{{A}})}{\\log 0.5} \\approx {{H*log(10/A)/log(0.5):3}}$ s.",
+      "rubric": [
+        {
+          "point": "Correct value of k from the period",
+          "marks": 1
+        },
+        {
+          "point": "Correct decay constant c",
+          "marks": 1
+        },
+        {
+          "point": "Writes the model and justifies cosine and A",
+          "marks": 1
+        },
+        {
+          "point": "Correct height at the fourth crest",
+          "marks": 1
+        },
+        {
+          "point": "Solves for the time when amplitude is 10 m with logarithms",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-5-q02",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Refer to the bungee jumper model $h(t) = 100\\cos(kt)\\cdot 0.5^{ct}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What is the difference between simple and damped harmonic motion?"
+        },
+        {
+          "label": "b",
+          "text": "Is the bungee jumper an example of damped harmonic motion? Explain."
+        },
+        {
+          "label": "c",
+          "text": "What is the significance of the factor 100, and why is it used only once?"
+        },
+        {
+          "label": "d",
+          "text": "Why was a cosine function chosen instead of a sine function?"
+        },
+        {
+          "label": "e",
+          "text": "When is the magnitude of the rate of change greatest? What does this mean physically?"
+        }
+      ],
+      "modelAnswer": "**(a)** Simple harmonic motion repeats with constant amplitude indefinitely; damped harmonic motion repeats but its amplitude decreases over time due to frictional forces.\n\n**(b)** Yes – the jumper oscillates about the rest position while the crests decrease by a constant ratio (air resistance and energy lost in the cord).\n\n**(c)** The 100 is the initial amplitude (starting height above rest). Only one factor of 100 is used because it scales the whole product; multiplying both factors by 100 would give 10 000.\n\n**(d)** Cosine starts at its maximum ($\\cos 0 = 1$), matching the jumper starting at the top. Sine would start at the rest position.\n\n**(e)** The rate of change is greatest in magnitude when the graph is steepest – as he passes through the rest position ($h = 0$), especially in the first fall. Physically, that is when he is moving fastest.",
+      "rubric": [
+        {
+          "point": "Correctly distinguishes simple and damped harmonic motion",
+          "marks": 1
+        },
+        {
+          "point": "Justifies that the bungee motion is damped",
+          "marks": 1
+        },
+        {
+          "point": "Explains the factor 100 and why only one is used",
+          "marks": 1
+        },
+        {
+          "point": "Explains the choice of cosine",
+          "marks": 1
+        },
+        {
+          "point": "Identifies when the rate of change is greatest and its physical meaning",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-5-q03",
+      "type": "analysis",
+      "difficulty": 2,
+      "text": "A bungee jumper's height data (m, relative to the rest position) are shown.\n\n| Time (s) | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Height (m) | 100 | 90 | 72 | 45 | 14 | −15 | −41 | −61 | −71 | −73 | −66 | −52 | −32 |\n\n| Time (s) | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Height (m) | −11 | 11 | 30 | 44 | 53 | 54 | 48 | 37 | 23 | 6 | −8 | −23 | −33 |\n\n| Time (s) | 26 | 27 | 28 | 29 | 30 | 31 | 32 | 33 | 34 | 35 | 36 | 37 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| Height (m) | −39 | −39 | −35 | −27 | −16 | −4 | 6 | 17 | 24 | 28 | 29 | 26 |",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe how the data show sinusoidal and exponential features."
+        },
+        {
+          "label": "b",
+          "text": "Estimate the period and the value of $k$ in $h(t) = 100\\cos(kt)\\cdot 0.5^{ct}$.",
+          "answer": {
+            "expr": "2*pi/18",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.04
+          }
+        },
+        {
+          "label": "c",
+          "text": "Use successive crests to determine $c$.",
+          "answer": {
+            "expr": "log(0.54)/(18*log(0.5))",
+            "unit": "",
+            "sig": 3,
+            "tol": 0.05
+          }
+        },
+        {
+          "label": "d",
+          "text": "Write the model and check it against one data point."
+        }
+      ],
+      "modelAnswer": "**(a)** Sinusoidal: heights rise and fall repeatedly. Exponential: each crest/trough is smaller than the last by roughly the same ratio.\n\n**(b)** Crests at about 0, 18 and 36 s (or troughs at 9 and 27 s) → period ≈ 18 s, so $k = \\dfrac{2\\pi}{18} \\approx 0.349$.\n\n**(c)** Ratio of successive crests: $54/100 = 0.54$, $29/54 \\approx 0.54$. So $0.5^{18c} = 0.54$:\n$c = \\dfrac{\\log 0.54}{18\\log 0.5} \\approx 0.0494$.\n\n**(d)** $h(t) = 100\\cos(0.349t)\\cdot 0.5^{0.0494t}$. Check at $t = 9$: $100\\cos(3.14)(0.5)^{0.445} \\approx -73.5$ m vs data −73. ✓",
+      "rubric": [
+        {
+          "point": "Describes sinusoidal and exponential features",
+          "marks": 2
+        },
+        {
+          "point": "Correct period and k",
+          "marks": 1
+        },
+        {
+          "point": "Correct decay constant from a crest ratio",
+          "marks": 2
+        },
+        {
+          "point": "Writes the model and checks it against a data point",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q04",
+      "type": "explain",
+      "difficulty": 2,
+      "text": "Refer to the graph of a bungee jumper's height versus time, a damped oscillation that starts at its highest point.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How would the path change if the jumper dropped from a greater height? a lower height?"
+        },
+        {
+          "label": "b",
+          "text": "How would the path change with a longer cord? a shorter cord?"
+        },
+        {
+          "label": "c",
+          "text": "How would the path change with a springier cord? a stiffer cord?"
+        }
+      ],
+      "modelAnswer": "**(a)** Greater drop height: larger initial amplitude – all crests and troughs scaled up; lower height: scaled down.\n\n**(b)** Longer cord: each fall takes longer, so the period increases (oscillations spread out); shorter cord: shorter period.\n\n**(c)** Springier cord: stretches more, so each bounce takes longer (longer period) and energy is lost more slowly, so the amplitude decays more gradually; stiffer cord: shorter period and the jumper comes to rest sooner (faster decay).\n\nIn the model $h(t) = A\\cos(kt)\\,b^t$: height ↔ $A$, cord length and springiness ↔ $k$, damping ↔ $b$.",
+      "rubric": [
+        {
+          "point": "Correct effect of drop height on amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Correct effect of cord length on period",
+          "marks": 2
+        },
+        {
+          "point": "Correct effect of cord springiness on period and decay",
+          "marks": 2
+        },
+        {
+          "point": "Links each change to a parameter of the model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q05",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "H": {
+          "min": 60,
+          "max": 120,
+          "step": 10
+        },
+        "r": {
+          "choices": [
+            1,
+            1.5,
+            2
+          ]
+        },
+        "D": {
+          "choices": [
+            1,
+            1.2,
+            1.5,
+            2
+          ]
+        },
+        "S": {
+          "min": 3,
+          "max": 6,
+          "step": 1
+        },
+        "t1": {
+          "min": 5,
+          "max": 20,
+          "step": 1
+        }
+      },
+      "text": "A skier goes down a {{H}} m high hill at a constant rate, losing {{r}} m of height per second, while passing over moguls that are {{D}} m from crest to trough. She meets one mogul every {{S}} s.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Model her height ignoring the moguls."
+        },
+        {
+          "label": "b",
+          "text": "Model the effect of the moguls alone.",
+          "answer": {
+            "expr": "D/2",
+            "unit": "m (amplitude)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Develop a combined model for her height versus time."
+        },
+        {
+          "label": "d",
+          "text": "Find her height after {{t1}} s.",
+          "answer": {
+            "expr": "-r*t1+H+D/2*sin(2*pi/S*t1)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "e",
+          "text": "State a reasonable domain for the model."
+        }
+      ],
+      "modelAnswer": "**(a)** Trend: $h(t) = -{{r}}t + {{H}}$.\n\n**(b)** Amplitude $A = \\dfrac{ {{D}} }{2} = {{D/2}}$ m. Period {{S}} s, so $k = \\dfrac{2\\pi}{ {{S}} } \\approx {{2*pi/S:3}}$. $M(t) = {{D/2}}\\sin({{2*pi/S:3}}t)$.\n\n**(c)** $P(t) = -{{r}}t + {{H}} + {{D/2}}\\sin({{2*pi/S:3}}t)$ – the sum of a linear and a sinusoidal function.\n\n**(d)** $P({{t1}}) = -{{r*t1}} + {{H}} + {{D/2}}\\sin({{2*pi/S*t1:4}}) \\approx {{-r*t1+H+D/2*sin(2*pi/S*t1):4}}$ m.\n\n**(e)** She reaches the bottom when the trend reaches 0, at about $t = {{H/r:3}}$ s; domain $0 \\le t \\le {{H/r:3}}$.",
+      "rubric": [
+        {
+          "point": "Correct linear trend",
+          "marks": 1
+        },
+        {
+          "point": "Correct amplitude and k for the moguls",
+          "marks": 2
+        },
+        {
+          "point": "Correct combined model as a sum",
+          "marks": 1
+        },
+        {
+          "point": "Correct height at the given time",
+          "marks": 1
+        },
+        {
+          "point": "Reasonable domain in context",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q06",
+      "type": "design",
+      "difficulty": 2,
+      "text": "A skier repeatedly goes up and down the same hill (no moguls). She skis down at 1 m/s (height drops 1 m/s) from the top of a 60 m hill, waits about 1 min in the lift line, then rides the chairlift up at 0.5 m/s (height rises 0.5 m/s).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Develop a graphical model of her height versus time over several runs. What is the length of one cycle?",
+          "answer": {
+            "expr": "240",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Explain what happens during each region of one cycle."
+        },
+        {
+          "label": "c",
+          "text": "How might you develop an algebraic model?"
+        },
+        {
+          "label": "d",
+          "text": "How would the graph change if she spent an extra minute in line, if the lift stopped for 30 s, or if she doubled her downhill speed?"
+        }
+      ],
+      "modelAnswer": "**(a)** One cycle: down 60 s (line from 60 m to 0 with slope −1), wait 60 s (horizontal at 0), up 120 s (slope +0.5 back to 60 m). Period 240 s; the graph is a repeating \"sawtooth with a flat bottom\".\n\n**(b)** Region 1: skiing down; region 2: waiting at the bottom; region 3: riding up the lift.\n\n**(c)** An algebraic model needs **piecewise** linear functions on each interval, repeated every 240 s (for example $h(t) = 60 - t$ for $0 \\le t < 60$, $h = 0$ for $60 \\le t < 120$, $h = 0.5(t - 120)$ for $120 \\le t < 240$, then shifted by 240 s each cycle). It could be approximated by a sinusoid, but that would not capture the straight-line segments.\n\n**(d)** An extra minute in line lengthens the flat section; a 30 s lift stop adds a flat section partway up; doubling her speed makes the downhill segment twice as steep and half as long.",
+      "rubric": [
+        {
+          "point": "Correct graphical model for at least one full cycle with correct durations",
+          "marks": 2
+        },
+        {
+          "point": "Explains each region",
+          "marks": 1
+        },
+        {
+          "point": "Describes a valid algebraic approach (piecewise, periodic)",
+          "marks": 2
+        },
+        {
+          "point": "Correctly adjusts the graph for the changed scenarios",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q07",
+      "type": "problem",
+      "difficulty": 2,
+      "text": "Using the chromatic scale (C = 262 Hz, C# = 277, D = 294, D# = 311, E = 330, F = 349, F# = 370, G = 392, G# = 415, A = 440, A# = 466, B = 494, high C = 524), a pure note is $I(t) = \\sin(2\\pi f t)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Determine the frequency of high D.",
+          "answer": {
+            "expr": "588",
+            "unit": "Hz",
+            "sig": 3
+          }
+        },
+        {
+          "label": "b",
+          "text": "Write the combined function for a D-minor chord: D, F, A and high D struck together."
+        },
+        {
+          "label": "c",
+          "text": "Use the frequency ratios to explain why this chord sounds good."
+        },
+        {
+          "label": "d",
+          "text": "Evaluate the D and high-D components together at $t = \\frac{1}{1176}$ s.",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** High D is one octave above D: $2 \\times 294 = 588$ Hz.\n\n**(b)** $I(t) = \\sin(2\\pi\\cdot 294t) + \\sin(2\\pi\\cdot 349t) + \\sin(2\\pi\\cdot 440t) + \\sin(2\\pi\\cdot 588t)$.\n\n**(c)** Ratios D : F : A : high D ≈ 294 : 349 : 440 : 588 ≈ 1 : 1.19 : 1.50 : 2 – close to simple ratios (A is a perfect fifth, 3 : 2; high D is 2 : 1), so the combined waveform repeats regularly and the chord sounds pleasant (a \"sad\" minor sound).\n\n**(d)** At $t = \\frac{1}{1176}$ s: $\\sin(2\\pi\\cdot 294/1176) = \\sin(\\pi/2) = 1$ and $\\sin(2\\pi\\cdot 588/1176) = \\sin\\pi = 0$, so the D and high-D parts contribute $1 + 0 = 1$.",
+      "rubric": [
+        {
+          "point": "Correct frequency of high D",
+          "marks": 1
+        },
+        {
+          "point": "Correct combined function by superposition",
+          "marks": 2
+        },
+        {
+          "point": "Explains consonance using frequency ratios and periodicity",
+          "marks": 2
+        },
+        {
+          "point": "Correct evaluation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q08",
+      "type": "analysis",
+      "difficulty": 2,
+      "vars": {
+        "e": {
+          "min": 296,
+          "max": 316,
+          "step": 4
+        },
+        "g": {
+          "min": 352,
+          "max": 372,
+          "step": 4
+        }
+      },
+      "text": "Bobby plays a C-major triad on a badly tuned guitar. C is correct at 262 Hz, but E is {{e}} Hz and G is {{g}} Hz (a well-tuned guitar has E = 330 Hz, G = 392 Hz).",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Write the combined function for Bobby's chord."
+        },
+        {
+          "label": "b",
+          "text": "Compare the frequency ratios of Bobby's chord with those of a well-tuned triad. Give the ratio of Bobby's G to C.",
+          "answer": {
+            "expr": "g/262",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Discuss the sound quality, referring to the waveform."
+        }
+      ],
+      "modelAnswer": "**(a)** $I(t) = \\sin(2\\pi\\cdot 262t) + \\sin(2\\pi\\cdot {{e}}t) + \\sin(2\\pi\\cdot {{g}}t)$.\n\n**(b)** Ratios relative to C: well tuned 1 : 1.26 : 1.50 (≈ 4 : 5 : 6). Bobby's: 1 : {{e/262:3}} : {{g/262:3}}, which is not close to a ratio of small whole numbers.\n\n**(c)** The crests of the three waves rarely coincide, so the combined waveform has no short regular repeating pattern – it looks irregular. The chord will sound out of tune (discordant). Tuning E and G back to 330 and 392 Hz restores the regular pattern.",
+      "rubric": [
+        {
+          "point": "Correct combined function",
+          "marks": 1
+        },
+        {
+          "point": "Computes and compares frequency ratios",
+          "marks": 2
+        },
+        {
+          "point": "Explains the irregular waveform and the resulting sound",
+          "marks": 2
+        },
+        {
+          "point": "Suggests the correction",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q09",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "A": {
+          "min": 8,
+          "max": 15,
+          "step": 1
+        },
+        "k": {
+          "choices": [
+            2,
+            3
+          ]
+        },
+        "b": {
+          "choices": [
+            0.9,
+            0.93,
+            0.95
+          ]
+        }
+      },
+      "text": "A pendulum is released and swings according to $x(t) = {{A}}\\cos({{k}}t) \\times {{b}}^t$, where $x$ is the horizontal displacement from rest in centimetres and $t$ is in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "What type of motion is this? State the domain and range in context."
+        },
+        {
+          "label": "b",
+          "text": "Which component is responsible for (i) the periodic nature (ii) the decay of the amplitude?"
+        },
+        {
+          "label": "c",
+          "text": "At what distance from rest was the bob released?",
+          "answer": {
+            "expr": "A",
+            "unit": "cm",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Where is the magnitude of the rate of change greatest? When does this occur in the motion?"
+        },
+        {
+          "label": "e",
+          "text": "Where is the rate of change zero? What is happening then?"
+        },
+        {
+          "label": "f",
+          "text": "After what time has the amplitude diminished to 50% of its initial value?",
+          "answer": {
+            "expr": "log(0.5)/log(b)",
+            "unit": "s",
+            "sig": 3
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** Damped harmonic motion. Domain $t \\ge 0$; range $-{{A}} \\le x \\le {{A}}$ (the amplitude never exceeds its starting value).\n\n**(b)** (i) $\\cos({{k}}t)$ makes the motion periodic. (ii) ${{b}}^t$ causes the exponential decay of the amplitude.\n\n**(c)** $x(0) = {{A}}$ cm.\n\n**(d)** The rate of change is greatest in magnitude where the graph is steepest – as the bob passes through the rest position ($x = 0$), early in the motion.\n\n**(e)** The rate of change is zero at each crest and trough – the bob is momentarily stopped at the end of each swing.\n\n**(f)** ${{b}}^t = 0.5 \\Rightarrow t = \\dfrac{\\log 0.5}{\\log {{b}}} \\approx {{log(0.5)/log(b):3}}$ s.",
+      "rubric": [
+        {
+          "point": "Identifies the type of motion with domain and range",
+          "marks": 1
+        },
+        {
+          "point": "Identifies the role of each component",
+          "marks": 1
+        },
+        {
+          "point": "Correct release distance",
+          "marks": 1
+        },
+        {
+          "point": "Correct reasoning about maximum rate of change",
+          "marks": 1
+        },
+        {
+          "point": "Correct reasoning about zero rate of change",
+          "marks": 1
+        },
+        {
+          "point": "Correct half-amplitude time",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q10",
+      "type": "problem",
+      "difficulty": 3,
+      "vars": {
+        "w": {
+          "min": 3,
+          "max": 5,
+          "step": 1
+        }
+      },
+      "text": "A hanging cable between two supports is modelled by the catenary $f(x) = \\dfrac{e^x + e^{-x}}{2}$, $-{{w}} \\le x \\le {{w}}$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the component functions and the symmetry of $f$."
+        },
+        {
+          "label": "b",
+          "text": "Find the height of the cable at the supports, $f({{w}})$.",
+          "answer": {
+            "expr": "(e^w+e^(-w))/2",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Determine a quadratic $y = 1 + ax^2$ through the same lowest point and supports.",
+          "answer": {
+            "expr": "((e^w+e^(-w))/2-1)/(w*w)",
+            "unit": "(a)",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "Compare the two functions at $x = 2$ and describe where they diverge."
+        }
+      ],
+      "modelAnswer": "**(a)** It is the sum of $\\frac12e^x$ (exponential growth) and $\\frac12e^{-x}$ (exponential decay). $f(-x) = f(x)$, so it is even; minimum $f(0) = 1$.\n\n**(b)** $f({{w}}) = \\dfrac{e^{ {{w}} } + e^{-{{w}} }}{2} \\approx {{(e^w+e^(-w))/2:4}}$.\n\n**(c)** Parabola $y = 1 + ax^2$ through $({{w}}, f({{w}}))$: $a = \\dfrac{f({{w}}) - 1}{ {{w*w}} } \\approx {{((e^w+e^(-w))/2-1)/(w*w):4}}$.\n\n**(d)** At $x = 2$: catenary $\\approx {{(e^2+e^(-2))/2:3}}$; parabola $\\approx {{1+4*((e^w+e^(-w))/2-1)/(w*w):3}}$. They agree at $x = 0$ and $x = \\pm{{w}}$ but differ in between – the catenary is flatter near the bottom and rises faster near the ends.",
+      "rubric": [
+        {
+          "point": "Identifies the component exponential functions and the symmetry",
+          "marks": 2
+        },
+        {
+          "point": "Correct value at the support",
+          "marks": 1
+        },
+        {
+          "point": "Correct parabola coefficient",
+          "marks": 1
+        },
+        {
+          "point": "Correct comparison values and explanation of divergence",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-5-q11",
+      "type": "conceptual",
+      "difficulty": 2,
+      "text": "Each graph shows a combined function made of two component functions.\n\n**Graph A**\n```plot\nf: x + 2*sin(2*x)\ndomain: -8, 8\nrange: -10, 10\n```\n\n**Graph B**\n```plot\nf: x*sin(2*x)\ndomain: -8, 8\nrange: -9, 9\n```\n\n**Graph C**\n```plot\nf: 10*0.85^x*cos(2*x)\ndomain: 0, 15\nrange: -10, 11\n```",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the types of functions combined in each graph and how they are combined. Explain how you can tell."
+        },
+        {
+          "label": "b",
+          "text": "Suggest a real situation that each graph could model."
+        }
+      ],
+      "modelAnswer": "**(a)**\n* A: a **sum** of a linear function and a sinusoid ($y = x + 2\\sin 2x$) – it oscillates with constant amplitude about the line $y = x$.\n* B: a **product** of a linear function and a sinusoid ($y = x\\sin 2x$) – the amplitude grows in proportion to $|x|$; it is even (odd × odd).\n* C: a **product** of an exponential decay and a sinusoid ($y = 10(0.85)^x\\cos 2x$) – damped oscillation.\n\n**(b)** Scenarios: A – the height of a skier going **up** a slope over moguls, or a rising stock price with regular daily swings; B – vibrations that grow as a machine speeds up (resonance); C – a swing or pendulum slowing down, a plucked string fading.",
+      "rubric": [
+        {
+          "point": "Correctly identifies components and combination for A",
+          "marks": 1
+        },
+        {
+          "point": "Correctly identifies components and combination for B",
+          "marks": 1
+        },
+        {
+          "point": "Correctly identifies components and combination for C",
+          "marks": 1
+        },
+        {
+          "point": "Explains the sum vs product distinction using amplitude",
+          "marks": 1
+        },
+        {
+          "point": "Gives a plausible scenario for each graph",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-5-q12",
+      "type": "problem",
+      "difficulty": 1,
+      "text": "The notes C (262 Hz) and high C (524 Hz) are struck together: $I(t) = \\sin(2\\pi\\cdot 262t) + \\sin(2\\pi\\cdot 524t)$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "How are the two component waves related?"
+        },
+        {
+          "label": "b",
+          "text": "What is the period of the combined wave? Explain why the notes sound good together.",
+          "answer": {
+            "expr": "1/262",
+            "unit": "s",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Evaluate $I\\left(\\frac{1}{1048}\\right)$.",
+          "answer": {
+            "expr": "1",
+            "unit": "",
+            "sig": 2
+          }
+        }
+      ],
+      "modelAnswer": "**(a)** High C has twice the frequency, so its wave is C's wave compressed horizontally by a factor of $\\frac12$. Every crest of C coincides with a crest of high C.\n\n**(b)** The sum repeats with the period of C: $\\dfrac{1}{262} \\approx {{1/262:3}}$ s – a periodic waveform, so the notes sound good together.\n\n**(c)** At $t = \\frac{1}{1048}$ s: $\\sin\\left(\\frac{2\\pi\\cdot 262}{1048}\\right) = \\sin\\frac{\\pi}{2} = 1$ and $\\sin\\left(\\frac{2\\pi\\cdot 524}{1048}\\right) = \\sin\\pi = 0$, so $I = 1$.",
+      "rubric": [
+        {
+          "point": "Describes high C as a horizontal compression of C",
+          "marks": 1
+        },
+        {
+          "point": "Correct period of the combined wave and conclusion",
+          "marks": 2
+        },
+        {
+          "point": "Correct evaluation",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q13",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "H": {
+          "min": 60,
+          "max": 100,
+          "step": 10
+        },
+        "b": {
+          "choices": [
+            0.85,
+            0.9
+          ]
+        },
+        "t1": {
+          "min": 2,
+          "max": 10,
+          "step": 1
+        }
+      },
+      "text": "A skier's height, in metres, is modelled by $h(t) = {{H}}({{b}})^t + 0.6\\sin(3t)$, where $t$ is in seconds.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Identify the component functions and interpret each."
+        },
+        {
+          "label": "b",
+          "text": "Find the skier's height at $t = {{t1}}$ s.",
+          "answer": {
+            "expr": "H*b^t1+0.6*sin(3*t1)",
+            "unit": "m",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the moguls are more noticeable on the graph later in the run."
+        }
+      ],
+      "modelAnswer": "**(a)** A sum of an exponential decay ${{H}}({{b}})^t$ (descending the hill, quickly at first, then levelling off) and a sinusoid $0.6\\sin(3t)$ (moguls: amplitude 0.6 m, period $\\frac{2\\pi}{3} \\approx 2.09$ s).\n\n**(b)** $h({{t1}}) = {{H}}({{b}})^{ {{t1}} } + 0.6\\sin({{3*t1}}) \\approx {{H*b^t1:4}} + ({{0.6*sin(3*t1):3}}) \\approx {{H*b^t1+0.6*sin(3*t1):4}}$ m.\n\n**(c)** At first the exponential part changes so quickly that the bumps are hardly visible; later, when the trend flattens, the 0.6 m oscillations dominate the shape – the moguls appear toward the bottom of the run.",
+      "rubric": [
+        {
+          "point": "Identifies both components and their meaning",
+          "marks": 2
+        },
+        {
+          "point": "Correct height at the given time",
+          "marks": 1
+        },
+        {
+          "point": "Explains when the moguls become noticeable",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-5-q14",
+      "type": "design",
+      "difficulty": 3,
+      "text": "A child on a swing is pushed once and then allowed to swing freely. A motion sensor records the horizontal displacement from the rest position every 0.5 s.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe how you would collect and display the data."
+        },
+        {
+          "label": "b",
+          "text": "What type of combined function would model the data? Explain how you would determine each parameter."
+        },
+        {
+          "label": "c",
+          "text": "Illustrate with sample values: first crest 1.2 m at $t = 0$ and second crest 0.9 m at $t = 3$ s. Find $b$.",
+          "answer": {
+            "expr": "0.75^(1/3)",
+            "unit": "",
+            "sig": 3
+          }
+        },
+        {
+          "label": "d",
+          "text": "How would you check and improve your model?"
+        }
+      ],
+      "modelAnswer": "**(a)** Plan: collect displacement–time data with a motion probe; make a scatter plot; it should show oscillations with decreasing amplitude.\n\n**(b)** Model $d(t) = A\\cos(kt)\\cdot b^t$ (or sine if the data start at rest position):\n* $A$ = first maximum displacement;\n* $k = \\frac{2\\pi}{\\text{period}}$ from the time between successive crests;\n* $b$ from the ratio of successive crest heights: $b^{\\text{period}} = \\frac{\\text{crest}_2}{\\text{crest}_1}$.\n\n**(c)** Example: crests 1.2 m at $t = 0$ and 0.9 m at $t = 3$ s → $k = \\frac{2\\pi}{3} \\approx 2.09$, $b^3 = 0.75 \\Rightarrow b \\approx 0.909$. $d(t) = 1.2\\cos(2.09t)(0.909)^t$.\n\n**(d)** Check the model by comparing predicted and measured values at several times; adjust $k$ and $b$ by systematic trial if needed.",
+      "rubric": [
+        {
+          "point": "Describes a sensible data-collection plan",
+          "marks": 1
+        },
+        {
+          "point": "Chooses an appropriate combined model (product) with reasons",
+          "marks": 1
+        },
+        {
+          "point": "Explains how to obtain each parameter from the data",
+          "marks": 2
+        },
+        {
+          "point": "Works an example with consistent numbers",
+          "marks": 1
+        },
+        {
+          "point": "Describes how to verify and refine the model",
+          "marks": 1
+        }
+      ]
+    },
+    {
+      "id": "8-5-q15",
+      "type": "problem",
+      "difficulty": 2,
+      "vars": {
+        "V0": {
+          "min": 20,
+          "max": 40,
+          "step": 5
+        },
+        "g": {
+          "min": 1,
+          "max": 3,
+          "step": 1
+        },
+        "A": {
+          "min": 4,
+          "max": 10,
+          "step": 1
+        },
+        "t1": {
+          "min": 2,
+          "max": 20,
+          "step": 1
+        }
+      },
+      "text": "The number of monthly visitors (thousands) to a provincial park is modelled by $V(t) = {{V0}}(1.0{{g}})^t + {{A}}\\sin\\left(\\dfrac{\\pi t}{6}\\right)$, where $t$ is the time in months.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Interpret each component of the model."
+        },
+        {
+          "label": "b",
+          "text": "Estimate the number of visitors in month {{t1}}.",
+          "answer": {
+            "expr": "V0*(1+g/100)^t1+A*sin(pi*t1/6)",
+            "unit": "thousand",
+            "sig": 3
+          }
+        },
+        {
+          "label": "c",
+          "text": "Explain why the model is a sum rather than a product. When would a product be more suitable?"
+        }
+      ],
+      "modelAnswer": "**(a)** An exponential growth trend ${{V0}}(1.0{{g}})^t$ (the park's popularity grows {{g}}% per month) plus a sinusoid with amplitude {{A}} and period $\\dfrac{2\\pi}{\\pi/6} = 12$ months (seasonal variation).\n\n**(b)** $V({{t1}}) = {{V0}}(1.0{{g}})^{ {{t1}} } + {{A}}\\sin\\left(\\dfrac{ {{t1}}\\pi}{6}\\right) \\approx {{V0*(1+g/100)^t1:4}} + ({{round(1000*A*sin(pi*t1/6))/1000:3}}) \\approx {{V0*(1+g/100)^t1+A*sin(pi*t1/6):4}}$ thousand.\n\n**(c)** It is a sum (not a product) because the seasonal swing is assumed to be a fixed number of visitors rather than a percentage of the total. If the swing grew with the park's popularity, a product $V_0(1.0g)^t[1 + c\\sin(\\frac{\\pi t}{6})]$ would be better.",
+      "rubric": [
+        {
+          "point": "Interprets both components including the 12-month period",
+          "marks": 2
+        },
+        {
+          "point": "Correct number of visitors at the given month",
+          "marks": 1
+        },
+        {
+          "point": "Explains why a sum is used and when a product would be better",
+          "marks": 2
+        }
+      ]
+    },
+    {
+      "id": "8-5-q16",
+      "type": "analysis",
+      "difficulty": 3,
+      "text": "A hockey analyst models the number of drafted players talented enough for the NHL as $D(t) = 25 + 0.4t$, and the number of teams as $N(t)$, with $t$ years after 1966. The number of players retiring each year is $R(t) = 2N(t) - 0.53t$.",
+      "parts": [
+        {
+          "label": "a",
+          "text": "Describe the trend of $D(t)$ and what it suggests about the junior leagues."
+        },
+        {
+          "label": "b",
+          "text": "What does $P(t) = D(t) - R(t)$ describe? What do positive and negative values mean?"
+        },
+        {
+          "label": "c",
+          "text": "What does $y = \\dfrac{P(t)}{N(t)}$ describe, and what is the significance of its t-intercept?"
+        },
+        {
+          "label": "d",
+          "text": "How would increasing the slope of $D(t)$ affect your answers?"
+        }
+      ],
+      "modelAnswer": "**(a)** $D(t)$ increases steadily by 0.4 players per year – the junior leagues are producing slightly more NHL-ready players every year.\n\n**(b)** $P(t) = D(t) - R(t)$ is the net change in the pool of NHL-level players each year (new talent minus retirements). If $P(t) > 0$ the talent pool grows; if $P(t) < 0$ there are not enough new players to replace retirees.\n\n**(c)** $\\dfrac{P(t)}{N(t)}$ is the net new talent **per team**. Its t-intercept is when new talent no longer replaces retirements; after that, each team's talent declines, which could lower the quality of play.\n\n**(d)** Increasing the slope of $D(t)$ (more international players) raises $P(t)$ and moves its t-intercept later, delaying any decline in quality.",
+      "rubric": [
+        {
+          "point": "Interprets D(t)",
+          "marks": 1
+        },
+        {
+          "point": "Correct interpretation of P(t) = D − R and its sign",
+          "marks": 2
+        },
+        {
+          "point": "Correct interpretation of P/N and its t-intercept",
+          "marks": 2
+        },
+        {
+          "point": "Correct reasoning about increasing the slope of D",
+          "marks": 1
+        }
+      ]
+    }
+  ]
+}

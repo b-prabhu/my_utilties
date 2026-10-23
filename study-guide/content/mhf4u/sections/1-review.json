@@ -698,8 +698,8 @@
       "difficulty": 3,
       "vars": {
         "c": {
-          "min": -5,
-          "max": 5,
+          "min": 1,
+          "max": 6,
           "step": 1
         }
       },
@@ -1052,7 +1052,7 @@
           }
         }
       ],
-      "modelAnswer": "$f({{p}} + h) = {{a}}({{p}} + h)^2 - {{b}}({{p}} + h) = {{a*p^2 - b*p}} + {{2*a*p - b}}h + {{a}}h^2$ and $f({{p}}) = {{a*p^2 - b*p}}$.\n\n$$\\frac{f({{p}} + h) - f({{p}})}{h} = \\frac{ {{2*a*p - b}}h + {{a}}h^2}{h} = {{2*a*p - b}} + {{a}}h$$\n\nAs $h \\to 0$, this approaches **{{2*a*p - b}}**.",
+      "modelAnswer": "$f({{p}} + h) = {{a}}({{p}} + h)^2 - {{b}}({{p}} + h) = {{a}}({{p^2}} + {{2*p}}h + h^2) - {{b*p}} - {{b}}h$ and $f({{p}}) = {{a}}({{p^2}}) - {{b*p}} = {{a*p^2 - b*p}}$.\n\nSo $f({{p}} + h) - f({{p}}) = {{2*a*p}}h + {{a}}h^2 - {{b}}h = ({{2*a*p - b}})h + {{a}}h^2$.\n\n$$\\frac{f({{p}} + h) - f({{p}})}{h} = \\frac{({{2*a*p - b}})h + {{a}}h^2}{h} = ({{2*a*p - b}}) + {{a}}h$$\n\nAs $h \\to 0$, this approaches **{{2*a*p - b}}**.",
       "rubric": [
         {
           "point": "Expands f(p + h)",
