@@ -337,7 +337,7 @@ function seeded(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 10
 // Writes go through one promise chain, so they land in the order they were made.
 const STORES = ['exercises','templates','sessions','measurements','activities','goals','kv','queue'];
 const te = new TextEncoder(), td = new TextDecoder();
-let idb = null, DEK = null, wq = Promise.resolve(), saveErr = false;
+let idb = null /* name of the signed-in account's database */, DEK = null, wq = Promise.resolve(), saveErr = false;
 const keyPathOf = st => (st === 'kv' || st === 'device') ? 'key' : 'id';
 function openNamed(name, stores) {
   const p = new Promise(res => { try {
@@ -349,18 +349,48 @@ function openNamed(name, stores) {
 }
 const reqP = r => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
 const txDone = tx => new Promise((res, rej) => { tx.oncomplete = () => res(); tx.onerror = tx.onabort = () => rej(tx.error); });
+// Connections are cached per database and reopened on demand. iOS Safari closes them when the app is
+// backgrounded ("The database connection is closing"), so every operation reconnects and retries.
+// All operations here are idempotent (put by key, delete, clear, get), so a retry never duplicates data.
+const DBS = {};
+async function dbFor(name, stores) {
+  const e = DBS[name]; if (e && e.db) return e.db;
+  const db = await openNamed(name, stores); if (!db) throw new Error('Storage is unavailable');
+  db.onclose = () => { if (DBS[name] && DBS[name].db === db) DBS[name].db = null; };
+  db.onversionchange = () => { try { db.close(); } catch (x) {} if (DBS[name] && DBS[name].db === db) DBS[name].db = null; };
+  DBS[name] = { db }; return db;
+}
+function closeDb(name) { const e = name && DBS[name]; if (e && e.db) { try { e.db.close(); } catch (x) {} e.db = null; } }
+async function run(name, stores, st, mode, op) {
+  let last;
+  for (let i = 0; i < 4; i++) {
+    let db = null;
+    try {
+      db = await dbFor(name, stores);
+      return await new Promise((res, rej) => {
+        const tx = db.transaction(st, mode); const req = op(tx.objectStore(st)); let out;
+        if (req) req.onsuccess = () => { out = req.result; };
+        tx.oncomplete = () => res(out); tx.onerror = tx.onabort = () => rej(tx.error || new Error('Storage transaction was interrupted'));
+      });
+    } catch (e) {
+      last = e; if (db && DBS[name] && DBS[name].db === db) { try { db.close(); } catch (x) {} DBS[name].db = null; }
+      await new Promise(r => setTimeout(r, 80 * (i + 1)));
+    }
+  }
+  throw last;
+}
 async function encRec(key, text) { const iv = crypto.getRandomValues(new Uint8Array(12)); return { iv, ct: await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, te.encode(text)) }; }
 async function decRec(key, rec) { return JSON.parse(td.decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: rec.iv }, key, rec.ct))); }
 async function idbAll(st) {
-  if (!idb) return []; let rows = [];
-  try { rows = await reqP(idb.transaction(st).objectStore(st).getAll()); } catch (e) { return []; }
+  if (!idb) return [];
+  const rows = await run(idb, STORES, st, 'readonly', s => s.getAll()) || []; // throws if storage stays unavailable, so sign-in never shows an empty account by mistake
   const out = []; for (const r of rows) { try { out.push(await decRec(DEK, r)); } catch (e) { console.warn('Skipped a record that could not be decrypted', e); } }
   return out;
 }
-function chain(fn) { const db = idb, key = DEK; if (!db || !key) return; wq = wq.then(() => fn(db, key)).catch(e => { console.warn('save failed', e); saveErr = true; if (typeof syncChip === 'function') syncChip(); }); }
-function idbPut(st, obj) { const kp = keyPathOf(st), id = obj[kp], snap = JSON.stringify(obj); chain(async (db, key) => { const rec = await encRec(key, snap); rec[kp] = id; const tx = db.transaction(st, 'readwrite'); tx.objectStore(st).put(rec); await txDone(tx); }); }
-function idbDel(st, id) { chain(async db => { const tx = db.transaction(st, 'readwrite'); tx.objectStore(st).delete(id); await txDone(tx); }); }
-function idbClear(st) { chain(async db => { const tx = db.transaction(st, 'readwrite'); tx.objectStore(st).clear(); await txDone(tx); }); }
+function chain(fn) { const name = idb, key = DEK; if (!name || !key) return; wq = wq.then(() => fn(name, key)).then(() => { if (saveErr) { saveErr = false; if (typeof syncChip === 'function') syncChip(); } }).catch(e => { console.warn('save failed', e); saveErr = true; if (typeof syncChip === 'function') syncChip(); }); }
+function idbPut(st, obj) { const kp = keyPathOf(st), id = obj[kp], snap = JSON.stringify(obj); chain(async (name, key) => { const rec = await encRec(key, snap); rec[kp] = id; await run(name, STORES, st, 'readwrite', s => s.put(rec)); }); }
+function idbDel(st, id) { chain(name => run(name, STORES, st, 'readwrite', s => s.delete(id))); }
+function idbClear(st) { chain(name => run(name, STORES, st, 'readwrite', s => s.clear())); }
 const flushWrites = () => wq;
 
 const S = { exercises: [], templates: [], sessions: [], measurements: [], activities: [], goals: [], queue: [], kv: {}, ver: 0 };
@@ -1380,10 +1410,11 @@ Object.assign(INP_EXTRA = {}, {
 let authDb = null, USERS = [], ME = null, LEGACY = null, AUTH = { view: 'who' }, loopsOn = false;
 const ITER = 310000, RITER = 100000;
 const rand = n => crypto.getRandomValues(new Uint8Array(n));
-async function authAll(st) { try { return await reqP(authDb.transaction(st).objectStore(st).getAll()); } catch (e) { return []; } }
-async function authGet(st, k) { try { return await reqP(authDb.transaction(st).objectStore(st).get(k)); } catch (e) { return null; } }
-async function authPut(st, obj) { const tx = authDb.transaction(st, 'readwrite'); tx.objectStore(st).put(obj); await txDone(tx); }
-async function authDel(st, k) { try { const tx = authDb.transaction(st, 'readwrite'); tx.objectStore(st).delete(k); await txDone(tx); } catch (e) {} }
+const AUTH_STORES = ['users', 'device'], AUTH_DB = 'fittrack-auth';
+async function authAll(st) { return (await run(AUTH_DB, AUTH_STORES, st, 'readonly', s => s.getAll())) || []; }
+async function authGet(st, k) { try { return await run(AUTH_DB, AUTH_STORES, st, 'readonly', s => s.get(k)); } catch (e) { return null; } }
+async function authPut(st, obj) { await run(AUTH_DB, AUTH_STORES, st, 'readwrite', s => s.put(obj)); }
+async function authDel(st, k) { try { await run(AUTH_DB, AUTH_STORES, st, 'readwrite', s => s.delete(k)); } catch (e) {} }
 async function derive(pass, salt, iters) {
   const base = await crypto.subtle.importKey('raw', te.encode(pass.normalize('NFKC')), 'PBKDF2', false, ['deriveBits']);
   const bits = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iters }, base, 512));
@@ -1400,9 +1431,9 @@ function pwScore(p) { let s = 0; if (p.length >= 8) s++; if (p.length >= 12) s++
 function pwProblem(p, c) { if (p.length < 8) return 'Use at least 8 characters for the password.'; if (c != null && p !== c) return 'The two passwords do not match.'; return ''; }
 
 async function boot() {
-  authDb = await openNamed('fittrack-auth', ['users', 'device']);
+  try { authDb = await dbFor(AUTH_DB, AUTH_STORES); } catch (e) { authDb = null; }
   if (!authDb || !window.crypto || !crypto.subtle) { $('#main').innerHTML = '<div class="empty">This browser blocked private storage or encryption (private mode or restricted site data), so accounts cannot be created here. Open FitTrack in a normal browser window.</div>'; document.body.classList.add('authmode'); return; }
-  USERS = (await authAll('users')).sort((a, b) => (b.lastLogin || 0) - (a.lastLogin || 0));
+  try { USERS = (await authAll('users')) } catch (e) { USERS = []; } USERS = USERS.sort((a, b) => (b.lastLogin || 0) - (a.lastLogin || 0));
   const ui = await authGet('device', 'ui'); S.kv.settings = { ...DEFAULT_SETTINGS, palette: ui ? ui.palette : 'periwinkle', customColor: ui ? ui.customColor : '#8b93f5' }; applyTheme();
   LEGACY = await readLegacy();
   const ses = await authGet('device', 'session'), u = ses && USERS.find(x => x.id === ses.userId);
@@ -1420,9 +1451,11 @@ function readLegacy() { // data saved by the earlier single-user version, if any
 }
 function resetState() { ['exercises', 'templates', 'sessions', 'measurements', 'activities', 'goals', 'queue'].forEach(k => S[k] = []); S.kv = {}; S.ver++; _pr = { v: -1 }; R.stack = []; }
 async function enterUser(user, dek, opts) {
-  const db = await openNamed('fittrack-u-' + user.id, STORES); if (!db) throw new Error('Could not open your data');
-  resetState(); ME = user; DEK = dek; idb = db; saveErr = false;
+  const dbName = 'fittrack-u-' + user.id; await dbFor(dbName, STORES);
+  resetState(); ME = user; DEK = dek; idb = dbName; saveErr = false;
+  try {
   for (const st of STORES) { const rows = await idbAll(st); if (st === 'kv') rows.forEach(r => S.kv[r.key] = r.val); else S[st] = rows; }
+  } catch (e) { idb = null; DEK = null; ME = null; resetState(); throw new Error('Your data could not be read right now. Please try again.'); }
   if (!S.kv.settings) {
     S.seeding = true;
     if (opts.legacy && LEGACY) { ['exercises', 'templates', 'sessions', 'measurements', 'activities', 'goals'].forEach(st => (LEGACY[st] || []).forEach(x => put(st, x))); Object.entries(LEGACY.kvmap).forEach(([k, v]) => { if (k !== 'remFired') setKV(k, v); }); const p = prof(); p.name = p.name && p.name !== 'Alex' ? p.name : user.displayName; setKV('profile', p);
@@ -1443,7 +1476,7 @@ async function enterUser(user, dek, opts) {
   else toast('Signed in as ' + user.displayName);
 }
 async function signOut(view) {
-  await flushWrites(); try { idb && idb.close(); } catch (e) {}
+  await flushWrites(); closeDb(idb);
   idb = null; DEK = null; const last = ME; ME = null; resetState(); keepAwake(false);
   await authDel('device', 'session');
   S.kv.settings = { ...DEFAULT_SETTINGS, palette: (last && last.palette) || 'periwinkle', customColor: (last && last.customColor) || '#8b93f5' }; applyTheme();
@@ -1509,7 +1542,7 @@ const FORMS = {
         return authErr(u.failed >= 5 ? 'Wrong password. Sign-in is paused for a moment after repeated attempts.' : `That password is not right. ${5 - u.failed} attempt${5 - u.failed === 1 ? '' : 's'} left before a short pause.`); }
       u.failed = 0; u.lockUntil = 0;
       await enterUser(u, await importDek(await unwrapRaw(kek, u.wrapped)), { remember: $('#si-rem').checked });
-    } catch (e) { console.error(e); busy(form, false); authErr('Could not open this account: ' + e.message); }
+    } catch (e) { console.error(e); busy(form, false); authErr('Could not open this account. ' + (e && /data could not be read/.test(e.message) ? e.message : 'Storage was interrupted. Please try again.')); }
   },
   async signup(form) {
     const name = $('#su-name').value.trim(), un = normUser($('#su-user').value), pw = $('#su-pw').value, pw2 = $('#su-pw2').value;
@@ -1525,7 +1558,7 @@ const FORMS = {
       await authPut('users', user); USERS.unshift(user);
       AUTH = { view: 'code', code, next: { user, dek: await importDek(raw), opts: { remember: $('#su-rem').checked, legacy: !!($('#su-legacy') && $('#su-legacy').checked), samples: !!($('#su-samples') && $('#su-samples').checked) } } };
       renderAuth();
-    } catch (e) { console.error(e); busy(form, false); authErr('Could not create the account: ' + e.message); }
+    } catch (e) { console.error(e); busy(form, false); authErr('Could not create the account because storage was interrupted. Please tap Create account again.'); }
   },
   async reset(form) {
     const u = USERS.find(x => x.username === normUser($('#rs-user').value)), code = normCode($('#rs-code').value).replace(/-/g, ''), pw = $('#rs-pw').value, pw2 = $('#rs-pw2').value;
@@ -1555,7 +1588,7 @@ const FORMS = {
     const u = ME, c = await derive($('#da-pw').value, u.salt, u.iter);
     if (!sameBytes(c.verifier, u.verifier)) return authErr('That password is not right.');
     busy(form, true, 'Deleting…');
-    await flushWrites(); try { idb.close(); } catch (e) {} idb = null;
+    await flushWrites(); closeDb(idb); idb = null;
     try { indexedDB.deleteDatabase('fittrack-u-' + u.id); } catch (e) {}
     await authDel('users', u.id); USERS = USERS.filter(x => x.id !== u.id);
     await signOut(); toast('Account deleted');
