@@ -333,11 +333,17 @@ const WDL = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturd
 function weekStart(d) { const x = sod(d); const sow = set().weekStart; return addDays(x, -((x.getDay() - sow + 7) % 7)); }
 function seeded(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
 
-/* ============ storage: the viewer's private folder in this artifact's Claude database ============
-   Everything lives under data/users/<claude-user-id>/fittrack/..., which the platform keeps private to
-   that person (not even the artifact's owner can read it). Nothing is written to browser storage.
-   Writes are serialized per document, coalesced while one is in flight, and retried with back-off. */
+/* ============ storage: FitTrack's area in this artifact's Claude database (owned by the page owner) ============
+   ft_accounts/<username>            one document per FitTrack account (password check + wrapped data key)
+   ft_data/<accountId>/<store>/<id>  that account's records, each encrypted (AES-256-GCM) with its data key
+   Nothing is written to browser storage. Writes are serialized per document, coalesced, and retried. */
 const STORES = ['exercises','templates','sessions','measurements','activities','goals','kv'];
+const te = new TextEncoder(), td = new TextDecoder();
+const b64 = u8 => { const a = new Uint8Array(u8); let s = ''; for (let i = 0; i < a.length; i += 0x8000) s += String.fromCharCode.apply(null, a.subarray(i, i + 0x8000)); return btoa(s); };
+const unb64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function encRec(key, text) { const iv = crypto.getRandomValues(new Uint8Array(12)); return { v: 1, iv: b64(iv), ct: b64(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, te.encode(text))) }; }
+async function decRec(key, rec) { return JSON.parse(td.decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(rec.iv) }, key, unb64(rec.ct)))); }
+let DEK = null;
 let CDB = null, BASE = null, idb = null /* true once the Claude store is connected */;
 const W = { pending: new Map(), inflight: new Set(), lastOk: 0, err: null, dead: 0, readOnly: false };
 const keyPathOf = st => st === 'kv' ? 'key' : 'id';
@@ -355,7 +361,7 @@ function pump() {
 const TERMINAL = ['invalid_argument', 'quota_exceeded', 'revoked', 'not_granted', 'capability_disabled', 'capability_removed', 'transform_error'];
 async function doWrite(path, op) {
   for (let tries = 0; ; tries++) {
-    try { const ref = CDB.doc(path); if (op.del) await ref.delete(); else await ref.set(op.data); W.lastOk = now(); W.err = null; break; }
+    try { const ref = CDB.doc(path); if (op.del) await ref.delete(); else await ref.set(op.text != null ? await encRec(op.key, op.text) : op.data); W.lastOk = now(); W.err = null; break; }
     catch (e) {
       const code = (e && e.code) || 'unavailable'; W.err = { code, message: (e && e.message) || String(e) };
       if (TERMINAL.includes(code)) { W.dead++; if (code === 'invalid_argument' || code === 'not_granted' || code === 'revoked') W.readOnly = true;
@@ -370,7 +376,7 @@ async function doWrite(path, op) {
 const pendingCount = () => W.pending.size + W.inflight.size;
 async function flushWrites(maxMs = 20000) { const t0 = now(); while (pendingCount() && now() - t0 < maxMs) await sleep(150); return !pendingCount(); }
 const plain = o => JSON.parse(JSON.stringify(o));
-function idbPut(st, obj) { const kp = keyPathOf(st); enqueueWrite(pathOf(st, obj[kp]), { data: plain(obj) }); }
+function idbPut(st, obj) { const kp = keyPathOf(st); if (!DEK) return; enqueueWrite(pathOf(st, obj[kp]), { text: JSON.stringify(obj), key: DEK }); }
 function idbDel(st, id) { enqueueWrite(pathOf(st, id), { del: true }); }
 function idbClear(st) { (st === 'kv' ? Object.keys(S.kv) : S[st].map(x => x.id)).forEach(id => idbDel(st, id)); }
 async function loadAll() {
@@ -380,7 +386,7 @@ async function loadAll() {
       try { snap = await Promise.race([BASE.collection(st).get(), sleep(15000).then(() => { throw { code: 'timeout', message: 'Claude storage did not answer in time' }; })]); break; }
       catch (e) { if (i >= 2 || TERMINAL.includes(e && e.code)) throw e; await sleep(800 * (i + 1)); }
     }
-    const rows = snap.docs.filter(d => d.exists).map(d => plain(d.data()));
+    const rows = []; for (const d of snap.docs) { if (!d.exists) continue; try { rows.push(await decRec(DEK, d.data())); } catch (e) { console.warn('Skipped a record that could not be decrypted', d.id); } }
     if (st === 'kv') { S.kv = {}; rows.forEach(r => { if (r && r.key) S.kv[r.key] = r.val; }); } else S[st] = rows;
   }
   S.ver++;
@@ -1311,22 +1317,22 @@ VIEWS.profile = () => {
     ${notif === 'default' ? '<button class="btn sm" data-act="notifPerm">Allow notifications</button>' : ''}
     <div class="list">${[['workout', 'Scheduled workout'], ['missed', 'Missed workout check'], ['weigh', 'Body weight logging'], ['review', 'Weekly progress review']].map(([k, l]) => `<div class="switch"><label for="rm-${k}" class="grow">${l}</label><input class="in" style="width:auto;min-height:36px;padding:4px 8px" type="time" id="rm-${k}-t" data-chg="rem" data-k="${k}" data-f="time" value="${r[k].time}" aria-label="${l} time">${k === 'review' ? `<select class="in" style="width:auto;min-width:0;min-height:36px;padding:4px 8px" id="rm-${k}-d" data-chg="rem" data-k="${k}" data-f="day" aria-label="Review day">${WD.map((d, i) => `<option value="${i}" ${r[k].day === i ? 'selected' : ''}>${d}</option>`).join('')}</select>` : ''}<input type="checkbox" id="rm-${k}" data-chg="rem" data-k="${k}" data-f="on" ${r[k].on ? 'checked' : ''}></div>`).join('')}</div>
     ${r.weigh.on ? `<div class="chips" role="group" aria-label="Weigh-in days">${WD.map((d, i) => `<button class="chip" aria-pressed="${r.weigh.days.includes(i)}" data-act="weighDay" data-d="${i}">${d}</button>`).join('')}</div>` : ''}</section>
-  <section class="card"><h3>Your data</h3><p class="small muted">Saved privately to your Claude account. Export a copy whenever you want a backup file.</p>
+  <section class="card"><h3>Your data</h3><p class="small muted">Saved in FitTrack's storage in Claude, encrypted with your password. Export a copy whenever you want a backup file.</p>
     <div class="grid2"><button class="btn sm" data-act="export" data-k="workouts">Workouts CSV</button><button class="btn sm" data-act="export" data-k="measurements">Measurements CSV</button><button class="btn sm" data-act="export" data-k="activities">Activities CSV</button><button class="btn sm" data-act="export" data-k="all">Everything (JSON)</button></div>
     <div class="btns"><button class="btn sm" data-act="importSheet">Import backup</button>${S.kv.hasSamples ? '<button class="btn sm" data-act="clearSamples">Clear example data</button>' : '<button class="btn sm" data-act="loadSamples">Load example data</button>'}<button class="btn sm" data-act="go" data-v="sync">Storage</button></div>
     <button class="btn danger" data-act="deleteAll">Erase my workout data</button></section>
-  <p class="tiny muted" style="text-align:center">FitTrack 1.0 · saved to your Claude account · private to you</p>`;
+  <p class="tiny muted" style="text-align:center">FitTrack 1.0 · saved in Claude · encrypted with your password</p>`;
 };
 VIEWS.sync = () => {
   const on = navigator.onLine, n = pendingCount();
   return `<section class="card"><div class="row nw"><span class="pill ${W.readOnly || W.dead ? 'err' : n ? 'info' : 'ok'}">${W.readOnly ? 'View only' : n ? 'Saving ' + n + ' change' + (n === 1 ? '' : 's') : W.dead ? 'Some changes not saved' : 'All changes saved'}</span><span class="pill ${on ? 'ok' : 'warn'}">${on ? 'Online' : 'Offline'}</span></div>
-  <p>Your workouts, measurements, activities and settings are saved to <b>your Claude account</b> as you go, in a private space that only you can open. Other people using FitTrack see only their own data, and the page's owner can't see yours. Nothing is stored in this browser.</p>
+  <p>Your workouts, measurements, activities and settings are saved as you go to <b>FitTrack's storage in Claude</b>, which belongs to the person who shared this page. Each record is encrypted with your password before it is saved, so nobody else, including that person, can read it. Nothing is stored in this browser.</p>
   ${W.lastOk ? `<p class="small muted">Last saved ${esc(fmtTime(W.lastOk))}.</p>` : ''}
   ${n && !on ? '<p class="small">You are offline. Keep this page open; waiting changes save as soon as the connection is back. Closing the page now would lose them.</p>' : ''}
   ${W.readOnly ? '<p class="small">Your access to this page is view-only, so changes can\'t be saved. Ask the person who shared FitTrack to give you Contributor access.</p>' : ''}
   ${W.err && (W.dead || n) ? `<p class="tiny muted">Last error: ${esc(W.err.message || W.err.code)}</p>` : ''}</section>
-  ${hasBrowserData() ? `<section class="card"><h3>Older copies in this browser</h3><p class="small">An earlier version left FitTrack data in this browser${LEGACY ? ` (${(LEGACY.sessions || []).length} workouts without an account)` : ''}${LOCALS.length ? `${LEGACY ? ' and' : ''} ${LOCALS.length} password-protected account${LOCALS.length === 1 ? '' : 's'}` : ''}. Your Claude account doesn't use it.</p>
-    <div class="btns">${LEGACY ? '<button class="btn sm" data-act="mergeLegacy">Add to my Claude data</button>' : ''}<button class="btn sm danger" data-act="removeBrowser">Remove from this browser</button></div></section>` : ''}`;
+  ${hasBrowserData() ? `<section class="card"><h3>Older copies in this browser</h3><p class="small">An earlier version left FitTrack data in this browser${LEGACY ? ` (${(LEGACY.sessions || []).length} workouts without an account)` : ''}${LOCALS.length ? `${LEGACY ? ' and' : ''} ${LOCALS.length} password-protected account${LOCALS.length === 1 ? '' : 's'}` : ''}. Your FitTrack account doesn't use it.</p>
+    <div class="btns">${LEGACY ? '<button class="btn sm" data-act="mergeLegacy">Add to my account</button>' : ''}<button class="btn sm danger" data-act="removeBrowser">Remove from this browser</button></div></section>` : ''}`;
 };
 </script>
 <script>
@@ -1393,13 +1399,40 @@ Object.assign(INP_EXTRA = {}, {
 });
 </script>
 <script>
-/* ============ identity & onboarding ============
-   The viewer's Claude account is the login. Their data sits in their private folder of this
-   artifact's Claude database. Earlier versions kept data in the browser; that is found here
-   (without creating anything), moved into the Claude account on request, then deleted. */
-let ME = null, WHO = null, AUTH = { view: 'loading' }, loopsOn = false, LEGACY = null, LOCALS = [], lastRefresh = 0;
+/* ============ FitTrack accounts (stored in the page owner's Claude database) ============
+   Each person signs in with a FitTrack username and password; their Claude identity is not used.
+   The password is stretched with PBKDF2-SHA-256 (310k rounds): half the output verifies it, the other
+   half unwraps the account's random data key, which encrypts every record. A recovery code wraps the
+   same key. Only ciphertext and the account list reach the database; the key lives in memory only. */
+let ME = null, WHO = null, ACCTS = [], AUTH = { view: 'loading' }, loopsOn = false, LEGACY = null, LOCALS = [], lastRefresh = 0;
+const ITER = 310000, RITER = 100000;
+const rand = n => crypto.getRandomValues(new Uint8Array(n));
 
-/* ---- reading data an earlier version left in this browser (read-only; never creates a database) ---- */
+/* ---- crypto ---- */
+async function derive(pass, salt, iters) {
+  const base = await crypto.subtle.importKey('raw', te.encode(pass.normalize('NFKC')), 'PBKDF2', false, ['deriveBits']);
+  const bits = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iters }, base, 512));
+  return { verifier: new Uint8Array(await crypto.subtle.digest('SHA-256', bits.slice(0, 32))), kek: await crypto.subtle.importKey('raw', bits.slice(32), 'AES-GCM', false, ['encrypt', 'decrypt']) };
+}
+const sameBytes = (a, b) => { a = new Uint8Array(a); b = new Uint8Array(b); if (a.length !== b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a[i] ^ b[i]; return d === 0; };
+async function wrapRaw(kek, raw) { const iv = rand(12); return { iv: b64(iv), ct: b64(await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, kek, raw)) }; }
+async function unwrapRaw(kek, w) { return new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(w.iv) }, kek, unb64(w.ct))); }
+const importDek = raw => crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['encrypt', 'decrypt']);
+function makeCode() { const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let s = ''; rand(20).forEach((v, i) => { s += A[v % 32]; if (i % 5 === 4 && i < 19) s += '-'; }); return s; }
+const normCode = c => String(c || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+const normUser = u => String(u || '').trim().toLowerCase();
+function pwScore(p) { let s = 0; if (p.length >= 8) s++; if (p.length >= 12) s++; if (/[a-z]/.test(p) && /[A-Z]/.test(p)) s++; if (/\d/.test(p) && /[^A-Za-z0-9]/.test(p)) s++; return Math.min(4, s); }
+function pwProblem(p, c) { if (p.length < 8) return 'Use at least 8 characters for the password.'; if (c != null && p !== c) return 'The two passwords do not match.'; return ''; }
+async function checkPassword(a, pw) { const k = await derive(pw, unb64(a.salt), a.iter); return sameBytes(k.verifier, unb64(a.verifier)) ? k : null; }
+
+/* ---- account records ---- */
+const acctRef = un => CDB.doc('ft_accounts/' + un);
+async function retry(fn) { for (let i = 0; ; i++) { try { return await fn(); } catch (e) { if (i >= 3 || TERMINAL.includes(e && e.code)) throw e; await sleep(500 * (i + 1) + Math.random() * 300); } } }
+async function loadAccounts() { const snap = await retry(() => CDB.collection('ft_accounts').get()); ACCTS = snap.docs.filter(d => d.exists).map(d => plain(d.data())).filter(a => a && a.verifier).sort((a, b) => (b.lastLogin || 0) - (a.lastLogin || 0)); }
+async function saveAccount(a) { await retry(() => acctRef(a.username).set(plain(a))); const i = ACCTS.findIndex(x => x.id === a.id); if (i < 0) ACCTS.unshift(a); else ACCTS[i] = a; }
+function saveAccountLook() { if (!ME) return; const [h, s] = currentHS(), v = paletteVars(h, s); ME.tint = v['--a-tint']; ME.inkc = v['--a-ink']; saveAccount(ME).catch(() => {}); }
+
+/* ---- data an earlier version left in this browser (read-only; never creates a database) ---- */
 function openExisting(name) {
   return new Promise(res => { try {
     if (typeof indexedDB === 'undefined') return res(null);
@@ -1413,129 +1446,226 @@ const dropDb = name => new Promise(res => { try { const r = indexedDB.deleteData
 async function scanBrowser() {
   LEGACY = null; LOCALS = [];
   const old = await openExisting('fittrack');
-  if (old) { const out = {}; for (const st of STORES) out[st] = await getAllRaw(old, st); old.close();
-    const kv = {}; (out.kv || []).forEach(x => kv[x.key] = x.val);
-    if (kv.settings) LEGACY = { ...out, kvmap: kv }; }
+  if (old) { const out = {}; for (const st of STORES) out[st] = await getAllRaw(old, st); old.close(); const kv = {}; (out.kv || []).forEach(x => kv[x.key] = x.val); if (kv.settings) LEGACY = { ...out, kvmap: kv }; }
   const auth = await openExisting('fittrack-auth');
   if (auth) { LOCALS = await getAllRaw(auth, 'users'); auth.close(); }
 }
 const hasBrowserData = () => !!LEGACY || LOCALS.length > 0;
-async function dropLocal(u) { // delete just one moved account from this browser
+async function removeBrowserData() { await dropDb('fittrack'); for (const u of LOCALS) await dropDb('fittrack-u-' + u.id); await dropDb('fittrack-auth'); LEGACY = null; LOCALS = []; }
+async function dropLocal(u) {
   await dropDb('fittrack-u-' + u.id); LOCALS = LOCALS.filter(x => x.id !== u.id);
   if (!LOCALS.length) { await dropDb('fittrack-auth'); return; }
   const a = await openExisting('fittrack-auth'); if (a) { await new Promise(res => { try { const tx = a.transaction('users', 'readwrite'); tx.objectStore('users').delete(u.id); tx.oncomplete = tx.onerror = tx.onabort = () => res(); } catch (e) { res(); } }); a.close(); }
 }
-async function removeBrowserData() { await dropDb('fittrack'); for (const u of LOCALS) await dropDb('fittrack-u-' + u.id); await dropDb('fittrack-auth'); LEGACY = null; LOCALS = []; }
-
-const te = new TextEncoder(), td = new TextDecoder();
-async function derive(pass, salt, iters) {
-  const base = await crypto.subtle.importKey('raw', te.encode(pass.normalize('NFKC')), 'PBKDF2', false, ['deriveBits']);
-  const bits = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iters }, base, 512));
-  return { verifier: new Uint8Array(await crypto.subtle.digest('SHA-256', bits.slice(0, 32))), kek: await crypto.subtle.importKey('raw', bits.slice(32), 'AES-GCM', false, ['decrypt']) };
+async function readLocalAccount(u, pw) { // earlier browser accounts stored binary fields
+  const base = await crypto.subtle.importKey('raw', te.encode(pw.normalize('NFKC')), 'PBKDF2', false, ['deriveBits']);
+  const bits = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: u.salt, iterations: u.iter }, base, 512));
+  if (!sameBytes(new Uint8Array(await crypto.subtle.digest('SHA-256', bits.slice(0, 32))), u.verifier)) return null;
+  const kek = await crypto.subtle.importKey('raw', bits.slice(32), 'AES-GCM', false, ['decrypt']);
+  const dek = await crypto.subtle.importKey('raw', new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: u.wrapped.iv }, kek, u.wrapped.ct)), 'AES-GCM', false, ['decrypt']);
+  const db = await openExisting('fittrack-u-' + u.id); if (!db) throw new Error('That account has no saved data in this browser.');
+  const src = {};
+  for (const st of STORES) { const rows = await getAllRaw(db, st), out = []; for (const r of rows) { try { out.push(JSON.parse(td.decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: r.iv }, dek, r.ct)))); } catch (e) {} } src[st] = out; }
+  db.close(); const kv = {}; (src.kv || []).forEach(x => kv[x.key] = x.val); src.kvmap = kv; return src;
 }
-const sameBytes = (a, b) => { a = new Uint8Array(a); b = new Uint8Array(b); if (a.length !== b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a[i] ^ b[i]; return d === 0; };
-const decrypt = async (key, w) => new Uint8Array(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: w.iv }, key, w.ct));
-
 function importRecords(src) {
   S.seeding = true;
   ['exercises', 'templates', 'sessions', 'measurements', 'activities', 'goals'].forEach(st => (src[st] || []).forEach(x => { if (x && x.id) put(st, x); }));
   Object.entries(src.kvmap || {}).forEach(([k, v]) => { if (k !== 'remFired') setKV(k, v); });
   if (!S.kv.schedule || !S.exercises.length) { const keep = { ...S.kv }; seedLibrary(); Object.entries(keep).forEach(([k, v]) => setKV(k, v)); }
-  const p = prof(); if (!p.name || p.name === 'Alex') { p.name = WHO.displayName || p.name || ''; setKV('profile', p); }
+  const p = prof(); if (!p.name || p.name === 'Alex') { p.name = WHO.displayName; setKV('profile', p); }
   S.seeding = false;
 }
 
-/* ---- boot ---- */
+/* ---- boot / sign in / sign out ---- */
 async function boot() {
   AUTH = { view: 'loading' }; renderAuth();
-  let db = null, user = null;
-  try { if (window.claude && claude.use) [db, user] = await Promise.all([claude.use('db'), claude.use('user')]); } catch (e) {}
-  const me = user ? await user.me() : null;
-  if (!db || !me || !me.id) { AUTH = { view: 'nostore' }; return renderAuth(); }
-  CDB = db; BASE = db.doc('data/users/' + me.id + '/fittrack');
-  WHO = { id: me.id, displayName: me.name || '', avatarUrl: me.avatarUrl, color: me.color };
-  try { await loadAll(); } catch (e) { AUTH = { view: 'error', err: e }; return renderAuth(); }
+  let db = null; try { if (window.claude && claude.use) db = await claude.use('db'); } catch (e) {}
+  if (!db) { AUTH = { view: 'nostore' }; return renderAuth(); }
+  CDB = db;
+  try { await loadAccounts(); } catch (e) { AUTH = { view: 'error', err: e }; return renderAuth(); }
   await scanBrowser();
+  AUTH = { view: ACCTS.length ? 'who' : 'signup' }; renderAuth();
+}
+function resetState() { ['exercises', 'templates', 'sessions', 'measurements', 'activities', 'goals'].forEach(k => S[k] = []); S.kv = {}; S.ver++; _pr = { v: -1 }; R.stack = []; }
+async function openAccount(a, dek) {
+  resetState(); WHO = a; DEK = dek; BASE = CDB.doc('ft_data/' + a.id); W.dead = 0; W.readOnly = false; W.err = null;
+  try { await loadAll(); } catch (e) { DEK = null; BASE = null; WHO = null; resetState(); throw new Error('Your workouts could not be loaded right now. Please try again.'); }
+  a.lastLogin = now(); a.failed = 0; a.lockUntil = 0; saveAccount(a).catch(() => {});
   if (!S.kv.settings) { AUTH = { view: 'welcome' }; return renderAuth(); }
   enter();
 }
 function enter() {
   fixSettings(); ME = WHO; idb = true;
-  document.body.classList.remove('authmode'); closeSheet(); applyTheme(); syncChip();
+  document.body.classList.remove('authmode'); closeSheet(); applyTheme(); syncChip(); saveAccountLook();
   const h = location.hash.slice(1); R.tab = TABS.includes(h) ? h : (A() ? 'workout' : 'home'); R.stack = [];
   render(); window.scrollTo(0, 0); lastRefresh = now();
   if (!loopsOn) { loopsOn = true; setInterval(tick, 250); setInterval(checkReminders, 30000); }
   setTimeout(checkReminders, 1500);
   if (A()) { keepAwake(true); if (R.tab !== 'workout') toast('Workout in progress. Tap the bar to resume.'); }
-  if (hasBrowserData()) setTimeout(() => toast('Older FitTrack data is still in this browser. Remove it under Profile → Storage.'), 1800);
+  else toast('Signed in as ' + (ME.displayName || ME.username));
+}
+async function signOut(view) {
+  if (pendingCount()) toast('Saving your last changes…');
+  await flushWrites(30000);
+  ME = null; WHO = null; DEK = null; BASE = null; idb = null; resetState(); keepAwake(false);
+  S.kv.settings = { ...DEFAULT_SETTINGS }; applyTheme();
+  try { await loadAccounts(); } catch (e) {}
+  AUTH = { view: view || (ACCTS.length ? 'who' : 'signup') }; closeSheet(); $('#toast').innerHTML = ''; renderAuth();
 }
 // pick up changes made on another device when the app comes back to the foreground
 document.addEventListener('visibilitychange', async () => {
   if (document.visibilityState !== 'visible' || !ME || pendingCount() || now() - lastRefresh < 60000) return;
   if ($('#sheet').innerHTML || (document.activeElement && document.activeElement.matches('input,textarea,select')) || cur().v === 'template') return;
-  lastRefresh = now();
-  try { await loadAll(); fixSettings(); applyTheme(); render(); } catch (e) {}
+  lastRefresh = now(); try { await loadAll(); fixSettings(); applyTheme(); render(); } catch (e) {}
 });
 window.addEventListener('beforeunload', e => { if (pendingCount()) { e.preventDefault(); e.returnValue = ''; } });
 
-/* ---- screens shown before the app opens ---- */
-const avatar = (u, size = 56) => u && u.avatarUrl ? `<img class="av" src="${esc(u.avatarUrl)}" width="${size}" height="${size}" alt="" style="width:${size}px;height:${size}px">` : `<span class="av" style="width:${size}px;height:${size}px;background:var(--primary-tint);color:var(--primary-ink);font-size:${Math.round(size * .4)}px" aria-hidden="true">${esc(((u && u.displayName) || '?').charAt(0).toUpperCase())}</span>`;
+/* ---- screens ---- */
+const avatar = (u, size = 56) => `<span class="av" style="width:${size}px;height:${size}px;font-size:${Math.round(size * .4)}px;background:${(u && u.tint) || 'var(--primary-tint)'};color:${(u && u.inkc) || 'var(--primary-ink)'}" aria-hidden="true">${esc(((u && (u.displayName || u.username)) || '?').trim().charAt(0).toUpperCase())}</span>`;
 const BRAND = `<div class="brand"><span class="mk" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg></span><div><div style="font-weight:500;font-size:20px;line-height:1.2">FitTrack</div><div class="tiny muted">Your training log</div></div></div>`;
+const pwField = (id, label, ac, meter) => `<label class="f" for="${id}">${label}<span class="pw"><input class="in" type="password" id="${id}" name="${id}" autocomplete="${ac}" ${meter ? 'data-inp="pwMeter"' : ''}><button type="button" data-act="pwShow" data-for="${id}" aria-label="Show password">Show</button></span></label>${meter ? `<div class="meter" aria-hidden="true"><i id="${id}-m" style="width:0"></i></div><span class="tiny muted" id="${id}-l">At least 8 characters. A short phrase is easy to remember and hard to guess.</span>` : ''}`;
 const AUTHV = {
-  loading: () => `${BRAND}<div class="empty">Connecting to your Claude account…</div>`,
-  nostore: () => `${BRAND}<div class="sec"><h2 style="font-size:24px">Sign in to Claude to use FitTrack</h2>
-    <p class="small">FitTrack saves your workouts to your Claude account, not to this browser. Open this page in claude.ai or the Claude app while you're signed in.</p>
-    <p class="small muted">If you are signed in and still see this, ask the person who shared FitTrack to give you access to it.</p></div>`,
-  error: () => `${BRAND}<div class="sec"><h2 style="font-size:24px">Can't reach your data right now</h2>
-    <p class="small">FitTrack couldn't load your workouts from Claude. Nothing has been changed. Check your connection and try again.</p>
-    <p class="tiny muted">${esc((AUTH.err && (AUTH.err.message || AUTH.err.code)) || '')}</p><button class="btn primary big" data-act="retryBoot">Try again</button></div>`,
-  welcome: () => `${BRAND}<div class="sec"><div class="row nw">${avatar(WHO, 56)}<div class="grow"><h2 style="font-size:24px">Welcome${WHO.displayName ? ', ' + esc(WHO.displayName.split(' ')[0]) : ''}</h2><p class="tiny muted">Signed in with Claude</p></div></div>
-    <p class="small">FitTrack saves your training to your Claude account. It's private to you: anyone else who opens this page sees only their own workouts, and the page's owner can't see yours.</p></div>
-    ${hasBrowserData() ? `<section class="card" style="background:var(--primary-soft);border-color:transparent"><h3>Bring your existing data</h3><p class="small">An earlier version of FitTrack saved data in this browser. Move it into your Claude account and FitTrack deletes the browser copy.</p>
+  loading: () => `${BRAND}<div class="empty">Opening FitTrack…</div>`,
+  nostore: () => `${BRAND}<div class="sec"><h2 style="font-size:24px">FitTrack can't open its storage here</h2><p class="small">FitTrack keeps everyone's accounts in Claude, so this page has to be opened inside claude.ai or the Claude app by someone signed in to Claude.</p><p class="small muted">If you are signed in and still see this, ask the person who shared FitTrack to give you access.</p></div>`,
+  error: () => `${BRAND}<div class="sec"><h2 style="font-size:24px">Can't reach FitTrack right now</h2><p class="small">Nothing has been changed. Check your connection and try again.</p><p class="tiny muted">${esc((AUTH.err && (AUTH.err.message || AUTH.err.code)) || '')}</p><button class="btn primary big" data-act="retryBoot">Try again</button></div>`,
+  who: () => `${BRAND}<div class="sec" style="gap:4px"><h2 style="font-size:24px">Who's training?</h2><p class="muted small">Each person signs in with their own FitTrack password. Their workouts are encrypted with it.</p></div>
+    <div class="acc-grid">${ACCTS.map(a => `<button class="acc" data-act="authPick" data-u="${esc(a.username)}">${avatar(a, 60)}<span style="font-weight:500">${esc(a.displayName)}</span><span class="tiny muted">@${esc(a.username)}</span></button>`).join('')}
+    <button class="acc add" data-act="authView" data-v="signup"><span class="av plus" style="width:60px;height:60px" aria-hidden="true">+</span><span style="font-weight:500">Add account</span><span class="tiny muted">New person</span></button></div>`,
+  signin: () => { const a = ACCTS.find(x => x.username === AUTH.u); if (!a) return AUTHV.who();
+    return `${BRAND}<form class="sec authform" data-form="signin" novalidate><div class="row nw">${avatar(a, 56)}<div class="grow"><h2 style="font-size:22px">Hi, ${esc(a.displayName)}</h2><p class="tiny muted">@${esc(a.username)}</p></div></div>
+      <input type="text" name="username" autocomplete="username" value="${esc(a.username)}" hidden>${pwField('si-pw', 'Password', 'current-password')}
+      <p class="ferr" id="auth-err" role="alert"></p><button class="btn primary big" type="submit">Sign in</button>
+      <div class="row between"><button type="button" class="link" data-act="authView" data-v="who">Switch account</button><button type="button" class="link" data-act="authView" data-v="reset">Forgot password?</button></div></form>`; },
+  signup: () => `${BRAND}<form class="sec authform" data-form="signup" novalidate><div class="sec" style="gap:4px"><h2 style="font-size:24px">${ACCTS.length ? 'Add an account' : 'Create your account'}</h2><p class="muted small">Your password encrypts your workouts, so only you can open them.</p></div>
+    <label class="f" for="su-name">Your name<input class="in" id="su-name" autocomplete="name" maxlength="40" placeholder="Alex"></label>
+    <label class="f" for="su-user">Username<input class="in" id="su-user" autocomplete="username" maxlength="24" autocapitalize="none" spellcheck="false" placeholder="alex"></label>
+    ${pwField('su-pw', 'Password', 'new-password', true)}${pwField('su-pw2', 'Confirm password', 'new-password')}
+    <p class="ferr" id="auth-err" role="alert"></p><button class="btn primary big" type="submit">Create account</button>
+    ${ACCTS.length ? '<button type="button" class="link" data-act="authView" data-v="who">Back to accounts</button>' : ''}</form>`,
+  code: () => `${BRAND}<div class="sec"><h2 style="font-size:24px">Save your recovery code</h2><p class="small">If you forget your password, this code is the only way back into your workouts. Nobody can reset it for you, not even the page owner. Keep it in a password manager or somewhere safe.</p>
+    <div class="code num" id="rc" aria-label="Recovery code ${esc(AUTH.code)}">${AUTH.code.split('-').map(g => `<span>${esc(g)}</span>`).join('<span aria-hidden="true">-</span>')}</div><button class="btn" data-act="copyCode">Copy code</button>
+    <label class="check small"><input type="checkbox" id="rc-ok" data-chg="rcOk">I've saved my recovery code</label>
+    <button class="btn primary big" id="rc-go" data-act="codeDone" disabled>Continue</button></div>`,
+  reset: () => `${BRAND}<form class="sec authform" data-form="reset" novalidate><div class="sec" style="gap:4px"><h2 style="font-size:24px">Reset password</h2><p class="muted small">Enter the recovery code you saved when the account was created. Your workouts stay as they are.</p></div>
+    <label class="f" for="rs-user">Username<input class="in" id="rs-user" autocomplete="username" autocapitalize="none" spellcheck="false" value="${esc(AUTH.u || '')}"></label>
+    <label class="f" for="rs-code">Recovery code<input class="in num" id="rs-code" autocapitalize="characters" spellcheck="false" autocomplete="off" placeholder="XXXXX-XXXXX-XXXXX-XXXXX"></label>
+    ${pwField('rs-pw', 'New password', 'new-password', true)}${pwField('rs-pw2', 'Confirm new password', 'new-password')}
+    <p class="ferr" id="auth-err" role="alert"></p><button class="btn primary big" type="submit">Reset and sign in</button>
+    <button type="button" class="link" data-act="authView" data-v="${AUTH.u ? 'signin' : 'who'}">Back</button></form>`,
+  welcome: () => `${BRAND}<div class="sec"><div class="row nw">${avatar(WHO, 56)}<div class="grow"><h2 style="font-size:24px">Welcome, ${esc((WHO.displayName || WHO.username).split(' ')[0])}</h2><p class="tiny muted">@${esc(WHO.username)}</p></div></div><p class="small">Your workouts are saved in FitTrack's storage in Claude, encrypted with your password.</p></div>
+    ${hasBrowserData() ? `<section class="card" style="background:var(--primary-soft);border-color:transparent"><h3>Bring your existing data</h3><p class="small">An earlier version of FitTrack saved data in this browser. Move it into this account and FitTrack deletes the browser copy.</p>
       ${LEGACY ? `<div class="row nw"><span class="grow small"><b>Saved without an account</b><br><span class="muted">${(LEGACY.sessions || []).length} workouts · ${(LEGACY.measurements || []).length} measurements</span></span><button class="btn primary sm" data-act="moveLegacy">Move</button></div>` : ''}
-      ${LOCALS.map(u => `<form class="sec" style="gap:8px" data-form="unlock" data-id="${esc(u.id)}" novalidate><div class="small"><b>${esc(u.displayName)}</b> <span class="muted">@${esc(u.username)} · enter that account's FitTrack password</span></div>
-        <div class="row nw"><input class="in grow" type="password" id="ul-${esc(u.id)}" autocomplete="current-password" placeholder="Password" aria-label="Password for ${esc(u.username)}"><button class="btn primary sm" type="submit">Move</button></div><p class="ferr" id="ul-err-${esc(u.id)}" role="alert"></p></form>`).join('')}</section>` : ''}
+      ${LOCALS.map(u => `<form class="sec" style="gap:8px" data-form="unlock" data-id="${esc(u.id)}" novalidate><div class="small"><b>${esc(u.displayName)}</b> <span class="muted">@${esc(u.username)} · that browser account's password</span></div>
+        <div class="row nw"><input class="in grow" type="password" id="ul-${esc(u.id)}" autocomplete="off" placeholder="Password" aria-label="Password for ${esc(u.username)}"><button class="btn primary sm" type="submit">Move</button></div><p class="ferr" id="ul-err-${esc(u.id)}" role="alert"></p></form>`).join('')}</section>` : ''}
     <section class="card"><h3>${hasBrowserData() ? 'Or start fresh' : 'Get started'}</h3><label class="check small"><input type="checkbox" id="wl-samples">Add 5 weeks of example data to explore</label><button class="btn ${hasBrowserData() ? '' : 'primary'} big" data-act="startFresh">Start FitTrack</button></section>`,
 };
 function renderAuth() {
   document.body.classList.add('authmode'); $('#minibar').innerHTML = ''; $('#restbar').innerHTML = '';
   $('#main').innerHTML = `<div class="auth">${AUTHV[AUTH.view]()}</div>`;
+  const f = $('#main input:not([hidden]):not([type=checkbox])'); if (f && !('ontouchstart' in window)) setTimeout(() => f.focus(), 30);
 }
+const authErr = msg => { const e = $('#auth-err'); if (e) e.textContent = msg; };
+function busy(form, on, label) { const b = form.querySelector('button[type=submit]'); if (!b) return; if (on) { b.dataset.l = b.textContent; b.textContent = label; b.disabled = true; } else { b.textContent = b.dataset.l || b.textContent; b.disabled = false; } }
+const lockMsg = a => `Too many attempts. Try again in ${Math.ceil((a.lockUntil - now()) / 1000)} seconds, or reset with your recovery code.`;
+async function noteFailure(a) { a.failed = (a.failed || 0) + 1; if (a.failed >= 5) a.lockUntil = now() + Math.min(15 * 60e3, 30e3 * 2 ** (a.failed - 5)); try { await saveAccount(a); } catch (e) {} }
+async function freshAccount(un) { try { const s = await retry(() => acctRef(un).get()); if (s.exists) { const a = plain(s.data()); const i = ACCTS.findIndex(x => x.username === un); if (i >= 0) ACCTS[i] = a; return a; } } catch (e) {} return ACCTS.find(x => x.username === un); }
 const FORMS = {
+  async signin(form) {
+    const pw = $('#si-pw').value; if (!pw) return authErr('Enter your password.');
+    busy(form, true, 'Signing in…');
+    try {
+      const a = await freshAccount(AUTH.u);
+      if (a.lockUntil > now()) { busy(form, false); return authErr(lockMsg(a)); }
+      const k = await checkPassword(a, pw);
+      if (!k) { await noteFailure(a); busy(form, false); return authErr(a.failed >= 5 ? 'Wrong password. Sign-in is paused for a moment after repeated attempts.' : `That password is not right. ${5 - a.failed} attempt${5 - a.failed === 1 ? '' : 's'} left before a short pause.`); }
+      await openAccount(a, await importDek(await unwrapRaw(k.kek, a.wrapped)));
+    } catch (e) { console.error(e); busy(form, false); authErr(e.message && /could not be loaded/.test(e.message) ? e.message : 'Could not sign in because storage was interrupted. Please try again.'); }
+  },
+  async signup(form) {
+    const name = $('#su-name').value.trim(), un = normUser($('#su-user').value), pw = $('#su-pw').value, pw2 = $('#su-pw2').value;
+    if (!name) return authErr('Enter your name.');
+    if (!/^[a-z0-9][a-z0-9._-]{2,23}$/.test(un)) return authErr('Usernames are 3–24 characters: letters, numbers, dot, dash or underscore, starting with a letter or number.');
+    const prob = pwProblem(pw, pw2); if (prob) return authErr(prob);
+    busy(form, true, 'Creating account…');
+    try {
+      const ref = acctRef(un), lease = await retry(() => ref.acquire({ holder: uid(), ttlMs: 8000 }));
+      if (!lease.acquired) { busy(form, false); return authErr('Someone is creating that username right now. Pick another one.'); }
+      const ex = await retry(() => ref.get()); if (ex.exists && ex.data() && ex.data().verifier) { busy(form, false); return authErr('That username is taken. Pick another one.'); }
+      const raw = rand(32), code = makeCode(), salt = rand(16), rsalt = rand(16);
+      const k = await derive(pw, salt, ITER), r = await derive(normCode(code), rsalt, RITER);
+      const a = { id: uid(), username: un, displayName: name, salt: b64(salt), iter: ITER, verifier: b64(k.verifier), wrapped: await wrapRaw(k.kek, raw), rsalt: b64(rsalt), riter: RITER, rverifier: b64(r.verifier), rwrapped: await wrapRaw(r.kek, raw), createdAt: now(), failed: 0, lockUntil: 0 };
+      await saveAccount(a);
+      AUTH = { view: 'code', code, next: { a, dek: await importDek(raw) } }; renderAuth();
+    } catch (e) { console.error(e); busy(form, false); authErr('Could not create the account because storage was interrupted. Please tap Create account again.'); }
+  },
+  async reset(form) {
+    const un = normUser($('#rs-user').value), code = normCode($('#rs-code').value), pw = $('#rs-pw').value, pw2 = $('#rs-pw2').value;
+    if (code.length !== 20) return authErr('Recovery codes have 20 letters and numbers.');
+    const prob = pwProblem(pw, pw2); if (prob) return authErr(prob);
+    busy(form, true, 'Checking code…');
+    try {
+      const a = await freshAccount(un); if (!a) { busy(form, false); return authErr('No FitTrack account has that username.'); }
+      if (a.lockUntil > now()) { busy(form, false); return authErr(lockMsg(a)); }
+      const r = await derive(code, unb64(a.rsalt), a.riter);
+      if (!sameBytes(r.verifier, unb64(a.rverifier))) { await noteFailure(a); busy(form, false); return authErr('That recovery code does not match this account.'); }
+      const raw = await unwrapRaw(r.kek, a.rwrapped), salt = rand(16), k = await derive(pw, salt, ITER);
+      Object.assign(a, { salt: b64(salt), iter: ITER, verifier: b64(k.verifier), wrapped: await wrapRaw(k.kek, raw), failed: 0, lockUntil: 0 }); await saveAccount(a);
+      await openAccount(a, await importDek(raw)); toast('Password changed. Your recovery code still works.');
+    } catch (e) { console.error(e); busy(form, false); authErr('Could not reset because storage was interrupted. Please try again.'); }
+  },
+  async chpw(form) {
+    const pw = $('#cp-pw').value, pw2 = $('#cp-pw2').value, prob = pwProblem(pw, pw2); if (prob) return authErr(prob);
+    busy(form, true, 'Saving…');
+    try { const a = ME, k = await checkPassword(a, $('#cp-cur').value); if (!k) { busy(form, false); return authErr('Your current password is not right.'); }
+      const raw = await unwrapRaw(k.kek, a.wrapped), salt = rand(16), n = await derive(pw, salt, ITER);
+      Object.assign(a, { salt: b64(salt), iter: ITER, verifier: b64(n.verifier), wrapped: await wrapRaw(n.kek, raw) }); await saveAccount(a); closeSheet(); toast('Password changed');
+    } catch (e) { busy(form, false); authErr('Could not save the new password. Please try again.'); }
+  },
+  async delacct(form) {
+    const a = ME; if (!(await checkPassword(a, $('#da-pw').value))) return authErr('That password is not right.');
+    busy(form, true, 'Deleting…');
+    STORES.forEach(st => idbClear(st)); await flushWrites(60000);
+    try { await retry(() => acctRef(a.username).delete()); } catch (e) { busy(form, false); return authErr('Could not delete the account right now. Please try again.'); }
+    ACCTS = ACCTS.filter(x => x.id !== a.id); await signOut(); toast('Account deleted');
+  },
   async unlock(form) {
     const u = LOCALS.find(x => x.id === form.dataset.id), err = $('#ul-err-' + u.id), pw = $('#ul-' + u.id).value, b = form.querySelector('button');
     if (!pw) { err.textContent = 'Enter the password.'; return; }
     b.disabled = true; b.textContent = 'Moving…';
-    try {
-      const k = await derive(pw, u.salt, u.iter);
-      if (!sameBytes(k.verifier, u.verifier)) { err.textContent = 'That password is not right.'; b.disabled = false; b.textContent = 'Move'; return; }
-      const dek = await crypto.subtle.importKey('raw', await decrypt(k.kek, u.wrapped), 'AES-GCM', false, ['decrypt']);
-      const db = await openExisting('fittrack-u-' + u.id); if (!db) throw new Error('That account has no saved data in this browser.');
-      const src = {};
-      for (const st of STORES) { const rows = await getAllRaw(db, st), out = []; for (const r of rows) { try { out.push(JSON.parse(td.decode(await decrypt(dek, r)))); } catch (e) {} } src[st] = out; }
-      db.close(); const kv = {}; (src.kv || []).forEach(x => kv[x.key] = x.val); src.kvmap = kv;
-      importRecords(src);
-      if (!(await flushWrites(60000))) throw new Error('Saving to Claude is taking too long. Your browser copy was kept; try again.');
-      await dropLocal(u); enter(); toast(hasBrowserData() ? 'Moved. Other older data is listed under Profile → Storage.' : 'Moved into your Claude account');
+    try { const src = await readLocalAccount(u, pw); if (!src) { err.textContent = 'That password is not right.'; b.disabled = false; b.textContent = 'Move'; return; }
+      importRecords(src); if (!(await flushWrites(60000))) throw new Error('Saving is taking too long. The browser copy was kept; try again.');
+      await dropLocal(u); enter(); toast(hasBrowserData() ? 'Moved. Other older data is listed under Profile → Storage.' : 'Moved into your account');
     } catch (e) { console.error(e); err.textContent = e.message || 'Could not move this data.'; b.disabled = false; b.textContent = 'Move'; }
   },
 };
 document.addEventListener('submit', e => { const f = e.target.closest('form[data-form]'); if (!f) return; e.preventDefault(); const fn = FORMS[f.dataset.form]; if (fn) fn(f); });
 
-function accountCard() {
-  return ME ? `<section class="card"><div class="row nw">${avatar(ME, 52)}<div class="grow"><h3>${esc(ME.displayName || 'You')}</h3><p class="tiny muted">Signed in with your Claude account</p></div></div>
-  <p class="small muted">Your workouts are saved to your Claude account, privately. Other people who open FitTrack see only their own data.</p></section>` : '';
-}
+function accountCard() { return ME ? `<section class="card"><div class="row nw">${avatar(ME, 52)}<div class="grow"><h3>${esc(ME.displayName)}</h3><p class="tiny muted">@${esc(ME.username)} · encrypted with your password</p></div></div>
+  <div class="btns"><button class="btn sm" data-act="chpwSheet">Change password</button><button class="btn sm" data-act="switchAcct">Switch account</button><button class="btn sm" data-act="signOut">Sign out</button></div>
+  <button class="btn sm danger" data-act="delAcctSheet">Delete account</button></section>` : ''; }
 const AUTH_ACT = {
   retryBoot: () => boot(),
-  acctSheet: () => sheet('Account', accountCard().replace('<section class="card">', '<div class="sec">').replace(/<\/section>$/, '</div>') + `<button class="btn" data-act="go" data-v="sync">Storage details</button>`),
-  startFresh: async el => { el.disabled = true; S.seeding = true; seedLibrary(); const p = prof(); p.name = WHO.displayName || ''; setKV('profile', p); if ($('#wl-samples').checked) seedSamples(); S.seeding = false; enter(); },
+  authPick: el => { AUTH = { view: 'signin', u: el.dataset.u }; renderAuth(); },
+  authView: el => { AUTH = { view: el.dataset.v, u: AUTH.u }; renderAuth(); },
+  pwShow: el => { const i = document.getElementById(el.dataset.for); const show = i.type === 'password'; i.type = show ? 'text' : 'password'; el.textContent = show ? 'Hide' : 'Show'; el.setAttribute('aria-label', show ? 'Hide password' : 'Show password'); },
+  copyCode: async () => { try { await navigator.clipboard.writeText(AUTH.code); toast('Recovery code copied'); } catch (e) { const r = document.createRange(); r.selectNodeContents($('#rc')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('Code selected. Copy it with your keyboard.'); } },
+  codeDone: async el => { el.disabled = true; el.textContent = 'Opening…'; const n = AUTH.next; try { await openAccount(n.a, n.dek); } catch (e) { el.disabled = false; el.textContent = 'Continue'; toast(e.message); } },
+  startFresh: el => { el.disabled = true; S.seeding = true; seedLibrary(); const p = prof(); p.name = WHO.displayName; setKV('profile', p); if ($('#wl-samples').checked) seedSamples(); S.seeding = false; enter(); },
   moveLegacy: async el => { el.disabled = true; el.textContent = 'Moving…'; importRecords(LEGACY);
-    if (!(await flushWrites(60000))) { toast('Saving to Claude is slow. The browser copy was kept.'); enter(); return; }
-    await dropDb('fittrack'); LEGACY = null; enter(); toast(LOCALS.length ? 'Moved. Other browser accounts are listed under Storage.' : 'Moved into your Claude account'); },
-  mergeLegacy: async el => { el.disabled = true; el.textContent = 'Adding…'; const keepKv = { ...S.kv }; importRecords({ ...LEGACY, kvmap: {} }); Object.entries(keepKv).forEach(([k, v]) => setKV(k, v)); if (await flushWrites(60000)) { await dropDb('fittrack'); LEGACY = null; toast('Added to your Claude data'); } else toast('Still saving. The browser copy was kept.'); render(); },
-  removeBrowser: () => confirmSheet('Remove browser copies?', 'Deletes every FitTrack database saved in this browser by earlier versions, including password-protected accounts. Your Claude account data is not touched.', 'Remove from browser', async () => { await removeBrowserData(); render(); toast('Browser copies removed'); }),
+    if (!(await flushWrites(60000))) { toast('Saving is slow. The browser copy was kept.'); enter(); return; }
+    await dropDb('fittrack'); LEGACY = null; enter(); toast(LOCALS.length ? 'Moved. Other browser accounts are listed under Storage.' : 'Moved into your account'); },
+  mergeLegacy: async el => { el.disabled = true; el.textContent = 'Adding…'; const keep = { ...S.kv }; importRecords({ ...LEGACY, kvmap: {} }); Object.entries(keep).forEach(([k, v]) => setKV(k, v)); if (await flushWrites(60000)) { await dropDb('fittrack'); LEGACY = null; toast('Added to your account'); } else toast('Still saving. The browser copy was kept.'); render(); },
+  removeBrowser: () => confirmSheet('Remove browser copies?', 'Deletes every FitTrack database saved in this browser by earlier versions. Your FitTrack account data is not touched.', 'Remove from browser', async () => { await removeBrowserData(); render(); toast('Browser copies removed'); }),
+  signOut: () => signOut(), switchAcct: () => signOut('who'),
+  acctSheet: () => sheet('Account', accountCard().replace('<section class="card">', '<div class="sec">').replace(/<\/section>$/, '</div>')),
+  chpwSheet: () => sheet('Change password', `<form class="sec authform" data-form="chpw" novalidate><input type="text" name="username" autocomplete="username" value="${esc(ME.username)}" hidden>${pwField('cp-cur', 'Current password', 'current-password')}${pwField('cp-pw', 'New password', 'new-password', true)}${pwField('cp-pw2', 'Confirm new password', 'new-password')}<p class="ferr" id="auth-err" role="alert"></p><button class="btn primary big" type="submit">Change password</button></form>`),
+  delAcctSheet: () => sheet('Delete account', `<form class="sec authform" data-form="delacct" novalidate><p class="small">This permanently deletes <b>@${esc(ME.username)}</b> and every workout, measurement and setting in it. Export a backup first if you might want it.</p>${pwField('da-pw', 'Password to confirm', 'current-password')}<p class="ferr" id="auth-err" role="alert"></p><button class="btn danger solid big" type="submit">Delete account</button></form>`),
 };
+Object.assign(INP_EXTRA, { pwMeter: el => { const s = pwScore(el.value), m = $('#' + el.id + '-m'), l = $('#' + el.id + '-l'); if (!m) return; m.style.width = (el.value ? Math.max(12, s * 25) : 0) + '%'; m.style.background = ['var(--error)', 'var(--error)', 'var(--warn)', 'var(--success)', 'var(--success)'][s]; l.textContent = !el.value ? 'At least 8 characters.' : el.value.length < 8 ? (8 - el.value.length) + ' more character' + (8 - el.value.length === 1 ? '' : 's') + ' needed' : ['Weak', 'Weak', 'Fair', 'Good', 'Strong'][s] + ' password'; } });
+Object.assign(CHG_EXTRA, { rcOk: el => { $('#rc-go').disabled = !el.checked; } });
+['setPal'].forEach(k => { const f = ACT_EXTRA[k]; ACT_EXTRA[k] = el => { f(el); saveAccountLook(); }; });
+['palCustomDone', 'palHex'].forEach(k => { const f = CHG_EXTRA[k]; CHG_EXTRA[k] = el => { f(el); saveAccountLook(); }; });
 </script>
 <script>
 /* ============ actions ============ */
