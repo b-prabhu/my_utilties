@@ -114,7 +114,8 @@ ws.title = "Interview Inventory"
 SUPPLIED = ["SL. No", "Source", "Date", "Skill Name", "Candidate Name", "Mobile Number",
             "Email ID", "Current Company", "Total Experience", "Relevant Experience",
             "Current Location", "Work Location", "Notice Period", "CTC", "ECTC", "Offers"]
-DERIVED = ["Hike %", "LWD (date)", "Days to LWD", "Availability", "Highest flag", "Open actions"]
+DERIVED = ["Hike %", "LWD (date)", "Days to LWD", "Availability", "Highest flag", "Open actions",
+           "Reported stage"]
 TRACK = ["Recommended role", "Resume on file", "Screening",
          "R1 date", "R1 panel", "R1 result", "R2 date", "R2 panel", "R2 result",
          "R3 date", "R3 panel", "R3 result", "Final date", "Final panel", "Final result",
@@ -175,6 +176,9 @@ for r, c in enumerate(sorted(D["C"], key=lambda x: x["sl"]), start=FIRST):
     style(ws.cell(row=r, column=21, value=c["worst"]), halign="center",
           fill=(RED if c["worst"] == "High" else AMBER if c["worst"] == "Medium" else None))
     style(ws.cell(row=r, column=22, value=c["nflags"]), halign="center")
+    stage = D.get("STAGE", {}).get(str(c["sl"])) or D.get("STAGE", {}).get(c["sl"])
+    style(ws.cell(row=r, column=23, value=(stage or "No stage recorded")), halign="center",
+          wrap=True, italic=(not stage), color=("808080" if not stage else "000000"))
 
     for col in range(c3, last + 1):
         style(ws.cell(row=r, column=col), fill=GREY, wrap=True)
@@ -350,7 +354,11 @@ sm.column_dimensions["A"].width = 38
 for col in "BCDEF":
     sm.column_dimensions[col].width = 15
 INV = "'Interview Inventory'"
-RNG = lambda c: "%s!$%s$%d:$%s$%d" % (INV, c, FIRST, c, LASTROW)
+def RNG(head):
+    """Address an inventory column by its header text rather than its letter,
+    so inserting a column does not silently repoint every formula below."""
+    c = get_column_letter(HEADS.index(head) + 1)
+    return "%s!$%s$%d:$%s$%d" % (INV, c, FIRST, c, LASTROW)
 
 style(sm.cell(row=4, column=1, value="As-on date (drives availability)"), bold=True, fill=HDR)
 cc = sm.cell(row=4, column=2, value=ASON)
@@ -358,7 +366,7 @@ style(cc, bold=True, color="0000FF", fill=YELLOW, fmt="DD-MMM-YY", halign="cente
 cc.comment = Comment("Blue on yellow = the one input cell. Edit it and the Days to LWD and "
                      "Availability columns recalculate.", "Inventory")
 style(sm.cell(row=5, column=1, value="Total candidates"), bold=True)
-style(sm.cell(row=5, column=2, value="=COUNTA(%s)" % RNG("A")), halign="center")
+style(sm.cell(row=5, column=2, value="=COUNTA(%s)" % RNG("SL. No")), halign="center")
 
 r = 7
 style(sm.cell(row=r, column=1, value="Mix by role"), bold=True, size=11, color=NAVY, border=False)
@@ -367,18 +375,18 @@ roles = sorted({c["role"] for c in D["C"]})
 for i, role in enumerate(roles):
     rr = r + 2 + i
     style(sm.cell(row=rr, column=1, value=role))
-    style(sm.cell(row=rr, column=2, value='=COUNTIF(%s,A%d)' % (RNG("D"), rr)), halign="center")
-    style(sm.cell(row=rr, column=3, value='=IFERROR(AVERAGEIF(%s,A%d,%s),"")' % (RNG("D"), rr, RNG("N"))), fmt='0.00" L"', halign="right")
-    style(sm.cell(row=rr, column=4, value='=IFERROR(AVERAGEIF(%s,A%d,%s),"")' % (RNG("D"), rr, RNG("O"))), fmt='0.00" L"', halign="right")
-    style(sm.cell(row=rr, column=5, value='=IFERROR(AVERAGEIF(%s,A%d,%s),"")' % (RNG("D"), rr, RNG("Q"))), fmt="0.0%", halign="center")
-    style(sm.cell(row=rr, column=6, value='=_xlfn.MAXIFS(%s,%s,A%d)' % (RNG("O"), RNG("D"), rr)), fmt='0.00" L"', halign="right")
+    style(sm.cell(row=rr, column=2, value='=COUNTIF(%s,A%d)' % (RNG("Skill Name"), rr)), halign="center")
+    style(sm.cell(row=rr, column=3, value='=IFERROR(AVERAGEIF(%s,A%d,%s),"")' % (RNG("Skill Name"), rr, RNG("CTC"))), fmt='0.00" L"', halign="right")
+    style(sm.cell(row=rr, column=4, value='=IFERROR(AVERAGEIF(%s,A%d,%s),"")' % (RNG("Skill Name"), rr, RNG("ECTC"))), fmt='0.00" L"', halign="right")
+    style(sm.cell(row=rr, column=5, value='=IFERROR(AVERAGEIF(%s,A%d,%s),"")' % (RNG("Skill Name"), rr, RNG("Hike %"))), fmt="0.0%", halign="center")
+    style(sm.cell(row=rr, column=6, value='=_xlfn.MAXIFS(%s,%s,A%d)' % (RNG("ECTC"), RNG("Skill Name"), rr)), fmt='0.00" L"', halign="right")
 rr = r + 2 + len(roles)
 style(sm.cell(row=rr, column=1, value="All roles"), bold=True, fill=HDR)
-for col, f, fmt in ((2, "=COUNTA(%s)" % RNG("A"), None),
-                    (3, "=AVERAGE(%s)" % RNG("N"), '0.00" L"'),
-                    (4, "=AVERAGE(%s)" % RNG("O"), '0.00" L"'),
-                    (5, "=AVERAGE(%s)" % RNG("Q"), "0.0%"),
-                    (6, "=MAX(%s)" % RNG("O"), '0.00" L"')):
+for col, f, fmt in ((2, "=COUNTA(%s)" % RNG("SL. No"), None),
+                    (3, "=AVERAGE(%s)" % RNG("CTC"), '0.00" L"'),
+                    (4, "=AVERAGE(%s)" % RNG("ECTC"), '0.00" L"'),
+                    (5, "=AVERAGE(%s)" % RNG("Hike %"), "0.0%"),
+                    (6, "=MAX(%s)" % RNG("ECTC"), '0.00" L"')):
     style(sm.cell(row=rr, column=col, value=f), bold=True, fill=HDR, fmt=fmt,
           halign=("center" if col in (2, 5) else "right"))
 
@@ -386,11 +394,11 @@ r = rr + 2
 style(sm.cell(row=r, column=1, value="Availability against the as-on date"), bold=True, size=11, color=NAVY, border=False)
 header(sm, r + 1, ["Bucket", "Candidates", "% of pipeline"])
 for i, (lbl, f) in enumerate([
-        ("Last working day already passed", '=COUNTIF(%s,"Available now")' % RNG("T")),
-        ("Within 30 days", '=COUNTIF(%s,"Within 30 days")' % RNG("T")),
-        ("Beyond 30 days", '=COUNTIF(%s,"Beyond 30 days")' % RNG("T")),
-        ("Notice period stated, no exit date", '=COUNTIF(%s,"Notice period only")' % RNG("T")),
-        ("Notice not captured", '=COUNTIF(%s,"Not captured")' % RNG("T"))]):
+        ("Last working day already passed", '=COUNTIF(%s,"Available now")' % RNG("Availability")),
+        ("Within 30 days", '=COUNTIF(%s,"Within 30 days")' % RNG("Availability")),
+        ("Beyond 30 days", '=COUNTIF(%s,"Beyond 30 days")' % RNG("Availability")),
+        ("Notice period stated, no exit date", '=COUNTIF(%s,"Notice period only")' % RNG("Availability")),
+        ("Notice not captured", '=COUNTIF(%s,"Not captured")' % RNG("Availability"))]):
     rr = r + 2 + i
     style(sm.cell(row=rr, column=1, value=lbl))
     style(sm.cell(row=rr, column=2, value=f), halign="center")
@@ -399,19 +407,19 @@ for i, (lbl, f) in enumerate([
 r = rr + 2
 style(sm.cell(row=r, column=1, value="Batch, commercials, offers and flags"), bold=True, size=11, color=NAVY, border=False)
 header(sm, r + 1, ["Measure", "Count"])
-meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("C")),
-        ("Submitted 21 Sep 2026", '=COUNTIF(%s,"21-Sep-2026")' % RNG("C")),
-        ("Submitted 8 Oct 2026", '=COUNTIF(%s,"8-Oct-2026")' % RNG("C")),
-        ("Submitted 22 Oct 2026", '=COUNTIF(%s,"22-Oct-2026")' % RNG("C")),
-        ("Submitted 23 Oct 2026", '=COUNTIF(%s,"23-Oct-2026")' % RNG("C")),
-        ("Submitted 30 Oct 2026", '=COUNTIF(%s,"30-Oct-2026")' % RNG("C")),
-        ("CTC and ECTC captured", '=COUNT(%s)' % RNG("N")),
-        ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("N")),
-        ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("P"), RNG("P"))),
-        ("Already in Coimbatore", '=COUNTIF(%s,"Coimbatore")' % RNG("K")),
-        ("Carrying a High flag", '=COUNTIF(%s,"High")' % RNG("U")),
-        ("Carrying a Medium flag", '=COUNTIF(%s,"Medium")' % RNG("U")),
-        ("No flags raised", '=COUNTIF(%s,"None")' % RNG("U"))]
+meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("Date")),
+        ("Submitted 21 Sep 2026", '=COUNTIF(%s,"21-Sep-2026")' % RNG("Date")),
+        ("Submitted 8 Oct 2026", '=COUNTIF(%s,"8-Oct-2026")' % RNG("Date")),
+        ("Submitted 22 Oct 2026", '=COUNTIF(%s,"22-Oct-2026")' % RNG("Date")),
+        ("Submitted 23 Oct 2026", '=COUNTIF(%s,"23-Oct-2026")' % RNG("Date")),
+        ("Submitted 30 Oct 2026", '=COUNTIF(%s,"30-Oct-2026")' % RNG("Date")),
+        ("CTC and ECTC captured", '=COUNT(%s)' % RNG("CTC")),
+        ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("CTC")),
+        ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("Offers"), RNG("Offers"))),
+        ("Already in Coimbatore", '=COUNTIF(%s,"Coimbatore")' % RNG("Current Location")),
+        ("Carrying a High flag", '=COUNTIF(%s,"High")' % RNG("Highest flag")),
+        ("Carrying a Medium flag", '=COUNTIF(%s,"Medium")' % RNG("Highest flag")),
+        ("No flags raised", '=COUNTIF(%s,"None")' % RNG("Highest flag"))]
 for i, (lbl, f) in enumerate(meas):
     rr = r + 2 + i
     style(sm.cell(row=rr, column=1, value=lbl))
@@ -420,16 +428,16 @@ for i, (lbl, f) in enumerate(meas):
 r = rr + 2
 style(sm.cell(row=r, column=1, value="Interview funnel (fills as the tracking columns are used)"), bold=True, size=11, color=NAVY, border=False)
 header(sm, r + 1, ["Stage", "Count"])
-funnel = [("Shortlisted at screening", '=COUNTIF(%s,"Shortlisted")' % RNG("Y")),
-          ("Round 1 selected", '=COUNTIF(%s,"Selected")' % RNG("AB")),
-          ("Round 2 selected", '=COUNTIF(%s,"Selected")' % RNG("AE")),
-          ("Round 3 selected", '=COUNTIF(%s,"Selected")' % RNG("AH")),
-          ("Final round selected", '=COUNTIF(%s,"Selected")' % RNG("AK")),
-          ("Offer released", '=COUNTIF(%s,"Yes")' % RNG("AN")),
-          ("Joined", '=COUNTIF(%s,"Joined")' % RNG("AM")),
+funnel = [("Shortlisted at screening", '=COUNTIF(%s,"Shortlisted")' % RNG("Screening")),
+          ("Round 1 selected", '=COUNTIF(%s,"Selected")' % RNG("R1 result")),
+          ("Round 2 selected", '=COUNTIF(%s,"Selected")' % RNG("R2 result")),
+          ("Round 3 selected", '=COUNTIF(%s,"Selected")' % RNG("R3 result")),
+          ("Final round selected", '=COUNTIF(%s,"Selected")' % RNG("Final result")),
+          ("Offer released", '=COUNTIF(%s,"Yes")' % RNG("Offer released")),
+          ("Joined", '=COUNTIF(%s,"Joined")' % RNG("Final status")),
           ("Rejected at any round",
            '=COUNTIF(%s,"Rejected")+COUNTIF(%s,"Rejected")+COUNTIF(%s,"Rejected")+COUNTIF(%s,"Rejected")+COUNTIF(%s,"Rejected")'
-           % (RNG("Y"), RNG("AB"), RNG("AE"), RNG("AH"), RNG("AK")))]
+           % (RNG("Screening"), RNG("R1 result"), RNG("R2 result"), RNG("R3 result"), RNG("Final result")))]
 for i, (lbl, f) in enumerate(funnel):
     rr = r + 2 + i
     style(sm.cell(row=rr, column=1, value=lbl))

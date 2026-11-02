@@ -531,6 +531,7 @@
       <button class="chip" id="refinebtn" aria-pressed="false" aria-expanded="false" aria-controls="refine">Refine</button>
       <button class="chip" id="cvonly" aria-pressed="false">Resume on file</button>
       <button class="chip" id="flagonly" aria-pressed="false">Flagged</button>
+      <button class="chip" id="inplay" aria-pressed="false">In play</button>
       <button class="chip" id="exportbtn" aria-pressed="false" aria-expanded="false" aria-controls="exportpanel">Export</button>
       <div class="seg" role="group" aria-label="List density">
         <button class="segbtn" id="v-compact" aria-pressed="false">Compact</button>
@@ -908,6 +909,20 @@
     {id:"a19", sl:16, sev:"Low", issue:"E-mail address was supplied with a leading space.", act:"Corrected here; fix at source so mail merges do not fail."}
   ];
 
+  /* Interview stage as reported on 2 Nov 2026, alongside the tracker rather
+     than inside it: these are the candidates actually in play, and everyone
+     else reads "No stage recorded". The "In play" chip selects all five active
+     stages at once. Ordered by how far through the process each one is. */
+  var STAGE_OPTS = ["Screening Pending","L1 TBS","L1 Feedback Pending","L2 Scheduled","HR TBS"];
+  var STAGE = {
+    3:"L1 Feedback Pending",  7:"L1 Feedback Pending",  8:"L1 TBS",
+    18:"HR TBS",             27:"L2 Scheduled",
+    28:"Screening Pending",  29:"Screening Pending",   30:"Screening Pending",
+    31:"Screening Pending",  32:"Screening Pending",   33:"Screening Pending",
+    34:"Screening Pending",  35:"Screening Pending",   36:"Screening Pending",
+    37:"Screening Pending"
+  };
+
   /* ===================== derived ===================== */
   var DAY = 864e5, MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   var today = new Date(); today.setHours(0,0,0,0);
@@ -959,6 +974,8 @@
     c.fFlag  = ["None","Low","Medium","High"][c.worst];
     c.fOffer = !c.offers ? "Not captured" : (c.offers === "No" ? "None recorded" : "Holding an offer");
     c.offerInHand = c.fOffer === "Holding an offer";
+    c.stage = STAGE[c.sl] || "No stage recorded";
+    c.inPlay = !!STAGE[c.sl];
     c.blob = (c.name + " " + c.company + " " + c.role + " " + c.relExp + " " + c.curLoc + " " +
               c.notice + " " + (c.offers || "") + " " + c.src + " " + c.email + " " + c.mobile + " " +
               resumeText(c.sl)).toLowerCase();
@@ -1123,6 +1140,7 @@
     {g:"Resume review", k:"nflags",   h:"Open actions",   v:function(c){ return c.flags.length; }},
     {g:"Resume review", k:"worstFlag",h:"Highest flag",   v:function(c){ return c.fFlag; }},
 
+    {g:"Tracking", k:"stage",    h:"Reported stage",    v:function(c){ return c.stage; }},
     {g:"Tracking", k:"recRole",  h:"Recommended role",  v:function(c){ return recRoleOf(c); }},
     {g:"Tracking", k:"fit",      h:"Recommendation",    v:function(c){ return roleFit(c); }},
     {g:"Tracking", k:"sharedOn", h:"Profile shared on", v:function(c){ return track[c.sl].sharedOn; }},
@@ -1249,6 +1267,8 @@
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},
+    {key:"fStage", label:"Reported stage",   get:function(c){ return c.stage; },
+      opts:STAGE_OPTS.concat(["No stage recorded"]), always:true},
     {key:"status", label:"Overall stage",    get:function(c){ return statusOf(c); },
       opts:["Not started","In Process","Selected","Rejected","On Hold","Joined","Offer Declined","Dropped Out"]},
     {key:"round",  label:"Currently at",      get:function(c){ return currentRound(track[c.sl]); },
@@ -1362,8 +1382,6 @@
       clr.addEventListener("click", function(){
         FACETS.forEach(function(f){ sel[f.key] = []; });
         q = ""; $("q").value = "";
-        $("cvonly").setAttribute("aria-pressed", "false");
-        $("flagonly").setAttribute("aria-pressed", "false");
         renderAll();
       });
       host.appendChild(clr);
@@ -1602,8 +1620,20 @@
     });
   }
 
+  /* The three shortcut chips are nothing but facet selections, so their lit
+     state is read back from the facets. Unticking an option inside Refine then
+     turns the chip off by itself. */
+  function syncChips(){
+    [["cvonly",   sel.fCv.indexOf("On file") > -1],
+     ["flagonly", sel.fFlag.length === 3],
+     ["inplay",   sel.fStage.length === STAGE_OPTS.length]].forEach(function(p){
+      var b = $(p[0]);
+      if (b) b.setAttribute("aria-pressed", p[1] ? "true" : "false");
+    });
+  }
+
   function renderAll(){
-    renderStats(); renderRefine(); renderActiveBar(); renderRows();
+    renderStats(); renderRefine(); renderActiveBar(); renderRows(); syncChips();
     if (!$("exportpanel").hidden) renderExport();
   }
 
@@ -2226,13 +2256,16 @@
   $("cvonly").addEventListener("click", function(){
     var on = sel.fCv.indexOf("On file") > -1;
     sel.fCv = on ? [] : ["On file"];
-    this.setAttribute("aria-pressed", on ? "false" : "true");
     renderAll();
   });
   $("flagonly").addEventListener("click", function(){
     var on = sel.fFlag.length === 3;
     sel.fFlag = on ? [] : ["High","Medium","Low"];
-    this.setAttribute("aria-pressed", on ? "false" : "true");
+    renderAll();
+  });
+  $("inplay").addEventListener("click", function(){
+    var on = sel.fStage.length === STAGE_OPTS.length;
+    sel.fStage = on ? [] : STAGE_OPTS.slice();
     renderAll();
   });
 

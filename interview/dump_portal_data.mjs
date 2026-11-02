@@ -11,7 +11,7 @@ const b = html.indexOf('/* ===================== derived');
 if (a < 0 || b < 0) throw new Error('markers not found');
 const slice = html.slice(a, b);
 const ctx = {};
-const fn = new Function(slice + '\n return {ROLES:ROLES, C:C, VERDICT:VERDICT, FLAGS:FLAGS};');
+const fn = new Function(slice + '\n return {ROLES:ROLES, C:C, VERDICT:VERDICT, FLAGS:FLAGS, STAGE:STAGE};');
 const core = fn();
 const q = new Function(fs.readFileSync(d + 'pipeline_questions.js', 'utf8') +
   '\n return {QTOPICS:QTOPICS, QBANK:QBANK, QSTREAM:QSTREAM};')();

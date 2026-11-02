@@ -22,6 +22,15 @@ To run it outside Claude, keep the three together and rename the data files to
 `resumes.js` and `questions.js` — the page loads them by those names. Everything works
 locally except shared saving, which only exists inside the artifact.
 
+### Who is in play
+
+Tracker state — screening, round dates, results — lives in the shared database, filled in
+as interviews happen. The stage each candidate is at was reported separately from that, so
+the portal carries it as a `STAGE` map in
+`pipeline_page.html`, surfaced as the **Reported stage** facet and the **In play** chip
+in the toolbar, and as a `Reported stage` column in the workbook. Fifteen candidates are
+in play; the other 22 read "No stage recorded". Edit the map to move someone.
+
 ## The workbook
 
 `Interview_Inventory.xlsx` — seven sheets: Read Me, Interview Inventory,
