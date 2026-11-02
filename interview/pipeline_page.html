@@ -593,12 +593,8 @@
   var R = (typeof RESUMES !== "undefined") ? RESUMES : {};
 
   /* ===================== source data ===================== */
-  /* "Technology Consultant" is recorded separately from "Technical Consultant":
-   IKrux wrote it that way on 23 Oct, and the three candidates under it sit at a
-   different seniority and cost band from the original consultant slate. Action
-   a109 asks them whether it is in fact the same opening. */
   var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer","Technical Project Manager",
-               "Process Manager","Application Support","Technology Consultant"];
+               "Process Manager","Application Support"];
   var C = [
     [1,0,"Jeganagan Murugesan","9940641190","jeganagan@gmail.com","L&T Infotech","14 Years",
      ".Net 14 Years | React 3 Years | Cloud 3 Years | Lead 4 Years | AI 2 Years | Client Interaction 10 Years",
@@ -693,12 +689,13 @@
     [30,5,"Raj Kumar","8667415469","kraj11752@gmail.com","Stairs7 Solution","5.5 Years",
      "5 Years","Coimbatore","LWD : 15-Sep-26","2026-09-15",8.5,19,"Pipeline"],
 
-    /* IKrux submission of 23 Oct 2026 \u2014 written up as Technology Consultant. */
-    [31,6,"T Eswaramurthi","9659118687","eswaramurthi304@gmail.com","TartLabs Pvt Ltd","10 Years",
+    /* IKrux submission of 23 Oct 2026. The row is headed "Technology Consultant";
+       confirmed as the same opening as Technical Consultant, so they sit under it. */
+    [31,0,"T Eswaramurthi","9659118687","eswaramurthi304@gmail.com","TartLabs Pvt Ltd","10 Years",
      "7 Years","Coimbatore","LWD : 28-Oct-26","2026-10-28",12,22,"Offer : 21.5 L, DOJ : 01-Nov-26"],
-    [32,6,"Selva Ganapathy Palamalaiswamy","9042881840","selva_ganapathy@yahoo.com","Bosch","9 Years",
+    [32,0,"Selva Ganapathy Palamalaiswamy","9042881840","selva_ganapathy@yahoo.com","Bosch","9 Years",
      "7 Years","Coimbatore","LWD : 30-Jan-26","2026-01-30",15,22,"Pipeline"],
-    [33,6,"Nirosha C","9994653037","niro9597@gmail.com","Digitide","8 Years",
+    [33,0,"Nirosha C","9994653037","niro9597@gmail.com","Digitide","8 Years",
      "7 Years","Coimbatore","LWD : 20-Nov-26","2026-11-20",8,18,"No"],
 
     /* IKrux submission of 30 Oct 2026. This row carried no Relevant Experience
@@ -867,7 +864,7 @@
     {id:"a106", sl:37, sev:"Low", issue:"Two different engagements carry the same project title, \u2018EMEA Apps Support\u2019 \u2014 TCS for AIG and Cognizant for Auto Injury Solutions.", act:"Probably a copy-paste error; ask what the Cognizant project actually was."},
     {id:"a107", sl:null, sev:"Medium", issue:"Two of the three Application Support submissions (28 and 30) are full-stack developers by CV, not support engineers. Only Lavanya (29) has a support record. This is the mirror image of SL 13\u201317, where support people were submitted as Senior Software Engineers.", act:"Settle with IKrux what this opening actually is, or the slate will keep arriving inverted."},
     {id:"a108", sl:null, sev:"Medium", issue:"All three Application Support candidates ask 18\u201319 L against 7.3\u20138.5 L \u2014 hikes of 124% to 147%, the steepest in the pipeline.", act:"Agree the band for this role before any of the three is interviewed."},
-    {id:"a109", sl:null, sev:"Medium", issue:"The 23 Oct row is headed \u2018Technology Consultant\u2019 where earlier IKrux rows said \u2018Technical Consultant\u2019, and the three candidates sit at 8\u201311 years and 8\u201315 L against the 14\u201315 years and 18\u201332 L of the original consultant slate. They are held as a separate role in this list until that is settled.", act:"Confirm with IKrux whether it is the same opening; merge the two roles if it is."},
+    {id:"a109", sl:null, sev:"Medium", issue:"Technical Consultant is now being filled from two very different bands. SL 1\u20138 are 14\u201315 years at 18\u201332 L; SL 31\u201333, submitted on 23 Oct as \u2018Technology Consultant\u2019 and since confirmed as the same opening, are 8\u201311 years at 8\u201315 L asking 18\u201322 L.", act:"Decide which band the role is actually for, and tell IKrux, before panels are spent comparing the two against each other."},
     {id:"a110", sl:null, sev:"Low", issue:"The 30 Oct submission dropped the Relevant Experience and Offers columns, so all four candidates in it read \u2018Not captured\u2019 for both.", act:"Ask IKrux to supply them."},
     {id:"a64", sl:26, sev:"High", issue:"LWD of 4 Sep 2026 has passed, so he has been out around seven weeks, while the CV still shows Cognizant as current.", act:"Confirm his current status and when he can start."},
     {id:"a65", sl:26, sev:"High", issue:"Two gaps on the CV: twenty months between State Street HCL ending May 2017 and resuming Jan 2019, and five months between Accenture and TCS in 2020.", act:"Ask him to account for both."},

@@ -66,14 +66,14 @@ their own view.
 ## Where the pipeline stands
 
 37 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
-8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026 and 4 on 30-Oct-2026. Seven roles: Technical
+8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026 and 4 on 30-Oct-2026. Six roles: Technical
 Consultant, Technology Lead, Senior Software Engineer, Technical Project Manager, Process
-Manager, Application Support and Technology Consultant. All 37 have a CV on file and a verdict
-against it. 110 open actions: 30 High, 54 Medium, 26 Low.
+Manager and Application Support. All 37 have a CV on file and a verdict against it. 110 open
+actions: 30 High, 54 Medium, 26 Low.
 
-`Technology Consultant` is held apart from `Technical Consultant` only because IKrux wrote it
-that way on 23-Oct and the candidates sit in a different seniority and cost band. Action a109
-asks them to confirm; merge the two roles if it is the same opening.
+The 23-Oct row was headed `Technology Consultant`; confirmed as the same opening as Technical
+Consultant and merged into it. The band gap is still open (a109): SL 1–8 are 14–15 years at
+18–32 L, SL 31–33 are 8–11 years at 8–15 L asking 18–22 L.
 
 Headline findings:
 
