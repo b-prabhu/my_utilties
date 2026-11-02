@@ -1225,5 +1225,386 @@ var RESUMES = {
       "Reviewed performance metrics regularly and acted on service quality issues."]]
   ]},
   {h:"Certifications and education", b:[["p","Lean Six Sigma Black Belt, July 2025. B.E. Electronics and Communication — Dhanalakshmi Srinivasan College of Engineering, Jan 2016, 66%. HSC, Amirta Vidhayalam, Jan 2012, 79%."]]}
+]},
+
+28: {file:"Aswani_MS.pdf", title:"Java Backend Developer | Spring Boot · Hibernate · REST APIs",
+  contact:"+91 7825068695 · aswani200031@gmail.com · Nagercoil, Tamil Nadu",
+  sections:[
+  {h:"Professional summary", b:[["p","Java backend developer with five years of overall software development experience, working in Java, Servlets, JSP, Spring Boot, Spring Security, Spring Data JPA, Hibernate, REST APIs, PostgreSQL and MySQL. Experience covers backend development, application migration, production support, debugging and deployment. Currently extending into microservices and event-driven systems through independent projects with Spring Boot and Apache Kafka."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages (production)","Java, Java 8, PHP (Laravel)"],
+    ["Frameworks","Spring Boot, Spring Data JPA, Hibernate, Servlets, JSP, Spring Security"],
+    ["Databases","MySQL, PostgreSQL"],
+    ["Testing","JUnit; manual, functional and system testing"],
+    ["Tools and server","Maven, Git, Docker, Eclipse, WinSCP, Tera Term, Redmine; Apache Tomcat"],
+    ["Learned through personal projects","Microservices architecture, Apache Kafka"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Java Backend Developer — Airline passenger and cargo booking","Nagarro Software Private Limited","Nov 2025 – present (transferred from Inaho Digital Solutions); project from Apr 2026",[
+      "Developing backend modules for a passenger and cargo booking platform in Java, Spring Boot, Spring Data JPA and Hibernate.",
+      "Designing and implementing RESTful APIs for passenger and cargo booking services, with PostgreSQL through Spring Data JPA.",
+      "Taking part in requirement analysis and working with a cross-functional team through Git and Maven in an agile workflow."]],
+    ["job","Java Backend Developer — IMSKY","Inaho Digital Solutions","Oct 2021 – Nov 2025; IMSKY from Apr 2022 to Aug 2025",[
+      "Worked independently on the IMSKY application, covering development, enhancements, defect resolution and production support.",
+      "Built and maintained web modules in Spring Boot, Spring MVC and JSP, with controller-layer request handling and server-side processing.",
+      "Wrote and maintained JUnit tests, and performed manual functional and system testing before deployment.",
+      "Deployed changes across multiple servers using Tera Term and WinSCP, and prepared test evidence for QA deliverables."]],
+    ["job","Java Backend Developer — Town News legacy migration","Inaho Digital Solutions","Sep 2025 – Mar 2026",[
+      "Migrated legacy ASP application modules to PHP Laravel, converting the existing business logic.",
+      "Developed and enhanced features in the migrated modules with Laravel, HTML, CSS, JavaScript, AJAX and MySQL.",
+      "Debugged application issues and verified migrated modules through manual functional testing."]],
+    ["job","Tester — Oracle 12c to 19c migration","Inaho Digital Solutions","Dec 2021 – Mar 2022",[
+      "Carried out manual functional testing of the IMSKY application before and after the database migration to confirm compatibility.",
+      "Created test scenarios and cases from business requirements, and documented defects and evidence."]]
+  ]},
+  {h:"Personal projects", b:[["p","Microservices-based order management system (2026). Three independent Spring Boot services — Order, Payment and Notification — each with its own database, CRUD REST APIs, asynchronous service-to-service communication over Apache Kafka, and Docker containers for independent build and test. Built to learn microservices and event-driven communication; github.com/aswani-ms-31."]]},
+  {h:"Education", b:[["p","B.E. Computer Science and Engineering — Hindusthan Institute of Technology, Coimbatore, 2017–2021, CGPA 8.09."]]}
+]},
+
+29: {file:"RG_Lavanya.pdf", title:"Software Engineer | Java · Spring Boot · REST APIs · AWS",
+  contact:"+91 6369061829 · lavanya20021999@gmail.com · Erode, Tamil Nadu",
+  sections:[
+  {h:"Professional summary", b:[["p","Software engineer with five-plus years in application development, enhancement and production support, specialising in Java, Spring Boot and REST API development. Works across design, coding, testing and deployment, and handles production debugging alongside deployments and monitoring through AWS EC2, CloudWatch and CodePipeline."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages and frameworks","Core Java, Java 8/11/17, Spring Boot, REST API, JUnit, Maven, Mockito"],
+    ["Cloud and DevOps","AWS (EC2, CloudWatch, CodePipeline, SQS, SNS, S3, RDS), Git, SonarQube"],
+    ["Databases and search","MySQL, Oracle, MongoDB, OpenSearch, Solr, Elasticsearch"],
+    ["Tools and methods","JIRA, Agile / Scrum"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Software Engineer — Onclusive RI Editorial Fisheye / Kantar Fisheye rebadge","Cognizant","Mar 2021 – present",[
+      "Built and maintained the core application of a high-volume media data aggregation platform delivering over 8 million articles daily to global clients.",
+      "Implemented client-requested enhancements in Java and Spring Boot against specified requirements and timelines.",
+      "Resolved high-priority Tier 3 service tickets and worked issues with third-party vendors to keep data delivery within SLA.",
+      "Wrote JUnit coverage across all application modules, reducing post-deployment defects.",
+      "Managed deployments and monitoring through AWS EC2, CloudWatch and CodePipeline, and added automated CloudWatch alarms that cut manual monitoring by an estimated 15%.",
+      "Produced custom client reports and data analysis using Solr and OpenSearch."]],
+    ["job","Software Engineer — Atelier Financier Expertise / Atelier Core Flex","Cognizant","Dec 2020 – Mar 2021",[
+      "Maintained company contract details, the users under each contract and company documents.",
+      "Maintained company financial data by category and year, applying category formulas and presenting five years of history for user reference."]]
+  ]},
+  {h:"Certifications", b:[["ul",[
+    "AWS Certified Developer – Associate",
+    "Certified Developer Advanced — RESTful Web Services",
+    "Spring Boot with REST web services certification programme",
+    "Core Java certification programme"
+  ]]]},
+  {h:"Education", b:[["p","B.E. Electronics and Communication Engineering — Kongu Engineering College, Perundurai, Erode, CGPA 9.27. HSC 96.4% and SSLC 98.8%, Saraswathi Vidhyashram, Erode."]]}
+]},
+
+30: {file:"Raj.pdf", title:"Full Stack Software Engineer | React · TypeScript · Java · Spring Boot",
+  contact:"+91 8667415469 · kraj11752@gmail.com · Coimbatore, Tamil Nadu",
+  sections:[
+  {h:"Professional summary", b:[["p","Full stack software engineer with 5.5 years of overall professional experience, of which he states 3.9 years are hands-on full stack engineering on production SaaS and enterprise applications across frontend, backend, APIs, databases and AWS. Currently at Stairs7 Solutions, where he also holds a statutory director title for registration purposes."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Frontend","React.js, TypeScript, JavaScript (ES6+), Next.js, HTML5, CSS3"],
+    ["Backend","Java, Spring Boot, REST APIs, Hibernate / JPA, microservices, MapStruct, Jackson"],
+    ["Databases","PostgreSQL, MySQL, JPA repository queries, joins, entity relationships"],
+    ["Cloud and DevOps","AWS S3, ECS, CloudFront, Cognito, IAM; Git, GitHub Actions, CI/CD, Vercel, Sentry"],
+    ["Mobile","React Native, Expo, Expo Router"],
+    ["Security and testing","JWT, authentication and authorisation, role-based workflows, Postman, unit testing"]
+  ]]]},
+  {h:"Work experience", b:[
+    ["job","Frontend Engineer / Full Stack Engineer","Stairs7 Solutions Private Limited, remote","Since Aug 2024",[
+      "Leads and contributes to backend development in Java, Spring Boot, REST APIs, PostgreSQL, MySQL, Hibernate/JPA and microservices.",
+      "Built AWS S3 functionality for file upload, storage, retrieval and document management, and worked with ECS, CloudFront, Cognito and IAM for deployment.",
+      "Implemented authentication and authorisation with JWT and AWS Cognito.",
+      "Developed backend services across property management, homeowner and HOA workflows, marketplace, products, orders, appointments and payments.",
+      "Built responsive interfaces in React.js, TypeScript, Next.js, Material UI and Tailwind CSS with REST and GraphQL integration.",
+      "Client project Aptster, a multi-role SaaS and community platform: web and mobile in React.js, TypeScript, React Native and Expo against Java and Spring Boot services."]],
+    ["job","Frontend Engineer / Software Developer","STAIRS7 (pre-incorporation), remote","Jan 2023 – Aug 2024",[
+      "Developed production front-end applications in React.js, TypeScript and JavaScript during the pre-incorporation phase.",
+      "Built reusable UI components, responsive interfaces and API-driven workflows, and contributed to front-end architecture and performance work."]],
+    ["job","Virtual Customer Associate","Amazon, Coimbatore","Sep 2022 – Dec 2022",[
+      "Remote customer support, handling high-volume customer interactions before moving into software engineering."]],
+    ["job","Admission Counselor","Suguna Pips, Coimbatore","May 2021 – Aug 2022",[
+      "Prospective-student counselling and admissions coordination, handling applicant engagement end to end."]]
+  ]},
+  {h:"Projects", b:[["ul",[
+    "Stairs7 Enterprise SaaS Platform — modular front-end workflow, reusable component framework and REST integrations (React.js, TypeScript, Material UI, Tailwind).",
+    "Sri Balaji Self Drive — vehicle booking and fleet management with API-driven routing and transaction processing (React.js, Next.js, TypeScript).",
+    "Meal Engine — discovery and filtering with lazy loading, code splitting and render optimisation (React.js, TypeScript)."
+  ]]]},
+  {h:"Education", b:[["p","B.E. Computer Science — Sri Krishna College of Engineering and Technology, 2021. Diploma in Computer Engineering — PSG College of Technology, 2018."]]}
+]},
+
+31: {file:"T_Eswaramurthi.pdf", title:"Lead Full Stack Developer | React · Next.js · Node.js · MySQL",
+  contact:"+91 88386 32159 · eswara.info@gmail.com · Coimbatore, Tamil Nadu",
+  sections:[
+  {h:"Professional summary", b:[["p","Lead full stack developer with ten-plus years building production web applications on React.js, Next.js, TypeScript and JavaScript at the front and Node.js, Express.js and MySQL behind. Designs REST APIs, implements JWT and OAuth 2.0 authentication with role-based authorisation, models relational data and builds real-time features over WebSockets and Socket.IO. Owns delivery across the full lifecycle and states that he leads a team of 20 developers. Describes himself as an immediate joiner."]]},
+  {h:"Core skills", b:[["kv",[
+    ["Frontend","React.js, Next.js, JavaScript (ES6+), TypeScript, HTML5, CSS3, Tailwind CSS, Redux Toolkit, micro frontends"],
+    ["Backend","Node.js, Express.js, REST API design, MySQL, middleware, request validation, WebSockets, Socket.IO"],
+    ["Security","JWT, OAuth 2.0, role-based access control, Helmet, CORS, SQL injection, XSS and CSRF prevention"],
+    ["Performance","React Profiler, Lighthouse, Core Web Vitals, SEO, WCAG accessibility, code splitting, virtualisation"],
+    ["Cloud and tooling","AWS S3 and CDN, Git, GitHub, CI/CD, Vite, Webpack, Babel, npm"],
+    ["AI-augmented development","Cursor AI, AI agents, MCP, prompt and context engineering"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Full Stack Developer","TartLabs Pvt Ltd, Coimbatore","Sep 2019 – present",[
+      "Builds and maintains RESTful APIs in Node.js and Express.js for authentication, content management, document handling, messaging and workflow across several production products.",
+      "Designs route, controller and middleware layers with request validation and centralised error handling, keeping API contracts consistent for the frontend.",
+      "Models relational data and writes MySQL queries for CRUD, filtering, reporting and workflow, integrated through Node services.",
+      "Implements JWT authentication, role-based access control and protected routes, with Helmet, CORS and safeguards against SQL injection, XSS and CSRF.",
+      "Builds real-time backend events over WebSockets and Socket.IO for chat, notifications, connection status and live updates; uses AWS S3 and CDN for document storage and delivery.",
+      "Develops the interfaces in React.js, Next.js, TypeScript, Tailwind and Redux, improving performance through profiling, virtualisation, code splitting and lazy loading.",
+      "Leads a team of 20 developers: technical discussions, task breakdown, code reviews, mentoring and coordination with product, QA and backend."]],
+    ["job","Full Stack Engineer","ITPro Inc, Coimbatore","Oct 2015 – Aug 2019",[
+      "Delivered database-driven web applications in PHP, JavaScript, HTML5, CSS3 and MySQL with REST integrations.",
+      "Translated business requirements into application modules, responsive interfaces, backend workflows and database operations.",
+      "Resolved production issues, improved existing modules and supported releases."]]
+  ]},
+  {h:"Selected projects", b:[["ul",[
+    "Nursing study platform — study materials, quizzes, scoring and progress tracking, from UI through API integration, with SEO, accessibility and Lighthouse work.",
+    "Patient–nurse communication platform — secure real-time messaging, notifications, connection status and live updates over WebSockets.",
+    "Social network for nurses — profiles, posts, comments, likes, notifications and real-time chat, with infinite scrolling and virtualisation for large lists.",
+    "Foreign immigration application platform — multi-step visa workflows with document management, appointment scheduling and status tracking."
+  ]]]},
+  {h:"Education and certification", b:[["p","M.Sc. Computer Science — Sri Subash Arts and Science College, Pollachi, Coimbatore, 79%. Lists an Anthropic Claude Code certification."]]}
+]},
+
+32: {file:"Selva_Ganapathy_Palamalaiswamy.pdf", title:"Senior Software Engineer | Angular · .NET Core · Python",
+  contact:"+91 9042881840 · selva_ganapathy@yahoo.com · Bengaluru, India",
+  sections:[
+  {h:"Profile summary", b:[["p","Senior software engineer with eight-plus years in web development, automation and data analytics, building enterprise applications in Angular, C#, Python, Oracle, Splunk and Jenkins."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Programming","C#, .NET Core, Python (FastAPI), Angular 16, HTML, CSS, JavaScript, PHP"],
+    ["Cloud","Azure web services"],
+    ["Databases","Oracle, MySQL, MongoDB"],
+    ["Automation and tools","Splunk, Jenkins, Docker, Kubernetes, ALM, Visual Studio, VS Code"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Senior Software Engineer","Bosch Global Software Technologies, Bengaluru","Mar 2022 – Jan 2026",[
+      "Led design and development of web applications for automotive domain analytics and safety validation.",
+      "Team lead and developer on FSIA, a Functional Safety Impact Analysis web tool for ISO 26262 compliance ahead of project release.",
+      "Contributed to SoDA, a software data analysis and mining platform producing insights on productivity and quality in automotive software development.",
+      "Built reusable Angular components and services supporting complex front-end features and cutting duplicate development.",
+      "Automated tooling workflows and reporting, and developed Splunk dashboards.",
+      "Stack: Angular 16 and 18, .NET Core, Oracle, Docker, Kubernetes, Azure."]],
+    ["job","Web Developer (consultant)","Lumicode Software Technology Pvt Ltd, Coimbatore","Sep 2021 – Mar 2022",[
+      "Built an Angular web application for the animal husbandry industry, with dashboards for livestock and daily operations tracking and REST API integration.",
+      "Stack: Angular 12, .NET Core, Docker, Python, Azure services."]],
+    ["job","Web Developer","App Innovation Technologies Pvt Ltd, Coimbatore","Jul 2018 – Jul 2021",[
+      "Developed and optimised websites and improved existing systems, and designed the web interfaces.",
+      "Stack: Angular 12, .NET Core, Laravel (PHP)."]],
+    ["job","Research Analyst and e-Commerce Analyst","Kamsys Techsolutions India Pvt Ltd, Coimbatore","Feb 2018 – Jun 2018",[
+      "Data analysis, product listings and client modifications; supported digital marketing and lead generation, using Python and Google SEO tools."]],
+    ["job","Associate — Web Research Analyst","Mobius 365 Data Services, Coimbatore","Nov 2016 – Sep 2017",[
+      "Web research for data collection using the LexisNexis tool, and support to digital marketing lead generation."]]
+  ]},
+  {h:"Key achievements", b:[["ul",[
+    "Led the team on code reuse, reducing development time by 40%.",
+    "Improved application performance through refactoring, giving 20% faster processing.",
+    "Mentored interns through their training."
+  ]]]},
+  {h:"Education and certification", b:[["p","B.Tech Information Technology — Tamilnadu College of Engineering, Coimbatore, 2011–2015. Advanced Diploma in Big Data Analytics, 2016."]]}
+]},
+
+33: {file:"Nirosha_C.pdf", title:"Senior Software Developer | Angular · React · Python · FastAPI",
+  contact:"+91 99946 53037 · niro9597@gmail.com · Coimbatore, India",
+  sections:[
+  {h:"Professional summary", b:[["p","Senior software developer with eight-plus years building enterprise full-stack applications in Angular, React, Python and FastAPI, with a focus on system design, scalable REST APIs, database optimisation and deployment across AWS and Azure. Mentors junior engineers and works closely with product and QA."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages","JavaScript, TypeScript, Python, SQL, HTML5, CSS3"],
+    ["Frontend","Angular, React, RxJS, NgRx, Redux Toolkit, Three.js, Material UI, PrimeNG, Tailwind CSS"],
+    ["Backend","FastAPI, Node.js, Express.js, Python, REST APIs, WebSockets, Laravel"],
+    ["Databases","MySQL, PostgreSQL, database design and optimisation"],
+    ["Cloud and DevOps","AWS, Azure, Docker, Kubernetes fundamentals, GitHub Actions, Jenkins CI/CD"],
+    ["Testing and methods","Jest, Cypress, Postman, Agile Scrum, system design, microservices, SOLID"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Senior Software Developer","Digitide (formerly Conneqt Digital), Coimbatore","Apr 2025 – present",[
+      "Directs design and delivery of enterprise full-stack applications in Angular, React, FastAPI and Node.js, shipping 50+ features to production.",
+      "Engineered REST APIs, microservices and normalised schemas for high-traffic applications.",
+      "Streamlined Docker-based CI/CD pipelines, cutting deployment time by 30%.",
+      "Coaches six junior developers through structured code review, cutting review cycle time by 30%.",
+      "Integrated GitHub Copilot and Claude into daily development, trimming implementation effort by an estimated 25%."]],
+    ["job","Senior Software Developer","Conneqt Digital, Coimbatore","Sep 2023 – Apr 2025",[
+      "Delivered enterprise full-stack applications in Angular, React, FastAPI and PostgreSQL, improving system response time by 25%.",
+      "Structured reusable frontend components and backend services around clean architecture and SOLID principles.",
+      "Owned API design, UAT cycles and stakeholder demonstrations across 30+ production releases.",
+      "Automated unit and integration suites with Jest and Cypress, reducing production defects."]],
+    ["job","Software Developer","Heptagon Technology Pvt Ltd, Coimbatore","Sep 2018 – Sep 2023",[
+      "Built and maintained web applications across HR, invoicing and analytics in Angular, Python, Laravel and MySQL, supporting 5,000+ active users.",
+      "Modularised frontend components and backend APIs, cutting new-feature development time by 30%.",
+      "Worked across the full lifecycle on 80+ product releases, and optimised queries and performance for high-traffic modules."]]
+  ]},
+  {h:"Key projects", b:[["ul",[
+    "CatExpert.ai — AI-powered category management platform in Angular, React, FastAPI and PostgreSQL, giving SKU recommendations and store layout decisions, with Three.js planogram visualisation over large datasets.",
+    "Amakaro — sustainable travel platform in Angular and Laravel with personalised recommendations.",
+    "Buzzily — HR management and payroll system, Angular frontend and Python APIs, automating salary calculation, tax compliance and reporting and cutting payroll errors by 20%.",
+    "Brand Structure Analysis — full-stack analytics platform on the Kantar methodology, covering UI, backend services and data processing.",
+    "HepBuild — internal React and Laravel tool for distributing Android and iOS builds, which became the team standard."
+  ]]]},
+  {h:"Certifications, awards and education", b:[["p","Python for Data Science, AI and Development (IBM); Developing AI Applications with Python and Flask (IBM); Claude Code in Action (Anthropic). Performance Award and Digital All Stars Award at Digitide, Spotlight Award at Heptagon, Super Squad Award at Conneqt. B.E. Computer Science and Engineering — Sri Ramakrishna Engineering College, Coimbatore, 2015–2019, GPA 8/10."]]}
+]},
+
+34: {file:"Lloyd_Joseph.pdf", title:"Project Manager | Agile · Client Engagement · Portfolio Management",
+  contact:"+91 97894 82836 · lloyd_joseph@rocketmail.com · Coimbatore, India",
+  sections:[
+  {h:"Summary", b:[["p","Project management professional with over fifteen years in project and team management and client engagement, working in Agile methodologies and stakeholder coordination. States a portfolio of 25 projects valued at over $4 million with a 95% success rate."]]},
+  {h:"Experience", b:[
+    ["job","Project Manager","DEMANDBASE INC., Hyderabad (remote)","Jul 2021 – Oct 2026",[
+      "Initiated projects through kick-off calls with stakeholders and devised Agile and hybrid plans covering timelines and account owners.",
+      "Collaborated across teams and vendors and reported daily and weekly to all stakeholders.",
+      "Managed risk, project budget, change requests and vendors, and delivered within the agreed time and budget.",
+      "Ran retrospectives on project shortcomings to identify process improvements, and monitored analyst performance.",
+      "Managed a portfolio of 25 projects valued at over $4 million, with a 95% success rate attributed to cross-functional collaboration and communication.",
+      "Standardised project documents, processes, templates and planners, and acted as internal admin for a newly introduced project management tool."]],
+    ["job","Project Manager","Vserve Ebusiness Solutions, Coimbatore","Feb 2018 – Jul 2021",[
+      "Product catalog management: catalog creation, image processing and content development and enrichment.",
+      "Content management: content creation and proofreading for products, blogs and websites.",
+      "Customer service management: managed all CSR agents, with e-mail, chat and calls completed within turnaround time; team of over 60 agents.",
+      "End-to-end project management, maintaining business relationships with customers and tracking project and agent performance metrics."]],
+    ["job","Team Lead","Infognana Solutions, Coimbatore","Nov 2015 – Nov 2017",[
+      "Product catalog and content management for e-commerce clients, and assistance to companies entering e-commerce.",
+      "Business acquisition and client engagement, with pre-sales work alongside the business development team.",
+      "Vendor coordination and task allocation.",
+      "Acquired India’s largest online retailer and India’s largest online grocer as clients; enriched catalog data for 2 million products in two months; automated a data capture process to reduce cost."]],
+    ["job","Subject Matter Expert","Pathfinder Business Analysis, Coimbatore","Jun 2013 – Jan 2015",[
+      "Project and team management for a team of 10 to 20, with monthly project reviews published to management.",
+      "Reporting through MS Excel and Access with macros; identified process improvements and ran team training.",
+      "Leader of the Month for leadership excellence; reduced project turnaround through automation."]],
+    ["job","Team Lead","Showell Solutions, Coimbatore","Oct 2012 – May 2013",[
+      "Weekly and monthly reporting and project performance statistics; project planning and final sign-off on deliverables."]],
+    ["job","Senior Executive","Ugam Solutions, Coimbatore","Jun 2009 – Sep 2012",[
+      "Performance reviews and report creation, project reporting, team training and supervision.",
+      "Golden Pyramid Award for relentless pursuit of excellence; Spotlight winner three months running."]]
+  ]},
+  {h:"Skills", b:[["kv",[
+    ["Management","Project management, portfolio management, stakeholder management, customer engagement, quality assurance"],
+    ["Commercial","Business acquisitions, sales enablement, customer support"],
+    ["Tools","Agile, Jira, Confluence, Celoxis, Replicon, Trello, Lattice, MS Office, Google Sheets"],
+    ["E-commerce","Magento, Shopify, WordPress, Photoshop, web analytics, content management"]
+  ]]]},
+  {h:"Education", b:[["p","B.Tech Information Technology — Maharaja Engineering College, Coimbatore, 2005–2009."]]}
+]},
+
+35: {file:"Gobinath_S.pdf", title:"Tech Lead | Full Stack | MERN · MEAN · Python · Snowflake",
+  contact:"+91 9952558162 · gobibtech007@gmail.com · linkedin.com/in/gobibtech007",
+  sections:[
+  {h:"Professional summary", b:[["p","MERN and MEAN specialist describing seven-plus years in that stack within fifteen years of full-stack development, building and leading teams shipping production applications across React front ends, Node.js and Express back ends, MongoDB data layers and AWS infrastructure, with Python and FastAPI and AI features such as RAG-based search and LLM integration through Azure OpenAI. Most recently delivered significance testing and AI-driven conversational analytics for large-scale market research and survey data."]]},
+  {h:"Skills", b:[["kv",[
+    ["Frontend","React, Angular, HTML5, CSS3"],
+    ["Backend","FastAPI, Node.js, Express.js"],
+    ["Languages","Python, JavaScript, TypeScript"],
+    ["Data and storage","Snowflake, PostgreSQL, MongoDB, MySQL, Redis"],
+    ["Cloud and DevOps","AWS, Docker, CI/CD with Jenkins, GitHub, GitHub Copilot, DataDog"],
+    ["Practices","Microservices architecture, REST APIs, agile delivery, JIRA"],
+    ["AI and GenAI","LLM integration with Azure OpenAI and Ollama, retrieval-augmented generation"]
+  ]]]},
+  {h:"Work experience", b:[
+    ["job","Tech Lead — Full Stack Developer, ARP","Dentsu Global Services Pvt Ltd, Coimbatore","Dec 2025 – Jul 2026",[
+      "Joined the ARP Data to Insights platform mid-build and took ownership of the D2I module, processing respondent-level survey data and running statistical significance testing against Snowflake for high-volume analytical queries.",
+      "Built AI-driven conversational insights with Azure OpenAI, prompt engineering and RAG, letting users query survey data in natural language and receive contextual charts, reports and statistical summaries; chose RAG over fine-tuning to keep responses grounded in live Snowflake data without retraining cost or drift.",
+      "Improved performance and scalability by moving repeat aggregations into Redis, introducing async processing and restructuring Snowflake query joins.",
+      "Acted as technical decision-maker on service boundaries and data modelling, working with product owners, data scientists and engineering.",
+      "Stack: Python, FastAPI, React, PostgreSQL, Snowflake, Redis, AWS, Azure OpenAI, Jenkins, DataDog."]],
+    ["job","Tech Lead — AT&T ATOFLEET","Tech Mahindra, Chennai","Mar 2024 – Oct 2025",[
+      "Designed the microservice architecture for a vehicle-tracking platform with IoT device integration across a large connected fleet.",
+      "Built a query generation module converting user input into structured database queries for batch-related data.",
+      "Implemented monitoring and logging to maintain application performance, and enabled predictive maintenance through 5G telemetry and location analytics.",
+      "Stack: Angular, React.js, TypeScript, Node.js, Python, MySQL, MongoDB, Azure, Jenkins."]],
+    ["job","Tech Lead — Serviceability and CXP, Ziply Fiber","Tech Mahindra, Chennai","Dec 2022 – Feb 2024",[
+      "Built internal tools and monitoring dashboards improving system visibility for support and operations.",
+      "Automated service address creation logic, cutting issue resolution time by 30%.",
+      "Received a ‘Pat on the Back’ award for best deliverables."]],
+    ["job","STC Module Lead","Aspire Systems, Chennai","Mar 2019 – Nov 2022",[
+      "Led development of the STC channel platform for the Middle East telecom sector, covering electronic voucher distribution, recharge and refunds for merchant and POS users.",
+      "Built the merchant portal with ePayment through credit card and Apple Pay, direct electronic-PIN ordering and SIM authorisation.",
+      "Delivered SIM registration, recharge and commission tracking for field operations.",
+      "Stack: Angular, Node.js, MongoDB, MySQL, Java Spring Boot microservices, AWS."]],
+    ["job","Senior Software Engineer — Fusion Seven","Aspire Systems, Chennai","Aug 2017 – Feb 2019",[
+      "Built AdChain, identity management and blockchain infrastructure modules for an AdTech cloud financial platform with a proprietary clearing engine for real-time contract clearing, reconciliation and invoice processing."]],
+    ["job","Senior Software Engineer","FirstTek / Quadrant4 Software Solutions, Chennai","Sep 2015 – Jul 2017",[
+      "Built a real-time dashboard for monitoring user registrations and daily transactions, with filtering for recurring payments, and implemented monitoring with AWS CloudWatch."]],
+    ["job","Senior Software Engineer","Infowave Knowledgeware, Chennai","May 2012 – Sep 2015",[
+      "Delivered CKW Financial, a parallax-designed web platform, and Famtivity, a community portal for organising family activities, on Ruby on Rails with JavaScript, jQuery and PostgreSQL."]]
+  ]},
+  {h:"Certifications and education", b:[["p","Node.js, Python and Generative AI and Prompt Engineering (Udemy); CI/CD Pipeline and GitHub Copilot (Tech Mahindra); AI Engage (Dentsu Global Services). B.Tech Information Technology — Angel College of Engineering and Technology, 2011."]]}
+]},
+
+36: {file:"Thouseef_Ahmed.pdf", title:"Manager | Full Stack Technical Lead | .NET · MAUI · React Native",
+  contact:"+91 9994419206 · thouseef061987@gmail.com · Bengaluru, India 560049",
+  sections:[
+  {h:"Professional summary", b:[["p","Full stack technical lead and mobile application development manager with over fifteen years in software engineering, solution architecture and technical leadership. Works in C#, .NET, ASP.NET Core Web API, React JS, React Native, .NET MAUI and Xamarin.Forms, with REST and GraphQL integration, cloud solutions and application modernisation, across retail, e-commerce, banking, utilities and field services."]]},
+  {h:"Core skills", b:[["kv",[
+    ["Languages","C#, JavaScript, TypeScript, Java, Swift, Objective-C"],
+    ["Mobile","React Native, Xamarin.Forms, Xamarin Native, .NET MAUI"],
+    ["Backend","REST and Web APIs, GraphQL, webhooks, JSON, OAuth and JWT authentication, ASP.NET Core Web API"],
+    ["Cloud and CI/CD","Azure DevOps, AWS integration, App Center, Fastlane, App Store and Play Store deployment"],
+    ["Architecture","MVVM, MVC, dependency injection, IoC, clean architecture"],
+    ["Testing","Manual, automation, regression and UAT; Appium, Selenium"]
+  ]]]},
+  {h:"Work history", b:[
+    ["job","Manager","Cognizant Technology Solutions, Bengaluru","Dec 2022 – Jun 2026",[
+      "Enterprise application development and technical leadership across cross-platform mobile, backend API integration and full-stack solution architecture.",
+      "Developed and enhanced cross-platform applications in C#, .NET MAUI, Xamarin.Forms, React Native, JavaScript and TypeScript.",
+      "Integrated RESTful APIs, GraphQL services and enterprise backend systems, and coordinated mobile and frontend applications with backend and cloud services.",
+      "Led Xamarin.Forms to .NET MAUI modernisation to improve maintainability and performance.",
+      "Worked with AWS service integration and Azure DevOps CI/CD pipelines for builds, testing and releases.",
+      "Conducted code reviews, established coding standards, mentored developers and supported Agile delivery and release management."]],
+    ["job","Senior Associate","Cognizant Technology Solutions, Coimbatore","Oct 2018 – Dec 2022",[
+      "Full-stack development and mobile application delivery, building features in C#, .NET, JavaScript and mobile frameworks.",
+      "Integrated REST APIs and backend services, and contributed to responsive interfaces and cross-platform mobile development.",
+      "Database integration, debugging, performance improvement and production issue resolution."]],
+    ["job","Team Lead","Vee Technologies Pvt Ltd, Salem","Jun 2017 – Sep 2018",[
+      "Led mobile teams on architecture, sprint planning and code review, and mentored junior members.",
+      "Developed process improvements that reduced workflow bottlenecks."]],
+    ["job","Senior Software Engineer","CG-VAK Software & Exports Ltd, Coimbatore","May 2014 – Jun 2017",[
+      "Developed Xamarin applications and integrated REST APIs, and supported deployments.",
+      "Mentored junior engineers and introduced Agile practices."]],
+    ["job","Windows Phone and iOS Developer","Ndot Technologies Pvt Ltd, Coimbatore","Feb 2012 – May 2014",[
+      "Developed and maintained iOS applications in Swift and Objective-C, and integrated third-party APIs.",
+      "Led code reviews and mentored junior developers."]],
+    ["job","Software Engineer","Nanosoft Engineers India Pvt Ltd, Coimbatore","Jun 2010 – Jan 2012",[
+      "Developed applications in C# and VB.NET and designed MySQL database schemas."]]
+  ]},
+  {h:"Projects", b:[["ul",[
+    "Levi’s (React Native) — global retail and e-commerce app with product browsing, personalised recommendations, store locator, loyalty and secure purchase, integrated with backend services for real-time inventory and promotions.",
+    "iSafe (React Native) — enterprise inspection and field service app for engineers and technicians, with image capture, work orders, customer signatures and offline operation with automatic sync.",
+    "KFC Mobile Manager (.NET MAUI) — restaurant operations app covering inventory, invoicing, attendance, time punch, stock transfers, credit memos and reporting, synchronised with enterprise systems.",
+    "Petco (Xamarin.Forms) — customer engagement and retail app for pet profiles, grooming and veterinary appointments, purchases and loyalty rewards.",
+    "An Post (Xamarin.Forms) — secure digital banking app for payments, transfers, savings, transaction notifications and card freeze, with modern banking authentication.",
+    "Vet2Vet (Xamarin.Forms) — veterinarian and pet owner collaboration platform with appointment scheduling, medical record sharing and secure communication.",
+    "Gulf Power (Xamarin.Forms) — utility customer service app for account management, bill payment, usage monitoring, outage reporting and restoration tracking."
+  ]]]},
+  {h:"Education", b:[["p","MCA Computer Applications — RVS College of Arts and Science, Coimbatore, 2010. B.Sc. Computer Science — CBM College, 2007."]]}
+]},
+
+37: {file:"Dinesh_Sethupathy.pdf", title:"Technology Lead | ASP.NET Core · Azure · Angular",
+  contact:"8344148743 · dineshsethupathy@gmail.com · Coimbatore, TN",
+  sections:[
+  {h:"Professional summary", b:[["p","Software engineer with over nine years of experience developing and maintaining web applications, working across ASP.NET Core, Azure services, Angular and SQL Server."]]},
+  {h:"Key skills", b:[["kv",[
+    ["Backend",".NET Core, ASP.NET Core, C#, Web API, Entity Framework Core, SQL"],
+    ["Frontend","Angular, HTML, CSS, JavaScript"],
+    ["Azure","App Service, Azure Functions, Service Bus, Azure DevOps, App Insights, Azure SQL, Static Web Apps"],
+    ["Data and practice","SSIS, unit testing, DevOps, code review, OOP and SOLID principles"]
+  ]]]},
+  {h:"Work experience", b:[
+    ["job","Technology Lead — client: American Express","Infosys Limited","Dec 2021 – present",[
+      "Designed and developed on .NET Core 6 with C#, ASP.NET Core, MVC, Angular, MS-SQL and Entity Framework.",
+      "Deployed and managed a cloud application on Azure using Functions, App Service, Service Bus, App Insights, Static Web Apps and Azure SQL for a serverless backend.",
+      "Implemented Azure Service Bus for reliable asynchronous messaging between microservices.",
+      "Engineered SQL stored procedures, normalised tables and optimised queries, reducing query execution time by 25%.",
+      "Uses Claude Code, GitHub Copilot and AI instruction files to accelerate development and improve code quality."]],
+    ["job","Business Process Lead — client: American International Group","Tata Consultancy Services","Apr 2021 – Nov 2021",[
+      "Used ASP.NET Core REST API and PostgreSQL to exchange data with a vendor workflow application for reporting.",
+      "Developed automated testing and unit tests with NUnit, raising coverage by 30%.",
+      "Built and maintained SSIS packages automating extraction, transformation and loading for reporting and analysis.",
+      "Worked in an Agile and Scrum team on sprint planning and impediment removal; troubleshooting cut downtime by 40%."]],
+    ["job","Programmer Analyst — client: Auto Injury Solutions","Cognizant","Jan 2018 – Mar 2021",[
+      "Built an insurance claims web application in ASP.NET MVC, Web API, Bootstrap, Telerik, jQuery, HTML and CSS, with business logic and data access layers.",
+      "Integrated third-party services through a .NET Core console application feeding a management dashboard.",
+      "Overhauled existing applications for reliability, performance and scalability, raising consumer conversion by 25%.",
+      "Built console applications and CRON jobs for scheduled report generation, and wrote unit tests with Moq."]],
+    ["job","Programmer Analyst — client: Humana Inc, Clinical Guidance Exchange","Cognizant","Sep 2016 – Dec 2017",[
+      "Developed an online telehealth application using ASP.NET, Web API, SQL Server, jQuery, HTML5, Twilio and IIS under Scrum.",
+      "Implemented authentication and authorisation with OAuth and other security protocols.",
+      "Designed a microservices architecture reported to improve system reliability by 40% and support a 35% larger customer base.",
+      "Monitored application health with AppDynamics, Splunk, SolarWinds and Datadog."]]
+  ]},
+  {h:"Education", b:[["p","B.E. Electrical and Electronics Engineering — Velammal College of Engineering and Technology, Madurai, 2012–2016."]]}
 ]}
 };

@@ -9,7 +9,7 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | All 27 resumes, transcribed into structured sections |
+| `pipeline_resumes.js` | All 37 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
 
 Round 1 questions come in two families. Candidates hired to build software draw the
@@ -59,16 +59,21 @@ their own view.
 - CTC, ECTC and Offered CTC are **INR lakhs per annum**; dates are `DD-MMM-YY`.
 - `Days to LWD` is negative once the last working day has passed, measured against the
   as-on date in `Summary!B4` — the single input cell.
-- Commercials are captured for all 27. Where a candidate gives a **notice period but no
+- Commercials are captured for all 37. Where a candidate gives a **notice period but no
   exit date**, availability reads "Notice period only" and shows the notice rather than
   pretending a date is known.
 
 ## Where the pipeline stands
 
-27 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
-8-Oct-2026 and 2 on 22-Oct-2026. Five roles: Technical Consultant, Technology Lead, Senior
-Software Engineer, Technical Project Manager and Process Manager. All 27 have a CV on file
-and a verdict against it. 75 open actions: 19 High, 38 Medium, 18 Low.
+37 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
+8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026 and 4 on 30-Oct-2026. Seven roles: Technical
+Consultant, Technology Lead, Senior Software Engineer, Technical Project Manager, Process
+Manager, Application Support and Technology Consultant. All 37 have a CV on file and a verdict
+against it. 110 open actions: 30 High, 54 Medium, 26 Low.
+
+`Technology Consultant` is held apart from `Technical Consultant` only because IKrux wrote it
+that way on 23-Oct and the candidates sit in a different seniority and cost band. Action a109
+asks them to confirm; merge the two roles if it is the same opening.
 
 Headline findings:
 
@@ -91,3 +96,19 @@ Headline findings:
   **Sowdhamini (27)** is a BPO operations manager with a Lean Six Sigma Black Belt, five
   employers since Sep 2022 and roughly three years of the claimed ten missing from her CV.
   They are not competing for the same job as written — settle what the role owns first.
+  **Lloyd (34)**, added on 30-Oct, is a third reading again: fifteen coherent years of project
+  and portfolio management, none of it over software.
+- **The Application Support slate is inverted.** Two of the three (**Aswani 28**, **Raj 30**) are
+  full-stack developers by CV; only **Lavanya (29)** has a support record, and hers is a good
+  one. All three ask 18–19 L against 7.3–8.5 L — hikes of 124% to 147%.
+- **Raj (30)** holds a statutory director title at his current employer, and the twenty months
+  before that are listed as pre-incorporation. Settle that before an offer.
+- **Eswaramurthi (31)** holds an offer at 21.5 L with a joining date of 1-Nov-2026 that has now
+  passed, against a 22 L expectation — he may already have started. Both his contact details
+  on the row differ from his CV.
+- **Selva (32)** has been out of work since 30-Jan-2026, the longest break in the pipeline.
+- **Nirosha (33)** has the cleanest CV of the later batches — no gaps, no contradictions, contact
+  details that match — against a 125% ask.
+- Two recorded spans are badly wrong in opposite directions: **Dinesh Sethupathy (37)** is
+  recorded at 15 years where his CV says 9 and the dates give 10.2, and **Thouseef (36)** at
+  12 where his CV says 15+ and the dates give 16.

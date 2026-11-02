@@ -51,7 +51,16 @@ var QSTREAM = {
      so both draw the delivery family rather than the engineering topics:
      Dinesh on the PMO questions, Sowdhamini on the operations ones. */
   26:{s:"pmo", l:"senior", fam:"delivery"},
-  27:{s:"ops", l:"senior", fam:"delivery"}
+  27:{s:"ops", l:"senior", fam:"delivery"},
+  /* Added 2 Nov 2026. The three Application Support candidates are Java
+     developers by CV, so they draw the Java set at mid level rather than the
+     support one. Lloyd (34) manages work rather than builds it, but he is
+     neither a finance PMO nor a call-centre operations manager, so he draws
+     only the questions shared across the delivery family. */
+  28:{s:"java",   l:"mid"},    29:{s:"java", l:"mid"},   30:{s:"java", l:"mid"},
+  31:{s:"node",   l:"senior"}, 32:{s:"dotnet", l:"senior"}, 33:{s:"node", l:"senior"},
+  34:{s:"delivery", l:"senior", fam:"delivery"},
+  35:{s:"node",   l:"senior"}, 36:{s:"dotnet", l:"senior"}, 37:{s:"dotnet", l:"senior"}
 };
 
 var QBANK = [

@@ -14,7 +14,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
 OUT = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
-ASON = dt.date(2026, 10, 23)
+ASON = dt.date(2026, 11, 2)
 
 F = "Arial"
 NAVY, BAND2, BAND3, BAND4 = "1F3864", "2E75B6", "548235", "7030A0"
@@ -403,6 +403,8 @@ meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("C")),
         ("Submitted 21 Sep 2026", '=COUNTIF(%s,"21-Sep-2026")' % RNG("C")),
         ("Submitted 8 Oct 2026", '=COUNTIF(%s,"8-Oct-2026")' % RNG("C")),
         ("Submitted 22 Oct 2026", '=COUNTIF(%s,"22-Oct-2026")' % RNG("C")),
+        ("Submitted 23 Oct 2026", '=COUNTIF(%s,"23-Oct-2026")' % RNG("C")),
+        ("Submitted 30 Oct 2026", '=COUNTIF(%s,"30-Oct-2026")' % RNG("C")),
         ("CTC and ECTC captured", '=COUNT(%s)' % RNG("N")),
         ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("N")),
         ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("P"), RNG("P"))),
@@ -445,8 +447,10 @@ rows = [
  ("What this is", "All %d candidates, every one submitted by IKrux Engineering: %s. Each has a CV "
   "on file and a verdict against it." % (
       len(D["C"]),
-      ", ".join("%d on %s" % (sum(1 for c in D["C"] if c["subDate"] == b), b)
-                for b in ["5-Sep-2026", "21-Sep-2026", "8-Oct-2026", "22-Oct-2026"]))),
+      ", ".join("%d on %s" % (n, b) for b, n in sorted(
+          ((b, sum(1 for c in D["C"] if c["subDate"] == b))
+           for b in {c["subDate"] for c in D["C"]}),
+          key=lambda t: dt.datetime.strptime(t[0], "%d-%b-%Y"))))),
  ("Interview Inventory", "Columns A-P are the submitted fields, Q-V are calculated, and W onward is "
   "the grey tracking block: recommended role, screening, four interview rounds with date, panel and "
   "result, then outcome. Result and status fields are dropdowns."),
