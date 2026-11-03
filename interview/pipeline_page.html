@@ -2434,8 +2434,10 @@
   });
   $("stagebtn").addEventListener("click", function(){
     var open = $("stagepanel").hidden;
-    if (open) renderStagePanel();
+    /* Unhide first: syncStagePanel, which paints the in-play tint and the
+       count, does nothing while the panel is still hidden. */
     $("stagepanel").hidden = !open;
+    if (open) renderStagePanel();
     this.setAttribute("aria-pressed", open ? "true" : "false");
     this.setAttribute("aria-expanded", open ? "true" : "false");
   });
