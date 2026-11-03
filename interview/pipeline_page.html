@@ -222,6 +222,23 @@
   .btn.ghost{background:var(--surface); color:var(--ink-2); border-color:var(--line-2); font-weight:400}
   .btn:disabled{opacity:.45; cursor:not-allowed}
   .exmsg{font-size:11.5px; color:var(--ink-3); width:100%}
+  .stagelist{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:6px;
+    max-height:min(58vh,520px); overflow-y:auto; padding-right:2px;
+  }
+  .stagerow{
+    display:grid; grid-template-columns:26px minmax(0,1fr) 150px; gap:9px; align-items:center;
+    padding:6px 9px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface-2);
+  }
+  .stagerow.on{background:var(--tint); border-color:var(--line-2)}
+  .stagerow .sl{font-size:11px; color:var(--ink-3); text-align:center}
+  .stagerow .who strong{display:block; font-size:12.5px; font-weight:500; line-height:1.25;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .stagerow .who span{display:block; font-size:10.5px; color:var(--ink-3)}
+  .stagerow select{
+    padding:5px 8px; border-radius:100px; font-size:11.5px; width:100%;
+    background:var(--surface); border:1px solid var(--line-2); color:var(--ink);
+  }
   .exmsg.err{color:var(--risk)}
   .exmsg.ok{color:var(--ok)}
 
@@ -532,6 +549,7 @@
       <button class="chip" id="cvonly" aria-pressed="false">Resume on file</button>
       <button class="chip" id="flagonly" aria-pressed="false">Flagged</button>
       <button class="chip" id="inplay" aria-pressed="false">In play</button>
+      <button class="chip" id="stagebtn" aria-pressed="false" aria-expanded="false" aria-controls="stagepanel">Edit in play</button>
       <button class="chip" id="exportbtn" aria-pressed="false" aria-expanded="false" aria-controls="exportpanel">Export</button>
       <div class="seg" role="group" aria-label="List density">
         <button class="segbtn" id="v-compact" aria-pressed="false">Compact</button>
@@ -547,6 +565,7 @@
       </select>
     </div>
     <div class="refine" id="refine" hidden></div>
+    <div class="export" id="stagepanel" hidden></div>
     <div class="export" id="exportpanel" hidden></div>
     <div class="activebar" id="activebar"></div>
     <div class="colhead" aria-hidden="true">
@@ -588,6 +607,8 @@
 
 <script src="resumes.js"></script>
 <script src="questions.js"></script>
+<script src="fonts.js"></script>
+<script src="bundle.js"></script>
 <script>
 (function(){
   "use strict";
@@ -974,8 +995,6 @@
     c.fFlag  = ["None","Low","Medium","High"][c.worst];
     c.fOffer = !c.offers ? "Not captured" : (c.offers === "No" ? "None recorded" : "Holding an offer");
     c.offerInHand = c.fOffer === "Holding an offer";
-    c.stage = STAGE[c.sl] || "No stage recorded";
-    c.inPlay = !!STAGE[c.sl];
     c.blob = (c.name + " " + c.company + " " + c.role + " " + c.relExp + " " + c.curLoc + " " +
               c.notice + " " + (c.offers || "") + " " + c.src + " " + c.email + " " + c.mobile + " " +
               resumeText(c.sl)).toLowerCase();
@@ -1006,6 +1025,16 @@
   }
   var track = {}, acts = {};
   C.forEach(function(c){ track[c.sl] = blankTrack(); });
+
+  /* Which stage each candidate is at. STAGE above is only the seed the page
+     ships with; the live value is shared through the store like everything
+     else on the tracking side, so anyone with edit access can add or remove a
+     candidate from the In play list and everyone sees it. */
+  var NO_STAGE = "No stage recorded";
+  var stage = {};
+  C.forEach(function(c){ stage[c.sl] = STAGE[c.sl] || NO_STAGE; });
+  function stageOf(c){ return stage[c.sl] || NO_STAGE; }
+  function inPlay(c){ return stageOf(c) !== NO_STAGE; }
   FLAGS.forEach(function(f){ acts[f.id] = {status:"Open", owner:""}; });
   var db = null, canWrite = true, dbLive = false;
 
@@ -1140,7 +1169,7 @@
     {g:"Resume review", k:"nflags",   h:"Open actions",   v:function(c){ return c.flags.length; }},
     {g:"Resume review", k:"worstFlag",h:"Highest flag",   v:function(c){ return c.fFlag; }},
 
-    {g:"Tracking", k:"stage",    h:"Reported stage",    v:function(c){ return c.stage; }},
+    {g:"Tracking", k:"stage",    h:"Reported stage",    v:function(c){ return stageOf(c); }},
     {g:"Tracking", k:"recRole",  h:"Recommended role",  v:function(c){ return recRoleOf(c); }},
     {g:"Tracking", k:"fit",      h:"Recommendation",    v:function(c){ return roleFit(c); }},
     {g:"Tracking", k:"sharedOn", h:"Profile shared on", v:function(c){ return track[c.sl].sharedOn; }},
@@ -1267,7 +1296,7 @@
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},
-    {key:"fStage", label:"Reported stage",   get:function(c){ return c.stage; },
+    {key:"fStage", label:"Reported stage",   get:stageOf,
       opts:STAGE_OPTS.concat(["No stage recorded"]), always:true},
     {key:"status", label:"Overall stage",    get:function(c){ return statusOf(c); },
       opts:["Not started","In Process","Selected","Rejected","On Hold","Joined","Offer Declined","Dropped Out"]},
@@ -1388,6 +1417,62 @@
     }
   }
 
+  /* ================= who is in play ================= */
+  /* One screen for the whole list, so adding or dropping several candidates
+     does not mean opening fifteen drawers. The same picker sits in each
+     candidate's Tracking pane for one-off changes. */
+  /* Built once when the panel opens and then kept in step in place. Rebuilding
+     it on every pick would re-sort the list under the cursor, which makes
+     changing several candidates in a row unusable. */
+  var stageRows = null, stageCount = null;
+  function renderStagePanel(){
+    var host = $("stagepanel"); host.textContent = "";
+    stageRows = {};
+    var head = el("div", "grphead");
+    head.appendChild(el("h4", null, "Who is in play"));
+    stageCount = el("span", "sum", "");
+    head.appendChild(stageCount);
+    host.appendChild(head);
+
+    if (!canWrite){
+      host.appendChild(el("p", "exmsg", "You can see the list but not change it in this view."));
+    }
+    var list = el("div", "stagelist");
+    C.slice().sort(function(a, b){
+      var ai = inPlay(a) ? 0 : 1, bi = inPlay(b) ? 0 : 1;
+      return ai !== bi ? ai - bi : a.sl - b.sl;
+    }).forEach(function(c){
+      var row = el("div", "stagerow");
+      row.appendChild(el("span", "sl", String(c.sl)));
+      var who = el("div", "who");
+      who.appendChild(el("strong", null, c.name));
+      who.appendChild(el("span", null, c.role));
+      row.appendChild(who);
+      var sel = selectEl([NO_STAGE].concat(STAGE_OPTS), stageOf(c), function(e){
+        setStage(c.sl, e.target.value);
+      });
+      row.appendChild(sel);
+      stageRows[c.sl] = {row:row, sel:sel};
+      list.appendChild(row);
+    });
+    host.appendChild(list);
+    syncStagePanel();
+  }
+  function syncStagePanel(){
+    if (!stageRows || $("stagepanel").hidden) return;
+    C.forEach(function(c){
+      var r = stageRows[c.sl]; if (!r) return;
+      r.row.classList.toggle("on", inPlay(c));
+      /* Leave the control the viewer is using alone; take remote changes on
+         every other row. */
+      if (r.sel !== document.activeElement) r.sel.value = stageOf(c);
+    });
+    if (stageCount){
+      stageCount.textContent = C.filter(inPlay).length + " of " + C.length +
+        " in play \u00b7 set a candidate to \u201c" + NO_STAGE + "\u201d to drop them";
+    }
+  }
+
   /* ===================== export ===================== */
   var dl = null;              // downloads capability, resolved at startup
 
@@ -1476,6 +1561,14 @@
     if (!dl){ save.hidden = true; }
     foot.appendChild(save);
 
+    var pack = el("button", "btn", "Download candidate pack");
+    pack.type = "button"; pack.id = "packbtn";
+    pack.disabled = !built.rows || packing;
+    pack.title = "A zip holding a workbook of these candidates and a typeset PDF of each resume. No salary figures.";
+    pack.addEventListener("click", function(){ doPack(); });
+    if (!dl || typeof BUNDLE === "undefined") pack.hidden = true;
+    foot.appendChild(pack);
+
     var copy = el("button", "btn ghost", "Copy to clipboard");
     copy.type = "button";
     copy.disabled = !built.cols || !built.rows;
@@ -1501,6 +1594,48 @@
       else exMsg("Could not save the file. Copy to the clipboard instead.", "err");
     });
   }
+  /* The pack ships a workbook of whoever is on screen plus a PDF of each of
+     their resumes. It always carries the same columns, minus compensation, so
+     it can be handed to an interviewer whatever the Export panel is set to. */
+  var packing = false;
+  function doPack(){
+    if (packing || typeof BUNDLE === "undefined" || !dl) return;
+    var rows = visible();
+    if (!rows.length) return;
+    packing = true;
+    var btn = $("packbtn");
+    if (btn){ btn.disabled = true; btn.textContent = "Building\u2026"; }
+    exMsg("Typesetting " + rows.length + " resume" + (rows.length === 1 ? "" : "s") + "\u2026");
+
+    var stamp = fmtDate(new Date());
+    BUNDLE.build({
+      rows: rows, cols: COLS, resumes: R, stamp: stamp,
+      onStep: function(done, total){
+        if (btn) btn.textContent = "Building " + done + " / " + total;
+      }
+    }).then(function(out){
+      var name = "Certainti_candidates_" + stamp.replace(/ /g, "_") + ".zip";
+      exMsg("Waiting for you to confirm the download\u2026");
+      return dl.save({filename:name, data:out.blob}).then(function(){
+        var note = "Saved " + out.count + " resume" + (out.count === 1 ? "" : "s") +
+                   " and the workbook. No salary figures are in it.";
+        if (out.missing.length) note += " No resume on file for " + out.missing.join(", ") + ".";
+        exMsg(note, "ok");
+      });
+    }).catch(function(e){
+      var code = e && e.code;
+      if (code === "declined") exMsg("Download cancelled.");
+      else if (code === "rate_limited") exMsg("A download prompt is already open. Finish it, then try again.", "err");
+      else if (code === "too_large") exMsg("That pack is too large. Narrow the filters and try again.", "err");
+      else if (e && /blocked|did not load/.test(e.message || "")) {
+        exMsg("Could not load the PDF and spreadsheet libraries in this view, so the pack is unavailable. The CSV download still works.", "err");
+      } else exMsg("Could not build the pack.", "err");
+    }).then(function(){
+      packing = false;
+      if (btn){ btn.disabled = false; btn.textContent = "Download candidate pack"; }
+    });
+  }
+
   function doCopy(){
     var built = buildCsv();
     var done = function(){ exMsg("Copied " + built.rows + " records. Paste into a spreadsheet.", "ok"); };
@@ -1983,6 +2118,8 @@
       debounce("trk:" + c.sl, function(){ saveTrack(c.sl); });
     });
     form.appendChild(field("Recommended role  \u00b7  applied as " + c.role, recIn, true));
+    form.appendChild(field("Reported stage  \u00b7  drives the In play filter",
+      selectEl([NO_STAGE].concat(STAGE_OPTS), stageOf(c), function(e){ setStage(c.sl, e.target.value); }), true));
     form.appendChild(field("Profile shared on", inputEl("date", t.sharedOn, now("sharedOn"))));
     form.appendChild(field("Screening", selectEl(SCREEN, t.screening, now("screening"))));
     ROUNDS.forEach(function(r){
@@ -2050,6 +2187,9 @@
      candidate has edits the server has not acknowledged, and an incoming
      snapshot must not overwrite them. */
   var localRev = {}, savedRev = {}, actRev = {}, actSaved = {}, r1Rev = {}, r1Saved = {};
+  var stRev = {}, stSaved = {};
+  function touchStage(sl){ stRev[sl] = (stRev[sl] || 0) + 1; }
+  function cleanStage(sl){ return (stRev[sl] || 0) === (stSaved[sl] || 0); }
   function touchR1(sl){ r1Rev[sl] = (r1Rev[sl] || 0) + 1; }
   function cleanR1(sl){ return (r1Rev[sl] || 0) === (r1Saved[sl] || 0); }
   function touch(sl){ localRev[sl] = (localRev[sl] || 0) + 1; }
@@ -2112,6 +2252,25 @@
       }, handleWriteError);
     });
   }
+  function saveStage(sl){
+    if (!db){ setSave("Not connected \u2014 nothing is being saved. Reload the page.", true); return; }
+    if (!canWrite){ setSave("Read-only in this view", true); return; }
+    var rev = stRev[sl] || 0, body = {stage:stage[sl] || NO_STAGE};
+    setSave("Saving\u2026", false);
+    queue("s" + sl, function(){
+      return db.doc("stage/c" + sl).set(body).then(function(){
+        if (rev > (stSaved[sl] || 0)) stSaved[sl] = rev;
+        if (cleanStage(sl)) setSave("Saved for everyone", false);
+      }, handleWriteError);
+    });
+  }
+  function setStage(sl, v){
+    stage[sl] = v || NO_STAGE;
+    touchStage(sl);
+    saveStage(sl);
+    renderAll();
+    syncStagePanel();
+  }
   function saveAct(id){
     if (!db || !canWrite) return;
     var rev = actRev[id] || 0;
@@ -2141,6 +2300,16 @@
       Object.keys(localRev).forEach(function(sl){ if (!clean(sl)) saveTrack(+sl); });
       Object.keys(actRev).forEach(function(id){ if (!cleanAct(id)) saveAct(id); });
       Object.keys(r1Rev).forEach(function(sl){ if (!cleanR1(sl)) saveR1(+sl); });
+      Object.keys(stRev).forEach(function(sl){ if (!cleanStage(sl)) saveStage(+sl); });
+      store.collection("stage").onSnapshot(function(snap){
+        snap.docs.forEach(function(d){
+          var sl = +String(d.id).replace(/^c/, "");
+          if (!BY_SL[sl] || !cleanStage(sl)) return;
+          stage[sl] = (d.data() || {}).stage || NO_STAGE;
+        });
+        renderAll();
+        syncStagePanel();
+      }, function(){});
       store.collection("tracking").onSnapshot(function(snap){
         snap.docs.forEach(function(d){
           var sl = +String(d.id).replace(/^c/, "");
@@ -2262,6 +2431,13 @@
     var on = sel.fFlag.length === 3;
     sel.fFlag = on ? [] : ["High","Medium","Low"];
     renderAll();
+  });
+  $("stagebtn").addEventListener("click", function(){
+    var open = $("stagepanel").hidden;
+    if (open) renderStagePanel();
+    $("stagepanel").hidden = !open;
+    this.setAttribute("aria-pressed", open ? "true" : "false");
+    this.setAttribute("aria-expanded", open ? "true" : "false");
   });
   $("inplay").addEventListener("click", function(){
     var on = sel.fStage.length === STAGE_OPTS.length;

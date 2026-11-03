@@ -11,6 +11,8 @@ Two deliverables that share one source of truth.
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
 | `pipeline_resumes.js` | All 37 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
+| `pipeline_fonts.js` | Poppins 400 and 500, subset to the glyphs the resumes use, base64 for jsPDF |
+| `pipeline_bundle.js` | Builds the candidate pack: the workbook and the typeset resume PDFs |
 
 Round 1 questions come in two families. Candidates hired to build software draw the
 seven engineering theory topics; the project and process managers draw a parallel set
@@ -18,18 +20,37 @@ of seven — governance, planning, risk, stakeholders, metrics, people and comme
 with PMO and service-operations variants inside it. A candidate's `QSTREAM` entry picks
 the family: add `fam:"delivery"` to move someone across.
 
-To run it outside Claude, keep the three together and rename the data files to
-`resumes.js` and `questions.js` — the page loads them by those names. Everything works
+To run it outside Claude, keep the five together and rename the data files to
+`resumes.js`, `questions.js`, `fonts.js` and `bundle.js` — the page loads them by
+those names. Everything works
 locally except shared saving, which only exists inside the artifact.
 
 ### Who is in play
 
 Tracker state — screening, round dates, results — lives in the shared database, filled in
-as interviews happen. The stage each candidate is at was reported separately from that, so
-the portal carries it as a `STAGE` map in
-`pipeline_page.html`, surfaced as the **Reported stage** facet and the **In play** chip
-in the toolbar, and as a `Reported stage` column in the workbook. Fifteen candidates are
-in play; the other 22 read "No stage recorded". Edit the map to move someone.
+as interviews happen. The stage each candidate is at is held beside it, in the `stage`
+collection, and surfaced three ways: the **Reported stage** facet, the **In play** chip that
+selects all five active stages at once, and an **Edit in play** panel listing every candidate
+with a dropdown. The same dropdown sits in each candidate's Tracking pane. Setting someone to
+"No stage recorded" drops them from the list.
+
+The `STAGE` map in `pipeline_page.html` is only the seed the page ships with — fifteen
+candidates, reported 2 Nov 2026. Once anyone changes a stage in the portal, the stored value
+wins for that candidate. Changing the seed moves only the candidates nobody has touched.
+
+### The candidate pack
+
+**Export → Download candidate pack** builds a zip of whoever is on screen: `Candidates.xlsx`
+and one PDF per candidate under `Resumes/`. It is meant to be handed to an interviewer, so
+two things are left out whatever the Export panel is set to — all compensation (current CTC,
+expected, hike, competing offers, offered CTC) and the Round 1 question and expected-answer
+columns. Per-topic scores and notes stay.
+
+The PDFs typeset what `pipeline_resumes.js` already holds, in Poppins, to one standard layout:
+header, an at-a-glance table of the submitted facts, then the CV's own sections in their own
+order. Nothing is rewritten or summarised. jsPDF, SheetJS and JSZip load from cdnjs the first
+time a pack is built; if the page cannot reach them the button reports it and the CSV export
+still works.
 
 ## The workbook
 
