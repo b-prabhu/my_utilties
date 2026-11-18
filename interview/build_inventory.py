@@ -14,7 +14,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 HERE = os.path.dirname(os.path.abspath(__file__))
 D = json.load(open(os.path.join(HERE, "data.json"), encoding="utf-8"))
 OUT = "/home/user/my_utilties/interview/Interview_Inventory.xlsx"
-ASON = dt.date(2026, 11, 2)
+ASON = dt.date(2026, 11, 18)
 
 F = "Arial"
 NAVY, BAND2, BAND3, BAND4 = "1F3864", "2E75B6", "548235", "7030A0"
@@ -231,8 +231,10 @@ ws.sheet_view.showGridLines = False
 # ======================================================= 2. Resume Validation
 rv = wb.create_sheet("Resume Validation")
 banner(rv, "Resume validation - all %d candidates" % len(D["C"]),
-       "Every candidate has a CV on file. The verdict compares what the resume says against "
-       "the row as submitted; SL 18-22 arrived as resumes only, so there was no row to compare.", 8)
+       "%d of them have a CV on file. The verdict compares what the resume says against the row "
+       "as submitted; SL 18-22 arrived as resumes only, so there was no row to compare, and the "
+       "candidates with no CV carry no verdict at all."
+       % sum(1 for c in D["C"] if str(c["sl"]) in D["RESUMES"] or c["sl"] in D["RESUMES"]), 8)
 header(rv, 4, ["SL. No", "Candidate", "Source", "Resume file", "Headline on the CV",
                "Verdict", "Assessment", "Highest flag"],
        [7, 24, 17, 28, 40, 40, 78, 12])
@@ -413,6 +415,7 @@ meas = [("Submitted 5 Sep 2026", '=COUNTIF(%s,"5-Sep-2026")' % RNG("Date")),
         ("Submitted 22 Oct 2026", '=COUNTIF(%s,"22-Oct-2026")' % RNG("Date")),
         ("Submitted 23 Oct 2026", '=COUNTIF(%s,"23-Oct-2026")' % RNG("Date")),
         ("Submitted 30 Oct 2026", '=COUNTIF(%s,"30-Oct-2026")' % RNG("Date")),
+        ("Submitted 17 Nov 2026", '=COUNTIF(%s,"17-Nov-2026")' % RNG("Date")),
         ("CTC and ECTC captured", '=COUNT(%s)' % RNG("CTC")),
         ("Commercials not yet captured", '=$B$5-COUNT(%s)' % RNG("CTC")),
         ("Holding a competing offer", '=$B$5-COUNTIF(%s,"No")-COUNTIF(%s,"Not captured")' % (RNG("Offers"), RNG("Offers"))),
@@ -452,8 +455,8 @@ banner(rm, "Interview inventory - Certainti hiring, %d candidates" % len(D["C"])
 rm.column_dimensions["A"].width = 28
 rm.column_dimensions["B"].width = 104
 rows = [
- ("What this is", "All %d candidates, every one submitted by IKrux Engineering: %s. Each has a CV "
-  "on file and a verdict against it." % (
+ ("What this is", "All %d candidates, every one submitted by IKrux Engineering: %s. Most carry a "
+  "CV and a verdict against it; the Resume on file column says which do not." % (
       len(D["C"]),
       ", ".join("%d on %s" % (n, b) for b, n in sorted(
           ((b, sum(1 for c in D["C"] if c["subDate"] == b))

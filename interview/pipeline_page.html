@@ -517,7 +517,7 @@
     <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
       <h1>Certainti Hiring Portal</h1>
-      <p>IKrux Engineering &middot; 37 candidates &middot; submitted 5 Sep, 21 Sep, 8 Oct, 22 Oct, 23 Oct and 30 Oct 2026</p>
+      <p>IKrux Engineering &middot; 46 candidates &middot; submitted 5 Sep 2026 through 17 Nov 2026</p>
     </div>
     <div class="mtools">
       <div class="asof">As on<b id="asof">&mdash;</b></div>
@@ -729,7 +729,28 @@
     [36,1,"Thouseef Ahmed","9994419206","thouseef87@gmail.com","Cognizant","12 Years",
      "Not captured","Coimbatore","LWD : 16-Oct-26","2026-10-16",21,26,""],
     [37,1,"Dinesh Sethupathy","8344148743","dineshsethupathy@gmail.com","Infosys","15 Years",
-     "Not captured","Coimbatore","LWD : 22-Jun-26","2026-06-22",19,25,""]
+     "Not captured","Coimbatore","LWD : 22-Jun-26","2026-06-22",19,25,""],
+
+    /* IKrux submission of 17 Nov 2026. No Relevant Experience or Offers column
+       again, and four of the nine arrived without a CV \u2014 see action a118. */
+    [38,1,"Subhaashini Mounagurusamy","9150819100","subamcet@gmail.com","KG Information Systems (KGISL)","12 Years",
+     "Not captured","Coimbatore","LWD : 30-Oct-26","2026-10-30",17,22,""],
+    [39,1,"Saravanakumar Pongiyan","9500394865","pongiyansaravanakumar@gmail.com","Gainwell Technologies","16 Years",
+     "Not captured","Coimbatore","LWD : 20-Jul-26","2026-07-20",23,28,""],
+    [40,1,"Dhanaraj R","9003703766","dhana.raj32@gmail.com","Infovision","17 Years",
+     "Not captured","Coimbatore","LWD : 17-Mar-26","2026-03-17",22.45,25,""],
+    [41,1,"Arunachalam","8148695413","arun.arunachalam03@gmail.com","Orion Innovation Pvt Ltd","10.8 Years",
+     "Not captured","Coimbatore","LWD : 15-Oct-26","2026-10-15",17,25,""],
+    [42,4,"Vinod Kumar","8668005793","vinodhkr65@gmail.com","Services Labs Pvt Ltd","15 Years",
+     "Not captured","Chennai","LWD : 8-Sep-26","2026-09-08",13.5,18,""],
+    [43,4,"Amritha Rachel Jhon","9619634488","amirtharachel@yahoo.in","TCS","10.5 Years",
+     "Not captured","Chennai","LWD : 15-Dec-26","2026-12-15",7,11,""],
+    [44,0,"Prabaharan","7010449908","jothiprabaharan@gmail.com","DigiSME Software Pvt Ltd","9 Years",
+     "Not captured","Coimbatore","LWD : 5-Nov-26","2026-11-05",14,20,""],
+    [45,0,"Archana Ravi","6385074711","archaravi3@gmail.com","Terralogic Software","10.5 Years",
+     "Not captured","Coimbatore","LWD : 27-Jul-26","2026-07-27",13,25,""],
+    [46,0,"Ramkumar K","9994200270","ramkumar.kollimalayan@outlook.com","ProdEngines","8 Years",
+     "Not captured","Coimbatore","LWD : 5-Nov-26","2026-11-05",9.7,16,""]
   ].map(function(r){
     return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
             totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
@@ -737,10 +758,23 @@
             src:"IKrux Engineering",
             subDate:(r[0] <= 17 ? "21-Sep-2026" : r[0] <= 23 ? "5-Sep-2026"
                      : r[0] <= 25 ? "8-Oct-2026" : r[0] <= 30 ? "22-Oct-2026"
-                     : r[0] <= 33 ? "23-Oct-2026" : "30-Oct-2026")};
+                     : r[0] <= 33 ? "23-Oct-2026" : r[0] <= 37 ? "30-Oct-2026"
+                     : "17-Nov-2026")};
   }).sort(function(a, b){ return a.sl - b.sl; });
 
   var VERDICT = {
+    /* 40, 41, 43 and 44 arrived with no CV, so they carry no verdict. The
+       drawer reads "Resume not reviewed" until one turns up. */
+    38:{k:"caution", h:"The strongest architecture record in the pipeline, six months old",
+       t:"Eleven and a half years of Java, and the current work is a level above most of this pipeline: technical design and backend of PISTA, a multi-tenant microservices Hospital Information Management System replacing a legacy PHP system for the KG Hospital Group. She built the identity and access service in Spring Boot with per-tenant PostgreSQL isolation, designed the multi-tenant identity architecture on Keycloak \u2014 realm-per-group with Organizations, ADFS and LDAP brokering, BFF token custody and database-backed RBAC with tenant-scope enforcement \u2014 and wrote the architecture decision records for it. Healthcare interoperability behind it too: HL7 v2, FHIR, CCD and ABDM. Oracle Certified Professional for Java SE. The caution is tenure, not capability. She joined in May 2026, so all of that is six months old, and the row\u2019s last working day of 30 October has already passed while her CV still shows the role as current \u2014 a six-month stint she is already leaving. The eight years before it were Technology Analyst at Infosys on Cisco and Charter work: solid backend delivery, but not lead or architecture. The row also names the employer KGISL where the CV says KG Invictus."},
+    39:{k:"caution", h:"Long Java record, but an individual contributor against a lead title",
+       t:"Fourteen years of employed Java across core banking and healthcare \u2014 Neptune on the Rubikon banking platform, Pragis on patient portals, nearly five years at Cognizant for Aetna, Dun & Bradstreet and Toyota, then Tech Mahindra for Nissan, Capgemini on a Java 8 cloud migration, and three and a half years at Gainwell for US federal and state government healthcare, where he reports a SureScripts module contributing over $5 million in revenue. Recent and genuine: a Python and Gemini 2.5 Flash proof of concept turning natural language into SQL. Three things sit against the Technology Lead title he was submitted for. The CV is an individual-contributor record throughout \u2014 no team size, no mentoring, no delivery ownership, only \u2018team handling skills\u2019 asserted in the summary. There is no cloud platform, container or orchestration anywhere on it, where the other leads here bring AWS or Azure and Kubernetes. And the dates: three gaps totalling two years, so about fourteen years employed against the sixteen recorded, with the CV\u2019s project list and its own career table disagreeing on several of them."},
+    42:{k:"caution", h:"Measurable operations record; the span is five years longer than recorded",
+       t:"A BPO customer care and operations manager with numbers behind him: 50+ associates across four lines of business for Opendoor, six process transitions taken through knowledge transfer, SOP creation and stabilisation, SLA above 98% against a 95% target, quality lifted from 84% to 96%, CSAT from 8.4 to 9.6, and attrition held below 5% from 2022 to 2026. ITIL certified, with Google project management and Power BI courses behind it. Before that, three and a half years as a customer service team leader doing workforce scheduling and shrinkage management, and nearly twelve years at Sutherland rising to SME. Several things to settle. The row records 15 years and his own summary says the same, but his dates run from June 2006 to September 2026 \u2014 about nineteen and a half, so the CV disagrees with itself by five years. There is a ten-month gap between Sutherland ending March 2018 and the next role in January 2019. He is in Chennai for a Coimbatore posting. And his degree, a B.A. in History, was completed in 2024, eighteen years into the career."},
+    45:{k:"caution", h:"Real lead record, but the modern stack is recent and the ask is 92%",
+       t:"Nearly nine years at Terralogic, rising to Associate Manager and Full Stack Technical Lead, with five internal awards including an Outstanding Performer in 2026 and a five-year service award. The recent work is substantial: front-end lead on a micro-frontend Angular 17 telecom platform for managing virtualised network infrastructure \u2014 topology visualisation, fault and alarm monitoring, role and access management \u2014 and before that three years leading backend for a student learning platform on Python Flask with MySQL and MongoDB, deployed to AWS EC2 and S3. Client-facing throughout. Three qualifications. Of the ten and a half years, the Angular 16/17 and micro-frontend work starts February 2024, and a long stretch in between \u2014 MINA Group and the first two years at IMS \u2014 was WordPress and PHP. Her cloud is EC2 and S3 with Docker listed as exposure, which is thinner than the rest of the consultant slate. And every project on the CV is Bengaluru, with no address anywhere on it, against a Coimbatore row. The 13 L to 25 L expectation is a 92% ask."},
+    46:{k:"caution", h:"Four years of .NET inside an eight-year record",
+       t:"Four years at ProdEngines on enterprise maritime SaaS is the substance here, and it is good: Angular and ASP.NET Core with ABP Framework, Entity Framework Core and SQL Server across fuel procurement, claims, invoicing and payments for a platform serving 200+ users across 78 ports, with Azure AD SSO, OpenIddict, JWT and RBAC, SignalR notifications, and a stored-procedure and query optimisation effort he puts at 30%. He also carried a real modernisation: Angular 10 to 18, .NET Core 3.1 to .NET 8, ABP v3 to v8, and IdentityServer4 to OpenIddict. He mentors three developers. The thing to read carefully is the span. He is submitted on 8 years as a senior .NET developer, but the .NET and Angular work begins in November 2022 \u2014 four years. The seven and a half before it were PHP, WordPress, WooCommerce and CodeIgniter front-end work at Techleaf and on a remote contract for a Texas agency, after a year as an insurance operations associate. His employer is in Palakkad, Kerala, though both the row and his CV header say Coimbatore, and the row\u2019s last working day of 5 November has passed while his CV states a 30-day notice period."},
     28:{k:"caution", h:"Honest mid-level Java developer, submitted against a support role",
        t:"Five years, all of it on one engagement that transferred from Inaho Digital Solutions to Nagarro in Nov 2025: Spring Boot, Spring Data JPA, Hibernate, Servlets and JSP on the IMSKY application, an Oracle 12c to 19c migration, a legacy ASP to PHP Laravel conversion, and now backend modules for an airline passenger and cargo booking platform. His CV is unusually honest \u2014 it separates production experience from what he has taught himself, and says plainly that his microservices and Kafka work is personal projects rather than delivered systems. Two things sit against the row rather than against him. He is a Java backend developer, not an application support engineer, which is the mirror image of SL 13\u201317, where support people were submitted as developers. And his CV address is Nagercoil, roughly 350 km from Coimbatore, where the row places him. His 7.31 L salary against an 18 L expectation is a 146% ask."},
     29:{k:"caution", h:"The closest fit to a support role in this batch",
@@ -853,6 +887,31 @@
     {id:"a52", sl:23, sev:"Medium", issue:"LWD of 30 Sep 2026 has passed, so he is already out.", act:"Confirm current status and availability."},
     {id:"a53", sl:23, sev:"Low", issue:"The row credits React: 2+ Years; the CV mentions React once, on a single pharmacy application.", act:"Verify the React depth if the role needs front-end work."},
     {id:"a54", sl:23, sev:"Low", issue:"Accenture is his only employer across all five years, and the degree is B.E. Mechatronics rather than computer science.", act:"Probe adaptability outside a single engineering culture; the CGPA of 8.97 and the Azure certification offset the degree."},
+    {id:"a111", sl:38, sev:"High", issue:"Her LWD of 30 Oct 2026 has passed while the CV shows KG Invictus as current, and she only joined there in May 2026 \u2014 a six-month stint she is already leaving.", act:"Confirm her status and ask directly why the move, so soon."},
+    {id:"a112", sl:38, sev:"Medium", issue:"The row names the employer KG Information Systems (KGISL); her CV says KG Invictus.", act:"Confirm which entity employed her, and on what terms."},
+    {id:"a113", sl:38, sev:"Low", issue:"The Tech Lead title and all of the identity and multi-tenancy architecture are six months old; the preceding eight years at Infosys were Technology Analyst work.", act:"Probe how much of the Keycloak and tenant-isolation design was hers rather than inherited."},
+    {id:"a114", sl:39, sev:"High", issue:"Submitted as a Technology Lead, but the CV is an individual-contributor record throughout \u2014 no team size, no mentoring, no delivery ownership, only \u2018team handling skills\u2019 asserted in the summary.", act:"Establish whether he has actually led before booking a lead panel."},
+    {id:"a115", sl:39, sev:"Medium", issue:"Three gaps \u2014 15 months to Jun 2013, four months to Jan 2016 and five months to Mar 2022 \u2014 so about 14 years employed against the 16 recorded.", act:"Ask him to account for them and restate the span."},
+    {id:"a116", sl:39, sev:"Medium", issue:"No cloud platform, containers or orchestration anywhere on the CV, where the other Technology Leads here bring AWS or Azure and Kubernetes.", act:"Decide whether this role needs them; if it does, this is a fit question rather than a gap to probe."},
+    {id:"a117", sl:39, sev:"Low", issue:"The CV\u2019s project list and its own career table disagree on several dates, and three projects still read \u2018till date\u2019.", act:"Ask for a corrected CV before it goes to a panel."},
+    {id:"a118", sl:null, sev:"High", issue:"Four of the nine in the 17 Nov batch arrived with no CV \u2014 Dhanaraj (40), Arunachalam (41), Amritha (43) and Prabaharan (44) \u2014 so nothing on their rows can be checked against anything.", act:"Ask IKrux for the four CVs before any of them is scheduled."},
+    {id:"a119", sl:40, sev:"High", issue:"His LWD of 17 Mar 2026 has passed, so he has been out of work around eight months \u2014 and there is no CV to read against it.", act:"Get the CV, then ask what he has been doing since March."},
+    {id:"a120", sl:null, sev:"Low", issue:"Two rows in this batch record only a single name, with no surname \u2014 Arunachalam (41) and Prabaharan (44).", act:"Ask IKrux for full names before anything is sent out."},
+    {id:"a121", sl:43, sev:"Medium", issue:"7 L at 10.5 years with TCS is well below the band for the experience recorded, and the 11 L expectation is the smallest ask in the pipeline.", act:"Check whether the salary or the span is wrong before reading this as a bargain."},
+    {id:"a122", sl:43, sev:"Low", issue:"Her LWD of 15 Dec 2026 is the only one in the pipeline still in the future, so she is the one candidate genuinely serving notice.", act:"Nothing to chase \u2014 schedule her while the notice runs."},
+    {id:"a123", sl:42, sev:"High", issue:"Recorded at 15 years, and his own summary says 15, but his dates run Jun 2006 to Sep 2026 \u2014 about 19.6 years employed. The CV disagrees with itself by five years.", act:"Pin the span down before he is slotted or priced."},
+    {id:"a124", sl:42, sev:"Medium", issue:"Ten-month gap between Sutherland ending Mar 2018 and Office Framework starting Jan 2019.", act:"Ask him to account for it."},
+    {id:"a125", sl:42, sev:"Medium", issue:"He is in Chennai; the role is in Coimbatore.", act:"Confirm he will relocate, and on what terms."},
+    {id:"a126", sl:42, sev:"Low", issue:"The row spells him Vinod Kumar; his CV says Vinodh Kumar.", act:"Use the CV spelling on anything that reaches him."},
+    {id:"a127", sl:42, sev:"Low", issue:"His B.A. in History was completed in 2024, eighteen years into his career.", act:"Not a concern in itself \u2014 note it so the panel does not read it as a recent graduate\u2019s degree."},
+    {id:"a128", sl:45, sev:"Medium", issue:"13 L against a 25 L expectation is a 92% ask, the steepest among the consultant slate.", act:"Establish what she would actually move for before a panel is spent."},
+    {id:"a129", sl:45, sev:"Medium", issue:"Every project on her CV is Bengaluru and the CV carries no address at all; the row says Coimbatore.", act:"Confirm where she is and whether the move is real."},
+    {id:"a130", sl:45, sev:"Medium", issue:"Of the 10.5 years, the Angular 16/17 and micro-frontend work starts Feb 2024, and several of the middle years were WordPress and PHP.", act:"Test the Angular and architecture depth directly rather than reading it off the span."},
+    {id:"a131", sl:45, sev:"Low", issue:"Five-month gap between Buzee ending May 2017 and Terralogic starting Oct 2017.", act:"Ask her to account for it."},
+    {id:"a132", sl:45, sev:"Low", issue:"Her education reads \u2018Pursued Bachelor of Computer Application\u2019, which does not say it was awarded.", act:"Confirm the degree was completed."},
+    {id:"a133", sl:46, sev:"High", issue:"Submitted as a Technical Consultant on 8 years, but his .NET and Angular work starts Nov 2022 \u2014 about four years. The seven and a half before it were PHP, WordPress and CodeIgniter front-end work.", act:"Restate the .NET span; four years of it is a different proposition from eight."},
+    {id:"a134", sl:46, sev:"Medium", issue:"The row gives an LWD of 5 Nov 2026, already passed, while his CV states a 30-day notice period.", act:"Confirm whether he has left."},
+    {id:"a135", sl:46, sev:"Low", issue:"His employer ProdEngines is in Palakkad, Kerala; both the row and his CV header say Coimbatore.", act:"Confirm where he actually works from."},
     {id:"a76", sl:28, sev:"Medium", issue:"His CV address is Nagercoil, roughly 350 km from Coimbatore, where the row places him.", act:"Confirm he is relocating, and on what terms."},
     {id:"a77", sl:28, sev:"Low", issue:"The Town News project is listed under Inaho Digital Solutions running to Mar 2026, four months after his Nov 2025 transfer to Nagarro.", act:"Clarify which employer he sat under when; it is probably the transfer, but the CV reads oddly."},
     {id:"a78", sl:29, sev:"High", issue:"The row gives an LWD of 29 Sep 2026, five weeks past, while her CV still shows Cognizant as present.", act:"Confirm whether she has actually left, and her availability."},
@@ -1292,7 +1351,7 @@
     {key:"fExp",   label:"Total experience", get:function(c){ return c.fExp; },   opts:["Under 6 years","6 – 12 years","Over 12 years"]},
     {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L","Not captured"]},
     {key:"fLoc",   label:"Current location", get:function(c){ return c.fLoc; },   opts:["Coimbatore","Chennai","Erode","Elsewhere"]},
-    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026","22-Oct-2026","23-Oct-2026","30-Oct-2026"]},
+    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026","22-Oct-2026","23-Oct-2026","30-Oct-2026","17-Nov-2026"]},
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},

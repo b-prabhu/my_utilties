@@ -60,7 +60,17 @@ var QSTREAM = {
   28:{s:"java",   l:"mid"},    29:{s:"java", l:"mid"},   30:{s:"java", l:"mid"},
   31:{s:"node",   l:"senior"}, 32:{s:"dotnet", l:"senior"}, 33:{s:"node", l:"senior"},
   34:{s:"delivery", l:"senior", fam:"delivery"},
-  35:{s:"node",   l:"senior"}, 36:{s:"dotnet", l:"senior"}, 37:{s:"dotnet", l:"senior"}
+  35:{s:"node",   l:"senior"}, 36:{s:"dotnet", l:"senior"}, 37:{s:"dotnet", l:"senior"},
+  /* Added 18 Nov 2026. SL 40, 41 and 44 arrived without a CV, so there is
+     nothing to stream them on; they are left out deliberately and fall back to
+     the questions every engineering stream can be asked. Give them an entry
+     once their resumes turn up. Amritha (43) has no CV either, but the role
+     decides the family, so she draws the delivery set rather than engineering
+     theory. */
+  38:{s:"java", l:"senior"}, 39:{s:"java", l:"senior"},
+  42:{s:"ops", l:"senior", fam:"delivery"},
+  43:{s:"delivery", l:"senior", fam:"delivery"},
+  45:{s:"node", l:"senior"}, 46:{s:"dotnet", l:"senior"}
 };
 
 var QBANK = [

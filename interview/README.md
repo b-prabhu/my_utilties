@@ -9,7 +9,7 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | All 37 resumes, transcribed into structured sections |
+| `pipeline_resumes.js` | 42 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
 | `pipeline_fonts.js` | Poppins 400 and 500, subset to the glyphs the resumes use, base64 for jsPDF |
 | `pipeline_bundle.js` | Builds the candidate pack: the workbook and the typeset resume PDFs |
@@ -89,17 +89,18 @@ their own view.
 - CTC, ECTC and Offered CTC are **INR lakhs per annum**; dates are `DD-MMM-YY`.
 - `Days to LWD` is negative once the last working day has passed, measured against the
   as-on date in `Summary!B4` — the single input cell.
-- Commercials are captured for all 37. Where a candidate gives a **notice period but no
+- Commercials are captured for all 46. Where a candidate gives a **notice period but no
   exit date**, availability reads "Notice period only" and shows the notice rather than
   pretending a date is known.
 
 ## Where the pipeline stands
 
-37 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
-8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026 and 4 on 30-Oct-2026. Six roles: Technical
-Consultant, Technology Lead, Senior Software Engineer, Technical Project Manager, Process
-Manager and Application Support. All 37 have a CV on file and a verdict against it. 110 open
-actions: 30 High, 54 Medium, 26 Low.
+46 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
+8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026, 4 on 30-Oct-2026 and 9 on 17-Nov-2026. Six
+roles: Technical Consultant, Technology Lead, Senior Software Engineer, Technical Project
+Manager, Process Manager and Application Support. 42 have a CV on file and a verdict against
+it; **four of the 17-Nov batch arrived without one** and carry no assessment. 135 open
+actions: 36 High, 64 Medium, 35 Low.
 
 The 23-Oct row was headed `Technology Consultant`; confirmed as the same opening as Technical
 Consultant and merged into it. The band gap is still open (a109): SL 1–8 are 14–15 years at
@@ -142,3 +143,13 @@ Headline findings:
 - Two recorded spans are badly wrong in opposite directions: **Dinesh Sethupathy (37)** is
   recorded at 15 years where his CV says 9 and the dates give 10.2, and **Thouseef (36)** at
   12 where his CV says 15+ and the dates give 16.
+- From the 17-Nov batch: **Subhaashini (38)** has the strongest architecture record in the
+  pipeline — multi-tenant Keycloak identity design with per-tenant database isolation on a
+  hospital system — but it is six months old and she is already leaving. **Saravanakumar (39)**
+  was submitted as a Technology Lead on an individual-contributor CV with no cloud anywhere.
+  **Ramkumar (46)** is submitted as a .NET consultant on 8 years where the .NET is four.
+  **Vinodh (42)** is recorded at 15 years where his own dates give 19.6. **Archana (45)** asks
+  a 92% hike and is Bengaluru-based throughout.
+- **Four candidates have no CV** — Dhanaraj (40), Arunachalam (41), Amritha (43) and
+  Prabaharan (44). Nothing on their rows can be checked, and the candidate pack skips them
+  (it names who it skipped). Action a118.

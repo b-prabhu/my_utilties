@@ -1606,5 +1606,201 @@ var RESUMES = {
       "Monitored application health with AppDynamics, Splunk, SolarWinds and Datadog."]]
   ]},
   {h:"Education", b:[["p","B.E. Electrical and Electronics Engineering — Velammal College of Engineering and Technology, Madurai, 2012–2016."]]}
+]},
+
+38: {file:"Subhaashini_Mounagurusamy.pdf", title:"Java Tech Lead | Spring Boot · Microservices · Multi-tenant IAM",
+  contact:"Coimbatore · 9150819100 · subamcet@gmail.com",
+  sections:[
+  {h:"Professional summary", b:[["p","Java tech lead with eleven-plus years in enterprise application development, currently leading the architecture and backend of a multi-tenant, microservices-based Hospital Information Management System at KG Invictus. Works in Java, Spring Boot, microservices, identity and access management, and healthcare interoperability — HL7, FHIR and ABDM — with a background in production support and performance optimisation across healthcare and retail."]]},
+  {h:"Core skills", b:[["kv",[
+    ["Backend","Java (up to Java 25), Spring Boot, microservices, REST APIs, Hibernate/JPA, J2EE, hexagonal architecture"],
+    ["Databases","PostgreSQL, Oracle, MongoDB, DB2, PL/SQL, Redis"],
+    ["Messaging and security","Kafka, Keycloak (OIDC and OAuth 2.0), RBAC, multi-tenant identity"],
+    ["Tools and platforms","Gradle, GitLab CI/CD, Jenkins, Splunk, Tomcat, WebLogic, JBoss, Kubernetes"],
+    ["Healthcare standards","HL7 v2, FHIR, CCD, ABDM / ABHA"],
+    ["Practices","Agile, SDLC, MVC, architecture decision records"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Java Tech Lead — PISTA, Hospital Information Management System","KG Invictus","May 2026 – present",[
+      "Leads technical design and Java development of PISTA, a multi-tenant microservices HIMS modernising a legacy PHP (Yii2) system for the KG Hospital Group.",
+      "Built the identity and access management service in Spring Boot with per-tenant PostgreSQL isolation.",
+      "Designed the multi-tenant identity architecture on Keycloak — realm-per-group with Organizations, ADFS and LDAP brokering, BFF token custody, and database-backed RBAC with tenant-scope enforcement.",
+      "Authored the architecture decision records for the identity and access architecture.",
+      "Contributing to cloud hosting evaluation against India data-residency requirements."]],
+    ["job","Technology Analyst — Spectrum Mobile Framework, Charter","Infosys Limited","Feb 2025 – Apr 2026",[
+      "Designed and implemented a centralised logging microservice in Spring Boot.",
+      "Led pre-production validation and deployment readiness, and took part in client requirement discussions."]],
+    ["job","Technology Analyst — SIOsApps Dashboard, Cisco","Infosys Limited","Mar 2023 – Feb 2025",[
+      "Developed backend services in Spring Boot with REST APIs, and handled production support and performance tuning.",
+      "Automated reporting workflows using OIC and Alteryx."]],
+    ["job","Technology Analyst — CBM and earlier BAM / SLM, Cisco","Infosys Limited","Apr 2019 – Mar 2023",[
+      "Designed and enhanced order processing services and integrated upstream and downstream systems.",
+      "Optimised backend processing time and improved reliability and fault tolerance; supported production releases."]],
+    ["job","Senior Java Developer — WAS migration, JCPenney","Infosys Limited","Mar 2018 – Apr 2019",[
+      "Migrated applications from WebSphere to WebLogic, updating UI and backend components, with end-to-end testing and validation."]],
+    ["job","Java Developer and Configuration Team Lead — Healthcare Messaging Service, McKesson","NTT Data GDS Limited","Apr 2015 – Mar 2018",[
+      "Provided production support and defect resolution, and maintained HL7 and CCD interfaces.",
+      "Led configuration activities and ensured data accuracy in healthcare workflows."]]
+  ]},
+  {h:"Certifications and education", b:[["p","Oracle Certified Professional — Java SE 6 Programmer. NTT Data Certified Java Developer, levels 1 and 2. B.E. Computer Science Engineering — Anna University, 86.1%."]]}
+]},
+
+39: {file:"Saravana_kumar_Pongiyan.docx", title:"Senior Java Developer | Spring Boot · Banking and Healthcare",
+  contact:"9500394865 · pongiyansaravanakumar@gmail.com · Coimbatore",
+  sections:[
+  {h:"Experience summary", b:[["p","Fifteen years as a senior Java developer in Java, Spring, Spring Boot and Python across core banking and healthcare, working in both Agile and Waterfall. Covers requirement gathering, analysis, design, development, implementation, testing and change management, with proof-of-concept work, effort estimation and integration-test automation."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Java","Java, Spring, Spring Boot, AI development"],
+    ["Data and messaging","JPA, SQL, RabbitMQ"],
+    ["Servers and tools","Tomcat, WebSphere; Eclipse, IntelliJ, RAD, Toad, TortoiseSVN, pgAdmin, Git"],
+    ["Services","REST"]
+  ]]]},
+  {h:"Career history", b:[
+    ["job","Senior Product Developer — Automation Verifications","Gainwell Technologies; client: US federal and state governments","Feb 2023 – Jul 2026",[
+      "Contributed to the design and development of enterprise applications in Java, Spring Boot and a microservices architecture.",
+      "Designed and optimised REST APIs for scalability, performance and maintainability.",
+      "Developed business modules including SureScripts, which he reports contributed over $5 million in revenue, plus EDIMART and Carrier App job creation.",
+      "Took part in architecture and design phases, code reviews, deployment and production support.",
+      "Built a proof of concept in Python and generative AI converting natural-language questions into SQL, integrating Google Gemini 2.5 Flash through the GenAI SDK and running the generated queries against the database."]],
+    ["job","Senior Software Engineer — Move2Cloud","Capgemini; client: Stellantis, France","Mar 2022 – Feb 2023",[
+      "Migrated legacy Java applications to Java 8 in support of a cloud migration, identifying deprecated APIs and incompatible libraries.",
+      "Refactored legacy code onto lambda expressions, the Stream API, functional interfaces and the new date and time API.",
+      "Performed impact analysis, regression testing and defect resolution to confirm functional stability after the upgrade."]],
+    ["job","Senior Software Engineer — Data Control Warehouse","Tech Mahindra; client: Nissan, Japan","Nov 2020 – Oct 2021",[
+      "Developed backend services and REST APIs in Java and Spring Boot across the Dapster, Compass and visitor management sub-projects.",
+      "Migrated Dapster and Compass from Java 1.7 to 1.8 and built visitor management new in Spring Boot.",
+      "Worked with Jenkins for build and deployment automation, and alongside Angular for frontend integration."]],
+    ["job","Senior Developer — Dun & Bradstreet, Aetna, WPS and Toyota accounts","Cognizant Technology Solutions, Coimbatore","Jan 2016 – Oct 2020",[
+      "Data Quality Shield and Webfab for Dun & Bradstreet: Spring Boot projects built from scratch, Saxon and DOM XML parsing, a global endpoint interceptor for request and response processing, and SOAP configuration.",
+      "Benefit Express, OTS Automation, AFA and Commissions for Aetna: full-stack work in Spring, DB2 and web services, batch development for Medicare payee queues, demographic loads and appointment extraction, and a PIAS to PDMF migration.",
+      "Enrollment for WPS: batch processes for DRTS, allotment stop and prime allotment records, plus billing file generation under a job scheduler.",
+      "Technical Information System for Toyota Motor Service: bug fixing and a legal extraction enhancement using threads per spreadsheet."]],
+    ["job","Senior Software Engineer — MyHealtheHome and Nurse Triage","Pragis Technology, Coimbatore; client: Centex Systems Support Services","Jun 2013 – Sep 2015",[
+      "Built roles and privileges, activity log and guidelines modules for a patient portal integrating with an EMR system, in Java, Spring, Hibernate and PostgreSQL.",
+      "Customised the application to client requirements and performed unit testing."]],
+    ["job","Developer — Rubikon universal banking system","Neptune Financial Software, Chennai","Jul 2010 – Mar 2012",[
+      "Designed and developed core product features of an integrated banking platform in Java, Servlets, JSP, Struts, EJB, JDBC, Oracle and WebLogic.",
+      "Built the customer channel user module governing access to banking services through ATM and mobile channels.",
+      "Resolved high-priority production issues reported by end users."]]
+  ]},
+  {h:"Education", b:[["p","B.E. Computer Science and Engineering — Erode Sengunthar Engineering College, Anna University, 2006."]]}
+]},
+
+42: {file:"Vinodh_Kumar_R.pdf", title:"Customer Care Manager | SaaS operations · Service delivery",
+  contact:"vinodhkr65@gmail.com · +91 86680 05793 · Chennai, Tamil Nadu",
+  sections:[
+  {h:"Professional summary", b:[["p","Customer care manager with fifteen years stated across SaaS, customer support, operations and back-office functions, including eight years leading teams. Works in process transitions, customer experience, workflow optimisation and KPI and SLA performance, with escalation management, stakeholder collaboration and AI-enabled workflow automation. ITIL 5 trained and certified."]]},
+  {h:"Core competencies", b:[["ul",[
+    "Customer care and operations management; SaaS operations and service delivery",
+    "Team leadership and people management; recruitment, training and coaching",
+    "Escalation and incident management",
+    "KPI, SLA and performance management; customer experience and CSAT improvement",
+    "Process transition and SOP implementation; workflow optimisation and continuous improvement",
+    "Workforce and resource planning; employee engagement and attrition management",
+    "Reporting, analytics and dashboard management"
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Team Manager — Operations","Services Labs Software Pvt Ltd (Opendoor)","May 2022 – Sep 2026",[
+      "Led remote and on-site teams across four lines of business supporting US operations, managing 50+ associates.",
+      "Ran customer support and operational processes in a SaaS environment, working with product managers, operations leaders, quality and training.",
+      "Transitioned six new processes, covering knowledge transfer, SOP creation, workflow documentation and stabilisation.",
+      "Built teams through recruitment, structured onboarding and continuous coaching; ran performance reviews and 1:1s against KPIs and SLAs.",
+      "Identified high-potential agents from performance data and built development plans towards senior associate, SME and team leader roles.",
+      "Prepared weekly and monthly operational dashboards for senior leadership, and owned end-to-end escalation resolution.",
+      "Applied AI-enabled automation tools and workflow improvements to reduce manual effort."]],
+    ["job","Team Leader — Customer Service","Office Framework Operations Center Pvt Ltd / Cart from USA","Jan 2019 – May 2022",[
+      "Supervised a customer service team against AHT, CSAT, SLA, quality and productivity targets.",
+      "Designed leave planners, workforce schedules and shrinkage management strategies.",
+      "Delivered weekly and monthly operational reports highlighting trends, risks and solutions.",
+      "Handled complex customer issues, accounts payable and collections, and managed invoices and vendor bills in QuickBooks."]],
+    ["job","Senior Associate (SME)","Sutherland Global Services","Jun 2006 – Mar 2018",[
+      "Acted as subject matter expert, gathering requirements with clients and supporting process improvement.",
+      "Managed ticketing and customer escalations through Remedy against SLA.",
+      "Mentored and trained junior associates, and ran customer dissatisfaction analysis to improve CSAT."]]
+  ]},
+  {h:"Achievements", b:[["ul",[
+    "SLA above 98% against a 95% target, with attrition held below 5%, from 2022 to 2026.",
+    "Quality score improved from 84% to 96% through targeted process improvement and coaching.",
+    "CSAT raised from 8.4 to 9.6.",
+    "Platinum Award for reliability and commitment; Best Performer of the Year 2010 at Sutherland Global Services."
+  ]]]},
+  {h:"Certifications and education", b:[["p","ITIL 5. Google Foundations of Project Management. Microsoft: Preparing Data for Analysis with Excel; Harnessing the Power of Data with Power BI; Extract, Transform and Load Data in Power BI. B.A. History — Annamalai University, 2021–2024."]]}
+]},
+
+45: {file:"Archana_Ravi.pdf", title:"Associate Manager | Full Stack Technical Lead · Angular · Micro Frontends",
+  contact:"6385074711 · archaravi3@gmail.com · linkedin.com/in/archana-ravi-529017112",
+  sections:[
+  {h:"Professional summary", b:[["p","Associate manager and full stack technical lead with ten-plus years in software development, technical leadership and delivery of scalable web applications. Works in Angular 16/17 and micro frontend architecture, Python Flask, Node.js, PHP, MySQL, MongoDB and AWS, with exposure to Docker-based containerisation, CI/CD pipelines and cloud deployment. Leads cross-functional teams, architects applications, mentors developers and handles client communication."]]},
+  {h:"Skills", b:[["kv",[
+    ["Frontend","Angular 16/17, Angular Material, Tailwind CSS, Bootstrap, RxJS, JavaScript, HTML5/CSS3"],
+    ["Backend","Python Flask, PHP, Node.js, REST APIs"],
+    ["Databases","MySQL, MongoDB, PostgreSQL"],
+    ["Cloud and DevOps","AWS EC2 and S3, Docker, CI/CD, Git, Bitbucket, CodeCommit"],
+    ["Architecture and security","Micro frontend, REST API, JWT, role-based access control, Keycloak / SSO"]
+  ]]]},
+  {h:"Career history", b:[
+    ["job","Associate Manager / Full Stack Technical Lead","Terralogic Software Solution Pvt Ltd","Oct 2017 – Jul 2026",[
+      "FNC client, front end lead engineer (Apr 2024 – Jul 2026): led development of a micro frontend Angular 17 application with Tailwind CSS for a telecom platform managing and monitoring virtualised network infrastructure — network topology visualisation, fault and alarm monitoring, user role and access management, and system upgrades, backups and administrative controls. Built UI components from Figma specifications, ran sprint delivery with a large cross-functional team, and handled client meetings and weekly reporting. Bitbucket with CI/CD pipelines to production clusters.",
+      "GIIS client, front end lead engineer (Feb 2024 – Mar 2024): built a responsive Angular 16 visitor management system end to end, with sanity testing and sprint coordination across a cross-functional team.",
+      "IMS India, lead engineer (Mar 2021 – Jan 2024): built the backend of a student learning application for test preparation — video lectures, doubt solving, mock tests, mentorship and forums. REST APIs in Python Flask against MySQL and MongoDB, deployed to AWS EC2 across development, QA and production, with assets on S3. Led the team through sprint-based delivery.",
+      "IMS India, full stack developer (Dec 2019 – Mar 2021): built the application on WordPress with custom features and plugins, a MySQL backend and full API integration for the admin app; deployed to EC2 with S3 asset management. Led a development team and mentored junior developers.",
+      "IMS India, full stack developer (Jun 2019 – Dec 2019): maintained and supported the TGA LMS application for GATE exam preparation, on AngularJS, Node.js and PostgreSQL.",
+      "MINA Group, full stack developer (Mar 2018 – May 2019): developed a job application platform on WordPress and MySQL covering job browsing, application and interview management, plus an admin application for roles and permissions.",
+      "Terralogic internal, full stack developer (Oct 2017 – Feb 2018): built EPAS, a quarterly employee performance appraisal tool in Angular 6, PHP and MySQL, with review workflows, reporting and role-based access; managed Ubuntu cloud environments and cron-based production backups."]],
+    ["job","Web Developer — e-commerce applications","Buzee Web Tech","Sep 2015 – May 2017",[
+      "Built and maintained e-commerce applications on the CodeIgniter framework with MySQL.",
+      "Gathered and refined client requirements through regular interaction and delivered application demos.",
+      "Managed deployment across development and production servers and used Git for version control."]]
+  ]},
+  {h:"Awards", b:[["ul",[
+    "Outstanding Performer Award, Terralogic, 2026 — technical contribution, ownership, leadership and consistent delivery.",
+    "Pioneer Award, Terralogic, 2023 — initiative and innovation in project delivery.",
+    "Five-year service award, Terralogic, 2023.",
+    "Women Empower Award, Terralogic, 2022.",
+    "Star Award, Terralogic, 2019."
+  ]]]},
+  {h:"Education", b:[["p","Bachelor of Computer Application — Nirmala College For Women, 2012–2015. The CV records this as ‘pursued’."]]}
+]},
+
+46: {file:"Ramkumar_K.docx", title:"Senior .NET Full Stack Developer | ASP.NET Core · Angular · ABP Framework",
+  contact:"Coimbatore, Tamil Nadu · +91 9994200270 · ramkumar.kollimalayan@outlook.com",
+  sections:[
+  {h:"Professional summary", b:[["p","Full stack developer with eight-plus years in software and web development, specialising in enterprise SaaS applications using ASP.NET Core, C#, Angular, SQL Server and the ABP Framework. Works in REST API development, Entity Framework Core, LINQ, authentication and authorisation, application modernisation, third-party integration and database optimisation. Has contributed to platforms supporting 200+ users across 78 global ports and reports improving application and reporting performance by around 30%. Mentors developers and runs code reviews. Notice period stated as 30 days."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Backend","C#, ASP.NET Core, REST APIs, Entity Framework Core, LINQ, OData, ABP Framework, SignalR, Hangfire"],
+    ["Frontend","Angular 10–18, TypeScript, JavaScript, RxJS, HTML5, CSS3, SCSS, Bootstrap, NGXS"],
+    ["Database","SQL Server, T-SQL, stored procedures, query optimisation"],
+    ["Security","Azure AD, OpenIddict, IdentityServer4 migration, JWT, OAuth 2.0, SSO, RBAC"],
+    ["Practices","SOLID, dependency injection, repository pattern, REST API design, Agile / Scrum"],
+    ["Other","Git, Azure DevOps, CI/CD, PHP, WordPress, WooCommerce, CodeIgniter, jQuery"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Software Engineer L3","ProdEngines Pvt Ltd (a SpeeHive subsidiary), Palakkad, Kerala","Nov 2022 – present",[
+      "Builds enterprise SaaS applications for maritime logistics, agency operations and workflow automation in Angular, ASP.NET Core, C#, SQL Server and the ABP Framework.",
+      "Engineered applications covering marine fuel procurement, agency operations, claims, invoicing, payments and reporting for global maritime customers.",
+      "Designed REST APIs and third-party integrations with maritime services for vessel tracking, port intelligence and operational data synchronisation.",
+      "Implemented Azure AD single sign-on, OpenIddict, JWT, OAuth 2.0 and role-based access control.",
+      "Optimised SQL Server stored procedures and queries, cutting reporting response times by about 30%.",
+      "Implemented SignalR real-time notifications to automate workflows and improve visibility.",
+      "Mentors two software developers and one junior developer through code review, technical guidance and debugging support."]],
+    ["job","Full Stack Developer","Collective Dallas, remote contract (Frisco, Texas)","May 2019 – Nov 2022",[
+      "Built and maintained responsive WordPress business and e-commerce sites in PHP, WooCommerce, JavaScript, Bootstrap, HTML5, CSS3 and jQuery.",
+      "Converted Figma and Photoshop designs into responsive, cross-browser production websites.",
+      "Customised themes, plugins and reusable PHP components, and integrated REST APIs and third-party plugins."]],
+    ["job","Senior UX/UI Developer","Techleaf Solutions Pvt Ltd, Madurai","Jun 2015 – Apr 2019",[
+      "Developed responsive web applications and business sites in PHP, WordPress, CodeIgniter, HTML5, CSS3, JavaScript and jQuery.",
+      "Built right-to-left sites with Hebrew support for Israel-based clients.",
+      "Led and mentored two frontend developers through technical guidance, code review and task coordination."]],
+    ["job","UI/UX Designer (internship)","Southern Soft Solutions, Madurai","Oct 2014 – May 2015",[
+      "Designed responsive layouts, landing pages and email templates, and built frontend interfaces in HTML5, CSS3 and jQuery."]],
+    ["job","Operations Associate","Solartis Technology Services Pvt Ltd, Madurai","Sep 2013 – Sep 2014",[
+      "Supported US insurance operations, processing and validating business data and reports against SLA."]]
+  ]},
+  {h:"Enterprise projects", b:[["ul",[
+    "Focal-i, enterprise agency platform modernisation (Feb 2026 – Mar 2026): migration from Angular 10 to 18, .NET Core 3.1 to .NET 8 and ABP v3 to v8, with authentication moved from IdentityServer4 to OpenIddict; handled breaking changes, dependency conflicts and deployment compatibility across development, QA, UAT and production.",
+    "GeoStem, marine fuel management platform (Nov 2022 – Jan 2026): enterprise modules for procurement, operations, claims, invoicing, payments and reporting for a platform supporting 200+ users across 78 global ports, with SSO, real-time notifications and SQL Server tuning.",
+    "Learning Management System (May 2026 – present): Angular 17 frontend workflows for course creation, automation configuration, course and bundle selection and form validation."
+  ]]]},
+  {h:"Education", b:[["p","Master of Computer Applications — Anna University, Bharath Niketan Engineering College, 2010–2013, CGPA 7.87."]]}
 ]}
 };
