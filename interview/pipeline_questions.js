@@ -68,8 +68,12 @@ var QSTREAM = {
      decides the family, so she draws the delivery set rather than engineering
      theory. */
   38:{s:"java", l:"senior"}, 39:{s:"java", l:"senior"},
+  41:{s:"java", l:"senior"},
   42:{s:"ops", l:"senior", fam:"delivery"},
-  43:{s:"delivery", l:"senior", fam:"delivery"},
+  /* 43 ran SLA governance, capacity and workforce planning across three
+     delivery locations, so the service-operations questions fit her. */
+  43:{s:"ops", l:"senior", fam:"delivery"},
+  44:{s:"dotnet", l:"senior"},
   45:{s:"node", l:"senior"}, 46:{s:"dotnet", l:"senior"}
 };
 

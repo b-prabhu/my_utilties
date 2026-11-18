@@ -1802,5 +1802,110 @@ var RESUMES = {
     "Learning Management System (May 2026 – present): Angular 17 frontend workflows for course creation, automation configuration, course and bundle selection and form validation."
   ]]]},
   {h:"Education", b:[["p","Master of Computer Applications — Anna University, Bharath Niketan Engineering College, 2010–2013, CGPA 7.87."]]}
+]},
+
+41: {file:"Arunachalam.pdf", title:"Technical Lead | Java · Spring Boot · Microservices · Azure and Kubernetes",
+  contact:"arun.arunachalam03@gmail.com · +91 81486 95413",
+  sections:[
+  {h:"Professional summary", b:[["p","Technical lead with ten-plus years designing, delivering and supporting enterprise applications in the sports technology domain. Currently leads a team of six engineers across 12+ applications for the Australian Football League. Hands-on across Java, Spring Boot and databases including IBM DB2 and PostgreSQL, with DB2-to-PostgreSQL migration, cloud migration to Azure, Kubernetes deployments on AKS, single sign-on with Keycloak and Okta, production incident management and code review."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages and frameworks","Java 8, Spring Boot, microservices, Spring MVC, Hibernate, Struts 2, JSP"],
+    ["Databases","IBM DB2, PostgreSQL, MySQL"],
+    ["Cloud and DevOps","Azure, Kubernetes (AKS), Docker"],
+    ["Security and identity","Keycloak, Okta, JWT"],
+    ["Tools","Git, Maven"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Technical Lead — AFL sports platform, 12+ applications","Orion Innovation Pvt Ltd, Coimbatore; client: Australian Football League","Apr 2020 – Oct 2026",[
+      "Leads a team of six engineers, owning task allocation and delivery across multiple applications.",
+      "Designed and developed one of the platform applications from scratch, owning the database and API design.",
+      "Migrated application data from IBM DB2 to PostgreSQL with query optimisation, and upgraded PostgreSQL from Single Server to Flexible Server.",
+      "Drove the modernisation phase, moving applications from on-premises to the Azure cloud.",
+      "Manages deployments on Azure Kubernetes Service, including pod monitoring, scaling and troubleshooting.",
+      "Maintains single sign-on across the platform applications using Keycloak and Okta.",
+      "Handles P1 and P2 production incidents — API failures, authentication issues and database performance problems.",
+      "Built automation in Spring Boot for the client’s recurring requests, and established team standards for code quality and release."]],
+    ["job","Software Engineer — Player Trades and Draft Period","Orion Innovation Pvt Ltd; client: Australian Football League","Jan 2019 – Mar 2020",[
+      "Developed a new application, Player Trades, in Java, Spring MVC and MySQL."]],
+    ["job","Software Engineer — ASA","Orion Innovation Pvt Ltd; client: Australian Football League","Apr 2018 – Dec 2018",[
+      "Developed a new module, ASA, in Java, Struts 2, JSP, Hibernate and IBM DB2."]],
+    ["job","Support Engineer — MLB sports platform","Orion Innovation Pvt Ltd; client: Major League Baseball","Feb 2016 – Mar 2018",[
+      "Started his career in application support, handling support tickets.",
+      "Delivered change request work on applications built with Struts 2 and JSP."]]
+  ]},
+  {h:"Education", b:[["p","B.E. Computer Science and Engineering — PSNA College of Engineering and Technology, Dindigul, 2012–2016."]]}
+]},
+
+43: {file:"Amirtha_Rachel_John.pdf", title:"Operations Manager | Research and Data Operations · BPS/KPO · Delivery Governance",
+  contact:"Chennai, India · amirtharachel@yahoo.in · +91 9619634488 · linkedin.com/in/amirtha-rachel-john",
+  sections:[
+  {h:"Professional summary", b:[["p","Operations manager with ten years at Tata Consultancy Services, building and running research and data operations for a global financial data client. Currently leads a 152-member team across Chennai, Mumbai and Hangzhou. Covers delivery governance, multi-location team management, SLA compliance, client stakeholder engagement and continuous improvement. Twice invited to the client’s London headquarters — in 2023 to lead strategic sector onboarding and in 2024 to represent TCS at the Annual Business Review — the only TCS delivery manager at both. Lean Six Sigma Green Belt; PSM I in progress."]]},
+  {h:"Key achievements", b:[["ul",[
+    "Scaled the delivery team from 80 to 152 analysts by onboarding Hangzhou as a new international delivery location under existing client scope.",
+    "Drove a 30% productivity improvement and a 40% cycle time reduction through KPI governance, structured coaching and end-to-end workflow redesign.",
+    "Turned an SLA-breaching operation to full compliance within twelve months through Agile sprint planning, daily standups and backlog prioritisation across three locations.",
+    "Only TCS delivery manager invited to the client’s London HQ in both 2023 and 2024.",
+    "Supported account growth by onboarding additional process responsibilities and scaling delivery beyond the original scope."
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Operations Manager (official designation: Assistant Manager)","Tata Consultancy Services, Chennai; global financial data and media client","Jan 2025 – present",[
+      "Owns end-to-end delivery governance for energy data research operations, managing a four-tier structure of two country managers, 6+ team leaders and 152 analysts across Chennai, Mumbai and Hangzhou.",
+      "Turned SLA performance from breach to full compliance within twelve months, across three geographically distributed teams.",
+      "Onboarded Hangzhou as a new international delivery location, scaling the team from 80 to 152 analysts.",
+      "Introduced an AI-assisted prompt search approach for the research workflow, cutting average research time by five minutes per task.",
+      "Leads resource planning, capacity optimisation and performance management across locations."]],
+    ["job","Assistant Manager","Tata Consultancy Services, Thane; global financial data and media client","Jun 2023 – Dec 2024",[
+      "Led a layered team of 50+ analysts delivering energy sector online research and client database maintenance, accountable for SLA, productivity and quality.",
+      "Drove a 30% productivity improvement and 40% cycle time reduction through KPI governance, one-to-one coaching and workflow redesign.",
+      "Streamlined quality governance through structured audit cycles and calibration sessions, reducing reporting errors.",
+      "Invited to the client’s London HQ in 2023 to lead onboarding of new energy data sectors, defining scope, standards and research methodology with client subject matter experts.",
+      "Represented TCS at the client’s Annual Business Review in London in 2024, presenting delivery performance, roadmap and scope recommendations to senior client leadership."]],
+    ["job","Business Process Lead","Tata Consultancy Services, Thane; global financial data and media client","Aug 2021 – May 2023",[
+      "Managed 10+ concurrent workstreams with 100% on-time delivery.",
+      "Designed and ran capability-building programmes for 30+ team members.",
+      "Identified and eliminated recurring process inefficiencies, implementing standardised SOPs that reduced rework."]],
+    ["job","Trainee, Analyst, Quality Analyst and Subject Matter Expert","Tata Consultancy Services, Mumbai; global financial data and media client","May 2016 – Jul 2021",[
+      "Progressed through four roles in five years before moving into leadership on the same engagement.",
+      "As Quality Analyst and SME, led audit programmes and standardisation initiatives that reduced error rates.",
+      "Became the primary reference for energy sector data accuracy and terminal operations, supporting methodology decisions and mentoring incoming analysts."]]
+  ]},
+  {h:"Core competencies", b:[["kv",[
+    ["Delivery and operations","Operations and service delivery management, SLA and KPI governance, delivery transformation, performance management, operational reporting"],
+    ["Leadership and people","Team management, resource, capacity and workforce planning, capability building, programme ownership"],
+    ["Process and quality","Lean Six Sigma Green Belt, operational excellence, process improvement, workflow redesign, QA frameworks, transition management"],
+    ["Client and stakeholder","Global client relationship management, escalation handling, account business reviews, scope expansion, cross-geography operations"],
+    ["Tools","Bloomberg Terminal, Excel and PowerPoint, Qlik Sense, MS Project, Jira, SharePoint, Teams"]
+  ]]]},
+  {h:"Certifications and education", b:[["p","Lean Six Sigma Green Belt. Professional Scrum Master I — in progress, Scrum.org. Bachelor of Arts in English Literature — University of Mumbai, 2016."]]}
+]},
+
+44: {file:"Prabaharan.pdf", title:"Software Developer | Angular · .NET Core · Web API · Azure",
+  contact:"+91 7010449908 · jothiprabaharan@gmail.com · Chennai, India · linkedin.com/in/prabaharan-jothi",
+  sections:[
+  {h:"Profile summary", b:[["p","Full-stack developer with over eight years specialising in Angular, .NET Core, Web API and Azure. Designs and implements microservices architectures, integrates third-party APIs and government portals, and optimises backend data access with EF Core and Dapper, with performance and deployment work through Azure services and DevOps practices."]]},
+  {h:"Skills", b:[["kv",[
+    ["Core","C#, .NET, .NET Core, Web API, SQL Server, SQL, Angular, microservices"],
+    ["Cloud and tooling","Azure, Azure DevOps, Git"],
+    ["Also listed","Java, Spring Boot, React.js, AWS, C — none of which appears in the work history below"]
+  ]]]},
+  {h:"Work experience", b:[
+    ["job","Software Developer","DigiSME Software Pvt Ltd","Jan 2026 – present",[
+      "Developed and maintained full-stack applications with Angular front ends and .NET Core and SQL back ends.",
+      "Implemented a microservices architecture and gateway pattern for scalability and performance.",
+      "Integrated third-party services including Fixer.io for currency exchange rates, and government portals for GST and SST filing.",
+      "Used Azure for deployment, blob storage and background services.",
+      "The CV repeats these same four points for the preceding role, so nothing states what the promotion changed."]],
+    ["job","Software Developer 1","DigiSME Software Pvt Ltd","Jun 2021 – Dec 2025",[
+      "Full-stack development in Angular, .NET Core and SQL, with a microservices and gateway architecture.",
+      "Third-party and government portal integration, and Azure deployment, blob storage and background services."]],
+    ["job","Software Engineer","Khazana Jewellery Pvt Ltd","Jan 2021 – Jul 2021",[
+      "Developed and maintained full-stack applications in Angular and .NET Core.",
+      "Integrated payment gateways and government portals for e-invoice posting and GST filing."]],
+    ["job","Back End Developer","TM Techies, Chennai","Jul 2017 – Jan 2020",[
+      "Developed APIs in .NET Core and SQL.",
+      "Used Dapper alongside EF Core for optimised data access and query performance.",
+      "Unit testing with Postman, which he reports reduced bugs by 30%."]]
+  ]},
+  {h:"Certifications, mentoring and education", b:[["p","LinkedIn certifications: .NET Microservices for Azure Developers; Azure Cloud Design Patterns; Learning SOLID Programming Principles. Mentors junior developers and interns on full-stack practice, code review and CI/CD with Azure DevOps. B.E. — Annai College of Engineering and Technology, Thanjavur, 2017."]]}
 ]}
 };

@@ -9,7 +9,7 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | 42 resumes, transcribed into structured sections |
+| `pipeline_resumes.js` | 45 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
 | `pipeline_fonts.js` | Poppins 400 and 500, subset to the glyphs the resumes use, base64 for jsPDF |
 | `pipeline_bundle.js` | Builds the candidate pack: the workbook and the typeset resume PDFs |
@@ -99,8 +99,8 @@ their own view.
 8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026, 4 on 30-Oct-2026 and 9 on 17-Nov-2026. Six
 roles: Technical Consultant, Technology Lead, Senior Software Engineer, Technical Project
 Manager, Process Manager and Application Support. 42 have a CV on file and a verdict against
-it; **four of the 17-Nov batch arrived without one** and carry no assessment. 135 open
-actions: 36 High, 64 Medium, 35 Low.
+it; **Dhanaraj (40) is the only candidate with no CV** and so carries no assessment. 143
+open actions: 37 High, 66 Medium, 40 Low.
 
 The 23-Oct row was headed `Technology Consultant`; confirmed as the same opening as Technical
 Consultant and merged into it. The band gap is still open (a109): SL 1–8 are 14–15 years at
@@ -150,6 +150,10 @@ Headline findings:
   **Ramkumar (46)** is submitted as a .NET consultant on 8 years where the .NET is four.
   **Vinodh (42)** is recorded at 15 years where his own dates give 19.6. **Archana (45)** asks
   a 92% hike and is Bengaluru-based throughout.
-- **Four candidates have no CV** — Dhanaraj (40), Arunachalam (41), Amritha (43) and
-  Prabaharan (44). Nothing on their rows can be checked, and the candidate pack skips them
-  (it names who it skipped). Action a118.
+- **Arunachalam (41)** and **Amirtha (43)**, whose CVs arrived a day later, are the two
+  strongest submissions in the pipeline. He has six and a half years actually leading, a
+  DB2-to-PostgreSQL migration and an on-prem-to-Azure modernisation he owned, and a row that
+  agrees with his CV on every field. She runs delivery governance for 152 analysts across
+  three countries, turned an SLA breach to full compliance in twelve months, and asks 11 L.
+- **Dhanaraj (40)** is now the only candidate with no CV. Nothing on his row can be checked,
+  and the candidate pack skips him by name. Action a118.
