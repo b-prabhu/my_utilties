@@ -1907,5 +1907,52 @@ var RESUMES = {
       "Unit testing with Postman, which he reports reduced bugs by 30%."]]
   ]},
   {h:"Certifications, mentoring and education", b:[["p","LinkedIn certifications: .NET Microservices for Azure Developers; Azure Cloud Design Patterns; Learning SOLID Programming Principles. Mentors junior developers and interns on full-stack practice, code review and CI/CD with Azure DevOps. B.E. — Annai College of Engineering and Technology, Thanjavur, 2017."]]}
+]},
+
+/* Dhanaraj's CV also carries a passport number, date of birth, marital status
+   and father's name. None of that is reproduced here: the pack exports these
+   transcriptions as PDFs, and an identity document number has no place in a
+   file that circulates to interviewers. See action a144. */
+40: {file:"Dhanaraj_R.pdf", title:"Senior Technical Lead | Java · Spring Boot · Microservices · PKI",
+  contact:"Coimbatore, Tamil Nadu · +91 9003703766 · dhana.raj32@gmail.com · linkedin.com/in/dhanaraj-ragunathan-22546862",
+  sections:[
+  {h:"Professional summary", b:[["p","Senior technical lead with fifteen-plus years of Java in enterprise applications, microservices and full-stack development across cybersecurity, insurance and e-commerce. Works in Spring Boot, REST APIs, ReactJS, AWS and Azure, leading architecture, Agile delivery, code review and mentoring, with a focus on secure, scalable systems. States he is an immediate joiner."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages and frameworks","Java 8/11/17/21, J2EE, Spring, Spring Boot, Spring MVC, Spring Data JPA, Hibernate, microservices"],
+    ["Frontend","ReactJS, JSF, PrimeFaces, RichFaces, HTML5, CSS, JavaScript, jQuery, Bootstrap"],
+    ["APIs and messaging","REST, SOAP, Apache Camel, Kafka, RabbitMQ, ZooKeeper, event-driven architecture"],
+    ["Databases","MySQL, PostgreSQL, MongoDB, SQLite, database design, query optimisation, caching"],
+    ["Cloud and deployment","AWS (EC2, S3, RDS, Lambda), Azure, Docker, Kubernetes, Apache Tomcat"],
+    ["Security","Spring Security, JWT, OAuth2, OpenSSL, PKI, SSL/TLS, X.509 certificates, CSR, RBAC, certificate lifecycle automation"],
+    ["Build and quality","Maven, Git, Jenkins, GitLab CI/CD; JUnit, Mockito, REST Assured, SonarQube, Postman, Swagger"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Senior Technical Lead","InfoVision Labs India Pvt Ltd, Coimbatore","19 Aug 2021 – 17 Mar 2026",[
+      "Architected secure Java and Spring Boot microservices; led technical design, sprint planning, code review and production deployment.",
+      "Worked with customers and stakeholders on solution and system architecture; mentored engineers and established coding standards.",
+      "Invisinet App: identity-based micro-segmentation across OT, IT and cloud. Modernised the code from Java 5 through 8, 11, 17 and 21, refactoring legacy code for security, performance and framework compatibility. Built REST microservices with OpenSSL certificate authentication, Spring Security and JWT authorisation and policy-driven access.",
+      "Certificate Management System: an enterprise Certificate Authority platform with ReactJS workflows over Spring Boot REST APIs for issuance, renewal, revocation, validation and expiry monitoring. Automated X.509 certificates, CSR and private-key generation and signing, with RBAC, audit logging and integration into enterprise applications and network devices.",
+      "Stack: Java 5–21, Spring Boot, Spring Security, JWT, OpenSSL, X.509, PKI, SSL/TLS, ReactJS, SQLite, RabbitMQ, Kafka, SonarQube, Tomcat, Maven, Git, Azure."]],
+    ["job","Dev Lead — Skava, enterprise e-commerce platform","Infosys Limited, Coimbatore","15 Aug 2020 – 18 Aug 2021",[
+      "Led microservices and REST APIs for catalog, customer registration, cart, pricing, promotions, inventory, orders, payments and shipment tracking, at high transaction volume with independent deployment.",
+      "Built Kafka event-driven integrations and deployed Docker services on Kubernetes for availability and scaling; integrated payment, shipping, tax and external services through Apache Camel.",
+      "Established Jenkins CI/CD, tuned databases, caching and API responses, reviewed code and mentored developers."]],
+    ["job","Dev Lead — enterprise e-commerce platform","Skava Systems Pvt Ltd, Coimbatore","25 Sep 2017 – 14 Aug 2020",[
+      "The same platform and scope as the Infosys entry above, which continued after the acquisition.",
+      "Stack: Java 8/11, Spring Boot, Spring MVC, Spring Data JPA, Hibernate, REST, RabbitMQ, Kafka, Docker, Kubernetes, Apache Camel, Jenkins, SonarQube, ZooKeeper, MongoDB, MySQL, AWS."]],
+    ["job","Technical Team Lead","Point Perfect Transcription Services India Pvt Ltd, Coimbatore","22 Mar 2013 – 21 Sep 2017",[
+      "Led Java and JSF CRM development for field executives, invoicing, logistics and workforce operations, across a field-force management system, event calendar and WLR.",
+      "Built Jsoup web extraction automation; worked with business users and managed UAT, code review, releases and production support."]],
+    ["job","Software Engineer — Point & Stamp loyalty platform","P41 Technologies, Coimbatore","27 Oct 2012 – 20 Mar 2013",[
+      "Developed CRM modules for rewards, points and redemption, and customised PrimeFaces components."]],
+    ["job","Software Engineer — Web-Mon","NocSmart FZ Software Solutions Pvt Ltd, Coimbatore","4 Jun 2012 – 24 Oct 2012",[
+      "Developed real-time website monitoring for availability, response time and uptime."]],
+    ["job","Software Programmer — Trade-Winds ERP","Systech Infovations Pvt Ltd, Coimbatore","25 Jan 2010 – 31 May 2012",[
+      "Developed sales, procurement, inventory and HR modules for an ERP platform, with iReport reporting and Tally ERP integration.",
+      "Performed database design, maintenance, customer implementation and production support."]],
+    ["job","Software Developer — enterprise desktop applications","Ranga Informatics Pvt Ltd, Coimbatore","6 Apr 2008 – 8 Aug 2009",[
+      "Built Windows business modules for internal operations in VC++ and the Windows API."]]
+  ]},
+  {h:"Education, certifications and achievements", b:[["p","Bachelor of Computer Applications — Bharathiar University, School of Distance Education, Coimbatore, 2012. Diploma in Computer Engineering — Sri Ramakrishna Polytechnic College, 2008. React with TypeScript (Eduramp, 2025); Master in Solution Architecture (Udemy, 2025). Technological Contribution Award and letter of appreciation at Point Perfect, Dec 2014, for an automation tool."]]}
 ]}
 };

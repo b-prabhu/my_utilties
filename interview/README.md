@@ -9,7 +9,7 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | 45 resumes, transcribed into structured sections |
+| `pipeline_resumes.js` | All 46 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
 | `pipeline_fonts.js` | Poppins 400 and 500, subset to the glyphs the resumes use, base64 for jsPDF |
 | `pipeline_bundle.js` | Builds the candidate pack: the workbook and the typeset resume PDFs |
@@ -37,6 +37,13 @@ with a dropdown. The same dropdown sits in each candidate's Tracking pane. Setti
 The `STAGE` map in `pipeline_page.html` is only the seed the page ships with — fifteen
 candidates, reported 2 Nov 2026. Once anyone changes a stage in the portal, the stored value
 wins for that candidate. Changing the seed moves only the candidates nobody has touched.
+
+### A note on what gets transcribed
+
+`pipeline_resumes.js` is the source for the exported resume PDFs, so it is not a verbatim
+copy of what candidates send. Identity document numbers, dates of birth, marital status and
+family names are left out of the transcription even where the source CV carries them — see
+Dhanaraj (40) and action a144. The professional record is reproduced in full.
 
 ### The candidate pack
 
@@ -99,8 +106,8 @@ their own view.
 8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026, 4 on 30-Oct-2026 and 9 on 17-Nov-2026. Six
 roles: Technical Consultant, Technology Lead, Senior Software Engineer, Technical Project
 Manager, Process Manager and Application Support. 42 have a CV on file and a verdict against
-it; **Dhanaraj (40) is the only candidate with no CV** and so carries no assessment. 143
-open actions: 37 High, 66 Medium, 40 Low.
+it. All 46 now have a CV on file and a verdict against it. 146 open actions: 37 High,
+67 Medium, 42 Low.
 
 The 23-Oct row was headed `Technology Consultant`; confirmed as the same opening as Technical
 Consultant and merged into it. The band gap is still open (a109): SL 1–8 are 14–15 years at
@@ -155,5 +162,7 @@ Headline findings:
   DB2-to-PostgreSQL migration and an on-prem-to-Azure modernisation he owned, and a row that
   agrees with his CV on every field. She runs delivery governance for 152 analysts across
   three countries, turned an SLA breach to full compliance in twelve months, and asks 11 L.
-- **Dhanaraj (40)** is now the only candidate with no CV. Nothing on his row can be checked,
-  and the candidate pack skips him by name. Action a118.
+- **Dhanaraj (40)**, whose CV arrived last, brings PKI and certificate-lifecycle work that
+  nobody else here has — an enterprise Certificate Authority platform, X.509 and CSR
+  automation, OpenSSL certificate authentication — and his row is accurate on every field.
+  He has been out since March and asks an 11% hike.

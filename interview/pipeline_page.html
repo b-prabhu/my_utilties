@@ -733,13 +733,13 @@
 
     /* IKrux submission of 17 Nov 2026. No Relevant Experience or Offers column
        again. Four arrived without a CV; three followed on 18 Nov, which is
-       where the full names for 41, 43 and 44 come from. Only Dhanaraj (40) is
-       still outstanding \u2014 see action a118. */
+       where the full names for 41, 43 and 44 come from. Dhanaraj\u2019s followed
+       on 19 Nov, so every candidate in the list now has one. */
     [38,1,"Subhaashini Mounagurusamy","9150819100","subamcet@gmail.com","KG Information Systems (KGISL)","12 Years",
      "Not captured","Coimbatore","LWD : 30-Oct-26","2026-10-30",17,22,""],
     [39,1,"Saravanakumar Pongiyan","9500394865","pongiyansaravanakumar@gmail.com","Gainwell Technologies","16 Years",
      "Not captured","Coimbatore","LWD : 20-Jul-26","2026-07-20",23,28,""],
-    [40,1,"Dhanaraj R","9003703766","dhana.raj32@gmail.com","Infovision","17 Years",
+    [40,1,"Dhanaraj Ragunathan","9003703766","dhana.raj32@gmail.com","Infovision","17 Years",
      "Not captured","Coimbatore","LWD : 17-Mar-26","2026-03-17",22.45,25,""],
     [41,1,"Arunachalam Arumugam","8148695413","arun.arunachalam03@gmail.com","Orion Innovation Pvt Ltd","10.8 Years",
      "Not captured","Coimbatore","LWD : 15-Oct-26","2026-10-15",17,25,""],
@@ -765,8 +765,8 @@
   }).sort(function(a, b){ return a.sl - b.sl; });
 
   var VERDICT = {
-    /* Dhanaraj (40) has no CV, so he carries no verdict and the drawer reads
-       "Resume not reviewed" until one turns up. */
+    40:{k:"match", h:"PKI and certificate depth nobody else here has, and eight months out",
+       t:"Seventeen and a half years of Java, and the row is accurate on every field it records \u2014 the span, the location and the exit date all match the CV. The last four and a half years at InfoVision Labs are the most specialised work in this pipeline: identity-based micro-segmentation across OT, IT and cloud for the Invisinet platform, a Java 5 through 21 modernisation of the legacy code, REST microservices authenticated with OpenSSL certificates under Spring Security and JWT, and an enterprise Certificate Authority platform \u2014 X.509 issuance, renewal, revocation and validation, CSR and private-key generation and signing, expiry monitoring, RBAC and audit logging, with the ReactJS workflows over it. Nobody else submitted here brings PKI and certificate lifecycle work. Before it, six years of e-commerce microservices at Skava and then Infosys after the acquisition \u2014 catalog, cart, pricing, promotions, inventory, orders, payments and shipment \u2014 on Kafka, Docker, Kubernetes, Apache Camel and Jenkins. Two things to weigh. He has been out of work since 17 March, eight months, and describes himself as an immediate joiner; the 22.45 L to 25 L expectation is an 11% ask, the smallest of any senior here, which usually means someone who wants back in. And his degree is a BCA taken by distance education in 2012, four years after he started working, on top of a 2008 diploma."},
     41:{k:"match", h:"Six years actually leading, and the row matches the CV",
        t:"The cleanest Technology Lead submission in the pipeline. Ten years and eight months at one employer, Orion Innovation, with no gaps, and a row that agrees with the CV on the span, the location and the exit date \u2014 which almost nothing else here does. He worked up from application support on the MLB platform through software engineer to Technical Lead in April 2020, so the lead record is six and a half years rather than a recent title: he leads six engineers across 12+ applications for the Australian Football League, owns task allocation and delivery, and set the team\u2019s code quality and release standards. The engineering behind it is real ownership rather than participation \u2014 he migrated application data from IBM DB2 to PostgreSQL with query optimisation and took the database from Single Server to Flexible Server, drove the on-premises to Azure modernisation, runs the AKS deployments including pod monitoring and scaling, maintains SSO across the platform on Keycloak and Okta, and handles P1 and P2 production incidents. Two honest caveats: one employer for his whole career, so no exposure to another engineering culture, and the stack still carries Struts 2 and JSP with Java 8 as the stated version."},
     43:{k:"match", h:"Delivery governance at a scale nobody else here has run",
@@ -902,8 +902,11 @@
     {id:"a115", sl:39, sev:"Medium", issue:"Three gaps \u2014 15 months to Jun 2013, four months to Jan 2016 and five months to Mar 2022 \u2014 so about 14 years employed against the 16 recorded.", act:"Ask him to account for them and restate the span."},
     {id:"a116", sl:39, sev:"Medium", issue:"No cloud platform, containers or orchestration anywhere on the CV, where the other Technology Leads here bring AWS or Azure and Kubernetes.", act:"Decide whether this role needs them; if it does, this is a fit question rather than a gap to probe."},
     {id:"a117", sl:39, sev:"Low", issue:"The CV\u2019s project list and its own career table disagree on several dates, and three projects still read \u2018till date\u2019.", act:"Ask for a corrected CV before it goes to a panel."},
-    {id:"a118", sl:null, sev:"High", issue:"Four of the nine in the 17 Nov batch arrived with no CV. Three followed on 18 Nov \u2014 Arunachalam (41), Amirtha (43) and Prabaharan (44) \u2014 and all three are now read and assessed. Dhanaraj (40) is still outstanding.", act:"Chase IKrux for Dhanaraj\u2019s CV; he cannot be scheduled on a row alone."},
-    {id:"a119", sl:40, sev:"High", issue:"His LWD of 17 Mar 2026 has passed, so he has been out of work around eight months \u2014 and he is now the only candidate in the pipeline with no CV to read against it.", act:"Get the CV, then ask what he has been doing since March."},
+    {id:"a118", sl:null, sev:"High", issue:"Four of the nine in the 17 Nov batch arrived with no CV. Three followed on 18 Nov and Dhanaraj\u2019s on 19 Nov; all four are now read and assessed.", act:"Closed. Every candidate in the list has a CV on file and a verdict against it."},
+    {id:"a119", sl:40, sev:"High", issue:"His LWD of 17 Mar 2026 has passed and his CV confirms it, so he has been out of work around eight months. He describes himself as an immediate joiner and asks only an 11% hike.", act:"Ask what he has been doing since March, and whether anything else is in play."},
+    {id:"a144", sl:40, sev:"Medium", issue:"His CV carries a passport number alongside his date of birth, marital status and father\u2019s name. The transcription in this list deliberately leaves all of it out, but the source document still has it.", act:"Do not circulate the original PDF. Ask IKrux for a version without the identity document number, and brief the panel to disregard protected characteristics."},
+    {id:"a145", sl:40, sev:"Low", issue:"A five-month gap between Ranga Informatics ending Aug 2009 and Systech starting Jan 2010, and two sub-six-month stints in 2012 at NocSmart and P41.", act:"Fourteen years ago and unlikely to matter; ask only if the conversation turns to tenure."},
+    {id:"a146", sl:40, sev:"Low", issue:"His own CV says 15+ years where the row says 17 and his dates give about 17.5 \u2014 the rare case of a candidate understating himself.", act:"No action beyond reading the dates rather than the summary line."},
     {id:"a120", sl:null, sev:"Low", issue:"Two rows in this batch recorded only a single name. Their CVs give Arunachalam Arumugam (41) and, from his e-mail and LinkedIn, Prabaharan Jothi (44); the list now uses those.", act:"Closed. Ask IKrux to correct its own rows so the next submission matches."},
     {id:"a121", sl:43, sev:"Medium", issue:"Her CV confirms the 10.5 years, so it is the salary that stands out: 7 L for running 152 analysts across three countries, against an 11 L ask \u2014 the smallest in the pipeline.", act:"Confirm the figure directly. If it holds, move quickly; a counter-offer from TCS would be cheap for them."},
     {id:"a122", sl:43, sev:"Low", issue:"Her LWD of 15 Dec 2026 is the only one in the pipeline still in the future, so she is the one candidate genuinely serving notice.", act:"Nothing to chase \u2014 schedule her while the notice runs."},

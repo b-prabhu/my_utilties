@@ -61,14 +61,10 @@ var QSTREAM = {
   31:{s:"node",   l:"senior"}, 32:{s:"dotnet", l:"senior"}, 33:{s:"node", l:"senior"},
   34:{s:"delivery", l:"senior", fam:"delivery"},
   35:{s:"node",   l:"senior"}, 36:{s:"dotnet", l:"senior"}, 37:{s:"dotnet", l:"senior"},
-  /* Added 18 Nov 2026. SL 40, 41 and 44 arrived without a CV, so there is
-     nothing to stream them on; they are left out deliberately and fall back to
-     the questions every engineering stream can be asked. Give them an entry
-     once their resumes turn up. Amritha (43) has no CV either, but the role
-     decides the family, so she draws the delivery set rather than engineering
-     theory. */
+  /* Added 18\u201319 Nov 2026, as the four late CVs arrived. Every candidate in
+     the list now has a stream taken from what their resume actually shows. */
   38:{s:"java", l:"senior"}, 39:{s:"java", l:"senior"},
-  41:{s:"java", l:"senior"},
+  40:{s:"java", l:"senior"}, 41:{s:"java", l:"senior"},
   42:{s:"ops", l:"senior", fam:"delivery"},
   /* 43 ran SLA governance, capacity and workforce planning across three
      delivery locations, so the service-operations questions fit her. */
