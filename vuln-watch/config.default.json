@@ -1,0 +1,100 @@
+{
+  "schedule": {
+    "enabled": true,
+    "interval_value": 6,
+    "interval_unit": "hours",
+    "run_on_startup": true
+  },
+  "collection": {
+    "initial_lookback_days": 90,
+    "overlap_hours": 2,
+    "min_cvss": 0,
+    "include_unscored": true,
+    "retention_days": 365
+  },
+  "sources": {
+    "nvd": { "enabled": true, "api_key": "" },
+    "github": { "enabled": true, "token": "" },
+    "cisa_kev": { "enabled": true },
+    "epss": { "enabled": true }
+  },
+  "notifications": {
+    "webhook_url": "",
+    "min_severity": "CRITICAL",
+    "kev_always": true
+  },
+  "server": { "host": "127.0.0.1", "port": 8085 },
+  "tech_stack": [
+    {
+      "id": "react", "name": "React", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:facebook:react"],
+      "keywords": [],
+      "packages": [
+        { "ecosystem": "npm", "name": "react", "severity": "" },
+        { "ecosystem": "npm", "name": "react-dom", "severity": "" },
+        { "ecosystem": "npm", "name": "react-server-dom-webpack", "severity": "" },
+        { "ecosystem": "npm", "name": "react-router", "severity": "" }
+      ]
+    },
+    {
+      "id": "javascript", "name": "JavaScript", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:google:v8"],
+      "keywords": [],
+      "packages": [
+        { "ecosystem": "npm", "name": "", "severity": "critical" }
+      ]
+    },
+    {
+      "id": "nodejs", "name": "Node.js", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:nodejs:node.js", "cpe:2.3:a:nodejs:undici"],
+      "keywords": [],
+      "packages": [
+        { "ecosystem": "npm", "name": "express", "severity": "" },
+        { "ecosystem": "npm", "name": "undici", "severity": "" }
+      ]
+    },
+    {
+      "id": "python", "name": "Python", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:python:python", "cpe:2.3:a:python:pip"],
+      "keywords": [],
+      "packages": [
+        { "ecosystem": "pip", "name": "", "severity": "critical" }
+      ]
+    },
+    {
+      "id": "azure", "name": "Azure", "enabled": true, "color": "",
+      "cpes": [],
+      "keywords": ["Azure"],
+      "packages": [
+        { "ecosystem": "npm", "name": "@azure/identity", "severity": "" },
+        { "ecosystem": "pip", "name": "azure-identity", "severity": "" }
+      ]
+    },
+    {
+      "id": "postgres", "name": "PostgreSQL", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:postgresql:postgresql"],
+      "keywords": [],
+      "packages": [
+        { "ecosystem": "npm", "name": "pg", "severity": "" },
+        { "ecosystem": "pip", "name": "psycopg2", "severity": "" }
+      ]
+    },
+    {
+      "id": "kafka", "name": "Kafka", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:apache:kafka"],
+      "keywords": [],
+      "packages": [
+        { "ecosystem": "maven", "name": "org.apache.kafka:kafka-clients", "severity": "" },
+        { "ecosystem": "npm", "name": "kafkajs", "severity": "" }
+      ]
+    },
+    {
+      "id": "aks", "name": "AKS / Kubernetes", "enabled": true, "color": "",
+      "cpes": ["cpe:2.3:a:kubernetes:kubernetes", "cpe:2.3:a:kubernetes:ingress-nginx"],
+      "keywords": ["Azure Kubernetes Service"],
+      "packages": [
+        { "ecosystem": "go", "name": "k8s.io/kubernetes", "severity": "" }
+      ]
+    }
+  ]
+}

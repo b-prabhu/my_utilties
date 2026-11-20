@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VulnWatch Configuration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="/js/common.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div>VulnWatch<small>Security control centre</small></div>
+    </div>
+    <nav class="nav">
+      <a href="/">Dashboard</a>
+      <a href="/config" class="active">Configuration</a>
+    </nav>
+    <div class="spacer"></div>
+    <span class="pill" id="scanPill"><span class="pulse"></span><span>Loading…</span></span>
+    <button class="btn primary" id="scanBtn">Scan now</button>
+    <div class="prefs" id="prefs"></div>
+  </header>
+
+  <main class="page">
+    <div class="page-head">
+      <div>
+        <h1>Configuration</h1>
+        <p>Tech stack, schedule, data sources and appearance. Changes apply to the next scan once saved.</p>
+      </div>
+      <div class="row">
+        <button class="btn" id="importBtn">Import JSON</button>
+        <button class="btn" id="exportBtn">Export JSON</button>
+        <input type="file" id="importFile" accept="application/json" hidden>
+      </div>
+    </div>
+
+    <div class="cfg-layout">
+      <nav class="cfg-nav card">
+        <a href="#tech">Tech stack</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#collection">Collection</a>
+        <a href="#sources">Sources &amp; keys</a>
+        <a href="#notify">Notifications</a>
+        <a href="#appearance">Appearance</a>
+        <a href="#history">Scan history</a>
+      </nav>
+
+      <div>
+        <section class="card cfg-section" id="tech">
+          <div class="row" style="justify-content:space-between">
+            <h2>Tech stack</h2>
+            <div class="row">
+              <button class="btn sm" id="presetBtn">+ Add from preset</button>
+              <button class="btn sm primary" id="addTech">+ Add technology</button>
+            </div>
+          </div>
+          <p class="lead">Each technology is matched in the <b>NVD</b> by CPE (precise) and/or keyword (broad), and in the <b>GitHub Advisory Database</b> by package. Leave a package name blank to watch a whole ecosystem at the chosen severity.</p>
+          <div class="tech-grid" id="techList"></div>
+        </section>
+
+        <section class="card cfg-section" id="schedule">
+          <h2>Schedule</h2>
+          <p class="lead">How often the collector runs. Scans are incremental: each run only asks for records modified since the previous one.</p>
+          <div class="fields">
+            <div class="field">
+              <label>Run automatically</label>
+              <label class="toggle"><input type="checkbox" data-k="schedule.enabled"> Enabled</label>
+            </div>
+            <div class="field">
+              <label for="ivv">Interval</label>
+              <div class="row" style="flex-wrap:nowrap">
+                <input class="input" id="ivv" type="number" min="0.1" step="any" data-k="schedule.interval_value" data-num style="width:90px">
+                <select class="select" data-k="schedule.interval_unit">
+                  <option value="minutes">minutes</option><option value="hours">hours</option><option value="days">days</option><option value="weeks">weeks</option>
+                </select>
+              </div>
+              <span class="help">Minimum 5 minutes. Without an NVD key, keep this at 1 hour or more.</span>
+            </div>
+            <div class="field">
+              <label>Run on startup</label>
+              <label class="toggle"><input type="checkbox" data-k="schedule.run_on_startup"> Scan at first start</label>
+            </div>
+          </div>
+          <div class="row" style="margin-top:14px;gap:6px">
+            <span class="help" style="color:var(--muted);font-size:12px">Quick set:</span>
+            <button class="chip" data-iv="30,minutes">30 min</button>
+            <button class="chip" data-iv="1,hours">Hourly</button>
+            <button class="chip" data-iv="6,hours">Every 6 h</button>
+            <button class="chip" data-iv="12,hours">Every 12 h</button>
+            <button class="chip" data-iv="1,days">Daily</button>
+            <button class="chip" data-iv="1,weeks">Weekly</button>
+          </div>
+        </section>
+
+        <section class="card cfg-section" id="collection">
+          <h2>Collection</h2>
+          <p class="lead">What gets stored.</p>
+          <div class="fields">
+            <div class="field"><label>Initial lookback (days)</label><input class="input" type="number" min="1" max="3650" data-k="collection.initial_lookback_days" data-num><span class="help">How far back the first scan of a new or edited technology looks.</span></div>
+            <div class="field"><label>Minimum CVSS score</label><input class="input" type="number" min="0" max="10" step="0.1" data-k="collection.min_cvss" data-num><span class="help">0 keeps everything.</span></div>
+            <div class="field"><label>Keep unscored</label><label class="toggle"><input type="checkbox" data-k="collection.include_unscored"> Store items without a CVSS score yet</label><span class="help">New CVEs often wait days for NVD scoring.</span></div>
+            <div class="field"><label>Retention (days)</label><input class="input" type="number" min="0" data-k="collection.retention_days" data-num><span class="help">Purge resolved / ignored items not seen for this long. 0 = never.</span></div>
+            <div class="field"><label>Overlap (hours)</label><input class="input" type="number" min="0" max="72" data-k="collection.overlap_hours" data-num><span class="help">Re-read this much of the previous window so nothing slips between runs.</span></div>
+          </div>
+        </section>
+
+        <section class="card cfg-section" id="sources">
+          <h2>Sources &amp; API keys</h2>
+          <p class="lead">Keys are stored in <code>data/config.json</code> on the server and are never sent back to the browser. The environment variables <code>NVD_API_KEY</code> and <code>GITHUB_TOKEN</code> take precedence.</p>
+          <div class="fields">
+            <div class="field">
+              <label class="toggle"><input type="checkbox" data-k="sources.nvd.enabled"> NIST NVD (CVE)</label>
+              <input class="input" type="password" autocomplete="off" placeholder="NVD API key (optional, 10× faster)" data-k="sources.nvd.api_key">
+              <span class="help">Free key: <a href="https://nvd.nist.gov/developers/request-an-api-key" target="_blank" rel="noopener">nvd.nist.gov</a></span>
+            </div>
+            <div class="field">
+              <label class="toggle"><input type="checkbox" data-k="sources.github.enabled"> GitHub Advisory Database</label>
+              <input class="input" type="password" autocomplete="off" placeholder="GitHub token (optional, higher rate limit)" data-k="sources.github.token">
+              <span class="help">Any token works; no scopes needed.</span>
+            </div>
+            <div class="field">
+              <label class="toggle"><input type="checkbox" data-k="sources.cisa_kev.enabled"> CISA Known Exploited (KEV)</label>
+              <span class="help">Flags vulnerabilities exploited in the wild.</span>
+            </div>
+            <div class="field">
+              <label class="toggle"><input type="checkbox" data-k="sources.epss.enabled"> FIRST EPSS scores</label>
+              <span class="help">Probability of exploitation in the next 30 days.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card cfg-section" id="notify">
+          <h2>Notifications</h2>
+          <p class="lead">Post a summary of newly found vulnerabilities to a Microsoft Teams, Slack or generic webhook after each scan.</p>
+          <div class="fields">
+            <div class="field" style="grid-column:1 / -1"><label>Webhook URL</label><input class="input" type="password" autocomplete="off" placeholder="https://…" data-k="notifications.webhook_url"></div>
+            <div class="field"><label>Notify from severity</label>
+              <select class="select" data-k="notifications.min_severity"><option>CRITICAL</option><option>HIGH</option><option>MEDIUM</option><option>LOW</option></select></div>
+            <div class="field"><label>Known exploited</label><label class="toggle"><input type="checkbox" data-k="notifications.kev_always"> Always notify for KEV items</label></div>
+          </div>
+        </section>
+
+        <section class="card cfg-section" id="appearance">
+          <h2>Appearance</h2>
+          <p class="lead">Saved in this browser. The same selectors are in the top bar on every page.</p>
+          <div class="field"><label>Color theme</label><div class="preview-swatches" id="swatches"></div></div>
+          <div class="field" style="margin-top:14px;max-width:320px"><label for="fontSel2">Font</label><select class="select" id="fontSel2"></select></div>
+        </section>
+
+        <section class="card cfg-section" id="history">
+          <div class="row" style="justify-content:space-between">
+            <h2>Scan history</h2>
+            <button class="btn sm danger" id="cancelScan">Cancel running scan</button>
+          </div>
+          <p class="lead" id="histLead">Last 20 runs.</p>
+          <div class="table-wrap"><table class="runs"><thead><tr><th>Started</th><th>Status</th><th>Duration</th><th>Fetched</th><th>New</th><th>Updated</th><th>Errors</th></tr></thead><tbody id="runRows"></tbody></table></div>
+        </section>
+
+        <div class="savebar" id="savebar">
+          <span class="msg" id="saveMsg">All changes saved.</span>
+          <div class="row">
+            <button class="btn ghost" id="resetDefaults">Reset to defaults</button>
+            <button class="btn" id="discardBtn">Discard changes</button>
+            <button class="btn primary" id="saveBtn">Save configuration</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/config.js"></script>
+</body>
+</html>
