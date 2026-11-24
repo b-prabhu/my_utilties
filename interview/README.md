@@ -9,7 +9,7 @@ Two deliverables that share one source of truth.
 | File | What it is |
 |---|---|
 | `pipeline_page.html` | The page: candidate list, filters, drawer, Round 1 sheet, export |
-| `pipeline_resumes.js` | All 46 resumes, transcribed into structured sections |
+| `pipeline_resumes.js` | All 50 resumes, transcribed into structured sections |
 | `pipeline_questions.js` | 90 Round 1 questions with expected answers, plus the per-candidate stream map |
 | `pipeline_fonts.js` | Poppins 400 and 500, subset to the glyphs the resumes use, base64 for jsPDF |
 | `pipeline_bundle.js` | Builds the candidate pack: the workbook and the typeset resume PDFs |
@@ -96,18 +96,18 @@ their own view.
 - CTC, ECTC and Offered CTC are **INR lakhs per annum**; dates are `DD-MMM-YY`.
 - `Days to LWD` is negative once the last working day has passed, measured against the
   as-on date in `Summary!B4` — the single input cell.
-- Commercials are captured for all 46. Where a candidate gives a **notice period but no
+- Commercials are captured for all 50. Where a candidate gives a **notice period but no
   exit date**, availability reads "Notice period only" and shows the notice rather than
   pretending a date is known.
 
 ## Where the pipeline stands
 
-46 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
-8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026, 4 on 30-Oct-2026 and 9 on 17-Nov-2026. Six
-roles: Technical Consultant, Technology Lead, Senior Software Engineer, Technical Project
-Manager, Process Manager and Application Support. 42 have a CV on file and a verdict against
-it. All 46 now have a CV on file and a verdict against it. 146 open actions: 37 High,
-67 Medium, 42 Low.
+50 candidates, all from IKrux Engineering — 6 submitted 5-Sep-2026, 17 on 21-Sep-2026, 2 on
+8-Oct-2026, 5 on 22-Oct-2026, 3 on 23-Oct-2026, 4 on 30-Oct-2026, 9 on 17-Nov-2026 and 4 on
+23-Nov-2026. Seven roles: Technical Consultant, Technology Lead, Senior Software Engineer,
+Technical Project Manager, Process Manager, Application Support and Engineering Manager. 42 have a CV on file and a verdict against
+it. All 50 have a CV on file and a verdict against it. 160 open actions: 44 High, 73 Medium,
+43 Low.
 
 The 23-Oct row was headed `Technology Consultant`; confirmed as the same opening as Technical
 Consultant and merged into it. The band gap is still open (a109): SL 1–8 are 14–15 years at
@@ -162,6 +162,11 @@ Headline findings:
   DB2-to-PostgreSQL migration and an on-prem-to-Azure modernisation he owned, and a row that
   agrees with his CV on every field. She runs delivery governance for 152 analysts across
   three countries, turned an SLA breach to full compliance in twelve months, and asks 11 L.
+- **The first Engineering Manager slate (47–50) misses the stack.** None of the four has the
+  Java plus Azure combination the JD names: Sivacharan and Karky are AWS, Viswanathan has no
+  cloud at all, and only Dinesh Ramadoss has Azure — and he has been out of work eighteen and
+  a half months, the longest break in the pipeline. Either the Azure requirement relaxes and
+  IKrux is told, or it is a hard filter and they are screening on something else. Action a160.
 - **Dhanaraj (40)**, whose CV arrived last, brings PKI and certificate-lifecycle work that
   nobody else here has — an enterprise Certificate Authority platform, X.509 and CSR
   automation, OpenSSL certificate authentication — and his row is accurate on every field.

@@ -1954,5 +1954,173 @@ var RESUMES = {
       "Built Windows business modules for internal operations in VC++ and the Windows API."]]
   ]},
   {h:"Education, certifications and achievements", b:[["p","Bachelor of Computer Applications — Bharathiar University, School of Distance Education, Coimbatore, 2012. Diploma in Computer Engineering — Sri Ramakrishna Polytechnic College, 2008. React with TypeScript (Eduramp, 2025); Master in Solution Architecture (Udemy, 2025). Technological Contribution Award and letter of appreciation at Point Perfect, Dec 2014, for an automation tool."]]}
+]},
+
+47: {file:"Sivacharan_T.pdf", title:"Senior Java Engineer / DevOps and Platform Lead",
+  contact:"charansiva15@gmail.com · +91 9886506301 / 9566990747 · Coimbatore",
+  sections:[
+  {h:"Profile summary", b:[["p","Twelve years in backend architecture, cloud-native development and DevOps. Leads engineering teams delivering enterprise applications, architects cloud-native microservices on AWS, and runs end-to-end DevOps strategy covering CI/CD, containerisation and GitOps deployment. Designs event-driven architectures on Kafka, and has integrated AI tooling including GenAI-based document extraction into the engineering workflow."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Languages and frameworks","Java, SQL, Spring Boot, Spring MVC, microservices, REST, SOAP, GraphQL"],
+    ["AWS","Lambda, S3, DynamoDB, API Gateway, EC2, Elastic Beanstalk, CloudFormation"],
+    ["DevOps","Docker, Kubernetes, Jenkins, Bamboo, Git, Bitbucket, ArgoCD (GitOps)"],
+    ["Testing and quality","JUnit, Mockito, Selenium, Karate, Gatling, Veracode"],
+    ["Data and servers","DB2, HDFS, Hive; WebLogic, WebSphere; Maven, Gradle, Ant"],
+    ["AI tooling","GitHub Copilot, Cursor, Augment, Gemini Flash Vision"]
+  ]]]},
+  {h:"Work experience", b:[
+    ["job","Engineering Manager","Cognizant","Since Mar 2025",[
+      "Leads and mentors an engineering team, aligning individual strengths against sprint goals and delivery timelines.",
+      "Architected an enterprise expense management microservice on hexagonal architecture, decoupling domain logic and integrating 10+ external partner systems.",
+      "Designed an event-driven data pipeline on Apache Kafka using the outbox pattern and the CloudEvents standard, with idempotent processing for fault-tolerant publishing.",
+      "Built a configurable multi-step orchestration engine with centralised error handling and automated retries, exposed through a federated GraphQL API on Netflix DGS.",
+      "Integrated Google Gemini 2.0 Flash Vision for receipt parsing and auto-categorisation, with OCR-based ingestion pipelines.",
+      "Enabled SAP Concur bidirectional synchronisation and secure file transactions through AWS S3 pre-signed URLs.",
+      "Implemented end-to-end CI/CD on Jenkins, Docker, Kubernetes and ArgoCD, holding 85%+ test coverage with JUnit 5, Karate and Gatling."]],
+    ["job","Senior Software Engineer","Epsilon","Oct 2021 – Mar 2025",[
+      "Designed and built Spring Boot microservices containerised with Docker for consistent deployment across environments.",
+      "Implemented AWS serverless solutions in Python for a banking rewards redemption platform, reducing infrastructure overhead.",
+      "Led DevOps work on code integration, deployment automation and CI/CD workflows in Jenkins and Git.",
+      "Engineered Kafka streaming ecosystems including Zookeeper and Logstash clusters for real-time ingestion.",
+      "Improved system availability by 25% through ELK-based centralised logging and ThousandEyes monitoring, and led release management."]],
+    ["job","Associate","Cognizant","Jun 2018 – Sep 2021",[
+      "Delivered RESTful APIs for the insurance domain, with build and deployment through Bamboo, Jenkins and UCDeploy.",
+      "Led a proof of concept modernising legacy EJB applications onto Spring.",
+      "Strengthened code quality and security using Veracode, JUnit, Mockito and Selenium, with dependency upgrades through Maven.",
+      "Planned and executed WebSphere server upgrades across applications."]],
+    ["job","Senior Systems Engineer","Infosys Limited","May 2014 – Jun 2018",[
+      "Built backend utilities in Core Java and SQL for insurance premium calculations.",
+      "Built UI components in jQuery, AJAX, JSP and JavaScript against backend services.",
+      "Supported big data ingestion into the enterprise data lake using Hive and HDFS."]]
+  ]},
+  {h:"Awards and education", b:[["p","Third prize at organisation level, Infosys 2016, for the Zero Distance Tool initiative. Insta Award, Infosys 2017, for an automation solution validating letter feed generation. B.E. Electrical and Electronics Engineering — Sri Ramakrishna Engineering College, 2014."]]}
+]},
+
+48: {file:"Dinesh_Ramadoss.pdf", title:"Senior Technical Manager | Engineering Manager",
+  contact:"+91 89398 41752 · maildineshramadoss@gmail.com · Chennai, Tamil Nadu",
+  sections:[
+  {h:"Profile summary", b:[["p","Sixteen-plus years in software engineering across fintech, banking and hospitality, covering analysis, design, architecture, development and maintenance. Works as an engineering and technical manager on solutioning, delivery and stakeholder alignment, with project management and Agile practice alongside team leadership. Experience designing and implementing high-availability microservices, and mentoring engineers."]]},
+  {h:"Technical skills", b:[["kv",[
+    ["Backend","Java, Spring Boot, Spring Batch, JPA, Spring Aspects, Spring Messaging (WSS/STOMP), server-sent events, Hibernate, REST, Bucket4j, Resilience4j, Servlets, JSP, JDBC"],
+    ["Contextual","Spring AI, Kafka, Spring streaming response, Modulith, JMX, Prometheus, Grafana, Spring gRPC (protobuf), symmetric and asymmetric encryption (AES/RSA), Docker and Kubernetes"],
+    ["AI (exposure)","Spring AI, retrieval-augmented generation, vector stores, Model Context Protocol, tool calling, advisor pattern, structured output parsing, chat memory, prompt engineering, token management"],
+    ["Data and cloud","MongoDB, SQL, Apache Hive, Apache Parquet; Azure APIMs, Azure Storage, Azure Functions"],
+    ["Testing","JUnit, Mockito, Selenium, TestNG"]
+  ]]]},
+  {h:"Career history", b:[
+    ["job","Senior Manager — GTB Common Services","Intellect Design Arena, Chennai","Feb 2024 – May 2025",[
+      "Estimation and planning of product features and change requests, with roadmap development and capacity planning.",
+      "Conducted architecture and code reviews, and led design and development initiatives to delivery.",
+      "Managed stakeholder expectations, balancing technical feasibility against business requirements.",
+      "Published general-purpose APIs into the API Exchange, improving PII-plus scores; introduced customised health checks beyond the default APIs.",
+      "Contributed to a homegrown observability dashboard proof of concept, reducing reliance on proprietary monitoring tools, and led research on end-to-end encryption for banking products.",
+      "Reports a 25% rise in team productivity through triage with small teams, and a 25% reduction in project delays."]],
+    ["job","Engineering Manager","Pine Labs, Noida","Mar 2022 – Apr 2023",[
+      "Directed architecture and code reviews, and managed project execution as primary stakeholder contact.",
+      "Led recruitment to build the engineering team, and drove capacity planning against performance loads.",
+      "Facilitated scrum and scrum-of-scrums, acting as scrum master for two two-pizza teams; reports a 20% rise in deliveries.",
+      "Assessed product vendors on API specifications, NFRs and business continuity for onboarding.",
+      "Led the integration of WhatsApp for Business, the first of its kind at Pine Labs, and directed cost-saving SMS vendor integration.",
+      "Migrated legacy products onto the Spring Boot stack, and delivered automated RBI compliance reporting.",
+      "Reports identifying project, infrastructure and capacity risks early, reducing overruns by 30%."]],
+    ["job","Senior Lead — Platform Core Services","Agilysys, Chennai","Feb 2019 – Mar 2022",[
+      "Managed, designed and maintained core platform services including ADM, property seeding on Azure Functions and content management on Azure Storage.",
+      "Designed application architecture and integration, with code and design reviews and documentation.",
+      "Ran capacity and infrastructure planning and drove recruitment.",
+      "Delivered Agilysys’ first in-house digital marketing tool.",
+      "Innovated raw JSON parsing through XPath, removing the need for mapping models, and enabled customer onboarding with flat JSONs within hours and no code change.",
+      "Launched a core platform service reported to cut downtime by 70%, and a 60% reduction in operational costs."]],
+    ["job","Project Manager 2 — PayPal account","Syntel Inc., Chennai","Apr 2016 – Jan 2019",[
+      "Directed cross-functional teams on resourcing, recruitment, people management and capacity planning.",
+      "Worked across GDPR compliance, STILT security, unbranded payments automation, payout platform migration from C++ to Java and REST, and shipping label accounting, batch processing and reconciliation.",
+      "Architected data ingestion systems, batch processing platforms and REST APIs, and XML-based validation frameworks."]],
+    ["job","Delivery Manager — Logical Access Management Program","Standard Chartered, Chennai","Sep 2014 – Sep 2015",[
+      "Delivered employee access provisioning and reconciliation for banking systems using OIM, Sitepoint and Java frameworks.",
+      "Monitored KPIs, work breakdown and roadmaps, and reviewed functional specifications and user tests."]],
+    ["job","Earlier roles","BNY Mellon (iNautix), FreddieMac, RealPage, Multivision – Perot Systems, Bally Technologies, Dun and Bradstreet","Sep 2005 – Sep 2014",[
+      "Team Leader at BNY Mellon, Chennai (Sep 2012 – Sep 2014).",
+      "Senior Consultant at FreddieMac, McLean VA (Jun 2010 – Dec 2010); Developer 3 at RealPage, Dallas TX (Nov 2008 – May 2010); Senior Consultant at Multivision – Perot Systems, Fairfax VA (Feb 2008 – Nov 2008).",
+      "Software Analyst at Bally Technologies, Chennai (Sep 2006 – Jan 2008); Senior Software Analyst at Dun and Bradstreet, Chennai (Sep 2005 – Sep 2006)."]]
+  ]},
+  {h:"Education", b:[["p","Bachelor of Engineering in Computer Science — Madras University, 2002."]]}
+]},
+
+49: {file:"Viswanathan_M.pdf", title:"Engineering Manager | Java Solution Architect",
+  contact:"Chennai, India · +91 9952999823 · viswanathan.valarmathi@gmail.com",
+  sections:[
+  {h:"Professional summary", b:[["p","Engineering manager and hands-on technical leader with fifteen-plus years across logistics, healthcare and enterprise applications. Combines solution design, Java engineering and people leadership, including leading a nine-member engineering team while contributing to architecture, technical design, development, troubleshooting and delivery. Works in Java, Spring Boot, microservices, REST, Apache Kafka, event-driven and distributed systems, and enterprise modernisation, with AI-assisted engineering practices using OpenAI GPT and GitHub Copilot."]]},
+  {h:"Core competencies", b:[["kv",[
+    ["Engineering leadership","Team leadership, technical mentoring, Agile and Scrum, sprint planning, backlog refinement, estimation, stakeholder management, delivery governance"],
+    ["Architecture","Solution architecture, microservices, distributed systems, event-driven architecture, API design, REST and SOAP integration, design patterns, scalability, resilience"],
+    ["Java","Java 11/17/21, Spring Boot, Spring MVC, JPA, Hibernate, Core Java, JavaScript, JSP, XML, SQL"],
+    ["Streaming and data","Apache Kafka, Kafka Streams, Apache Flink, Debezium, change data capture, Oracle, Microsoft SQL Server, data synchronisation and migration"],
+    ["Generative AI","OpenAI GPT, GitHub Copilot, AI-assisted code review and generation, AI agent workflows"],
+    ["Delivery and operations","CI/CD, Jenkins, Maven, GitLab, Bitbucket, SonarLint, JUnit, production support, incident management, RCA, Linux/UNIX"]
+  ]]]},
+  {h:"Professional experience", b:[
+    ["job","Engineering Manager — INOPS (Inland Operations)","Hapag-Lloyd Technology Center, Chennai","Feb 2025 – present",[
+      "Leads a nine-member engineering team for inland operations platforms, balancing people leadership with hands-on architecture, design, development, troubleshooting and delivery.",
+      "Translates business requirements into scalable technical solutions, working with business and technology stakeholders on options, dependencies and priorities.",
+      "Drives delivery through sprint planning, standups, backlog refinement, estimation, reviews and retrospectives.",
+      "Contributes to FIS migration initiatives and enterprise integrations.",
+      "Establishes and reviews architectural approaches for Java and Spring Boot microservices and Kafka-based event-driven integration.",
+      "Leads production troubleshooting and root-cause analysis, and coordinates corrective action.",
+      "Applies AI-assisted engineering using OpenAI GPT and GitHub Copilot for code review, generation and selected automation — noting that engineering decisions and final reviews remain with the development team, and claiming no unverified productivity figures.",
+      "Worked on a change data capture architecture using SQL Server, Debezium and Kafka, with Kafka Streams and Flink processing and Oracle integration; contributed to integration patterns involving event headers, retry and error handling, and outbox and saga concepts."]],
+    ["job","Technical Leader","Acentra Health (formerly CNSI)","Aug 2019 – Feb 2025",[
+      "Led technical development and delivery for Medicaid Management Information System applications supporting the Washington Department of Healthcare.",
+      "Worked across third party liability, claims, eligibility, authorisation, EDI exchanges and case receipt workflows.",
+      "Translated business and functional requirements into technical designs and implementation plans, coordinating development, reviews, defect resolution and release.",
+      "Modernised and maintained modules in Java, Spring MVC and enterprise web technologies within the evoBrix framework.",
+      "Mentored engineers and supported onboarding through peer guidance and subsystem walkthroughs."]],
+    ["job","Associate","Cognizant Technology Solutions","Jun 2011 – Jul 2019",[
+      "Developed and supported healthcare platforms for CareCentrix across claims, eligibility and care-transition workflows.",
+      "Designed automated queue manager event triggers integrated with Salesforce web services for authorisation tracking.",
+      "Developed self-service claim-status capabilities for reconsiderations and appeals.",
+      "Contributed to migrating a legacy VB6.0 claims application to a Java web platform with REST endpoints.",
+      "Served as a technical interview panelist, evaluating Java and JEE candidates."]],
+    ["job","Developer","Coromandel InfoTech","Jul 2010 – Jun 2011",[
+      "Developed operational modules for the InciseEAM application, including contractor registration and asset verification, with unit and integration testing."]]
+  ]},
+  {h:"Education", b:[["p","Master of Computer Applications — K.S.R. College of Technology, affiliated with Anna University."]]}
+]},
+
+50: {file:"Karky_Perumal.pdf", title:"Engineering Manager | Software Engineering and Technical Leadership",
+  contact:"+91 7904656738 · itdictator@gmail.com · Chennai, India",
+  sections:[
+  {h:"Professional summary", b:[["p","Engineering manager with seventeen-plus years in software engineering, application development, technical leadership and Agile delivery. Leads cross-functional engineering teams, manages the full software development lifecycle, and designs enterprise applications. States a technical background in Java, Python, PHP, Node.js, React.js, microservices, REST APIs and database management, with automated testing, test-driven development and code quality practice."]]},
+  {h:"Core competencies", b:[["kv",[
+    ["Languages","Java, Python, PHP, JavaScript, TypeScript"],
+    ["Frameworks","React.js, Next.js, Node.js, Laravel"],
+    ["Databases","MySQL, PostgreSQL, Microsoft SQL Server"],
+    ["Cloud and DevOps","AWS, Docker, Kubernetes, cloud storage"],
+    ["Architecture","Microservices, REST APIs, GraphQL"],
+    ["Quality and process","Unit testing, automated functional testing, test-driven development, Agile, Scrum"]
+  ]]]},
+  {h:"Experience", b:[
+    ["job","Engineering Manager","Pasonet Technology, Chennai","Sep 2025 – present",[
+      "Directs cross-functional teams of developers, QA and DevOps engineers for delivery of enterprise software.",
+      "Oversees the full lifecycle from requirements and solution architecture through testing, deployment and production support.",
+      "Provides technical direction for applications in PHP, Python, Java, Node.js and React.js.",
+      "Drives scalable, secure application architectures using microservices and REST APIs."]],
+    ["job","Engineering Manager","Straive, Chennai","Nov 2022 – Aug 2025",[
+      "Led multiple Agile engineering teams delivering enterprise web applications and cloud-native solutions.",
+      "Managed project planning, effort estimation, sprint execution, risk assessment, release coordination and stakeholder communication.",
+      "Provided technical guidance across Java, PHP, Python, Node.js and React.js environments.",
+      "Spearheaded microservices architecture initiatives and REST API development.",
+      "Supervised database architecture and optimisation across MySQL, PostgreSQL and Microsoft SQL Server."]],
+    ["job","Team Lead","Rapiddata, Chennai","May 2021 – Sep 2022",[
+      "Supervised an eight-member engineering team, setting performance objectives and mentoring senior developers.",
+      "Streamlined API integrations and client onboarding, reducing onboarding time by 30%.",
+      "Designed SaaS application architectures using PHP, Laravel, Node.js and React/Next.js."]],
+    ["job","Team Lead","Maksan Solution, Chennai","Jul 2016 – May 2021",[
+      "Conducted technical analysis and built backend database solutions in MySQL.",
+      "Managed application development and enhancement, maintaining code quality and system stability."]],
+    ["job","Senior Developer","Clockwork Business Solution, Bangalore","Jan 2015 – Jun 2016",[
+      "Built SaaS applications and introduced test-driven development and automated testing, which he reports cut production defects by 40%."]],
+    ["job","Developer","Vinayak Infotech, Chennai","Apr 2008 – Dec 2014",[
+      "Contributed to the design and development of web and SaaS applications, and supported implementation across projects."]]
+  ]},
+  {h:"Certifications and education", b:[["p","AWS Certified Solutions Architect – Associate, January 2026. Certified ScrumMaster, Scrum Alliance. MBA — GLA University, 2014–2016, GPA 8. B.Tech — Anna University, 2002–2006, GPA 6."]]}
 ]}
 };

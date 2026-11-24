@@ -517,7 +517,7 @@
     <div class="mark" aria-hidden="true">CT</div>
     <div class="brand">
       <h1>Certainti Hiring Portal</h1>
-      <p>IKrux Engineering &middot; 46 candidates &middot; submitted 5 Sep 2026 through 17 Nov 2026</p>
+      <p>IKrux Engineering &middot; 50 candidates &middot; submitted 5 Sep 2026 through 23 Nov 2026</p>
     </div>
     <div class="mtools">
       <div class="asof">As on<b id="asof">&mdash;</b></div>
@@ -616,7 +616,7 @@
 
   /* ===================== source data ===================== */
   var ROLES = ["Technical Consultant","Technology Lead","Senior Software Engineer","Technical Project Manager",
-               "Process Manager","Application Support"];
+               "Process Manager","Application Support","Engineering Manager"];
   var C = [
     [1,0,"Jeganagan Murugesan","9940641190","jeganagan@gmail.com","L&T Infotech","14 Years",
      ".Net 14 Years | React 3 Years | Cloud 3 Years | Lead 4 Years | AI 2 Years | Client Interaction 10 Years",
@@ -752,7 +752,18 @@
     [45,0,"Archana Ravi","6385074711","archaravi3@gmail.com","Terralogic Software","10.5 Years",
      "Not captured","Coimbatore","LWD : 27-Jul-26","2026-07-27",13,25,""],
     [46,0,"Ramkumar K","9994200270","ramkumar.kollimalayan@outlook.com","ProdEngines","8 Years",
-     "Not captured","Coimbatore","LWD : 5-Nov-26","2026-11-05",9.7,16,""]
+     "Not captured","Coimbatore","LWD : 5-Nov-26","2026-11-05",9.7,16,""],
+
+    /* IKrux submission of 23 Nov 2026 \u2014 the first Engineering Manager roles,
+       against the JD written on 19 Nov. No Relevant Experience column again. */
+    [47,6,"Sivacharan T","9886506301","charansiva15@gmail.com","Cognizant","12 Years",
+     "Not captured","Coimbatore","LWD : 15-Dec-26","2026-12-15",28.5,36,"Offer : 34 L"],
+    [48,6,"Dinesh Ramadoss","8939841752","maildineshramadoss@gmail.com","Intellect Design Arena","17 Years",
+     "Not captured","Chennai","LWD : 12-May-25","2025-05-12",30,36,""],
+    [49,6,"Viswanathan M","9952999823","viswanathan.valarmathi@gmail.com","Hapag-Lloyd Technology","15 Years",
+     "Not captured","Coimbatore","LWD : 9-Dec-26","2026-12-09",29,32,""],
+    [50,6,"Karky Perumal","7904656738","karky.techie@gmail.com","Pasonet Technologies Pvt Ltd","17 Years",
+     "Not captured","Coimbatore","LWD : 30-Nov-26","2026-11-30",24,28,""]
   ].map(function(r){
     return {sl:r[0], role:ROLES[r[1]], name:r[2], mobile:r[3], email:r[4], company:r[5],
             totalExp:r[6], relExp:r[7], curLoc:r[8], notice:r[9], lwd:r[10],
@@ -761,10 +772,18 @@
             subDate:(r[0] <= 17 ? "21-Sep-2026" : r[0] <= 23 ? "5-Sep-2026"
                      : r[0] <= 25 ? "8-Oct-2026" : r[0] <= 30 ? "22-Oct-2026"
                      : r[0] <= 33 ? "23-Oct-2026" : r[0] <= 37 ? "30-Oct-2026"
-                     : "17-Nov-2026")};
+                     : r[0] <= 46 ? "17-Nov-2026" : "23-Nov-2026")};
   }).sort(function(a, b){ return a.sl - b.sl; });
 
   var VERDICT = {
+    47:{k:"caution", h:"Excellent engineer, eighteen months a manager, and holding an offer",
+       t:"The strongest current engineering on this slate. At Cognizant since Mar 2025 he has built an expense management microservice on hexagonal architecture integrating 10+ partner systems, an event-driven Kafka pipeline using the outbox pattern and CloudEvents with idempotent processing, a configurable multi-step orchestration engine with centralised error handling and retries, and a federated GraphQL API on Netflix DGS \u2014 plus Gemini 2.0 Flash Vision for receipt parsing, SAP Concur bidirectional sync, and CI/CD through Jenkins, Docker, Kubernetes and ArgoCD at 85%+ coverage. Twelve and a half years with no gaps, all of it Java. Three things against the brief. His Engineering Manager title dates from Mar 2025, so the management is about eighteen months against the four years we set \u2014 everything before it was Senior Software Engineer, Associate and Senior Systems Engineer. His cloud is AWS throughout, with no Azure anywhere. And he already holds an offer at 34 L against a 36 L expectation on 28.5 L now, so there is almost nothing to bid with and his notice is already running to 15 December."},
+    48:{k:"risk", h:"The best management record here, and eighteen months out of work",
+       t:"On paper this is the closest fit to the brief: Engineering Manager at Pine Labs, Senior Manager at Intellect, Senior Lead at Agilysys, Project Manager 2 on the PayPal account at Syntel, Delivery Manager at Standard Chartered. Recruitment, capacity and infrastructure planning, architecture and code review, scrum master across two teams, vendor assessment and stakeholder negotiation \u2014 the people half of the role is evidenced repeatedly rather than asserted once. He is also the only candidate on this slate with real Azure (APIMs, Storage, Functions at Agilysys) alongside the Java, and he is honest about labelling his Spring AI, RAG and MCP work as exposure rather than delivery. The problem is the record around it. His last working day was 12 May 2025, which his CV confirms, so he has been out of work eighteen and a half months \u2014 by a wide margin the longest break in this pipeline. Three further gaps sit behind it: twenty-one months to Sep 2012, seven months to Apr 2016, ten months to Feb 2024. That is roughly four years unemployed across the span, thirteen employers in twenty years with several around a year, and a 36 L ask after eighteen months without a salary. He is also in Chennai."},
+    49:{k:"caution", h:"Nine-member team and real streaming depth, but no cloud at all",
+       t:"Sixteen years with no gaps, and the only candidate here whose CV is scrupulous about what it claims \u2014 on his AI work he writes that engineering decisions and final reviews stay with the team, and that no unverified productivity figures are claimed. That is the disposition this role needs. Engineering Manager at Hapag-Lloyd since Feb 2025 leading nine engineers on inland operations platforms, balancing people leadership with hands-on architecture, and before it five and a half years as Technical Leader at Acentra Health delivering Medicaid MMIS applications for the Washington Department of Healthcare \u2014 so the leading is about seven years, not the eighteen months the title suggests. Strong event-driven substance: Kafka, Kafka Streams, Flink, Debezium change data capture from SQL Server into Oracle, outbox and saga patterns, production root-cause analysis. He has also sat as a technical interview panelist, which is part of this job. Two gaps against the brief. There is no cloud platform anywhere on the CV \u2014 no Azure, no AWS, no containers or orchestration \u2014 which is a straight miss on a stack we named. And his CV header says Chennai, as does his current role, where the row says Coimbatore."},
+    50:{k:"risk", h:"Four years a manager, but the Java is asserted and the CV repeats itself",
+       t:"He clears the management bar on paper: Engineering Manager at Straive from Nov 2022 and at Pasonet since Sep 2025, four years at the grade, on top of five years as a team lead including an eight-member team at Rapiddata. AWS Certified Solutions Architect Associate, Certified ScrumMaster, an MBA alongside the B.Tech. Then the CV starts working against him. His stack is PHP and Laravel, Python, Node.js and React or Next.js; Java appears in every skills line and in no project description anywhere, which is the same pattern that made Karthy (12) a mis-mapping. His cloud is AWS, not the Azure we asked for. The sentence \u2018designed scalable SaaS application architectures using Python, Java, PHP, Laravel, Node.js and React/Next.js\u2019 is repeated almost verbatim across four different employers, so nothing distinguishes what he actually did at any of them. His CV header reads Chennai against a Coimbatore row, and the e-mail on it is itdictator@gmail.com rather than the karky.techie@gmail.com we were given."},
     40:{k:"match", h:"PKI and certificate depth nobody else here has, and eight months out",
        t:"Seventeen and a half years of Java, and the row is accurate on every field it records \u2014 the span, the location and the exit date all match the CV. The last four and a half years at InfoVision Labs are the most specialised work in this pipeline: identity-based micro-segmentation across OT, IT and cloud for the Invisinet platform, a Java 5 through 21 modernisation of the legacy code, REST microservices authenticated with OpenSSL certificates under Spring Security and JWT, and an enterprise Certificate Authority platform \u2014 X.509 issuance, renewal, revocation and validation, CSR and private-key generation and signing, expiry monitoring, RBAC and audit logging, with the ReactJS workflows over it. Nobody else submitted here brings PKI and certificate lifecycle work. Before it, six years of e-commerce microservices at Skava and then Infosys after the acquisition \u2014 catalog, cart, pricing, promotions, inventory, orders, payments and shipment \u2014 on Kafka, Docker, Kubernetes, Apache Camel and Jenkins. Two things to weigh. He has been out of work since 17 March, eight months, and describes himself as an immediate joiner; the 22.45 L to 25 L expectation is an 11% ask, the smallest of any senior here, which usually means someone who wants back in. And his degree is a BCA taken by distance education in 2012, four years after he started working, on top of a 2008 diploma."},
     41:{k:"match", h:"Six years actually leading, and the row matches the CV",
@@ -895,6 +914,20 @@
     {id:"a52", sl:23, sev:"Medium", issue:"LWD of 30 Sep 2026 has passed, so he is already out.", act:"Confirm current status and availability."},
     {id:"a53", sl:23, sev:"Low", issue:"The row credits React: 2+ Years; the CV mentions React once, on a single pharmacy application.", act:"Verify the React depth if the role needs front-end work."},
     {id:"a54", sl:23, sev:"Low", issue:"Accenture is his only employer across all five years, and the degree is B.E. Mechatronics rather than computer science.", act:"Probe adaptability outside a single engineering culture; the CGPA of 8.97 and the Azure certification offset the degree."},
+    {id:"a147", sl:47, sev:"High", issue:"He holds an offer at 34 L against a 36 L expectation on 28.5 L now, and his notice runs to 15 Dec 2026.", act:"Decide this week or not at all. There is almost nothing to outbid with."},
+    {id:"a148", sl:47, sev:"High", issue:"His Engineering Manager title dates from Mar 2025 \u2014 about eighteen months \u2014 against the four years of leading the JD sets. Everything before it was individual contributor.", act:"Probe the management substance hard in Round 3, or decide to hire him as a senior engineer instead."},
+    {id:"a149", sl:47, sev:"Medium", issue:"His cloud is AWS throughout, with no Azure anywhere on the CV.", act:"Test whether the cloud depth transfers, per the JD."},
+    {id:"a150", sl:48, sev:"High", issue:"His LWD of 12 May 2025 is confirmed by his CV, so he has been out of work around eighteen and a half months \u2014 the longest break in the pipeline by a wide margin.", act:"Establish what he has been doing since, and whether the 36 L ask is grounded."},
+    {id:"a151", sl:48, sev:"High", issue:"Three further gaps behind that one: twenty-one months to Sep 2012, seven months to Apr 2016 and ten months to Feb 2024 \u2014 roughly four years unemployed across the span, across thirteen employers in twenty years.", act:"Walk the whole timeline with him; the pattern matters more than any single gap."},
+    {id:"a152", sl:48, sev:"Medium", issue:"He is in Chennai; the role is in Coimbatore.", act:"Confirm he will relocate, and on what terms."},
+    {id:"a153", sl:48, sev:"Low", issue:"His degree is dated 2002 but his first role starts Sep 2005.", act:"Ask what the intervening three years were."},
+    {id:"a154", sl:49, sev:"High", issue:"No cloud platform anywhere on his CV \u2014 no Azure, no AWS, no containers or orchestration \u2014 against a brief that names Azure as a required depth.", act:"Decide whether a manager who has not run anything in a cloud can hold this role, and test it directly if he proceeds."},
+    {id:"a155", sl:49, sev:"Medium", issue:"His CV header and his current Hapag-Lloyd role are both Chennai; the row records Coimbatore.", act:"Confirm where he is and whether the move is real."},
+    {id:"a156", sl:50, sev:"High", issue:"Java appears in every skills line on his CV and in no project description anywhere; the evidenced stack is PHP, Laravel, Python, Node.js and React. This is the same mis-mapping that made Karthy (12) a wasted slot.", act:"Reconfirm the skill mapping with IKrux before allocating a panel."},
+    {id:"a157", sl:50, sev:"Medium", issue:"The sentence about designing scalable SaaS architectures repeats almost verbatim across four different employers, so nothing distinguishes what he did at any of them.", act:"Ask him to walk through one system per employer in specifics."},
+    {id:"a158", sl:50, sev:"Medium", issue:"His cloud is AWS with a 2026 Solutions Architect Associate certification; the brief asks for Azure.", act:"Test whether the depth transfers."},
+    {id:"a159", sl:50, sev:"Medium", issue:"His CV gives Chennai and itdictator@gmail.com; the row gives Coimbatore and karky.techie@gmail.com. The row also spells him Karky Permal.", act:"Confirm the location, and which address reaches him, before anything is sent."},
+    {id:"a160", sl:null, sev:"High", issue:"None of the four Engineering Manager submissions has the Java plus Azure combination the JD names. Sivacharan and Karky are AWS, Viswanathan has no cloud at all, and only Dinesh Ramadoss has Azure \u2014 he is the one with an eighteen-month employment gap.", act:"Either relax the Azure requirement in the JD and say so to IKrux, or tell them it is a hard filter. Right now they are screening on something else."},
     {id:"a111", sl:38, sev:"High", issue:"Her LWD of 30 Oct 2026 has passed while the CV shows KG Invictus as current, and she only joined there in May 2026 \u2014 a six-month stint she is already leaving.", act:"Confirm her status and ask directly why the move, so soon."},
     {id:"a112", sl:38, sev:"Medium", issue:"The row names the employer KG Information Systems (KGISL); her CV says KG Invictus.", act:"Confirm which entity employed her, and on what terms."},
     {id:"a113", sl:38, sev:"Low", issue:"The Tech Lead title and all of the identity and multi-tenancy architecture are six months old; the preceding eight years at Infosys were Technology Analyst work.", act:"Probe how much of the Keycloak and tenant-isolation design was hers rather than inherited."},
@@ -1370,7 +1403,7 @@
     {key:"fExp",   label:"Total experience", get:function(c){ return c.fExp; },   opts:["Under 6 years","6 – 12 years","Over 12 years"]},
     {key:"fEctc",  label:"Expected CTC",     get:function(c){ return c.fEctc; },  opts:["Up to 15 L","15 – 25 L","Over 25 L","Not captured"]},
     {key:"fLoc",   label:"Current location", get:function(c){ return c.fLoc; },   opts:["Coimbatore","Chennai","Erode","Elsewhere"]},
-    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026","22-Oct-2026","23-Oct-2026","30-Oct-2026","17-Nov-2026"]},
+    {key:"batch",  label:"Submitted",        get:function(c){ return c.subDate; }, opts:["5-Sep-2026","21-Sep-2026","8-Oct-2026","22-Oct-2026","23-Oct-2026","30-Oct-2026","17-Nov-2026","23-Nov-2026"]},
     {key:"fFlag",  label:"Highest flag",     get:function(c){ return c.fFlag; },  opts:["High","Medium","Low","None"]},
     {key:"fOffer", label:"Competing offer",  get:function(c){ return c.fOffer; }, opts:["Holding an offer","None recorded","Not captured"]},
     {key:"fCv",    label:"Resume",           get:function(c){ return c.fCv; },    opts:["On file","Awaited"]},

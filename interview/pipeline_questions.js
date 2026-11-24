@@ -70,7 +70,13 @@ var QSTREAM = {
      delivery locations, so the service-operations questions fit her. */
   43:{s:"ops", l:"senior", fam:"delivery"},
   44:{s:"dotnet", l:"senior"},
-  45:{s:"node", l:"senior"}, 46:{s:"dotnet", l:"senior"}
+  45:{s:"node", l:"senior"}, 46:{s:"dotnet", l:"senior"},
+  /* Engineering Managers, added 24 Nov 2026. They are hired to run teams but
+     the JD keeps them hands-on, so they draw the engineering theory set at
+     senior level rather than the delivery one \u2014 the management half is tested
+     in its own round, not from this bank. */
+  47:{s:"java", l:"senior"}, 48:{s:"java", l:"senior"},
+  49:{s:"java", l:"senior"}, 50:{s:"node", l:"senior"}
 };
 
 var QBANK = [
