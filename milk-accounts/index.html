@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milk Accounts</title>
+<style>
+  :root {
+    --bg: #f5f7fa; --card: #ffffff; --text: #1f2933; --muted: #6b7785;
+    --border: #dde3ea; --accent: #2563eb; --accent-text: #fff;
+    --good: #15803d; --bad: #b91c1c; --row-alt: #f9fafb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111418; --card: #1a1f25; --text: #e5e9ee; --muted: #9aa5b1;
+      --border: #2d353f; --accent: #3b82f6; --accent-text: #fff;
+      --good: #4ade80; --bad: #f87171; --row-alt: #1e242b;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px; line-height: 1.45;
+  }
+  header {
+    background: var(--card); border-bottom: 1px solid var(--border);
+    padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 12px;
+    align-items: center; justify-content: space-between;
+  }
+  header h1 { margin: 0; font-size: 20px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+  nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.tabs button { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  nav.tabs button.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; margin-bottom: 16px;
+  }
+  .card h2 { margin: 0 0 12px; font-size: 17px; }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); align-items: end; }
+  label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  input, select, button {
+    font: inherit; padding: 8px 10px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--card); color: var(--text);
+  }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  button { cursor: pointer; background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  button.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  button.link { background: none; border: none; color: var(--accent); padding: 2px 6px; }
+  button.link.danger { color: var(--bad); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .stats { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+  .stat .v { font-size: 20px; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .stat .k { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+  .stat .v { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+  th { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+  td.num, th.num { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--row-alt); }
+  tfoot td { font-weight: 600; border-top: 2px solid var(--border); }
+  .due { color: var(--bad); } .paid { color: var(--good); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .hidden { display: none; }
+  .empty { text-align: center; color: var(--muted); padding: 20px; }
+  @media print {
+    header nav, .no-print, button { display: none !important; }
+    body { background: #fff; color: #000; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🥛 Milk Accounts</h1>
+  <nav class="tabs" id="tabs">
+    <button data-tab="daily" class="active">Daily</button>
+    <button data-tab="payments">Payments</button>
+    <button data-tab="summary">Monthly Summary</button>
+    <button data-tab="settings">Settings</button>
+  </nav>
+</header>
+
+<main>
+  <div class="row no-print" style="margin-bottom:16px">
+    <button class="secondary" id="prevMonth">◀</button>
+    <input type="month" id="month">
+    <button class="secondary" id="nextMonth">▶</button>
+    <span class="muted" id="monthLabel"></span>
+  </div>
+
+  <section class="stats" id="stats" style="margin-bottom:16px"></section>
+
+  <!-- DAILY -->
+  <section id="tab-daily">
+    <div class="card no-print">
+      <h2 id="entryTitle">Add daily entry</h2>
+      <form id="entryForm" class="grid">
+        <label>Date <input type="date" id="eDate" required></label>
+        <label>Bought (L) <input type="number" id="eQty" step="0.05" min="0" required></label>
+        <label>Rate / L <input type="number" id="eRate" step="0.01" min="0" required></label>
+        <label>Cost <input type="number" id="eCost" step="0.01" min="0" readonly></label>
+        <label>Used (L) <input type="number" id="eUsed" step="0.05" min="0" placeholder="optional"></label>
+        <label>Note <input type="text" id="eNote" placeholder="optional"></label>
+        <div class="row">
+          <button type="submit" id="eSubmit">Save</button>
+          <button type="button" class="secondary hidden" id="eCancel">Cancel</button>
+        </div>
+      </form>
+      <div class="row" style="margin-top:12px">
+        <button class="secondary" id="quickToday">+ Today with default quantity</button>
+        <button class="secondary" id="fillMonth">Fill missing days this month with default</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Daily entries</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Date</th><th>Day</th><th class="num">Bought (L)</th><th class="num">Rate</th>
+            <th class="num">Cost</th><th class="num">Used (L)</th><th>Note</th><th class="no-print"></th>
+          </tr></thead>
+          <tbody id="dailyBody"></tbody>
+          <tfoot id="dailyFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENTS -->
+  <section id="tab-payments" class="hidden">
+    <div class="card no-print">
+      <h2 id="payTitle">Record payment</h2>
+      <form id="payForm" class="grid">
+        <label>Date <input type="date" id="pDate" required></label>
+        <label>Amount <input type="number" id="pAmount" step="0.01" min="0" required></label>
+        <label>Mode
+          <select id="pMode"><option>Cash</option><option>UPI</option><option>Bank transfer</option><option>Cheque</option><option>Other</option></select>
+        </label>
+        <label>For month <input type="month" id="pFor" required></label>
+        <label>Note <input type="text" id="pNote" placeholder="optional"></label>
+        <div class="row">
+          <button type="submit">Save</button>
+          <button type="button" class="secondary hidden" id="pCancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Payments for this month</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Date</th><th class="num">Amount</th><th>Mode</th><th>Note</th><th class="no-print"></th></tr></thead>
+          <tbody id="payBody"></tbody>
+          <tfoot id="payFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section id="tab-summary" class="hidden">
+    <div class="card">
+      <h2>All months</h2>
+      <p class="muted">Balance carries forward: each month's opening balance is the previous month's closing balance.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Month</th><th class="num">Days</th><th class="num">Bought (L)</th><th class="num">Used (L)</th>
+            <th class="num">Opening</th><th class="num">Cost</th><th class="num">Paid</th><th class="num">Closing</th>
+          </tr></thead>
+          <tbody id="sumBody"></tbody>
+          <tfoot id="sumFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="tab-settings" class="hidden">
+    <div class="card">
+      <h2>Defaults</h2>
+      <form id="setForm" class="grid">
+        <label>Default quantity (L) <input type="number" id="sQty" step="0.05" min="0"></label>
+        <label>Default rate / L <input type="number" id="sRate" step="0.01" min="0"></label>
+        <label>Currency symbol <input type="text" id="sCur" maxlength="4"></label>
+        <label>Supplier name <input type="text" id="sSupplier" placeholder="optional"></label>
+        <label>Opening balance due <input type="number" id="sOpening" step="0.01" placeholder="0"></label>
+        <div><button type="submit">Save settings</button></div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Backup</h2>
+      <p class="muted">Data is saved in this browser only. Export regularly to keep a copy, or to move it to another device.</p>
+      <div class="row">
+        <button class="secondary" id="exportJson">Export backup (JSON)</button>
+        <button class="secondary" id="exportCsv">Export entries (CSV)</button>
+        <label class="secondary" style="flex-direction:row">
+          <button type="button" class="secondary" id="importBtn">Import backup</button>
+          <input type="file" id="importFile" accept="application/json" class="hidden">
+        </label>
+        <button class="secondary" id="printBtn">Print month</button>
+        <button class="secondary" id="clearAll" style="color:var(--bad)">Delete all data</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const KEY = 'milkAccounts.v1';
+  const $ = id => document.getElementById(id);
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  // ---------- storage ----------
+  const blank = () => ({
+    settings: { qty: 1, rate: 60, currency: '₹', supplier: '', opening: 0 },
+    entries: {},   // 'YYYY-MM-DD' -> {qty, rate, used, note}
+    payments: []   // {id, date, amount, mode, forMonth, note}
+  });
+  let db;
+  try { db = JSON.parse(localStorage.getItem(KEY)) || blank(); } catch { db = blank(); }
+  db.settings = Object.assign(blank().settings, db.settings || {});
+  db.entries = db.entries || {}; db.payments = db.payments || [];
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) { alert('Could not save: ' + e.message); } };
+
+  // ---------- helpers ----------
+  const pad = n => String(n).padStart(2, '0');
+  const ymd = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  const today = () => ymd(new Date());
+  const round2 = n => Math.round((n + Number.EPSILON) * 100) / 100;
+  const money = n => db.settings.currency + ' ' + round2(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const litres = n => round2(n).toLocaleString(undefined, { maximumFractionDigits: 2 });
+  const monthName = m => { const [y, mo] = m.split('-'); return new Date(+y, +mo-1, 1).toLocaleString(undefined, { month: 'long', year: 'numeric' }); };
+  const daysInMonth = m => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); };
+  const shiftMonth = (m, by) => { const [y, mo] = m.split('-').map(Number); const d = new Date(y, mo-1+by, 1); return `${d.getFullYear()}-${pad(d.getMonth()+1)}`; };
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const cost = e => round2((+e.qty || 0) * (+e.rate || 0));
+  const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+  function monthTotals(m) {
+    let qty = 0, used = 0, amt = 0, days = 0;
+    for (const [d, e] of Object.entries(db.entries)) if (d.startsWith(m)) { qty += +e.qty || 0; used += +e.used || 0; amt += cost(e); days++; }
+    const paid = db.payments.filter(p => p.forMonth === m).reduce((s, p) => s + (+p.amount || 0), 0);
+    return { qty, used, cost: round2(amt), paid: round2(paid), days };
+  }
+  function allMonths() {
+    const set = new Set(Object.keys(db.entries).map(d => d.slice(0, 7)));
+    db.payments.forEach(p => set.add(p.forMonth));
+    set.add(state.month);
+    const list = [...set].sort();
+    // fill gaps so carry-forward is continuous
+    const out = []; let m = list[0];
+    while (m <= list[list.length-1]) { out.push(m); m = shiftMonth(m, 1); }
+    return out;
+  }
+  function ledger() {
+    let bal = +db.settings.opening || 0; const rows = [];
+    for (const m of allMonths()) { const t = monthTotals(m); const open = bal; bal = round2(open + t.cost - t.paid); rows.push({ month: m, open, close: bal, ...t }); }
+    return rows;
+  }
+
+  // ---------- state ----------
+  const state = { month: today().slice(0, 7), tab: 'daily', editDate: null, editPay: null };
+
+  // ---------- render ----------
+  function render() {
+    $('month').value = state.month;
+    $('monthLabel').textContent = monthName(state.month) + (db.settings.supplier ? ' · ' + db.settings.supplier : '');
+    const rows = ledger(); const r = rows.find(x => x.month === state.month);
+    const avgRate = r.qty ? r.cost / r.qty : 0;
+    $('stats').innerHTML = [
+      ['Milk bought', litres(r.qty) + ' L'],
+      ['Milk used', litres(r.used) + ' L'],
+      ['Month cost', money(r.cost)],
+      ['Paid this month', money(r.paid)],
+      ['Opening balance', money(r.open)],
+      [r.close > 0 ? 'Balance due' : (r.close < 0 ? 'Advance / credit' : 'Balance'), `<span class="${r.close > 0 ? 'due' : 'paid'}">${money(Math.abs(r.close))}</span>`],
+    ].map(([k, v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('')
+      + `<div class="stat"><div class="k">Avg rate / L</div><div class="v">${money(avgRate)}</div></div>`;
+
+    // daily
+    const n = daysInMonth(state.month); let html = '';
+    for (let i = 1; i <= n; i++) {
+      const d = `${state.month}-${pad(i)}`; const e = db.entries[d];
+      const dow = DAYS[new Date(d + 'T00:00').getDay()];
+      if (!e) { html += `<tr><td>${d}</td><td>${dow}</td><td class="num muted">—</td><td></td><td></td><td></td><td></td>
+        <td class="no-print"><button class="link" data-add="${d}">Add</button></td></tr>`; continue; }
+      html += `<tr><td>${d}</td><td>${dow}</td><td class="num">${litres(e.qty)}</td><td class="num">${money(e.rate)}</td>
+        <td class="num">${money(cost(e))}</td><td class="num">${e.used !== '' && e.used != null ? litres(e.used) : ''}</td><td>${esc(e.note)}</td>
+        <td class="no-print"><button class="link" data-edit="${d}">Edit</button><button class="link danger" data-del="${d}">Delete</button></td></tr>`;
+    }
+    $('dailyBody').innerHTML = html;
+    $('dailyFoot').innerHTML = `<tr><td colspan="2">Total (${r.days} days)</td><td class="num">${litres(r.qty)}</td><td></td><td class="num">${money(r.cost)}</td><td class="num">${litres(r.used)}</td><td colspan="2"></td></tr>`;
+
+    // payments
+    const pays = db.payments.filter(p => p.forMonth === state.month).sort((a, b) => a.date.localeCompare(b.date));
+    $('payBody').innerHTML = pays.length ? pays.map(p => `<tr><td>${p.date}</td><td class="num">${money(p.amount)}</td><td>${esc(p.mode)}</td><td>${esc(p.note)}</td>
+      <td class="no-print"><button class="link" data-pedit="${p.id}">Edit</button><button class="link danger" data-pdel="${p.id}">Delete</button></td></tr>`).join('')
+      : `<tr><td colspan="5" class="empty">No payments recorded for ${monthName(state.month)}</td></tr>`;
+    $('payFoot').innerHTML = `<tr><td>Total paid</td><td class="num">${money(r.paid)}</td><td colspan="3">Due after payments: <span class="${r.close > 0 ? 'due' : 'paid'}">${money(r.close)}</span></td></tr>`;
+
+    // summary
+    const tot = rows.reduce((a, x) => ({ qty: a.qty + x.qty, used: a.used + x.used, cost: a.cost + x.cost, paid: a.paid + x.paid, days: a.days + x.days }), { qty: 0, used: 0, cost: 0, paid: 0, days: 0 });
+    $('sumBody').innerHTML = rows.slice().reverse().map(x => `<tr style="cursor:pointer" data-month="${x.month}"${x.month === state.month ? ' class="active"' : ''}>
+      <td>${monthName(x.month)}</td><td class="num">${x.days}</td><td class="num">${litres(x.qty)}</td><td class="num">${litres(x.used)}</td>
+      <td class="num">${money(x.open)}</td><td class="num">${money(x.cost)}</td><td class="num">${money(x.paid)}</td>
+      <td class="num ${x.close > 0 ? 'due' : 'paid'}">${money(x.close)}</td></tr>`).join('');
+    $('sumFoot').innerHTML = `<tr><td>Total</td><td class="num">${tot.days}</td><td class="num">${litres(tot.qty)}</td><td class="num">${litres(tot.used)}</td><td></td>
+      <td class="num">${money(tot.cost)}</td><td class="num">${money(tot.paid)}</td><td class="num">${money(rows.length ? rows[rows.length-1].close : 0)}</td></tr>`;
+
+    // settings
+    $('sQty').value = db.settings.qty; $('sRate').value = db.settings.rate; $('sCur').value = db.settings.currency;
+    $('sSupplier').value = db.settings.supplier; $('sOpening').value = db.settings.opening || '';
+  }
+
+  // ---------- entry form ----------
+  function resetEntry(date) {
+    state.editDate = null;
+    $('entryTitle').textContent = 'Add daily entry'; $('eCancel').classList.add('hidden');
+    const d = date || (today().startsWith(state.month) ? today() : `${state.month}-01`);
+    loadEntry(d);
+  }
+  function loadEntry(d) {
+    const e = db.entries[d];
+    $('eDate').value = d;
+    $('eQty').value = e ? e.qty : db.settings.qty;
+    $('eRate').value = e ? e.rate : db.settings.rate;
+    $('eUsed').value = e && e.used != null ? e.used : '';
+    $('eNote').value = e ? e.note || '' : '';
+    updCost();
+  }
+  const updCost = () => { $('eCost').value = cost({ qty: $('eQty').value, rate: $('eRate').value }).toFixed(2); };
+  $('eQty').addEventListener('input', updCost); $('eRate').addEventListener('input', updCost);
+  $('eDate').addEventListener('change', () => { if (!state.editDate) loadEntry($('eDate').value); });
+  $('entryForm').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const d = $('eDate').value; if (!d) return;
+    if (state.editDate && state.editDate !== d) delete db.entries[state.editDate];
+    db.entries[d] = { qty: +$('eQty').value, rate: +$('eRate').value, used: $('eUsed').value === '' ? null : +$('eUsed').value, note: $('eNote').value.trim() };
+    save(); state.month = d.slice(0, 7);
+    // advance to next day for fast entry
+    const nx = new Date(d + 'T00:00'); nx.setDate(nx.getDate() + 1);
+    resetEntry(ymd(nx).startsWith(state.month) ? ymd(nx) : d); render();
+  });
+  $('eCancel').addEventListener('click', () => resetEntry());
+  $('quickToday').addEventListener('click', () => {
+    const d = today();
+    if (db.entries[d] && !confirm('Today already has an entry. Replace with default?')) return;
+    db.entries[d] = { qty: +db.settings.qty, rate: +db.settings.rate, used: db.entries[d]?.used ?? null, note: db.entries[d]?.note || '' };
+    save(); state.month = d.slice(0, 7); resetEntry(); render();
+  });
+  $('fillMonth').addEventListener('click', () => {
+    const n = daysInMonth(state.month), lim = today(), missing = [];
+    for (let i = 1; i <= n; i++) { const d = `${state.month}-${pad(i)}`; if (d > lim) break; if (!db.entries[d]) missing.push(d); }
+    if (!missing.length) return alert('No missing days to fill (up to today).');
+    if (!confirm(`Add ${missing.length} day(s) with ${db.settings.qty} L @ ${money(db.settings.rate)}?`)) return;
+    missing.forEach(d => { db.entries[d] = { qty: +db.settings.qty, rate: +db.settings.rate, used: null, note: '' }; });
+    save(); render();
+  });
+  $('dailyBody').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.add) { resetEntry(b.dataset.add); $('eQty').focus(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    if (b.dataset.edit) {
+      state.editDate = b.dataset.edit; loadEntry(b.dataset.edit);
+      $('entryTitle').textContent = 'Edit entry · ' + b.dataset.edit; $('eCancel').classList.remove('hidden');
+      $('eQty').focus(); window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (b.dataset.del && confirm('Delete entry for ' + b.dataset.del + '?')) { delete db.entries[b.dataset.del]; save(); render(); }
+  });
+
+  // ---------- payments ----------
+  function resetPay() {
+    state.editPay = null; $('payTitle').textContent = 'Record payment'; $('pCancel').classList.add('hidden');
+    $('pDate').value = today(); $('pFor').value = state.month; $('pNote').value = '';
+    const r = ledger().find(x => x.month === state.month);
+    $('pAmount').value = r && r.close > 0 ? r.close.toFixed(2) : '';
+  }
+  $('payForm').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const p = { id: state.editPay || uid(), date: $('pDate').value, amount: +$('pAmount').value, mode: $('pMode').value, forMonth: $('pFor').value, note: $('pNote').value.trim() };
+    const i = db.payments.findIndex(x => x.id === p.id);
+    if (i >= 0) db.payments[i] = p; else db.payments.push(p);
+    save(); state.month = p.forMonth; render(); resetPay();
+  });
+  $('pCancel').addEventListener('click', resetPay);
+  $('payBody').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.pedit) {
+      const p = db.payments.find(x => x.id === b.dataset.pedit); state.editPay = p.id;
+      $('pDate').value = p.date; $('pAmount').value = p.amount; $('pMode').value = p.mode; $('pFor').value = p.forMonth; $('pNote').value = p.note || '';
+      $('payTitle').textContent = 'Edit payment'; $('pCancel').classList.remove('hidden');
+    }
+    if (b.dataset.pdel && confirm('Delete this payment?')) { db.payments = db.payments.filter(x => x.id !== b.dataset.pdel); save(); render(); resetPay(); }
+  });
+
+  // ---------- summary click ----------
+  $('sumBody').addEventListener('click', ev => {
+    const tr = ev.target.closest('tr[data-month]'); if (!tr) return;
+    state.month = tr.dataset.month; setTab('daily'); resetEntry(); resetPay(); render();
+  });
+
+  // ---------- settings ----------
+  $('setForm').addEventListener('submit', ev => {
+    ev.preventDefault();
+    db.settings = { qty: +$('sQty').value || 0, rate: +$('sRate').value || 0, currency: $('sCur').value || '₹', supplier: $('sSupplier').value.trim(), opening: +$('sOpening').value || 0 };
+    save(); render(); resetEntry(); alert('Settings saved.');
+  });
+  const download = (name, text, type) => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000); };
+  $('exportJson').addEventListener('click', () => download(`milk-accounts-${today()}.json`, JSON.stringify(db, null, 2), 'application/json'));
+  $('exportCsv').addEventListener('click', () => {
+    const lines = ['date,quantity_l,rate,cost,used_l,note'];
+    Object.keys(db.entries).sort().forEach(d => { const e = db.entries[d]; lines.push([d, e.qty, e.rate, cost(e), e.used ?? '', '"' + (e.note || '').replace(/"/g, '""') + '"'].join(',')); });
+    lines.push('', 'payment_date,amount,mode,for_month,note');
+    db.payments.slice().sort((a, b) => a.date.localeCompare(b.date)).forEach(p => lines.push([p.date, p.amount, p.mode, p.forMonth, '"' + (p.note || '').replace(/"/g, '""') + '"'].join(',')));
+    download(`milk-accounts-${today()}.csv`, lines.join('\n'), 'text/csv');
+  });
+  $('importBtn').addEventListener('click', () => $('importFile').click());
+  $('importFile').addEventListener('change', async ev => {
+    const f = ev.target.files[0]; if (!f) return;
+    try {
+      const data = JSON.parse(await f.text());
+      if (!data || typeof data.entries !== 'object' || !Array.isArray(data.payments)) throw new Error('Not a Milk Accounts backup');
+      if (!confirm('Replace all current data with this backup?')) return;
+      db = { settings: Object.assign(blank().settings, data.settings), entries: data.entries, payments: data.payments };
+      save(); resetEntry(); resetPay(); render(); alert('Backup imported.');
+    } catch (e) { alert('Import failed: ' + e.message); }
+    ev.target.value = '';
+  });
+  $('printBtn').addEventListener('click', () => { setTab('daily'); setTimeout(() => window.print(), 50); });
+  $('clearAll').addEventListener('click', () => {
+    if (!confirm('Delete ALL entries, payments and settings? Export a backup first if needed.')) return;
+    db = blank(); save(); resetEntry(); resetPay(); render();
+  });
+
+  // ---------- nav ----------
+  function setTab(t) {
+    state.tab = t;
+    document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+    ['daily', 'payments', 'summary', 'settings'].forEach(x => $('tab-' + x).classList.toggle('hidden', x !== t));
+  }
+  $('tabs').addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) setTab(b.dataset.tab); });
+  const goMonth = m => { if (!m) return; state.month = m; resetEntry(); resetPay(); render(); };
+  $('month').addEventListener('change', e => goMonth(e.target.value));
+  $('prevMonth').addEventListener('click', () => goMonth(shiftMonth(state.month, -1)));
+  $('nextMonth').addEventListener('click', () => goMonth(shiftMonth(state.month, 1)));
+
+  resetEntry(); resetPay(); render();
+})();
+</script>
+</body>
+</html>
