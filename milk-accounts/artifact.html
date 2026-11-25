@@ -1,0 +1,356 @@
+<title>Milk Accounts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout: single column ledger — month bar, totals strip, entry form, daily table, payments, yearly summary */
+  :root {
+    --bg: #f4f6f8; --card: #ffffff; --fg: #1d2731; --muted: #627080;
+    --line: #dbe1e7; --accent: #1f6feb; --on-accent: #ffffff; --stripe: #f8fafb;
+    --due: #c62828; --ok: #2e7d32;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12161b; --card: #1a2027; --fg: #e4e9ee; --muted: #94a1ae;
+      --line: #2c353f; --accent: #4b8ff5; --on-accent: #ffffff; --stripe: #1e252d;
+      --due: #ef7a7a; --ok: #6fcf7a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12161b; --card: #1a2027; --fg: #e4e9ee; --muted: #94a1ae;
+    --line: #2c353f; --accent: #4b8ff5; --on-accent: #ffffff; --stripe: #1e252d;
+    --due: #ef7a7a; --ok: #6fcf7a; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap {
+    max-width: 980px; margin: 0 auto; padding-block: 16px 40px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  h1 { font-size: 22px; margin: 0; }
+  h2 { font-size: 16px; margin: 0 0 12px; }
+  .top { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+  .monthbar { display: flex; gap: 6px; align-items: center; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; min-width: 0; }
+  .stats { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .stat { background: var(--card); padding: 12px 14px; }
+  .stat .k { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .stat .v { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  form { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); align-items: end; }
+  label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  input, select, button {
+    font: inherit; color: var(--fg); background: var(--card);
+    border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; min-width: 0; width: 100%;
+  }
+  input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button { cursor: pointer; width: auto; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
+  button.small { padding: 3px 8px; font-size: 13px; }
+  button.danger { color: var(--due); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .tablewrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+  th { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .n { text-align: right; }
+  tbody tr:nth-child(even) { background: var(--stripe); }
+  tfoot td { font-weight: 700; border-top: 2px solid var(--line); border-bottom: none; }
+  tr.empty td { color: var(--muted); }
+  tr.sun td:first-child { color: var(--due); }
+  .due { color: var(--due); } .ok { color: var(--ok); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .note { padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--stripe); font-size: 13px; }
+  .grid2 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  details summary { cursor: pointer; font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <h1>Milk Accounts</h1>
+    <div class="monthbar">
+      <button id="prev" aria-label="Previous month">◀</button>
+      <input type="month" id="month" style="width:auto">
+      <button id="next" aria-label="Next month">▶</button>
+    </div>
+  </div>
+
+  <div id="status" class="note">Loading your accounts…</div>
+
+  <div class="stats" id="stats"></div>
+
+  <section class="card">
+    <h2 id="formTitle">Add daily entry</h2>
+    <form id="entryForm">
+      <label>Date <input type="date" id="eDate" required></label>
+      <label>Bought (litres) <input type="number" id="eQty" step="0.25" min="0" required></label>
+      <label>Rate per litre <input type="number" id="eRate" step="0.5" min="0" required></label>
+      <label>Used (litres) <input type="number" id="eUsed" step="0.25" min="0" placeholder="optional"></label>
+      <label>Note <input type="text" id="eNote" placeholder="optional"></label>
+      <div class="row"><button class="primary" type="submit" id="eSave">Save</button></div>
+    </form>
+    <p class="muted" id="costPreview" style="margin:10px 0 0"></p>
+  </section>
+
+  <section class="card">
+    <div class="row" style="justify-content:space-between; margin-bottom:8px">
+      <h2 style="margin:0">Daily entries</h2>
+      <button id="fill" class="small">Fill empty days up to today with usual quantity</button>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Date</th><th class="n">Bought (L)</th><th class="n">Rate</th><th class="n">Cost</th><th class="n">Used (L)</th><th>Note</th><th></th></tr></thead>
+        <tbody id="days"></tbody>
+        <tfoot id="daysFoot"></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <div class="grid2">
+    <section class="card">
+      <h2>Payments this month</h2>
+      <form id="payForm">
+        <label>Date <input type="date" id="pDate" required></label>
+        <label>Amount <input type="number" id="pAmt" step="1" min="0" required></label>
+        <label>Mode <select id="pMode"><option>Cash</option><option>UPI</option><option>Bank</option><option>Other</option></select></label>
+        <div class="row"><button class="primary" type="submit">Add payment</button></div>
+      </form>
+      <div class="tablewrap" style="margin-top:12px">
+        <table>
+          <tbody id="pays"></tbody>
+          <tfoot id="paysFoot"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Monthly totals</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Month</th><th class="n">Litres</th><th class="n">Cost</th><th class="n">Paid</th><th class="n">Balance</th></tr></thead>
+          <tbody id="summary"></tbody>
+        </table>
+      </div>
+      <p class="muted">Balance carries forward month to month. Tap a month to open it.</p>
+    </section>
+  </div>
+
+  <section class="card">
+    <details id="settingsBox">
+      <summary>Settings</summary>
+      <form id="setForm" style="margin-top:12px">
+        <label>Usual quantity (L) <input type="number" id="sQty" step="0.25" min="0"></label>
+        <label>Usual rate per litre <input type="number" id="sRate" step="0.5" min="0"></label>
+        <label>Currency <input type="text" id="sCur" maxlength="3"></label>
+        <label>Old balance before start <input type="number" id="sOpen" step="1"></label>
+        <div class="row"><button class="primary" type="submit">Save settings</button></div>
+      </form>
+    </details>
+  </section>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, '0');
+  const ymd = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const todayStr = () => ymd(new Date());
+  const r2 = n => Math.round((+n + Number.EPSILON) * 100) / 100;
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const shift = (m, k) => { const [y, mo] = m.split('-').map(Number); const d = new Date(y, mo - 1 + k, 1); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}`; };
+  const dim = m => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); };
+  const mName = m => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo - 1, 1).toLocaleString(undefined, { month: 'short', year: 'numeric' }); };
+  const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  // ---- state ----
+  const S = {
+    month: todayStr().slice(0, 7),
+    settings: { qty: 1, rate: 60, currency: '₹', opening: 0 },
+    entries: {},   // date -> {qty, rate, used, note}
+    payments: [],  // {id, date, amount, mode, month}
+    db: null, armed: null,
+  };
+  const money = n => S.settings.currency + ' ' + r2(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const lit = n => r2(n).toLocaleString(undefined, { maximumFractionDigits: 2 });
+  const cost = e => r2((+e.qty || 0) * (+e.rate || 0));
+
+  function totals(m) {
+    let qty = 0, used = 0, c = 0, days = 0;
+    for (const [d, e] of Object.entries(S.entries)) if (d.startsWith(m)) { qty += +e.qty || 0; used += +e.used || 0; c += cost(e); days++; }
+    const paid = S.payments.filter(p => p.month === m).reduce((s, p) => s + (+p.amount || 0), 0);
+    return { qty, used, cost: r2(c), paid: r2(paid), days };
+  }
+  function ledger() {
+    const set = new Set([S.month, ...Object.keys(S.entries).map(d => d.slice(0, 7)), ...S.payments.map(p => p.month)]);
+    const ms = [...set].sort(); const out = []; let bal = +S.settings.opening || 0;
+    for (let m = ms[0]; m <= ms[ms.length - 1]; m = shift(m, 1)) {
+      const t = totals(m); const open = bal; bal = r2(open + t.cost - t.paid);
+      out.push({ month: m, open, close: bal, ...t });
+    }
+    return out;
+  }
+
+  // ---- persistence ----
+  const flash = (msg, bad) => { const s = $('status'); s.hidden = !msg; s.textContent = msg || ''; s.style.color = bad ? 'var(--due)' : ''; };
+  async function write(fn) {
+    if (!S.db) return;
+    try { await fn(S.db); }
+    catch (e) { flash(e.code === 'quota_exceeded' ? 'Storage is full. Delete some old entries.' : 'Could not save. Check your connection and try again.', true); }
+  }
+
+  // ---- render ----
+  function render() {
+    $('month').value = S.month;
+    const L = ledger(); const t = L.find(x => x.month === S.month);
+    const avg = t.qty ? t.cost / t.qty : 0;
+    const tiles = [
+      ['Bought', lit(t.qty) + ' L'], ['Used', lit(t.used) + ' L'], ['Cost', money(t.cost)],
+      ['Paid', money(t.paid)], ['Previous balance', money(t.open)],
+      [t.close >= 0 ? 'Balance due' : 'Advance paid', `<span class="${t.close > 0 ? 'due' : 'ok'}">${money(Math.abs(t.close))}</span>`],
+      ['Avg rate / L', money(avg)],
+    ];
+    $('stats').innerHTML = tiles.map(([k, v]) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div></div>`).join('');
+
+    let rows = '';
+    for (let i = 1; i <= dim(S.month); i++) {
+      const d = `${S.month}-${pad(i)}`, e = S.entries[d], dow = new Date(d + 'T00:00').getDay();
+      const label = `${pad(i)} ${DOW[dow]}`;
+      if (!e) { rows += `<tr class="empty${dow === 0 ? ' sun' : ''}"><td>${label}</td><td class="n">—</td><td></td><td></td><td></td><td></td><td><button class="small" data-edit="${d}">Add</button></td></tr>`; continue; }
+      const armed = S.armed === 'e' + d;
+      rows += `<tr${dow === 0 ? ' class="sun"' : ''}><td>${label}</td><td class="n">${lit(e.qty)}</td><td class="n">${money(e.rate)}</td><td class="n">${money(cost(e))}</td>
+        <td class="n">${e.used != null && e.used !== '' ? lit(e.used) : ''}</td><td>${esc(e.note)}</td>
+        <td class="row" style="flex-wrap:nowrap"><button class="small" data-edit="${d}">Edit</button><button class="small danger" data-del="${d}">${armed ? 'Confirm' : 'Delete'}</button></td></tr>`;
+    }
+    $('days').innerHTML = rows;
+    $('daysFoot').innerHTML = `<tr><td>${t.days} days</td><td class="n">${lit(t.qty)}</td><td></td><td class="n">${money(t.cost)}</td><td class="n">${lit(t.used)}</td><td colspan="2"></td></tr>`;
+
+    const ps = S.payments.filter(p => p.month === S.month).sort((a, b) => a.date.localeCompare(b.date));
+    $('pays').innerHTML = ps.length ? ps.map(p => `<tr><td>${esc(p.date)}</td><td>${esc(p.mode)}</td><td class="n">${money(p.amount)}</td>
+      <td><button class="small danger" data-pdel="${esc(p.id)}">${S.armed === 'p' + p.id ? 'Confirm' : 'Delete'}</button></td></tr>`).join('')
+      : `<tr class="empty"><td colspan="4">No payments yet for ${mName(S.month)}.</td></tr>`;
+    $('paysFoot').innerHTML = `<tr><td colspan="2">Total paid</td><td class="n">${money(t.paid)}</td><td></td></tr>`;
+
+    $('summary').innerHTML = L.slice().reverse().map(x => `<tr data-month="${x.month}" style="cursor:pointer${x.month === S.month ? ';font-weight:600' : ''}">
+      <td>${mName(x.month)}</td><td class="n">${lit(x.qty)}</td><td class="n">${money(x.cost)}</td><td class="n">${money(x.paid)}</td>
+      <td class="n ${x.close > 0 ? 'due' : 'ok'}">${money(x.close)}</td></tr>`).join('');
+    updPreview();
+  }
+  const updPreview = () => { $('costPreview').textContent = 'Cost: ' + money(cost({ qty: $('eQty').value, rate: $('eRate').value })); };
+
+  function loadForm(d) {
+    const e = S.entries[d];
+    $('eDate').value = d;
+    $('eQty').value = e ? e.qty : S.settings.qty;
+    $('eRate').value = e ? e.rate : S.settings.rate;
+    $('eUsed').value = e && e.used != null ? e.used : '';
+    $('eNote').value = e ? e.note || '' : '';
+    $('formTitle').textContent = e ? 'Edit entry for ' + d : 'Add daily entry';
+    updPreview();
+  }
+  function resetForms() {
+    const t = todayStr();
+    loadForm(t.startsWith(S.month) ? t : `${S.month}-01`);
+    $('pDate').value = t.startsWith(S.month) ? t : `${S.month}-${pad(dim(S.month))}`;
+    const c = ledger().find(x => x.month === S.month).close;
+    $('pAmt').value = c > 0 ? Math.round(c) : '';
+  }
+  function fillSettings() {
+    $('sQty').value = S.settings.qty; $('sRate').value = S.settings.rate;
+    $('sCur').value = S.settings.currency; $('sOpen').value = S.settings.opening || 0;
+  }
+
+  // ---- events ----
+  $('eQty').addEventListener('input', updPreview);
+  $('eRate').addEventListener('input', updPreview);
+  $('eDate').addEventListener('change', () => loadForm($('eDate').value));
+
+  $('entryForm').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const d = $('eDate').value; if (!d) return;
+    const used = $('eUsed').value === '' ? null : +$('eUsed').value;
+    const e = { qty: +$('eQty').value, rate: +$('eRate').value, used, note: $('eNote').value.trim() };
+    S.entries[d] = e; S.month = d.slice(0, 7);
+    const nx = new Date(d + 'T00:00'); nx.setDate(nx.getDate() + 1);
+    render(); loadForm(ymd(nx).startsWith(S.month) && ymd(nx) <= todayStr() ? ymd(nx) : d);
+    await write(db => db.doc('entries/' + d).set(e));
+  });
+
+  $('fill').addEventListener('click', async () => {
+    const lim = todayStr(), add = [];
+    for (let i = 1; i <= dim(S.month); i++) { const d = `${S.month}-${pad(i)}`; if (d > lim) break; if (!S.entries[d]) add.push(d); }
+    if (!add.length) { flash('No empty days to fill up to today.'); return; }
+    const e = { qty: +S.settings.qty, rate: +S.settings.rate, used: null, note: '' };
+    add.forEach(d => S.entries[d] = { ...e }); render(); flash(`Filled ${add.length} day(s) with ${S.settings.qty} L.`);
+    for (const d of add) await write(db => db.doc('entries/' + d).set(e));
+  });
+
+  $('days').addEventListener('click', async ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.edit) { S.armed = null; loadForm(b.dataset.edit); $('eQty').focus(); $('formTitle').scrollIntoView({ behavior: 'smooth', block: 'center' }); render(); }
+    if (b.dataset.del) {
+      const d = b.dataset.del;
+      if (S.armed !== 'e' + d) { S.armed = 'e' + d; render(); return; }
+      S.armed = null; delete S.entries[d]; render();
+      await write(db => db.doc('entries/' + d).delete());
+    }
+  });
+
+  $('payForm').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    const id = 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    const p = { date: $('pDate').value, amount: +$('pAmt').value, mode: $('pMode').value, month: S.month };
+    S.payments.push({ id, ...p }); render(); resetForms();
+    await write(db => db.doc('payments/' + id).set(p));
+  });
+  $('pays').addEventListener('click', async ev => {
+    const b = ev.target.closest('button[data-pdel]'); if (!b) return;
+    const id = b.dataset.pdel;
+    if (S.armed !== 'p' + id) { S.armed = 'p' + id; render(); return; }
+    S.armed = null; S.payments = S.payments.filter(p => p.id !== id); render();
+    await write(db => db.doc('payments/' + id).delete());
+  });
+
+  $('setForm').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    S.settings = { qty: +$('sQty').value || 0, rate: +$('sRate').value || 0, currency: $('sCur').value.trim() || '₹', opening: +$('sOpen').value || 0 };
+    render(); resetForms(); flash('Settings saved.');
+    await write(db => db.doc('config/settings').set(S.settings));
+  });
+
+  $('summary').addEventListener('click', ev => { const tr = ev.target.closest('tr[data-month]'); if (tr) go(tr.dataset.month); });
+  const go = m => { if (!m) return; S.month = m; S.armed = null; render(); resetForms(); };
+  $('month').addEventListener('change', e => go(e.target.value));
+  $('prev').addEventListener('click', () => go(shift(S.month, -1)));
+  $('next').addEventListener('click', () => go(shift(S.month, 1)));
+
+  // ---- boot ----
+  render(); resetForms(); fillSettings();
+
+  (async () => {
+    const db = window.claude ? await window.claude.use('db') : null;
+    if (!db) { flash('Saving is unavailable here. You can try the app, but entries will be lost when you close it. Sign in to claude.ai to keep your records.', true); return; }
+    S.db = db;
+    let pending = 3;
+    const timer = setTimeout(() => flash('Your saved records can’t be reached yet. Check your connection.', true), 10000);
+    const ready = snap => { if (!snap.metadata.fromCache && --pending === 0) { clearTimeout(timer); flash(''); resetForms(); } };
+    const fail = () => { clearTimeout(timer); flash('Lost connection to your saved records. Reload the page to try again.', true); };
+    let firstSet = true;
+    db.collection('entries').onSnapshot(snap => {
+      const m = {}; snap.docs.forEach(d => { m[d.id] = { ...d.data() }; }); S.entries = m; render(); ready(snap);
+    }, fail);
+    db.collection('payments').onSnapshot(snap => {
+      S.payments = snap.docs.map(d => ({ id: d.id, ...d.data() })); render(); ready(snap);
+    }, fail);
+    db.doc('config/settings').onSnapshot(snap => {
+      if (snap.exists) S.settings = { ...S.settings, ...snap.data() };
+      if (firstSet || !$('settingsBox').open) fillSettings();
+      if (firstSet) resetForms();
+      firstSet = false; render(); ready(snap);
+    }, fail);
+  })();
+})();
+</script>
